@@ -1,10 +1,10 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,14 +20,14 @@ public class Reschedule implements java.io.Serializable
 		private long id;
 		private Long agmrntId;
 		private Long guarantorId;
-		private String status;
+		private boolean status;
 		private Date requestDate;
 		private Date approvalDate;
 		private Date effectiveDate;
 		private Date reschedulingDate;
 		private double effectiveRate;
 		private double flatRate;
-		private String paymentFrequency;
+		private boolean paymentFrequency;
 		private String installmentScheme;
 		private String stepUpStepDownType;
 		private String interestType;
@@ -127,9 +127,9 @@ public class Reschedule implements java.io.Serializable
 			{
 			}
 		
-		public Reschedule(long id, String status, Date requestDate,
+		public Reschedule(long id, boolean status, Date requestDate,
 		        Date effectiveDate, double effectiveRate, double flatRate,
-		        String paymentFrequency, String installmentScheme,
+		        boolean paymentFrequency, String installmentScheme,
 		        String interestType, short numOfInstallment,
 		        short outstandingTenor, short tenor, short cummulativeTenor,
 		        double installmentAmount, double partialPrepaymentAmount,
@@ -192,22 +192,23 @@ public class Reschedule implements java.io.Serializable
 				this.accruedAdminFee = accruedAdminFee;
 			}
 		public Reschedule(long id, Long agmrntId, Long guarantorId,
-		        String status, Date requestDate, Date approvalDate,
+		        boolean status, Date requestDate, Date approvalDate,
 		        Date effectiveDate, Date reschedulingDate,
-		        double effectiveRate, double flatRate, String paymentFrequency,
-		        String installmentScheme, String stepUpStepDownType,
-		        String interestType, short numOfInstallment,
-		        short outstandingTenor, short tenor, short cummulativeTenor,
-		        double installmentAmount, Byte gracePeriod,
-		        String gracePeriodType, double partialPrepaymentAmount,
-		        double administrationFee, double newPrincipalAmount,
-		        double contractPrepaidAmount, double outstandingPrincipalNew,
-		        double outstandingInterestNew, double outstandingPrincipalOld,
-		        double outstandingInterestOld, double osinstallmentDue,
-		        double osinsuranceDue, double oslcinstallment,
-		        double oslcinsurance, double ospdcbounceFee,
-		        Double osreposessFee, double accruedAmount, Double arna,
-		        double eciamount, Double osdiffRate, Double accruedDiffRateEom,
+		        double effectiveRate, double flatRate,
+		        boolean paymentFrequency, String installmentScheme,
+		        String stepUpStepDownType, String interestType,
+		        short numOfInstallment, short outstandingTenor, short tenor,
+		        short cummulativeTenor, double installmentAmount,
+		        Byte gracePeriod, String gracePeriodType,
+		        double partialPrepaymentAmount, double administrationFee,
+		        double newPrincipalAmount, double contractPrepaidAmount,
+		        double outstandingPrincipalNew, double outstandingInterestNew,
+		        double outstandingPrincipalOld, double outstandingInterestOld,
+		        double osinstallmentDue, double osinsuranceDue,
+		        double oslcinstallment, double oslcinsurance,
+		        double ospdcbounceFee, Double osreposessFee,
+		        double accruedAmount, Double arna, double eciamount,
+		        Double osdiffRate, Double accruedDiffRateEom,
 		        Double accruedDiffRate, Double osinsuranceIncome,
 		        Double accruedInsuranceIncomeEom,
 		        Double accruedInsuranceIncome, Double osincentive,
@@ -346,7 +347,7 @@ public class Reschedule implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -381,12 +382,12 @@ public class Reschedule implements java.io.Serializable
 			}
 		
 		@Column(name = "Status", nullable = false, length = 1)
-		public String getStatus()
+		public boolean isStatus()
 			{
 				return this.status;
 			}
 		
-		public void setStatus(String status)
+		public void setStatus(boolean status)
 			{
 				this.status = status;
 			}
@@ -462,12 +463,12 @@ public class Reschedule implements java.io.Serializable
 			}
 		
 		@Column(name = "PaymentFrequency", nullable = false, length = 1)
-		public String getPaymentFrequency()
+		public boolean isPaymentFrequency()
 			{
 				return this.paymentFrequency;
 			}
 		
-		public void setPaymentFrequency(String paymentFrequency)
+		public void setPaymentFrequency(boolean paymentFrequency)
 			{
 				this.paymentFrequency = paymentFrequency;
 			}

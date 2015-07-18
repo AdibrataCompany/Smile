@@ -1,13 +1,12 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,7 +27,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 		private Serializable mainCompetitor;
 		private Serializable location;
 		private Serializable concernedGoods;
-		private BigDecimal marketShare;
+		private long marketShare;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -40,7 +39,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 		
 		public CoyCustComptInfo(long id, Serializable mainCompetitor,
 		        Serializable location, Serializable concernedGoods,
-		        BigDecimal marketShare)
+		        long marketShare)
 			{
 				this.id = id;
 				this.mainCompetitor = mainCompetitor;
@@ -50,8 +49,8 @@ public class CoyCustComptInfo implements java.io.Serializable
 			}
 		public CoyCustComptInfo(long id, Customer customer, Short seqNo,
 		        Serializable mainCompetitor, Serializable location,
-		        Serializable concernedGoods, BigDecimal marketShare,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		        Serializable concernedGoods, long marketShare, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -66,7 +65,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -135,12 +134,12 @@ public class CoyCustComptInfo implements java.io.Serializable
 			}
 		
 		@Column(name = "MarketShare", nullable = false, precision = 9, scale = 6)
-		public BigDecimal getMarketShare()
+		public long getMarketShare()
 			{
 				return this.marketShare;
 			}
 		
-		public void setMarketShare(BigDecimal marketShare)
+		public void setMarketShare(long marketShare)
 			{
 				this.marketShare = marketShare;
 			}

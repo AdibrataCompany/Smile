@@ -1,11 +1,11 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -71,7 +71,7 @@ public class PersCust implements java.io.Serializable
 		private String additionalCollateralType;
 		private Double additionalCollateralAmount;
 		private Double creditCardId;
-		private String creditCardType;
+		private boolean creditCardType;
 		private Short numOfCreditCard;
 		private String bankId;
 		private String bankBranch;
@@ -80,7 +80,7 @@ public class PersCust implements java.io.Serializable
 		private String reference;
 		private short isApplyCarLoanBefore;
 		private String applyCarLoanCompanyName;
-		private String activeCustomer;
+		private boolean activeCustomer;
 		private String notes;
 		private Short isCorporateCreditLine;
 		private Double plafondAmount;
@@ -102,7 +102,7 @@ public class PersCust implements java.io.Serializable
 		        String education, String professionId, String nationality,
 		        String homeStatus, String homeLocation, double homePrice,
 		        short numOfAssetOwned, short isApplyCarLoanBefore,
-		        String activeCustomer, String customerGroup)
+		        boolean activeCustomer, String customerGroup)
 			{
 				this.id = id;
 				this.personalCustomerType = personalCustomerType;
@@ -146,10 +146,10 @@ public class PersCust implements java.io.Serializable
 		        Double deposito, Double livingCostAmount,
 		        Double otherLoanInstallment, String additionalCollateralType,
 		        Double additionalCollateralAmount, Double creditCardId,
-		        String creditCardType, Short numOfCreditCard, String bankId,
+		        boolean creditCardType, Short numOfCreditCard, String bankId,
 		        String bankBranch, String accountNo, String accountName,
 		        String reference, short isApplyCarLoanBefore,
-		        String applyCarLoanCompanyName, String activeCustomer,
+		        String applyCarLoanCompanyName, boolean activeCustomer,
 		        String notes, Short isCorporateCreditLine,
 		        Double plafondAmount, String biologicalMothersName,
 		        String customerGroup, Short mainBusinessSinceYear,
@@ -228,7 +228,7 @@ public class PersCust implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -798,12 +798,12 @@ public class PersCust implements java.io.Serializable
 			}
 		
 		@Column(name = "CreditCardType", length = 1)
-		public String getCreditCardType()
+		public boolean isCreditCardType()
 			{
 				return this.creditCardType;
 			}
 		
-		public void setCreditCardType(String creditCardType)
+		public void setCreditCardType(boolean creditCardType)
 			{
 				this.creditCardType = creditCardType;
 			}
@@ -897,12 +897,12 @@ public class PersCust implements java.io.Serializable
 			}
 		
 		@Column(name = "ActiveCustomer", nullable = false, length = 1)
-		public String getActiveCustomer()
+		public boolean isActiveCustomer()
 			{
 				return this.activeCustomer;
 			}
 		
-		public void setActiveCustomer(String activeCustomer)
+		public void setActiveCustomer(boolean activeCustomer)
 			{
 				this.activeCustomer = activeCustomer;
 			}

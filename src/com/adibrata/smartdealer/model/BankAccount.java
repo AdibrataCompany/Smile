@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -112,7 +112,7 @@ public class BankAccount implements java.io.Serializable
 				this.payReqHdrs = payReqHdrs;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

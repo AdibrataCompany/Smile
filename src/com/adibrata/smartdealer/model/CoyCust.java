@@ -1,13 +1,12 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -32,20 +31,20 @@ public class CoyCust implements java.io.Serializable
 		private String industryTypeId;
 		private String pengelolaGedungAreaPhone;
 		private String pengelolaGedungPhone;
-		private BigDecimal currentRatio;
-		private BigDecimal roi;
-		private BigDecimal der;
-		private BigDecimal modalDasar;
-		private BigDecimal modalDisetor;
-		private BigDecimal netProfitMargin;
+		private long currentRatio;
+		private long roi;
+		private long der;
+		private long modalDasar;
+		private long modalDisetor;
+		private long netProfitMargin;
 		private String bankAccountType;
-		private BigDecimal nilaiPinjamanSedangBerjalan;
-		private BigDecimal averageDebitTransaction;
-		private BigDecimal averageCreditTransaction;
-		private BigDecimal averageBalance;
-		private BigDecimal deposito;
+		private long nilaiPinjamanSedangBerjalan;
+		private long averageDebitTransaction;
+		private long averageCreditTransaction;
+		private long averageBalance;
+		private long deposito;
 		private Serializable additionalCollateralType;
-		private BigDecimal additionalCollateralAmount;
+		private long additionalCollateralAmount;
 		private String companyStatus;
 		private Short companyStatusSinceYear;
 		private Date rentFinishDate;
@@ -59,7 +58,7 @@ public class CoyCust implements java.io.Serializable
 		private char activeCustomer;
 		private Serializable notes;
 		private Boolean isCorporateCreditLine;
-		private BigDecimal plafondAmount;
+		private long plafondAmount;
 		private Serializable customerGroup;
 		private String noDocumentOfEstablished;
 		private Date dateDocumentOfEstablished;
@@ -79,12 +78,10 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		public CoyCust(long id, String npwp, String npwpchecking,
-		        String companyType, String industryTypeId,
-		        BigDecimal modalDasar, BigDecimal modalDisetor,
-		        BigDecimal netProfitMargin,
-		        BigDecimal nilaiPinjamanSedangBerjalan,
-		        boolean isApplyCarLoanBefore, char activeCustomer,
-		        Serializable customerGroup)
+		        String companyType, String industryTypeId, long modalDasar,
+		        long modalDisetor, long netProfitMargin,
+		        long nilaiPinjamanSedangBerjalan, boolean isApplyCarLoanBefore,
+		        char activeCustomer, Serializable customerGroup)
 			{
 				this.id = id;
 				this.npwp = npwp;
@@ -103,21 +100,20 @@ public class CoyCust implements java.io.Serializable
 		        String npwpchecking, String companyType,
 		        Short numberOfEmployees, Short yearOfEstablished,
 		        String industryTypeId, String pengelolaGedungAreaPhone,
-		        String pengelolaGedungPhone, BigDecimal currentRatio,
-		        BigDecimal roi, BigDecimal der, BigDecimal modalDasar,
-		        BigDecimal modalDisetor, BigDecimal netProfitMargin,
-		        String bankAccountType, BigDecimal nilaiPinjamanSedangBerjalan,
-		        BigDecimal averageDebitTransaction,
-		        BigDecimal averageCreditTransaction, BigDecimal averageBalance,
-		        BigDecimal deposito, Serializable additionalCollateralType,
-		        BigDecimal additionalCollateralAmount, String companyStatus,
+		        String pengelolaGedungPhone, long currentRatio, long roi,
+		        long der, long modalDasar, long modalDisetor,
+		        long netProfitMargin, String bankAccountType,
+		        long nilaiPinjamanSedangBerjalan, long averageDebitTransaction,
+		        long averageCreditTransaction, long averageBalance,
+		        long deposito, Serializable additionalCollateralType,
+		        long additionalCollateralAmount, String companyStatus,
 		        Short companyStatusSinceYear, Date rentFinishDate,
 		        String bankId, String bankBranch, String accountNo,
 		        Serializable accountName, String reference,
 		        boolean isApplyCarLoanBefore,
 		        Serializable applyCarLoanCompanyName, char activeCustomer,
 		        Serializable notes, Boolean isCorporateCreditLine,
-		        BigDecimal plafondAmount, Serializable customerGroup,
+		        long plafondAmount, Serializable customerGroup,
 		        String noDocumentOfEstablished, Date dateDocumentOfEstablished,
 		        String notaryPlace, String notaryName,
 		        String lastNoDocumentOfEstablished,
@@ -178,7 +174,7 @@ public class CoyCust implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -291,67 +287,67 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "CurrentRatio", precision = 9, scale = 6)
-		public BigDecimal getCurrentRatio()
+		public long getCurrentRatio()
 			{
 				return this.currentRatio;
 			}
 		
-		public void setCurrentRatio(BigDecimal currentRatio)
+		public void setCurrentRatio(long currentRatio)
 			{
 				this.currentRatio = currentRatio;
 			}
 		
 		@Column(name = "ROI", precision = 9, scale = 6)
-		public BigDecimal getRoi()
+		public long getRoi()
 			{
 				return this.roi;
 			}
 		
-		public void setRoi(BigDecimal roi)
+		public void setRoi(long roi)
 			{
 				this.roi = roi;
 			}
 		
 		@Column(name = "DER", precision = 9, scale = 6)
-		public BigDecimal getDer()
+		public long getDer()
 			{
 				return this.der;
 			}
 		
-		public void setDer(BigDecimal der)
+		public void setDer(long der)
 			{
 				this.der = der;
 			}
 		
 		@Column(name = "ModalDasar", nullable = false, precision = 17)
-		public BigDecimal getModalDasar()
+		public long getModalDasar()
 			{
 				return this.modalDasar;
 			}
 		
-		public void setModalDasar(BigDecimal modalDasar)
+		public void setModalDasar(long modalDasar)
 			{
 				this.modalDasar = modalDasar;
 			}
 		
 		@Column(name = "ModalDisetor", nullable = false, precision = 17)
-		public BigDecimal getModalDisetor()
+		public long getModalDisetor()
 			{
 				return this.modalDisetor;
 			}
 		
-		public void setModalDisetor(BigDecimal modalDisetor)
+		public void setModalDisetor(long modalDisetor)
 			{
 				this.modalDisetor = modalDisetor;
 			}
 		
 		@Column(name = "NetProfitMargin", nullable = false, precision = 17)
-		public BigDecimal getNetProfitMargin()
+		public long getNetProfitMargin()
 			{
 				return this.netProfitMargin;
 			}
 		
-		public void setNetProfitMargin(BigDecimal netProfitMargin)
+		public void setNetProfitMargin(long netProfitMargin)
 			{
 				this.netProfitMargin = netProfitMargin;
 			}
@@ -368,59 +364,57 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "NilaiPinjamanSedangBerjalan", nullable = false, precision = 17)
-		public BigDecimal getNilaiPinjamanSedangBerjalan()
+		public long getNilaiPinjamanSedangBerjalan()
 			{
 				return this.nilaiPinjamanSedangBerjalan;
 			}
 		
 		public void setNilaiPinjamanSedangBerjalan(
-		        BigDecimal nilaiPinjamanSedangBerjalan)
+		        long nilaiPinjamanSedangBerjalan)
 			{
 				this.nilaiPinjamanSedangBerjalan = nilaiPinjamanSedangBerjalan;
 			}
 		
 		@Column(name = "AverageDebitTransaction", precision = 17)
-		public BigDecimal getAverageDebitTransaction()
+		public long getAverageDebitTransaction()
 			{
 				return this.averageDebitTransaction;
 			}
 		
-		public void setAverageDebitTransaction(
-		        BigDecimal averageDebitTransaction)
+		public void setAverageDebitTransaction(long averageDebitTransaction)
 			{
 				this.averageDebitTransaction = averageDebitTransaction;
 			}
 		
 		@Column(name = "AverageCreditTransaction", precision = 17)
-		public BigDecimal getAverageCreditTransaction()
+		public long getAverageCreditTransaction()
 			{
 				return this.averageCreditTransaction;
 			}
 		
-		public void setAverageCreditTransaction(
-		        BigDecimal averageCreditTransaction)
+		public void setAverageCreditTransaction(long averageCreditTransaction)
 			{
 				this.averageCreditTransaction = averageCreditTransaction;
 			}
 		
 		@Column(name = "AverageBalance", precision = 17)
-		public BigDecimal getAverageBalance()
+		public long getAverageBalance()
 			{
 				return this.averageBalance;
 			}
 		
-		public void setAverageBalance(BigDecimal averageBalance)
+		public void setAverageBalance(long averageBalance)
 			{
 				this.averageBalance = averageBalance;
 			}
 		
 		@Column(name = "Deposito", precision = 17)
-		public BigDecimal getDeposito()
+		public long getDeposito()
 			{
 				return this.deposito;
 			}
 		
-		public void setDeposito(BigDecimal deposito)
+		public void setDeposito(long deposito)
 			{
 				this.deposito = deposito;
 			}
@@ -438,13 +432,13 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "AdditionalCollateralAmount", precision = 17)
-		public BigDecimal getAdditionalCollateralAmount()
+		public long getAdditionalCollateralAmount()
 			{
 				return this.additionalCollateralAmount;
 			}
 		
 		public void setAdditionalCollateralAmount(
-		        BigDecimal additionalCollateralAmount)
+		        long additionalCollateralAmount)
 			{
 				this.additionalCollateralAmount = additionalCollateralAmount;
 			}
@@ -595,12 +589,12 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "PlafondAmount", precision = 17)
-		public BigDecimal getPlafondAmount()
+		public long getPlafondAmount()
 			{
 				return this.plafondAmount;
 			}
 		
-		public void setPlafondAmount(BigDecimal plafondAmount)
+		public void setPlafondAmount(long plafondAmount)
 			{
 				this.plafondAmount = plafondAmount;
 			}

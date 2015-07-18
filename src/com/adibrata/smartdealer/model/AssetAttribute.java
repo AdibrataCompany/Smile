@@ -1,10 +1,10 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +23,7 @@ public class AssetAttribute implements java.io.Serializable
 		private Long assetTypeId;
 		private String attributeCode;
 		private String attributeDescription;
-		private String attributeType;
+		private boolean attributeType;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -39,8 +39,8 @@ public class AssetAttribute implements java.io.Serializable
 			}
 		public AssetAttribute(long id, String partnerCode, Long officeId,
 		        Long assetTypeId, String attributeCode,
-		        String attributeDescription, String attributeType, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt)
+		        String attributeDescription, boolean attributeType,
+		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -55,7 +55,7 @@ public class AssetAttribute implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -123,12 +123,12 @@ public class AssetAttribute implements java.io.Serializable
 			}
 		
 		@Column(name = "AttributeType", length = 1)
-		public String getAttributeType()
+		public boolean isAttributeType()
 			{
 				return this.attributeType;
 			}
 		
-		public void setAttributeType(String attributeType)
+		public void setAttributeType(boolean attributeType)
 			{
 				this.attributeType = attributeType;
 			}

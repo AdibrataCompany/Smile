@@ -1,11 +1,11 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,7 +28,7 @@ public class JrnlDtl implements java.io.Serializable
 		private String coaName;
 		private String coaCode;
 		private String trDesc;
-		private String post;
+		private boolean post;
 		private Long currId;
 		private double currRate;
 		private double debtAmt;
@@ -46,7 +46,7 @@ public class JrnlDtl implements java.io.Serializable
 			{
 			}
 		
-		public JrnlDtl(long id, int sequenceNo, String coaOffice, String post,
+		public JrnlDtl(long id, int sequenceNo, String coaOffice, boolean post,
 		        double currRate, double debtAmt)
 			{
 				this.id = id;
@@ -58,7 +58,7 @@ public class JrnlDtl implements java.io.Serializable
 			}
 		public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy,
 		        String coaOffice, String coaName, String coaCode,
-		        String trDesc, String post, Long currId, double currRate,
+		        String trDesc, boolean post, Long currId, double currRate,
 		        double debtAmt, Double credAmt, Double oriAmt, String coaCodeX,
 		        String coaOfficeX, String departCode, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
@@ -86,7 +86,7 @@ public class JrnlDtl implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -177,12 +177,12 @@ public class JrnlDtl implements java.io.Serializable
 			}
 		
 		@Column(name = "Post", nullable = false, length = 1)
-		public String getPost()
+		public boolean isPost()
 			{
 				return this.post;
 			}
 		
-		public void setPost(String post)
+		public void setPost(boolean post)
 			{
 				this.post = post;
 			}

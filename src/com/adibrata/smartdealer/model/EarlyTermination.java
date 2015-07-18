@@ -1,10 +1,10 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -58,7 +58,7 @@ public class EarlyTermination implements java.io.Serializable
 		private double installmentAmountDisc;
 		private double prepaymentFeeDisc;
 		private double prepaidAmount;
-		private String insuranceTerminationFlag;
+		private boolean insuranceTerminationFlag;
 		private String notes;
 		private String reasonTypeId;
 		private String reasonId;
@@ -127,7 +127,7 @@ public class EarlyTermination implements java.io.Serializable
 		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
 		        double insuranceAmountDisc, double installmentAmountDisc,
 		        double prepaymentFeeDisc, double prepaidAmount,
-		        String insuranceTerminationFlag, String notes,
+		        boolean insuranceTerminationFlag, String notes,
 		        String reasonTypeId, String reasonId, long jobId,
 		        String prepaymentStatus, Date statusDate, String requestBy,
 		        long approvalId, double osadminFee, double accruedAdminFeeEom)
@@ -204,7 +204,7 @@ public class EarlyTermination implements java.io.Serializable
 		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
 		        double insuranceAmountDisc, double installmentAmountDisc,
 		        double prepaymentFeeDisc, double prepaidAmount,
-		        String insuranceTerminationFlag, String notes,
+		        boolean insuranceTerminationFlag, String notes,
 		        String reasonTypeId, String reasonId, long jobId,
 		        String prepaymentStatus, Date statusDate, String requestBy,
 		        long approvalId, Double accruedInterestDisc,
@@ -314,7 +314,7 @@ public class EarlyTermination implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -774,12 +774,12 @@ public class EarlyTermination implements java.io.Serializable
 			}
 		
 		@Column(name = "InsuranceTerminationFlag", nullable = false, length = 1)
-		public String getInsuranceTerminationFlag()
+		public boolean isInsuranceTerminationFlag()
 			{
 				return this.insuranceTerminationFlag;
 			}
 		
-		public void setInsuranceTerminationFlag(String insuranceTerminationFlag)
+		public void setInsuranceTerminationFlag(boolean insuranceTerminationFlag)
 			{
 				this.insuranceTerminationFlag = insuranceTerminationFlag;
 			}

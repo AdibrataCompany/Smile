@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,7 +31,7 @@ public class CashBankHdr implements java.io.Serializable
 		private Date valueDt;
 		private Date postingDt;
 		private String description;
-		private String rcvDsbFlag;
+		private boolean rcvDsbFlag;
 		private String wop;
 		private Double amount;
 		private String rcvFrom;
@@ -41,7 +41,7 @@ public class CashBankHdr implements java.io.Serializable
 		private Long cashierId;
 		private Integer openingSequence;
 		private Long officeIdX;
-		private String isReconcile;
+		private boolean isReconcile;
 		private Date reconcileDate;
 		private String reconcileBy;
 		private Integer jrnlTrxId;
@@ -63,10 +63,10 @@ public class CashBankHdr implements java.io.Serializable
 			}
 		public CashBankHdr(long id, BankAccount bankAccount, Office office,
 		        Partner partner, String voucherNo, Date valueDt,
-		        Date postingDt, String description, String rcvDsbFlag,
+		        Date postingDt, String description, boolean rcvDsbFlag,
 		        String wop, Double amount, String rcvFrom, String reffNo,
 		        String receiptNo, Long currId, Long cashierId,
-		        Integer openingSequence, Long officeIdX, String isReconcile,
+		        Integer openingSequence, Long officeIdX, boolean isReconcile,
 		        Date reconcileDate, String reconcileBy, Integer jrnlTrxId,
 		        Long agrmntId, Long jobId, String usrUpd, Date dtmUpd,
 		        String usrCrt, Date dtmCrt, Set<CashBankDtl> cashBankDtls)
@@ -102,7 +102,7 @@ public class CashBankHdr implements java.io.Serializable
 				this.cashBankDtls = cashBankDtls;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -197,12 +197,12 @@ public class CashBankHdr implements java.io.Serializable
 			}
 		
 		@Column(name = "RcvDsbFlag", length = 1)
-		public String getRcvDsbFlag()
+		public boolean isRcvDsbFlag()
 			{
 				return this.rcvDsbFlag;
 			}
 		
-		public void setRcvDsbFlag(String rcvDsbFlag)
+		public void setRcvDsbFlag(boolean rcvDsbFlag)
 			{
 				this.rcvDsbFlag = rcvDsbFlag;
 			}
@@ -307,12 +307,12 @@ public class CashBankHdr implements java.io.Serializable
 			}
 		
 		@Column(name = "IsReconcile", length = 1)
-		public String getIsReconcile()
+		public boolean isIsReconcile()
 			{
 				return this.isReconcile;
 			}
 		
-		public void setIsReconcile(String isReconcile)
+		public void setIsReconcile(boolean isReconcile)
 			{
 				this.isReconcile = isReconcile;
 			}

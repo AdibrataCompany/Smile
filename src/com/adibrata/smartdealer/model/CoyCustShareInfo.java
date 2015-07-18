@@ -1,13 +1,12 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:19:06 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -29,7 +28,7 @@ public class CoyCustShareInfo implements java.io.Serializable
 		private String jobPositionId;
 		private Serializable address;
 		private String phone;
-		private BigDecimal sharePercentage;
+		private long sharePercentage;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -47,8 +46,8 @@ public class CoyCustShareInfo implements java.io.Serializable
 			}
 		public CoyCustShareInfo(long id, Customer customer, Serializable name,
 		        String idnumber, String jobPositionId, Serializable address,
-		        String phone, BigDecimal sharePercentage, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt)
+		        String phone, long sharePercentage, Date dtmUpd, String usrUpd,
+		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -64,7 +63,7 @@ public class CoyCustShareInfo implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -144,12 +143,12 @@ public class CoyCustShareInfo implements java.io.Serializable
 			}
 		
 		@Column(name = "SharePercentage", precision = 9, scale = 6)
-		public BigDecimal getSharePercentage()
+		public long getSharePercentage()
 			{
 				return this.sharePercentage;
 			}
 		
-		public void setSharePercentage(BigDecimal sharePercentage)
+		public void setSharePercentage(long sharePercentage)
 			{
 				this.sharePercentage = sharePercentage;
 			}
