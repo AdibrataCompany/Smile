@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	<constant name="struts.patternMatcher" value="regex" />
+	
+	<package name="adira" extends="smartdealer-package" namespace="/">
+
+		<action name="adira*" class="com.adibrata.smartdealer.action.DealerAction" method="execute">
+			<param name="kode">{1}</param>
+			<result name="success">/style/index.jsp</result>
+			<result name="error">/style/error.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

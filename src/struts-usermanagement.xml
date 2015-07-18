@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="usermanagement" extends="smartdealer-package"
+		namespace="/setting">
+		<action name="employee"
+			class="com.adibrata.smartdealer.action.usermanagement.EmployeeAction"
+			method="execute">
+			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+
+			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
+			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="end">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+
+			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+
+			<result name="success">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+		</action>
+
+		<action name="menu"
+			class="com.adibrata.smartdealer.action.usermanagement.MenuAction"
+			method="execute">
+			<result name="start">/pages/setting/assetdoc/pageAssetMaster.jsp
+			</result>
+			<result name="search">/pages/setting/assetdoc/pageAssetMaster.jsp
+			</result>
+			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
+			<result name="del">/pages/setting/assetdoc/pageAssetMaster.jsp
+			</result>
+			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="end">/pages/setting/assetdoc/pageAssetMaster.jsp
+			</result>
+			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="success">/pages/setting/assetdoc/pageAssetMaster.jsp
+			</result>
+			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+		</action>
+		<action name="role"
+			class="com.adibrata.smartdealer.action.usermanagement.RoleAction"
+			method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp
+			</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+			<result name="saveadd">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp
+			</result>
+			<result name="saveedit">/pages/setting/bankAccount/pageBankAccount.jsp
+			</result>
+		</action>
+		<action name="userregister"
+			class="com.adibrata.smartdealer.action.usermanagement.UserRegistrationAction"
+			method="execute">
+			<result name="start">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="search">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
+			<result name="del">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="saveadd">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="end">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="add">/pages/setting/dealer/addDealer.jsp</result>
+			<result name="saveedit">/pages/setting/dealer/pageDealer.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="sales" extends="smartdealer-package" namespace="/">
+		<action name="salesorder"
+			class="com.adibrata.smartdealer.action.sales.SalesOrderAction"
+			method="execute">
+			<result name="start">/Pages/Sales/Order/paging.jsp</result>
+			<result name="success">/Pages/Sales/Order/paging.jsp</result>
+			<result name="error">/Pages/Sales/Order/entry.jsp</result>
+
+			<result name="search">/Pages/Sales/Order/paging.jsp</result>
+			<result name="entry">/Pages/Sales/Order/entry.jsp</result>
+			<result name="adddetail">/Pages/Sales/Order/entry.jsp</result>
+			<result name="end">/Pages/Sales/Order/paging.jsp</result>
+		</action>
+		<action name="salesretur"
+			class="com.adibrata.smartdealer.action.sales.SalesReturAction"
+			method="execute">
+			<result name="start">/Pages/Sales/Retur/paging.jsp</result>
+			<result name="success">/Pages/Sales/Retur/paging.jsp</result>
+			<result name="error">/Pages/Sales/Retur/entry.jsp</result>
+
+			<result name="search">/Pages/Sales/Retur/paging.jsp</result>
+			<result name="entry">/Pages/Sales/Retur/entry.jsp</result>
+			<result name="adddetail">/Pages/Sales/Retur/entry.jsp</result>
+			<result name="end">/Pages/Sales/Retur/paging.jsp</result>
+		</action>
+		<action name="salesinvoice"
+			class="com.adibrata.smartdealer.action.sales.SalesInvoiceAction"
+			method="execute">
+			<result name="start">/Pages/Sales/Invoice/paging.jsp</result>
+			<result name="success">/Pages/Sales/Invoice/paging.jsp</result>
+			<result name="error">/Pages/Sales/Invoice/entry.jsp</result>
+
+			<result name="search">/Pages/Sales/Invoice/paging.jsp</result>
+			<result name="entry">/Pages/Sales/Invoice/entry.jsp</result>
+			<result name="adddetail">/Pages/Sales/Invoice/entry.jsp</result>
+
+			<result name="end">/Pages/Sales/Invoice/paging.jsp</result>
+		</action>
+	</package>
+</struts>

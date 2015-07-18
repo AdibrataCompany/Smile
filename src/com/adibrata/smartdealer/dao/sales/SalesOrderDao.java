@@ -1,0 +1,241 @@
+/**
+ * 
+ */
+package com.adibrata.smartdealer.dao.sales;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.support.job.JobPost;
+
+import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.model.Customer;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
+import com.adibrata.smartdealer.model.SalesOrderDtl;
+import com.adibrata.smartdealer.model.SalesOrderHdr;
+import com.adibrata.smartdealer.service.sales.SalesOrderService;
+
+;
+/**
+ * @author Henry
+ *
+ */
+public class SalesOrderDao extends DaoBase implements SalesOrderService {
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Calendar dtmupd = Calendar.getInstance();
+	StringBuilder hql = new StringBuilder();
+	int pagesize;
+	Session session;
+	String strStatement;
+	String userupd;
+
+	public SalesOrderDao() throws Exception {
+		// TODO Auto-generated constructor stub
+		try {
+			this.session = HibernateHelper.getSessionFactory().openSession();
+			this.pagesize = HibernateHelper.getPagesize();
+			this.strStatement = " from SalesOrderHdr ";
+
+		} catch (final Exception exp) {
+			this.session.getTransaction().rollback();
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Paging(int,
+	 * java.lang.String, java.lang.String)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception {
+		// TODO Auto-generated method stub
+		final StringBuilder hql = new StringBuilder();
+		List<Customer> list = null;
+		try {
+			hql.append(this.strStatement);
+			if (WhereCond != "") {
+				hql.append(WhereCond);
+			}
+
+			final Query selectQuery = this.session.createQuery(hql.toString());
+			selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+			selectQuery.setMaxResults(this.pagesize);
+			list = selectQuery.list();
+
+		} catch (final Exception exp) {
+
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> Paging(int CurrentPage, String WhereCond,
+			String SortBy, boolean islast) throws Exception {
+		// / TODO Auto-generated method stub
+		final StringBuilder hql = new StringBuilder();
+		List<Customer> list = null;
+
+		try {
+			hql.append(this.strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			final Query selectQuery = this.session.createQuery(hql.toString());
+			final long totalrecord = this.TotalRecord(WhereCond);
+			selectQuery
+					.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+			selectQuery.setMaxResults(this.pagesize);
+			list = selectQuery.list();
+
+		} catch (final Exception exp) {
+
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Save()
+	 */
+	@Override
+	public void Save(String usrupd, SalesOrderHdr salesOrderHdr,
+			List<SalesOrderDtl> lstsalesOrderDtl) throws Exception {
+		// TODO Auto-generated method stub
+		this.session.getTransaction().begin();
+		final Partner partner = salesOrderHdr.getPartner();
+		final Office office = salesOrderHdr.getOffice();
+		long jobid = 0;
+
+		try {
+			jobid = JobPost.JobSave(this.session, partner.getPartnerCode(),
+					office.getId(), JobPost.JobCode.salesorder,
+					salesOrderHdr.getCoaSchmHdr().getCoaSchmCode(),
+					salesOrderHdr.getValueDate(),
+					salesOrderHdr.getPostingDate(), salesOrderHdr.getUsrCrt())
+					.getId();
+
+			salesOrderHdr.setJobId(jobid);
+			final String transno = TransactionNo(this.session,
+					TransactionType.salesorder, partner.getPartnerCode(),
+					office.getId());
+			salesOrderHdr.setSono(transno);
+			salesOrderHdr.setDtmCrt(this.dtmupd.getTime());
+			salesOrderHdr.setDtmUpd(this.dtmupd.getTime());
+			this.session.save(salesOrderHdr);
+			for (final SalesOrderDtl arow : lstsalesOrderDtl) {
+				SalesOrderDtl salesOrderDtl = new SalesOrderDtl();
+				salesOrderDtl = arow;
+				salesOrderDtl.setDtmCrt(this.dtmupd.getTime());
+				salesOrderDtl.setDtmUpd(this.dtmupd.getTime());
+				this.session.save(salesOrderDtl);
+			}
+			this.session.getTransaction().commit();
+
+		} catch (final Exception exp) {
+			this.session.getTransaction().rollback();
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+	}
+
+	@Override
+	public Customer viewCustomer(long id) throws Exception {
+		// TODO Auto-generated method stub
+		Customer customer = null;
+		try {
+			customer = (Customer) this.session.get(Customer.class, id);
+
+		} catch (final Exception exp) {
+
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return customer;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SalesOrderDtl> viewSalesOrderDtls(SalesOrderHdr salesOrderHdr)
+			throws Exception {
+		// TODO Auto-generated method stub
+		final StringBuilder hql = new StringBuilder();
+		List<SalesOrderDtl> list = null;
+		try {
+			hql.append(this.strStatement);
+			final Query selectQuery = this.session.createQuery(hql.toString());
+
+			list = selectQuery.list();
+
+		} catch (final Exception exp) {
+
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	@Override
+	public SalesOrderHdr viewSalesOrderHdr(long id) throws Exception {
+		// TODO Auto-generated method stub
+		SalesOrderHdr salesOrderHdr = null;
+		try {
+			salesOrderHdr = (SalesOrderHdr) this.session.get(
+					SalesOrderHdr.class, id);
+
+		} catch (final Exception exp) {
+
+			final ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return salesOrderHdr;
+	}
+}

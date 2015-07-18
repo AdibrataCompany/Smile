@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="repair" extends="smartdealer-package" namespace="/">
+		<action name="repair" class="com.adibrata.smartdealer.action.repair.RepairAction" method="execute">
+			<result name="start">/Pages/Repair/paging.jsp</result>
+			<result name="success">/Pages/Repair/paging.jsp</result>
+			<result name="error">/Pages/Repair/entry.jsp</result>
+
+			<result name="search">/Pages/Repair/paging.jsp</result>
+			<result name="entry">/Pages/Repair/entry.jsp</result>
+			<result name="adddetail">/Pages/Repair/entry.jsp</result>
+			<result name="end">/Pages/Repair/paging.jsp</result>
+		</action>
+	</package>
+</struts>

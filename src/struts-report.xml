@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report" extends="smartdealer-package" namespace="/report">
+		<action name="advancecashreport" class="com.adibrata.smartdealer.action.report.cashtrans.AdvanceCashReportAction" method="execute">
+			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
+			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="end">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="save">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+		</action>
+		<action name="paymentrequestreport" class="com.adibrata.smartdealer.action.report.cashtrans.PaymentRequestAction" method="execute">
+			<result name="start">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="search">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="edit">/pages/setting/assetmaster/editAssetMaster.jsp</result>
+			<result name="del">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="end">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+			<result name="add">/pages/setting/assetmaster/addAssetMaster.jsp</result>
+			<result name="save">/pages/setting/assetmaster/pageAssetMaster.jsp</result>
+		</action>
+		<action name="pettycashreport" class="com.adibrata.smartdealer.action.report.cashtrans.PettyCashReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="danatunaireport" class="com.adibrata.smartdealer.action.report.danatunai.DanaTunaiReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="otherdisbursereport" class="com.adibrata.smartdealer.action.report.othertrans.OtherDisburseReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="otherreceivereport" class="com.adibrata.smartdealer.action.report.othertrans.OtherReceiveReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="purchaseorderreport" class="com.adibrata.smartdealer.action.report.purchase.PurchaseOrderReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="purchasereturreport" class="com.adibrata.smartdealer.action.report.purchase.PurchaseReturReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="purchaseinvoicereport" class="com.adibrata.smartdealer.action.report.purchase.PurchaseInvoiceReportAction"  method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="repairreport" class="com.adibrata.smartdealer.action.report.repair.RepairReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="salesorderreport" class="com.adibrata.smartdealer.action.report.sales.SalesOrderReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="salesreturreport" class="com.adibrata.smartdealer.action.report.sales.SalesReturReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+		<action name="salesinvoicereport" class="com.adibrata.smartdealer.action.report.sales.SalesInvoiceReportAction" method="execute">
+			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp</result>
+			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp</result>
+			<result name="save">/pages/setting/bankAccount/pageBankAccount.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="purchase" extends="smartdealer-package"
+		namespace="/">
+		<action name="purchaseorder"
+			class="com.adibrata.smartdealer.action.purchase.PurchaseOrderAction"
+			method="execute">
+			<result name="start">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="success">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Order/entry.jsp</result>
+
+			<result name="search">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="entry">/Pages/Purchase/Order/entry.jsp</result>
+			<result name="adddetail">/Pages/Purchase/Order/entry.jsp</result>
+			<result name="end">/Pages/Purchase/Order/paging.jsp</result>
+		</action>
+		<action name="purchaseinvoice"
+			class="com.adibrata.smartdealer.action.purchase.PurchaseInvoiceAction"
+			method="execute">
+			<result name="start">/Pages/Purchase/Invoice/paging.jsp</result>
+			<result name="success">/Pages/Purchase/Invoice/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Invoice/entry.jsp</result>
+
+			<result name="search">/Pages/Purchase/Invoice/paging.jsp</result>
+			<result name="entry">/Pages/Purchase/Invoice/entry.jsp</result>
+			<result name="adddetail">/Pages/Purchase/Invoice/entry.jsp</result>
+
+			<result name="end">/Pages/Purchase/Invoice/paging.jsp</result>
+		</action>
+		<action name="purchaseretur"
+			class="com.adibrata.smartdealer.action.purchase.PurchaseReturAction"
+			method="execute">
+			<result name="start">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="success">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Retur/entry.jsp</result>
+
+			<result name="search">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="entry">/Pages/Purchase/Retur/entry.jsp</result>
+			<result name="adddetail">/Pages/Purchase/Invoice/entry.jsp</result>
+
+			<result name="end">/Pages/Purchase/Retur/paging.jsp</result>
+		</action>
+	</package>
+</struts>

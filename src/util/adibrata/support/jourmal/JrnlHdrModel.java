@@ -1,0 +1,261 @@
+/**
+ * 
+ */
+package util.adibrata.support.jourmal;
+
+import javax.persistence.Entity;
+
+/**
+ * @author Henry
+ * 
+ *
+ */
+@Entity
+public class JrnlHdrModel implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private double amountTrx;
+	private long bankAccId;
+	private int bankPortion;
+	private long cashierId;
+	private int cashierOpen;
+	private long currId;
+	private double currRate;
+	private long HeaderId;
+
+	private String jrnlNoCode;
+	private long officeIdX;
+	private String rcvDisbFlag;
+	private String receiptNo;
+	private String receivedFrom;
+	private String reffNo;
+	private String trxDesc;
+	private String trxNo;
+	private String wop;
+
+	/**
+	 * @return the amountTrx
+	 */
+	public double getAmountTrx() {
+		return this.amountTrx;
+	}
+	/**
+	 * @return the bankAccId
+	 */
+	public long getBankAccId() {
+		return this.bankAccId;
+	}
+	/**
+	 * @return the bankPortion
+	 */
+	public int getBankPortion() {
+		return this.bankPortion;
+	}
+	/**
+	 * @return the cashierId
+	 */
+	public long getCashierId() {
+		return this.cashierId;
+	}
+	/**
+	 * @return the cashierOpen
+	 */
+	public int getCashierOpen() {
+		return this.cashierOpen;
+	}
+	/**
+	 * @return the currId
+	 */
+	public long getCurrId() {
+		return this.currId;
+	}
+	/**
+	 * @return the currRate
+	 */
+	public double getCurrRate() {
+		return this.currRate;
+	}
+	/**
+	 * @return the headerId
+	 */
+	public long getHeaderId() {
+		return this.HeaderId;
+	}
+	/**
+	 * @return the jrnlNoCode
+	 */
+	public String getJrnlNoCode() {
+		return this.jrnlNoCode;
+	}
+	/**
+	 * @return the officeIdX
+	 */
+	public long getOfficeIdX() {
+		return this.officeIdX;
+	}
+	/**
+	 * @return the rcvDisbFlag
+	 */
+	public String getRcvDisbFlag() {
+		return this.rcvDisbFlag;
+	}
+	/**
+	 * @return the receiptNo
+	 */
+	public String getReceiptNo() {
+		return this.receiptNo;
+	}
+	/**
+	 * @return the receivedFrom
+	 */
+	public String getReceivedFrom() {
+		return this.receivedFrom;
+	}
+	/**
+	 * @return the reffNo
+	 */
+	public String getReffNo() {
+		return this.reffNo;
+	}
+	/**
+	 * @return the trxDesc
+	 */
+	public String getTrxDesc() {
+		return this.trxDesc;
+	}
+	/**
+	 * @return the trxNo
+	 */
+	public String getTrxNo() {
+		return this.trxNo;
+	}
+	/**
+	 * @return the wop
+	 */
+	public String getWop() {
+		return this.wop;
+	}
+	/**
+	 * @param amountTrx
+	 *            the amountTrx to set
+	 */
+	public void setAmountTrx(double amountTrx) {
+		this.amountTrx = amountTrx;
+	}
+	/**
+	 * @param bankAccId
+	 *            the bankAccId to set
+	 */
+	public void setBankAccId(long bankAccId) {
+		this.bankAccId = bankAccId;
+	}
+	/**
+	 * @param bankPortion
+	 *            the bankPortion to set
+	 */
+	public void setBankPortion(int bankPortion) {
+		this.bankPortion = bankPortion;
+	}
+	/**
+	 * @param cashierId
+	 *            the cashierId to set
+	 */
+	public void setCashierId(long cashierId) {
+		this.cashierId = cashierId;
+	}
+	/**
+	 * @param cashierOpen
+	 *            the cashierOpen to set
+	 */
+	public void setCashierOpen(int cashierOpen) {
+		this.cashierOpen = cashierOpen;
+	}
+	/**
+	 * @param currId
+	 *            the currId to set
+	 */
+	public void setCurrId(long currId) {
+		this.currId = currId;
+	}
+	/**
+	 * @param currRate
+	 *            the currRate to set
+	 */
+	public void setCurrRate(double currRate) {
+		this.currRate = currRate;
+	}
+	/**
+	 * @param headerId
+	 *            the headerId to set
+	 */
+	public void setHeaderId(long headerId) {
+		this.HeaderId = headerId;
+	}
+	/**
+	 * @param jrnlNoCode
+	 *            the jrnlNoCode to set
+	 */
+	public void setJrnlNoCode(String jrnlNoCode) {
+		this.jrnlNoCode = jrnlNoCode;
+	}
+	/**
+	 * @param officeIdX
+	 *            the officeIdX to set
+	 */
+	public void setOfficeIdX(long officeIdX) {
+		this.officeIdX = officeIdX;
+	}
+	/**
+	 * @param rcvDisbFlag
+	 *            the rcvDisbFlag to set
+	 */
+	public void setRcvDisbFlag(String rcvDisbFlag) {
+		this.rcvDisbFlag = rcvDisbFlag;
+	}
+	/**
+	 * @param receiptNo
+	 *            the receiptNo to set
+	 */
+	public void setReceiptNo(String receiptNo) {
+		this.receiptNo = receiptNo;
+	}
+	/**
+	 * @param receivedFrom
+	 *            the receivedFrom to set
+	 */
+	public void setReceivedFrom(String receivedFrom) {
+		this.receivedFrom = receivedFrom;
+	}
+	/**
+	 * @param reffNo
+	 *            the reffNo to set
+	 */
+	public void setReffNo(String reffNo) {
+		this.reffNo = reffNo;
+	}
+	/**
+	 * @param trxDesc
+	 *            the trxDesc to set
+	 */
+	public void setTrxDesc(String trxDesc) {
+		this.trxDesc = trxDesc;
+	}
+	/**
+	 * @param trxNo
+	 *            the trxNo to set
+	 */
+	public void setTrxNo(String trxNo) {
+		this.trxNo = trxNo;
+	}
+	/**
+	 * @param wop
+	 *            the wop to set
+	 */
+	public void setWop(String wop) {
+		this.wop = wop;
+	}
+
+}

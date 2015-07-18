@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="entrust" extends="smartdealer-package"
+		namespace="/titip">
+		<action name="masuk"
+			class="com.adibrata.smartdealer.action.entrust.EntrustAction" method="execute">
+			<result name="start">/Pages/Entrust/pagingstock.jsp
+			</result>
+			<result name="success">/Pages/Entrust/pagingstock.jsp
+			</result>
+			<result name="searchstock">/Pages/Entrust/pagingstock.jsp
+			</result>
+			<result name="searchdealer">/Pages/Entrust/pagingdealer.jsp
+			</result>
+			<result name="backdealer">/Pages/Entrust/pagingdealer.jsp
+			</result>
+			<result name="backstock">/Pages/Entrust/pagingstock.jsp
+			</result>
+			<result name="error">/Pages/Entrust/entry.jsp
+			</result>
+			<result name="entry">/Pages/Entrust/entry.jsp
+			</result>
+			<result name="adddetail">/Pages/Entrust/entry.jsp
+			</result>
+		</action>
+
+	</package>
+</struts>
