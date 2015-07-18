@@ -13,6 +13,7 @@
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=SmartDealer</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.default_schema">dbo</property>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="hibernate.format_sql">false</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
@@ -21,9 +22,12 @@
         <property name="hibernate.validator.apply_to_ddl">auto</property>
         <mapping class="com.adibrata.smartdealer.model.PettyCashDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
+        <mapping class="com.adibrata.smartdealer.model.AssetServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.JrnlDtl" />
         <mapping class="com.adibrata.smartdealer.model.CoaSchmDtl" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
+        <mapping class="com.adibrata.smartdealer.model.CoyCustWhInfo" />
         <mapping class="com.adibrata.smartdealer.model.MsMenu" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
         <mapping class="com.adibrata.smartdealer.model.PersCust" />
@@ -36,6 +40,7 @@
         <mapping class="com.adibrata.smartdealer.model.CoyCust" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
+        <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.CoaSchmHdr" />
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
@@ -52,6 +57,7 @@
         <mapping class="com.adibrata.smartdealer.model.PersCustLegalInfo" />
         <mapping class="com.adibrata.smartdealer.model.AccountPayable" />
         <mapping class="com.adibrata.smartdealer.model.AssetServiceMaster" />
+        <mapping class="com.adibrata.smartdealer.model.CoyCustComptInfo" />
         <mapping class="com.adibrata.smartdealer.model.MsUserRole" />
         <mapping class="com.adibrata.smartdealer.model.Sales" />
         <mapping class="com.adibrata.smartdealer.model.StockDocument" />
@@ -63,12 +69,14 @@
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />
         <mapping class="com.adibrata.smartdealer.model.Workshop" />
+        <mapping class="com.adibrata.smartdealer.model.CoyCustShareInfo" />
         <mapping class="com.adibrata.smartdealer.model.EntrustDtl" />
         <mapping class="com.adibrata.smartdealer.model.Application" />
         <mapping class="com.adibrata.smartdealer.model.CashBankDtl" />
         <mapping class="com.adibrata.smartdealer.model.MsMenuRole" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.ReturSalesDtl" />
+        <mapping class="com.adibrata.smartdealer.model.PaymentReversal" />
         <mapping class="com.adibrata.smartdealer.model.Partner" />
         <mapping class="com.adibrata.smartdealer.model.TrxSeqNo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsurance" />
@@ -78,6 +86,7 @@
         <mapping class="com.adibrata.smartdealer.model.PayReqDtl" />
         <mapping class="com.adibrata.smartdealer.model.TrxConfigHdr" />
         <mapping class="com.adibrata.smartdealer.model.EntrustHdr" />
+        <mapping class="com.adibrata.smartdealer.model.CoyCustLegalInfo" />
         <mapping class="com.adibrata.smartdealer.model.EarlyTermination" />
         <mapping class="com.adibrata.smartdealer.model.PaymentVoucher" />
         <mapping class="com.adibrata.smartdealer.model.AdvanceCash" />
@@ -85,6 +94,7 @@
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.DanaTunai" />
         <mapping class="com.adibrata.smartdealer.model.Employee" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustFamilyInfo" />
         <mapping class="com.adibrata.smartdealer.model.ServiceItem" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMnt" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntColl" />
@@ -96,12 +106,15 @@
         <mapping class="com.adibrata.smartdealer.model.CashBankHdr" />
         <mapping class="com.adibrata.smartdealer.model.ReturSalesHdr" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEmergencyInfo" />
+        <mapping class="com.adibrata.smartdealer.model.PaymentReceive" />
         <mapping class="com.adibrata.smartdealer.model.Leasing" />
         <mapping class="com.adibrata.smartdealer.model.ResetPasswordLog" />
         <mapping class="com.adibrata.smartdealer.model.Office" />
         <mapping class="com.adibrata.smartdealer.model.InstSchedule" />
         <mapping class="com.adibrata.smartdealer.model.MsBigMenuList" />
         <mapping class="com.adibrata.smartdealer.model.Pvdetail" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAsset" />
+        <mapping class="com.adibrata.smartdealer.model.Reschedule" />
         <mapping class="com.adibrata.smartdealer.model.OtherDsbDtl" />
     </session-factory>
 </hibernate-configuration>
