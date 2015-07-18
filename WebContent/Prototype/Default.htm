@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>.:Clipan Loan System::.</TITLE>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+		<link href="ClipanLogin.css" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" type="text/css" href="file:///D:/_Work/Finansia%20-%20Kredit%20Plus/Final%20Prototype/Confins.css">
+			<SCRIPT src="tunas.js"></SCRIPT>
+			<script language="JavaScript">
+				
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+			</script>
+	</HEAD>
+	<BODY BGCOLOR="#ffffff" background="images/login_10.jpg">
+		<form name="frmLogin" method="post" action="am_login.aspx" language="javascript" onsubmit="if (!ValidatorOnSubmit()) return false;" id="frmLogin">
+<input type="hidden" name="__VIEWSTATE" value="xpJYWb/GzaVZTwUR8y3laMsWk+J5U8TqjVWDtnV2HAixmCU4cuAv5B61+Hwt/F3clC1DXES1mJsmdSHNtj+kIz8PogGad2BL6VkhkSKhXIne2wiNxJt9l/yXQ/6QzYTErlG/K4ywd4CKLu25DPKA3t7M25wI9FJ1ZcJaoBgMPDdRskDLrBEDlizRb2zTkDTqzzg/IKu6tx4WFeztfiAxHwISdgZHEYpVcFQwjLFq8dUsyZ/ZsGO36iyfsL4YStbnMrRNqGd42GjC9ZsW1qACS4v4Q4NzS5QR0p0yKWp5b20tGy2y+8euGHBdW3g8vW61JwkyzIelu5F1+/tr8j2tPjCB53W3CyD1G0FZX7wb1nGBO4wFs6w7D0UBSQXW16GHwKGmklv5GPEm6wUMA80JwxZmDnNcK4PMdLbvCWNX+4U=" />
+	
+<script language="javascript" type="text/javascript" src="/aspnet_client/system_web/1_1_4322/WebUIValidation.js"></script>
+
+
+			<div id="VlsLogin" showmessagebox="True" showsummary="False" style="color:Red;font-family:Tahoma;font-size:XX-Small;display:none;">
+
+</div>
+			<span id="RfvUserNm" controltovalidate="txtUsrNm" errormessage="User Name cannot be blank" display="None" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;font-family:Tahoma;font-size:XX-Small;font-weight:bold;display:none;"></span>
+			<span id="RfvPwd" controltovalidate="txtPwd" errormessage="Password cannot be blank" display="None" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;font-family:Tahoma;font-size:XX-Small;font-weight:bold;display:none;"></span>
+			<span id="lblMessage" style="color:Red;font-family:Tahoma;font-size:XX-Small;font-weight:bold;"></span>
+			<span id="rfvGroupDB" controltovalidate="SlcGroupDBID" errormessage="Group DB must be fill" display="None" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;font-size:X-Small;display:none;"></span>
+			<TABLE WIDTH="765" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD>
+						<IMG SRC="images/login_01.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_02.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_03.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_04.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_05.jpg" WIDTH="53" HEIGHT="103" ALT=""></TD>
+					<TD COLSPAN="2">
+						<IMG SRC="images/login_06.jpg" WIDTH="117" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_07.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_08.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_09.jpg" WIDTH="85" HEIGHT="103" ALT=""></TD>
+				</TR>
+				<TR>
+					<TD>
+						<IMG SRC="images/login_10.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_11.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_12.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_13.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_14.gif" WIDTH="53" HEIGHT="102" ALT=""></TD>
+					<TD COLSPAN="2">
+						<IMG SRC="images/login_15.gif" WIDTH="117" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_16.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_17.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_18.gif" WIDTH="85" HEIGHT="102" ALT=""></TD>
+				</TR>
+				<TR>
+					<TD>
+						<IMG SRC="images/login_19.gif" WIDTH="85" HEIGHT="90" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_20.gif" WIDTH="85" HEIGHT="90" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_21.gif" WIDTH="85" HEIGHT="90" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_22.gif" WIDTH="85" HEIGHT="90" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_23.gif" WIDTH="53" HEIGHT="90" ALT=""></TD>
+					<TD COLSPAN="3" ROWSPAN="2">
+						<div id="pnlLogin">
+	
+							<TABLE cellSpacing="1" cellPadding="1" border="0">
+								<div id="pnlLoginInfo">
+		
+									<TBODY>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD class="login">Application</TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD>
+												<select name="cboApplication" id="cboApplication" style="font-family:Tahoma;font-size:XX-Small;">
+			<option value="">Select Application</option>
+			<option value="AM">Application Manager</option>
+			<option selected="selected" value="Eloan">Eloan</option>
+			<option value="GL">GL</option>
+
+		</select></TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD class="login">Username
+											</TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD>
+												<input name="txtUsrNm" type="text" id="txtUsrNm" style="font-family:Tahoma;font-size:XX-Small;" /></TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD class="login">Password</TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD>
+												<input name="txtPwd" type="password" id="txtPwd" style="font-family:Tahoma;font-size:XX-Small;" /></TD>
+										</TR>
+										<TR>
+											<TD>&nbsp;</TD>
+											<TD>&nbsp;&nbsp;&nbsp;
+												<input type="image" name="btnLogin1" onclick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate(); " language="javascript" id="btnLogin1" border="0" align="absmiddle" src="images/login_44.gif" alt="" border="0" style="font-family:Tahoma;font-size:XX-Small;height:18px;width:55px;" /></TD>
+										</TR>
+								
+	</div>
+								</TABLE>
+						
+</div></TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+				</TR>
+				<TR>
+					<TD>
+						<IMG SRC="images/login_27.gif" WIDTH="85" HEIGHT="86" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_28.gif" WIDTH="85" HEIGHT="86" ALT=""></TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>
+						<IMG SRC="images/login_31.gif" WIDTH="53" HEIGHT="86" ALT=""></TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+				</TR>
+				<TR>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+					<TD>&nbsp;
+					</TD>
+					<TD COLSPAN="2">
+						<IMG SRC="images/login_38.gif" WIDTH="96" HEIGHT="114" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_39.gif" WIDTH="74" HEIGHT="114" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_40.gif" WIDTH="85" HEIGHT="114" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/login_41.gif" WIDTH="85" HEIGHT="114" ALT=""></TD>
+					<TD>&nbsp;
+					</TD>
+				</TR>
+				<TR>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="53" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="43" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="74" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+					<TD>
+						<IMG SRC="images/spacer.gif" WIDTH="85" HEIGHT="1" ALT=""></TD>
+				</TR>
+				</TBODY></TABLE>
+		
+<script language="javascript" type="text/javascript">
+<!--
+	var Page_ValidationSummaries =  new Array(document.all["VlsLogin"]);
+	var Page_Validators =  new Array(document.all["RfvUserNm"], document.all["RfvPwd"], document.all["rfvGroupDB"]);
+		// -->
+</script>
+
+			
+<script language="javascript" type="text/javascript">
+<!--
+var Page_ValidationActive = false;
+if (typeof(clientInformation) != "undefined" && clientInformation.appName.indexOf("Explorer") != -1) {
+    if (typeof(Page_ValidationVer) == "undefined")
+        alert("Unable to find script library '/aspnet_client/system_web/1_1_4322/WebUIValidation.js'. Try placing this file manually, or reinstall by running 'aspnet_regiis -c'.");
+    else if (Page_ValidationVer != "125")
+        alert("This page uses an incorrect version of WebUIValidation.js. The page expects version 125. The script library is " + Page_ValidationVer + ".");
+    else
+        ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    return true;
+}
+// -->
+</script>
+        
+
+		</form>
+	</BODY>
+</HTML>

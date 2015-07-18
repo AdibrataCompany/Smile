@@ -1,0 +1,319 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">AGING STATUS</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Branch</td>
+      <td width="83%" class="tdganjil"><select name="select2">
+          <option selected>Palmerah</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Aging Date</td>
+      <td class="tdganjil"><input name="textfield2" type="text" size="20" class="inptype"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="17%" height="24" class="tdgenap">Sales Date</td>
+      <td class="tdganjil"> <input type="radio" name="radiobutton" value="radiobutton">
+        All Sales 
+        <input type="radio" name="radiobutton" value="radiobutton">
+        Period 
+        <input name="textfield23" type="text" size="8" class="inptype"> <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+        to 
+        <input name="textfield22" type="text" size="8" class="inptype"> <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">AO ID</td>
+      <td class="tdganjil"><select name="select3">
+          <option>Select one</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Product Offering</td>
+      <td class="tdganjil"><select name="select3">
+          <option>Select one</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select">
+          <option>Name</option>
+          <option>Agreement No.</option>
+        </select> <input name="textfield" type="text" size="20" class="inptype"> 
+      </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="AgingListing.htm"><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"></a> 
+        <a href="AgingStatus.htm"><img src="../Images/ButtonReset.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">AGREEMENT LIST</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td align="center"><a href="AgingListing.htm">SALES DATE</a></td>
+      <td align="center"><a href="AgingListing.htm">AGREEMENT NO</a></td>
+      <td align="center"><a href="AgingListing.htm">CUSTOMER NAME</a></td>
+      <td align="center"><a href="AgingListing.htm">PRODUCT OFFERING 
+        </u></a></td>
+      <td align="center"><a href="AgingListing.htm">AO ID</a></td>
+      <td align="center"><a href="AgingListing.htm">CURRENCY</a></td>
+      <td align="center"><div align="right"><a href="AgingListing.htm">OUTSTANDING 
+          A/R</a></div></td>
+      <td align="center"><div align="right"><a href="AgingListing.htm">DAYS 
+          OVERDUE</a></div></td>
+      <td align="center"><div align="right"><a href="AgingListing.htm">AMOUNT 
+          OVERDUE</a></div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,left=0,top=0')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,left=0,top=0')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700,left=0,top=0')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/ProductOfferingView.htm','Product','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Marketing/AOView.htm','AO','scrollbars=yes,width=900,height=300,left=0,top=0')">xxxx10xxxx</a></td>
+      <td><div align="center">xxx</div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+  
+  <table border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Total A/R</td>
+      <td width="253" class="tdganjil"><input name="textfield3" type="text" size="15"></td>
+      <td width="119" class="tdgenap">Total Active Account</td>
+      <td width="230" class="tdganjil"><input name="textfield33" type="text" size="5"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Total OD Amount</td>
+      <td class="tdganjil"><input name="textfield32" type="text" size="15"> </td>
+      <td class="tdgenap">Total OD Account</td>
+      <td class="tdganjil"><input name="textfield332" type="text" size="5"></td>
+    </tr>
+    <tr> 
+      <td width="111" height="24" class="tdgenap">Balance OD</td>
+      <td class="tdganjil"><input name="textfield322" type="text" size="15">
+        <input name="textfield334" type="text" size="5">
+        % </td>
+      <td class="tdgenap">% OD Account</td>
+      <td class="tdganjil"><input name="textfield333" type="text" size="5"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdgenap">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="6%" class="tdgenap">&nbsp;</td>
+      <td width="12%" class="tdganjil"><div align="right">Bucket 1</div></td>
+      <td width="12%" class="tdgenap"><div align="right">Bucket 2</div></td>
+      <td width="12%" class="tdganjil"><div align="right">Bucket 3</div></td>
+      <td width="12%" class="tdgenap"><div align="right">Bucket 4</div></td>
+      <td width="12%" class="tdganjil"><div align="right">Bucket 5</div></td>
+      <td width="12%" class="tdgenap"><div align="right">Bucket 6</div></td>
+      <td width="12%" class="tdganjil"><div align="right">Bucket 7</div></td>
+      <td width="12%" class="tdgenap"><div align="right">Bucket 8</div></td>
+      <td width="12%" class="tdganjil"><div align="right">Bucket 9</div></td>
+      <td width="12%" class="tdgenap"><div align="right">Bucket 10</div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Account</td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">999</a></div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Amount</td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99.999.999.999</a></div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">% Account</td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">% Amount</td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdganjil"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+      <td class="tdgenap"><div align="right"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/ViewFinancial.htm','Amortization','scrollbars=yes,width=900,height=700,left=0,top=0')">99</a></div></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

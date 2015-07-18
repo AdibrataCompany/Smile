@@ -1,0 +1,118 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC INCOMPLETE INQUIRY</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="20%" class="tdgenap">Branch</td>
+      <td width="30%" class="tdganjil"><select name="select4">
+          <option selected>Select One</option>
+          <option>Jakarta</option>
+          <option>Bandung</option>
+        </select></td>
+      <td width="20%" class="tdgenap">PDC on Hand &lt;=</td>
+      <td class="tdganjil"><input name="textfield3232" type="text" class="inptype" size="10"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Search By</td>
+      <td colspan="3" class="tdganjil"><select name="select">
+          <option selected>Select One</option>
+          <option>Agreement No</option>
+          <option>Customer Name</option>
+        </select> <input name="textfield32322" type="text" class="inptype" size="15"></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="AgreementMultiPDCReceiveAdd.htm"> 
+        </a><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonReset.gif" width="100" height="20" border="0"> 
+        <a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+  
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">AGREEMENT LIST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="12%" align="center"><u> AGREEMENT NO</u></td>
+      <td width="22%" align="center"><u>CUSTOMER NAME</u></td>
+      <td width="15%" align="center"><u>INSTALLMENT AMOUNT</u></td>
+      <td width="11%" align="center"><u>NEXT DUE DATE</u></td>
+      <td width="10%" align="center"><u>OS INSTALLMENT</u></td>
+      <td width="10%" align="center"><u> PDC ON HAND</u></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right"><div align="center">999</div></td>
+      <td align="right"><div align="center">999</div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right"><div align="center">999</div></td>
+      <td align="right"><div align="center">999</div></td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td>Total</td>
+      <td align="center">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30"><img src="../Images/ButtonPrint.gif" width="100" height="20" border="0"></td>
+      <td width="50%" align="right"><a href="AgreementMultiPDC.htm"> </a><a href="javascript:history.go(-2);"> 
+        </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center">
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">VIEW CASHIER TRANSACTION</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Cashier Name</td>
+      <td width="25%" class="tdganjil">Cashier 01</td>
+      <td width="25%" class="tdgenap">Opening Date</td>
+      <td class="tdganjil">dd/mm/yyyy hh:mm AM</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+      <td class="tdgenap">Opening Sequence</td>
+      <td class="tdganjil">999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Cash On Hand</td>
+      <td class="tdganjil"><div align="right">999,999,999.99</div></td>
+      <td width="25%" class="tdgenap">Opening Amount</td>
+      <td class="tdganjil"><div align="right">999,999,999.99</div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+      <td class="tdgenap">Close Date</td>
+      <td class="tdganjil">dd/mm/yyyy hh:mm AM</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">CASHIER TRANSACTION LIST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulbiru"> 
+      <td width="15%"><u>VOUCHER NO.</u></td>
+      <td width="11%"><u>VALUE DATE</u></td>
+      <td width="20%"><u>DESCRIPTION</u></td>
+      <td width="12%"><u>BANK ACCOUNT</u></td>
+      <td width="15%"><u>DEBIT AMOUNT</u></td>
+      <td width="15%"><u>CREDIT AMOUNT</u></td>
+      <td><u>PROCESS ID</u></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxxxxxx50xxxxxxxxx</td>
+      <td align="center"><div align="left">Cash Escrow</div></td>
+      <td align="right"><div align="right">999,999,999.99</div></td>
+      <td align="center"><div align="right">-</div></td>
+      <td align="center"><div align="center">PAYMENTRCV</div></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxxxxxx50xxxxxxxxx</td>
+      <td align="center"><div align="left">Petty Cash</div></td>
+      <td align="right"><div align="right">-</div></td>
+      <td align="center"><div align="right">999,999,999.99</div></td>
+      <td align="center"><div align="center">PCTRS</div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxxxxxx50xxxxxxxxx</td>
+      <td align="center"><div align="left">Cash Escrow</div></td>
+      <td align="right"><div align="right">999,999,999.99</div></td>
+      <td align="center"><div align="right">-</div></td>
+      <td align="center"><div align="center">OTHNARCV</div></td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdgenap"> 
+      <td width="15%" align="center" class="tdganjil">&nbsp;</td>
+      <td width="11%" align="center" class="tdganjil">&nbsp;</td>
+      <td width="20%" class="tdganjil"><strong>TOTAL</strong></td>
+      <td width="12%" align="center" class="tdganjil">&nbsp;</td>
+      <td width="15%" align="right" class="tdganjil"><strong>999,999,999.99</strong></td>
+      <td width="15%" align="center" class="tdganjil"><strong>999,999,999.99</strong></td>
+      <td align="center" class="tdganjil">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a> <a href="javascript:history.go(-1);"><img src="../Images/ButtonBack.gif" width="100" height="20" border="0"></a><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+  
+</div>
+</body>
+</html>

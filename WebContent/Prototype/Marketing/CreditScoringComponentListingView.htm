@@ -1,0 +1,63 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">COMPONENT SCORING CARD - VIEW</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Score Component ID</td>
+      <td class="tdganjil"> PROFESSION </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Description</td>
+      <td class="tdganjil"> Profession </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Scoring Type</td>
+      <td class="tdganjil"> Personal </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Group Component</td>
+      <td class="tdganjil">Customer</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Sequence Component</td>
+      <td class="tdganjil">2</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Calculation Type</td>
+      <td class="tdganjil"> Table</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">SQL Command</td>
+      <td class="tdganjil">SELECT PersonalCustomer.ProfessionID FROM PersonalCustomer 
+        INNER JOIN Agreement ON PersonalCustomer.CustomerID = Agreement.CustomerID 
+        WHERE (Agreement.BranchID = @BranchID) AND (Agreement.ApplicationID = 
+        @ApplicationID)</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Data Source</td>
+      <td class="tdganjil">SELECT ID, Description FROM TblProfession </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="CreditScoringComponentListing.htm"> <img src="../Images/ButtonOk.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

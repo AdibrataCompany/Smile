@@ -1,0 +1,208 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Statement of Account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">CREDIT PROCESS VIEW</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Customer</td>
+      <td width="25%" class="tdganjil">xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td width="25%" class="tdgenap">Agreement Number </td>
+      <td width="25%" class="tdganjil"><span id="lblAgrNumber">0702000386</span></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">CREDIT PROCESS</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">New Application Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Source of Application </td>
+      <td class="tdganjil"><span id="lblCreditSrc">Supplier</span></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Survey Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Credit Scoring</td>
+      <td class="tdganjil"><span id="lblScoring1">18</span>&nbsp; <span id="lblScoring2">Marginal</span></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RCA Date </td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Approval No</td>
+      <td class="tdganjil">xxxxx50xxxxxx</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Approval Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Purchase Order Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Agreement Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Supplier Invoice Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Delivery Order Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Marketing</td>
+      <td class="tdganjil">xxxxxxxx50xxxxxxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Go Live Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Credit Admin</td>
+      <td class="tdganjil">xxxxxxxx50xxxxxxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+      <td class="tdgenap">Surveyor</td>
+      <td class="tdganjil">xxxxxxxx50xxxxxxxx</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">FEES</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Admin </td>
+      <td class="tdganjil">999,999</td>
+      <td class="tdgenap">Survey</td>
+      <td class="tdganjil"><span id="lblCreditSrc">999,999</span></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Fiducia</td>
+      <td class="tdganjil">999,999</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Provision</td>
+      <td class="tdganjil">999,999</td>
+      <td class="tdgenap">Other</td>
+      <td class="tdganjil">999,999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Notary</td>
+      <td class="tdganjil">999,999</td>
+      <td class="tdgenap">Cancelation</td>
+      <td class="tdganjil">999,999</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">OTHER</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Ex Conversion </td>
+      <td class="tdganjil"><span id="lblOthExConv">No</span></td>
+      <td class="tdgenap">Floating Period</td>
+      <td class="tdganjil">-</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Avalist</td>
+      <td class="tdganjil"><span id="lblOthExConv">No</span></td>
+      <td class="tdgenap">Floating Next Review Date</td>
+      <td class="tdganjil">-</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Syndication</td>
+      <td class="tdganjil"><span id="lblOthExConv">No</span></td>
+      <td class="tdgenap" height="17">Last Floating Adjustment</td>
+      <td class="tdganjil">-</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Buy Back Guarantee Valid Date</td>
+      <td class="tdganjil">&nbsp;</td>
+      <td class="tdgenap">Last Floating Execution</td>
+      <td class="tdganjil" height="17">-</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">NA Date</td>
+      <td class="tdganjil">-</td>
+      <td class="tdgenap">WO Date</td>
+      <td class="tdganjil">-</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">NOTES</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdganjil">&nbsp;</td>
+    </tr>
+  </table>
+ 
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">CROSS DEFAULT</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="5%" align="center" class="tdjudulbiru">NO</td>
+      <td width="10%" align="center" class="tdjudulbiru">AGREEMENT</td>
+      <td width="15%" align="center" class="tdjudulbiru">NAME</td>
+      <td width="15%" align="center" class="tdjudulbiru">AGREEMENT DATE</td>
+      <td width="10%" align="center" class="tdjudulbiru">DEFAULT STATUS</td>
+      <td width="15%" align="center" class="tdjudulbiru">CONTRACT STATUS</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> xxxx20xxxx</font></td>
+      <td>xxxx50xxxx</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2">dd/mm/yyyy </font></td>
+      <td align="center">xx</td>
+      <td align="center">xxx</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">CROSS COLLATERAL</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td align="center" class="tdjudulbiru">NO</td>
+      <td align="center" class="tdjudulbiru">AGREEMENT</td>
+      <td align="center" class="tdjudulbiru">ASSET</td>
+      <td align="center" class="tdjudulbiru">NAME</td>
+      <td align="center" class="tdjudulbiru">AGREEMENT DATE</td>
+      <td align="center" class="tdjudulbiru">DEFAULT STATUS</td>
+      <td align="center" class="tdjudulbiru">CONTRACT STATUS</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> xxxx20xxxx</font></td>
+      <td>xxxx50xxxx</td>
+      <td>xxxx50xxxx</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2">dd/mm/yyyy </font></td>
+      <td align="center">xx</td>
+      <td align="center">xxx</td>
+    </tr>
+  </table>
+  <br>
+  <div align="center"> 
+    <table width="95%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td height="30"><a href="javascript:history.go(-1);"><img src="../Images/ButtonBack.gif" width="100" height="20" border="0"></a></td>
+        <td align="right" bordercolor="0"><a href="javascript:window.close();"><img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

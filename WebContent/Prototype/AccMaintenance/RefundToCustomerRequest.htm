@@ -1,0 +1,124 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">REQUEST REFUND TO CUSTOMER</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Agreement No</td>
+      <td width="25%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td width="25%" class="tdgenap">Customer Name</td>
+      <td width="25%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">OS AMOUNT OVER DUE AS OF DD/MM/YYYY</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Installment Due</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Premium Due</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Install. Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Bounce Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Repossession Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td align="right" class="tdganjil">&nbsp;</td>
+      <td class="tdgenap"><strong>Total OS Over Due</strong></td>
+      <td align="right" class="tdganjil"><strong>999,999,999.99</strong></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="4" class="tdjudulbiru"><div align="left"><strong>REQUEST DETAIL</strong></div></td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Prepaid Refundable</td>
+      <td width="25%" align="right" class="tdganjil">999,999,999.99</td>
+      <td width="25%" class="tdgenap">Refund Amount</td>
+      <td width="25%" align="right" class="tdganjil"><div align="left"> 
+          <input name="textfield32222422" type="text" class="inptype" size="15">
+        </div></td>
+    </tr>
+    <tr>
+      <td class="tdgenap">Bank Name</td>
+      <td align="right" class="tdganjil"><div align="left"> 
+          <input name="textfield3222242222" type="text" class="inptype" size="25">
+        </div></td>
+      <td width="20%" class="tdgenap">Bank Branch</td>
+      <td align="right" class="tdganjil"><div align="left">
+          <input name="textfield32222422222" type="text" class="inptype" size="25">
+        </div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Account Name</td>
+      <td class="tdganjil"><input name="textfield322224222" type="text" class="inptype" size="25"></td>
+      <td class="tdgenap">Account Nomor</td>
+      <td class="tdganjil"><input name="textfield3222242223" type="text" class="inptype" size="25"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Reason</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Select one</option>
+          <option>Reason 1</option>
+        </select></td>
+      <td class="tdgenap">To be approved by</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Select one</option>
+          <option>ADH</option>
+          <option>KaCab</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Notes</td>
+      <td colspan="3" align="right" class="tdganjil"><div align="left"> 
+          <textarea name="textarea" cols="80" rows="2" class="inptype"></textarea>
+        </div></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a><a href="javascript:history.go(-1);"><img src="../Images/ButtonRequest.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

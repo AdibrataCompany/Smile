@@ -1,0 +1,241 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td colspan="3"><font color="red"><i>*) required field</i></font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">SUPPLIER - EDIT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Supplier Group</td>
+      <td class="tdganjil"> <select name="select2">
+          <option selected>Group</option>
+          <option>Non Group</option>
+          <option>Afiliasi Group</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Supplier Name</td>
+      <td class="tdganjil"><input name="textfield322" type="text" class="inptype" value="AUTO2000 PLUIT" size="30"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Short Name</td>
+      <td class="tdganjil"> <input name="textfield322" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Initial Name</td>
+      <td class="tdganjil"><input name="textfield322" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">NPWP</td>
+      <td class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">TDP</td>
+      <td class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">SIUP</td>
+      <td class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Address</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Address</td>
+      <td class="tdganjil"><textarea name="textarea" cols="30" rows="5" class="inptype">JL.RAYA PLUIT SELATAN NO.6</textarea></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RT/RW</td>
+      <td class="tdganjil"><input name="textfield22222422" type="text" class="inptype" size="5">
+        / 
+        <input name="textfield22222423" type="text" class="inptype" size="5"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kelurahan</td>
+      <td class="tdganjil"><input name="textfield3532" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kecamatan</td>
+      <td class="tdganjil"><input name="textfield3533" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td height="23" class="tdgenap">City</td>
+      <td class="tdganjil"><input name="textfield3534" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Zip Code</td>
+      <td class="tdganjil"><input name="textfield2222" type="text" class="inptype" size="10"> 
+        <a href="javascript:;" onClick="MM_openBrWindow('../Lookup/ZipCodeLookUp.htm','ZipCode','scrollbars=yes,width=900,height=500')"><img src="../Images/IconDetail.gif" width="15" height="15" align="absmiddle" border="0"></a> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 1</td>
+      <td class="tdganjil"><input name="textfield2222242" type="text" class="inptype" value="021" size="5">
+        - 
+        <input name="textfield2222342" type="text" class="inptype" value="6691908" size="10"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 2</td>
+      <td class="tdganjil"><input name="textfield2222243" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield2222343" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Fax No.</td>
+      <td class="tdganjil"><input name="textfield2222244" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield2222344" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau"><strong>Contact Person</strong></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Name</td>
+      <td class="tdganjil"><input name="textfield353" type="text" class="inptype" value="ANDREAS HARTAWAN" size="30"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Job Title</td>
+      <td class="tdganjil"><input name="textfield353" type="text" class="inptype" value="KEPALA CABANG" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Email</td>
+      <td class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Mobile Phone</td>
+      <td class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Supplier Data</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Start Date</td>
+      <td class="tdganjil"><input name="textfield2242" type="text" class="inptype" size="20"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bad Status</td>
+      <td class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton" checked="true">
+              Normal </td>
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton">
+              Bad </td>
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton">
+              Warning </td>
+            <td width="25%">&nbsp;</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Level</td>
+      <td class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Utama </td>
+            <td width="25%"><input name="radiobutton-5" type="radio" value="radiobutton" checked>
+              Aktif </td>
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Biasa </td>
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Pasif </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Sell Automotive asset?</td>
+      <td class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-A" value="radiobutton" checked="true">
+              Yes </td>
+            <td width="25%"><input type="radio" name="radiobutton-A" value="radiobutton">
+              No </td>
+            <td width="25%">&nbsp;</td>
+            <td width="25%">&nbsp;</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Automotive Data</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> BPKB Registration Status</td>
+      <td class="tdganjil"> <input type="radio" name="radiobutton1" value="radiobutton" checked="true">
+        Yes 
+        <input type="radio" name="radiobutton1" value="radiobutton">
+        No</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Category</td>
+      <td class="tdganjil"><table width="100%" height="22" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td width="20%"><input type="radio" name="radiobutton-2" value="radiobutton" checked="true">
+              Main Dealer</td>
+            <td width="27%"><input type="radio" name="radiobutton-2" value="radiobutton">
+              Authorized Dealer </td>
+            <td><input type="radio" name="radiobutton-2" value="radiobutton">
+              Sub Dealer </td>
+            <td width="20%"><input type="radio" name="radiobutton-2" value="radiobutton">
+              Showroom</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Asset Sold</td>
+      <td class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-4" value="radiobutton">
+              New </td>
+            <td width="25%"><input type="radio" name="radiobutton-4" value="radiobutton">
+              Used </td>
+            <td width="25%"><input type="radio" name="radiobutton-2" value="radiobutton">
+              ex CBU</td>
+            <td width="25%"><input name="radiobutton-4" type="radio" value="radiobutton" checked>
+              Mixed</td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="Suplier.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0">
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

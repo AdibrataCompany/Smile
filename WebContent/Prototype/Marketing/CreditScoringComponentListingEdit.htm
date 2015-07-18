@@ -1,0 +1,80 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td colspan="3"><font color="red"><i>*) required field</i></font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">COMPONENT SCORING CARD - EDIT </td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Score Component ID</td>
+      <td class="tdganjil"> PROFESSION</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Description</td>
+      <td class="tdganjil"> <input name="textfield333" type="text" class="inptype" value="Profession" size="50">
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Scoring Type</td>
+      <td class="tdganjil"> <select name="select2">
+          <option selected>Personal</option>
+          <option>Company</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Group Component</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Customer</option>
+          <option>Financial</option>
+          <option>Asset</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Sequence Component</td>
+      <td class="tdganjil"><input name="textfield3322" type="text" class="inptype" value="3" size="5">
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Calculation Type</td>
+      <td class="tdganjil"> <select name="select2">
+          <option>Range</option>
+          <option selected>Table</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">SQL Command</td>
+      <td class="tdganjil"><textarea name="textfield33" cols="80" rows="5" class="inptype">SELECT PersonalCustomer.ProfessionID FROM PersonalCustomer INNER JOIN Agreement ON PersonalCustomer.CustomerID = Agreement.CustomerID WHERE (Agreement.BranchID = @BranchID) AND (Agreement.ApplicationID = @ApplicationID)</textarea>
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Data Source</td>
+      <td class="tdganjil"><input name="textfield33" type="text" class="inptype" value="SELECT ID, Description FROM TblProfession" size="50"> 
+      </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="CreditScoringComponentListing.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

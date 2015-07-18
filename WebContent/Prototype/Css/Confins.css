@@ -1,0 +1,341 @@
+﻿a:link {color:#0066CC; text-decoration:none;}
+a:hover {color:#0015B6; text-decoration:none;}
+a:active {color:#CC0000; text-decoration:none;}
+a:visited {color:#0066CC; text-decoration:none;}
+
+a.underline:link {color:#0066CC; text-decoration: underline;}
+a.underline:hover {color:#0015B6; text-decoration: underline;}
+a.underline:active {color:#CC0000; text-decoration: underline;}
+a.underline:visited {color:#0066CC; text-decoration: underline;}
+
+body {
+	scrollbar-3dlight-color: #B3C76D;
+	scrollbar-arrow-color: #999999;
+	scrollbar-track-color: #ededed;
+	scrollbar-darkshadow-color: #B3C76D;
+	scrollbar-face-color: #DCE2C9;
+	scrollbar-highlight-color: #DCE2C9;
+	scrollbar-shadow-color: #DCE2C9;
+}
+
+font {
+	font-family: Verdana, Arial, Tahoma, sans-serif;
+	font-size: 11px;
+}
+
+select {font-family:verdana,Arial,tahoma,san-serif;font-size:11px;color:#000000;background-color:#F4F4F4;border-color:#003399;border-style:solid;border-width:1px;}
+
+TABLE	{
+	font-family: verdana,Arial,tahoma,sans-serif;
+	font-size: 11px;
+	border: 0px;
+}
+
+.fontbesar {
+	font-family: Verdana, Arial, Tahoma, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+.inptype
+ {font-family:verdana,Arial,tahoma,san-serif;font-size:11px;color:#000000;background-color:#FFFFFF;border-bottom: 1px solid #C1C1C1;border-right: 1px solid #C1C1C1;border-left: 1px solid #C1C1C1;border-top: 1px solid #C1C1C1;}
+
+.inptypehijau
+ {font-family:verdana,Arial,tahoma,san-serif;font-size:11px;color:#000000;background-color:#D9E3B6;border-bottom: 1px solid #B6C973;border-right: 1px solid #B6C973;border-left: 1px solid #B6C973;border-top: 1px solid #B6C973;height:20px;}
+
+.pbttn
+ {font-family:verdana,Arial,tahoma,sans-serif;font-size:10px;background: #9FB359;border-bottom: 1px solid #333333;border-right: 1px solid #333333;border-left: 1px solid #D9E3B6;border-top: 1px solid #D9E3B6;color:#FFFFFF;height: 22px;text-decoration:none;padding-left: 3px;padding-right: 3px;padding-top:1px;cursor: hand;}
+
+.tablegrid
+{
+	border: 0px;
+	background-color: #E7E3E7;
+	color: #000000;
+}
+
+.tab
+{
+	font-family: Verdana, Arial, Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	color: #7A8F32;
+}
+
+.tdjudulbrown
+{
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopibrown
+{
+	background-color: #FFD7AD;
+	font-weight: bold;
+}
+
+.tdtopibrownkiri
+{
+	background-image: url('Images/BrownKiri.gif');
+}
+
+.tdtopibrownkanan
+{
+	background-image: url('Images/BrownKanan.gif');
+}
+
+.tdjudultosca
+{
+	background-color: #DDFFFF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopitosca
+{
+	background-color: #93DFE6;
+	font-weight: bold;
+}
+
+.tdtopitoscakiri
+{
+	background-image: url('Images/ToscaKiri.gif');
+}
+
+.tdtopitoscakanan
+{
+	background-image: url('Images/ToscaKanan.gif');
+}
+
+.tdjudulungu
+{
+	background-color: #F0F0FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopiungu
+{
+	background-color: #D7D7FF;
+	font-weight: bold;
+}
+
+.tdtopiungukiri
+{
+	background-image: url('Images/UnguKiri.gif');
+}
+
+.tdtopiungukanan
+{
+	background-image: url('Images/UnguKanan.gif');
+}
+
+.tdjudulorange
+{
+	background-color: #FEE8E0;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopiorange
+{
+	background-color: #FDD8CA;
+	font-weight: bold;
+}
+
+.tdtopiorangekiri
+{
+	background-image: url('Images/OrangeKiri.gif');
+}
+
+.tdtopiorangekanan
+{
+	background-image: url('Images/orangeKanan.gif');
+}
+
+.tdtopihijau
+{
+	background-color: #E0E0A3;
+	font-weight: bold;
+}
+
+.tdtopihijaukiri
+{
+	background-image: url('Images/HijauKiri.gif');
+}
+
+.tdtopihijaukanan
+{
+	background-image: url('Images/HijauKanan.gif');
+}
+
+.tdjudulmerah
+{
+	background-color: #FFF2F2;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopimerah
+{
+	background-color: #FFDDDD;
+	font-weight: bold;
+}
+
+.tdtopimerahkiri
+{
+	background-image: url('Images/MerahKiri.gif');
+}
+.tdjudulhijau
+{
+	background-color: #F4F4DF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopimerahkanan
+{
+	background-image: url('Images/MerahKanan.gif');
+}
+
+.tdjudulbiru
+{
+	background-color: #E6F1FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopibiru
+{
+	background-color: #BAD6FC;
+	font-weight: bold;
+}
+
+.tdtopibirukiri
+{
+	background-image: url('Images/BiruKiri.gif');
+}
+
+.tdtopibirukanan
+{
+	background-image: url('Images/BiruKanan.gif');
+}
+
+
+.tdjudulabu
+{
+	background-color: #e4e1dc;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopiabu
+{
+	background-color: #b2b2b2;
+	font-weight: bold;
+}
+
+.tdtopiabukiri
+{
+	background-image: url('Images/AbuKiri.gif');
+}
+
+.tdtopiabukanan
+{
+	background-image: url('Images/AbuKanan.gif');
+}
+
+.tdjudulhijau2
+{
+	background-color: #EAF9DF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopihijau2
+{
+	background-color: #B7E39F;
+	font-weight: bold;
+}
+
+.tdtopihijau2kiri
+{
+	background-image: url('Images/Hijau2Kiri.gif');
+}
+
+.tdtopihijau2kanan
+{
+	background-image: url('Images/Hijau2Kanan.gif');
+}
+
+.tdjudulkuning
+{
+	background-color: #FFF2CA;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopikuning
+{
+	background-color: #FFDF80;
+	font-weight: bold;
+}
+
+.tdtopikuningkiri
+{
+	background-image: url('Images/KuningKiri.gif');
+}
+
+.tdtopikuningkanan
+{
+	background-image: url('Images/KuningKanan.gif');
+}
+
+.tdjudulcoklat
+{
+	background-color: #FFECD9;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopicoklat
+{
+	background-color: #FFD5AA;
+	font-weight: bold;
+}
+
+.tdtopicoklatkiri
+{
+	background-image: url('Images/CoklatKiri.gif');
+}
+
+.tdtopicoklatkanan
+{
+	background-image: url('Images/CoklatKanan.gif');
+}
+
+.tdjudulungu2
+{
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.tdtopiungu2
+{
+	background-color: #EFC2E1;
+	font-weight: bold;
+}
+
+.tdtopiungu2kiri
+{
+	background-image: url('Images/Ungu2Kiri.gif');
+}
+
+.tdtopiungu2kanan
+{
+	background-image: url('Images/Ungu2Kanan.gif');
+}
+
+.tdganjil
+{background-color: #FFFFFF;}
+
+.tdgenap
+{background-color: #F4FAFF;}

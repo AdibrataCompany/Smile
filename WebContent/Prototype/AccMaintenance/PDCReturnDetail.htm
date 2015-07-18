@@ -1,0 +1,134 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC RETURN DETAIL</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Agreement Branch</td>
+      <td class="tdganjil">xxxxxxxxxx</td>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="tdgenap">Agreement No</td>
+      <td width="30%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td width="20%" class="tdgenap">Customer Name</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx 
+        50 xxxx</a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Return To</td>
+      <td class="tdganjil"><input name="textfield323222" type="text" class="inptype" size="25"> 
+      </td>
+      <td class="tdgenap">Return Date</td>
+      <td class="tdganjil"><input name="textfield3232" type="text" class="inptype" value="21/04/2003" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Reason</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Select One</option>
+          <option>No Fund</option>
+          <option>Wrong Signature</option>
+          <option>Not Registered</option>
+        </select></td>
+      <td class="tdgenap">Num of PDC Returned</td>
+      <td class="tdganjil">999</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="10%" align="center">AGREEMENT NO</td>
+      <td width="15%" align="center">CUSTOMER NAME</td>
+      <td width="10%" align="center"> BANK PDC</td>
+      <td width="8%" align="center">PDC NO.</td>
+      <td width="15%" align="center"> ISSUE NAME</td>
+      <td width="8%" align="center">DUE DATE</td>
+      <td width="10%" align="center"> AMOUNT</td>
+      <td width="4%" align="center">STATUS</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx 
+        50 xxxx</a></td>
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">Open</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx 
+        50 xxxx</a></td>
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">Cancel</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx 
+        5 0xxxx</a></td>
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">Bounce</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx 
+        50 xxxx</a></td>
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">Open</td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="right">Total</td>
+      <td align="center">&nbsp;</td>
+      <td align="center"><div align="right">999,999,999,99</div></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:history.go(-1);"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"> 
+        </a><a href="javascript:history.go(-2);"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

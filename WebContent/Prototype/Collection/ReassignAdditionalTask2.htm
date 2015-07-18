@@ -1,0 +1,270 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">SUPERVISOR ACTIVITY</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Task </td>
+      <td class="tdganjil"> 
+        <select name="select">
+          <option selected>Document Distribution</option>
+          <option>PDC Request Letter</option>
+          <option>PDC Bounce Letter</option>
+          <option>SP Letter</option>
+        </select>
+      </td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> 
+        <div align="left">Agreement No.</div>
+      </td>
+      <td class="tdganjil"> 
+        <input type="text" name="textfield">
+      </td>
+      <td class="tdgenap">Customer Name</td>
+      <td class="tdganjil"> 
+        <input type="text" name="textfield2" size="50">
+      </td>
+    </tr>
+    <tr> 
+      <td valign="middle" class="tdgenap">Collector</td>
+      <td class="tdganjil"> 
+        <select name="select2">
+          <option selected>Select One</option>
+          <option>DeskColl1</option>
+          <option>DeskColl2</option>
+          <option>Collector1</option>
+          <option>Collector2</option>
+        </select>
+      </td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil"> 
+        <div align="left"> </div>
+      </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="2" cellpadding="1">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"> <img src="../Images/ButtonSearch.gif" width="100" height="20"><img src="../Images/ButtonReset.gif" width="100" height="20"> 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">SUPERVISOR ACTIVITY LISTING</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center"> 
+      <td class="tdjudulungu" width="4%"> <input name="checkbox3" type="checkbox" value="checkbox" checked> 
+      </td>
+      <td class="tdjudulungu" width="12%"> AGREEMENT NO.</td>
+      <td class="tdjudulungu" width="16%">CUSTOMER NAME</td>
+      <td class="tdjudulungu" width="17%">ADDRESS</td>
+      <td class="tdjudulungu" width="10%">COLLECTOR</td>
+      <td class="tdjudulungu" width="12%">OVERDUE DAYS</td>
+      <td class="tdjudulungu" width="15%">AMOUNT OVERDUE</td>
+      <td class="tdjudulungu" width="10%">OS BALANCE</td>
+      <td class="tdjudulungu" width="4%">RAL</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil" width="4%"> <input name="checkbox32" type="checkbox" value="checkbox" checked> 
+      </td>
+      <td align="center" width="12%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')"><img src="../Images/BulatMerah.gif" width="13" height="13" border="0">xxxx20xxxx</a></td>
+      <td align="left" width="16%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td class="tdganjil" width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" class="tdganjil" width="12%">999</td>
+      <td align="center" class="tdganjil" width="15%">999,999,999</td>
+      <td align="center" class="tdganjil" width="10%">999,999,999</td>
+      <td align="center" class="tdganjil" width="4%">x</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center" width="4%"> <input name="checkbox33" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" width="12%">999</td>
+      <td align="center" width="15%">999,999,999</td>
+      <td align="center" width="10%">999,999,999</td>
+      <td align="center" width="4%">x</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil" width="4%"> <input name="checkbox34" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td class="tdganjil" width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td height="24" width="15%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" class="tdganjil" width="12%">999</td>
+      <td align="center" class="tdganjil" width="15%">999,999,999</td>
+      <td align="center" class="tdganjil" width="10%">999,999,999</td>
+      <td align="center" class="tdganjil" width="4%">x</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center" width="4%"> <input name="checkbox35" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td width="17%" 
+	  > <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" width="12%">999</td>
+      <td align="center" width="15%">999,999,999</td>
+      <td align="center" width="10%">999,999,999</td>
+      <td align="center" width="4%">x</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil" width="4%"> <input name="checkbox36" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td class="tdganjil" width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" class="tdganjil" width="12%">999</td>
+      <td align="center" class="tdganjil" width="15%">999,999,999</td>
+      <td align="center" class="tdganjil" width="10%">999,999,999</td>
+      <td align="center" class="tdganjil" width="4%">x</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center" width="4%"> <input name="checkbox37" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" width="12%">999</td>
+      <td align="center" width="15%">999,999,999</td>
+      <td align="center" width="10%">999,999,999</td>
+      <td align="center" width="4%">x</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil" width="4%"> <input name="checkbox38" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td class="tdganjil" width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" class="tdganjil" width="12%">999</td>
+      <td align="center" class="tdganjil" width="15%">999,999,999</td>
+      <td align="center" class="tdganjil" width="10%">999,999,999</td>
+      <td align="center" class="tdganjil" width="4%">x</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center" width="4%"> <input name="checkbox39" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td width="17%" 
+	  > <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" width="12%">999</td>
+      <td align="center" width="15%">999,999,999</td>
+      <td align="center" width="10%">999,999,999</td>
+      <td align="center" width="4%">x</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil" width="4%"> <input name="checkbox310" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td class="tdganjil" width="17%"> <div align="left">xxxxxxxxxxxxxxxxx50<br>
+          xxxxxxxxxxxxxxxxx </div></td>
+      <td width="15%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" class="tdganjil" width="12%">999</td>
+      <td align="center" class="tdganjil" width="15%">999,999,999</td>
+      <td align="center" class="tdganjil" width="10%">999,999,999</td>
+      <td align="center" class="tdganjil" width="4%">x</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center" width="4%"> <input name="checkbox311" type="checkbox" value="checkbox"> 
+      </td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+      <td width="17%">xxxxxxxxxxxxxxxxx50<br>
+        xxxxxxxxxxxxxxxxx </td>
+      <td width="15%"><a href="javascript:;" onClick="MM_openBrWindow('ViewCollector.htm','Collector','scrollbars=yes,width=500,height=500')">xxxx10xxxx</a></td>
+      <td align="center" width="12%">999</td>
+      <td align="center" width="15%">999,999,999</td>
+      <td align="center" width="10%">999,999,999</td>
+      <td align="center" width="4%">x</td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  <table width="95%"  border="0" cellspacing="2" cellpadding="1">
+    <tr align="center"> 
+      <td><input name="radiobutton" type="radio" value="radiobutton" checked>
+        ReAssign</td>
+      <td><input name="radiobutton" type="radio" value="radiobutton">
+        Cases Added</td>
+      <td><input name="radiobutton" type="radio" value="radiobutton">
+        Plan/Undo Plan To RAL</td>
+      <td><input name="radiobutton" type="radio" value="radiobutton">
+        Release Red Dot</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="2" cellpadding="1">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="ReassignCollector.htm"> <img src="../Images/ButtonDoAction.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+</body>
+</html>

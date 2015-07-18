@@ -1,0 +1,162 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">COLLECTION EXPENSE REQUEST</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap"> <div align="left">Agreement No.</div></td>
+      <td width="25%" class="tdganjil"> <a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td width="25%" class="tdgenap">Customer Name</td>
+      <td width="25%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx50xxxx</a></td>
+    </tr>
+    <tr> 
+      <td width="150" class="tdgenap"> <div align="left">Address</div></td>
+      <td colspan="3" class="tdganjil">xxxx50xxxx</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> <div align="left">Currency</div></td>
+      <td colspan="3" class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td valign="middle" class="tdgenap">Installment No.</td>
+      <td class="tdganjil">99</td>
+      <td width="150" class="tdgenap">Installment Amount</td>
+      <td class="tdganjil">999,999,999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Due Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td valign="middle" class="tdgenap">Overdue Days</td>
+      <td class="tdganjil">99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Amount Overdue</td>
+      <td class="tdganjil">999,999,999</td>
+      <td class="tdgenap">Late Charges</td>
+      <td class="tdganjil">999,999,999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">O/S Balance</td>
+      <td class="tdganjil">999,999,999</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RAL No.</td>
+      <td class="tdganjil"> <div align="left">xxxx20xxxx</div></td>
+      <td class="tdgenap">RAL Period</td>
+      <td class="tdganjil"> <div align="left">dd/mm/yyyy to dd/mm/yyyy</div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RAL Status</td>
+      <td colspan="3" class="tdganjil">xxxx10xxxx</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Executor</td>
+      <td class="tdganjil">xxxx50xxxx</td>
+      <td valign="middle" class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">COLLECTION EXPENSE </td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulungu"> 
+      <td><a href="CollectionExpenseRequest.htm">REQUEST NO.</a></td>
+      <td><a href="CollectionExpenseRequest.htm">REQUEST DATE</a></td>
+      <td><a href="CollectionExpenseRequest.htm">RAL NO.</a></td>
+      <td><a href="CollectionExpenseRequest.htm">EXPENSE AMOUNT</a></td>
+      <td><a href="CollectionExpenseRequest.htm">NOTES</a></td>
+      <td><a href="CollectionExpenseRequest.htm">EXECUTOR</a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">xxxx20xxxx</td>
+      <td align="left"> <div align="center">dd/mm/yyyy</div></td>
+      <td align="right"> <div align="left">xx20xx</div></td>
+      <td align="right">999,999,999</td>
+      <td align="center">xx50xx</td>
+      <td align="center">xx10xx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">xxxx20xxxx</td>
+      <td align="left"> <div align="center">dd/mm/yyyy</div></td>
+      <td align="right"> <div align="left">xx20xx</div></td>
+      <td align="right">999,999,999</td>
+      <td align="center">xx50xx</td>
+      <td align="center">xx10xx</td>
+    </tr>
+  </table>
+<br>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Expense Request Amount</td>
+      <td colspan="3" class="tdganjil"> 
+        <input name="textarea" type="text" class="inptype" value="" size="20">
+      </td>
+    </tr>
+    
+    <tr> 
+      <td valign="middle" class="tdgenap">Approve By</td>
+      <td colspan="3" class="tdganjil"> 
+        <select name="select">
+          <option selected>Select One</option>
+          <option>Branch Manager</option>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="middle" class="tdgenap">Approval Send Via</td>
+      <td colspan="3" class="tdganjil"> 
+        <input type="checkbox" name="checkbox" value="checkbox">
+        SMS 
+        <input type="checkbox" name="checkbox2" value="checkbox">
+        E-mail 
+        <input type="checkbox" name="checkbox3" value="checkbox">
+        Fax No. 
+        <input type="text" name="textfield" class="inptype">
+      </td>
+    </tr>
+    <tr> 
+      <td valign="middle" class="tdgenap">Notes</td>
+      <td colspan="3" class="tdganjil"> 
+        <textarea name="textarea2" cols="60" rows="5"></textarea>
+      </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:history.go(-1);"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

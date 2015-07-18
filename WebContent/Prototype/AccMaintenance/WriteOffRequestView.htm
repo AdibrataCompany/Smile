@@ -1,0 +1,225 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+
+.tdjudul
+{
+	background-color: #E6F1FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+</style>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">WRITE OFF&nbsp; <span id="lblHeader">VIEW</span></td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+	<table class="tablegrid" cellSpacing="1" cellPadding="3" width="95%" align="center" border="0">
+		<tr>
+			<td class="tdgenap">Agreement&nbsp;Branch </td>
+			<td class="tdganjil" width="25%"><span id="lblBranch">PANJANG</span></td>
+			<td class="tdgenap" width="25%">Currency</td>
+			<td class="tdganjil"><span id="lblCurrencyID">IDR</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap">Agreement No.</td>
+			<td class="tdganjil" align="left" width="25%"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+			<td class="tdgenap" width="25%">Customer Name </td>
+			<td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxxxxxxxxxxxx</a></td>
+		</tr>
+		<tr>
+			<td class="tdgenap">Last Payment Date</td>
+			<td class="tdganjil" align="left" width="25%">
+			<span id="lblLastPaymentDate">23/01/2006</span></td>
+			<td class="tdgenap" width="25%">Past Due Days</td>
+			<td class="tdganjil" align="left"><span id="lblPastDueDays">90</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap">Contract Status</td>
+			<td class="tdganjil" align="left" width="25%">
+			<span id="lblContractStatus">LIV</span></td>
+			<td class="tdgenap" width="25%">Cross Default</td>
+			<td class="tdganjil" align="left" width="25%">
+			<span id="lblcrDefault">No</span></td>
+		</tr>
+		<tr>
+			<td class="tdjudul" colSpan="4">STOP ACCRUED INFORMATION</td>
+		</tr>
+		<tr>
+			<td class="tdgenap">Request No.</td>
+			<td class="tdganjil" width="25%"><span id="lblRequestNo">
+			800NA200600043 </span></td>
+			<td class="tdgenap" width="25%">NA Date </td>
+			<td class="tdganjil"><span id="lblRequestDate">23/05/2006</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap">NA Type</td>
+			<td class="tdganjil" align="left" width="25%"><span id="lblNAType">
+			Automatic</span> </td>
+			<td class="tdgenap" width="25%"></td>
+			<td class="tdganjil" align="right" width="25%"></td>
+		</tr>
+		<tr>
+			<td class="tdjudul" colSpan="4">PAYMENT INFORMATION DETAIL</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Outstanding Principle</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblOutstandingPrincipal">1,249,088,990.00</span></td>
+			<td class="tdgenap">Outstanding Interest</td>
+			<td class="tdganjil" align="right">
+			<span id="lblOutstandingInterest">166,820,010.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Installment Due</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblInstallmentDue">612,000,000.00</span></td>
+			<td class="tdgenap" width="25%">Insurance Premium Due</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblInsuranceDue">0.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Install. Late Charges</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblLCInstall">0.00</span></td>
+			<td class="tdgenap" width="25%">Insurance Late Charges</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblLCInsurance">0.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">PDC Bounce Fee</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblPDCBounceFee">10,000.00</span></td>
+			<td class="tdgenap" width="25%">Repossession Fee</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblRepoFee">15,400,000.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Accrued Interest</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblAccruedInterest">705,130.87</span></td>
+			<td class="tdgenap" width="25%">Reversal Amount</td>
+			<td class="tdganjil" align="right" width="25%">
+			<span id="lblReversalAmount">109,606,585.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%"><b>Stop Accrued Amount</b></td>
+			<td class="tdganjil" align="right" colSpan="3"><b>
+			<span id="lblNAAmount">1,950,267,967.00</span></b></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" align="left"><b>Receive Amount After NA</b></td>
+			<td class="tdgenap" align="right" colSpan="3"><b>0.00</b></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" align="left"><b>Out Standing Stop Accrued Amount</b></td>
+			<td class="tdgenap" align="right" colSpan="3"><b>1,950,267,967.00</b></td>
+		</tr>
+		<tr>
+			<td class="tdjudul" colSpan="4">WRITE OFF INFORMATION</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Request No</td>
+			<td class="tdganjil" width="25%"><span id="lblworequestno">
+			800WO200600007</span></td>
+			<td class="tdgenap" width="25%">Request Date</td>
+			<td class="tdganjil" width="25%"><span id="lblReqDate">18/10/2006</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Option Type</td>
+			<td class="tdganjil" width="25%"><span id="lblOption">Allowance 
+			Doubtful</span></td>
+		<td class="tdgenap" width="25%"></td>
+		<td class="tdganjil" width="25%"></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">O/S Principal</td>
+			<td class="tdganjil" align="right" width="25%">1,950,267,967.00</td>
+			<td class="tdganjil" width="25%">O/S Interest</td>
+			<td class="tdganjil" align="right" width="25%">15,000,000.00</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%" style="height: 22px">O/S Installment 
+			Due</td>
+			<td class="tdganjil" align="right" width="25%" style="height: 22px">
+			3,000,000.00</td>
+			<td class="tdgenap" width="25%" style="height: 22px">O/S Insurance 
+			Premium</td>
+			<td class="tdganjil" align="right" width="25%" style="height: 22px">
+			0.00</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%" style="height: 22px">O/S Repossession Fee</td>
+			<td class="tdganjil" align="right" width="25%" style="height: 22px">17,512,000.00</td>
+			<td class="tdgenap" width="25%" style="height: 22px">O/S Diff Rate</td>
+			<td class="tdganjil" align="right" width="25%" style="height: 22px">1<span id="lblReversalAmount1">,606,585.00</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">O/S Incentive</td>
+			<td class="tdganjil" align="right" width="25%">500,000.00</td>
+			<td class="tdgenap" width="25%">O/S Provision</td>
+			<td class="tdganjil" align="right" width="25%">1,000,000.00</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" align="left"><b>Total Nilai WO </b></td>
+			<td class="tdgenap" align="right" colSpan="3"><b>
+			<span id="lblTotalNilaiWO">1,967,779,967.00</span></b></td>
+		</tr>
+		<tr>
+			<td class="tdjudul" colSpan="4">WRITE OFF DETAIL</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Reason</td>
+			<td class="tdganjil" align="left" width="25%"><span id="lblReason">
+			Other</span></td>
+			<td class="tdgenap" width="25%">To Be Approved By</td>
+			<td class="tdganjil" width="25%"><span id="lblToBe">Eko</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Notes</td>
+			<td class="tdganjil" width="25%" colSpan="3"><span id="lblUcNotes">
+			Asset sudah ditarik tgl. 22/02/06 dan sudah diiklankan 2 kali tetapi 
+			sampai saat ini belum ada pembeli serius (asset spesifik)</span></td>
+		</tr>
+		<tr>
+			<td class="tdjudul" align="left" colSpan="4">STATUS</td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Status</td>
+			<td class="tdganjil" width="25%"><span id="lblStatus">Approve</span></td>
+			<td class="tdgenap" width="25%">Status Date</td>
+			<td class="tdganjil" width="25%"><span id="lblStatusDate">18/10/2006</span></td>
+		</tr>
+		<tr>
+			<td class="tdgenap" width="25%">Request by</td>
+			<td class="tdganjil" width="25%" colSpan="3">Eko</td>
+		</tr>
+	</table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30"><img src="../Images/ButtonPrint.gif" width="100" height="20" border="0"></td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a> <a href="javascript:window.close();"> <img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

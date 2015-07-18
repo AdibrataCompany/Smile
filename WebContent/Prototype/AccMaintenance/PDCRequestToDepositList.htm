@@ -1,0 +1,191 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">REQUEST PRINT PDC TO DEPOSIT</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="15%" class="tdgenap">Branch</td>
+      <td width="40%" class="tdganjil"><select name="select5">
+          <option selected>Jakarta</option>
+          <option>Bandung</option>
+        </select></td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bank PDC</td>
+      <td class="tdganjil"><select name="select6">
+          <option selected>All</option>
+          <option>Citi Bank</option>
+          <option>Bank Central Asia</option>
+          <option>Lippo Bank</option>
+        </select></td>
+      <td width="18%" class="tdgenap">PDC Due Date &lt;=</td>
+      <td width="37%" class="tdganjil">
+		<input name="textfield3233" type="text" class="inptype" value="21/04/2003" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Inkaso</td>
+      <td class="tdganjil"><select name="select8">
+          <option selected>All</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select> </td>
+      <td class="tdgenap">Cumulative</td>
+      <td class="tdganjil"><select name="select9">
+          <option selected>All</option>
+          <option>Yes</option>
+          <option >No</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Printed Status</td>
+      <td class="tdganjil"><select name="select7">
+          <option>Yes</option>
+          <option selected>No</option>
+        </select> </td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select10">
+          <option selected>Select One</option>
+          <option>PDC No</option>
+           <option>Issue Name</option>
+           <option>Deposit No</option>
+        </select> 
+		<input name="textfield3234" type="text" class="inptype" size="20"></td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="AgreementMultiPDCReceiveAdd.htm"> 
+        </a><a href="PDCToDepositList.htm"><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"></a> 
+        <img src="../Images/ButtonReset.gif" width="100" height="20" border="0"> 
+        <a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+  
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC LISTING</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="10%" align="center"><u> BANK PDC</u></td>
+      <td width="10%" align="center"><u>PDC NO.</u></td>
+      <td align="center" style="width: 12%"><u> ISSUE NAME</u></td>
+      <td align="center" style="width: 8%"><u>DUE DATE</u></td>
+      <td align="center" style="width: 10%"><u> AMOUNT</u></td>
+      <td width="5%" align="center"><u> DEPOSIT NO</u></td>
+      <td width="5%" align="center"><u>INKASO</u></td>
+      <td width="5%" align="center"><u>CUMM.</u></td>
+      <td width="5%" align="center"><u>BOUNCE</u></td>
+      <td width="4%" align="center"><input type="checkbox" name="checkbox" value="checkbox"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td style="width: 12%">XXXXX XXXXX</td>
+      <td align="center" style="width: 8%">dd/mm/yyyy</td>
+      <td align="right" style="width: 10%">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">Yes</td>
+      <td align="center">Yes</td>
+      <td align="center">0</td>
+      <td align="center"><input type="checkbox" name="checkbox2" value="checkbox"></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td style="width: 12%">XXXXX XXXXX</td>
+      <td align="center" style="width: 8%">dd/mm/yyyy</td>
+      <td align="right" style="width: 10%">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">1</td>
+      <td align="center"><input type="checkbox" name="checkbox3" value="checkbox"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td style="width: 12%">XXXXX XXXXX</td>
+      <td align="center" style="width: 8%">dd/mm/yyyy</td>
+      <td align="right" style="width: 10%">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">Yes</td>
+      <td align="center">Yes</td>
+      <td align="center">0</td>
+      <td align="center"><input type="checkbox" name="checkbox2" value="checkbox"></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td style="width: 12%">XXXXX XXXXX</td>
+      <td align="center" style="width: 8%">dd/mm/yyyy</td>
+      <td align="right" style="width: 10%">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">1</td>
+      <td align="center"><input type="checkbox" name="checkbox3" value="checkbox"></td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td>Total</td>
+      <td align="center">&nbsp;</td>
+      <td style="width: 12%">&nbsp;</td>
+      <td align="center" style="width: 8%">&nbsp;</td>
+      <td align="right" style="width: 10%">999,999,999,99</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30"><select name="select11">
+          <option>To Bank</option>
+           <option>To Internal</option>
+        </select>&nbsp;<img src="../Images/ButtonPrint.gif" width="100" height="20" border="0"></td>
+      <td width="50%" align="right"><a href="PDCRequestToDeposit.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        </a><a href="javascript:history.go(-2);"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

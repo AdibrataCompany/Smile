@@ -1,0 +1,351 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopitoscakiri">&nbsp;</td>
+      <td align="center" class="tdtopitosca">CREDIT INVESTIGATION QUESTION MAINTANCE</td>
+      <td width="10" class="tdtopitoscakanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr class="tdganjil"> 
+      <td width="200" height="26" class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Question ID</option>
+          <option selected>Question Description</option>
+          <option selected>Answer Type</option>
+        </select>
+        <input type="text" name="textfield">      </td>
+    </tr>
+  </table>
+  <p align="right"><img src="../../Images/ButtonSearch.GIF" width="100" height="20" border="0"><img src="../../Images/ButtonReset.gif" width="100" height="20"></p>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning">
+      <td width="10" height="20" class="tdtopitoscakiri">&nbsp;</td>
+      <td align="center" class="tdtopitosca">CUSTOMER TYPE: PERSONAL CUSTOMER</td>
+      <td width="10" class="tdtopitoscakanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">KELENGKAPAN DATA PENDUKUNG (FOTOCOPY)</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>KTP/PASPORT/ID Setara</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Rekening ta<span class="tdgenap">bungan koran 3 bulan terakhir</span></td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Fotocopy kartu kredit</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">DATA PRIBADI</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Verifikasi dengan</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Hubungan verificator dengan customer</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Status rumah sama dengan applikasi</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Lama tinggal</td>
+      <td>Check List with text</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">EMERGENCY CONTACT</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Verifikasi dengan</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Hubungan verificator dengan customer</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Data E-Con benar</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Alamat Econ</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">DATA PEKERJAAN DAN PENGHASILAN 
+		WIRASWASTA</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Bidang usaha</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Status tempat usaha</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Penjualan/Bulan (a)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Biaya Operasional (b)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Penghasilan bersih/bulan (c=a-b)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+  </table>
+   <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">DATA PEKERJAAN DAN PENGHASILAN KARYAWAN</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Data perusahaan sama dengan applikasi</td>
+      <td>Option</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Jabatan</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>Penghasilan bersih/bulan (a)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Penghasilan lain bersih/bulan (b)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>Total penghasilan (c=a-b)</td>
+      <td>Description</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning">
+      <td width="10" height="20" class="tdtopitoscakiri">&nbsp;</td>
+      <td align="center" class="tdtopitosca">CUSTOMER TYPE XXXXX50XXXXX</td>
+      <td width="10" class="tdtopitoscakanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">GROUP DESCRIPTION XXXXX50XXXXX</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxOptionxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxOption w/ Textxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">GROUP DESCRIPTION XXXXX50XXXXX</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxOptionxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxOption w/ Textxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudultosca">
+      <td colspan="4"><div align="left">GROUP DESCRIPTION XXXXX50XXXXX</div></td>
+    </tr>
+    <tr align="center" class="tdjudultosca">
+      <td width="45%">Question Description</td>
+      <td width="21%">ANSWER TYPE</td>
+      <td width="6%">EDIT</td>
+      <td width="8%">DELETE</td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxOptionxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdganjil">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxOption w/ Textxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap">
+      <td>xxxxxxxxxxx50xxxxxxxxxxx</td>
+      <td>xxxxxxxxxxTextxxxxxxxxxx</td>
+      <td align="center"><a href="CreditInvestigationQuestionEdit.htm"><img src="../../Images/IconEdit.gif" width="16" height="13" border="0"></a><a href="CreditInvestigationQ&A-Edit.htm"></a></td>
+      <td align="center"><img src="../../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30"><img src="../../Images/ButtonPrint.gif" width="100" height="20"></td>
+      <td width="50%" align="right"><a href="CreditInvestigationQuestionAdd.html"><img src="../../Images/ButtonAdd.gif" width="100" height="20" border="0"></a>      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

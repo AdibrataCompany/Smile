@@ -1,0 +1,135 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopitoscakiri">&nbsp;</td>
+      <td align="center" class="tdtopitosca">DRAWDOWN - EDIT</td>
+      <td width="10" class="tdtopitoscakanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr class="tdganjil"> 
+      <td width="200" class="tdgenap">Funding Company</td>
+      <td class="tdganjil">xxxxxxxxxxxxxx50xxxxxxxxxxxxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Funding Company Branch</td>
+      <td class="tdganjil">xxxxxxxxxxxxxx50xxxxxxxxxxxxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Facility No</td>
+      <td>xxxxxxx20xxxxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Facility Name</td>
+      <td class="tdganjil">xxxxxxxxxxxxxx50xxxxxxxxxxxxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Batch No</td>
+      <td class="tdganjil">xxxxxxx20xxxxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Date</td>
+      <td class="tdganjil"><input name="textfield332632332" type="text" class="inptype" size="10"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Amount</td>
+      <td class="tdganjil"><input name="textfield33262" type="text" class="inptype" size="15"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Interest Rate</td>
+      <td class="tdganjil"><input name="textfield3422" type="text" class="inptype" size="10">
+        %</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Interest Type</td>
+      <td class="tdganjil"><select name="select3">
+          <option selected>Floating</option>
+          <option>Fixed</option>
+        </select></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Final Maturity Date</td>
+      <td class="tdganjil"><input name="textfield33263232" type="text" class="inptype" size="10"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Payment Scheme</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Principal on DD Date, Interest Due = Principal Due</option>
+          <option>Principal on DD Date, Interest on EoM</option>
+          <option>Principal on Bank Request, Interst Due = Principal Due</option>
+          <option>Principal on EoM, Interest on EoM</option>
+          <option>Principal on End of Loan, Interest on DD Date</option>
+        </select></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Due Date</td>
+      <td class="tdganjil"><input name="textfield33263232" type="text" class="inptype" size="10"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Provision Amount</td>
+      <td class="tdganjil"><input name="textfield332623" type="text" class="inptype" size="15"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Admin Amount</td>
+      <td class="tdganjil"><input name="textfield332622" type="text" class="inptype" size="15"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Total Account</td>
+      <td class="tdganjil">9999</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Currency Type</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>IDR</option>
+        </select></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Exchange Rate</td>
+      <td class="tdganjil"><input name="textfield332625" type="text" class="inptype" size="15"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Tenor</td>
+      <td class="tdganjil"><input name="textfield332624" type="text" class="inptype" size="15"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Installment Period</td>
+      <td class="tdganjil"><select name="select5">
+          <option selected>Monthly</option>
+          <option>Quarterly</option>
+        </select></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td class="tdgenap">Installment Scheme</td>
+      <td class="tdganjil"><select name="select4">
+          <option selected>Fixed Amount</option>
+          <option>Fixed Principal</option>
+          <option>Irregular</option>
+        </select></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="30"><a href="DrawdownBGLAgreementSelected.htm"><img src="../Images/ButtonAgreementSelected.gif" width="150" height="20" border="0"></a> 
+        <a href="DrawdownExecution.htm"><img src="../Images/ButtonExecution.gif" width="100" height="20" border="0"></a></td>
+      <td align="right"> <a href="javascript:history.go(-1);"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

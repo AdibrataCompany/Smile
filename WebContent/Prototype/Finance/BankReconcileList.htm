@@ -1,0 +1,126 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijau2kiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau2">BANK RECONCILE</td>
+      <td width="10" class="tdtopihijau2kanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Bank Account</td>
+      <td width="25%" class="tdganjil"><select name="select4">
+          <option selected>Select One</option>
+          <option>Citi Bank Escrow</option>
+          <option>BCA Petty Cash</option>
+          <option>Petty Cash On Hand</option>
+        </select> </td>
+      <td width="25%" class="tdgenap">Date</td>
+      <td width="25%" class="tdganjil"><input name="textfield32" type="text" class="inptype" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Select One</option>
+          <option>Voucher No</option>
+          <option>Description</option>
+          <option>Cashier</option>
+        </select> <input name="textfield3" type="text" class="inptype" size="20"></td>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil"><select name="select5">
+          <option selected>IDR</option>
+          <option>USD</option>
+        </select></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonReset.gif" width="100" height="20"> </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijau2kiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau2">BANK VOUCHER LISTING</td>
+      <td width="10" class="tdtopihijau2kanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulhijau2"> 
+      <td><a href="BankReconcileList.htm">VOUCHER NO</a></td>
+      <td><a href="BankReconcileList.htm">VALUE DATE</a></td>
+      <td><a href="BankReconcileList.htm">POSTING DATE</a></td>
+      <td><a href="BankReconcileList.htm">DESCRIPTION</a></td>
+      <td><a href="BankReconcileList.htm">DEBIT AMOUNT</a></td>
+      <td><a href="BankReconcileList.htm">CREDIT AMOUNT</a></td>
+      <td><a href="BankReconcileList.htm">CASHIER</a></td>
+      <td width="5%"><input type="checkbox" name="checkbox" value="checkbox"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxx50xxxx</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">Cashier 1</td>
+      <td align="center"><input type="checkbox" name="checkbox2" value="checkbox"></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxx50xxxx</td>
+      <td align="right">999,999,999.99</td>
+      <td align="right">&nbsp;</td>
+      <td align="center">Cashier 2</td>
+      <td align="center"><input type="checkbox" name="checkbox3" value="checkbox"></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><a href="CashBankTransactionView.htm">xxxx20xxxx</a></td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td>xxxx50xxxx</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">Cashier 1</td>
+      <td align="center"><input type="checkbox" name="checkbox2" value="checkbox"></td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+  
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="BankReconcileDetail.htm"><img src="../Images/ButtonReconcile.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+  
+</div>
+</body>
+</html>

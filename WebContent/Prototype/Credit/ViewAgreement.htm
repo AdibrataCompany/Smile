@@ -1,0 +1,585 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>Statement of Account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+.tdjudul
+{
+	background-color: #F0F0FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.style1 {
+	color: #0066CC;
+}
+
+</style>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">STATEMENT OF ACCOUNT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap" style="width: 25%">Customer</td>
+      <td width="25%" class="tdganjil"><a href="ViewPersonalCustomer.aspx">xxxxxxx50xxxxxxx</a></td>
+      <td width="25%" class="tdgenap">Agreement Number </td>
+      <td width="25%" class="tdganjil"><B><span id="lblAgrNumber">0702000386</span></B></td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap" style="width: 25%">Currency</td>
+      <td valign="top" class="tdganjil">IDR</td>
+      <td class="tdgenap">Application Id</td>
+      <td class="tdganjil"><a href="ViewApplication.htm">xxxx50xxxx</a></td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap" style="width: 25%">Product ID</td>
+      <td valign="top" class="tdganjil">xxxxxxx50xxxxxxx</td>
+      <td class="tdgenap">Product Offering</td>
+      <td class="tdganjil">xxxxxxx50xxxxxxx</td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap" style="width: 25%">Finance Type</td>
+      <td valign="top" class="tdganjil">xxxxxxx50xxxxxxx</td>
+      <td class="tdgenap">Contract Status</td>
+      <td class="tdganjil">Live</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 25%">Guarantor</td>
+      <td class="tdganjil">xxxx10xxxx</td>
+      <td class="tdgenap">Spouse</td>
+      <td class="tdganjil">xxxx10xxxx</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 25%">Way Of Payment</td>
+      <td class="tdganjil">xxxx10xxxx</td>
+      <td class="tdgenap">Default Status</td>
+      <td class="tdganjil">Normal</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 25%">Effective Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">Requesting Process Status</td>
+      <td class="tdganjil">Normal/Prepayment/Rescheduling</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 25%">Maturity Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+		<td class="tdjudulhijau" colSpan="4">CREDIT PROCESS</td>
+	</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">New Application Date</td>
+				<td class="tdganjil">10/06/2005 12:00AM</td>
+				<td class="tdgenap">Source of Application </td>
+				<td class="tdganjil"><span id="Span1">Indirect </span></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" height="23" style="width: 25%">Survey Date</td>
+				<td class="tdganjil" height="23">08/06/2005 12:00AM</td>
+				<td class="tdgenap">Credit Scoring</td>
+				<td class="tdganjil"><span id="lblScoring2">77.75 - Approved
+				</span></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" height="23" style="width: 25%">RCA Date </td>
+				<td class="tdganjil" height="23">10/06/2005 12:00AM</td>
+				<td class="tdgenap">Approval No</td>
+				<td class="tdganjil">xxx99999xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Approval Date</td>
+				<td class="tdganjil">10/06/2005 12:00AM</td>
+				<td class="tdgenap">Purchase Order Date</td>
+				<td class="tdganjil">10/06/2005 12:00AM</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Agreement Date</td>
+				<td class="tdganjil">16/06/2005 12:00AM</td>
+				<td class="tdgenap">Marketing</td>
+			<td class="tdganjil">xxxx9999xxxx</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Delivery Order Date</td>
+				<td class="tdganjil">16/06/2005 2:04PM</td>
+				<td class="tdgenap">Credit Admin</td>
+				<td class="tdganjil">xxxx9999xxxx</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="height: 23px; width: 25%;">Go Live Date</td>
+				<td class="tdganjil" style="height: 23px">16/06/2005 12:00AM</td>
+				<td class="tdgenap" style="height: 23px">Surveyor</td>
+				<td class="tdganjil" style="height: 23px">xxxx9999xxxx</td>
+			</tr>
+	<tr> 
+		<td class="tdjudulhijau" colSpan="4">AMOUNT TO BE APPROVE</td>
+	</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">O/S Principle Obligor</td>
+				<td class="tdganjil" align="right">0.00</td>
+				<td class="tdgenap">Related Exposure</td>
+				<td class="tdganjil" align="right">0.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Requested (NTF) </td>
+				<td class="tdganjil" align="right">120,000,000.00 </td>
+				<td class="tdgenap">Total Exposure</td>
+				<td class="tdganjil" align="right">120,000,000.00</td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">CREDIT INVESTIGATION INFORMATION</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Result</td>
+				<td class="tdganjil" align="left">Recommend</td>
+				<td class="tdgenap" height="22"></td>
+				<td class="tdganjil" height="22"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Notes</td>
+				<td class="tdganjil" align="left" colSpan="3">xxxxxx9999999xxxxxxxx</td>
+			</tr>
+	<tr> 
+		<td class="tdjudulhijau" colSpan="4">FINANCIAL DATA</td>
+	</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Interest Type</td>
+				<td class="tdganjil">Fixed Rate</td>
+				<td class="tdgenap">Installment Scheme</td>
+				<td class="tdganjil">Regular Fixed Installment Scheme</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Total OTR</td>
+				<td class="tdganjil" align="right">150,000,000.00</td>
+				<td class="tdgenap">Down Payment/%DP</td>
+				<td class="tdganjil" align="right">30,000,000.00&nbsp;/&nbsp; 20.00 % </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">First Installment</td>
+				<td class="tdganjil" align="left">Advance</td>
+				<td class="tdgenap">Number of Installment</td>
+				<td class="tdganjil" align="right">24&nbsp; Tenor&nbsp;&nbsp; 24</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">NTF</td>
+				<td class="tdganjil" align="right">120,000,000.00</td>
+				<td class="tdgenap">Payment Frequency</td>
+				<td class="tdganjil" align="left">Monthly</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Gross Yield</td>
+				<td class="tdganjil" align="right">18.6500% </td>
+				<td class="tdgenap">Grace Period Installment</td>
+				<td class="tdganjil" align="right">0&nbsp; </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Effective Rate</td>
+				<td class="tdganjil" align="right">18.9095% </td>
+				<td class="tdgenap">Flat Rate</td>
+				<td class="tdganjil" align="right">9.5000% </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Effective Rate Type</td>
+				<td class="tdganjil" align="left">Standard </td>
+				<td class="tdgenap">Spread Effective Rate</td>
+				<td class="tdganjil" align="right">0.0000% </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Commission/Subsidy(-)</td>
+				<td class="tdganjil" align="right">1,001,957.44</td>
+				<td class="tdgenap">Supplier Rate / Supplier Flat Rate </td>
+				<td class="tdganjil" align="right">17.9549%&nbsp; / 0.0000%&nbsp; </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Installment Amount</td>
+				<td class="tdganjil" align="right">5,950,000.00</td>
+				<td class="tdgenap">Standard Company Rate</td>
+				<td class="tdganjil" align="right">14.5200% </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">LC (Denda) Penalty</td>
+				<td class="tdganjil" align="right">2.00 &#8240; </td>
+				<td class="tdgenap">Potential Lost</td>
+				<td class="tdganjil" align="right">0.00 </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">LC (Denda) Grace Period </td>
+				<td class="tdganjil" align="right">2&nbsp;days </td>
+				<td class="tdgenap">Standard Gross Yield</td>
+				<td class="tdganjil" align="right">15.0200 </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">TDP Paid at Coy</td>
+				<td class="tdganjil" align="right">0.00</td>
+				<td class="tdgenap">Collectibility Status</td>
+				<td class="tdganjil" align="right">Lancar</td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">FEES</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Admin </td>
+				<td class="tdganjil" align="right">500,000.00</td>
+				<td class="tdgenap">Survey</td>
+				<td class="tdganjil" align="right"><span id="lblCreditSrc">0.00
+				</span></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Fiducia</td>
+				<td class="tdganjil" align="right">0.00</td>
+				<td class="tdgenap">Provision</td>
+				<td class="tdganjil" align="right">0.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Notary</td>
+				<td class="tdganjil" align="right">0.00</td>
+				<td class="tdgenap">Other</td>
+				<td class="tdganjil" align="right">0.00</td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">INSURANCE PREMIUM</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Insurance Admin Fee</td>
+				<td class="tdganjil" align="right">50,000.00</td>
+				<td class="tdgenap">Stamp Duty Fee</td>
+				<td class="tdganjil" align="right">0.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Premium to Customer</td>
+				<td class="tdganjil" align="right">3,468,750.00</td>
+				<td class="tdgenap">Discount Premium / % Disc</td>
+				<td class="tdganjil" align="right">0.00&nbsp;/&nbsp; 0.00&nbsp;% </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Total Premium by Customer</td>
+				<td class="tdganjil" align="right">3,468,750.00</td>
+				<td class="tdgenap"></td>
+				<td class="tdganjil" align="right"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Paid Amount by Customer</td>
+				<td class="tdganjil" align="right">3,518,750.00</td>
+				<td class="tdgenap">Amount Capitalized</td>
+				<td class="tdganjil" align="right">0.00</td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">OTHER</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Ex Conversion </td>
+				<td class="tdganjil"><span id="Span2">No </span></td>
+				<td class="tdgenap">Floating Period</td>
+				<td class="tdganjil"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Avalist</td>
+				<td class="tdganjil"><span id="Span3">Yes </span></td>
+				<td class="tdgenap">Floating Next Review Date</td>
+				<td class="tdganjil"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Syndication</td>
+				<td class="tdganjil"><span id="lblOthExConv">No </span></td>
+				<td class="tdgenap" height="17">Last Floating Adjustment</td>
+				<td class="tdganjil"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Buy Back Guarantee Valid Date</td>
+				<td class="tdganjil"></td>
+				<td class="tdgenap">Last Floating Execution</td>
+				<td class="tdganjil" height="17"></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" height="21" style="width: 25%">Non Standard Transaction</td>
+				<td class="tdganjil" height="21">No</td>
+				<td class="tdgenap" height="21">Asset Buy</td>
+				<td class="tdganjil" height="21">No</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" height="21" style="width: 25%">Mailing Address</td>
+				<td class="tdganjil" colSpan="3" height="21">xxxxxxxxxxxxxxxxxx10xxxxxxxxxxxxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">NOTES</td>
+			</tr>
+			<tr>
+				<td class="tdganjil" colSpan="4"></td>
+			</tr>
+			<tr>
+				<td class="tdjudulhijau" colSpan="4">PLEDGING DATA</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Funding Bank ID</td>
+				<td class="tdganjil" align="left">ANZ PANIN BANK</td>
+				<td class="tdgenap">Funding Coy</td>
+				<td class="tdganjil" align="left">ANZ PANIN BANK</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" style="width: 25%">Funding Batch Date</td>
+				<td class="tdganjil" align="left">12/03/2007</td>
+				<td class="tdgenap">Funding Contract NO</td>
+				<td class="tdganjil" align="left">23456789</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" align="left" style="width: 25%">Buy Back Reference #</td>
+				<td class="tdganjil">-</td>
+				<td class="tdgenap">Funding Batch NO</td>
+				<td class="tdganjil">Test01 </td>
+			</tr>
+			<tr>
+				<td class="tdgenap" align="left" style="width: 25%">Funding Coy Portion</td>
+				<td class="tdganjil">0</td>
+				<td class="tdgenap" align="left"></td>
+				<td class="tdganjil"></td>
+			</tr>
+		
+    </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">CROSS DEFAULT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td align="center" class="tdjudulhijau">NO</td>
+      <td align="center" class="tdjudulhijau">AGREEMENT</td>
+      <td align="center" class="tdjudulhijau">NAME</td>
+      <td align="center" class="tdjudulhijau">AGREEMENT DATE</td>
+      <td align="center" class="tdjudulhijau">DEFAULT STATUS</td>
+      <td align="center" class="tdjudulhijau">CONTRACT STATUS</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> xxxx20xxxx</font></td>
+      <td>xxxx50xxxx</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2">dd/mm/yyyy </font></td>
+      <td align="center">xx</td>
+      <td align="center">xxx</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">CROSS COLLATERAL</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td align="center" class="tdjudulhijau">NO</td>
+      <td align="center" class="tdjudulhijau">AGREEMENT</td>
+      <td align="center" class="tdjudulhijau">ASSET</td>
+      <td align="center" class="tdjudulhijau">NAME</td>
+      <td align="center" class="tdjudulhijau">AGREEMENT DATE</td>
+      <td align="center" class="tdjudulhijau">DEFAULT STATUS</td>
+      <td align="center" class="tdjudulhijau">CONTRACT STATUS</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> xxxx20xxxx</font></td>
+      <td>xxxx50xxxx</td>
+      <td>xxxx50xxxx</td>
+      <td align="center"><font face="Tahoma, Verdana" size="2">dd/mm/yyyy </font></td>
+      <td align="center">xx</td>
+      <td align="center">xxx</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau"> ASSET LIST</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulhijau"> 
+      <td width="5%">NO</td>
+      <td width="20%">ASSET</td>
+      <td width="20%">CHASSIS NO.</td>
+      <td width="20%">ENGINE NO.</td>
+      <td width="20%">COLOR</td>
+      <td width="10%">YEAR</td>
+      <td width="20%">LICENSE PLATE</td>
+      <td width="10%">STATUS</td>
+      <td width="10%">DOC. STATUS</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">99</td>
+      <td align="center" class="tdganjil"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td class="tdganjil" align="center">9999</td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center">xxx</td>
+      <td class="tdganjil" align="center">xxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td align="center">9999</td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="center">xxx</td>
+      <td align="center">xxx</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">99</td>
+      <td align="center" class="tdganjil"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td class="tdganjil" align="center">9999</td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center">xxx</td>
+      <td class="tdganjil" align="center">xxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td align="center">9999</td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx </font></div></td>
+      <td align="center">xxx</td>
+      <td align="center">xxx</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">99</td>
+      <td align="center" class="tdganjil"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td class="tdganjil" align="center">9999</td>
+      <td class="tdganjil" align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td class="tdganjil" align="center">xxx</td>
+      <td class="tdganjil" align="center">xxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center"><div align="left"><a href="../Credit/ViewAsset.htm">
+		xxxx50xxxx</a></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td align="center"><div align="left">xxxxxx20xxxxxx</div></td>
+      <td align="center">9999</td>
+      <td align="right"><div align="left"><font face="Tahoma, Verdana" size="2"> 
+          xxxxxx20xxxxxx</font></div></td>
+      <td align="center">xxx</td>
+      <td align="center">xxx</td>
+    </tr>
+  </table>
+  <br>
+  <div align="center"> 
+    <table width="95%" border="0" cellspacing="0" cellpadding="0">
+      <tr align="center"> 
+        <td height="30" colspan="2"> 
+          <p>
+			<a id="lbAmortization" href="ViewAmortization.htm">
+			Agreement Card</a>&nbsp;|&nbsp;
+			<a id="lbCreditProcess" href="ViewApprovalHistory.htm">
+			Approval History</a>&nbsp;|
+			<a id="lbExposure" href="ViewCustomerExposure.htm">
+			Exposure</a>&nbsp;|
+			<a id="lbReference" href="ViewMailingAddress.htm">
+			Reference</a>&nbsp;|
+			<a id="lbAccrInc" href="ViewAccruedIncome.htm">
+			Accr Inc</a>&nbsp;|
+			<a id="lbHistPayment" href="ViewPaymentHistory.htm">
+			Hist Payment</a>&nbsp;|&nbsp;
+			<a id="lbPDC" href="ViewPDCList.htm">
+			PDC</a>&nbsp;|&nbsp;
+			<a id="lbMailHistory" href="../ChannelSecurity/MailHistory.htm">
+			Mail History</a>&nbsp;|
+			<a id="lbDocHistory" href="../ChannelSecurity/DocHistory.htm">
+			Doc History</a>&nbsp;|
+			<a id="lbCollectionActivity" href="../Collection/InquiryCollectionAct2.htm">
+			Collection Activity</a>&nbsp;|
+			<a id="lbTermCondition" href="ViewTC.htm">
+			Term &amp; Condition</a>&nbsp;|
+			<a id="lbActivityLog" href="ViewActivityLog.htm">
+			Activity Log</a>&nbsp;|
+			<a id="hynInsurance" href="ViewInsurance.htm">
+			Insurance</a>&nbsp;|&nbsp; <a id="hynLifeInsurance">Life Insurance</a>&nbsp;|&nbsp;
+			<a id="hynCommlink" href="">
+			Communication Linked</a>&nbsp;|&nbsp;
+			<a id="lnkPrintBankStatement" href="">
+			Bank Statement Analysis</a>&nbsp;|&nbsp;
+			<a id="HYCam1" href="">CAM 1</a>&nbsp;|&nbsp;
+			<a id="hyAddressHistory" href="">
+			Address History</a>&nbsp;|&nbsp;
+			<a id="hyFileAttachment" href="ViewFileAttachment.htm">
+			File Attachment</a>&nbsp;|&nbsp;
+			<a id="hyClosingMemo" href="">
+			Closing Memo</a>&nbsp;|&nbsp; <a id="hyMOU" disabled>MOU</a>&nbsp;|&nbsp;
+			<a id="hyFloatingHistory" href="">
+			Floating History</a>&nbsp;|&nbsp;
+			<a id="hyAmandmentHistory" href="">
+			Amandment History</a>
+			|
+			<a id="hyApprovalHiglight" href="">
+			Approval Highlight Message</a>&nbsp;|
+			<a id="hyApprovalHiglight0" href="PhoneVerificationResult-View.htm">Phone Verification 
+			</a>|
+			<a id="hyCreditInvestigation" href="CreditInvestigationResult-View.htm">
+			Credit Investigation</a>&nbsp;|&nbsp;
+			<a id="hyEFLPortion" href="">
+			EFL Portion</a>&nbsp;|&nbsp;
+			<a id="hyCollEvent" href="">
+			Coll Event</a>&nbsp;|&nbsp;<a id="hyCustomerCard" href="">
+			Customer Card</a> </p>
+          <p>&nbsp;</p>
+        </td>
+      </tr>
+      <tr> 
+        <td height="30"><a href="RptStatementOfAccount.htm"><img src="../Images/ButtonPrint.gif" border="0" width="100" height="20"></a></td>
+        <td align="right"><a href="javascript:window.close();"><img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

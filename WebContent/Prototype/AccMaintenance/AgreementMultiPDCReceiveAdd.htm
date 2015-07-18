@@ -1,0 +1,174 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC RECEIVE</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Agreement Branch</td>
+      <td class="tdganjil">xxxxxxxxxxxxxx</td>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Agreement No</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td class="tdgenap">Customer Name</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Installment Amount</td>
+      <td class="tdganjil"><div align="right">999,999,999.99</div></td>
+      <td class="tdgenap">Next Installment Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Receive From</td>
+      <td class="tdganjil"><input name="textfield32" type="text" class="inptype" size="30"></td>
+      <td width="20%" class="tdgenap">Due Date Period</td>
+      <td width="30%" class="tdganjil">Monthly</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">PDC DETAIL</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC No.</td>
+      <td class="tdganjil"><input name="textfield323" type="password" class="inptype" size="15"></td>
+      <td class="tdgenap">PDC Amount</td>
+      <td class="tdganjil"><input name="textfield322" type="password" class="inptype" size="15"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Issue Name</td>
+      <td class="tdganjil"><input name="textfield3232" type="text" class="inptype" size="20"></td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bank PDC </td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Select One</option>
+          <option>Citi Bank</option>
+          <option>Bank Central Asia</option>
+          <option>Lippo Bank</option>
+        </select></td>
+      <td class="tdgenap">Inkaso Flag</td>
+      <td class="tdganjil"><input type="radio" name="radiobutton" value="radiobutton">
+        Yes 
+        <input name="radiobutton" type="radio" value="radiobutton" checked>
+        No</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Number of PDC</td>
+      <td class="tdganjil"><input name="textfield325" type="password" class="inptype" size="10">
+        pcs </td>
+      <td class="tdgenap">Cummulative Flag</td>
+      <td class="tdganjil"><input type="radio" name="radiobutton1" value="radiobutton">
+        Yes 
+        <input name="radiobutton1" type="radio" value="radiobutton" checked>
+        No</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Due Date</td>
+      <td class="tdganjil"><input name="textfield324" type="password" class="inptype" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+      <td class="tdgenap">PDC Type</td>
+      <td class="tdganjil"><input name="radiobutton2" type="radio" value="radiobutton" checked>
+        BG 
+        <input name="radiobutton2" type="radio" value="radiobutton">
+        Cheque </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="AgreementMultiPDCReceiveAdd.htm"><img src="../Images/ButtonAdd.gif" width="100" height="20" border="0"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC LIST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="10%" align="center">HOLIDAY</td>
+      <td width="18%" align="center">ISSUE NAME</td>
+      <td width="18%" align="center">BANK PDC </td>
+      <td width="12%" align="center">PDC NO.</td>
+      <td width="18%" align="center">PDC AMOUNT</td>
+      <td width="15%" align="center">DUE DATE</td>
+      <td width="5%" align="center">INKASO</td>
+      <td width="5%" align="center">CUMM</td>
+      <td width="5%" align="center">TYPE</td>
+      <td width="5%" align="center">ACTION</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">Yes</td>
+      <td>XXXXX XXXX</td>
+      <td>Citi Bank</td>
+      <td align="center">FF 1001</td>
+      <td align="right">2,000,000.00</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">BG</td>
+      <td align="center"><img src="../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">No</td>
+      <td>XXXXX XXXX</td>
+      <td>Citi Bank</td>
+      <td align="center">FF 1002</td>
+      <td align="right">2,000,000.00</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">Check</td>
+      <td align="center"><img src="../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td align="center">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Total</td>
+      <td align="center">&nbsp;</td>
+      <td align="right">4,000,000.00</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="AgreementMultiPDC.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        </a><a href="AgreementMultiPDCReceive.htm"><img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a><a href="javascript:history.go(-2);"> 
+        </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

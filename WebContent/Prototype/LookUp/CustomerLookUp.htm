@@ -1,0 +1,125 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Customer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">CUSTOMER</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Customer Name</option>
+          <option>Customer Address</option>
+        </select>
+        <input name="textfield" type="text" size="20" class="inptype">
+        </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"> <img src="../Images/ButtonReset.gif" width="100" height="20" border="0"> 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">CUSTOMER LISTING</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulhijau"> 
+      <td width="10%">SELECT</td>
+      <td width="35%"><a href="CustomerLookUp.htm">CUSTOMER NAME</a></td>
+      <td width="55%"><a href="CustomerLookUp.htm">CUSTOMER ADDRESS</a></td>
+    </tr>
+    
+    <tr class="tdganjil"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','ViewCustomer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/yellow.gif" width="11" height="11" border="0"> 
+        Customer Tidak Pernah Bayar</a></td>
+      <td>Pantai Mutiara</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','ViewCustomer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/green.gif" width="11" height="11" border="0"> 
+        Sumardy</a></td>
+      <td>Teluk Gong</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/green.gif" width="11" height="11" border="0"> 
+        Cahyo Nugroho</a></td>
+      <td>Pamulang</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')"><img src="../Images/yellow.gif" width="11" height="11" border="0"> 
+        Customer Korupsi</a></td>
+      <td>Menteng</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/green.gif" width="11" height="11" border="0"> 
+        Adicipta Inovasi Teknology PT.</a></td>
+      <td>Jl Panjang</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewCompanyCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/red.gif" width="11" height="11" border="0"> 
+        </a><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">Company 
+        Tidak Pernah Bayar</a></td>
+      <td>Menteng</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><input type="radio" name="radiobutton" value="radiobutton"></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=0,left=0')"><img src="../Images/yellow.gif" width="11" height="11" border="0"> 
+        xxxxxxxx50xxxxxxxx</a></td>
+      <td>xxxxxxxx50xxxxxxxx</td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../Images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../Images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../Images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../Images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../Images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+  
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:window.close();"><img src="../Images/ButtonSelect.gif" width="100" height="20" border="0"></a> 
+        <a href="javascript:window.close();"><img src="../Images/ButtonExit.gif" width="100" height="20" border="0"></a><a href="AgreementRelatedDetailAdd.htm"> 
+        </a><a href="javascript:history.go(-2);"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

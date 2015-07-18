@@ -1,0 +1,281 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+.style1 {
+	text-align: left;
+}
+</style>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">AGREEMENT CHANGE DUE DATE REQUEST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Agreement No</td>
+      <td width="25%" class="tdganjil"><a href="javascript:;">xxxx20xxxx</a></td>
+      <td width="25%" class="tdgenap">Customer Name</td>
+      <td width="25%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxxxxxxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Currency</td>
+      <td colspan="3" class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="tdgenap">Effective Date</td>
+      <td colspan="3" class="tdganjil"><input name="textfield322" type="text" class="inptype" value="dd/mm/yyyy" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Next Due Date</td>
+      <td colspan="3" class="tdganjil"><input name="textfield322" type="text" class="inptype" value="dd/mm/yyyy" size="15"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+        <a href="DueDateChangeRequestCalculate.htm"><img src="../Images/ButtonCalculate.gif" width="100" height="20" border="0" align="absmiddle"></a> 
+      </td>
+    </tr>
+        <tr> 
+      <td colspan="4" class="tdjudulbiru">AMOUNT OVER DUE AS OF DD/MM/YYYY</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Installment Due</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Premium Due</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Install. Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Bounce Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td align="right" class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Insurance Claim Expense</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Repossession Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td align="right" class="tdganjil">&nbsp;</td>
+      <td class="tdgenap"><strong>Total OS Over Due</strong></td>
+      <td align="right" class="tdganjil"><strong>999,999,999.99</strong></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="7" class="tdjudulbiru">NEW AMORTIZATION</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdjudulbiru">NO</td>
+      <td align="center" class="tdjudulbiru">DUE DATE</td>
+      <td align="center" class="tdjudulbiru">INSTALLMENT</td>
+      <td align="center" class="tdjudulbiru">PRINCIPLE</td>
+      <td align="center" class="tdjudulbiru">INTEREST</td>
+      <td align="center" class="tdjudulbiru">PRINCIPAL BALANCE</td>
+      <td align="center" class="tdjudulbiru">INTEREST BALANCE</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">1</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">2</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">3</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">4</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">5</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">6</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">7</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">8</td>
+      <td align="center" class="tdgenap"><strong>dd/mm/yyyy</strong></td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">9</td>
+      <td align="center" class="tdganjil"><strong>dd/mm/yyyy</strong></td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">10</td>
+      <td align="center" class="tdgenap"><strong>dd/mm/yyyy</strong></td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">11</td>
+      <td align="center" class="tdganjil"><strong>dd/mm/yyyy</strong></td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">9,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+      <td align="right" class="tdganjil">99,999,999.99</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">12</td>
+      <td align="center" class="tdgenap"><strong>dd/mm/yyyy</strong></td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">9,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+      <td align="right" class="tdgenap">99,999,999.99</td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td colspan="2" align="right"><strong>Total</strong></td>
+      <td align="right">99,999,999.99</td>
+      <td align="right">99,999,999.99</td>
+      <td align="right">9,999,999.99</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+    </tr>
+  </table>
+  <br>
+   <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">AGREEMENT CHANGE DUE DATE DETAIL</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap"> Interest to be Paid</td>
+      <td width="25%" class="tdganjil"><div align="right" class="style1"> 
+        <input name="textfield322226" type="text" class="inptype" size="15" style="width: 134px"></div></td>
+      <td width="25%" class="tdgenap">Administration Fee</td>
+      <td class="tdganjil"><input name="textfield32222" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Reason</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Select one</option>
+          <option>Reason 1</option>
+        </select></td>
+      <td class="tdgenap">To be approved by</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Select one</option>
+          <option>ADH</option>
+          <option>KaCab</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Alternate User</td>
+      <td class="tdganjil"><select name="select3">
+          <option selected>Select one</option>
+          <option>ADH</option>
+          <option>KaCab</option>
+        </select></td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap">Approval Recommendation</td>
+      <td colspan="3" class="tdganjil"><textarea name="textfield322223" cols="80" rows="2" class="inptype"></textarea></td>
+    </tr>
+    <tr align="right"> 
+      <td colspan="4" class="tdjudulbiru">Total Amount to be Paid : 999,999,999.99 
+      </td>
+    </tr>
+    <tr align="right">
+      <td colspan="4" class="tdjudulbiru">Prepaid Amount : 999,999,999.99</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a><a href="DueDateChange.htm"><img src="../Images/ButtonRequest.gif" width="100" height="20" border="0"> 
+        <a href="DueDateChangeRequestCalculate.htm"> 
+        <img src="../Images/ButtonCalculate.gif" width="100" height="20" border="0"></a> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

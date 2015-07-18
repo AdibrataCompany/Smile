@@ -1,0 +1,254 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="../../Confins.css">
+<style type="text/css">
+.style1 {
+	color: #0066CC;
+}
+.style5 {
+	text-align: left;
+	color: #FF0000;
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <table style="width: 100%">
+	<tr>
+		<td class="style5">&nbsp;&nbsp;&nbsp; <font color="red"><i>*)&nbsp;&nbsp; required field</i></font></td>
+	</tr>
+	</table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">COLLECTION LANCAR ACTIVITY</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr>
+      <td class="tdgenap" style="width: 162px">Branch</td>
+      <td class="tdganjil"> <select name="select3">
+          <option selected>MEDAN</option>
+          <option>JAMBI</option>
+          <option>PEKANBARU</option>
+          <option>BATAM</option>
+          <option>GRAND WIJAYA</option>
+          <option>BEKASI</option>
+          <option>TANGERANG</option>
+          <option>BANDUNG</option>
+          <option>SEMARANG</option>
+        </select> <font color="#FF0000">&nbsp; *)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 162px">Collector Name</td>
+      <td class="tdganjil"> <select name="select2">
+          <option selected>Select One</option>
+          <option>xxxxxxxx50xxxxxxxx</option>          
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 162px"> <div align="left">Search By</div></td>
+      <td class="tdganjil"> <a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')"> 
+        </a> <select name="select">
+          <option selected>Agreement No</option>
+          <option>Customer Name</option>
+          <option>Plan Date</option>
+        </select> <input name="textfield" type="text" class="inptype"> </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div align="right"><a href="CollectionLancarAct1.htm">
+			<img src="../../images/ButtonSearch.gif" width="100" height="20" border="0"></a> 
+          <img src="../../images/ButtonReset.gif" width="100" height="20"></div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">COLLECTION LANCAR ACTIVITY LISTING</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulungu"> 
+      <td><a href="CollectionLancarAct1.htm">AGREEMENT NO.</a></td>
+      <td><a href="CollectionLancarAct1.htm">CUSTOMER NAME</a></td>
+      <td><a href="CollectionLancarAct1.htm">OVERDUE DAYS</a></td>
+      <td><a href="CollectionLancarAct1.htm">INSTALLMENT NO.</a></td>
+      <td><a href="CollectionLancarAct1.htm">INSTALLMENT AMOUNT</a></td>
+      <td><a href="CollectionLancarAct1.htm">OVERDUE AMOUNT</a></td>
+      <td><a href="CollectionLancarAct1.htm"><span class="style1">EXECUTOR ID</span></a></td>
+      <td><a href="CollectionLancarAct1.htm">PLAN ACTIVITY </a></td>
+      <td><a href="CollectionLancarAct1.htm">PLAN DATE</a></td>
+      <td>RESULT</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../../LookUp/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxxx20xxxxx</a></div></td>
+      <td><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxx50xxxxxxxx</a></div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">99</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> <div align="right">9,999,999,999</div></td>
+      <td align="center"> xxxxx20xxxxx</td>
+      <td align="center">xxxxx20xxxxx</td>
+      <td align="center"><div align="left">dd/mm/yyyy</div></td>
+      <td align="center"><a href="CollectionLancarAct2.aspx">
+		<img src="../../images/IconReceived.gif" width="19" height="15" border="0"></a></td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center">
+		<img src="../../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center">
+		<img src="../../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center">
+		<img src="../../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center">
+		<img src="../../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+  
+  
+</div>
+</body>
+</html>

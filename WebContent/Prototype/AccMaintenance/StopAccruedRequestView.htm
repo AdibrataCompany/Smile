@@ -1,0 +1,177 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+
+.tdjudul
+{
+	background-color: #E6F1FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+</style>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">VIEW STOP ACCRUED REQUEST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table class="tablegrid" cellSpacing="1" cellPadding="3" width="95%" align="center" border="0">
+	<tr>
+		<td class="tdgenap">Agreement Branch</td>
+		<td class="tdganjil" width="30%"><span id="lblAgreementBranch">PANJANG</span></td>
+		<td class="tdgenap">Currency</td>
+		<td class="tdganjil" width="30%"><span id="lblcurrencyid">IDR</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap" width="20%">Agreement No</td>
+		<td class="tdganjil" width="30%"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+		<td class="tdgenap" width="20%">Customer Name</td>
+		<td class="tdganjil" width="30%"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Last Payment Date</td>
+		<td class="tdganjil" align="left" width="25%">
+		<span id="lblLastPaymentDate">09/06/2006</span> </td>
+		<td class="tdgenap" width="25%">Past Due Days</td>
+		<td class="tdganjil"><span id="lblPastDueDays">34</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Contract Status</td>
+		<td class="tdganjil"><span id="lblContractStatus">Live</span></td>
+		<td class="tdgenap">Cross Default</td>
+		<td class="tdganjil"><span id="lblCrossDefault">No</span> </td>
+	</tr>
+	<tr>
+		<td class="tdjudul" colSpan="4">STOP ACCRUED INFORMATION</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Request No.</td>
+		<td class="tdganjil"><span id="lblRequestNaNo">800NA200600069 </span>
+		</td>
+		<td class="tdgenap">Stop Accrued Date</td>
+		<td class="tdganjil"><span id="lblRequestdate">19/07/2006</span> </td>
+	</tr>
+	<tr>
+		<td class="tdgenap">NA Type</td>
+		<td class="tdganjil" colSpan="3"><span id="lblNaType">Automatic</span></td>
+	</tr>
+	<tr>
+		<td class="tdjudul" colSpan="4">PAYMENT INFORMATION DETAIL</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Outstanding Principle</td>
+		<td class="tdganjil" align="right"><span id="lblOutstandingPrincipal">
+		22,825,190.05</span></td>
+		<td class="tdgenap">Outstanding Interest</td>
+		<td class="tdganjil" align="right"><span id="lblOutstandingInterest">
+		1,516,809.95</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Installment Due</td>
+		<td class="tdganjil" align="right"><span id="lblInstallmentDue">
+		8,114,000.00</span></td>
+		<td class="tdgenap">Insurance Premium</td>
+		<td class="tdganjil" align="right"><span id="lblInsuranceDue">0.00</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Install. Late Charges</td>
+		<td class="tdganjil" align="right"><span id="lblLCInstall">462,600.00</span></td>
+		<td class="tdgenap">Insurance Late Charges</td>
+		<td class="tdganjil" align="right"><span id="lblLCInsurance">0.00</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">PDC Bounce Fee</td>
+		<td class="tdganjil" align="right"><span id="lblPDCBounceFee">0.00</span></td>
+		<td class="tdgenap">Repossession Fee</td>
+		<td class="tdganjil" align="right"><span id="lblRepoFee">0.00</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Accrued Interest</td>
+		<td class="tdganjil" align="right"><span id="lblAccruedInterest">
+		55,069.29</span></td>
+		<td class="tdgenap">Reversal Amount</td>
+		<td class="tdganjil" align="right"><span id="lblReversedAmount">
+		1,052,247.22</span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap"><b>Stop Accrued Amount</b></td>
+		<td class="tdganjil" align="right" colSpan="3"><b>
+		<span id="lblNAAmount">29,886,942.83</span></b></td>
+	</tr>
+	<tr>
+		<td class="tdjudul" colSpan="4">DEFFERED AMOUNT</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">OS Diff Rate</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+		<td class="tdgenap">Reverse Diff Rate Amount</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">OS Provision</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+		<td class="tdgenap">Reverse Provision Amount</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">OS Incentive</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+		<td class="tdgenap">Reverse Incentive Amount</td>
+		<td class="tdganjil" align="right">999,999,999.00</td>
+	</tr>
+	<tr>
+		<td class="tdgenap"><strong>Total OS Deffered</strong></td>
+		<td class="tdganjil" align="right"><strong>999,999,999.00</strong></td>
+		<td class="tdgenap"><strong>Total Reverse Deffered</strong></td>
+		<td class="tdganjil" align="right"><strong>999,999,999.00</strong></td>
+	</tr>
+	<tr>
+		<td class="tdjudul" colSpan="4">STOP ACCRUED DETAIL</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Reason</td>
+		<td class="tdganjil"><span id="lblReason">Past Due Setting</span></td>
+		<td class="tdgenap">Approved By</td>
+		<td class="tdganjil"><span id="lblApprovedBy"></span></td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Notes</td>
+		<td class="tdganjil" colSpan="3"><span id="lblNotes">-</span></td>
+	</tr>
+	<tr>
+		<td class="tdjudul" colSpan="4">STATUS</td>
+	</tr>
+	<tr>
+		<td class="tdgenap">Status</td>
+		<td class="tdganjil"><span id="lblStatus"></span></td>
+		<td class="tdgenap">Status Date</td>
+		<td class="tdganjil"><span id="lblStatusDate">19/07/2006</span> </td>
+	</tr>
+	</table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a> <a href="javascript:window.close();"> <img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td colspan="3"><font color="red"><i>*) required field</i></font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">SUPPLIER - ADD</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="22%" class="tdgenap">Supplier Group</td>
+      <td colspan="3" class="tdganjil"> <select name="select2">
+          <option selected>Group</option>
+          <option>Non Group</option>
+          <option>Afiliasi Group</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Supplier Name</td>
+      <td colspan="3" class="tdganjil"><input name="textfield322" type="text" class="inptype" size="30"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Short Name</td>
+      <td colspan="3" class="tdganjil"> <input name="textfield322" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Initial Name</td>
+      <td colspan="3" class="tdganjil"><input name="textfield322" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">NPWP</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">TDP</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">SIUP</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3552" type="text" class="inptype" size="30"> 
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">Address</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Address</td>
+      <td colspan="3" class="tdganjil"><textarea name="textarea" cols="30" rows="5" class="inptype"></textarea></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RT/RW</td>
+      <td colspan="3" class="tdganjil"><input name="textfield22222422" type="text" class="inptype" size="5">
+        / 
+        <input name="textfield22222423" type="text" class="inptype" size="5"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kelurahan</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3532" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kecamatan</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3533" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">City</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3534" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Zip Code</td>
+      <td colspan="3" class="tdganjil"><input name="textfield2222" type="text" class="inptype" size="10"> 
+        <a href="javascript:;" onClick="MM_openBrWindow('../Lookup/ZipCodeLookUp.htm','ZipCode','scrollbars=yes,width=900,height=500')"><img src="../Images/IconDetail.gif" width="15" height="15" align="absmiddle" border="0"></a> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 1</td>
+      <td colspan="3" class="tdganjil"><input name="textfield2222242" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield2222342" type="text" class="inptype" size="10"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 2</td>
+      <td colspan="3" class="tdganjil"><input name="textfield2222243" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield2222343" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Fax No.</td>
+      <td colspan="3" class="tdganjil"><input name="textfield2222244" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield2222344" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau"><strong>Contact Person</strong></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Name</td>
+      <td colspan="3" class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Job Title</td>
+      <td colspan="3" class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Email</td>
+      <td colspan="3" class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Mobile Phone</td>
+      <td colspan="3" class="tdganjil"><input name="textfield353" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">Supplier Data</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Start Date</td>
+      <td width="21%" class="tdganjil"><input name="textfield2242" type="text" class="inptype" size="20"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+      <td width="18%" class="tdgenap">End Date</td>
+      <td width="39%" class="tdganjil"><input name="textfield22422" type="text" class="inptype" size="20"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bad Status</td>
+      <td colspan="3" class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton" checked="true">
+              Normal </td>
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton">
+              Bad </td>
+            <td width="25%"><input type="radio" name="radiobutton-3" value="radiobutton">
+              Warning </td>
+            <td width="25%">&nbsp;</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Level</td>
+      <td colspan="3" class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton" checked="true">
+              Utama </td>
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Aktif </td>
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Biasa </td>
+            <td width="25%"><input type="radio" name="radiobutton-5" value="radiobutton">
+              Pasif </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Variety Of Asset Sell</td>
+      <td colspan="3" class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"> <input type="checkbox" name="checkbox" value="checkbox">
+              Automotif</td>
+            <td width="25%"><input type="checkbox" name="checkbox2" value="checkbox">
+              Motor Cycle</td>
+            <td width="25%"><input type="checkbox" name="checkbox3" value="checkbox">
+              Electronic</td>
+            <td width="25%"><input type="checkbox" name="checkbox4" value="checkbox">
+              Others</td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Supplier Type</td>
+      <td class="tdganjil"><input type="radio" name="radiobutton-5" value="radiobutton" checked="true">
+        Traditional</td>
+      <td colspan="2" class="tdganjil"><input type="radio" name="radiobutton-5" value="radiobutton" checked="true">
+        Modern</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Photo Attachment</td>
+      <td colspan="3" class="tdganjil"><input name="textfield22424" type="text" class="inptype" size="50">
+        <input name="Submit" type="submit" class="inptype" value="Browse..."> 
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">Automotive Data</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> BPKB Registration Status</td>
+      <td colspan="3" class="tdganjil"> <input type="radio" name="radiobutton1" value="radiobutton" checked="true">
+        Yes 
+        <input type="radio" name="radiobutton1" value="radiobutton">
+        No</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Plafond Amount of Vendor</td>
+      <td colspan="3" class="tdganjil"><table width="100%" height="22" border="0" cellpadding="0" cellspacing="0">
+          <tr> 
+            <td><input name="textfield22423" type="text" class="inptype" size="20"></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Asset Sold</td>
+      <td colspan="3" class="tdganjil"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td width="25%"><input type="radio" name="radiobutton-4" value="radiobutton">
+              New </td>
+            <td width="25%"><input type="radio" name="radiobutton-4" value="radiobutton">
+              Used </td>
+            <td width="25%"><input type="radio" name="radiobutton-2" value="radiobutton">
+              ex CBU</td>
+            <td width="25%"><input name="radiobutton-4" type="radio" value="radiobutton" checked>
+              Mixed</td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="SupplierAssignBranch.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"></a>
+        <a href="Suplier.htm"><img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

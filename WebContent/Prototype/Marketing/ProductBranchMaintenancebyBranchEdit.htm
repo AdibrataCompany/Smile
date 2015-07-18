@@ -1,0 +1,1027 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">PRODUCT BRANCH - EDIT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="40%" class="tdgenap"> Branch</td>
+      <td class="tdganjil"> <p> PALMERAH<br>
+        </p></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Product ID</td>
+      <td class="tdganjil">PRDTMBLNIDR</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Description </td>
+      <td class="tdganjil"><p>Product Mobil Baru Rupiah</p></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">General</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Currency</td>
+      <td class="tdganjil"><p>IDR</p></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Score Scheme</td>
+      <td class="tdganjil"><p>Scoring Mobil Baru</p></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Journal Scheme </td>
+      <td class="tdganjil">Jurnal Mobil Baru</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Approval Scheme</td>
+      <td class="tdganjil">Approval Mobil Baru</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Finance Type</td>
+      <td class="tdganjil">DF</td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Credit Scheme</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Gross Yield Rate</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 % Minimum</td>
+            <td><input name="textfield322527232" type="text" class="inptype" size="10">
+              % 
+              <select name="select5">
+                <option selected>Minimum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Effective Rate</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>14 % Minimum</td>
+            <td> <input name="textfield32252723" type="text" class="inptype" value="15" size="10">
+              % 
+              <select name="select2">
+                <option>Default</option>
+                <option>Locked</option>
+                <option selected>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Maximum Tenor</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 months</td>
+            <td><input name="textfield322527242" type="text" class="inptype" size="10">
+              months </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td height="48" class="tdgenap"> Minimum Tenor</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 months</td>
+            <td><input name="textfield32252724" type="text" class="inptype" size="10">
+              months </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Fees</td>
+    </tr>
+    <tr> 
+      <td width="40%" class="tdgenap"> Late Charges Percentage (Installment)</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 &#8240; / day Default </td>
+            <td><input name="textfield32252725" type="text" class="inptype" size="10"> 
+              &#8240; / day 
+              <select name="select7">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Late Charges Percentage (Insurance)</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 &#8240; / day Default </td>
+            <td><input name="textfield322527252" type="text" class="inptype" size="10"> 
+              &#8240; / day 
+              <select name="select8">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Cancellation Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield32252726" type="text" class="inptype" size="20"> 
+              <select name="select9">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Admin Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527262" type="text" class="inptype" size="20"> 
+              <select name="select10">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Fiducia Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527263" type="text" class="inptype" size="20"> 
+              <select name="select11">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Provision Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527264" type="text" class="inptype" size="20"> 
+              <select name="select12">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Notary Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527265" type="text" class="inptype" size="20"> 
+              <select name="select13">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Survey Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527266" type="text" class="inptype" size="20"> 
+              <select name="select14">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Visit Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527267" type="text" class="inptype" size="20"> 
+              <select name="select15">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Reschedulling Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527268" type="text" class="inptype" size="20"> 
+              <select name="select16">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Change Due Date Reschedulling Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272610" type="text" class="inptype" size="20"> 
+              <select name="select18">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Asset Replacement Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272611" type="text" class="inptype" size="20"> 
+              <select name="select19">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Reposses Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272612" type="text" class="inptype" size="20"> 
+              <select name="select20">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Legalized Document Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272613" type="text" class="inptype" size="20"> 
+              <select name="select21">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> PDC Bounce Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272614" type="text" class="inptype" size="20"> 
+              <select name="select22">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Insurance Admin Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272615" type="text" class="inptype" size="20"> 
+              <select name="select24">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Insurance Stamp Duty Fee</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield3225272616" type="text" class="inptype" size="20"> 
+              <select name="select25">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Credit Process</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> PO Expiration Days</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default</td>
+            <td><input name="textfield32252727" type="text" class="inptype" size="10">
+              days 
+              <select name="select27">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Installment Tolerance Amount</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield32252726162" type="text" class="inptype" size="20"> 
+              <select name="select28">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Minimum DP Percentage</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 % Default</td>
+            <td><input name="textfield322527233" type="text" class="inptype" size="10">
+              % 
+              <select name="select29">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Minimum Interest Income to be Rejected</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Minimum</td>
+            <td><input name="textfield322527261622" type="text" class="inptype" size="20"> 
+              <select name="select30">
+                <option selected>Minimum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Minimum Interest Income to be Warned</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Minimum</td>
+            <td><input name="textfield322527261623" type="text" class="inptype" size="20"> 
+              <select name="select">
+                <option selected>Minimum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Maximum % from Upping Bunga to Supplier</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 % Maximum</td>
+            <td><input name="textfield322527233" type="text" class="inptype" size="10">
+              % 
+              <select name="select29">
+                <option selected>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Collection</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Create SP Automacally</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td> Yes Length SP Process 99 days </td>
+            <td> <select name="select32">
+                <option selected>Yes</option>
+                <option>No</option>
+              </select>
+              Length SP Process 
+              <input name="textfield33232952" type="text" class="inptype" size="10">
+              days 
+              <select name="select32">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Create SP 1 Automacally</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td> Yes Length SP 1 Process 99 days </td>
+            <td> <select name="select23">
+                <option selected>Yes</option>
+                <option>No</option>
+              </select>
+              Length SP 1 Process 
+              <input name="textfield332329522" type="text" class="inptype" size="10">
+              days </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Create SP 2 Automacally</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td> Yes Length SP 2 Process 99 days </td>
+            <td> <select name="select26">
+                <option selected>Yes</option>
+                <option>No</option>
+              </select>
+              Length SP 2 Process 
+              <input name="textfield332329523" type="text" class="inptype" size="10">
+              days </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Length Main Document Processed</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default</td>
+            <td><input name="textfield322527272" type="text" class="inptype" size="10">
+              days 
+              <select name="select33">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Length Main Document Taken</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default</td>
+            <td><input name="textfield3225272722" type="text" class="inptype" size="10">
+              days 
+              <select name="select34">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Grace Period late Charges</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default</td>
+            <td><input name="textfield3225272723" type="text" class="inptype" size="10">
+              days 
+              <select name="select35">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Prepayment Penalty rate</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99.999999 % Default</td>
+            <td><input name="textfield3225272332" type="text" class="inptype" size="10">
+              % 
+              <select name="select36">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Days to remind Installment</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield32252728" type="text" class="inptype" size="10">
+              days 
+              <select name="select37">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Days overdue to call</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield32252729" type="text" class="inptype" size="10">
+              days 
+              <select name="select38">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Previous overdue to remind</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527210" type="text" class="inptype" size="10"> 
+              <select name="select39">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Days to remind by SMS</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527212" type="text" class="inptype" size="10">
+              days 
+              <select name="select41">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Days to generate DCR</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527213" type="text" class="inptype" size="10">
+              days 
+              <select name="select42">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Days to generate RAL</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527215" type="text" class="inptype" size="10">
+              days 
+              <select name="select44">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> RAL Period</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527216" type="text" class="inptype" size="10">
+              days 
+              <select name="select45">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Maximum Promise To Pay days</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527218" type="text" class="inptype" size="10">
+              days 
+              <select name="select47">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Promise to Pay to Bank</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527219" type="text" class="inptype" size="10">
+              days 
+              <select name="select48">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Promise to Pay to Company</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527220" type="text" class="inptype" size="10">
+              days 
+              <select name="select49">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Promise to Pay to Supplier</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527221" type="text" class="inptype" size="10">
+              days 
+              <select name="select50">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> RAL Extension</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527222" type="text" class="inptype" size="10">
+              days 
+              <select name="select51">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Inventory Expected</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>99 days Default </td>
+            <td><input name="textfield322527223" type="text" class="inptype" size="10">
+              days 
+              <select name="select52">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Billing Charges</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield32252722" type="text" class="inptype" size="20"> 
+              <select name="select53">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="tdjudulhijau">Finance</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Limit A/P Disbursement at Branch</td>
+      <td class="tdganjil"> <table width="100%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+          <tr class="tdjudulhijau"> 
+            <td width="50%">From HO</td>
+            <td width="50%">Branch</td>
+          </tr>
+          <tr class="tdganjil"> 
+            <td>999,999,9999 Default </td>
+            <td><input name="textfield322527224" type="text" class="inptype" size="20"> 
+              <select name="select54">
+                <option selected>Default</option>
+                <option>Locked</option>
+                <option>Minimum</option>
+                <option>Maximum</option>
+              </select></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Active</td>
+      <td class="tdganjil"> <input type="radio" name="radiobutton" value="radiobutton" checked="true">
+        Yes 
+        <input type="radio" name="radiobutton" value="radiobutton">
+        No</td>
+    </tr>
+  </table>
+
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:history.go(-1);"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td colspan="3"><font color="red"><i>*) required field</i></font></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopihijau"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">NEGATIVE LIST - EDIT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">CUSTOMER NAME</td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Name</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3" type="text" class="inptype" value="Ratna" size="40"> 
+        <font color="red">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">ID Type</td>
+      <td colspan="3" class="tdganjil"><select name="select2">
+          <option>Select One</option>
+          <option selected>Kartu Tanda Penduduk</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">ID Number</td>
+      <td colspan="3" class="tdganjil"><input name="textfield32" type="text" class="inptype" value="222555888" size="30"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Birth Place / Date</td>
+      <td colspan="3" class="tdganjil"><input name="textfield33" type="text" class="inptype" value="Jakarta" size="20">
+        / 
+        <input name="textfield332" type="text" class="inptype" value="06/08/1970" size="20"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+        <font color="red">&nbsp;</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="height: 22px">Mother Maiden Name</td>
+      <td colspan="3" class="tdganjil" style="height: 22px"><input name="textfield32" type="text" class="inptype" value="" size="30"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau"> ADDRESS <font color="red">*)</font> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Address</td>
+      <td colspan="3" class="tdganjil"><textarea name="textfield342" cols="50" rows="5" class="inptype">Pantai Indah Kapuk
+</textarea> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RT/RW</td>
+      <td colspan="3" class="tdganjil"><input name="textfield222224" type="text" class="inptype" size="5">
+        / 
+        <input name="textfield222225" type="text" class="inptype" size="5"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kelurahan</td>
+      <td colspan="3" class="tdganjil"><input name="textfield343" type="text" class="inptype" value="Penjaringan" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kecamatan</td>
+      <td colspan="3" class="tdganjil"><input name="textfield344" type="text" class="inptype" value="Pluit" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">City</td>
+      <td colspan="3" class="tdganjil"><input name="textfield352" type="text" class="inptype" value="Jakarta" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Zip Code</td>
+      <td colspan="3" class="tdganjil"><input name="textfield222" type="text" class="inptype" value="14450" size="10"> 
+        <a href="javascript:;" onClick="MM_openBrWindow('../Lookup/ZipCodeLookUp.htm','ZipCode','scrollbars=yes,width=900,height=500')"><img src="../Images/IconDetail.gif" width="15" height="15" align="absmiddle" border="0"></a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 1</td>
+      <td colspan="3" class="tdganjil"><input name="textfield22222" type="text" class="inptype" value="021" size="5">
+        - 
+        <input name="textfield22223" type="text" class="inptype" value="9999999" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 2</td>
+      <td colspan="3" class="tdganjil"><input name="textfield222222" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield222232" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="height: 24px">Fax No.</td>
+      <td colspan="3" class="tdganjil" style="height: 24px"><input name="textfield222223" type="text" class="inptype" size="5">
+        - 
+        <input name="textfield222233" type="text" class="inptype" size="10"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Mobile Phone</td>
+      <td colspan="3" class="tdganjil"><input name="textfield222226" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">E-mail</td>
+      <td colspan="3" class="tdganjil"><input name="textfield2222262" type="text" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">NEGATIVE DATA</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bad Type</td>
+      <td width="25%" class="tdganjil"><select name="select">
+          <option>Bad</option>
+          <option selected>Warning</option>
+        </select></td>
+      <td width="25%" class="tdgenap">Overdue Days </td>
+      <td width="25%" class="tdganjil">99 Agreements</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Data Source</td>
+      <td class="tdganjil" style="width: 193px"><select name="select3">
+          <option>APPI</option>
+          <option>Newspapers</option>
+          <option>Others</option>
+          <option selected>System</option>
+        </select></td>
+      <td class="tdgenap">Rejected Application</td>
+      <td class="tdganjil">99 Applications</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="height: 25px">Still Active</td>
+      <td class="tdganjil" style="height: 25px"> <input name="radiobutton" type="radio" value="radiobutton" checked>
+        Yes 
+        <input type="radio" name="radiobutton" value="radiobutton">
+        No</td>
+      <td class="tdgenap" style="height: 25px">PDC Bounce</td>
+      <td class="tdganjil" style="height: 25px">99 Times</td>
+    </tr>
+    <tr>
+      <td class="tdgenap" style="height: 18px"></td>
+      <td class="tdganjil" style="height: 18px"> </td>
+      <td class="tdgenap" style="height: 18px">SKT / RAL</td>
+      <td class="tdganjil" style="height: 18px">99 Times</td>
+    </tr>
+	<tr>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil"> &nbsp;</td>
+      <td class="tdgenap">Inventory</td>
+      <td class="tdganjil">99 Units</td>
+    	</tr>
+		<tr>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil"> &nbsp;</td>
+      <td class="tdgenap">Write Off</td>
+      <td class="tdganjil">99 Times</td>
+    	</tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">NOTES</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdganjil"><textarea name="textarea2" cols="100" rows="5" class="inptype"></textarea></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:history.go(-1);"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

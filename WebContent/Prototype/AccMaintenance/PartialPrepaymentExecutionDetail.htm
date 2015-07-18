@@ -1,0 +1,455 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+
+.tdjudul
+{
+	background-color: #E6F1FF;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.style3 {
+	background-color: #FFFFFF;
+	text-align: right;
+}
+
+.style5 {
+	background-color: #E6F1FF;
+	font-weight: bold;
+	font-size: 10px;
+	text-align: right;
+}
+
+.style4 {
+	text-align: right;
+}
+
+</style>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PARTIAL ASSET PREPAYMENT EXECUTION</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Request No</td>
+      <td class="tdganjil">xxxx9999xxxx</td>
+      <td class="tdgenap">Request Date</td>
+      <td class="tdganjil">99/99/9999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Agreement Branch</td>
+      <td class="tdganjil">xxxxxxxxxxxx</td>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap" style="height: 18px">Agreement No</td>
+      <td width="25%" class="tdganjil" style="height: 18px"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewAgreement.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td width="25%" class="tdgenap" style="height: 18px">Customer Name</td>
+      <td width="25%" class="tdganjil" style="height: 18px"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Next Due Date</td>
+      <td width="25%" class="tdganjil">99/99/9999</td>
+      <td width="25%" class="tdgenap">Effective Date</td>
+      <td width="25%" class="tdganjil">99/99/9999</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Prepayment Type</td>
+      <td colspan="3" class="tdganjil">xxxxxx99xxxxx</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdjudulbiru"><div align="left">ASSET LIST</div></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td>&nbsp;</td>
+      <td><div align="center">Asset Description</div></td>
+      <td><div align="center">OTR Price</div></td>
+      <td><div align="center">DP Amount</div></td>
+      <td><div align="center">NTF</div></td>
+      <td><div align="center">Serial No 1 Label</div></td>
+      <td><div align="center">Serial No 1 Label</div></td>
+      <td><div align="center">Cross</div></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td><input type="checkbox" name="checkbox5" value="checkbox" checked=""></td>
+      <td>xxxx50xxxx</td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td>xxxx20xxxx</td>
+      <td>xxxx20xxxx</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td><input type="checkbox" name="checkbox6" value="checkbox" checked=""></td>
+      <td>xxxx50xxxx</td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td>xxxx20xxxx</td>
+      <td>xxxx20xxxx</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td><input type="checkbox" name="checkbox4" value="checkbox"></td>
+      <td>xxxx50xxxx</td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td><div align="right">999,999,999.99</div></td>
+      <td>xxxx20xxxx</td>
+      <td>xxxx20xxxx</td>
+      <td>Yes</td>
+    </tr>
+  </table>
+  <table class="tablegrid" cellSpacing="1" cellPadding="3" width="95%" align="center" border="0">
+			<tr>
+				<td class="tdjudul" colSpan="4">PAYMENT INFORMATION DETAIL</td>
+			</tr>
+			<tr>
+				<td class="tdgenap">Partial Principal</td>
+				<td class="tdganjil" align="right" width="25%">
+				<span id="lblPartialPrinciple">0.00</span></td>
+				<td class="tdgenap">Partial Interest</td>
+				<td class="tdganjil" align="right" width="25%">
+				<span id="lblPartialInterest">0.00</span></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" width="25%">Partial Accrued Interest</td>
+				<td class="tdganjil" align="right" width="25%">0.00</td>
+				<td class="tdgenap" width="25%">Installment Due</td>
+				<td class="tdganjil" align="right" width="25%">508,926,000.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" width="25%">Insurance Premium Due</td>
+				<td class="tdganjil" align="right" width="25%">382,412,500.00</td>
+				<td class="tdgenap" width="25%">Install. Late Charges</td>
+				<td class="tdganjil" align="right" width="25%">64,152,400.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" width="25%">Insurance Late Charges</td>
+				<td class="tdganjil" align="right" width="25%">45,889,500.00</td>
+				<td class="tdgenap" width="25%">PDC Bounce Fee</td>
+				<td class="tdganjil" align="right" width="25%">45,000.00</td>
+			</tr>
+			<tr>
+				<td class="tdgenap" width="25%">Repossession Fee</td>
+				<td class="tdganjil" align="right" width="25%">0.00</td>
+				<td class="tdgenap">Penalty Fee</td>
+				<td class="tdganjil" align="right" width="25%">
+				<span id="lblPenaltyFee">0.00</span></td>
+			</tr>
+			<tr>
+				<td class="tdgenap" align="right" colSpan="3"><b>Total 
+				Prepayment Amount</b></td>
+				<td class="tdganjil" align="right" width="25%">
+				<span id="lblTotalPrepaymentAmount">1,001,425,400.00</span></td>
+			</tr>
+		</table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="2" class="tdjudulbiru">DISCOUNT ENTRY</td>
+      <td colspan="2" class="tdjudulbiru"><div align="right"></div></td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap" style="height: 18px"> Termination Penalty 
+		Fee</td>
+      <td width="25%" align="right" class="style3" style="height: 18px">  
+          999,999,999.99</td>
+      <td width="25%" class="tdgenap" style="height: 18px">Installment Late 
+		Charges</td>
+      <td width="25%" align="right" class="style3" style="height: 18px">  
+          999,999,999.99</td>
+    </tr>
+    <tr>
+      <td width="25%" class="tdgenap" style="height: 18px"> Insurance Late 
+		Charges</td>
+      <td width="25%" align="right" class="style3" style="height: 18px">  
+          999,999,999.99</td>
+      <td width="25%" class="tdgenap" style="height: 18px">PDC Bounce Fee</td>
+      <td width="25%" align="right" class="style3" style="height: 18px">  
+          999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap" style="height: 18px"> Repossess Fee</td>
+      <td width="25%" align="right" class="style3" style="height: 18px"> 999,999,999.99</td>
+      <td width="25%" class="tdgenap" style="height: 18px">Accrued Interest</td>
+      <td width="25%" align="right" class="style3" style="height: 18px">  
+          999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" colspan="3"><strong>Total Discount</strong></td>
+      <td align="right" class="tdganjil"><strong>999,999,999.99</strong></td>
+    </tr>
+    <tr>
+      <td colspan="4" class="tdjudulbiru">AGREEMENT STATUS</td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap">Contract Status</td>
+      <td width="25%" class="tdganjil">Live/Reposes</td>
+      <td width="25%" class="tdgenap">Default Status</td>
+      <td width="25%" class="tdganjil">Normal/NA/WO</td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap">Installment Amount</td>
+      <td width="25%" class="style3">999,999,999.99</td>
+      <td width="25%" class="tdgenap">Next Installment Due</td>
+      <td width="25%" class="tdganjil">99/99/9999 | Installment xx</td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap">Funding Coy Name</td>
+      <td width="25%" class="tdganjil">xxxx99xxxx</td>
+      <td width="25%" class="tdgenap">Funding Pledge Status</td>
+      <td width="25%" class="tdganjil">xxxx99xxxx</td>
+    </tr>
+	<tr>
+      <td class="tdgenap">Cross Default</td>
+      <td class="tdganjil">Yes/No</td>
+      <td class="tdgenap">Cross Collateral</td>
+      <td class="tdganjil">Yes/No </td>
+    </tr>
+	<tr>
+      <td colspan="4" class="tdjudulbiru">NEW FINANCIAL STRUCTURE</td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap" style="height: 18px">New Principal Amount</td>
+      <td width="25%" class="style3" style="height: 18px">999,999,999.99</td>
+      <td width="25%" class="tdgenap" style="height: 18px"></td>
+      <td width="25%" class="tdganjil" style="height: 18px"></td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap">Effective Rate</td>
+      <td width="25%" class="style3">999,999,999.99</td>
+      <td width="25%" class="tdgenap">Flat Rate / Year</td>
+      <td width="25%" class="style3">99,999 %</td>
+    </tr>
+	<tr>
+      <td width="25%" class="tdgenap">Number Of Installment</td>
+      <td width="25%" class="style3">99</td>
+      <td width="25%" class="tdgenap">Tenor</td>
+      <td width="25%" class="style3">99</td>
+    </tr>
+	<tr>
+      <td class="tdgenap">Installment Amount</td>
+      <td class="style3">999,999,999.99&nbsp;</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    </table>
+    <br>
+      <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">VIEW INSTALLMENT&nbsp;</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulbiru"> 
+      <td>NO</td>
+      <td>DUE DATE</td>
+      <td>INSTALLMENT</td>
+      <td>PRINCIPAL</td>
+      <td>INTEREST</td>
+      <td>OUTSTANDING 
+		PRINCIPAL</td>
+      <td>OUTSTANDING 
+		INTEREST</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+        <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+        <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td align="center">99/99/9999</td>
+      <td>999,999,999.99</td>
+      <td align="right"><div align="center">999,999,999.99</div></td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+      <td align="center">999,999,999.99</td>
+    </tr>
+  </table>
+   <br>
+     <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">PARTIAL ASSET PREPAYMENT REQUEST DETAIL</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Reason</td>
+      <td class="tdganjil"><select name="select5">
+          <option selected>Select One</option>
+          <option>Normal Prepayment</option>
+          <option>Repossession</option>
+        </select></td>
+      <td class="tdgenap">Approved By</td>
+      <td class="tdganjil"><select name="select3">
+          <option selected>Select One</option>
+          <option>Administration Head</option>
+          <option>Branch Manager</option>
+          <option>Director</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Alternate User</td>
+      <td class="tdganjil"><select name="select6">
+          <option selected>Select One</option>
+          <option>Administration Head</option>
+          <option>Branch Manager</option>
+          <option>Director</option>
+        </select></td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap">Approval Recommendation</td>
+      <td colspan="3" class="tdganjil">
+		<textarea name="textfield32229" cols="80" rows="2" class="inptype"></textarea></td>
+    </tr>
+    
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="style5"><strong>Total Amount To Be Paid : 999,999,999.99</strong></td>
+    </tr>
+    <tr> 
+      <td class="style5"><strong>Tolerance Amount : 999, 999, 999.99</strong></td>
+    </tr>
+    <tr> 
+      <td class="style5"><div align="right" class="style4">Prepaid Amount : 999,999,999.99</div></td>
+    </tr>
+    <tr> 
+      <td class="tdjudulbiru"><div align="right">Balance : 999,999,999.99</div></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"> <a href="javascript:history.go(-1);"><img src="../Images/ButtonExecution.gif" width="100" height="20" border="0"></a> 
+        <a href="javascript:history.go(-1);"><img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a> 
+      &nbsp; 
+      </td>
+    </tr>
+  </table>
+  
+</div>
+</body>
+</html>

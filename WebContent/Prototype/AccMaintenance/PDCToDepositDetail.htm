@@ -1,0 +1,125 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">PDC TO DEPOSIT DETAIL</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="20%" class="tdgenap">PDC Due Date &lt;=</td>
+      <td width="30%" class="tdganjil">dd/mm/yyyy</td>
+      <td width="20%" class="tdgenap">Bank PDC </td>
+      <td class="tdganjil">All</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Inkaso Flag</td>
+      <td class="tdganjil">All </td>
+      <td class="tdgenap">Cumulative Flag</td>
+      <td class="tdganjil">No </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Deposit To Bank</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Select One</option>
+          <option>Citi Bank Escrow</option>
+          <option>BCA Escrow</option>
+        </select> </td>
+      <td class="tdgenap">Reference No</td>
+      <td class="tdganjil"><input name="textfield32322" type="text" class="inptype" size="15"></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="8%" align="center">BANK PDC </td>
+      <td width="10%" align="center">PDC NO.</td>
+      <td width="15%" align="center"><u> ISSUE NAME</u></td>
+      <td width="11%" align="center">DUE DATE</td>
+      <td width="14%" align="center"> AMOUNT</td>
+      <td width="7%" align="center">DEPOSIT NO</td>
+      <td width="7%" align="center">INKASO</td>
+      <td width="5%" align="center">CUMM</td>
+      <td width="7%" align="center">TYPE</td>
+      <td width="7%" align="center">BOUNCE</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">BG</td>
+      <td align="center">0</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">Cheque</td>
+      <td align="center">1</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td>Citi Bank</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">BG</td>
+      <td align="center">0</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td>BCA</td>
+      <td align="center"><a href="PDCView.htm">XX 99999</a></td>
+      <td>XXXXX XXXXX</td>
+      <td align="center">dd/mm/yyyy</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">-</td>
+      <td align="center">No</td>
+      <td align="center">No</td>
+      <td align="center">Cheque</td>
+      <td align="center">1</td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td>Total</td>
+      <td align="center">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="right">999,999,999,99</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="javascript:history.go(-2);"><img src="../Images/ButtonDeposit.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"> 
+        </a><a href="javascript:history.go(-2);"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

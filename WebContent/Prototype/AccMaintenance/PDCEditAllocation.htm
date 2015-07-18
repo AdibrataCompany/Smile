@@ -1,0 +1,156 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">RECEIVE PDC MULTI TRANSACTION</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Agreement Branch</td>
+      <td class="tdganjil">xxxxxxxxxxxxx</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Agreement No</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td class="tdgenap">Customer Name</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Installment Amount</td>
+      <td class="tdganjil"><div align="right">999,999,999.99</div></td>
+      <td class="tdgenap">Next Installment Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+    </tr>
+    <tr> 
+      <td width="20%" class="tdgenap">Receive From</td>
+      <td width="30%" class="tdganjil">xxxxxxxxxxxxx</td>
+      <td class="tdgenap">Receipt No</td>
+      <td class="tdganjil">xxxxxxxxxxxxx</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC No.</td>
+      <td class="tdganjil">xxxxx999xxxxxxxx</td>
+      <td class="tdgenap">PDC Amount</td>
+      <td class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Due Date</td>
+      <td class="tdganjil"><input name="textfield324" type="text" class="inptype" size="15" value="99/99/9999"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"></td>
+      <td class="tdgenap">Bank PDC </td>
+      <td class="tdganjil"><select name="select2">
+          <option >Select One</option>
+          <option selected>Citi Bank</option>
+          <option>Bank Central Asia</option>
+          <option>Lippo Bank</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Inkaso Flag</td>
+      <td class="tdganjil"><input type="radio" name="radiobutton" value="radiobutton">
+        Yes 
+        <input name="radiobutton" type="radio" value="radiobutton" checked>
+        No</td>
+      <td class="tdgenap">PDC Type</td>
+      <td class="tdganjil"><input name="radiobutton2" type="radio" value="radiobutton" checked>
+        BG 
+        <input name="radiobutton2" type="radio" value="radiobutton">
+        Cheque </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Cumulative Flag</td>
+      <td class="tdganjil"><input type="radio" name="radiobutton1" value="radiobutton">
+        Yes 
+        <input name="radiobutton1" type="radio" value="radiobutton" checked>
+        No</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">PDC TRANSACTION DETAIL</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Transaction</td>
+      <td class="tdganjil"><input name="textfield32242" type="text" class="inptype" size="25"> 
+        <a href="javascript:;" onClick="MM_openBrWindow('../Lookup/PaymentAllocationLookUp.htm','LookUp','width=700,height=520')"><img src="../Images/IconDetail.gif" width="15" height="15" border="0" align="absmiddle"></a></td>
+      <td class="tdgenap">Amount</td>
+      <td class="tdganjil"><input name="textfield322" type="password" class="inptype" size="20"></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Description</td>
+      <td colspan="3" class="tdganjil"><input name="textfield3223" type="text" class="inptype" size="50"> 
+      </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="PDCEditAllocation.htm"><img src="../Images/ButtonAdd.gif" width="100" height="20" border="0"> 
+        </a><img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"> </td>
+    </tr>
+  </table>
+
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">TRANSACTION LIST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulbiru"> 
+      <td width="10%" align="center">TRANSACTION</td>
+      <td width="20%" align="center">DESCRIPTION</td>
+      <td width="20%" align="center">AMOUNT</td>
+      <td width="10%" align="center">DELETE</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td>Installment Receive</td>
+      <td>Installment ke xx</td>
+      <td align="right">999,999,999.99</td>
+      <td align="center"><img src="../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td>Insurance Premium</td>
+      <td>Insurance Premi Polis xxxxxxxxxx</td>
+      <td align="right">999,999,999.99</td>
+      <td align="center"><img src="../Images/IconDelete.gif" width="16" height="16"></td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td align="center">&nbsp;</td>
+      <td>Total</td>
+      <td align="right">999,999,999.99</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="PDCEdit.htm"><img src="../Images/ButtonSave.gif" width="100" height="20" border="0"> 
+        </a><a href="PDCEdit.htm"><img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a><a href="javascript:history.go(-2);"> 
+        </a> </td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

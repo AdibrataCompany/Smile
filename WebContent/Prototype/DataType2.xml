@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<MsMenu>
+<MsMenuItem valstring2 = 'x2x' vphone = 'xx4xx - xxxxx10xxxxx' valstring3 ='xx3xx'  valstring10='xxxxx10xxxxx' valstring16='xxxxx16xxxxx' valstring20='xxxxx20xxxxx' valstring30='xxxxx30xxxxx' valstring25='xxxxx25xxxxx' valstring50 = 'xxxxxxxx50xxxxxxxx' valstring100 = 'xxxxxxxx100xxxxxxxx' valamount='9,999,999,999'  valunit = '9,999' valid = '99' valnum4 = '9999' valnum9 = '999,999,999' valdate='dd/mm/yyyy' vyear = 'YYYY' vmonth = 'January '  vassettype = 'New'  valBool='True'  valyesno='Yes'/>
+<MsMenuItem valstring2 = 'x2x' vphone = 'xx4xx - xxxxx10xxxxx' valstring3 ='xx3xx'  valstring10='xxxxx10xxxxx' valstring16='xxxxx16xxxxx' valstring20='xxxxx20xxxxx' valstring30='xxxxx30xxxxx' valstring25='xxxxx25xxxxx' valstring50 = 'xxxxxxxx50xxxxxxxx' valstring100 = 'xxxxxxxx100xxxxxxxx' valamount='9,999,999,999'  valunit = '9,999' valid = '99' valnum4 = '9999' valnum9 = '999,999,999' valdate='dd/mm/yyyy' vyear = 'YYYY' vmonth = 'February ' vassettype = 'New'  valBool='True'  valyesno='Yes'/>
+<MsMenuItem valstring2 = 'x2x' vphone = 'xx4xx - xxxxx10xxxxx' valstring3 ='xx3xx'  valstring10='xxxxx10xxxxx' valstring16='xxxxx16xxxxx' valstring20='xxxxx20xxxxx' valstring30='xxxxx30xxxxx' valstring25='xxxxx25xxxxx' valstring50 = 'xxxxxxxx50xxxxxxxx' valstring100 = 'xxxxxxxx100xxxxxxxx' valamount='9,999,999,999'  valunit = '9,999' valid = '99' valnum4 = '9999' valnum9 = '999,999,999' valdate='dd/mm/yyyy' vyear = 'YYYY' vmonth = 'March '    vassettype = 'Used' valBool='False' valyesno='No'/>
+
+</MsMenu>

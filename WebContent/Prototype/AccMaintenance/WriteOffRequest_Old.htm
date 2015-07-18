@@ -1,0 +1,131 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">WRITE OFF REQUEST</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap">Agreement Branch</td>
+      <td class="tdganjil">xxxxxxxxxx</td>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Agreement No</td>
+      <td width="30%" class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td width="25%" class="tdgenap">Customer Name</td>
+      <td class="tdganjil"><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxxxxxxxx50xxxxxxxxxx</a></td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Last Payment Date</td>
+      <td width="30%" class="tdganjil">dd/mm/yyyy</td>
+      <td width="25%" class="tdgenap">Past Due</td>
+      <td width="30%" class="tdganjil">999 day(s)</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Stop Accrued Date</td>
+      <td class="tdganjil">dd/mm/yyyy</td>
+      <td class="tdgenap">NPL Amount</td>
+      <td class="tdganjil"><div align="right">999,999,999.99</div></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulbiru">ACCOUNT RECEIVABLE AS OF DD/MM/YYYY</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Outstanding Principle</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Outstanding Interest</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Installment Due</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Premium</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"> Install. Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Insurance Late Charges</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">PDC Bounce Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">Repossession Fee</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Accrued Interest</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+      <td class="tdgenap">-/- Prepaid Amount</td>
+      <td align="right" class="tdganjil">999,999,999.99</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td align="right" class="tdganjil">&nbsp;</td>
+      <td class="tdgenap"><strong>TOTAL Acc. Receivable</strong></td>
+      <td align="right" class="tdganjil"><strong>999,999,999.99</strong></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="4" class="tdjudulbiru"><div align="right">WRITE OFF AMOUNT 
+          : 999,999,999.99</div></td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Cross Default</td>
+      <td width="25%" align="right" class="tdganjil"><div align="left">Yes/No</div></td>
+      <td width="25%" class="tdgenap">Cross Collateral</td>
+      <td width="25%" align="right" class="tdganjil"><div align="left">Yes/No</div></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Reason</td>
+      <td class="tdganjil"><select name="select">
+          <option selected>Select one</option>
+          <option>Past Over Due</option>
+        </select></td>
+      <td class="tdgenap">To be approved by</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Select one</option>
+          <option>ADH</option>
+          <option>KaCab</option>
+        </select> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Notes</td>
+      <td colspan="3" align="right" class="tdganjil"><div align="left"> 
+          <textarea name="textarea" cols="80" rows="2" class="inptype"></textarea>
+        </div></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><a href="DueDateChangeRequestDetail.htm"> 
+        </a><a href="javascript:history.go(-1);"><img src="../Images/ButtonRequest.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonCancel.gif" width="100" height="20" border="0"></a><a href="AgreementTDPReceiveDetail.htm"> 
+        </a><a href="AgreementMultiPDCReceiveAdd.htm"> </a> </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

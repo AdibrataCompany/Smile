@@ -1,0 +1,197 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Amortization</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div align="center"> 
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">ACCRUED INCOME</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Customer</td>
+      <td width="25%" class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2">XXXXXXXXXXXXXXX</FONT></B></td>
+      <td width="25%" class="tdgenap">Agreement </td>
+      <td width="25%" class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2">XXXXXXXXXXXXXXXXXX</FONT></B></td>
+    </tr>
+    <tr>
+      <td class="tdgenap">Currency</td>
+      <td class="tdganjil">IDR</td>
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"><FONT face="Tahoma, Verdana" size="2">O/S AR</FONT></td>
+      <td class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2"><span id="lblInstallmentDue">999.999.999.999</span></FONT></B></td>
+      <td class="tdgenap"><FONT face="Tahoma, Verdana" size="2">O/S Principal</FONT></td>
+      <td class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2"><span id="lblInstallmentDue">999.999.999.999</span></FONT></B></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap"><FONT face="Tahoma, Verdana" size="2">O/S Interest</FONT></td>
+      <td class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2"><span id="lblInstallmentDue">999.999.999.999</span></FONT></B></td>
+      <td class="tdgenap"><FONT face="Tahoma, Verdana" size="2">Effective Rate</FONT></td>
+      <td class="tdganjil"><B><FONT face="Tahoma, Verdana" size="2"><span id="lblInstallmentDue">99,99999 
+        % </span></FONT></B></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td height="30"><a href="javascript:history.go(-1);"> </a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopibirukiri">&nbsp;</td>
+      <td align="center" class="tdtopibiru">ACCRUED INCOME LISTING</td>
+      <td width="10" class="tdtopibirukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td align="center" class="tdjudulbiru">INSTALL NO.</td>
+      <td align="center" class="tdjudulbiru"> RECOGNIZED DATE</td>
+      <td align="center" class="tdjudulbiru">INTEREST AMOUNT</td>
+      <td align="center" class="tdjudulbiru">START DATE</td>
+      <td align="center" class="tdjudulbiru">END DATE</td>
+      <td align="center" class="tdjudulbiru">RECOGNIZED DAYS</td>
+      <td align="center" class="tdjudulbiru">ACCRUED INCOME</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">1</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">1</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">2</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">2</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">3</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">3</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">4</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">4</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">5</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap">5</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">6</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="center" class="tdganjil">dd/mm/yyyy</td>
+      <td align="right" class="tdganjil">99</td>
+      <td align="right" class="tdganjil"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdgenap"><p>6</p></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="center" class="tdgenap">dd/mm/yyyy</td>
+      <td align="right" class="tdgenap">99</td>
+      <td align="right" class="tdgenap"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></td>
+    </tr>
+    <tr class="tdjudulbiru"> 
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <TD align="right">&nbsp;</TD>
+      <TD align="right">&nbsp;</TD>
+      <TD align="right">&nbsp;</TD>
+      <TD align="right">TOTAL</TD>
+      <TD align="right"><FONT face="Tahoma, Verdana" size="1">999.999.999.999</FONT></TD>
+    </tr>
+  </table>
+  <div align="center"> 
+    <table width="95%" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td height="30"><img src="../Images/ButtonViewReport.gif" width="100" height="20" border="0"> 
+        </td>
+        <td align="right"><a href="javascript:history.go(-1);"><img src="../Images/ButtonBack.gif" width="100" height="20" border="0"></a> 
+          <a href="javascript:window.close();"><img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>COLLECTION</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../Confins.css">
+<style type="text/css">
+.style5 {
+	text-align: left;
+	color: #FF0000;
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <table style="width: 100%">
+	<tr>
+		<td class="style5">&nbsp;&nbsp;&nbsp; <font color="red"><i>*)&nbsp;&nbsp; required field</i></font></td>
+	</tr>
+	</table>
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopiungukiri">&nbsp;</td>
+      <td align="center" class="tdtopiungu">PREPAYMENT LETTER LISTING</td>
+      <td width="10" class="tdtopiungukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td class="tdgenap" width="21%">Branch</td>
+      <td class="tdganjil"> <select name="select3">
+          <option selected>MEDAN</option>
+          <option>JAMBI</option>
+          <option>PEKANBARU</option>
+          <option>BATAM</option>
+          <option>GRAND WIJAYA</option>
+          <option>BEKASI</option>
+          <option>TANGERANG</option>
+          <option>BANDUNG</option>
+          <option>SEMARANG</option>
+        </select> &nbsp; <font color="#FF0000">*)</font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" width="21%">Search By</td>
+      <td class="tdganjil"> <select name="select">
+          <option selected>Select One</option>
+          <option>Agreement No</option>
+          <option>Customer Name</option>
+          <option>Currency ID</option>
+        </select> <input name="textfield" type="text" class="inptype"> </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr align="right"> 
+      <td><a href="PrepaymentPrintingSearch.aspx">
+		<img src="../../images/ButtonSearch.gif" width="100" height="20" border="0"> 
+        </a><img src="../../images/ButtonReset.gif" width="100" height="20"></td>
+    </tr>
+  </table>
+  <br>
+</div>
+</body>
+</html>

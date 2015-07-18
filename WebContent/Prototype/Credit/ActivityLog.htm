@@ -1,0 +1,189 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">ACTIVITY LOG</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td width="25%" class="tdgenap">Branch</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Palmerah</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Search By</td>
+      <td class="tdganjil"><select name="select2">
+          <option selected>Name</option>
+          <option>Application ID</option>
+          <option>Agreement No</option>
+        </select> <input name="textfield2" type="text" size="20" class="inptype"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Activity Date</td>
+      <td class="tdganjil"><input name="textfield2" type="text" size="20" class="inptype"> 
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+        to 
+        <input name="textfield22" type="text" size="20" class="inptype"> <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle"> 
+      </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Activity Type</td>
+      <td class="tdganjil"><select name="select">
+          <option>All</option>
+          <option>Credit Scoring</option>
+          <option>RCA</option>
+          <option>Approval</option>
+          <option>PO</option>
+          <option>DO</option>
+          <option>Go Live</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Activity By</td>
+      <td class="tdganjil"><select name="select3">
+          <option>All</option>
+        </select></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="50%" height="30">&nbsp;</td>
+      <td width="50%" align="right"><img src="../Images/ButtonSearch.gif" width="100" height="20" border="0"> 
+        <img src="../Images/ButtonReset.gif" width="100" height="20" border="0"> 
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">ACTIVITY LOG</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td align="center"><a href="ActivityLog.htm">ACTIVITY DATE</a></td>
+      <td align="center"><a href="ActivityLog.htm">ACTIVITY TYPE</a></td>
+      <td align="center"><a href="ActivityLog.htm">APPLICATION ID</a></td>
+      <td align="center"><a href="ActivityLog.htm">AGREEMENT NO</a></td>
+      <td align="center"><a href="ActivityLog.htm">CUSTOMER NAME</a></td>
+      <td align="center"><a href="ActivityLog.htm">ACTIVITY BY</a></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">Credit Scoring</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">RCA</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">Approval</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">PO</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">DO</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">Go Live</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">Approval</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">PO</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">DO</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+    <tr class="tdgenap"> 
+      <td align="center">dd/mm/yyyy</td>
+      <td align="center"><div align="left">Go Live</div></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700')">xxxx20xxxx</a></td>
+      <td align="center"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,top=1,left=1')">xxxx20xxxx</a></td>
+      <td><a href="javascript:;" onClick="MM_openBrWindow('../Credit/ViewPersonalCustomer.htm','Customer','scrollbars=yes,width=900,height=700')">xxxx50xxxx</a></td>
+      <td>xxxx50xxxx</td>
+    </tr>
+  </table>
+  <table width="95%" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="30" align="center"><img src="../images/butkiri1.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkiri.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan.gif" width="20" height="20"></td>
+      <td width="30" align="center"><img src="../images/butkanan1.gif" width="20" height="20"></td>
+      <td width="130" align="center">Page 
+        <input type="text" name="textfield222" class="inptype" size="3"> &nbsp; 
+        <img src="../images/butgo.gif" width="30" height="25" align="absmiddle"></td>
+      <td align="right"><font color="#999999">Page x of y, Total x record(s)</font></td>
+    </tr>
+  </table>
+  
+  
+</div>
+</body>
+</html>

@@ -1,0 +1,983 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 10">
+<link rel=File-List href="CAAROverdue_files/filelist.xml">
+<style id="AA-Reports_19556_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+.xl2419556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl2519556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl2619556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:general;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl2719556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl2819556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl2919556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3019556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:right;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3119556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3219556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:0;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3319556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0\.00_\)\;_\(* \\\(\#\,\#\#0\.00\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3419556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:left;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3519556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3619556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:left;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3719556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:0;
+	text-align:general;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3819556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:right;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl3919556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:0;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4019556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:right;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4119556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:right;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4219556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:general;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4319556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:general;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4419556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"_\(* \#\,\#\#0_\)\;_\(* \\\(\#\,\#\#0\\\)\;_\(* \0022-\0022??_\)\;_\(\@_\)";
+	text-align:right;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4519556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:Fixed;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4619556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:Fixed;
+	text-align:general;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4719556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4819556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:"\@";
+	text-align:general;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl4919556
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Courier New", monospace;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+-->
+</style>
+</head>
+
+<body>
+<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+<!--The following information was generated by Microsoft Excel's Publish as Web
+Page wizard.-->
+<!--If the same item is republished from Excel, all information between the DIV
+tags will be replaced.-->
+<!----------------------------->
+<!--START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!----------------------------->
+
+<div id="AA-Reports_19556" align=center x:publishsource="Excel">
+
+<table x:str border=0 cellpadding=0 cellspacing=0 width=613 class=xl2419556
+ style='border-collapse:collapse;table-layout:fixed;width:460pt'>
+ <col class=xl2419556 width=80 style='mso-width-source:userset;mso-width-alt:
+ 2925;width:60pt'>
+ <col class=xl2919556 width=116 style='mso-width-source:userset;mso-width-alt:
+ 4242;width:87pt'>
+ <col class=xl2919556 width=119 style='mso-width-source:userset;mso-width-alt:
+ 4352;width:89pt'>
+ <col class=xl2419556 width=56 span=2 style='mso-width-source:userset;
+ mso-width-alt:2048;width:42pt'>
+ <col class=xl2519556 width=120 style='mso-width-source:userset;mso-width-alt:
+ 4388;width:90pt'>
+ <col class=xl2519556 width=66 style='mso-width-source:userset;mso-width-alt:
+ 2413;width:50pt'>
+ <tr height=17 style='mso-height-source:userset;height:12.75pt'>
+      <td height=17 class=xl2419556 colspan=2 width=196 style='height:12.75pt;
+  width:147pt'><a name="RANGE!A1:G43"></a><a name="RANGE!A1">PT. Clipan Finance 
+        Indonesia </a></td>
+  <td colspan=3 class=xl4919556 width=231 style='width:173pt'>CA Overdue AR</td>
+  <td class=xl2419556 width=120 style='width:90pt'></td>
+  <td class=xl3019556 width=66 style='width:50pt'>ReportID:</td>
+ </tr>
+ <tr height=17 style='mso-height-source:userset;height:12.75pt'>
+  <td height=17 class=xl2419556 colspan=2 style='height:12.75pt'>Jakarta - xxxx</td>
+  <td colspan=3 class=xl4919556>Period: mm/yyyy to mm/yyyy</td>
+  <td class=xl2419556></td>
+  <td class=xl3019556>Page N of M</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td rowspan=2 class=xl4819556 style='border-bottom:.5pt solid black'>Overdue
+  Aging</td>
+  <td colspan=4 class=xl4719556>Overdue</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td class=xl4019556>Unit</td>
+  <td class=xl4019556>Percent</td>
+  <td class=xl4119556 x:str="Amount"><span
+  style='mso-spacerun:yes'> </span>Amount<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl4419556 style='border-top:none' x:str="Percent"><span
+  style='mso-spacerun:yes'> </span>Percent<span
+  style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 colspan=2 style='height:11.25pt'>CA Name:
+  Kastoto-K001</td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3319556 colspan=2 x:str="Bulan: January 2002"><span
+  style='mso-spacerun:yes'> </span>Bulan: January 2002<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl3319556></td>
+  <td class=xl3319556></td>
+  <td class=xl3319556></td>
+  <td class=xl3319556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl2919556>Total A/R</td>
+  <td class=xl3519556 align=right x:num>150</td>
+  <td class=xl3519556></td>
+  <td class=xl3819556 x:num="17000000000"><span
+  style='mso-spacerun:yes'> </span>17,000,000,000 </td>
+  <td class=xl3819556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td class=xl3419556>1-15</td>
+  <td class=xl2419556 align=right x:num>5</td>
+  <td class=xl4519556 align=right x:num="3.3333333333333335"
+  x:fmla="=D9/$D$8*100">3.33</td>
+  <td class=xl2519556 x:num="200000000"><span style='mso-spacerun:yes'>   
+  </span>200,000,000 </td>
+  <td class=xl4619556 align=right x:num="1.1764705882352942"
+  x:fmla="=F9/$F$8*100">1.18</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td class=xl3419556>16-30</td>
+  <td class=xl2419556 align=right x:num>2</td>
+  <td class=xl4519556 align=right x:num="1.3333333333333335"
+  x:fmla="=D10/$D$8*100">1.33</td>
+  <td class=xl2519556 x:num="150000000"><span style='mso-spacerun:yes'>   
+  </span>150,000,000 </td>
+  <td class=xl4619556 align=right x:num="0.88235294117647056"
+  x:fmla="=F10/$F$8*100">0.88</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>31-60</td>
+  <td class=xl2419556 align=right x:num>1</td>
+  <td class=xl4519556 align=right x:num="0.66666666666666674"
+  x:fmla="=D11/$D$8*100">0.67</td>
+  <td class=xl2519556 x:num="50000000"><span style='mso-spacerun:yes'>    
+  </span>50,000,000 </td>
+  <td class=xl4619556 align=right x:num="0.29411764705882354"
+  x:fmla="=F11/$F$8*100">0.29</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td class=xl3419556>61-90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl4519556 align=right x:num x:fmla="=D12/$D$8*100">0.00</td>
+  <td class=xl2519556></td>
+  <td class=xl4619556 align=right x:num x:fmla="=F12/$F$8*100">0.00</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3119556></td>
+  <td class=xl3419556>&gt;90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl4519556 align=right x:num x:fmla="=D13/$D$8*100">0.00</td>
+  <td class=xl2519556></td>
+  <td class=xl4619556 align=right x:num x:fmla="=F13/$F$8*100">0.00</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td colspan=2 class=xl3019556>Sub Total as per January:</td>
+  <td class=xl2719556 align=right x:num>8</td>
+  <td class=xl2719556>&nbsp;</td>
+  <td class=xl2619556 x:num="400000000"><span style='mso-spacerun:yes'>   
+  </span>400,000,000 </td>
+  <td class=xl2619556>&nbsp;</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556 colspan=2>Bulan: February<span style='mso-spacerun:yes'> 
+  </span>2002</td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl2919556 x:str="Total A/R ">Total A/R<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl3519556 align=right x:num>157</td>
+  <td class=xl3519556></td>
+  <td class=xl3619556 x:num="17700000000"><span
+  style='mso-spacerun:yes'> </span>17,700,000,000 </td>
+  <td class=xl3619556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>1-15</td>
+  <td class=xl2419556 align=right x:num>5</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="200000000"><span style='mso-spacerun:yes'>   
+  </span>200,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>16-30</td>
+  <td class=xl2419556 align=right x:num>2</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="150000000"><span style='mso-spacerun:yes'>   
+  </span>150,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>31-60</td>
+  <td class=xl2419556 align=right x:num>1</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="50000000"><span style='mso-spacerun:yes'>    
+  </span>50,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>61-90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl3419556>&gt;90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td colspan=2 class=xl3019556>Sub Total as per February:</td>
+  <td class=xl2719556 align=right x:num>8</td>
+  <td class=xl2719556>&nbsp;</td>
+  <td class=xl2619556 x:num="400000000"><span style='mso-spacerun:yes'>   
+  </span>400,000,000 </td>
+  <td class=xl2619556>&nbsp;</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556 colspan=2>Bulan: March<span style='mso-spacerun:yes'> 
+  </span>2002</td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl2919556>Total A/R</td>
+  <td class=xl3519556 align=right x:num>168</td>
+  <td class=xl3519556></td>
+  <td class=xl3619556 x:num="18900000000"><span
+  style='mso-spacerun:yes'> </span>18,900,000,000 </td>
+  <td class=xl3619556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>1-15</td>
+  <td class=xl2419556 align=right x:num>5</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="200000000"><span style='mso-spacerun:yes'>   
+  </span>200,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>16-30</td>
+  <td class=xl2419556 align=right x:num>2</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="150000000"><span style='mso-spacerun:yes'>   
+  </span>150,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>31-60</td>
+  <td class=xl2419556 align=right x:num>1</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556 x:num="50000000"><span style='mso-spacerun:yes'>    
+  </span>50,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>61-90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>&gt;90</td>
+  <td class=xl2419556 align=right x:num>0</td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td colspan=2 class=xl3019556>Sub Total as per March:</td>
+  <td class=xl2719556 align=right x:num>8</td>
+  <td class=xl2719556>&nbsp;</td>
+  <td class=xl2619556 x:num="400000000"><span style='mso-spacerun:yes'>   
+  </span>400,000,000 </td>
+  <td class=xl2619556>&nbsp;</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556 colspan=2>Bulan: April<span style='mso-spacerun:yes'> 
+  </span>2002</td>
+  <td class=xl3919556></td>
+  <td class=xl3919556></td>
+  <td class=xl3219556></td>
+  <td class=xl3219556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl2919556>Total A/R</td>
+  <td class=xl3519556 align=right x:num>175</td>
+  <td class=xl3519556></td>
+  <td class=xl3619556 x:num="19850000000"><span
+  style='mso-spacerun:yes'> </span>19,850,000,000 </td>
+  <td class=xl3619556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>1-15</td>
+  <td class=xl3219556 align=right x:num>5</td>
+  <td class=xl3219556></td>
+  <td class=xl2519556 x:num="200000000"><span style='mso-spacerun:yes'>   
+  </span>200,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>16-30</td>
+  <td class=xl3219556 align=right x:num>2</td>
+  <td class=xl3219556></td>
+  <td class=xl2519556 x:num="150000000"><span style='mso-spacerun:yes'>   
+  </span>150,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>31-60</td>
+  <td class=xl3219556 align=right x:num>1</td>
+  <td class=xl3219556></td>
+  <td class=xl2519556 x:num="50000000"><span style='mso-spacerun:yes'>    
+  </span>50,000,000 </td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>61-90</td>
+  <td class=xl3219556 align=right x:num>0</td>
+  <td class=xl3219556></td>
+  <td class=xl3219556 align=right x:num>0</td>
+  <td class=xl3219556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl3419556></td>
+  <td class=xl3419556>&gt;90</td>
+  <td class=xl3219556 align=right x:num>0</td>
+  <td class=xl3219556></td>
+  <td class=xl3219556 align=right x:num>0</td>
+  <td class=xl3219556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td colspan=2 class=xl3019556>Sub Total as per April:</td>
+  <td class=xl3719556 align=right x:num>8</td>
+  <td class=xl3719556>&nbsp;</td>
+  <td class=xl2619556 x:num="400000000"><span style='mso-spacerun:yes'>   
+  </span>400,000,000 </td>
+  <td class=xl2619556>&nbsp;</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2819556 style='height:11.25pt'>&nbsp;</td>
+  <td class=xl4319556>&nbsp;</td>
+  <td class=xl4319556>&nbsp;</td>
+  <td class=xl2819556>&nbsp;</td>
+  <td class=xl2819556>&nbsp;</td>
+  <td class=xl4219556>&nbsp;</td>
+  <td class=xl4219556>&nbsp;</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'></td>
+  <td class=xl2919556></td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 style='height:11.25pt'>Filer by :</td>
+  <td class=xl2919556></td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 colspan=2 style='height:11.25pt'>Printed by :</td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl2419556 colspan=2 style='height:11.25pt'>Printed Date :</td>
+  <td class=xl2919556></td>
+  <td class=xl2419556></td>
+  <td class=xl2419556></td>
+  <td class=xl2519556></td>
+  <td class=xl2519556></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=80 style='width:60pt'></td>
+  <td width=116 style='width:87pt'></td>
+  <td width=119 style='width:89pt'></td>
+  <td width=56 style='width:42pt'></td>
+  <td width=56 style='width:42pt'></td>
+  <td width=120 style='width:90pt'></td>
+  <td width=66 style='width:50pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
+
+<!----------------------------->
+<!--END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD-->
+<!----------------------------->
+</body>
+
+</html>

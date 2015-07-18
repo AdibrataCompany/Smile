@@ -1,0 +1,511 @@
+<%@ Page Language="VB" ContentType="text/html" ResponseEncoding="iso-8859-1" %>
+<html>
+<head>
+<title>Company Customer Detail Information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../Confins.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<style type="text/css">
+.style1 {
+	font-family: Verdana, Arial, Tahoma, sans-serif;
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau"> COMPANY CUSTOMER DETAIL INFORMATION</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">COMPANY DATA</td>
+    </tr>
+    <tr> 
+      <td width="25%" class="tdgenap">Name</td>
+      <td colspan="3" class="tdganjil">Adicipta Inovasi Teknolog PT.</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Company Type</td>
+      <td width="25%" class="tdganjil">Perseroan Terbatas</td>
+      <td width="25%" class="tdgenap">Address</td>
+      <td width="25%" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        Jl Panjang</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">NPWP</td>
+      <td class="tdganjil">111222333444555</td>
+      <td class="tdgenap">RT/RW</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> 999 </font>/ 
+        <font face="Tahoma, Verdana" size="2"> 999 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Number of Employees</td>
+      <td class="tdganjil">50</td>
+      <td class="tdgenap">Kelurahan</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> Kebon Jeruk</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Year Of Established</td>
+      <td class="tdganjil">2000</td>
+      <td class="tdgenap">Kecamatan</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> Kebon Jeruk</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Industry Type</td>
+      <td class="tdganjil"> Komputer</td>
+      <td class="tdgenap">City</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> Jakarta</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Group</td>
+      <td class="tdganjil">xxxx50xxxx</td>
+      <td class="tdgenap">Zip Code</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> 11530</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">No Telp Pengelola Gedung</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2">999 - 9999999 
+        </font></td>
+      <td class="tdgenap">Phone 1</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> 021 - 5332112 
+        </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+      <td class="tdgenap">Phone 2</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> 999 - 9999999 
+        </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">&nbsp;</td>
+      <td class="tdganjil">&nbsp;</td>
+      <td class="tdgenap">Fax</td>
+      <td class="tdganjil"><font face="Tahoma, Verdana" size="2"> 021 - 5360808 
+        </font></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">FINANCIAL DATA</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Current Ratio (%)</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        99.99&nbsp; </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">ROI (%)</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        99.99&nbsp;</font><font face="Tahoma, Verdana" size="2">&nbsp; </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">DER (%)</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        99.99&nbsp;</font><font face="Tahoma, Verdana" size="2">&nbsp; </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Modal Dasar</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Modal Disetor</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Net Profit Margin</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Bank Account Type</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        Loan Account</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Existing Loan</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        100,000,000.00</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Debit Average</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Credit Average</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Balance Average</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Time Deposit</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Collateral Additional </td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">CollateralAdditional&nbsp; Amount</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999,999,999.00 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Office Place Status</td>
+      <td colspan="3" class="tdganjil"> <font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></font> </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Office Place Since Year</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        9999 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Rent Finish Date</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2">dd/mm/yyyy</font></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">WAREHOUSE</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Status</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td valign="top" class="tdgenap">Address</td>
+      <td colspan="3" class="tdganjil"> xxxx50xxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">RT/RW</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999 </font>/ <font face="Tahoma, Verdana" size="2"> 999</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kelurahan</td>
+      <td colspan="3" class="tdganjil">xxxxxxxx30xxxxxxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Kecamatan</td>
+      <td colspan="3" class="tdganjil">xxxxxxxx30xxxxxxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">City</td>
+      <td colspan="3" class="tdganjil">xxxxxxxx30xxxxxxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Zip Code</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        99999</font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 1</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999 - 9999999 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Phone 2</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999 - 9999999 </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Fax</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        999 - 9999999 </font></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">BANK ACCOUNT</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bank Name</td>
+      <td colspan="3" class="tdganjil"> xxxx50xxxx </td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Bank Branch</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Account No.</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap">Account Name</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr>
+      <td colspan="4" class="tdjudulhijau">LEGAL DOCUMENT OF ESTABLISHED DATA</td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Legal Document No.</td>
+      <td class="tdganjil" colspan="3"> <font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield----2147483648" type="text" class="inptype" size="30">
+        </font> </td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Legal Document Date</td>
+      <td class="tdganjil"  colspan="3"><font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield--2147483648" type="text" class="inptype" size="15">
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle">&nbsp;
+        </font></td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Last Changes of Legal Doc No.</td>
+      <td class="tdganjil"  colspan="3"><font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield-----2147483648" type="text" class="inptype" size="30">
+        </font></td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Last Changes of Legal Doc Date</td>
+      <td class="tdganjil"  colspan="3"><font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield---2147483648" type="text" class="inptype" size="15">
+        <img src="../Images/iconcalendar.gif" width="20" height="20" align="absmiddle">&nbsp;
+        </font></td>
+    </tr>
+	<tr>
+      <td colspan="4" class="tdjudulhijau">NOTARY DATA</td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Notary Name</td>
+      <td class="tdganjil"  colspan="3"> <font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield------2147483648" type="text" class="inptype" size="30">
+        </font> </td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Notary Location</td>
+      <td class="tdganjil"  colspan="3"> <font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield--------2147483648" type="text" class="inptype" size="30"></font></td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Last Changes of Notary Name</td>
+      <td class="tdganjil"  colspan="3"><font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield-------2147483648" type="text" class="inptype" size="30">
+        </font></td>
+    </tr>
+	<tr>
+      <td class="tdgenap" style="width: 28%">Last Changes of Notary Location</td>
+      <td class="tdganjil"  colspan="3"> <font face="Tahoma, Verdana" size="2"> 
+        <input name="textfield---------2147483648" type="text" class="inptype" size="30"></font></td>
+    </tr>
+    <tr> 
+      <td colspan="4" class="tdjudulhijau">OTHER DATA</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Reference</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Did he/she have another loan</td>
+      <td colspan="3" class="tdganjil"> Yes</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Other Finance Company Name</td>
+      <td colspan="3" class="tdganjil"><font face="Tahoma, Verdana" size="2"> 
+        xxxx50xxxx </font></td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Active Customer?</td>
+      <td colspan="3" class="tdganjil">Active</td>
+    </tr>
+    <tr> 
+      <td class="tdgenap" style="width: 28%">Notes</td>
+      <td colspan="3" class="tdganjil"> xxxx50xxxx </td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">SUPPLIER(S) FOR RAW MATERIALS</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td align="center">No</td>
+      <td align="center">NAME</td>
+      <td align="center">LOCATION</td>
+      <td align="center">PRODUCT(S) SUPPLIED</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">COMPETITOR(S)</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td align="center">No</td>
+      <td align="center">MAIN COMPETITOR</td>
+      <td align="center">LOCATION</td>
+      <td align="center">CONCERNED GOODS</td>
+      <td align="center">MARKET SHARE (%)</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td class="style1"> 99</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> 99</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau">MANAGEMENT & SHAREHOLDERS COMPOSITION</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td align="center">No</td>
+      <td align="center">NAME</td>
+      <td align="center">ID NUMBER</td>
+      <td align="center">POSITION</td>
+      <td align="center">ADDRESS</td>
+      <td align="center">PHONE</td>
+      <td align="center">SHARE (%)</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> 99999999 </font></td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> 99 </font></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> 99999999 </font></td>
+      <td align="center"><font face="Tahoma, Verdana" size="2"> 99 </font></td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau"> LEGAL DOCUMENT</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="3" cellspacing="1" class="tablegrid">
+    <tr class="tdjudulhijau"> 
+      <td width="5%" align="center">No</td>
+      <td width="20%" align="center">TYPE</td>
+      <td width="20%" align="center">DOCUMENT No.</td>
+      <td width="20%" align="center">DATE</td>
+      <td width="20%" align="center">EXPIRED DATE</td>
+      <td width="20%" align="center">NOTES</td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> dd/mm/yyyy </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> dd/mm/yyyy </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+    </tr>
+    <tr class="tdganjil"> 
+      <td align="center">99</td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> dd/mm/yyyy </font></td>
+      <td> <font face="Tahoma, Verdana" size="2"> dd/mm/yyyy </font></td>
+      <td><font face="Tahoma, Verdana" size="2"> xxxx50xxxx </font></td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="trtopikuning"> 
+      <td width="10" height="20" class="tdtopihijaukiri">&nbsp;</td>
+      <td align="center" class="tdtopihijau"> AGREEMENT LIST</td>
+      <td width="10" class="tdtopihijaukanan">&nbsp;</td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellpadding="2" cellspacing="1" class="tablegrid">
+    <tr align="center" class="tdjudulhijau"> 
+      <td width="5%">NO</td>
+      <td width="20%">APPLICATION ID</td>
+      <td width="20%">AGREEMENT NO</td>
+      <td width="20%">AGREEMENT DATE</td>
+      <td width="20%">INSTALLMENT</td>
+      <td width="10%">STEP</td>
+      <td width="10%">STATUS</td>
+    </tr>
+    <tr> 
+      <td align="center" class="tdganjil">1</td>
+      <td align="center" class="tdganjil"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('ViewApplication.htm','Application','scrollbars=yes,width=900,height=700,left=0,top=0')">302030303019</a></div></td>
+      <td class="tdganjil" align="center"><div align="left"><a href="javascript:;" onClick="MM_openBrWindow('../AccMaintenance/AgreementView.htm','Agreement','scrollbars=yes,width=900,height=700,left=0,top=0')">302030303019</a></div></td>
+      <td class="tdganjil" align="center">28/3/2003</td>
+      <td class="tdganjil" align="right"><font face="Tahoma, Verdana" size="2"> 
+        1,772,600.00</font></td>
+      <td class="tdganjil" align="center">GLV</td>
+      <td class="tdganjil" align="center">LIV</td>
+    </tr>
+  </table>
+  <br>
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr align="center"> 
+      <td height="30" colspan="2"> | <a href="ViewCustomerExposure.htm">Customer Exposure</a> 
+        | <a href="ViewCustomerExposure.htm"> Customer Group Exposure </a>
+        </td>
+    </tr>
+  </table>
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td align="left"><img src="../Images/ButtonPrint.gif" width="100" height="20" border="0"></td>
+      <td align="right"><a href="javascript:window.close();"><img src="../Images/ButtonClose.gif" width="100" height="20" border="0"></a> 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
