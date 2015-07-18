@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,7 +28,7 @@ public class CoyCustShareInfo implements java.io.Serializable
 		private String jobPositionId;
 		private Serializable address;
 		private String phone;
-		private long sharePercentage;
+		private Double sharePercentage;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -46,8 +46,8 @@ public class CoyCustShareInfo implements java.io.Serializable
 			}
 		public CoyCustShareInfo(long id, Customer customer, Serializable name,
 		        String idnumber, String jobPositionId, Serializable address,
-		        String phone, long sharePercentage, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		        String phone, Double sharePercentage, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -143,12 +143,12 @@ public class CoyCustShareInfo implements java.io.Serializable
 			}
 		
 		@Column(name = "SharePercentage", precision = 9, scale = 6)
-		public long getSharePercentage()
+		public Double getSharePercentage()
 			{
 				return this.sharePercentage;
 			}
 		
-		public void setSharePercentage(long sharePercentage)
+		public void setSharePercentage(Double sharePercentage)
 			{
 				this.sharePercentage = sharePercentage;
 			}

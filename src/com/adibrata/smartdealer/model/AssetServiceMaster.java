@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -24,7 +24,7 @@ public class AssetServiceMaster implements java.io.Serializable
 		private Partner partner;
 		private String serviceCode;
 		private String serviceName;
-		private long priceMaximum;
+		private Double priceMaximum;
 		private String assetType;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -40,7 +40,7 @@ public class AssetServiceMaster implements java.io.Serializable
 				this.id = id;
 			}
 		public AssetServiceMaster(long id, Partner partner, String serviceCode,
-		        String serviceName, long priceMaximum, String assetType,
+		        String serviceName, Double priceMaximum, String assetType,
 		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -102,12 +102,12 @@ public class AssetServiceMaster implements java.io.Serializable
 			}
 		
 		@Column(name = "PriceMaximum", precision = 17)
-		public long getPriceMaximum()
+		public Double getPriceMaximum()
 			{
 				return this.priceMaximum;
 			}
 		
-		public void setPriceMaximum(long priceMaximum)
+		public void setPriceMaximum(Double priceMaximum)
 			{
 				this.priceMaximum = priceMaximum;
 			}

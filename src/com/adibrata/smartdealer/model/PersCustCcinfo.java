@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ public class PersCustCcinfo implements java.io.Serializable
 		private String creditCardType;
 		private short creditCardPeriodYears;
 		private short creditCardPeriodMonths;
-		private long creditCardCreditLimit;
+		private Double creditCardCreditLimit;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -40,7 +40,7 @@ public class PersCustCcinfo implements java.io.Serializable
 		public PersCustCcinfo(long id, String creditCardNo,
 		        String creditCardName, String creditCardType,
 		        short creditCardPeriodYears, short creditCardPeriodMonths,
-		        long creditCardCreditLimit)
+		        Double creditCardCreditLimit)
 			{
 				this.id = id;
 				this.creditCardNo = creditCardNo;
@@ -53,7 +53,7 @@ public class PersCustCcinfo implements java.io.Serializable
 		public PersCustCcinfo(long id, Customer customer, String creditCardNo,
 		        String creditCardName, String creditCardType,
 		        short creditCardPeriodYears, short creditCardPeriodMonths,
-		        long creditCardCreditLimit, Date dtmUpd, String usrUpd,
+		        Double creditCardCreditLimit, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -150,12 +150,12 @@ public class PersCustCcinfo implements java.io.Serializable
 			}
 		
 		@Column(name = "CreditCardCreditLimit", nullable = false, precision = 17)
-		public long getCreditCardCreditLimit()
+		public Double getCreditCardCreditLimit()
 			{
 				return this.creditCardCreditLimit;
 			}
 		
-		public void setCreditCardCreditLimit(long creditCardCreditLimit)
+		public void setCreditCardCreditLimit(Double creditCardCreditLimit)
 			{
 				this.creditCardCreditLimit = creditCardCreditLimit;
 			}

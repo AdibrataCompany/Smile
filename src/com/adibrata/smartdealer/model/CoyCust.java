@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -31,20 +31,20 @@ public class CoyCust implements java.io.Serializable
 		private String industryTypeId;
 		private String pengelolaGedungAreaPhone;
 		private String pengelolaGedungPhone;
-		private long currentRatio;
-		private long roi;
-		private long der;
-		private long modalDasar;
-		private long modalDisetor;
-		private long netProfitMargin;
+		private Double currentRatio;
+		private Double roi;
+		private Double der;
+		private Double modalDasar;
+		private Double modalDisetor;
+		private Double netProfitMargin;
 		private String bankAccountType;
-		private long nilaiPinjamanSedangBerjalan;
-		private long averageDebitTransaction;
-		private long averageCreditTransaction;
-		private long averageBalance;
-		private long deposito;
+		private Double nilaiPinjamanSedangBerjalan;
+		private Double averageDebitTransaction;
+		private Double averageCreditTransaction;
+		private Double averageBalance;
+		private Double deposito;
 		private Serializable additionalCollateralType;
-		private long additionalCollateralAmount;
+		private Double additionalCollateralAmount;
 		private String companyStatus;
 		private Short companyStatusSinceYear;
 		private Date rentFinishDate;
@@ -58,7 +58,7 @@ public class CoyCust implements java.io.Serializable
 		private char activeCustomer;
 		private Serializable notes;
 		private Boolean isCorporateCreditLine;
-		private long plafondAmount;
+		private Double plafondAmount;
 		private Serializable customerGroup;
 		private String noDocumentOfEstablished;
 		private Date dateDocumentOfEstablished;
@@ -78,10 +78,11 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		public CoyCust(long id, String npwp, String npwpchecking,
-		        String companyType, String industryTypeId, long modalDasar,
-		        long modalDisetor, long netProfitMargin,
-		        long nilaiPinjamanSedangBerjalan, boolean isApplyCarLoanBefore,
-		        char activeCustomer, Serializable customerGroup)
+		        String companyType, String industryTypeId, Double modalDasar,
+		        Double modalDisetor, Double netProfitMargin,
+		        Double nilaiPinjamanSedangBerjalan,
+		        boolean isApplyCarLoanBefore, char activeCustomer,
+		        Serializable customerGroup)
 			{
 				this.id = id;
 				this.npwp = npwp;
@@ -100,20 +101,21 @@ public class CoyCust implements java.io.Serializable
 		        String npwpchecking, String companyType,
 		        Short numberOfEmployees, Short yearOfEstablished,
 		        String industryTypeId, String pengelolaGedungAreaPhone,
-		        String pengelolaGedungPhone, long currentRatio, long roi,
-		        long der, long modalDasar, long modalDisetor,
-		        long netProfitMargin, String bankAccountType,
-		        long nilaiPinjamanSedangBerjalan, long averageDebitTransaction,
-		        long averageCreditTransaction, long averageBalance,
-		        long deposito, Serializable additionalCollateralType,
-		        long additionalCollateralAmount, String companyStatus,
+		        String pengelolaGedungPhone, Double currentRatio, Double roi,
+		        Double der, Double modalDasar, Double modalDisetor,
+		        Double netProfitMargin, String bankAccountType,
+		        Double nilaiPinjamanSedangBerjalan,
+		        Double averageDebitTransaction,
+		        Double averageCreditTransaction, Double averageBalance,
+		        Double deposito, Serializable additionalCollateralType,
+		        Double additionalCollateralAmount, String companyStatus,
 		        Short companyStatusSinceYear, Date rentFinishDate,
 		        String bankId, String bankBranch, String accountNo,
 		        Serializable accountName, String reference,
 		        boolean isApplyCarLoanBefore,
 		        Serializable applyCarLoanCompanyName, char activeCustomer,
 		        Serializable notes, Boolean isCorporateCreditLine,
-		        long plafondAmount, Serializable customerGroup,
+		        Double plafondAmount, Serializable customerGroup,
 		        String noDocumentOfEstablished, Date dateDocumentOfEstablished,
 		        String notaryPlace, String notaryName,
 		        String lastNoDocumentOfEstablished,
@@ -287,67 +289,67 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "CurrentRatio", precision = 9, scale = 6)
-		public long getCurrentRatio()
+		public Double getCurrentRatio()
 			{
 				return this.currentRatio;
 			}
 		
-		public void setCurrentRatio(long currentRatio)
+		public void setCurrentRatio(Double currentRatio)
 			{
 				this.currentRatio = currentRatio;
 			}
 		
 		@Column(name = "ROI", precision = 9, scale = 6)
-		public long getRoi()
+		public Double getRoi()
 			{
 				return this.roi;
 			}
 		
-		public void setRoi(long roi)
+		public void setRoi(Double roi)
 			{
 				this.roi = roi;
 			}
 		
 		@Column(name = "DER", precision = 9, scale = 6)
-		public long getDer()
+		public Double getDer()
 			{
 				return this.der;
 			}
 		
-		public void setDer(long der)
+		public void setDer(Double der)
 			{
 				this.der = der;
 			}
 		
 		@Column(name = "ModalDasar", nullable = false, precision = 17)
-		public long getModalDasar()
+		public Double getModalDasar()
 			{
 				return this.modalDasar;
 			}
 		
-		public void setModalDasar(long modalDasar)
+		public void setModalDasar(Double modalDasar)
 			{
 				this.modalDasar = modalDasar;
 			}
 		
 		@Column(name = "ModalDisetor", nullable = false, precision = 17)
-		public long getModalDisetor()
+		public Double getModalDisetor()
 			{
 				return this.modalDisetor;
 			}
 		
-		public void setModalDisetor(long modalDisetor)
+		public void setModalDisetor(Double modalDisetor)
 			{
 				this.modalDisetor = modalDisetor;
 			}
 		
 		@Column(name = "NetProfitMargin", nullable = false, precision = 17)
-		public long getNetProfitMargin()
+		public Double getNetProfitMargin()
 			{
 				return this.netProfitMargin;
 			}
 		
-		public void setNetProfitMargin(long netProfitMargin)
+		public void setNetProfitMargin(Double netProfitMargin)
 			{
 				this.netProfitMargin = netProfitMargin;
 			}
@@ -364,57 +366,57 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "NilaiPinjamanSedangBerjalan", nullable = false, precision = 17)
-		public long getNilaiPinjamanSedangBerjalan()
+		public Double getNilaiPinjamanSedangBerjalan()
 			{
 				return this.nilaiPinjamanSedangBerjalan;
 			}
 		
 		public void setNilaiPinjamanSedangBerjalan(
-		        long nilaiPinjamanSedangBerjalan)
+		        Double nilaiPinjamanSedangBerjalan)
 			{
 				this.nilaiPinjamanSedangBerjalan = nilaiPinjamanSedangBerjalan;
 			}
 		
 		@Column(name = "AverageDebitTransaction", precision = 17)
-		public long getAverageDebitTransaction()
+		public Double getAverageDebitTransaction()
 			{
 				return this.averageDebitTransaction;
 			}
 		
-		public void setAverageDebitTransaction(long averageDebitTransaction)
+		public void setAverageDebitTransaction(Double averageDebitTransaction)
 			{
 				this.averageDebitTransaction = averageDebitTransaction;
 			}
 		
 		@Column(name = "AverageCreditTransaction", precision = 17)
-		public long getAverageCreditTransaction()
+		public Double getAverageCreditTransaction()
 			{
 				return this.averageCreditTransaction;
 			}
 		
-		public void setAverageCreditTransaction(long averageCreditTransaction)
+		public void setAverageCreditTransaction(Double averageCreditTransaction)
 			{
 				this.averageCreditTransaction = averageCreditTransaction;
 			}
 		
 		@Column(name = "AverageBalance", precision = 17)
-		public long getAverageBalance()
+		public Double getAverageBalance()
 			{
 				return this.averageBalance;
 			}
 		
-		public void setAverageBalance(long averageBalance)
+		public void setAverageBalance(Double averageBalance)
 			{
 				this.averageBalance = averageBalance;
 			}
 		
 		@Column(name = "Deposito", precision = 17)
-		public long getDeposito()
+		public Double getDeposito()
 			{
 				return this.deposito;
 			}
 		
-		public void setDeposito(long deposito)
+		public void setDeposito(Double deposito)
 			{
 				this.deposito = deposito;
 			}
@@ -432,13 +434,13 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "AdditionalCollateralAmount", precision = 17)
-		public long getAdditionalCollateralAmount()
+		public Double getAdditionalCollateralAmount()
 			{
 				return this.additionalCollateralAmount;
 			}
 		
 		public void setAdditionalCollateralAmount(
-		        long additionalCollateralAmount)
+		        Double additionalCollateralAmount)
 			{
 				this.additionalCollateralAmount = additionalCollateralAmount;
 			}
@@ -589,12 +591,12 @@ public class CoyCust implements java.io.Serializable
 			}
 		
 		@Column(name = "PlafondAmount", precision = 17)
-		public long getPlafondAmount()
+		public Double getPlafondAmount()
 			{
 				return this.plafondAmount;
 			}
 		
-		public void setPlafondAmount(long plafondAmount)
+		public void setPlafondAmount(Double plafondAmount)
 			{
 				this.plafondAmount = plafondAmount;
 			}

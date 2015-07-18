@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ public class AssetAttribute implements java.io.Serializable
 		private Long assetTypeId;
 		private String attributeCode;
 		private String attributeDescription;
-		private boolean attributeType;
+		private String attributeType;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -39,8 +39,8 @@ public class AssetAttribute implements java.io.Serializable
 			}
 		public AssetAttribute(long id, String partnerCode, Long officeId,
 		        Long assetTypeId, String attributeCode,
-		        String attributeDescription, boolean attributeType,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		        String attributeDescription, String attributeType, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -123,12 +123,12 @@ public class AssetAttribute implements java.io.Serializable
 			}
 		
 		@Column(name = "AttributeType", length = 1)
-		public boolean isAttributeType()
+		public String getAttributeType()
 			{
 				return this.attributeType;
 			}
 		
-		public void setAttributeType(boolean attributeType)
+		public void setAttributeType(String attributeType)
 			{
 				this.attributeType = attributeType;
 			}

@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -58,7 +58,7 @@ public class EarlyTermination implements java.io.Serializable
 		private double installmentAmountDisc;
 		private double prepaymentFeeDisc;
 		private double prepaidAmount;
-		private boolean insuranceTerminationFlag;
+		private String insuranceTerminationFlag;
 		private String notes;
 		private String reasonTypeId;
 		private String reasonId;
@@ -127,7 +127,7 @@ public class EarlyTermination implements java.io.Serializable
 		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
 		        double insuranceAmountDisc, double installmentAmountDisc,
 		        double prepaymentFeeDisc, double prepaidAmount,
-		        boolean insuranceTerminationFlag, String notes,
+		        String insuranceTerminationFlag, String notes,
 		        String reasonTypeId, String reasonId, long jobId,
 		        String prepaymentStatus, Date statusDate, String requestBy,
 		        long approvalId, double osadminFee, double accruedAdminFeeEom)
@@ -204,7 +204,7 @@ public class EarlyTermination implements java.io.Serializable
 		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
 		        double insuranceAmountDisc, double installmentAmountDisc,
 		        double prepaymentFeeDisc, double prepaidAmount,
-		        boolean insuranceTerminationFlag, String notes,
+		        String insuranceTerminationFlag, String notes,
 		        String reasonTypeId, String reasonId, long jobId,
 		        String prepaymentStatus, Date statusDate, String requestBy,
 		        long approvalId, Double accruedInterestDisc,
@@ -774,12 +774,12 @@ public class EarlyTermination implements java.io.Serializable
 			}
 		
 		@Column(name = "InsuranceTerminationFlag", nullable = false, length = 1)
-		public boolean isInsuranceTerminationFlag()
+		public String getInsuranceTerminationFlag()
 			{
 				return this.insuranceTerminationFlag;
 			}
 		
-		public void setInsuranceTerminationFlag(boolean insuranceTerminationFlag)
+		public void setInsuranceTerminationFlag(String insuranceTerminationFlag)
 			{
 				this.insuranceTerminationFlag = insuranceTerminationFlag;
 			}

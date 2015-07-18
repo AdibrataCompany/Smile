@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 		private Serializable mainCompetitor;
 		private Serializable location;
 		private Serializable concernedGoods;
-		private long marketShare;
+		private Double marketShare;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -39,7 +39,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 		
 		public CoyCustComptInfo(long id, Serializable mainCompetitor,
 		        Serializable location, Serializable concernedGoods,
-		        long marketShare)
+		        Double marketShare)
 			{
 				this.id = id;
 				this.mainCompetitor = mainCompetitor;
@@ -49,7 +49,7 @@ public class CoyCustComptInfo implements java.io.Serializable
 			}
 		public CoyCustComptInfo(long id, Customer customer, Short seqNo,
 		        Serializable mainCompetitor, Serializable location,
-		        Serializable concernedGoods, long marketShare, Date dtmUpd,
+		        Serializable concernedGoods, Double marketShare, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -134,12 +134,12 @@ public class CoyCustComptInfo implements java.io.Serializable
 			}
 		
 		@Column(name = "MarketShare", nullable = false, precision = 9, scale = 6)
-		public long getMarketShare()
+		public Double getMarketShare()
 			{
 				return this.marketShare;
 			}
 		
-		public void setMarketShare(long marketShare)
+		public void setMarketShare(Double marketShare)
 			{
 				this.marketShare = marketShare;
 			}

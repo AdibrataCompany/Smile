@@ -1,5 +1,5 @@
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:43:49 PM by Hibernate Tools 4.3.1
+// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -28,7 +28,7 @@ public class JrnlDtl implements java.io.Serializable
 		private String coaName;
 		private String coaCode;
 		private String trDesc;
-		private boolean post;
+		private String post;
 		private Long currId;
 		private double currRate;
 		private double debtAmt;
@@ -46,7 +46,7 @@ public class JrnlDtl implements java.io.Serializable
 			{
 			}
 		
-		public JrnlDtl(long id, int sequenceNo, String coaOffice, boolean post,
+		public JrnlDtl(long id, int sequenceNo, String coaOffice, String post,
 		        double currRate, double debtAmt)
 			{
 				this.id = id;
@@ -58,7 +58,7 @@ public class JrnlDtl implements java.io.Serializable
 			}
 		public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy,
 		        String coaOffice, String coaName, String coaCode,
-		        String trDesc, boolean post, Long currId, double currRate,
+		        String trDesc, String post, Long currId, double currRate,
 		        double debtAmt, Double credAmt, Double oriAmt, String coaCodeX,
 		        String coaOfficeX, String departCode, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
@@ -177,12 +177,12 @@ public class JrnlDtl implements java.io.Serializable
 			}
 		
 		@Column(name = "Post", nullable = false, length = 1)
-		public boolean isPost()
+		public String getPost()
 			{
 				return this.post;
 			}
 		
-		public void setPost(boolean post)
+		public void setPost(String post)
 			{
 				this.post = post;
 			}
