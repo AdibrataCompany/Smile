@@ -1,10 +1,12 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,10 +39,8 @@ public class AssetType implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public AssetType(long id, String assetTypeCode, String description,
-		        String labelNo1, String labelNo2, String sandiBils,
-		        String sandiBicf, String usrCrt, Date dtmUpd, String usrUpd,
-		        Date dtmCrt)
+		
+		public AssetType(long id, String assetTypeCode, String description, String labelNo1, String labelNo2, String sandiBils, String sandiBicf, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.assetTypeCode = assetTypeCode;
@@ -55,7 +55,7 @@ public class AssetType implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

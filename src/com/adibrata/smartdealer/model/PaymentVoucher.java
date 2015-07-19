@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -44,10 +46,8 @@ public class PaymentVoucher implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public PaymentVoucher(long id, Office office, Partner partner,
-		        String pvno, Double pvamount, String pvstatus, Long transJobId,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<Pvdetail> pvdetails)
+		
+		public PaymentVoucher(long id, Office office, Partner partner, String pvno, Double pvamount, String pvstatus, Long transJobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Pvdetail> pvdetails)
 			{
 				this.id = id;
 				this.office = office;
@@ -63,7 +63,7 @@ public class PaymentVoucher implements java.io.Serializable
 				this.pvdetails = pvdetails;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

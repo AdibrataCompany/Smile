@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -59,16 +61,9 @@ public class TrxConfigHdr implements java.io.Serializable
 				this.id = id;
 				this.trxConfigCode = trxConfigCode;
 			}
-		public TrxConfigHdr(long id, String trxConfigCode,
-		        String trxConfigDesc, String trxNo, String trxTable,
-		        String officeIdX, String jrnlNoCode, String reffNo,
-		        String bankAccId, String currId, String currRate,
-		        String bankPortion, String rcvDisbFlag, String cashierId,
-		        String cashierOpen, String amountTrx, String wop,
-		        String receivedFrom, String receiptNo,
-		        Short isCreatePaymentHistory, Short isCreateJournal,
-		        Short isCreateCashBankMutation, String usrCrt, Date dtmCrt,
-		        String usrUpd, Date dtmUpd, Set<TrxConfigDtl> trxConfigDtls)
+		
+		public TrxConfigHdr(long id, String trxConfigCode, String trxConfigDesc, String trxNo, String trxTable, String officeIdX, String jrnlNoCode, String reffNo, String bankAccId, String currId, String currRate, String bankPortion, String rcvDisbFlag, String cashierId, String cashierOpen,
+		        String amountTrx, String wop, String receivedFrom, String receiptNo, Short isCreatePaymentHistory, Short isCreateJournal, Short isCreateCashBankMutation, String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd, Set<TrxConfigDtl> trxConfigDtls)
 			{
 				this.id = id;
 				this.trxConfigCode = trxConfigCode;
@@ -99,7 +94,7 @@ public class TrxConfigHdr implements java.io.Serializable
 				this.trxConfigDtls = trxConfigDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

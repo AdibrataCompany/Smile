@@ -1,10 +1,12 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,18 +81,9 @@ public class Sales implements java.io.Serializable
 			{
 			}
 		
-		public Sales(long id, Date salesDate, long supplierId, long aoid,
-		        long aosupervisorId, long caid, double totalOtr,
-		        double downPayment, double ntf, String financeType,
-		        String productType, short numOfAssetUnit, double effectiveRate,
-		        double flatRate, double supplierRate, String paymentFrequency,
-		        String firstInstallment, String installmentScheme,
-		        String interestType, short numOfInstallment, short tenor,
-		        short cummulativeTenor, double installmentAmount,
-		        double grossYield, double outstandingPrincipal,
-		        double outstandingInterest, double tdpamount,
-		        double diffRateAmount, short isAvalist, short isNst,
-		        short isIncentiveSupplier)
+		public Sales(long id, Date salesDate, long supplierId, long aoid, long aosupervisorId, long caid, double totalOtr, double downPayment, double ntf, String financeType, String productType, short numOfAssetUnit, double effectiveRate, double flatRate, double supplierRate,
+		        String paymentFrequency, String firstInstallment, String installmentScheme, String interestType, short numOfInstallment, short tenor, short cummulativeTenor, double installmentAmount, double grossYield, double outstandingPrincipal, double outstandingInterest, double tdpamount,
+		        double diffRateAmount, short isAvalist, short isNst, short isIncentiveSupplier)
 			{
 				this.id = id;
 				this.salesDate = salesDate;
@@ -124,27 +117,12 @@ public class Sales implements java.io.Serializable
 				this.isNst = isNst;
 				this.isIncentiveSupplier = isIncentiveSupplier;
 			}
-		public Sales(long id, String partnerCode, Long officeId, Long appId,
-		        Long agrmntId, Date salesDate, long supplierId, long aoid,
-		        long aosupervisorId, long caid, Long gmid, Long bmid,
-		        Long adhid, Long salesmanId, Long salesSupervisorId,
-		        Long supplierAdminId, double totalOtr, double downPayment,
-		        double ntf, String financeType, String productType,
-		        short numOfAssetUnit, String wayOfPayment,
-		        String floatingPeriod, Double insAssetPremium,
-		        Double insAssetReceivedInAdv, Double insAssetCapitalized,
-		        String insAssetInsuredBy, String insAssetPaidBy,
-		        String insAssetPeriod, double effectiveRate, double flatRate,
-		        double supplierRate, String paymentFrequency,
-		        String firstInstallment, String installmentScheme,
-		        String interestType, short numOfInstallment, short tenor,
-		        short cummulativeTenor, double installmentAmount,
-		        Date gracePeriod, String gracePeriodType, double grossYield,
-		        double outstandingPrincipal, double outstandingInterest,
-		        double tdpamount, double diffRateAmount, short isAvalist,
-		        short isNst, short isIncentiveSupplier, Date maturityDate,
-		        String notes, String usrCrt, Date dtmUpd, String usrUpd,
-		        Date dtmCrt)
+		
+		public Sales(long id, String partnerCode, Long officeId, Long appId, Long agrmntId, Date salesDate, long supplierId, long aoid, long aosupervisorId, long caid, Long gmid, Long bmid, Long adhid, Long salesmanId, Long salesSupervisorId, Long supplierAdminId, double totalOtr,
+		        double downPayment, double ntf, String financeType, String productType, short numOfAssetUnit, String wayOfPayment, String floatingPeriod, Double insAssetPremium, Double insAssetReceivedInAdv, Double insAssetCapitalized, String insAssetInsuredBy, String insAssetPaidBy,
+		        String insAssetPeriod, double effectiveRate, double flatRate, double supplierRate, String paymentFrequency, String firstInstallment, String installmentScheme, String interestType, short numOfInstallment, short tenor, short cummulativeTenor, double installmentAmount,
+		        Date gracePeriod, String gracePeriodType, double grossYield, double outstandingPrincipal, double outstandingInterest, double tdpamount, double diffRateAmount, short isAvalist, short isNst, short isIncentiveSupplier, Date maturityDate, String notes, String usrCrt, Date dtmUpd,
+		        String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -205,7 +183,7 @@ public class Sales implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -45,10 +47,8 @@ public class EntrustHdr implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public EntrustHdr(long id, Office office, Partner partner,
-		        Supplier supplier, String entrustNo, Date postingDate,
-		        Date valueDate, Double totalAmount, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls)
+		
+		public EntrustHdr(long id, Office office, Partner partner, Supplier supplier, String entrustNo, Date postingDate, Date valueDate, Double totalAmount, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls)
 			{
 				this.id = id;
 				this.office = office;
@@ -65,7 +65,7 @@ public class EntrustHdr implements java.io.Serializable
 				this.entrustDtls = entrustDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

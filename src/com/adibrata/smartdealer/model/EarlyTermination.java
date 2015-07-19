@@ -1,10 +1,12 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -108,29 +110,11 @@ public class EarlyTermination implements java.io.Serializable
 			{
 			}
 		
-		public EarlyTermination(long id, String etcode, double currencyRate,
-		        Date efectiveDate, Date requestDate, String prepaymentType,
-		        double prepaymentAmount, double totalAmountToBePaid,
-		        double outstandingPrincipal, double outstandingInterest,
-		        double outstandingPrincipalBankPortion,
-		        double outstandingInterestBankPortion, double osinstallmentDue,
-		        double osinstallmentDueBankPortion, double osinsuranceDue,
-		        double oslcinstallment, double oslcinsurance,
-		        double lcinstallmentCurrent, double lcinsuranceCurrent,
-		        double osinstallCollectionFee, double osinsurCollectionFee,
-		        double ospdcbounceFee, double osstnkrenewalFee,
-		        double osinsuranceClaimExpense, double osrepossesFee,
-		        double prepaymentFee, double accruedInterest,
-		        double lcinstallmentAmountDisc, double lcinsuranceAmountDisc,
-		        double installCollectionFeeDisc, double insurCollectionFeeDisc,
-		        double pdcbounceFeeDisc, double stnkfeeDisc,
-		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
-		        double insuranceAmountDisc, double installmentAmountDisc,
-		        double prepaymentFeeDisc, double prepaidAmount,
-		        String insuranceTerminationFlag, String notes,
-		        String reasonTypeId, String reasonId, long jobId,
-		        String prepaymentStatus, Date statusDate, String requestBy,
-		        long approvalId, double osadminFee, double accruedAdminFeeEom)
+		public EarlyTermination(long id, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double outstandingPrincipal, double outstandingInterest, double outstandingPrincipalBankPortion,
+		        double outstandingInterestBankPortion, double osinstallmentDue, double osinstallmentDueBankPortion, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double lcinstallmentCurrent, double lcinsuranceCurrent, double osinstallCollectionFee,
+		        double osinsurCollectionFee, double ospdcbounceFee, double osstnkrenewalFee, double osinsuranceClaimExpense, double osrepossesFee, double prepaymentFee, double accruedInterest, double lcinstallmentAmountDisc, double lcinsuranceAmountDisc, double installCollectionFeeDisc,
+		        double insurCollectionFeeDisc, double pdcbounceFeeDisc, double stnkfeeDisc, double insuranceClaimExpenseDisc, double repossesFeeDisc, double insuranceAmountDisc, double installmentAmountDisc, double prepaymentFeeDisc, double prepaidAmount, String insuranceTerminationFlag,
+		        String notes, String reasonTypeId, String reasonId, long jobId, String prepaymentStatus, Date statusDate, String requestBy, long approvalId, double osadminFee, double accruedAdminFeeEom)
 			{
 				this.id = id;
 				this.etcode = etcode;
@@ -183,48 +167,15 @@ public class EarlyTermination implements java.io.Serializable
 				this.osadminFee = osadminFee;
 				this.accruedAdminFeeEom = accruedAdminFeeEom;
 			}
-		public EarlyTermination(long id, Long agrmntId, String etcode,
-		        double currencyRate, Date efectiveDate, Date requestDate,
-		        String prepaymentType, double prepaymentAmount,
-		        double totalAmountToBePaid, double outstandingPrincipal,
-		        double outstandingInterest,
-		        double outstandingPrincipalBankPortion,
-		        double outstandingInterestBankPortion, double osinstallmentDue,
-		        double osinstallmentDueBankPortion, double osinsuranceDue,
-		        double oslcinstallment, double oslcinsurance,
-		        double lcinstallmentCurrent, double lcinsuranceCurrent,
-		        double osinstallCollectionFee, double osinsurCollectionFee,
-		        double ospdcbounceFee, double osstnkrenewalFee,
-		        double osinsuranceClaimExpense, double osrepossesFee,
-		        double prepaymentFee, double accruedInterest,
-		        Double accruedInterestBankPortion,
-		        double lcinstallmentAmountDisc, double lcinsuranceAmountDisc,
-		        double installCollectionFeeDisc, double insurCollectionFeeDisc,
-		        double pdcbounceFeeDisc, double stnkfeeDisc,
-		        double insuranceClaimExpenseDisc, double repossesFeeDisc,
-		        double insuranceAmountDisc, double installmentAmountDisc,
-		        double prepaymentFeeDisc, double prepaidAmount,
-		        String insuranceTerminationFlag, String notes,
-		        String reasonTypeId, String reasonId, long jobId,
-		        String prepaymentStatus, Date statusDate, String requestBy,
-		        long approvalId, Double accruedInterestDisc,
-		        Double osprincipalDue, Double osprincipalDueBankPortion,
-		        Double osinterestDue, Double osinterestDueBankPortion,
-		        Double principalDueDisc, Double interestDueDisc,
-		        Double toleranceAmount, Double osdiffRate,
-		        Double accruedDiffRateEom, Double osinsuranceIncome,
-		        Double accruedInsuranceIncomeEom, Double osincentive,
-		        Double accruedIncentiveEom, Double osprovision,
-		        Double accruedProvisionEom, double osadminFee,
-		        double accruedAdminFeeEom, Double osdeferredInsurInc,
-		        Double accruedDeferredInsurIncEom, Double osotherRefund,
-		        Double accruedOtherRefundEom, Double osadmFee,
-		        Double accruedAdmFeeEom, Double osprovisionFee,
-		        Double accruedProvisionFeeEom, Double osotherFee,
-		        Double accruedOtherFeeEom, Double ossurveyFee,
-		        Double accruedSurveyFeeEom, Double oscostOfSurveyFee,
-		        Double accruedCostOfSurveyFeeEom, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public EarlyTermination(long id, Long agrmntId, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double outstandingPrincipal, double outstandingInterest,
+		        double outstandingPrincipalBankPortion, double outstandingInterestBankPortion, double osinstallmentDue, double osinstallmentDueBankPortion, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double lcinstallmentCurrent, double lcinsuranceCurrent,
+		        double osinstallCollectionFee, double osinsurCollectionFee, double ospdcbounceFee, double osstnkrenewalFee, double osinsuranceClaimExpense, double osrepossesFee, double prepaymentFee, double accruedInterest, Double accruedInterestBankPortion, double lcinstallmentAmountDisc,
+		        double lcinsuranceAmountDisc, double installCollectionFeeDisc, double insurCollectionFeeDisc, double pdcbounceFeeDisc, double stnkfeeDisc, double insuranceClaimExpenseDisc, double repossesFeeDisc, double insuranceAmountDisc, double installmentAmountDisc, double prepaymentFeeDisc,
+		        double prepaidAmount, String insuranceTerminationFlag, String notes, String reasonTypeId, String reasonId, long jobId, String prepaymentStatus, Date statusDate, String requestBy, long approvalId, Double accruedInterestDisc, Double osprincipalDue, Double osprincipalDueBankPortion,
+		        Double osinterestDue, Double osinterestDueBankPortion, Double principalDueDisc, Double interestDueDisc, Double toleranceAmount, Double osdiffRate, Double accruedDiffRateEom, Double osinsuranceIncome, Double accruedInsuranceIncomeEom, Double osincentive, Double accruedIncentiveEom,
+		        Double osprovision, Double accruedProvisionEom, double osadminFee, double accruedAdminFeeEom, Double osdeferredInsurInc, Double accruedDeferredInsurIncEom, Double osotherRefund, Double accruedOtherRefundEom, Double osadmFee, Double accruedAdmFeeEom, Double osprovisionFee,
+		        Double accruedProvisionFeeEom, Double osotherFee, Double accruedOtherFeeEom, Double ossurveyFee, Double accruedSurveyFeeEom, Double oscostOfSurveyFee, Double accruedCostOfSurveyFeeEom, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmntId = agrmntId;
@@ -314,7 +265,7 @@ public class EarlyTermination implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -444,8 +395,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.outstandingPrincipalBankPortion;
 			}
 		
-		public void setOutstandingPrincipalBankPortion(
-		        double outstandingPrincipalBankPortion)
+		public void setOutstandingPrincipalBankPortion(double outstandingPrincipalBankPortion)
 			{
 				this.outstandingPrincipalBankPortion = outstandingPrincipalBankPortion;
 			}
@@ -456,8 +406,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.outstandingInterestBankPortion;
 			}
 		
-		public void setOutstandingInterestBankPortion(
-		        double outstandingInterestBankPortion)
+		public void setOutstandingInterestBankPortion(double outstandingInterestBankPortion)
 			{
 				this.outstandingInterestBankPortion = outstandingInterestBankPortion;
 			}
@@ -479,8 +428,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.osinstallmentDueBankPortion;
 			}
 		
-		public void setOsinstallmentDueBankPortion(
-		        double osinstallmentDueBankPortion)
+		public void setOsinstallmentDueBankPortion(double osinstallmentDueBankPortion)
 			{
 				this.osinstallmentDueBankPortion = osinstallmentDueBankPortion;
 			}
@@ -634,8 +582,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.accruedInterestBankPortion;
 			}
 		
-		public void setAccruedInterestBankPortion(
-		        Double accruedInterestBankPortion)
+		public void setAccruedInterestBankPortion(Double accruedInterestBankPortion)
 			{
 				this.accruedInterestBankPortion = accruedInterestBankPortion;
 			}
@@ -712,8 +659,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.insuranceClaimExpenseDisc;
 			}
 		
-		public void setInsuranceClaimExpenseDisc(
-		        double insuranceClaimExpenseDisc)
+		public void setInsuranceClaimExpenseDisc(double insuranceClaimExpenseDisc)
 			{
 				this.insuranceClaimExpenseDisc = insuranceClaimExpenseDisc;
 			}
@@ -901,8 +847,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.osprincipalDueBankPortion;
 			}
 		
-		public void setOsprincipalDueBankPortion(
-		        Double osprincipalDueBankPortion)
+		public void setOsprincipalDueBankPortion(Double osprincipalDueBankPortion)
 			{
 				this.osprincipalDueBankPortion = osprincipalDueBankPortion;
 			}
@@ -1001,8 +946,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.accruedInsuranceIncomeEom;
 			}
 		
-		public void setAccruedInsuranceIncomeEom(
-		        Double accruedInsuranceIncomeEom)
+		public void setAccruedInsuranceIncomeEom(Double accruedInsuranceIncomeEom)
 			{
 				this.accruedInsuranceIncomeEom = accruedInsuranceIncomeEom;
 			}
@@ -1090,8 +1034,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.accruedDeferredInsurIncEom;
 			}
 		
-		public void setAccruedDeferredInsurIncEom(
-		        Double accruedDeferredInsurIncEom)
+		public void setAccruedDeferredInsurIncEom(Double accruedDeferredInsurIncEom)
 			{
 				this.accruedDeferredInsurIncEom = accruedDeferredInsurIncEom;
 			}
@@ -1223,8 +1166,7 @@ public class EarlyTermination implements java.io.Serializable
 				return this.accruedCostOfSurveyFeeEom;
 			}
 		
-		public void setAccruedCostOfSurveyFeeEom(
-		        Double accruedCostOfSurveyFeeEom)
+		public void setAccruedCostOfSurveyFeeEom(Double accruedCostOfSurveyFeeEom)
 			{
 				this.accruedCostOfSurveyFeeEom = accruedCostOfSurveyFeeEom;
 			}

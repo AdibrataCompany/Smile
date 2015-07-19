@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -32,11 +34,7 @@ public class CashierHistoryId implements java.io.Serializable
 			{
 			}
 		
-		public CashierHistoryId(Long id, String partnerCode, Long officeId,
-		        Long employeeId, Boolean currencyId, Short openSeqNo,
-		        Date openingDtm, Double openingAmount, Double balanceAmount,
-		        String cashierStatus, Date closingDtm, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt)
+		public CashierHistoryId(Long id, String partnerCode, Long officeId, Long employeeId, Boolean currencyId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -230,141 +228,42 @@ public class CashierHistoryId implements java.io.Serializable
 					return false;
 				CashierHistoryId castOther = (CashierHistoryId) other;
 				
-				return ((this.getId() == castOther.getId()) || (this.getId() != null
-				        && castOther.getId() != null && this.getId().equals(
-				        castOther.getId())))
-				        && ((this.getPartnerCode() == castOther
-				                .getPartnerCode()) || (this.getPartnerCode() != null
-				                && castOther.getPartnerCode() != null && this
-				                .getPartnerCode().equals(
-				                        castOther.getPartnerCode())))
-				        && ((this.getOfficeId() == castOther.getOfficeId()) || (this
-				                .getOfficeId() != null
-				                && castOther.getOfficeId() != null && this
-				                .getOfficeId().equals(castOther.getOfficeId())))
-				        && ((this.getEmployeeId() == castOther.getEmployeeId()) || (this
-				                .getEmployeeId() != null
-				                && castOther.getEmployeeId() != null && this
-				                .getEmployeeId().equals(
-				                        castOther.getEmployeeId())))
-				        && ((this.getCurrencyId() == castOther.getCurrencyId()) || (this
-				                .getCurrencyId() != null
-				                && castOther.getCurrencyId() != null && this
-				                .getCurrencyId().equals(
-				                        castOther.getCurrencyId())))
-				        && ((this.getOpenSeqNo() == castOther.getOpenSeqNo()) || (this
-				                .getOpenSeqNo() != null
-				                && castOther.getOpenSeqNo() != null && this
-				                .getOpenSeqNo()
-				                .equals(castOther.getOpenSeqNo())))
-				        && ((this.getOpeningDtm() == castOther.getOpeningDtm()) || (this
-				                .getOpeningDtm() != null
-				                && castOther.getOpeningDtm() != null && this
-				                .getOpeningDtm().equals(
-				                        castOther.getOpeningDtm())))
-				        && ((this.getOpeningAmount() == castOther
-				                .getOpeningAmount()) || (this
-				                .getOpeningAmount() != null
-				                && castOther.getOpeningAmount() != null && this
-				                .getOpeningAmount().equals(
-				                        castOther.getOpeningAmount())))
-				        && ((this.getBalanceAmount() == castOther
-				                .getBalanceAmount()) || (this
-				                .getBalanceAmount() != null
-				                && castOther.getBalanceAmount() != null && this
-				                .getBalanceAmount().equals(
-				                        castOther.getBalanceAmount())))
-				        && ((this.getCashierStatus() == castOther
-				                .getCashierStatus()) || (this
-				                .getCashierStatus() != null
-				                && castOther.getCashierStatus() != null && this
-				                .getCashierStatus().equals(
-				                        castOther.getCashierStatus())))
-				        && ((this.getClosingDtm() == castOther.getClosingDtm()) || (this
-				                .getClosingDtm() != null
-				                && castOther.getClosingDtm() != null && this
-				                .getClosingDtm().equals(
-				                        castOther.getClosingDtm())))
-				        && ((this.getDtmUpd() == castOther.getDtmUpd()) || (this
-				                .getDtmUpd() != null
-				                && castOther.getDtmUpd() != null && this
-				                .getDtmUpd().equals(castOther.getDtmUpd())))
-				        && ((this.getUsrUpd() == castOther.getUsrUpd()) || (this
-				                .getUsrUpd() != null
-				                && castOther.getUsrUpd() != null && this
-				                .getUsrUpd().equals(castOther.getUsrUpd())))
-				        && ((this.getDtmCrt() == castOther.getDtmCrt()) || (this
-				                .getDtmCrt() != null
-				                && castOther.getDtmCrt() != null && this
-				                .getDtmCrt().equals(castOther.getDtmCrt())))
-				        && ((this.getUsrCrt() == castOther.getUsrCrt()) || (this
-				                .getUsrCrt() != null
-				                && castOther.getUsrCrt() != null && this
-				                .getUsrCrt().equals(castOther.getUsrCrt())));
+				return ((this.getId() == castOther.getId()) || (this.getId() != null && castOther.getId() != null && this.getId().equals(castOther.getId())))
+				        && ((this.getPartnerCode() == castOther.getPartnerCode()) || (this.getPartnerCode() != null && castOther.getPartnerCode() != null && this.getPartnerCode().equals(castOther.getPartnerCode())))
+				        && ((this.getOfficeId() == castOther.getOfficeId()) || (this.getOfficeId() != null && castOther.getOfficeId() != null && this.getOfficeId().equals(castOther.getOfficeId())))
+				        && ((this.getEmployeeId() == castOther.getEmployeeId()) || (this.getEmployeeId() != null && castOther.getEmployeeId() != null && this.getEmployeeId().equals(castOther.getEmployeeId())))
+				        && ((this.getCurrencyId() == castOther.getCurrencyId()) || (this.getCurrencyId() != null && castOther.getCurrencyId() != null && this.getCurrencyId().equals(castOther.getCurrencyId())))
+				        && ((this.getOpenSeqNo() == castOther.getOpenSeqNo()) || (this.getOpenSeqNo() != null && castOther.getOpenSeqNo() != null && this.getOpenSeqNo().equals(castOther.getOpenSeqNo())))
+				        && ((this.getOpeningDtm() == castOther.getOpeningDtm()) || (this.getOpeningDtm() != null && castOther.getOpeningDtm() != null && this.getOpeningDtm().equals(castOther.getOpeningDtm())))
+				        && ((this.getOpeningAmount() == castOther.getOpeningAmount()) || (this.getOpeningAmount() != null && castOther.getOpeningAmount() != null && this.getOpeningAmount().equals(castOther.getOpeningAmount())))
+				        && ((this.getBalanceAmount() == castOther.getBalanceAmount()) || (this.getBalanceAmount() != null && castOther.getBalanceAmount() != null && this.getBalanceAmount().equals(castOther.getBalanceAmount())))
+				        && ((this.getCashierStatus() == castOther.getCashierStatus()) || (this.getCashierStatus() != null && castOther.getCashierStatus() != null && this.getCashierStatus().equals(castOther.getCashierStatus())))
+				        && ((this.getClosingDtm() == castOther.getClosingDtm()) || (this.getClosingDtm() != null && castOther.getClosingDtm() != null && this.getClosingDtm().equals(castOther.getClosingDtm())))
+				        && ((this.getDtmUpd() == castOther.getDtmUpd()) || (this.getDtmUpd() != null && castOther.getDtmUpd() != null && this.getDtmUpd().equals(castOther.getDtmUpd())))
+				        && ((this.getUsrUpd() == castOther.getUsrUpd()) || (this.getUsrUpd() != null && castOther.getUsrUpd() != null && this.getUsrUpd().equals(castOther.getUsrUpd())))
+				        && ((this.getDtmCrt() == castOther.getDtmCrt()) || (this.getDtmCrt() != null && castOther.getDtmCrt() != null && this.getDtmCrt().equals(castOther.getDtmCrt())))
+				        && ((this.getUsrCrt() == castOther.getUsrCrt()) || (this.getUsrCrt() != null && castOther.getUsrCrt() != null && this.getUsrCrt().equals(castOther.getUsrCrt())));
 			}
 		
 		public int hashCode()
 			{
 				int result = 17;
 				
-				result = 37 * result
-				        + (getId() == null ? 0 : this.getId().hashCode());
-				result = 37
-				        * result
-				        + (getPartnerCode() == null ? 0 : this.getPartnerCode()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getOfficeId() == null ? 0 : this.getOfficeId()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getEmployeeId() == null ? 0 : this.getEmployeeId()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getCurrencyId() == null ? 0 : this.getCurrencyId()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getOpenSeqNo() == null ? 0 : this.getOpenSeqNo()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getOpeningDtm() == null ? 0 : this.getOpeningDtm()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getOpeningAmount() == null ? 0 : this
-				                .getOpeningAmount().hashCode());
-				result = 37
-				        * result
-				        + (getBalanceAmount() == null ? 0 : this
-				                .getBalanceAmount().hashCode());
-				result = 37
-				        * result
-				        + (getCashierStatus() == null ? 0 : this
-				                .getCashierStatus().hashCode());
-				result = 37
-				        * result
-				        + (getClosingDtm() == null ? 0 : this.getClosingDtm()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getDtmUpd() == null ? 0 : this.getDtmUpd()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getUsrUpd() == null ? 0 : this.getUsrUpd()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getDtmCrt() == null ? 0 : this.getDtmCrt()
-				                .hashCode());
-				result = 37
-				        * result
-				        + (getUsrCrt() == null ? 0 : this.getUsrCrt()
-				                .hashCode());
+				result = 37 * result + (getId() == null ? 0 : this.getId().hashCode());
+				result = 37 * result + (getPartnerCode() == null ? 0 : this.getPartnerCode().hashCode());
+				result = 37 * result + (getOfficeId() == null ? 0 : this.getOfficeId().hashCode());
+				result = 37 * result + (getEmployeeId() == null ? 0 : this.getEmployeeId().hashCode());
+				result = 37 * result + (getCurrencyId() == null ? 0 : this.getCurrencyId().hashCode());
+				result = 37 * result + (getOpenSeqNo() == null ? 0 : this.getOpenSeqNo().hashCode());
+				result = 37 * result + (getOpeningDtm() == null ? 0 : this.getOpeningDtm().hashCode());
+				result = 37 * result + (getOpeningAmount() == null ? 0 : this.getOpeningAmount().hashCode());
+				result = 37 * result + (getBalanceAmount() == null ? 0 : this.getBalanceAmount().hashCode());
+				result = 37 * result + (getCashierStatus() == null ? 0 : this.getCashierStatus().hashCode());
+				result = 37 * result + (getClosingDtm() == null ? 0 : this.getClosingDtm().hashCode());
+				result = 37 * result + (getDtmUpd() == null ? 0 : this.getDtmUpd().hashCode());
+				result = 37 * result + (getUsrUpd() == null ? 0 : this.getUsrUpd().hashCode());
+				result = 37 * result + (getDtmCrt() == null ? 0 : this.getDtmCrt().hashCode());
+				result = 37 * result + (getUsrCrt() == null ? 0 : this.getUsrCrt().hashCode());
 				return result;
 			}
 		

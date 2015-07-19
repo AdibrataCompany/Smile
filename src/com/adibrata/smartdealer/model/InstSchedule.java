@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,16 +24,19 @@ public class InstSchedule implements java.io.Serializable
 		
 		private long id;
 		private Agrmnt agrmnt;
+		private Short instSeqNo;
 		private Date dueDate;
 		private double instAmt;
 		private double paidAmt;
 		private double waivedAmt;
 		private Date paidDate;
-		private double lateCharges;
+		private double lcamt;
+		private Double lcpaid;
+		private Double lcwaived;
 		private double princAmt;
 		private double intrstAmt;
 		private double osPamt;
-		private double osI;
+		private double osIamt;
 		private double accruedAmt;
 		private Date accruedDate;
 		private double diffRateAmt;
@@ -90,29 +95,19 @@ public class InstSchedule implements java.io.Serializable
 			{
 			}
 		
-		public InstSchedule(long id, double instAmt, double paidAmt,
-		        double waivedAmt, double lateCharges, double princAmt,
-		        double intrstAmt, double osPamt, double osI, double accruedAmt,
-		        double diffRateAmt, double osdiffRateAmt,
-		        double accruedDiffRateAmt, double incentive,
-		        double osincentive, double incentiveRecognize,
-		        double insuranceIncomeAmount,
-		        double outStandingInsuranceIncomeAmount,
-		        double insuranceIncomeRecognize, double provision,
-		        double osprovision, short isSmssent, double collectionFee,
-		        double collectionFeePaid, double collectionFeeWaived,
-		        double fundingCoyPortion, double adminFee, double osadminFee,
-		        double adminFeeRecognize)
+		public InstSchedule(long id, double instAmt, double paidAmt, double waivedAmt, double lcamt, double princAmt, double intrstAmt, double osPamt, double osIamt, double accruedAmt, double diffRateAmt, double osdiffRateAmt, double accruedDiffRateAmt, double incentive, double osincentive,
+		        double incentiveRecognize, double insuranceIncomeAmount, double outStandingInsuranceIncomeAmount, double insuranceIncomeRecognize, double provision, double osprovision, short isSmssent, double collectionFee, double collectionFeePaid, double collectionFeeWaived,
+		        double fundingCoyPortion, double adminFee, double osadminFee, double adminFeeRecognize)
 			{
 				this.id = id;
 				this.instAmt = instAmt;
 				this.paidAmt = paidAmt;
 				this.waivedAmt = waivedAmt;
-				this.lateCharges = lateCharges;
+				this.lcamt = lcamt;
 				this.princAmt = princAmt;
 				this.intrstAmt = intrstAmt;
 				this.osPamt = osPamt;
-				this.osI = osI;
+				this.osIamt = osIamt;
 				this.accruedAmt = accruedAmt;
 				this.diffRateAmt = diffRateAmt;
 				this.osdiffRateAmt = osdiffRateAmt;
@@ -134,51 +129,29 @@ public class InstSchedule implements java.io.Serializable
 				this.osadminFee = osadminFee;
 				this.adminFeeRecognize = adminFeeRecognize;
 			}
-		public InstSchedule(long id, Agrmnt agrmnt, Date dueDate,
-		        double instAmt, double paidAmt, double waivedAmt,
-		        Date paidDate, double lateCharges, double princAmt,
-		        double intrstAmt, double osPamt, double osI, double accruedAmt,
-		        Date accruedDate, double diffRateAmt, double osdiffRateAmt,
-		        double accruedDiffRateAmt, double incentive,
-		        double osincentive, double incentiveRecognize,
-		        double insuranceIncomeAmount,
-		        double outStandingInsuranceIncomeAmount,
-		        double insuranceIncomeRecognize, double provision,
-		        double osprovision, Double provisionRecognize, short isSmssent,
-		        double collectionFee, double collectionFeePaid,
-		        double collectionFeeWaived, double fundingCoyPortion,
-		        Double spreadAmount, Double spreadRecognize,
-		        Date lastSpreadRecognize, double adminFee, double osadminFee,
-		        double adminFeeRecognize, Double otherRefundAmount,
-		        Double outStandingOtherRefundAmount,
-		        Double otherRefundRecognize, Double admFeeAmount,
-		        Double outStandingAdmFeeAmount, Double admFeeRecognize,
-		        Double provisionFeeAmount,
-		        Double outStandingProvisionFeeAmount,
-		        Double provisionFeeRecognize, Double otherFeeAmount,
-		        Double outStandingOtherFeeAmount, Double otherFeeRecognize,
-		        Double surveyFeeAmount, Double outStandingSurveyFeeAmount,
-		        Double surveyFeeRecognize, Double incomeNet,
-		        Double osprincipleNet, Double grossYieldAcct,
-		        Double deferredInsurIncAmount,
-		        Double outstandingDeferredInsurIncAmount,
-		        Double deferredInsurIncRecognize, Double costOfSurveyFeeAmount,
-		        Double outStandingCostOfSurveyAmount,
-		        Double costOfSurveyRecognize, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public InstSchedule(long id, Agrmnt agrmnt, Short instSeqNo, Date dueDate, double instAmt, double paidAmt, double waivedAmt, Date paidDate, double lcamt, Double lcpaid, Double lcwaived, double princAmt, double intrstAmt, double osPamt, double osIamt, double accruedAmt, Date accruedDate,
+		        double diffRateAmt, double osdiffRateAmt, double accruedDiffRateAmt, double incentive, double osincentive, double incentiveRecognize, double insuranceIncomeAmount, double outStandingInsuranceIncomeAmount, double insuranceIncomeRecognize, double provision, double osprovision,
+		        Double provisionRecognize, short isSmssent, double collectionFee, double collectionFeePaid, double collectionFeeWaived, double fundingCoyPortion, Double spreadAmount, Double spreadRecognize, Date lastSpreadRecognize, double adminFee, double osadminFee, double adminFeeRecognize,
+		        Double otherRefundAmount, Double outStandingOtherRefundAmount, Double otherRefundRecognize, Double admFeeAmount, Double outStandingAdmFeeAmount, Double admFeeRecognize, Double provisionFeeAmount, Double outStandingProvisionFeeAmount, Double provisionFeeRecognize,
+		        Double otherFeeAmount, Double outStandingOtherFeeAmount, Double otherFeeRecognize, Double surveyFeeAmount, Double outStandingSurveyFeeAmount, Double surveyFeeRecognize, Double incomeNet, Double osprincipleNet, Double grossYieldAcct, Double deferredInsurIncAmount,
+		        Double outstandingDeferredInsurIncAmount, Double deferredInsurIncRecognize, Double costOfSurveyFeeAmount, Double outStandingCostOfSurveyAmount, Double costOfSurveyRecognize, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
+				this.instSeqNo = instSeqNo;
 				this.dueDate = dueDate;
 				this.instAmt = instAmt;
 				this.paidAmt = paidAmt;
 				this.waivedAmt = waivedAmt;
 				this.paidDate = paidDate;
-				this.lateCharges = lateCharges;
+				this.lcamt = lcamt;
+				this.lcpaid = lcpaid;
+				this.lcwaived = lcwaived;
 				this.princAmt = princAmt;
 				this.intrstAmt = intrstAmt;
 				this.osPamt = osPamt;
-				this.osI = osI;
+				this.osIamt = osIamt;
 				this.accruedAmt = accruedAmt;
 				this.accruedDate = accruedDate;
 				this.diffRateAmt = diffRateAmt;
@@ -234,7 +207,7 @@ public class InstSchedule implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -256,6 +229,17 @@ public class InstSchedule implements java.io.Serializable
 		public void setAgrmnt(Agrmnt agrmnt)
 			{
 				this.agrmnt = agrmnt;
+			}
+		
+		@Column(name = "InstSeqNo")
+		public Short getInstSeqNo()
+			{
+				return this.instSeqNo;
+			}
+		
+		public void setInstSeqNo(Short instSeqNo)
+			{
+				this.instSeqNo = instSeqNo;
 			}
 		
 		@Temporal(TemporalType.TIMESTAMP)
@@ -315,15 +299,37 @@ public class InstSchedule implements java.io.Serializable
 				this.paidDate = paidDate;
 			}
 		
-		@Column(name = "LateCharges", nullable = false, precision = 53, scale = 0)
-		public double getLateCharges()
+		@Column(name = "LCAmt", nullable = false, precision = 53, scale = 0)
+		public double getLcamt()
 			{
-				return this.lateCharges;
+				return this.lcamt;
 			}
 		
-		public void setLateCharges(double lateCharges)
+		public void setLcamt(double lcamt)
 			{
-				this.lateCharges = lateCharges;
+				this.lcamt = lcamt;
+			}
+		
+		@Column(name = "LCPaid", precision = 53, scale = 0)
+		public Double getLcpaid()
+			{
+				return this.lcpaid;
+			}
+		
+		public void setLcpaid(Double lcpaid)
+			{
+				this.lcpaid = lcpaid;
+			}
+		
+		@Column(name = "LCWaived", precision = 53, scale = 0)
+		public Double getLcwaived()
+			{
+				return this.lcwaived;
+			}
+		
+		public void setLcwaived(Double lcwaived)
+			{
+				this.lcwaived = lcwaived;
 			}
 		
 		@Column(name = "PrincAmt", nullable = false, precision = 53, scale = 0)
@@ -359,15 +365,15 @@ public class InstSchedule implements java.io.Serializable
 				this.osPamt = osPamt;
 			}
 		
-		@Column(name = "OsI", nullable = false, precision = 53, scale = 0)
-		public double getOsI()
+		@Column(name = "OsIAmt", nullable = false, precision = 53, scale = 0)
+		public double getOsIamt()
 			{
-				return this.osI;
+				return this.osIamt;
 			}
 		
-		public void setOsI(double osI)
+		public void setOsIamt(double osIamt)
 			{
-				this.osI = osI;
+				this.osIamt = osIamt;
 			}
 		
 		@Column(name = "AccruedAmt", nullable = false, precision = 53, scale = 0)
@@ -476,8 +482,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingInsuranceIncomeAmount;
 			}
 		
-		public void setOutStandingInsuranceIncomeAmount(
-		        double outStandingInsuranceIncomeAmount)
+		public void setOutStandingInsuranceIncomeAmount(double outStandingInsuranceIncomeAmount)
 			{
 				this.outStandingInsuranceIncomeAmount = outStandingInsuranceIncomeAmount;
 			}
@@ -665,8 +670,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingOtherRefundAmount;
 			}
 		
-		public void setOutStandingOtherRefundAmount(
-		        Double outStandingOtherRefundAmount)
+		public void setOutStandingOtherRefundAmount(Double outStandingOtherRefundAmount)
 			{
 				this.outStandingOtherRefundAmount = outStandingOtherRefundAmount;
 			}
@@ -732,8 +736,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingProvisionFeeAmount;
 			}
 		
-		public void setOutStandingProvisionFeeAmount(
-		        Double outStandingProvisionFeeAmount)
+		public void setOutStandingProvisionFeeAmount(Double outStandingProvisionFeeAmount)
 			{
 				this.outStandingProvisionFeeAmount = outStandingProvisionFeeAmount;
 			}
@@ -766,8 +769,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingOtherFeeAmount;
 			}
 		
-		public void setOutStandingOtherFeeAmount(
-		        Double outStandingOtherFeeAmount)
+		public void setOutStandingOtherFeeAmount(Double outStandingOtherFeeAmount)
 			{
 				this.outStandingOtherFeeAmount = outStandingOtherFeeAmount;
 			}
@@ -800,8 +802,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingSurveyFeeAmount;
 			}
 		
-		public void setOutStandingSurveyFeeAmount(
-		        Double outStandingSurveyFeeAmount)
+		public void setOutStandingSurveyFeeAmount(Double outStandingSurveyFeeAmount)
 			{
 				this.outStandingSurveyFeeAmount = outStandingSurveyFeeAmount;
 			}
@@ -867,8 +868,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outstandingDeferredInsurIncAmount;
 			}
 		
-		public void setOutstandingDeferredInsurIncAmount(
-		        Double outstandingDeferredInsurIncAmount)
+		public void setOutstandingDeferredInsurIncAmount(Double outstandingDeferredInsurIncAmount)
 			{
 				this.outstandingDeferredInsurIncAmount = outstandingDeferredInsurIncAmount;
 			}
@@ -879,8 +879,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.deferredInsurIncRecognize;
 			}
 		
-		public void setDeferredInsurIncRecognize(
-		        Double deferredInsurIncRecognize)
+		public void setDeferredInsurIncRecognize(Double deferredInsurIncRecognize)
 			{
 				this.deferredInsurIncRecognize = deferredInsurIncRecognize;
 			}
@@ -902,8 +901,7 @@ public class InstSchedule implements java.io.Serializable
 				return this.outStandingCostOfSurveyAmount;
 			}
 		
-		public void setOutStandingCostOfSurveyAmount(
-		        Double outStandingCostOfSurveyAmount)
+		public void setOutStandingCostOfSurveyAmount(Double outStandingCostOfSurveyAmount)
 			{
 				this.outStandingCostOfSurveyAmount = outStandingCostOfSurveyAmount;
 			}

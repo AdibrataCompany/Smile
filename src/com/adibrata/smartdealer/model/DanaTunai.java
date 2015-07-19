@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -63,17 +65,10 @@ public class DanaTunai implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public DanaTunai(long id, Employee employee, Leasing leasing,
-		        Office office, Partner partner, String danaTunaiNo,
-		        String assetBrand, String assetType, String assetModel,
-		        Long assetMasterId, String bpkbno, String bpkbname,
-		        String bpkbaddress, String vehicleColor, String machineNo,
-		        String chasisNo, String cylinder, String licensePlate,
-		        String manufacturingMonth, String manufacturingYear,
-		        Double otramount, Double dpamount, Double fundingAmount,
-		        Double tdpamount, Double adminFee, Double asuransiAmount,
-		        String noStnk, Date stnkdate, Date postingDate, Date valueDate,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		
+		public DanaTunai(long id, Employee employee, Leasing leasing, Office office, Partner partner, String danaTunaiNo, String assetBrand, String assetType, String assetModel, Long assetMasterId, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor, String machineNo,
+		        String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Double otramount, Double dpamount, Double fundingAmount, Double tdpamount, Double adminFee, Double asuransiAmount, String noStnk, Date stnkdate, Date postingDate,
+		        Date valueDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.employee = employee;
@@ -111,7 +106,7 @@ public class DanaTunai implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,54 +48,42 @@ public class Partner implements java.io.Serializable
 		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 		private Set<AssetMaster> assetMasters = new HashSet<AssetMaster>(0);
 		private Set<MsRole> msRoles = new HashSet<MsRole>(0);
-		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(
-		        0);
+		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 		private Set<TransJob> transJobs = new HashSet<TransJob>(0);
 		private Set<Stock> stocks = new HashSet<Stock>(0);
 		private Set<MsUser> msUsers = new HashSet<MsUser>(0);
-		private Set<PayHistHdr> payHistHdrs = new HashSet<PayHistHdr>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<Supplier> suppliers = new HashSet<Supplier>(0);
-		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(
-		        0);
+		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<Taksasi> taksasis = new HashSet<Taksasi>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<Customer> customers = new HashSet<Customer>(0);
-		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(
-		        0);
+		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(0);
 		private Set<TrxSeqNo> trxSeqNos = new HashSet<TrxSeqNo>(0);
-		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(
-		        0);
+		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<MasterTable> masterTables = new HashSet<MasterTable>(0);
 		private Set<Workshop> workshops = new HashSet<Workshop>(0);
-		private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(
-		        0);
+		private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
-		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(
-		        0);
+		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
-		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
-		        0);
+		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(
-		        0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
 		private Set<JrnlHdr> jrnlHdrs = new HashSet<JrnlHdr>(0);
 		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 		private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
 		private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
-		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(
-		        0);
+		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
 		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
-		private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(
-		        0);
+		private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(0);
 		private Set<CoaSchmHdr> coaSchmHdrs = new HashSet<CoaSchmHdr>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
 		private Set<Coamaster> coamasters = new HashSet<Coamaster>(0);
 		private Set<MsUserRole> msUserRoles = new HashSet<MsUserRole>(0);
-		private Set<ResetPasswordLog> resetPasswordLogs = new HashSet<ResetPasswordLog>(
-		        0);
+		private Set<ResetPasswordLog> resetPasswordLogs = new HashSet<ResetPasswordLog>(0);
 		private Set<Office> offices = new HashSet<Office>(0);
 		
 		public Partner()
@@ -104,38 +94,13 @@ public class Partner implements java.io.Serializable
 			{
 				this.partnerCode = partnerCode;
 			}
-		public Partner(String partnerCode, String name, String address,
-		        String rt, String rw, String kelurahan, String city,
-		        String zipcode, String type, String areaPhone1,
-		        String phoneNo1, String areaPhone2, String phoneNo2,
-		        String areaFax, String faxNo, String handphone,
-		        String fullAddress, Character isActive, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters,
-		        Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs,
-		        Set<TransJob> transJobs, Set<Stock> stocks,
-		        Set<MsUser> msUsers, Set<PayHistHdr> payHistHdrs,
-		        Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs,
-		        Set<Supplier> suppliers,
-		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis,
-		        Set<AdvanceCash> advanceCashes, Set<Customer> customers,
-		        Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos,
-		        Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais,
-		        Set<MasterTable> masterTables, Set<Workshop> workshops,
-		        Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts,
-		        Set<PaymentVoucher> paymentVouchers,
-		        Set<ServiceHdr> serviceHdrs,
-		        Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<SalesInvoice> salesInvoices,
-		        Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs,
-		        Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs,
-		        Set<OtherRcvHdr> otherRcvHdrs,
-		        Set<PurchaseInvoice> purchaseInvoices,
-		        Set<CashBankHdr> cashBankHdrs,
-		        Set<AssetServiceMaster> assetServiceMasters,
-		        Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees,
-		        Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles,
-		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
+		
+		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress,
+		        Character isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers,
+		        Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos,
+		        Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<MasterTable> masterTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs,
+		        Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<PurchaseInvoice> purchaseInvoices,
+		        Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles, Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -166,7 +131,6 @@ public class Partner implements java.io.Serializable
 				this.transJobs = transJobs;
 				this.stocks = stocks;
 				this.msUsers = msUsers;
-				this.payHistHdrs = payHistHdrs;
 				this.payReqHdrs = payReqHdrs;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.suppliers = suppliers;
@@ -202,7 +166,7 @@ public class Partner implements java.io.Serializable
 				this.offices = offices;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "PartnerCode", unique = true, nullable = false, length = 20)
 		public String getPartnerCode()
 			{
@@ -525,17 +489,6 @@ public class Partner implements java.io.Serializable
 			}
 		
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<PayHistHdr> getPayHistHdrs()
-			{
-				return this.payHistHdrs;
-			}
-		
-		public void setPayHistHdrs(Set<PayHistHdr> payHistHdrs)
-			{
-				this.payHistHdrs = payHistHdrs;
-			}
-		
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<PayReqHdr> getPayReqHdrs()
 			{
 				return this.payReqHdrs;
@@ -827,8 +780,7 @@ public class Partner implements java.io.Serializable
 				return this.assetServiceMasters;
 			}
 		
-		public void setAssetServiceMasters(
-		        Set<AssetServiceMaster> assetServiceMasters)
+		public void setAssetServiceMasters(Set<AssetServiceMaster> assetServiceMasters)
 			{
 				this.assetServiceMasters = assetServiceMasters;
 			}

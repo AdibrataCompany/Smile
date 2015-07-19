@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,6 +24,26 @@ public class AgrmntMnt implements java.io.Serializable
 		
 		private long id;
 		private Agrmnt agrmnt;
+		private double instAmt;
+		private double instPaid;
+		private double instWaived;
+		private double inssAmt;
+		private double inssPaid;
+		private double inssWaived;
+		private double lcinssWaived;
+		private double lcinssAmt;
+		private double lcinssPaid;
+		private Date lastLccalcInstDate;
+		private double lcinstWaived;
+		private double lcinstAmt;
+		private double lcinstPaid;
+		private Date lastLccalcInssDate;
+		private double pdcbounceFee;
+		private double pdcbounceFeePaid;
+		private double pdcbounceFeeWaived;
+		private double collectionExpense;
+		private double collectionExpensePaid;
+		private double collectionExpenseWaived;
 		private String usrCrt;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -31,22 +53,62 @@ public class AgrmntMnt implements java.io.Serializable
 			{
 			}
 		
-		public AgrmntMnt(long id)
+		public AgrmntMnt(long id, double instAmt, double instPaid, double instWaived, double inssAmt, double inssPaid, double inssWaived, double lcinssWaived, double lcinssAmt, double lcinssPaid, double lcinstWaived, double lcinstAmt, double lcinstPaid, double pdcbounceFee, double pdcbounceFeePaid,
+		        double pdcbounceFeeWaived, double collectionExpense, double collectionExpensePaid, double collectionExpenseWaived)
 			{
 				this.id = id;
+				this.instAmt = instAmt;
+				this.instPaid = instPaid;
+				this.instWaived = instWaived;
+				this.inssAmt = inssAmt;
+				this.inssPaid = inssPaid;
+				this.inssWaived = inssWaived;
+				this.lcinssWaived = lcinssWaived;
+				this.lcinssAmt = lcinssAmt;
+				this.lcinssPaid = lcinssPaid;
+				this.lcinstWaived = lcinstWaived;
+				this.lcinstAmt = lcinstAmt;
+				this.lcinstPaid = lcinstPaid;
+				this.pdcbounceFee = pdcbounceFee;
+				this.pdcbounceFeePaid = pdcbounceFeePaid;
+				this.pdcbounceFeeWaived = pdcbounceFeeWaived;
+				this.collectionExpense = collectionExpense;
+				this.collectionExpensePaid = collectionExpensePaid;
+				this.collectionExpenseWaived = collectionExpenseWaived;
 			}
-		public AgrmntMnt(long id, Agrmnt agrmnt, String usrCrt, Date dtmUpd,
-		        String usrUpd, Date dtmCrt)
+		
+		public AgrmntMnt(long id, Agrmnt agrmnt, double instAmt, double instPaid, double instWaived, double inssAmt, double inssPaid, double inssWaived, double lcinssWaived, double lcinssAmt, double lcinssPaid, Date lastLccalcInstDate, double lcinstWaived, double lcinstAmt, double lcinstPaid,
+		        Date lastLccalcInssDate, double pdcbounceFee, double pdcbounceFeePaid, double pdcbounceFeeWaived, double collectionExpense, double collectionExpensePaid, double collectionExpenseWaived, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
+				this.instAmt = instAmt;
+				this.instPaid = instPaid;
+				this.instWaived = instWaived;
+				this.inssAmt = inssAmt;
+				this.inssPaid = inssPaid;
+				this.inssWaived = inssWaived;
+				this.lcinssWaived = lcinssWaived;
+				this.lcinssAmt = lcinssAmt;
+				this.lcinssPaid = lcinssPaid;
+				this.lastLccalcInstDate = lastLccalcInstDate;
+				this.lcinstWaived = lcinstWaived;
+				this.lcinstAmt = lcinstAmt;
+				this.lcinstPaid = lcinstPaid;
+				this.lastLccalcInssDate = lastLccalcInssDate;
+				this.pdcbounceFee = pdcbounceFee;
+				this.pdcbounceFeePaid = pdcbounceFeePaid;
+				this.pdcbounceFeeWaived = pdcbounceFeeWaived;
+				this.collectionExpense = collectionExpense;
+				this.collectionExpensePaid = collectionExpensePaid;
+				this.collectionExpenseWaived = collectionExpenseWaived;
 				this.usrCrt = usrCrt;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -68,6 +130,228 @@ public class AgrmntMnt implements java.io.Serializable
 		public void setAgrmnt(Agrmnt agrmnt)
 			{
 				this.agrmnt = agrmnt;
+			}
+		
+		@Column(name = "InstAmt", nullable = false, precision = 53, scale = 0)
+		public double getInstAmt()
+			{
+				return this.instAmt;
+			}
+		
+		public void setInstAmt(double instAmt)
+			{
+				this.instAmt = instAmt;
+			}
+		
+		@Column(name = "InstPaid", nullable = false, precision = 53, scale = 0)
+		public double getInstPaid()
+			{
+				return this.instPaid;
+			}
+		
+		public void setInstPaid(double instPaid)
+			{
+				this.instPaid = instPaid;
+			}
+		
+		@Column(name = "InstWaived", nullable = false, precision = 53, scale = 0)
+		public double getInstWaived()
+			{
+				return this.instWaived;
+			}
+		
+		public void setInstWaived(double instWaived)
+			{
+				this.instWaived = instWaived;
+			}
+		
+		@Column(name = "InssAmt", nullable = false, precision = 53, scale = 0)
+		public double getInssAmt()
+			{
+				return this.inssAmt;
+			}
+		
+		public void setInssAmt(double inssAmt)
+			{
+				this.inssAmt = inssAmt;
+			}
+		
+		@Column(name = "InssPaid", nullable = false, precision = 53, scale = 0)
+		public double getInssPaid()
+			{
+				return this.inssPaid;
+			}
+		
+		public void setInssPaid(double inssPaid)
+			{
+				this.inssPaid = inssPaid;
+			}
+		
+		@Column(name = "InssWaived", nullable = false, precision = 53, scale = 0)
+		public double getInssWaived()
+			{
+				return this.inssWaived;
+			}
+		
+		public void setInssWaived(double inssWaived)
+			{
+				this.inssWaived = inssWaived;
+			}
+		
+		@Column(name = "LCInssWaived", nullable = false, precision = 53, scale = 0)
+		public double getLcinssWaived()
+			{
+				return this.lcinssWaived;
+			}
+		
+		public void setLcinssWaived(double lcinssWaived)
+			{
+				this.lcinssWaived = lcinssWaived;
+			}
+		
+		@Column(name = "LCInssAmt", nullable = false, precision = 53, scale = 0)
+		public double getLcinssAmt()
+			{
+				return this.lcinssAmt;
+			}
+		
+		public void setLcinssAmt(double lcinssAmt)
+			{
+				this.lcinssAmt = lcinssAmt;
+			}
+		
+		@Column(name = "LCInssPaid", nullable = false, precision = 53, scale = 0)
+		public double getLcinssPaid()
+			{
+				return this.lcinssPaid;
+			}
+		
+		public void setLcinssPaid(double lcinssPaid)
+			{
+				this.lcinssPaid = lcinssPaid;
+			}
+		
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "LastLCCalcInstDate", length = 23)
+		public Date getLastLccalcInstDate()
+			{
+				return this.lastLccalcInstDate;
+			}
+		
+		public void setLastLccalcInstDate(Date lastLccalcInstDate)
+			{
+				this.lastLccalcInstDate = lastLccalcInstDate;
+			}
+		
+		@Column(name = "LCInstWaived", nullable = false, precision = 53, scale = 0)
+		public double getLcinstWaived()
+			{
+				return this.lcinstWaived;
+			}
+		
+		public void setLcinstWaived(double lcinstWaived)
+			{
+				this.lcinstWaived = lcinstWaived;
+			}
+		
+		@Column(name = "LCInstAmt", nullable = false, precision = 53, scale = 0)
+		public double getLcinstAmt()
+			{
+				return this.lcinstAmt;
+			}
+		
+		public void setLcinstAmt(double lcinstAmt)
+			{
+				this.lcinstAmt = lcinstAmt;
+			}
+		
+		@Column(name = "LCInstPaid", nullable = false, precision = 53, scale = 0)
+		public double getLcinstPaid()
+			{
+				return this.lcinstPaid;
+			}
+		
+		public void setLcinstPaid(double lcinstPaid)
+			{
+				this.lcinstPaid = lcinstPaid;
+			}
+		
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "LastLCCalcInssDate", length = 23)
+		public Date getLastLccalcInssDate()
+			{
+				return this.lastLccalcInssDate;
+			}
+		
+		public void setLastLccalcInssDate(Date lastLccalcInssDate)
+			{
+				this.lastLccalcInssDate = lastLccalcInssDate;
+			}
+		
+		@Column(name = "PDCBounceFee", nullable = false, precision = 53, scale = 0)
+		public double getPdcbounceFee()
+			{
+				return this.pdcbounceFee;
+			}
+		
+		public void setPdcbounceFee(double pdcbounceFee)
+			{
+				this.pdcbounceFee = pdcbounceFee;
+			}
+		
+		@Column(name = "PDCBounceFeePaid", nullable = false, precision = 53, scale = 0)
+		public double getPdcbounceFeePaid()
+			{
+				return this.pdcbounceFeePaid;
+			}
+		
+		public void setPdcbounceFeePaid(double pdcbounceFeePaid)
+			{
+				this.pdcbounceFeePaid = pdcbounceFeePaid;
+			}
+		
+		@Column(name = "PDCBounceFeeWaived", nullable = false, precision = 53, scale = 0)
+		public double getPdcbounceFeeWaived()
+			{
+				return this.pdcbounceFeeWaived;
+			}
+		
+		public void setPdcbounceFeeWaived(double pdcbounceFeeWaived)
+			{
+				this.pdcbounceFeeWaived = pdcbounceFeeWaived;
+			}
+		
+		@Column(name = "CollectionExpense", nullable = false, precision = 53, scale = 0)
+		public double getCollectionExpense()
+			{
+				return this.collectionExpense;
+			}
+		
+		public void setCollectionExpense(double collectionExpense)
+			{
+				this.collectionExpense = collectionExpense;
+			}
+		
+		@Column(name = "CollectionExpensePaid", nullable = false, precision = 53, scale = 0)
+		public double getCollectionExpensePaid()
+			{
+				return this.collectionExpensePaid;
+			}
+		
+		public void setCollectionExpensePaid(double collectionExpensePaid)
+			{
+				this.collectionExpensePaid = collectionExpensePaid;
+			}
+		
+		@Column(name = "CollectionExpenseWaived", nullable = false, precision = 53, scale = 0)
+		public double getCollectionExpenseWaived()
+			{
+				return this.collectionExpenseWaived;
+			}
+		
+		public void setCollectionExpenseWaived(double collectionExpenseWaived)
+			{
+				this.collectionExpenseWaived = collectionExpenseWaived;
 			}
 		
 		@Column(name = "UsrCrt", length = 50)

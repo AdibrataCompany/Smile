@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -30,21 +32,12 @@ public class CashierHistory implements java.io.Serializable
 		@EmbeddedId
 		@AttributeOverrides(
 			{
-			        @AttributeOverride(name = "id", column = @Column(name = "Id")),
-			        @AttributeOverride(name = "partnerCode", column = @Column(name = "PartnerCode", length = 20)),
-			        @AttributeOverride(name = "officeId", column = @Column(name = "OfficeId")),
-			        @AttributeOverride(name = "employeeId", column = @Column(name = "EmployeeId")),
-			        @AttributeOverride(name = "currencyId", column = @Column(name = "CurrencyId")),
-			        @AttributeOverride(name = "openSeqNo", column = @Column(name = "OpenSeqNo")),
-			        @AttributeOverride(name = "openingDtm", column = @Column(name = "OpeningDtm", length = 23)),
-			        @AttributeOverride(name = "openingAmount", column = @Column(name = "OpeningAmount", precision = 53, scale = 0)),
-			        @AttributeOverride(name = "balanceAmount", column = @Column(name = "BalanceAmount", precision = 53, scale = 0)),
-			        @AttributeOverride(name = "cashierStatus", column = @Column(name = "CashierStatus", length = 2)),
-			        @AttributeOverride(name = "closingDtm", column = @Column(name = "ClosingDtm", length = 23)),
-			        @AttributeOverride(name = "dtmUpd", column = @Column(name = "DtmUpd", length = 16)),
-			        @AttributeOverride(name = "usrUpd", column = @Column(name = "UsrUpd", length = 50)),
-			        @AttributeOverride(name = "dtmCrt", column = @Column(name = "DtmCrt", length = 16)),
-			        @AttributeOverride(name = "usrCrt", column = @Column(name = "UsrCrt", length = 50))
+			        @AttributeOverride(name = "id", column = @Column(name = "Id")), @AttributeOverride(name = "partnerCode", column = @Column(name = "PartnerCode", length = 20)), @AttributeOverride(name = "officeId", column = @Column(name = "OfficeId")),
+			        @AttributeOverride(name = "employeeId", column = @Column(name = "EmployeeId")), @AttributeOverride(name = "currencyId", column = @Column(name = "CurrencyId")), @AttributeOverride(name = "openSeqNo", column = @Column(name = "OpenSeqNo")),
+			        @AttributeOverride(name = "openingDtm", column = @Column(name = "OpeningDtm", length = 23)), @AttributeOverride(name = "openingAmount", column = @Column(name = "OpeningAmount", precision = 53, scale = 0)),
+			        @AttributeOverride(name = "balanceAmount", column = @Column(name = "BalanceAmount", precision = 53, scale = 0)), @AttributeOverride(name = "cashierStatus", column = @Column(name = "CashierStatus", length = 2)),
+			        @AttributeOverride(name = "closingDtm", column = @Column(name = "ClosingDtm", length = 23)), @AttributeOverride(name = "dtmUpd", column = @Column(name = "DtmUpd", length = 16)), @AttributeOverride(name = "usrUpd", column = @Column(name = "UsrUpd", length = 50)),
+			        @AttributeOverride(name = "dtmCrt", column = @Column(name = "DtmCrt", length = 16)), @AttributeOverride(name = "usrCrt", column = @Column(name = "UsrCrt", length = 50))
 			})
 		public CashierHistoryId getId()
 			{

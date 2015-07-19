@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -25,7 +27,7 @@ public class PayHistDtl implements java.io.Serializable
 		private String coaName;
 		private short instSeqNo;
 		private short assetSeqNo;
-		private int yearNum;
+		private short yearNum;
 		private String description;
 		private double debitAmt;
 		private double creditAmt;
@@ -40,9 +42,7 @@ public class PayHistDtl implements java.io.Serializable
 			{
 			}
 		
-		public PayHistDtl(long id, String coaName, short instSeqNo,
-		        short assetSeqNo, int yearNum, String description,
-		        double debitAmt, double creditAmt, double lcamt, short lcdays)
+		public PayHistDtl(long id, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays)
 			{
 				this.id = id;
 				this.coaName = coaName;
@@ -55,11 +55,8 @@ public class PayHistDtl implements java.io.Serializable
 				this.lcamt = lcamt;
 				this.lcdays = lcdays;
 			}
-		public PayHistDtl(long id, PayHistHdr payHistHdr, String coaName,
-		        short instSeqNo, short assetSeqNo, int yearNum,
-		        String description, double debitAmt, double creditAmt,
-		        double lcamt, short lcdays, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public PayHistDtl(long id, PayHistHdr payHistHdr, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.payHistHdr = payHistHdr;
@@ -78,7 +75,7 @@ public class PayHistDtl implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -136,12 +133,12 @@ public class PayHistDtl implements java.io.Serializable
 			}
 		
 		@Column(name = "YearNum", nullable = false)
-		public int getYearNum()
+		public short getYearNum()
 			{
 				return this.yearNum;
 			}
 		
-		public void setYearNum(int yearNum)
+		public void setYearNum(short yearNum)
 			{
 				this.yearNum = yearNum;
 			}

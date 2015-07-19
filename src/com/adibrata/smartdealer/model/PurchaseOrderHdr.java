@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -69,12 +71,9 @@ public class PurchaseOrderHdr implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
-		        0);
-		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(
-		        0);
-		private Set<PurchaseOrderDtl> purchaseOrderDtls = new HashSet<PurchaseOrderDtl>(
-		        0);
+		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
+		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
+		private Set<PurchaseOrderDtl> purchaseOrderDtls = new HashSet<PurchaseOrderDtl>(0);
 		
 		public PurchaseOrderHdr()
 			{
@@ -84,27 +83,11 @@ public class PurchaseOrderHdr implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public PurchaseOrderHdr(long id, Office office, Partner partner,
-		        Supplier supplier, String pono, Date podate, Long currencyId,
-		        Double currencyRate, Double poamount, Long jobId,
-		        Serializable bankName, Serializable accountName,
-		        Serializable accountNo, Short isMainPo,
-		        Date pooriginalExpiredDate, Date poexpiredDate,
-		        Short isExpired, Short isEmailSupplier,
-		        Serializable emailSupplier, Short isFaxSupplier,
-		        String supplierFaxAreaCode, String supplierFaxNumber,
-		        Short isEmailInsCo, String emailInsCo, Short isFaxInsCo,
-		        String insCoFaxAreaCode, String insCoFaxNumber,
-		        Date supplierBillingDate, Date deliveryDate, Short isCancelled,
-		        Date cancellationDate, Integer poextendCounter,
-		        Short isRcaagain, String notes, Serializable bankBranch,
-		        Long apid, Double contractPrepaidAmount, Long supplierBankId,
-		        String supplierBankBranch, String supplierAccountNo,
-		        String supplierAccountName, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt,
-		        Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<PurchaseInvoice> purchaseInvoices,
-		        Set<PurchaseOrderDtl> purchaseOrderDtls)
+		
+		public PurchaseOrderHdr(long id, Office office, Partner partner, Supplier supplier, String pono, Date podate, Long currencyId, Double currencyRate, Double poamount, Long jobId, Serializable bankName, Serializable accountName, Serializable accountNo, Short isMainPo,
+		        Date pooriginalExpiredDate, Date poexpiredDate, Short isExpired, Short isEmailSupplier, Serializable emailSupplier, Short isFaxSupplier, String supplierFaxAreaCode, String supplierFaxNumber, Short isEmailInsCo, String emailInsCo, Short isFaxInsCo, String insCoFaxAreaCode,
+		        String insCoFaxNumber, Date supplierBillingDate, Date deliveryDate, Short isCancelled, Date cancellationDate, Integer poextendCounter, Short isRcaagain, String notes, Serializable bankBranch, Long apid, Double contractPrepaidAmount, Long supplierBankId, String supplierBankBranch,
+		        String supplierAccountNo, String supplierAccountName, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<PurchaseOrderDtl> purchaseOrderDtls)
 			{
 				this.id = id;
 				this.office = office;
@@ -156,7 +139,7 @@ public class PurchaseOrderHdr implements java.io.Serializable
 				this.purchaseOrderDtls = purchaseOrderDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

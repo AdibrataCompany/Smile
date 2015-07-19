@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -51,8 +53,7 @@ public class TrxSeqNo implements java.io.Serializable
 			{
 			}
 		
-		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode,
-		        long officeId, String usrUpd, Date dtmUpd)
+		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String usrUpd, Date dtmUpd)
 			{
 				this.msseqId = msseqId;
 				this.partner = partner;
@@ -61,14 +62,9 @@ public class TrxSeqNo implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmUpd = dtmUpd;
 			}
-		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode,
-		        long officeId, String seqName, Integer seqNo,
-		        Integer lengthNumber, Character resetFlag, String prefix,
-		        String suffix, String configNumber, String jrnlSeqName,
-		        Integer jrnlSeqNo, Integer jrnlLengthNo,
-		        Character jrnlResetFlag, String jrnlPrefix, String jrnlSuffix,
-		        String jrnlConfigNumber, String usrUpd, Date dtmUpd,
-		        String usrCrt, Date dtmCrt)
+		
+		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String seqName, Integer seqNo, Integer lengthNumber, Character resetFlag, String prefix, String suffix, String configNumber, String jrnlSeqName, Integer jrnlSeqNo, Integer jrnlLengthNo,
+		        Character jrnlResetFlag, String jrnlPrefix, String jrnlSuffix, String jrnlConfigNumber, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.msseqId = msseqId;
 				this.partner = partner;
@@ -94,7 +90,7 @@ public class TrxSeqNo implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "MSSeqID", unique = true, nullable = false)
 		public long getMsseqId()
 			{

@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -38,9 +40,7 @@ public class CashBankDtl implements java.io.Serializable
 			{
 			}
 		
-		public CashBankDtl(long id, CashBankHdr cashBankHdr, String coaName,
-		        String coaCode, String description, double debitAmt,
-		        double creditAmt)
+		public CashBankDtl(long id, CashBankHdr cashBankHdr, String coaName, String coaCode, String description, double debitAmt, double creditAmt)
 			{
 				this.id = id;
 				this.cashBankHdr = cashBankHdr;
@@ -50,11 +50,8 @@ public class CashBankDtl implements java.io.Serializable
 				this.debitAmt = debitAmt;
 				this.creditAmt = creditAmt;
 			}
-		public CashBankDtl(long id, CashBankHdr cashBankHdr,
-		        Integer sequenceNo, String coaName, String coaCode,
-		        String description, double debitAmt, double creditAmt,
-		        Long departId, String usrUpd, Date dtmUpd, String usrCrt,
-		        Date dtmCrt)
+		
+		public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer sequenceNo, String coaName, String coaCode, String description, double debitAmt, double creditAmt, Long departId, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.id = id;
 				this.cashBankHdr = cashBankHdr;
@@ -71,7 +68,7 @@ public class CashBankDtl implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -46,8 +48,7 @@ public class JrnlDtl implements java.io.Serializable
 			{
 			}
 		
-		public JrnlDtl(long id, int sequenceNo, String coaOffice, String post,
-		        double currRate, double debtAmt)
+		public JrnlDtl(long id, int sequenceNo, String coaOffice, String post, double currRate, double debtAmt)
 			{
 				this.id = id;
 				this.sequenceNo = sequenceNo;
@@ -56,12 +57,9 @@ public class JrnlDtl implements java.io.Serializable
 				this.currRate = currRate;
 				this.debtAmt = debtAmt;
 			}
-		public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy,
-		        String coaOffice, String coaName, String coaCode,
-		        String trDesc, String post, Long currId, double currRate,
-		        double debtAmt, Double credAmt, Double oriAmt, String coaCodeX,
-		        String coaOfficeX, String departCode, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt)
+		
+		public JrnlDtl(long id, JrnlHdr jrnlHdr, int sequenceNo, String coaCoy, String coaOffice, String coaName, String coaCode, String trDesc, String post, Long currId, double currRate, double debtAmt, Double credAmt, Double oriAmt, String coaCodeX, String coaOfficeX, String departCode,
+		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.jrnlHdr = jrnlHdr;
@@ -86,7 +84,7 @@ public class JrnlDtl implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

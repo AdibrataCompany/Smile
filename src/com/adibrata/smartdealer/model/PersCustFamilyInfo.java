@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -40,10 +42,8 @@ public class PersCustFamilyInfo implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public PersCustFamilyInfo(long id, Customer customer, Short seqNo,
-		        String name, String idnumber, Date birthDate,
-		        String familyRelationCode, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public PersCustFamilyInfo(long id, Customer customer, Short seqNo, String name, String idnumber, Date birthDate, String familyRelationCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -58,7 +58,7 @@ public class PersCustFamilyInfo implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

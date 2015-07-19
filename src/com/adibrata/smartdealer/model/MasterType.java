@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -38,9 +40,8 @@ public class MasterType implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public MasterType(long id, String masterTypeCode, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<MasterTable> masterTables)
+		
+		public MasterType(long id, String masterTypeCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MasterTable> masterTables)
 			{
 				this.id = id;
 				this.masterTypeCode = masterTypeCode;
@@ -51,7 +52,7 @@ public class MasterType implements java.io.Serializable
 				this.masterTables = masterTables;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,10 +1,12 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,11 +44,8 @@ public class PaymentReversal implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public PaymentReversal(long id, Long agmrnId, Date valueDate,
-		        Date postingDate, Long bankAccId, Double currencyRate,
-		        String notes, Double instAmt, Double lcamt, Double inssAmt,
-		        Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public PaymentReversal(long id, Long agmrnId, Date valueDate, Date postingDate, Long bankAccId, Double currencyRate, String notes, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agmrnId = agmrnId;
@@ -66,7 +65,7 @@ public class PaymentReversal implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

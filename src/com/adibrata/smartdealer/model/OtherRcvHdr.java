@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -49,11 +51,8 @@ public class OtherRcvHdr implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public OtherRcvHdr(long id, Office office, Partner partner,
-		        String otherRcvNo, String rcvFrom, Double rcvAmount,
-		        String reffNo, Date postingDate, Date valueDate,
-		        Long bankAccountId, String notes, Long jobId, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt,
+		
+		public OtherRcvHdr(long id, Office office, Partner partner, String otherRcvNo, String rcvFrom, Double rcvAmount, String reffNo, Date postingDate, Date valueDate, Long bankAccountId, String notes, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<OtherRcvDtl> otherRcvDtls)
 			{
 				this.id = id;
@@ -75,7 +74,7 @@ public class OtherRcvHdr implements java.io.Serializable
 				this.otherRcvDtls = otherRcvDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -61,15 +63,9 @@ public class CashBankHdr implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public CashBankHdr(long id, BankAccount bankAccount, Office office,
-		        Partner partner, String voucherNo, Date valueDt,
-		        Date postingDt, String description, String rcvDsbFlag,
-		        String wop, Double amount, String rcvFrom, String reffNo,
-		        String receiptNo, Long currId, Long cashierId,
-		        Integer openingSequence, Long officeIdX, String isReconcile,
-		        Date reconcileDate, String reconcileBy, Integer jrnlTrxId,
-		        Long agrmntId, Long jobId, String usrUpd, Date dtmUpd,
-		        String usrCrt, Date dtmCrt, Set<CashBankDtl> cashBankDtls)
+		
+		public CashBankHdr(long id, BankAccount bankAccount, Office office, Partner partner, String voucherNo, Date valueDt, Date postingDt, String description, String rcvDsbFlag, String wop, Double amount, String rcvFrom, String reffNo, String receiptNo, Long currId, Long cashierId,
+		        Integer openingSequence, Long officeIdX, String isReconcile, Date reconcileDate, String reconcileBy, Integer jrnlTrxId, Long agrmntId, Long jobId, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt, Set<CashBankDtl> cashBankDtls)
 			{
 				this.id = id;
 				this.bankAccount = bankAccount;
@@ -102,7 +98,7 @@ public class CashBankHdr implements java.io.Serializable
 				this.cashBankDtls = cashBankDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

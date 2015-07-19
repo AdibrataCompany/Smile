@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -96,13 +98,8 @@ public class PersCust implements java.io.Serializable
 			{
 			}
 		
-		public PersCust(long id, String personalCustomerType, String idtype,
-		        String idnumber, String idnumberChecking, String gender,
-		        String birthPlace, String religion, String maritalStatus,
-		        String education, String professionId, String nationality,
-		        String homeStatus, String homeLocation, double homePrice,
-		        short numOfAssetOwned, short isApplyCarLoanBefore,
-		        String activeCustomer, String customerGroup)
+		public PersCust(long id, String personalCustomerType, String idtype, String idnumber, String idnumberChecking, String gender, String birthPlace, String religion, String maritalStatus, String education, String professionId, String nationality, String homeStatus, String homeLocation,
+		        double homePrice, short numOfAssetOwned, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
 			{
 				this.id = id;
 				this.personalCustomerType = personalCustomerType;
@@ -124,36 +121,13 @@ public class PersCust implements java.io.Serializable
 				this.activeCustomer = activeCustomer;
 				this.customerGroup = customerGroup;
 			}
-		public PersCust(long id, Customer customer,
-		        String personalCustomerType, String idtype, Date idexpDate,
-		        String idnumber, String idnumberChecking,
-		        Date idtypeIssuedDate, String gender, String birthPlace,
-		        Date birthDate, String mobilePhone, String email,
-		        String religion, String maritalStatus, Short numOfDependence,
-		        String personalNpwp, String noKk, String education,
-		        String professionId, String nationality, String wnacountry,
-		        String homeStatus, Date rentFinishDate, String homeLocation,
-		        double homePrice, Short staySinceYear, Short staySinceMonth,
-		        short numOfAssetOwned, Short employmentSinceYear,
-		        Double monthlyFixedIncome, Double monthlyVariableIncome,
-		        String otherBusinessName, String otherBusinessType,
-		        String otherBusinessIndustryTypeId,
-		        String otherBusinessJobTitle, Short otherBusinessSinceYear,
-		        Double fixedIncome, Double variableIncome, Double spouseIncome,
-		        Double avgBalanceAccount, String bankAccountType,
-		        Double averageDebitTransaction,
-		        Double averageCreditTransaction, Double averageBalance,
-		        Double deposito, Double livingCostAmount,
-		        Double otherLoanInstallment, String additionalCollateralType,
-		        Double additionalCollateralAmount, Double creditCardId,
-		        String creditCardType, Short numOfCreditCard, String bankId,
-		        String bankBranch, String accountNo, String accountName,
-		        String reference, short isApplyCarLoanBefore,
-		        String applyCarLoanCompanyName, String activeCustomer,
-		        String notes, Short isCorporateCreditLine,
-		        Double plafondAmount, String biologicalMothersName,
-		        String customerGroup, Short mainBusinessSinceYear,
-		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		
+		public PersCust(long id, Customer customer, String personalCustomerType, String idtype, Date idexpDate, String idnumber, String idnumberChecking, Date idtypeIssuedDate, String gender, String birthPlace, Date birthDate, String mobilePhone, String email, String religion, String maritalStatus,
+		        Short numOfDependence, String personalNpwp, String noKk, String education, String professionId, String nationality, String wnacountry, String homeStatus, Date rentFinishDate, String homeLocation, double homePrice, Short staySinceYear, Short staySinceMonth, short numOfAssetOwned,
+		        Short employmentSinceYear, Double monthlyFixedIncome, Double monthlyVariableIncome, String otherBusinessName, String otherBusinessType, String otherBusinessIndustryTypeId, String otherBusinessJobTitle, Short otherBusinessSinceYear, Double fixedIncome, Double variableIncome,
+		        Double spouseIncome, Double avgBalanceAccount, String bankAccountType, Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito, Double livingCostAmount, Double otherLoanInstallment, String additionalCollateralType,
+		        Double additionalCollateralAmount, Double creditCardId, String creditCardType, Short numOfCreditCard, String bankId, String bankBranch, String accountNo, String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer,
+		        String notes, Short isCorporateCreditLine, Double plafondAmount, String biologicalMothersName, String customerGroup, Short mainBusinessSinceYear, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -228,7 +202,7 @@ public class PersCust implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -614,8 +588,7 @@ public class PersCust implements java.io.Serializable
 				return this.otherBusinessIndustryTypeId;
 			}
 		
-		public void setOtherBusinessIndustryTypeId(
-		        String otherBusinessIndustryTypeId)
+		public void setOtherBusinessIndustryTypeId(String otherBusinessIndustryTypeId)
 			{
 				this.otherBusinessIndustryTypeId = otherBusinessIndustryTypeId;
 			}
@@ -780,8 +753,7 @@ public class PersCust implements java.io.Serializable
 				return this.additionalCollateralAmount;
 			}
 		
-		public void setAdditionalCollateralAmount(
-		        Double additionalCollateralAmount)
+		public void setAdditionalCollateralAmount(Double additionalCollateralAmount)
 			{
 				this.additionalCollateralAmount = additionalCollateralAmount;
 			}

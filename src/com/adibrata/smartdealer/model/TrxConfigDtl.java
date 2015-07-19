@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -48,14 +50,9 @@ public class TrxConfigDtl implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public TrxConfigDtl(long id, TrxConfigHdr trxConfigHdr,
-		        Long sequenceNo, String coaSourceTable, String coaName,
-		        String isCoaHeader, String post, Short isMultipleDtl,
-		        String tblSourceDtl, String headerId, String amountTrx,
-		        Long departId, Short isCreatePaymentHistoryDetail,
-		        Short isCreateCashBankMutationDetail,
-		        Short isCreateJournalDetail, String usrCrt, Date dtmCrt,
-		        String usrUpd, Date dtmUpd)
+		
+		public TrxConfigDtl(long id, TrxConfigHdr trxConfigHdr, Long sequenceNo, String coaSourceTable, String coaName, String isCoaHeader, String post, Short isMultipleDtl, String tblSourceDtl, String headerId, String amountTrx, Long departId, Short isCreatePaymentHistoryDetail,
+		        Short isCreateCashBankMutationDetail, Short isCreateJournalDetail, String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd)
 			{
 				this.id = id;
 				this.trxConfigHdr = trxConfigHdr;
@@ -78,7 +75,7 @@ public class TrxConfigDtl implements java.io.Serializable
 				this.dtmUpd = dtmUpd;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -218,8 +215,7 @@ public class TrxConfigDtl implements java.io.Serializable
 				return this.isCreatePaymentHistoryDetail;
 			}
 		
-		public void setIsCreatePaymentHistoryDetail(
-		        Short isCreatePaymentHistoryDetail)
+		public void setIsCreatePaymentHistoryDetail(Short isCreatePaymentHistoryDetail)
 			{
 				this.isCreatePaymentHistoryDetail = isCreatePaymentHistoryDetail;
 			}
@@ -230,8 +226,7 @@ public class TrxConfigDtl implements java.io.Serializable
 				return this.isCreateCashBankMutationDetail;
 			}
 		
-		public void setIsCreateCashBankMutationDetail(
-		        Short isCreateCashBankMutationDetail)
+		public void setIsCreateCashBankMutationDetail(Short isCreateCashBankMutationDetail)
 			{
 				this.isCreateCashBankMutationDetail = isCreateCashBankMutationDetail;
 			}

@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,12 +26,11 @@ public class PayHistHdr implements java.io.Serializable
 	{
 		
 		private long id;
-		private Partner partner;
-		private long agrmntId;
+		private Agrmnt agrmnt;
 		private short histSeqNo;
 		private Date valueDt;
 		private Date postingDt;
-		private double amt;
+		private double amountReceive;
 		private String wop;
 		private long officeIdX;
 		private long bankAccId;
@@ -38,11 +39,8 @@ public class PayHistHdr implements java.io.Serializable
 		private Short printedNum;
 		private String printBy;
 		private Date lastPrtDt;
-		private String jrnlCode;
-		private String voucherNo;
 		private long jobId;
 		private String defaultStat;
-		private Long jrnlJobId;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -53,42 +51,32 @@ public class PayHistHdr implements java.io.Serializable
 			{
 			}
 		
-		public PayHistHdr(long id, long agrmntId, short histSeqNo,
-		        Date valueDt, Date postingDt, double amt, String wop,
-		        long officeIdX, long bankAccId, short isCorrection,
-		        short corrHistSeq, String jrnlCode, long jobId,
-		        String defaultStat)
+		public PayHistHdr(long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, long officeIdX, long bankAccId, short isCorrection, short corrHistSeq, long jobId, String defaultStat)
 			{
 				this.id = id;
-				this.agrmntId = agrmntId;
+				this.agrmnt = agrmnt;
 				this.histSeqNo = histSeqNo;
 				this.valueDt = valueDt;
 				this.postingDt = postingDt;
-				this.amt = amt;
+				this.amountReceive = amountReceive;
 				this.wop = wop;
 				this.officeIdX = officeIdX;
 				this.bankAccId = bankAccId;
 				this.isCorrection = isCorrection;
 				this.corrHistSeq = corrHistSeq;
-				this.jrnlCode = jrnlCode;
 				this.jobId = jobId;
 				this.defaultStat = defaultStat;
 			}
-		public PayHistHdr(long id, Partner partner, long agrmntId,
-		        short histSeqNo, Date valueDt, Date postingDt, double amt,
-		        String wop, long officeIdX, long bankAccId, short isCorrection,
-		        short corrHistSeq, Short printedNum, String printBy,
-		        Date lastPrtDt, String jrnlCode, String voucherNo, long jobId,
-		        String defaultStat, Long jrnlJobId, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt, Set<PayHistDtl> payHistDtls)
+		
+		public PayHistHdr(long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, long officeIdX, long bankAccId, short isCorrection, short corrHistSeq, Short printedNum, String printBy, Date lastPrtDt, long jobId, String defaultStat, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt, Set<PayHistDtl> payHistDtls)
 			{
 				this.id = id;
-				this.partner = partner;
-				this.agrmntId = agrmntId;
+				this.agrmnt = agrmnt;
 				this.histSeqNo = histSeqNo;
 				this.valueDt = valueDt;
 				this.postingDt = postingDt;
-				this.amt = amt;
+				this.amountReceive = amountReceive;
 				this.wop = wop;
 				this.officeIdX = officeIdX;
 				this.bankAccId = bankAccId;
@@ -97,11 +85,8 @@ public class PayHistHdr implements java.io.Serializable
 				this.printedNum = printedNum;
 				this.printBy = printBy;
 				this.lastPrtDt = lastPrtDt;
-				this.jrnlCode = jrnlCode;
-				this.voucherNo = voucherNo;
 				this.jobId = jobId;
 				this.defaultStat = defaultStat;
-				this.jrnlJobId = jrnlJobId;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
@@ -109,7 +94,7 @@ public class PayHistHdr implements java.io.Serializable
 				this.payHistDtls = payHistDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -122,26 +107,15 @@ public class PayHistHdr implements java.io.Serializable
 			}
 		
 		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "PartnerCode")
-		public Partner getPartner()
+		@JoinColumn(name = "AgrmntID", nullable = false)
+		public Agrmnt getAgrmnt()
 			{
-				return this.partner;
+				return this.agrmnt;
 			}
 		
-		public void setPartner(Partner partner)
+		public void setAgrmnt(Agrmnt agrmnt)
 			{
-				this.partner = partner;
-			}
-		
-		@Column(name = "AgrmntID", nullable = false)
-		public long getAgrmntId()
-			{
-				return this.agrmntId;
-			}
-		
-		public void setAgrmntId(long agrmntId)
-			{
-				this.agrmntId = agrmntId;
+				this.agrmnt = agrmnt;
 			}
 		
 		@Column(name = "HistSeqNo", nullable = false)
@@ -179,15 +153,15 @@ public class PayHistHdr implements java.io.Serializable
 				this.postingDt = postingDt;
 			}
 		
-		@Column(name = "Amt", nullable = false, precision = 53, scale = 0)
-		public double getAmt()
+		@Column(name = "AmountReceive", nullable = false, precision = 53, scale = 0)
+		public double getAmountReceive()
 			{
-				return this.amt;
+				return this.amountReceive;
 			}
 		
-		public void setAmt(double amt)
+		public void setAmountReceive(double amountReceive)
 			{
-				this.amt = amt;
+				this.amountReceive = amountReceive;
 			}
 		
 		@Column(name = "WOP", nullable = false, length = 50)
@@ -279,28 +253,6 @@ public class PayHistHdr implements java.io.Serializable
 				this.lastPrtDt = lastPrtDt;
 			}
 		
-		@Column(name = "JrnlCode", nullable = false, length = 50)
-		public String getJrnlCode()
-			{
-				return this.jrnlCode;
-			}
-		
-		public void setJrnlCode(String jrnlCode)
-			{
-				this.jrnlCode = jrnlCode;
-			}
-		
-		@Column(name = "VoucherNo", length = 50)
-		public String getVoucherNo()
-			{
-				return this.voucherNo;
-			}
-		
-		public void setVoucherNo(String voucherNo)
-			{
-				this.voucherNo = voucherNo;
-			}
-		
 		@Column(name = "JobId", nullable = false)
 		public long getJobId()
 			{
@@ -321,17 +273,6 @@ public class PayHistHdr implements java.io.Serializable
 		public void setDefaultStat(String defaultStat)
 			{
 				this.defaultStat = defaultStat;
-			}
-		
-		@Column(name = "JrnlJobID")
-		public Long getJrnlJobId()
-			{
-				return this.jrnlJobId;
-			}
-		
-		public void setJrnlJobId(Long jrnlJobId)
-			{
-				this.jrnlJobId = jrnlJobId;
 			}
 		
 		@Temporal(TemporalType.TIMESTAMP)

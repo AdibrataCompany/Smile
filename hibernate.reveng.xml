@@ -2,12 +2,7 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<type-mapping>
-
-		<sql-type jdbc-type="NUMERIC" hibernate-type="Double" />
-	</type-mapping>
-
- <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
+  <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCash"/>
   <table-filter match-catalog="SmartDealer" match-name="Agrmnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAsset"/>
@@ -107,5 +102,4 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
   <table-filter match-catalog="SmartDealer" match-name="ZipCode"/>
-
 </hibernate-reverse-engineering>

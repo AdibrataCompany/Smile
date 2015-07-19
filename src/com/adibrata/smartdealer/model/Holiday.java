@@ -1,11 +1,13 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,18 +35,15 @@ public class Holiday implements java.io.Serializable
 			{
 			}
 		
-		public Holiday(long id, Date holidayDate, Serializable description,
-		        boolean isRealHoliday)
+		public Holiday(long id, Date holidayDate, Serializable description, boolean isRealHoliday)
 			{
 				this.id = id;
 				this.holidayDate = holidayDate;
 				this.description = description;
 				this.isRealHoliday = isRealHoliday;
 			}
-		public Holiday(long id, String partnerCode, Long officeId,
-		        Date holidayDate, Serializable description,
-		        boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt)
+		
+		public Holiday(long id, String partnerCode, Long officeId, Date holidayDate, Serializable description, boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -58,7 +57,7 @@ public class Holiday implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

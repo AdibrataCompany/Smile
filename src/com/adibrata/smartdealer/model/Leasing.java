@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,8 +37,7 @@ public class Leasing implements java.io.Serializable
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(
-		        0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		
 		public Leasing()
@@ -47,11 +48,8 @@ public class Leasing implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public Leasing(long id, String leasingCode, String name,
-		        String address, String rt, String rw, String kelurahan,
-		        String kecamatan, String city, String zipCode, String usrCrt,
-		        Date dtmUpd, String usrUpd, Date dtmCrt,
-		        Set<SalesOrderHdr> salesOrderHdrs, Set<DanaTunai> danaTunais)
+		
+		public Leasing(long id, String leasingCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipCode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<SalesOrderHdr> salesOrderHdrs, Set<DanaTunai> danaTunais)
 			{
 				this.id = id;
 				this.leasingCode = leasingCode;
@@ -71,7 +69,7 @@ public class Leasing implements java.io.Serializable
 				this.danaTunais = danaTunais;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -38,8 +40,7 @@ public class AssetMaster implements java.io.Serializable
 		private Date dtmCrt;
 		private String usrCrt;
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
-		private Set<PurchaseOrderDtl> purchaseOrderDtls = new HashSet<PurchaseOrderDtl>(
-		        0);
+		private Set<PurchaseOrderDtl> purchaseOrderDtls = new HashSet<PurchaseOrderDtl>(0);
 		private Set<Stock> stocks = new HashSet<Stock>(0);
 		
 		public AssetMaster()
@@ -50,11 +51,8 @@ public class AssetMaster implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public AssetMaster(long id, Partner partner, Long assetTypeId,
-		        String assetBrand, String assetType, String assetModel,
-		        String assetCode, Integer assetLevel, Double resaleValue,
-		        Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt, Set<ServiceHdr> serviceHdrs,
+		
+		public AssetMaster(long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ServiceHdr> serviceHdrs,
 		        Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
 				this.id = id;
@@ -76,7 +74,7 @@ public class AssetMaster implements java.io.Serializable
 				this.stocks = stocks;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

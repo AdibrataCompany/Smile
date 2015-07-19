@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -33,8 +35,7 @@ public class ReturPurchaseHdr implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<ReturPurchaseDtl> returPurchaseDtls = new HashSet<ReturPurchaseDtl>(
-		        0);
+		private Set<ReturPurchaseDtl> returPurchaseDtls = new HashSet<ReturPurchaseDtl>(0);
 		
 		public ReturPurchaseHdr()
 			{
@@ -44,11 +45,8 @@ public class ReturPurchaseHdr implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public ReturPurchaseHdr(long id, Office office, Partner partner,
-		        PurchaseOrderHdr purchaseOrderHdr, Supplier supplier,
-		        String returPurchaseNo, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt,
-		        Set<ReturPurchaseDtl> returPurchaseDtls)
+		
+		public ReturPurchaseHdr(long id, Office office, Partner partner, PurchaseOrderHdr purchaseOrderHdr, Supplier supplier, String returPurchaseNo, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ReturPurchaseDtl> returPurchaseDtls)
 			{
 				this.id = id;
 				this.office = office;
@@ -63,7 +61,7 @@ public class ReturPurchaseHdr implements java.io.Serializable
 				this.returPurchaseDtls = returPurchaseDtls;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{

@@ -1,10 +1,15 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,12 +23,14 @@ public class PaymentReceive implements java.io.Serializable
 	{
 		
 		private long id;
-		private Long agmntId;
+		private Agrmnt agrmnt;
 		private Date valueDate;
 		private Date postingDate;
+		private String wop;
 		private Long bankAccId;
 		private Double currencyRate;
 		private String notes;
+		private Double totalPayment;
 		private Double instAmt;
 		private Double lcamt;
 		private Double inssAmt;
@@ -42,19 +49,19 @@ public class PaymentReceive implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public PaymentReceive(long id, Long agmntId, Date valueDate,
-		        Date postingDate, Long bankAccId, Double currencyRate,
-		        String notes, Double instAmt, Double lcamt, Double inssAmt,
-		        Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public PaymentReceive(long id, Agrmnt agrmnt, Date valueDate, Date postingDate, String wop, Long bankAccId, Double currencyRate, String notes, Double totalPayment, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd, Date dtmCrt,
+		        String usrCrt)
 			{
 				this.id = id;
-				this.agmntId = agmntId;
+				this.agrmnt = agrmnt;
 				this.valueDate = valueDate;
 				this.postingDate = postingDate;
+				this.wop = wop;
 				this.bankAccId = bankAccId;
 				this.currencyRate = currencyRate;
 				this.notes = notes;
+				this.totalPayment = totalPayment;
 				this.instAmt = instAmt;
 				this.lcamt = lcamt;
 				this.inssAmt = inssAmt;
@@ -66,7 +73,7 @@ public class PaymentReceive implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -78,15 +85,16 @@ public class PaymentReceive implements java.io.Serializable
 				this.id = id;
 			}
 		
-		@Column(name = "AgmntId")
-		public Long getAgmntId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AgmntId")
+		public Agrmnt getAgrmnt()
 			{
-				return this.agmntId;
+				return this.agrmnt;
 			}
 		
-		public void setAgmntId(Long agmntId)
+		public void setAgrmnt(Agrmnt agrmnt)
 			{
-				this.agmntId = agmntId;
+				this.agrmnt = agrmnt;
 			}
 		
 		@Temporal(TemporalType.TIMESTAMP)
@@ -111,6 +119,17 @@ public class PaymentReceive implements java.io.Serializable
 		public void setPostingDate(Date postingDate)
 			{
 				this.postingDate = postingDate;
+			}
+		
+		@Column(name = "WOP", length = 2)
+		public String getWop()
+			{
+				return this.wop;
+			}
+		
+		public void setWop(String wop)
+			{
+				this.wop = wop;
 			}
 		
 		@Column(name = "BankAccId")
@@ -144,6 +163,17 @@ public class PaymentReceive implements java.io.Serializable
 		public void setNotes(String notes)
 			{
 				this.notes = notes;
+			}
+		
+		@Column(name = "TotalPayment", precision = 53, scale = 0)
+		public Double getTotalPayment()
+			{
+				return this.totalPayment;
+			}
+		
+		public void setTotalPayment(Double totalPayment)
+			{
+				this.totalPayment = totalPayment;
 			}
 		
 		@Column(name = "InstAmt", precision = 53, scale = 0)

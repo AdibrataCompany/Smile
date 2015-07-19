@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -43,39 +45,31 @@ public class Office implements java.io.Serializable
 		private String faxNo;
 		private String handphone;
 		private String fullAddress;
-		private Character isActive;
+		private String isActive;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
 		private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
 		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
-		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(
-		        0);
+		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
-		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(
-		        0);
-		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(
-		        0);
+		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
+		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(
-		        0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
 		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
-		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(
-		        0);
+		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
 		private Set<Stock> stocks = new HashSet<Stock>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
-		private Set<AccountPayable> accountPayablesForOfficeId = new HashSet<AccountPayable>(
-		        0);
-		private Set<AccountPayable> accountPayablesForOfficeDisbId = new HashSet<AccountPayable>(
-		        0);
+		private Set<AccountPayable> accountPayablesForOfficeId = new HashSet<AccountPayable>(0);
+		private Set<AccountPayable> accountPayablesForOfficeDisbId = new HashSet<AccountPayable>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
-		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(
-		        0);
+		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 		
 		public Office()
@@ -86,30 +80,11 @@ public class Office implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public Office(long id, Partner partner, String officeCode, String name,
-		        String address, String rt, String rw, String kelurahan,
-		        String kecamatan, String city, String zipcode, String type,
-		        String areaPhone1, String phoneNo1, String areaPhone2,
-		        String phoneNo2, String areaFax, String faxNo,
-		        String handphone, String fullAddress, Character isActive,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
-		        Set<PurchaseOrderHdr> purchaseOrderHdrs,
-		        Set<OtherDsbHdr> otherDsbHdrs,
-		        Set<PaymentVoucher> paymentVouchers,
-		        Set<PurchaseInvoice> purchaseInvoices,
-		        Set<SalesInvoice> salesInvoices,
-		        Set<SalesOrderHdr> salesOrderHdrs,
-		        Set<CashBankHdr> cashBankHdrs,
-		        Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees,
-		        Set<Stock> stocks, Set<Agrmnt> agrmnts,
-		        Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs,
-		        Set<AccountPayable> accountPayablesForOfficeId,
-		        Set<AccountPayable> accountPayablesForOfficeDisbId,
-		        Set<AdvanceCash> advanceCashes,
-		        Set<PettyCashHdr> pettyCashHdrs,
-		        Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<ServiceHdr> serviceHdrs)
+		
+		public Office(long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax, String faxNo,
+		        String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers,
+		        Set<PurchaseInvoice> purchaseInvoices, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais,
+		        Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayablesForOfficeId, Set<AccountPayable> accountPayablesForOfficeDisbId, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -159,7 +134,7 @@ public class Office implements java.io.Serializable
 				this.serviceHdrs = serviceHdrs;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -381,13 +356,13 @@ public class Office implements java.io.Serializable
 				this.fullAddress = fullAddress;
 			}
 		
-		@Column(name = "IsActive", length = 1)
-		public Character getIsActive()
+		@Column(name = "IsActive", length = 50)
+		public String getIsActive()
 			{
 				return this.isActive;
 			}
 		
-		public void setIsActive(Character isActive)
+		public void setIsActive(String isActive)
 			{
 				this.isActive = isActive;
 			}
@@ -609,8 +584,7 @@ public class Office implements java.io.Serializable
 				return this.accountPayablesForOfficeId;
 			}
 		
-		public void setAccountPayablesForOfficeId(
-		        Set<AccountPayable> accountPayablesForOfficeId)
+		public void setAccountPayablesForOfficeId(Set<AccountPayable> accountPayablesForOfficeId)
 			{
 				this.accountPayablesForOfficeId = accountPayablesForOfficeId;
 			}
@@ -621,8 +595,7 @@ public class Office implements java.io.Serializable
 				return this.accountPayablesForOfficeDisbId;
 			}
 		
-		public void setAccountPayablesForOfficeDisbId(
-		        Set<AccountPayable> accountPayablesForOfficeDisbId)
+		public void setAccountPayablesForOfficeDisbId(Set<AccountPayable> accountPayablesForOfficeDisbId)
 			{
 				this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
 			}

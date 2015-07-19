@@ -1,12 +1,14 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -77,12 +79,7 @@ public class CoyCust implements java.io.Serializable
 			{
 			}
 		
-		public CoyCust(long id, String npwp, String npwpchecking,
-		        String companyType, String industryTypeId, Double modalDasar,
-		        Double modalDisetor, Double netProfitMargin,
-		        Double nilaiPinjamanSedangBerjalan,
-		        boolean isApplyCarLoanBefore, char activeCustomer,
-		        Serializable customerGroup)
+		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, Double modalDasar, Double modalDisetor, Double netProfitMargin, Double nilaiPinjamanSedangBerjalan, boolean isApplyCarLoanBefore, char activeCustomer, Serializable customerGroup)
 			{
 				this.id = id;
 				this.npwp = npwp;
@@ -97,31 +94,12 @@ public class CoyCust implements java.io.Serializable
 				this.activeCustomer = activeCustomer;
 				this.customerGroup = customerGroup;
 			}
-		public CoyCust(long id, Customer customer, String npwp,
-		        String npwpchecking, String companyType,
-		        Short numberOfEmployees, Short yearOfEstablished,
-		        String industryTypeId, String pengelolaGedungAreaPhone,
-		        String pengelolaGedungPhone, Double currentRatio, Double roi,
-		        Double der, Double modalDasar, Double modalDisetor,
-		        Double netProfitMargin, String bankAccountType,
-		        Double nilaiPinjamanSedangBerjalan,
-		        Double averageDebitTransaction,
-		        Double averageCreditTransaction, Double averageBalance,
-		        Double deposito, Serializable additionalCollateralType,
-		        Double additionalCollateralAmount, String companyStatus,
-		        Short companyStatusSinceYear, Date rentFinishDate,
-		        String bankId, String bankBranch, String accountNo,
-		        Serializable accountName, String reference,
-		        boolean isApplyCarLoanBefore,
-		        Serializable applyCarLoanCompanyName, char activeCustomer,
-		        Serializable notes, Boolean isCorporateCreditLine,
-		        Double plafondAmount, Serializable customerGroup,
-		        String noDocumentOfEstablished, Date dateDocumentOfEstablished,
-		        String notaryPlace, String notaryName,
-		        String lastNoDocumentOfEstablished,
-		        Date lastDateDocumentOfEstablished, String lastNotaryPlace,
-		        String lastNotaryName, String usrCrt, Date dtmUpd,
-		        String usrUpd, Date dtmCrt)
+		
+		public CoyCust(long id, Customer customer, String npwp, String npwpchecking, String companyType, Short numberOfEmployees, Short yearOfEstablished, String industryTypeId, String pengelolaGedungAreaPhone, String pengelolaGedungPhone, Double currentRatio, Double roi, Double der,
+		        Double modalDasar, Double modalDisetor, Double netProfitMargin, String bankAccountType, Double nilaiPinjamanSedangBerjalan, Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito, Serializable additionalCollateralType,
+		        Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear, Date rentFinishDate, String bankId, String bankBranch, String accountNo, Serializable accountName, String reference, boolean isApplyCarLoanBefore, Serializable applyCarLoanCompanyName,
+		        char activeCustomer, Serializable notes, Boolean isCorporateCreditLine, Double plafondAmount, Serializable customerGroup, String noDocumentOfEstablished, Date dateDocumentOfEstablished, String notaryPlace, String notaryName, String lastNoDocumentOfEstablished,
+		        Date lastDateDocumentOfEstablished, String lastNotaryPlace, String lastNotaryName, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -176,7 +154,7 @@ public class CoyCust implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -371,8 +349,7 @@ public class CoyCust implements java.io.Serializable
 				return this.nilaiPinjamanSedangBerjalan;
 			}
 		
-		public void setNilaiPinjamanSedangBerjalan(
-		        Double nilaiPinjamanSedangBerjalan)
+		public void setNilaiPinjamanSedangBerjalan(Double nilaiPinjamanSedangBerjalan)
 			{
 				this.nilaiPinjamanSedangBerjalan = nilaiPinjamanSedangBerjalan;
 			}
@@ -427,8 +404,7 @@ public class CoyCust implements java.io.Serializable
 				return this.additionalCollateralType;
 			}
 		
-		public void setAdditionalCollateralType(
-		        Serializable additionalCollateralType)
+		public void setAdditionalCollateralType(Serializable additionalCollateralType)
 			{
 				this.additionalCollateralType = additionalCollateralType;
 			}
@@ -439,8 +415,7 @@ public class CoyCust implements java.io.Serializable
 				return this.additionalCollateralAmount;
 			}
 		
-		public void setAdditionalCollateralAmount(
-		        Double additionalCollateralAmount)
+		public void setAdditionalCollateralAmount(Double additionalCollateralAmount)
 			{
 				this.additionalCollateralAmount = additionalCollateralAmount;
 			}
@@ -551,8 +526,7 @@ public class CoyCust implements java.io.Serializable
 				return this.applyCarLoanCompanyName;
 			}
 		
-		public void setApplyCarLoanCompanyName(
-		        Serializable applyCarLoanCompanyName)
+		public void setApplyCarLoanCompanyName(Serializable applyCarLoanCompanyName)
 			{
 				this.applyCarLoanCompanyName = applyCarLoanCompanyName;
 			}
@@ -663,8 +637,7 @@ public class CoyCust implements java.io.Serializable
 				return this.lastNoDocumentOfEstablished;
 			}
 		
-		public void setLastNoDocumentOfEstablished(
-		        String lastNoDocumentOfEstablished)
+		public void setLastNoDocumentOfEstablished(String lastNoDocumentOfEstablished)
 			{
 				this.lastNoDocumentOfEstablished = lastNoDocumentOfEstablished;
 			}
@@ -676,8 +649,7 @@ public class CoyCust implements java.io.Serializable
 				return this.lastDateDocumentOfEstablished;
 			}
 		
-		public void setLastDateDocumentOfEstablished(
-		        Date lastDateDocumentOfEstablished)
+		public void setLastDateDocumentOfEstablished(Date lastDateDocumentOfEstablished)
 			{
 				this.lastDateDocumentOfEstablished = lastDateDocumentOfEstablished;
 			}

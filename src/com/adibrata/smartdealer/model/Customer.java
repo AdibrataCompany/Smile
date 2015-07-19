@@ -1,5 +1,7 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -51,38 +53,24 @@ public class Customer implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(
-		        0);
-		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(
-		        0);
-		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(
-		        0);
-		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(
-		        0);
+		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(0);
+		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(0);
+		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
+		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
-		private Set<PersCustTrusteeInfo> persCustTrusteeInfos_1 = new HashSet<PersCustTrusteeInfo>(
-		        0);
+		private Set<PersCustTrusteeInfo> persCustTrusteeInfos_1 = new HashSet<PersCustTrusteeInfo>(0);
 		private Set<CoyCust> coyCusts = new HashSet<CoyCust>(0);
-		private Set<PersCustLegalInfo> persCustLegalInfos = new HashSet<PersCustLegalInfo>(
-		        0);
+		private Set<PersCustLegalInfo> persCustLegalInfos = new HashSet<PersCustLegalInfo>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
-		private Set<PersCustJobInfo> persCustJobInfos = new HashSet<PersCustJobInfo>(
-		        0);
-		private Set<PersCustResidenceInfo> persCustResidenceInfos = new HashSet<PersCustResidenceInfo>(
-		        0);
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(
-		        0);
-		private Set<CoyCustWhInfo> coyCustWhInfos = new HashSet<CoyCustWhInfo>(
-		        0);
-		private Set<PersCustFamilyInfo> persCustFamilyInfos = new HashSet<PersCustFamilyInfo>(
-		        0);
-		private Set<CoyCustLegalInfo> coyCustLegalInfos = new HashSet<CoyCustLegalInfo>(
-		        0);
+		private Set<PersCustJobInfo> persCustJobInfos = new HashSet<PersCustJobInfo>(0);
+		private Set<PersCustResidenceInfo> persCustResidenceInfos = new HashSet<PersCustResidenceInfo>(0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+		private Set<CoyCustWhInfo> coyCustWhInfos = new HashSet<CoyCustWhInfo>(0);
+		private Set<PersCustFamilyInfo> persCustFamilyInfos = new HashSet<PersCustFamilyInfo>(0);
+		private Set<CoyCustLegalInfo> coyCustLegalInfos = new HashSet<CoyCustLegalInfo>(0);
 		private Set<PersCust> persCusts = new HashSet<PersCust>(0);
-		private Set<CoyCustLegalInfo> coyCustLegalInfos_1 = new HashSet<CoyCustLegalInfo>(
-		        0);
-		private Set<PersCustEmergencyInfo> persCustEmergencyInfos = new HashSet<PersCustEmergencyInfo>(
-		        0);
+		private Set<CoyCustLegalInfo> coyCustLegalInfos_1 = new HashSet<CoyCustLegalInfo>(0);
+		private Set<PersCustEmergencyInfo> persCustEmergencyInfos = new HashSet<PersCustEmergencyInfo>(0);
 		
 		public Customer()
 			{
@@ -92,30 +80,11 @@ public class Customer implements java.io.Serializable
 			{
 				this.id = id;
 			}
-		public Customer(long id, Partner partner, String customerNo,
-		        String type, String name, String address, String rt, String rw,
-		        String kelurahan, String city, String zipcode,
-		        String areaPhone1, String phoneNo1, String areaPhone2,
-		        String phoneNo2, String areaFax, String faxNo,
-		        String handphone, String fullAddress, Double prepaidAmount,
-		        Double aramount, Double arpaid, Double arwaived,
-		        String custTag, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt, Set<PersCustCcinfo> persCustCcinfos,
-		        Set<CoyCustShareInfo> coyCustShareInfos,
-		        Set<CoyCustComptInfo> coyCustComptInfos,
-		        Set<PersCustTrusteeInfo> persCustTrusteeInfos,
-		        Set<SalesInvoice> salesInvoices,
-		        Set<PersCustTrusteeInfo> persCustTrusteeInfos_1,
-		        Set<CoyCust> coyCusts,
-		        Set<PersCustLegalInfo> persCustLegalInfos, Set<Agrmnt> agrmnts,
-		        Set<PersCustJobInfo> persCustJobInfos,
-		        Set<PersCustResidenceInfo> persCustResidenceInfos,
-		        Set<SalesOrderHdr> salesOrderHdrs,
-		        Set<CoyCustWhInfo> coyCustWhInfos,
-		        Set<PersCustFamilyInfo> persCustFamilyInfos,
-		        Set<CoyCustLegalInfo> coyCustLegalInfos,
-		        Set<PersCust> persCusts,
-		        Set<CoyCustLegalInfo> coyCustLegalInfos_1,
+		
+		public Customer(long id, Partner partner, String customerNo, String type, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax, String faxNo, String handphone,
+		        String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos,
+		        Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<SalesInvoice> salesInvoices, Set<PersCustTrusteeInfo> persCustTrusteeInfos_1, Set<CoyCust> coyCusts, Set<PersCustLegalInfo> persCustLegalInfos, Set<Agrmnt> agrmnts, Set<PersCustJobInfo> persCustJobInfos,
+		        Set<PersCustResidenceInfo> persCustResidenceInfos, Set<SalesOrderHdr> salesOrderHdrs, Set<CoyCustWhInfo> coyCustWhInfos, Set<PersCustFamilyInfo> persCustFamilyInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts, Set<CoyCustLegalInfo> coyCustLegalInfos_1,
 		        Set<PersCustEmergencyInfo> persCustEmergencyInfos)
 			{
 				this.id = id;
@@ -166,7 +135,7 @@ public class Customer implements java.io.Serializable
 				this.persCustEmergencyInfos = persCustEmergencyInfos;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
@@ -517,8 +486,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustTrusteeInfos;
 			}
 		
-		public void setPersCustTrusteeInfos(
-		        Set<PersCustTrusteeInfo> persCustTrusteeInfos)
+		public void setPersCustTrusteeInfos(Set<PersCustTrusteeInfo> persCustTrusteeInfos)
 			{
 				this.persCustTrusteeInfos = persCustTrusteeInfos;
 			}
@@ -540,8 +508,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustTrusteeInfos_1;
 			}
 		
-		public void setPersCustTrusteeInfos_1(
-		        Set<PersCustTrusteeInfo> persCustTrusteeInfos_1)
+		public void setPersCustTrusteeInfos_1(Set<PersCustTrusteeInfo> persCustTrusteeInfos_1)
 			{
 				this.persCustTrusteeInfos_1 = persCustTrusteeInfos_1;
 			}
@@ -563,8 +530,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustLegalInfos;
 			}
 		
-		public void setPersCustLegalInfos(
-		        Set<PersCustLegalInfo> persCustLegalInfos)
+		public void setPersCustLegalInfos(Set<PersCustLegalInfo> persCustLegalInfos)
 			{
 				this.persCustLegalInfos = persCustLegalInfos;
 			}
@@ -597,8 +563,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustResidenceInfos;
 			}
 		
-		public void setPersCustResidenceInfos(
-		        Set<PersCustResidenceInfo> persCustResidenceInfos)
+		public void setPersCustResidenceInfos(Set<PersCustResidenceInfo> persCustResidenceInfos)
 			{
 				this.persCustResidenceInfos = persCustResidenceInfos;
 			}
@@ -631,8 +596,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustFamilyInfos;
 			}
 		
-		public void setPersCustFamilyInfos(
-		        Set<PersCustFamilyInfo> persCustFamilyInfos)
+		public void setPersCustFamilyInfos(Set<PersCustFamilyInfo> persCustFamilyInfos)
 			{
 				this.persCustFamilyInfos = persCustFamilyInfos;
 			}
@@ -665,8 +629,7 @@ public class Customer implements java.io.Serializable
 				return this.coyCustLegalInfos_1;
 			}
 		
-		public void setCoyCustLegalInfos_1(
-		        Set<CoyCustLegalInfo> coyCustLegalInfos_1)
+		public void setCoyCustLegalInfos_1(Set<CoyCustLegalInfo> coyCustLegalInfos_1)
 			{
 				this.coyCustLegalInfos_1 = coyCustLegalInfos_1;
 			}
@@ -677,8 +640,7 @@ public class Customer implements java.io.Serializable
 				return this.persCustEmergencyInfos;
 			}
 		
-		public void setPersCustEmergencyInfos(
-		        Set<PersCustEmergencyInfo> persCustEmergencyInfos)
+		public void setPersCustEmergencyInfos(Set<PersCustEmergencyInfo> persCustEmergencyInfos)
 			{
 				this.persCustEmergencyInfos = persCustEmergencyInfos;
 			}

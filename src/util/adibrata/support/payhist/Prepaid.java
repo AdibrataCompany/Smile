@@ -1,20 +1,30 @@
+/**
+ * Prepaid.java
+ */
 package util.adibrata.support.payhist;
 
 import org.hibernate.Session;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
 
-public class LCInsurance
+/**
+ * @author Henry
+ */
+public class Prepaid
 	{
+		
+		/**
+	 *
+	 */
 		static Session session;
-		public LCInsurance()
+		public Prepaid()
 			{
 				// TODO Auto-generated constructor stub
 				session = HibernateHelper.getSessionFactory().openSession();
 			}
-		public LCInsurance(Session session)
+		public Prepaid(Session session)
 			{
-				LCInstallment.session = session;
+				Header.session = session;
 			}
 		
 	}

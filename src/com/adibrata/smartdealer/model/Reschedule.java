@@ -1,10 +1,12 @@
+
 package com.adibrata.smartdealer.model;
-// Generated Jul 18, 2015 2:53:38 PM by Hibernate Tools 4.3.1
+
+// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -127,25 +129,10 @@ public class Reschedule implements java.io.Serializable
 			{
 			}
 		
-		public Reschedule(long id, String status, Date requestDate,
-		        Date effectiveDate, double effectiveRate, double flatRate,
-		        String paymentFrequency, String installmentScheme,
-		        String interestType, short numOfInstallment,
-		        short outstandingTenor, short tenor, short cummulativeTenor,
-		        double installmentAmount, double partialPrepaymentAmount,
-		        double administrationFee, double newPrincipalAmount,
-		        double contractPrepaidAmount, double outstandingPrincipalNew,
-		        double outstandingInterestNew, double outstandingPrincipalOld,
-		        double outstandingInterestOld, double osinstallmentDue,
-		        double osinsuranceDue, double oslcinstallment,
-		        double oslcinsurance, double ospdcbounceFee,
-		        double accruedAmount, double eciamount, long approvalId,
-		        String reasonCode, long jobId, String notes,
-		        double pdcbounceFeeDisc, double lcinsuranceAmountDisc,
-		        double lcinstallmentAmountDisc, double reposessFeeDisc,
-		        double totalAmountToBePaid, double totalDiscount,
-		        double totalOsar, double osadminFee, double accruedAdminFeeEom,
-		        double accruedAdminFee)
+		public Reschedule(long id, String status, Date requestDate, Date effectiveDate, double effectiveRate, double flatRate, String paymentFrequency, String installmentScheme, String interestType, short numOfInstallment, short outstandingTenor, short tenor, short cummulativeTenor,
+		        double installmentAmount, double partialPrepaymentAmount, double administrationFee, double newPrincipalAmount, double contractPrepaidAmount, double outstandingPrincipalNew, double outstandingInterestNew, double outstandingPrincipalOld, double outstandingInterestOld,
+		        double osinstallmentDue, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double ospdcbounceFee, double accruedAmount, double eciamount, long approvalId, String reasonCode, long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc,
+		        double lcinstallmentAmountDisc, double reposessFeeDisc, double totalAmountToBePaid, double totalDiscount, double totalOsar, double osadminFee, double accruedAdminFeeEom, double accruedAdminFee)
 			{
 				this.id = id;
 				this.status = status;
@@ -191,53 +178,16 @@ public class Reschedule implements java.io.Serializable
 				this.accruedAdminFeeEom = accruedAdminFeeEom;
 				this.accruedAdminFee = accruedAdminFee;
 			}
-		public Reschedule(long id, Long agmrntId, Long guarantorId,
-		        String status, Date requestDate, Date approvalDate,
-		        Date effectiveDate, Date reschedulingDate,
-		        double effectiveRate, double flatRate, String paymentFrequency,
-		        String installmentScheme, String stepUpStepDownType,
-		        String interestType, short numOfInstallment,
-		        short outstandingTenor, short tenor, short cummulativeTenor,
-		        double installmentAmount, Byte gracePeriod,
-		        String gracePeriodType, double partialPrepaymentAmount,
-		        double administrationFee, double newPrincipalAmount,
-		        double contractPrepaidAmount, double outstandingPrincipalNew,
-		        double outstandingInterestNew, double outstandingPrincipalOld,
-		        double outstandingInterestOld, double osinstallmentDue,
-		        double osinsuranceDue, double oslcinstallment,
-		        double oslcinsurance, double ospdcbounceFee,
-		        Double osreposessFee, double accruedAmount, Double arna,
-		        double eciamount, Double osdiffRate, Double accruedDiffRateEom,
-		        Double accruedDiffRate, Double osinsuranceIncome,
-		        Double accruedInsuranceIncomeEom,
-		        Double accruedInsuranceIncome, Double osincentive,
-		        Double accruedIncentiveEom, Double accruedIncentive,
-		        Double osprovision, Double accruedProvisionEom,
-		        Double accruedProvision, long approvalId, Date statusDate,
-		        String reasonCode, long jobId, String notes,
-		        double pdcbounceFeeDisc, double lcinsuranceAmountDisc,
-		        double lcinstallmentAmountDisc, Double principalAmountDisc,
-		        Double interestDisc, Double insurancePremiDisc,
-		        double reposessFeeDisc, double totalAmountToBePaid,
-		        double totalDiscount, double totalOsar, String requestBy,
-		        Double oldRate, Short oldTenor, Double reschOsobligorExposure,
-		        Double reschTotalObligorExposure,
-		        Double reschRelatedObligorExposure, Double accruedEom,
-		        Double accruedResch, Double accruedAdj, Short insSeqNo,
-		        String type, Double toleranceAmount, double osadminFee,
-		        double accruedAdminFeeEom, double accruedAdminFee,
-		        Double osdeferredInsurInc, Double accDeferredInsurIncEom,
-		        Double accDeferredInsurInc, Double osotherRefund,
-		        Double accOtherRefundEom, Double accOtherRefund,
-		        Double osadmFee, Double accAdmFeeEom, Double accAdmFee,
-		        Double osprovisionFee, Double accProvisionFeeEom,
-		        Double accProvisionFee, Double osotherFee,
-		        Double accOtherFeeEom, Double accOtherFee, Double ossurveyFee,
-		        Double accSurveyFeeEom, Double accSurveyFee,
-		        Double oscostOfSurveyAmountFee,
-		        Double accCostOfSurveyAmountFeeEom,
-		        Double accCostOfSurveyAmountFee, Date dtmUpd, String usrUpd,
-		        Date dtmCrt, String usrCrt)
+		
+		public Reschedule(long id, Long agmrntId, Long guarantorId, String status, Date requestDate, Date approvalDate, Date effectiveDate, Date reschedulingDate, double effectiveRate, double flatRate, String paymentFrequency, String installmentScheme, String stepUpStepDownType,
+		        String interestType, short numOfInstallment, short outstandingTenor, short tenor, short cummulativeTenor, double installmentAmount, Byte gracePeriod, String gracePeriodType, double partialPrepaymentAmount, double administrationFee, double newPrincipalAmount,
+		        double contractPrepaidAmount, double outstandingPrincipalNew, double outstandingInterestNew, double outstandingPrincipalOld, double outstandingInterestOld, double osinstallmentDue, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double ospdcbounceFee,
+		        Double osreposessFee, double accruedAmount, Double arna, double eciamount, Double osdiffRate, Double accruedDiffRateEom, Double accruedDiffRate, Double osinsuranceIncome, Double accruedInsuranceIncomeEom, Double accruedInsuranceIncome, Double osincentive, Double accruedIncentiveEom,
+		        Double accruedIncentive, Double osprovision, Double accruedProvisionEom, Double accruedProvision, long approvalId, Date statusDate, String reasonCode, long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc, double lcinstallmentAmountDisc,
+		        Double principalAmountDisc, Double interestDisc, Double insurancePremiDisc, double reposessFeeDisc, double totalAmountToBePaid, double totalDiscount, double totalOsar, String requestBy, Double oldRate, Short oldTenor, Double reschOsobligorExposure, Double reschTotalObligorExposure,
+		        Double reschRelatedObligorExposure, Double accruedEom, Double accruedResch, Double accruedAdj, Short insSeqNo, String type, Double toleranceAmount, double osadminFee, double accruedAdminFeeEom, double accruedAdminFee, Double osdeferredInsurInc, Double accDeferredInsurIncEom,
+		        Double accDeferredInsurInc, Double osotherRefund, Double accOtherRefundEom, Double accOtherRefund, Double osadmFee, Double accAdmFeeEom, Double accAdmFee, Double osprovisionFee, Double accProvisionFeeEom, Double accProvisionFee, Double osotherFee, Double accOtherFeeEom,
+		        Double accOtherFee, Double ossurveyFee, Double accSurveyFeeEom, Double accSurveyFee, Double oscostOfSurveyAmountFee, Double accCostOfSurveyAmountFeeEom, Double accCostOfSurveyAmountFee, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agmrntId = agmrntId;
@@ -346,7 +296,7 @@ public class Reschedule implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 		
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
@@ -819,8 +769,7 @@ public class Reschedule implements java.io.Serializable
 				return this.accruedInsuranceIncomeEom;
 			}
 		
-		public void setAccruedInsuranceIncomeEom(
-		        Double accruedInsuranceIncomeEom)
+		public void setAccruedInsuranceIncomeEom(Double accruedInsuranceIncomeEom)
 			{
 				this.accruedInsuranceIncomeEom = accruedInsuranceIncomeEom;
 			}
@@ -1118,8 +1067,7 @@ public class Reschedule implements java.io.Serializable
 				return this.reschTotalObligorExposure;
 			}
 		
-		public void setReschTotalObligorExposure(
-		        Double reschTotalObligorExposure)
+		public void setReschTotalObligorExposure(Double reschTotalObligorExposure)
 			{
 				this.reschTotalObligorExposure = reschTotalObligorExposure;
 			}
@@ -1130,8 +1078,7 @@ public class Reschedule implements java.io.Serializable
 				return this.reschRelatedObligorExposure;
 			}
 		
-		public void setReschRelatedObligorExposure(
-		        Double reschRelatedObligorExposure)
+		public void setReschRelatedObligorExposure(Double reschRelatedObligorExposure)
 			{
 				this.reschRelatedObligorExposure = reschRelatedObligorExposure;
 			}
@@ -1450,8 +1397,7 @@ public class Reschedule implements java.io.Serializable
 				return this.accCostOfSurveyAmountFeeEom;
 			}
 		
-		public void setAccCostOfSurveyAmountFeeEom(
-		        Double accCostOfSurveyAmountFeeEom)
+		public void setAccCostOfSurveyAmountFeeEom(Double accCostOfSurveyAmountFeeEom)
 			{
 				this.accCostOfSurveyAmountFeeEom = accCostOfSurveyAmountFeeEom;
 			}
