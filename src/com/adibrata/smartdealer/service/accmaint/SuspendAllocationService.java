@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.accmaint;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class SuspendAllocationService {
-
-	/**
-	 * 
-	 */
-	public SuspendAllocationService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface SuspendAllocationService extends SeviceBase
+	{
 
 }

@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.collection;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class SettingService {
-
-	/**
-	 * 
-	 */
-	public SettingService() {
-		// TODO Auto-generated constructor stub
+public interface SettingService extends SeviceBase
+{
+		
 	}
-
-}

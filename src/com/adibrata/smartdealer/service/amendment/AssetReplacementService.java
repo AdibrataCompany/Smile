@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.amendment;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class AssetReplacementService {
-
-	/**
-	 * 
-	 */
-	public AssetReplacementService() {
-		// TODO Auto-generated constructor stub
+public interface AssetReplacementService extends SeviceBase
+	{
+		
 	}
-
-}

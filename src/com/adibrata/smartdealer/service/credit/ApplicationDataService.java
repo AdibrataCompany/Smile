@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.credit;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class ApplicationDataService {
-
-	/**
-	 * 
-	 */
-	public ApplicationDataService() {
-		// TODO Auto-generated constructor stub
+public interface ApplicationDataService extends SeviceBase
+	{
+		
 	}
-
-}

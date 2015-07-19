@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.amendment;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class PartialAssetPrepayment {
-
-	/**
-	 * 
-	 */
-	public PartialAssetPrepayment() {
-		// TODO Auto-generated constructor stub
+public interface PartialAssetPrepayment extends SeviceBase
+	{
+		
 	}
-
-}

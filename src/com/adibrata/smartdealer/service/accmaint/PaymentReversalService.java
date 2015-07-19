@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.accmaint;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class PaymentReversalService {
-
-	/**
-	 * 
-	 */
-	public PaymentReversalService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface PaymentReversalService extends SeviceBase
+	{
 
 }

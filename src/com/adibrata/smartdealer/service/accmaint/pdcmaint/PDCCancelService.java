@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.accmaint.pdcmaint;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class PDCCancelService {
-
-	/**
-	 * 
-	 */
-	public PDCCancelService() {
-		// TODO Auto-generated constructor stub
+public interface PDCCancelService extends SeviceBase
+	{
+		
 	}
-
-}

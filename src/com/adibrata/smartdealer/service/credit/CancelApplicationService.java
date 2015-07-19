@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.credit;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class CancelApplicationService {
-
-	/**
-	 * 
-	 */
-	public CancelApplicationService() {
-		// TODO Auto-generated constructor stub
+public interface CancelApplicationService extends SeviceBase
+	{
+		
 	}
-
-}

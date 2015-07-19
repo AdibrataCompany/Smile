@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.accmaint;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class OpenCashierService {
-
-	/**
-	 * 
-	 */
-	public OpenCashierService() {
-		// TODO Auto-generated constructor stub
+public interface OpenCashierService extends SeviceBase
+	{
+		
 	}
-
-}

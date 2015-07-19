@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.collection;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class DeskCollService {
-
-	/**
-	 * 
-	 */
-	public DeskCollService() {
-		// TODO Auto-generated constructor stub
+public interface DeskCollService extends SeviceBase
+	{
+		
 	}
-
-}

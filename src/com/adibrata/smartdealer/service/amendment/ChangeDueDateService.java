@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.amendment;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class ChangeDueDateService {
-
-	/**
-	 * 
-	 */
-	public ChangeDueDateService() {
-		// TODO Auto-generated constructor stub
+public interface ChangeDueDateService extends SeviceBase
+	{
+		
 	}
-
-}

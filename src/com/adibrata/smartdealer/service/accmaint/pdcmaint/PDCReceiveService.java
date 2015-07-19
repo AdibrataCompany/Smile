@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.accmaint.pdcmaint;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class PDCReceiveService {
-
-	/**
-	 * 
-	 */
-	public PDCReceiveService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface PDCReceiveService extends SeviceBase
+	{
 
 }

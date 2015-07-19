@@ -1,19 +1,15 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.service.credit;
+
+import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
  * @author Henry
- *
  */
-public class CommisionDataService {
-
-	/**
-	 * 
-	 */
-	public CommisionDataService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface CommisionDataService extends SeviceBase
+{
 
 }
