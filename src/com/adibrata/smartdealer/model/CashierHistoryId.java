@@ -1,7 +1,7 @@
 
 package com.adibrata.smartdealer.model;
 
-// Generated Jul 19, 2015 10:57:21 PM by Hibernate Tools 4.3.1
+// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -34,7 +34,8 @@ public class CashierHistoryId implements java.io.Serializable
 			{
 			}
 		
-		public CashierHistoryId(Long id, String partnerCode, Long officeId, Long employeeId, Boolean currencyId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public CashierHistoryId(Long id, String partnerCode, Long officeId, Long employeeId, Boolean currencyId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;

@@ -4,8 +4,10 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory name="SmartDealer">
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.bytecode.use_reflection_optimizer">true</property>
         <property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.Provider</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.connection.isolation">1</property>
         <property name="hibernate.connection.password">Alpha2014</property>

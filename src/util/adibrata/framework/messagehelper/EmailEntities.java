@@ -1,98 +1,107 @@
+
 package util.adibrata.framework.messagehelper;
 
-import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Entity;
-
-import javax.persistence.Table;
-
-@SuppressWarnings({ "unused", "serial" })
-@Entity
-public class EmailEntities implements Serializable{
-	private String From;
-	private String To;
-	private String CC;
-	private String BCC;
-	private String Subject;
-	private String MailServer;
-	private String UserName;
-	private String Password;
-	private String BodyMessage;
-	
-	
-	public String getCC() {
-		return CC;
+public class EmailEntities
+	{
+		private String From;
+		private String To;
+		private String CC;
+		private String BCC;
+		private String Subject;
+		private String MailServer;
+		private String UserName;
+		private String Password;
+		private String BodyMessage;
+		
+		public String getCC()
+			{
+				return this.CC;
+			}
+		
+		public void setCC(final String cC)
+			{
+				this.CC = cC;
+			}
+		
+		public String getTo()
+			{
+				return this.To;
+			}
+		
+		public void setTo(final String to)
+			{
+				this.To = to;
+			}
+		
+		public String getFrom()
+			{
+				return this.From;
+			}
+		
+		public void setFrom(final String from)
+			{
+				this.From = from;
+			}
+		
+		public String getBCC()
+			{
+				return this.BCC;
+			}
+		
+		public void setBCC(final String bCC)
+			{
+				this.BCC = bCC;
+			}
+		
+		public String getSubject()
+			{
+				return this.Subject;
+			}
+		
+		public void setSubject(final String subject)
+			{
+				this.Subject = subject;
+			}
+		
+		public String getMailServer()
+			{
+				return this.MailServer;
+			}
+		
+		public void setMailServer(final String mailServer)
+			{
+				this.MailServer = mailServer;
+			}
+		
+		public String getUserName()
+			{
+				return this.UserName;
+			}
+		
+		public void setUserName(final String userName)
+			{
+				this.UserName = userName;
+			}
+		
+		public String getPassword()
+			{
+				return this.Password;
+			}
+		
+		public void setPassword(final String password)
+			{
+				this.Password = password;
+			}
+		
+		public String getBodyMessage()
+			{
+				return this.BodyMessage;
+			}
+		
+		public void setBodyMessage(final String bodyMessage)
+			{
+				this.BodyMessage = bodyMessage;
+			}
+		
 	}
-
-	public void setCC(String cC) {
-		CC = cC;
-	}
-
-	public String getTo() {
-		return To;
-	}
-
-	public void setTo(String to) {
-		To = to;
-	}
-
-	public String getFrom() {
-		return From;
-	}
-
-	public void setFrom(String from) {
-		From = from;
-	}
-
-	public String getBCC() {
-		return BCC;
-	}
-
-	public void setBCC(String bCC) {
-		BCC = bCC;
-	}
-
-	public String getSubject() {
-		return Subject;
-	}
-
-	public void setSubject(String subject) {
-		Subject = subject;
-	}
-
-	public String getMailServer() {
-		return MailServer;
-	}
-
-	public void setMailServer(String mailServer) {
-		MailServer = mailServer;
-	}
-
-	public String getUserName() {
-		return UserName;
-	}
-
-	public void setUserName(String userName) {
-		UserName = userName;
-	}
-
-	public String getPassword() {
-		return Password;
-	}
-
-	public void setPassword(String password) {
-		Password = password;
-	}
-
-	public String getBodyMessage() {
-		return BodyMessage;
-	}
-
-	public void setBodyMessage(String bodyMessage) {
-		BodyMessage = bodyMessage;
-	}
-
-
-	
-}

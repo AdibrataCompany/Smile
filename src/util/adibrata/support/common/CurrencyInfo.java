@@ -4,13 +4,12 @@
 
 package util.adibrata.support.common;
 
-import java.util.Currency;
-
 import org.hibernate.Session;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
+import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.Partner;
 
 /**
@@ -27,13 +26,12 @@ public class CurrencyInfo
 				// TODO Auto-generated constructor stub
 			}
 		
-		public static Currency GetCurrencyInfo(Session session, Partner partner, long id) throws Exception
+		public static Currency GetCurrencyInfo(final Session session, final Partner partner, final long id) throws Exception
 			{
 				Currency currency = null;
 				try
 					{
 						currency = (Currency) session.get(Currency.class, id);
-						
 					}
 				catch (final Exception exp)
 					{
@@ -44,6 +42,6 @@ public class CurrencyInfo
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return currency;
-
-		}
+				
+			}
 	}

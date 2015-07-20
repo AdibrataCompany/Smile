@@ -1,11 +1,11 @@
 /**
- * 
+ *
  */
+
 package com.adibrata.smartdealer.dao.setting;
 
 /**
  * @author Henry
- *
  */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,212 +15,245 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.adibrata.smartdealer.dao.DaoBase;
-import com.adibrata.smartdealer.model.*;
-import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
-
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
-import util.adibrata.support.transno.GetTransNo;
 
-public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService {
-	String userupd;
-	Session session;
-	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	Calendar dtmupd = Calendar.getInstance();
-	String strStatement;
-	StringBuilder hql = new StringBuilder();
-	int pagesize;
+import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.model.AssetDocMaster;
+import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
 
-	public AssetDocMasterDao() throws Exception{
-		// TODO Auto-generated constructor stub
-		try {
-			session = HibernateHelper.getSessionFactory().openSession();
-			pagesize = HibernateHelper.getPagesize();
-			strStatement = "from AssetDocMaster ";
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.setting.AssetDocument#Paging(int,
-	 * java.lang.String, java.lang.String)
-	 */
-	@Override
-	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy) throws Exception{
-		// TODO Auto-generated method stub
+public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
+	{
+		String userupd;
+		Session session;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Calendar dtmupd = Calendar.getInstance();
+		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		List<AssetDocMaster> list = null;
-		try {
-			hql.append(strStatement);
-			if (WhereCond != "") {
-				hql.append(" where ");
-				hql.append(WhereCond);
+		int pagesize;
+		
+		public AssetDocMasterDao() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				try
+					{
+						this.session = HibernateHelper.getSessionFactory().openSession();
+						this.pagesize = HibernateHelper.getPagesize();
+						this.strStatement = "from AssetDocMaster ";
+						
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
-			Query selectQuery = session.createQuery(hql.toString());
-			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
-			selectQuery.setMaxResults(pagesize);
-			list = selectQuery.list();
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return list;
-	}
-
+		
+		/*
+		 * (non-Javadoc)
+		 * @see com.adibrata.smartdealer.service.setting.AssetDocument#Paging(int,
+		 * java.lang.String, java.lang.String)
+		 */
+		@SuppressWarnings("unchecked")
 	@Override
-	public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception{
-		// TODO Auto-generated method stub
-		StringBuilder hql = new StringBuilder();
-		List<AssetDocMaster> list = null;
-
-		try {
-			hql.append(strStatement);
-			if (WhereCond != "") {
-				hql.append(" where ");
-				hql.append(WhereCond);
+		public List<AssetDocMaster> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<AssetDocMaster> list = null;
+				try
+					{
+						hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								hql.append(" where ");
+								hql.append(WhereCond);
+							}
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
+						list = selectQuery.list();
+						
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						this.session.close();
+					}
+				return list;
 			}
-			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-			selectQuery.setMaxResults(pagesize);
-			list = selectQuery.list();
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return list;
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<AssetDocMaster> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<AssetDocMaster> list = null;
+				
+				try
+					{
+						hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								hql.append(" where ");
+								hql.append(WhereCond);
+							}
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						final long totalrecord = this.TotalRecord(WhereCond);
+						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						selectQuery.setMaxResults(this.pagesize);
+						list = selectQuery.list();
+						
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						this.session.close();
+					}
+				return list;
+			}
+		
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.AssetDocument#SaveAdd(com.adibrata
+		 * .smartdealer.service.setting.AssetDocument)
+		 */
+		@Override
+		public void SaveAdd(final AssetDocMaster assetDocMaster) throws Exception
+			{
+				// TODO Auto-generated method stub
+				
+				this.session.getTransaction().begin();
+				try
+					{
+						assetDocMaster.setDtmCrt(this.dtmupd.getTime());
+						assetDocMaster.setDtmUpd(this.dtmupd.getTime());
+						this.session.save(assetDocMaster);
+						
+						this.session.getTransaction().commit();
+						
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			finally
+					{
+						this.session.close();
+					}
+			}
+		
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.AssetDocument#SaveEdit(com.adibrata
+		 * .smartdealer.service.setting.AssetDocument)
+		 */
+		@Override
+		public void SaveEdit(final AssetDocMaster assetDocMaster) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.session.getTransaction().begin();
+				try
+					{
+						
+						assetDocMaster.setDtmUpd(this.dtmupd.getTime());
+						this.session.update(assetDocMaster);
+						
+						this.session.getTransaction().commit();
+						
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						this.session.close();
+					}
+			}
+		
+		/*
+		 * (non-Javadoc)
+		 * @see com.adibrata.smartdealer.service.setting.AssetDocument#SaveDel(com
+		 * .adibrata.smartdealer.service.setting.AssetDocument)
+		 */
+		@Override
+		public void SaveDel(final AssetDocMaster assetDocMaster) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.session.getTransaction().begin();
+				try
+					{
+						
+						this.session.delete(assetDocMaster);
+						this.session.getTransaction().commit();
+						
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			finally
+					{
+						this.session.close();
+					}
+			}
+		
+		@Override
+		public AssetDocMaster View(final long id) throws Exception
+			{
+				AssetDocMaster assetDocMaster = null;
+				try
+					{
+						assetDocMaster = (AssetDocMaster) this.session.get(AssetDocMaster.class, id);
+						
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						this.session.close();
+					}
+				return assetDocMaster;
+			}
+		
 	}
-
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.AssetDocument#SaveAdd(com.adibrata
-	 * .smartdealer.service.setting.AssetDocument)
-	 */
-	@Override
-	public void SaveAdd(AssetDocMaster assetDocMaster) throws Exception{
-		// TODO Auto-generated method stub
-
-		session.getTransaction().begin();
-		try {
-			assetDocMaster.setDtmCrt(dtmupd.getTime());
-			assetDocMaster.setDtmUpd(dtmupd.getTime());
-			session.save(assetDocMaster);
-
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.AssetDocument#SaveEdit(com.adibrata
-	 * .smartdealer.service.setting.AssetDocument)
-	 */
-	@Override
-	public void SaveEdit(AssetDocMaster assetDocMaster) throws Exception{
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-
-			assetDocMaster.setDtmUpd(dtmupd.getTime());
-			session.update(assetDocMaster);
-
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.setting.AssetDocument#SaveDel(com
-	 * .adibrata.smartdealer.service.setting.AssetDocument)
-	 */
-	@Override
-	public void SaveDel(AssetDocMaster assetDocMaster) throws Exception{
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-
-			session.delete(assetDocMaster);
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	@Override
-	public AssetDocMaster View(long id) throws Exception{
-		AssetDocMaster assetDocMaster = null;
-		try {
-			assetDocMaster = (AssetDocMaster) session.get(AssetDocMaster.class,
-					id);
-
-		} catch (Exception exp) {
-
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return assetDocMaster;
-	}
-
-}
