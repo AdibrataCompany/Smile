@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -36,12 +35,12 @@ public class OtherRcvDtl implements java.io.Serializable
 		public OtherRcvDtl()
 			{
 			}
-		
+			
 		public OtherRcvDtl(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public OtherRcvDtl(long id, OtherRcvHdr otherRcvHdr, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -55,119 +54,120 @@ public class OtherRcvDtl implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "OtherRcvHdrId")
 		public OtherRcvHdr getOtherRcvHdr()
 			{
 				return this.otherRcvHdr;
 			}
-		
+			
 		public void setOtherRcvHdr(OtherRcvHdr otherRcvHdr)
 			{
 				this.otherRcvHdr = otherRcvHdr;
 			}
-		
+			
 		@Column(name = "CoaName", length = 50)
 		public String getCoaName()
 			{
 				return this.coaName;
 			}
-		
+			
 		public void setCoaName(String coaName)
 			{
 				this.coaName = coaName;
 			}
-		
+			
 		@Column(name = "CoaCode", length = 50)
 		public String getCoaCode()
 			{
 				return this.coaCode;
 			}
-		
+			
 		public void setCoaCode(String coaCode)
 			{
 				this.coaCode = coaCode;
 			}
-		
+			
 		@Column(name = "Amount", precision = 53, scale = 0)
 		public Double getAmount()
 			{
 				return this.amount;
 			}
-		
+			
 		public void setAmount(Double amount)
 			{
 				this.amount = amount;
 			}
-		
+			
 		@Column(name = "Description", length = 100)
 		public String getDescription()
 			{
 				return this.description;
 			}
-		
+			
 		public void setDescription(String description)
 			{
 				this.description = description;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 23)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 23)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

@@ -1,12 +1,10 @@
 
 package com.adibrata.smartdealer.model;
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
-
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -26,10 +24,10 @@ public class CoyCustLegalInfo implements java.io.Serializable
 		private long id;
 		private Customer customer;
 		private String documentType;
-		private Serializable documentNo;
+		private String documentNo;
 		private Date documentDate;
 		private Date documentExpiredDate;
-		private Serializable documentNotes;
+		private String documentNotes;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -38,14 +36,14 @@ public class CoyCustLegalInfo implements java.io.Serializable
 		public CoyCustLegalInfo()
 			{
 			}
-		
+			
 		public CoyCustLegalInfo(long id, String documentType)
 			{
 				this.id = id;
 				this.documentType = documentType;
 			}
-		
-		public CoyCustLegalInfo(long id, Customer customer, String documentType, Serializable documentNo, Date documentDate, Date documentExpiredDate, Serializable documentNotes, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+			
+		public CoyCustLegalInfo(long id, Customer customer, String documentType, String documentNo, Date documentDate, Date documentExpiredDate, String documentNotes, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -59,132 +57,133 @@ public class CoyCustLegalInfo implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CustomerId")
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-		
+			
 		public void setCustomer(Customer customer)
 			{
 				this.customer = customer;
 			}
-		
+			
 		@Column(name = "DocumentType", nullable = false, length = 10)
 		public String getDocumentType()
 			{
 				return this.documentType;
 			}
-		
+			
 		public void setDocumentType(String documentType)
 			{
 				this.documentType = documentType;
 			}
-		
-		@Column(name = "DocumentNo")
-		public Serializable getDocumentNo()
+			
+		@Column(name = "DocumentNo", length = 50)
+		public String getDocumentNo()
 			{
 				return this.documentNo;
 			}
-		
-		public void setDocumentNo(Serializable documentNo)
+			
+		public void setDocumentNo(String documentNo)
 			{
 				this.documentNo = documentNo;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DocumentDate", length = 23)
 		public Date getDocumentDate()
 			{
 				return this.documentDate;
 			}
-		
+			
 		public void setDocumentDate(Date documentDate)
 			{
 				this.documentDate = documentDate;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DocumentExpiredDate", length = 23)
 		public Date getDocumentExpiredDate()
 			{
 				return this.documentExpiredDate;
 			}
-		
+			
 		public void setDocumentExpiredDate(Date documentExpiredDate)
 			{
 				this.documentExpiredDate = documentExpiredDate;
 			}
-		
-		@Column(name = "DocumentNotes")
-		public Serializable getDocumentNotes()
+			
+		@Column(name = "DocumentNotes", length = 8000)
+		public String getDocumentNotes()
 			{
 				return this.documentNotes;
 			}
-		
-		public void setDocumentNotes(Serializable documentNotes)
+			
+		public void setDocumentNotes(String documentNotes)
 			{
 				this.documentNotes = documentNotes;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

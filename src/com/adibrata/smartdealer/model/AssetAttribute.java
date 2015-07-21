@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,12 +33,12 @@ public class AssetAttribute implements java.io.Serializable
 		public AssetAttribute()
 			{
 			}
-		
+			
 		public AssetAttribute(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public AssetAttribute(long id, String partnerCode, Long officeId, Long assetTypeId, String attributeCode, String attributeDescription, String attributeType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -54,129 +53,130 @@ public class AssetAttribute implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@Column(name = "PartnerCode", length = 20)
 		public String getPartnerCode()
 			{
 				return this.partnerCode;
 			}
-		
+			
 		public void setPartnerCode(String partnerCode)
 			{
 				this.partnerCode = partnerCode;
 			}
-		
+			
 		@Column(name = "OfficeId")
 		public Long getOfficeId()
 			{
 				return this.officeId;
 			}
-		
+			
 		public void setOfficeId(Long officeId)
 			{
 				this.officeId = officeId;
 			}
-		
+			
 		@Column(name = "AssetTypeId")
 		public Long getAssetTypeId()
 			{
 				return this.assetTypeId;
 			}
-		
+			
 		public void setAssetTypeId(Long assetTypeId)
 			{
 				this.assetTypeId = assetTypeId;
 			}
-		
+			
 		@Column(name = "AttributeCode", length = 20)
 		public String getAttributeCode()
 			{
 				return this.attributeCode;
 			}
-		
+			
 		public void setAttributeCode(String attributeCode)
 			{
 				this.attributeCode = attributeCode;
 			}
-		
+			
 		@Column(name = "AttributeDescription", length = 50)
 		public String getAttributeDescription()
 			{
 				return this.attributeDescription;
 			}
-		
+			
 		public void setAttributeDescription(String attributeDescription)
 			{
 				this.attributeDescription = attributeDescription;
 			}
-		
+			
 		@Column(name = "AttributeType", length = 1)
 		public String getAttributeType()
 			{
 				return this.attributeType;
 			}
-		
+			
 		public void setAttributeType(String attributeType)
 			{
 				this.attributeType = attributeType;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 23)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 23)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

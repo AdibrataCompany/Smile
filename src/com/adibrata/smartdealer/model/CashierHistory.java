@@ -1,13 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.Table;
 
 /**
@@ -23,32 +22,33 @@ public class CashierHistory implements java.io.Serializable
 		public CashierHistory()
 			{
 			}
-		
+			
 		public CashierHistory(CashierHistoryId id)
 			{
 				this.id = id;
 			}
-		
+			
 		@EmbeddedId
+		
 		@AttributeOverrides(
 			{
-			        @AttributeOverride(name = "id", column = @Column(name = "Id")), @AttributeOverride(name = "partnerCode", column = @Column(name = "PartnerCode", length = 20)),
-			        @AttributeOverride(name = "officeId", column = @Column(name = "OfficeId")), @AttributeOverride(name = "employeeId", column = @Column(name = "EmployeeId")),
-			        @AttributeOverride(name = "currencyId", column = @Column(name = "CurrencyId")), @AttributeOverride(name = "openSeqNo", column = @Column(name = "OpenSeqNo")),
-			        @AttributeOverride(name = "openingDtm", column = @Column(name = "OpeningDtm", length = 23)), @AttributeOverride(name = "openingAmount", column = @Column(name = "OpeningAmount", precision = 53, scale = 0)),
-			        @AttributeOverride(name = "balanceAmount", column = @Column(name = "BalanceAmount", precision = 53, scale = 0)), @AttributeOverride(name = "cashierStatus", column = @Column(name = "CashierStatus", length = 2)),
-			        @AttributeOverride(name = "closingDtm", column = @Column(name = "ClosingDtm", length = 23)), @AttributeOverride(name = "dtmUpd", column = @Column(name = "DtmUpd", length = 16)),
-			        @AttributeOverride(name = "usrUpd", column = @Column(name = "UsrUpd", length = 50)), @AttributeOverride(name = "dtmCrt", column = @Column(name = "DtmCrt", length = 16)),
-			        @AttributeOverride(name = "usrCrt", column = @Column(name = "UsrCrt", length = 50))
+			        @AttributeOverride(name = "id", column = @Column(name = "Id") ), @AttributeOverride(name = "partnerCode", column = @Column(name = "PartnerCode", length = 20) ),
+			        @AttributeOverride(name = "officeId", column = @Column(name = "OfficeId") ), @AttributeOverride(name = "employeeId", column = @Column(name = "EmployeeId") ),
+			        @AttributeOverride(name = "currencyId", column = @Column(name = "CurrencyId") ), @AttributeOverride(name = "openSeqNo", column = @Column(name = "OpenSeqNo") ),
+			        @AttributeOverride(name = "openingDtm", column = @Column(name = "OpeningDtm", length = 23) ), @AttributeOverride(name = "openingAmount", column = @Column(name = "OpeningAmount", precision = 53, scale = 0) ),
+			        @AttributeOverride(name = "balanceAmount", column = @Column(name = "BalanceAmount", precision = 53, scale = 0) ), @AttributeOverride(name = "cashierStatus", column = @Column(name = "CashierStatus", length = 2) ),
+			        @AttributeOverride(name = "closingDtm", column = @Column(name = "ClosingDtm", length = 23) ), @AttributeOverride(name = "dtmUpd", column = @Column(name = "DtmUpd", length = 16) ),
+			        @AttributeOverride(name = "usrUpd", column = @Column(name = "UsrUpd", length = 50) ), @AttributeOverride(name = "dtmCrt", column = @Column(name = "DtmCrt", length = 16) ),
+			        @AttributeOverride(name = "usrCrt", column = @Column(name = "UsrCrt", length = 50) )
 			})
 		public CashierHistoryId getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(CashierHistoryId id)
 			{
 				this.id = id;
 			}
-		
+			
 	}

@@ -1,13 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -55,12 +54,12 @@ public class SalesOrderHdr implements java.io.Serializable
 		public SalesOrderHdr()
 			{
 			}
-		
+			
 		public SalesOrderHdr(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public SalesOrderHdr(long id, CoaSchmHdr coaSchmHdr, Customer customer, Employee employee, Leasing leasing, Office office, Partner partner, String sono, Date postingDate, Date valueDate, Double soamount, Double sotaxPercent,
 		        Double sotaxAmount, Double netSalesAmount, Double tdp, Double dp, Double ntf, byte[] signature, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<SalesOrderDtl> salesOrderDtls, Set<ReturSalesHdr> returSalesHdrs,
 		        Set<SalesInvoice> salesInvoices)
@@ -92,302 +91,303 @@ public class SalesOrderHdr implements java.io.Serializable
 				this.returSalesHdrs = returSalesHdrs;
 				this.salesInvoices = salesInvoices;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CoaSchmID")
 		public CoaSchmHdr getCoaSchmHdr()
 			{
 				return this.coaSchmHdr;
 			}
-		
+			
 		public void setCoaSchmHdr(CoaSchmHdr coaSchmHdr)
 			{
 				this.coaSchmHdr = coaSchmHdr;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CustomerID")
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-		
+			
 		public void setCustomer(Customer customer)
 			{
 				this.customer = customer;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "EmployeeID")
 		public Employee getEmployee()
 			{
 				return this.employee;
 			}
-		
+			
 		public void setEmployee(Employee employee)
 			{
 				this.employee = employee;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "LeasingID")
 		public Leasing getLeasing()
 			{
 				return this.leasing;
 			}
-		
+			
 		public void setLeasing(Leasing leasing)
 			{
 				this.leasing = leasing;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "OfficeId")
 		public Office getOffice()
 			{
 				return this.office;
 			}
-		
+			
 		public void setOffice(Office office)
 			{
 				this.office = office;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "SONo", length = 50)
 		public String getSono()
 			{
 				return this.sono;
 			}
-		
+			
 		public void setSono(String sono)
 			{
 				this.sono = sono;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "PostingDate", length = 23)
 		public Date getPostingDate()
 			{
 				return this.postingDate;
 			}
-		
+			
 		public void setPostingDate(Date postingDate)
 			{
 				this.postingDate = postingDate;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "ValueDate", length = 23)
 		public Date getValueDate()
 			{
 				return this.valueDate;
 			}
-		
+			
 		public void setValueDate(Date valueDate)
 			{
 				this.valueDate = valueDate;
 			}
-		
+			
 		@Column(name = "SOAmount", precision = 53, scale = 0)
 		public Double getSoamount()
 			{
 				return this.soamount;
 			}
-		
+			
 		public void setSoamount(Double soamount)
 			{
 				this.soamount = soamount;
 			}
-		
+			
 		@Column(name = "SOTaxPercent", precision = 53, scale = 0)
 		public Double getSotaxPercent()
 			{
 				return this.sotaxPercent;
 			}
-		
+			
 		public void setSotaxPercent(Double sotaxPercent)
 			{
 				this.sotaxPercent = sotaxPercent;
 			}
-		
+			
 		@Column(name = "SOTaxAmount", precision = 53, scale = 0)
 		public Double getSotaxAmount()
 			{
 				return this.sotaxAmount;
 			}
-		
+			
 		public void setSotaxAmount(Double sotaxAmount)
 			{
 				this.sotaxAmount = sotaxAmount;
 			}
-		
+			
 		@Column(name = "NetSalesAmount", precision = 53, scale = 0)
 		public Double getNetSalesAmount()
 			{
 				return this.netSalesAmount;
 			}
-		
+			
 		public void setNetSalesAmount(Double netSalesAmount)
 			{
 				this.netSalesAmount = netSalesAmount;
 			}
-		
+			
 		@Column(name = "TDP", precision = 53, scale = 0)
 		public Double getTdp()
 			{
 				return this.tdp;
 			}
-		
+			
 		public void setTdp(Double tdp)
 			{
 				this.tdp = tdp;
 			}
-		
+			
 		@Column(name = "DP", precision = 53, scale = 0)
 		public Double getDp()
 			{
 				return this.dp;
 			}
-		
+			
 		public void setDp(Double dp)
 			{
 				this.dp = dp;
 			}
-		
+			
 		@Column(name = "NTF", precision = 53, scale = 0)
 		public Double getNtf()
 			{
 				return this.ntf;
 			}
-		
+			
 		public void setNtf(Double ntf)
 			{
 				this.ntf = ntf;
 			}
-		
+			
 		@Column(name = "Signature")
 		public byte[] getSignature()
 			{
 				return this.signature;
 			}
-		
+			
 		public void setSignature(byte[] signature)
 			{
 				this.signature = signature;
 			}
-		
+			
 		@Column(name = "JobId")
 		public Long getJobId()
 			{
 				return this.jobId;
 			}
-		
+			
 		public void setJobId(Long jobId)
 			{
 				this.jobId = jobId;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "salesOrderHdr")
 		public Set<SalesOrderDtl> getSalesOrderDtls()
 			{
 				return this.salesOrderDtls;
 			}
-		
+			
 		public void setSalesOrderDtls(Set<SalesOrderDtl> salesOrderDtls)
 			{
 				this.salesOrderDtls = salesOrderDtls;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "salesOrderHdr")
 		public Set<ReturSalesHdr> getReturSalesHdrs()
 			{
 				return this.returSalesHdrs;
 			}
-		
+			
 		public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs)
 			{
 				this.returSalesHdrs = returSalesHdrs;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "salesOrderHdr")
 		public Set<SalesInvoice> getSalesInvoices()
 			{
 				return this.salesInvoices;
 			}
-		
+			
 		public void setSalesInvoices(Set<SalesInvoice> salesInvoices)
 			{
 				this.salesInvoices = salesInvoices;
 			}
-		
+			
 	}

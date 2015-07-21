@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -36,12 +35,12 @@ public class MasterTable implements java.io.Serializable
 		public MasterTable()
 			{
 			}
-		
+			
 		public MasterTable(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public MasterTable(long id, MasterType masterType, Partner partner, String masterCode, String masterValue, Integer isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -55,120 +54,121 @@ public class MasterTable implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "MasterTypeCode")
 		public MasterType getMasterType()
 			{
 				return this.masterType;
 			}
-		
+			
 		public void setMasterType(MasterType masterType)
 			{
 				this.masterType = masterType;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "MasterCode", length = 20)
 		public String getMasterCode()
 			{
 				return this.masterCode;
 			}
-		
+			
 		public void setMasterCode(String masterCode)
 			{
 				this.masterCode = masterCode;
 			}
-		
+			
 		@Column(name = "MasterValue", length = 50)
 		public String getMasterValue()
 			{
 				return this.masterValue;
 			}
-		
+			
 		public void setMasterValue(String masterValue)
 			{
 				this.masterValue = masterValue;
 			}
-		
+			
 		@Column(name = "IsActive")
 		public Integer getIsActive()
 			{
 				return this.isActive;
 			}
-		
+			
 		public void setIsActive(Integer isActive)
 			{
 				this.isActive = isActive;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

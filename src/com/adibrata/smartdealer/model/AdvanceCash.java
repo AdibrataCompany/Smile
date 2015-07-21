@@ -1,7 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -9,9 +8,7 @@ import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -29,200 +26,200 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 @Table(name = "AdvanceCash", catalog = "SmartDealer")
 public class AdvanceCash implements java.io.Serializable
-{
+	{
 
-	private long id;
-	private BankAccount bankAccount;
-	private Employee employee;
-	private Office office;
-	private Partner partner;
-	private String advanceNo;
-	private Double advanceAmount;
-	private Date postingDate;
-	private Date valueDate;
-	private Date dtmUpd;
-	private String usrUpd;
-	private Date dtmCrt;
-	private String usrCrt;
+		private long id;
+		private BankAccount bankAccount;
+		private Employee employee;
+		private Office office;
+		private Partner partner;
+		private String advanceNo;
+		private Double advanceAmount;
+		private Date postingDate;
+		private Date valueDate;
+		private Date dtmUpd;
+		private String usrUpd;
+		private Date dtmCrt;
+		private String usrCrt;
 
-	public AdvanceCash()
-		{
-		}
+		public AdvanceCash()
+			{
+			}
 
-	public AdvanceCash(final long id)
-		{
-			this.id = id;
-		}
+		public AdvanceCash(final long id)
+			{
+				this.id = id;
+			}
 
-	public AdvanceCash(final long id, final BankAccount bankAccount, final Employee employee, final Office office, final Partner partner, final String advanceNo, final Double advanceAmount, final Date postingDate, final Date valueDate,
+		public AdvanceCash(final long id, final BankAccount bankAccount, final Employee employee, final Office office, final Partner partner, final String advanceNo, final Double advanceAmount, final Date postingDate, final Date valueDate,
 		        final Date dtmUpd, final String usrUpd, final Date dtmCrt, final String usrCrt)
-		{
-			this.id = id;
-			this.bankAccount = bankAccount;
-			this.employee = employee;
-			this.office = office;
-			this.partner = partner;
-			this.advanceNo = advanceNo;
-			this.advanceAmount = advanceAmount;
-			this.postingDate = postingDate;
-			this.valueDate = valueDate;
-			this.dtmUpd = dtmUpd;
-			this.usrUpd = usrUpd;
-			this.dtmCrt = dtmCrt;
-			this.usrCrt = usrCrt;
-		}
+			{
+				this.id = id;
+				this.bankAccount = bankAccount;
+				this.employee = employee;
+				this.office = office;
+				this.partner = partner;
+				this.advanceNo = advanceNo;
+				this.advanceAmount = advanceAmount;
+				this.postingDate = postingDate;
+				this.valueDate = valueDate;
+				this.dtmUpd = dtmUpd;
+				this.usrUpd = usrUpd;
+				this.dtmCrt = dtmCrt;
+				this.usrCrt = usrCrt;
+			}
 
-	@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID", unique = true, nullable = false)
-	public long getId()
-		{
-			return this.id;
-		}
+		@Id @GeneratedValue(strategy=GenerationType.AUTO)
 
-	public void setId(final long id)
-		{
-			this.id = id;
-		}
+		@Column(name = "ID", unique = true, nullable = false)
+		public long getId()
+			{
+				return this.id;
+			}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "BankAccountId")
-	public BankAccount getBankAccount()
-		{
-			return this.bankAccount;
-		}
+		public void setId(final long id)
+			{
+				this.id = id;
+			}
 
-	public void setBankAccount(final BankAccount bankAccount)
-		{
-			this.bankAccount = bankAccount;
-		}
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "BankAccountId")
+		public BankAccount getBankAccount()
+			{
+				return this.bankAccount;
+			}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "EmployeeId")
-	public Employee getEmployee()
-		{
-			return this.employee;
-		}
+		public void setBankAccount(final BankAccount bankAccount)
+			{
+				this.bankAccount = bankAccount;
+			}
 
-	public void setEmployee(final Employee employee)
-		{
-			this.employee = employee;
-		}
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "EmployeeId")
+		public Employee getEmployee()
+			{
+				return this.employee;
+			}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "OfficeID")
-	public Office getOffice()
-		{
-			return this.office;
-		}
+		public void setEmployee(final Employee employee)
+			{
+				this.employee = employee;
+			}
 
-	public void setOffice(final Office office)
-		{
-			this.office = office;
-		}
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "OfficeID")
+		public Office getOffice()
+			{
+				return this.office;
+			}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PartnerCode")
-	public Partner getPartner()
-		{
-			return this.partner;
-		}
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
 
-	public void setPartner(final Partner partner)
-		{
-			this.partner = partner;
-		}
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "PartnerCode")
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
 
-	@Column(name = "AdvanceNo", length = 50)
-	public String getAdvanceNo()
-		{
-			return this.advanceNo;
-		}
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
 
-	public void setAdvanceNo(final String advanceNo)
-		{
-			this.advanceNo = advanceNo;
-		}
+		@Column(name = "AdvanceNo", length = 50)
+		public String getAdvanceNo()
+			{
+				return this.advanceNo;
+			}
 
-	@Column(name = "AdvanceAmount", precision = 53, scale = 0)
-	public Double getAdvanceAmount()
-		{
-			return this.advanceAmount;
-		}
+		public void setAdvanceNo(final String advanceNo)
+			{
+				this.advanceNo = advanceNo;
+			}
 
-	public void setAdvanceAmount(final Double advanceAmount)
-		{
-			this.advanceAmount = advanceAmount;
-		}
+		@Column(name = "AdvanceAmount", precision = 53, scale = 0)
+		public Double getAdvanceAmount()
+			{
+				return this.advanceAmount;
+			}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PostingDate", length = 23)
-	public Date getPostingDate()
-		{
-			return this.postingDate;
-		}
+		public void setAdvanceAmount(final Double advanceAmount)
+			{
+				this.advanceAmount = advanceAmount;
+			}
 
-	public void setPostingDate(final Date postingDate)
-		{
-			this.postingDate = postingDate;
-		}
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "PostingDate", length = 23)
+		public Date getPostingDate()
+			{
+				return this.postingDate;
+			}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "ValueDate", length = 23)
-	public Date getValueDate()
-		{
-			return this.valueDate;
-		}
+		public void setPostingDate(final Date postingDate)
+			{
+				this.postingDate = postingDate;
+			}
 
-	public void setValueDate(final Date valueDate)
-		{
-			this.valueDate = valueDate;
-		}
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "ValueDate", length = 23)
+		public Date getValueDate()
+			{
+				return this.valueDate;
+			}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DtmUpd", length = 16)
-	public Date getDtmUpd()
-		{
-			return this.dtmUpd;
-		}
+		public void setValueDate(final Date valueDate)
+			{
+				this.valueDate = valueDate;
+			}
 
-	public void setDtmUpd(final Date dtmUpd)
-		{
-			this.dtmUpd = dtmUpd;
-		}
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "DtmUpd", length = 16)
+		public Date getDtmUpd()
+			{
+				return this.dtmUpd;
+			}
 
-	@Column(name = "UsrUpd", length = 50)
-	public String getUsrUpd()
-		{
-			return this.usrUpd;
-		}
+		public void setDtmUpd(final Date dtmUpd)
+			{
+				this.dtmUpd = dtmUpd;
+			}
 
-	public void setUsrUpd(final String usrUpd)
-		{
-			this.usrUpd = usrUpd;
-		}
+		@Column(name = "UsrUpd", length = 50)
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DtmCrt", length = 16)
-	public Date getDtmCrt()
-		{
-			return this.dtmCrt;
-		}
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
 
-	public void setDtmCrt(final Date dtmCrt)
-		{
-			this.dtmCrt = dtmCrt;
-		}
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "DtmCrt", length = 16)
+		public Date getDtmCrt()
+			{
+				return this.dtmCrt;
+			}
 
-	@Column(name = "UsrCrt", length = 50)
-	public String getUsrCrt()
-		{
-			return this.usrCrt;
-		}
+		public void setDtmCrt(final Date dtmCrt)
+			{
+				this.dtmCrt = dtmCrt;
+			}
 
-	public void setUsrCrt(final String usrCrt)
-		{
-			this.usrCrt = usrCrt;
-		}
+		@Column(name = "UsrCrt", length = 50)
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
 
-}
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+
+	}

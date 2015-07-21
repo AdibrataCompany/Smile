@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,13 +32,13 @@ public class Currency implements java.io.Serializable
 		public Currency()
 			{
 			}
-		
+			
 		public Currency(long id, String sandiBi)
 			{
 				this.id = id;
 				this.sandiBi = sandiBi;
 			}
-		
+			
 		public Currency(long id, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -53,118 +52,119 @@ public class Currency implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@Column(name = "Code", length = 10)
 		public String getCode()
 			{
 				return this.code;
 			}
-		
+			
 		public void setCode(String code)
 			{
 				this.code = code;
 			}
-		
+			
 		@Column(name = "Description", length = 20)
 		public String getDescription()
 			{
 				return this.description;
 			}
-		
+			
 		public void setDescription(String description)
 			{
 				this.description = description;
 			}
-		
+			
 		@Column(name = "Rounded", precision = 53, scale = 0)
 		public Double getRounded()
 			{
 				return this.rounded;
 			}
-		
+			
 		public void setRounded(Double rounded)
 			{
 				this.rounded = rounded;
 			}
-		
+			
 		@Column(name = "IsActive", length = 1)
 		public String getIsActive()
 			{
 				return this.isActive;
 			}
-		
+			
 		public void setIsActive(String isActive)
 			{
 				this.isActive = isActive;
 			}
-		
+			
 		@Column(name = "SandiBI", nullable = false, length = 20)
 		public String getSandiBi()
 			{
 				return this.sandiBi;
 			}
-		
+			
 		public void setSandiBi(String sandiBi)
 			{
 				this.sandiBi = sandiBi;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

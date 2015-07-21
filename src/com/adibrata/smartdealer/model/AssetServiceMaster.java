@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -36,12 +35,12 @@ public class AssetServiceMaster implements java.io.Serializable
 		public AssetServiceMaster()
 			{
 			}
-		
+			
 		public AssetServiceMaster(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public AssetServiceMaster(long id, Partner partner, String serviceCode, String serviceName, Double priceMaximum, String assetType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -55,119 +54,120 @@ public class AssetServiceMaster implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "ServiceCode", length = 20)
 		public String getServiceCode()
 			{
 				return this.serviceCode;
 			}
-		
+			
 		public void setServiceCode(String serviceCode)
 			{
 				this.serviceCode = serviceCode;
 			}
-		
+			
 		@Column(name = "ServiceName", length = 50)
 		public String getServiceName()
 			{
 				return this.serviceName;
 			}
-		
+			
 		public void setServiceName(String serviceName)
 			{
 				this.serviceName = serviceName;
 			}
-		
+			
 		@Column(name = "PriceMaximum", precision = 17)
 		public Double getPriceMaximum()
 			{
 				return this.priceMaximum;
 			}
-		
+			
 		public void setPriceMaximum(Double priceMaximum)
 			{
 				this.priceMaximum = priceMaximum;
 			}
-		
+			
 		@Column(name = "AssetType", length = 20)
 		public String getAssetType()
 			{
 				return this.assetType;
 			}
-		
+			
 		public void setAssetType(String assetType)
 			{
 				this.assetType = assetType;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

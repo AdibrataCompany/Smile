@@ -1,7 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -33,7 +32,7 @@ public class CashierHistoryId implements java.io.Serializable
 		public CashierHistoryId()
 			{
 			}
-		
+			
 		public CashierHistoryId(Long id, String partnerCode, Long officeId, Long employeeId, Boolean currencyId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
@@ -53,172 +52,172 @@ public class CashierHistoryId implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Column(name = "Id")
 		public Long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(Long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@Column(name = "PartnerCode", length = 20)
 		public String getPartnerCode()
 			{
 				return this.partnerCode;
 			}
-		
+			
 		public void setPartnerCode(String partnerCode)
 			{
 				this.partnerCode = partnerCode;
 			}
-		
+			
 		@Column(name = "OfficeId")
 		public Long getOfficeId()
 			{
 				return this.officeId;
 			}
-		
+			
 		public void setOfficeId(Long officeId)
 			{
 				this.officeId = officeId;
 			}
-		
+			
 		@Column(name = "EmployeeId")
 		public Long getEmployeeId()
 			{
 				return this.employeeId;
 			}
-		
+			
 		public void setEmployeeId(Long employeeId)
 			{
 				this.employeeId = employeeId;
 			}
-		
+			
 		@Column(name = "CurrencyId")
 		public Boolean getCurrencyId()
 			{
 				return this.currencyId;
 			}
-		
+			
 		public void setCurrencyId(Boolean currencyId)
 			{
 				this.currencyId = currencyId;
 			}
-		
+			
 		@Column(name = "OpenSeqNo")
 		public Short getOpenSeqNo()
 			{
 				return this.openSeqNo;
 			}
-		
+			
 		public void setOpenSeqNo(Short openSeqNo)
 			{
 				this.openSeqNo = openSeqNo;
 			}
-		
+			
 		@Column(name = "OpeningDtm", length = 23)
 		public Date getOpeningDtm()
 			{
 				return this.openingDtm;
 			}
-		
+			
 		public void setOpeningDtm(Date openingDtm)
 			{
 				this.openingDtm = openingDtm;
 			}
-		
+			
 		@Column(name = "OpeningAmount", precision = 53, scale = 0)
 		public Double getOpeningAmount()
 			{
 				return this.openingAmount;
 			}
-		
+			
 		public void setOpeningAmount(Double openingAmount)
 			{
 				this.openingAmount = openingAmount;
 			}
-		
+			
 		@Column(name = "BalanceAmount", precision = 53, scale = 0)
 		public Double getBalanceAmount()
 			{
 				return this.balanceAmount;
 			}
-		
+			
 		public void setBalanceAmount(Double balanceAmount)
 			{
 				this.balanceAmount = balanceAmount;
 			}
-		
+			
 		@Column(name = "CashierStatus", length = 2)
 		public String getCashierStatus()
 			{
 				return this.cashierStatus;
 			}
-		
+			
 		public void setCashierStatus(String cashierStatus)
 			{
 				this.cashierStatus = cashierStatus;
 			}
-		
+			
 		@Column(name = "ClosingDtm", length = 23)
 		public Date getClosingDtm()
 			{
 				return this.closingDtm;
 			}
-		
+			
 		public void setClosingDtm(Date closingDtm)
 			{
 				this.closingDtm = closingDtm;
 			}
-		
+			
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		public boolean equals(Object other)
 			{
 				if ((this == other))
@@ -245,7 +244,7 @@ public class CashierHistoryId implements java.io.Serializable
 				        && ((this.getDtmCrt() == castOther.getDtmCrt()) || (this.getDtmCrt() != null && castOther.getDtmCrt() != null && this.getDtmCrt().equals(castOther.getDtmCrt())))
 				        && ((this.getUsrCrt() == castOther.getUsrCrt()) || (this.getUsrCrt() != null && castOther.getUsrCrt() != null && this.getUsrCrt().equals(castOther.getUsrCrt())));
 			}
-		
+			
 		public int hashCode()
 			{
 				int result = 17;
@@ -267,5 +266,5 @@ public class CashierHistoryId implements java.io.Serializable
 				result = 37 * result + (getUsrCrt() == null ? 0 : this.getUsrCrt().hashCode());
 				return result;
 			}
-		
+			
 	}

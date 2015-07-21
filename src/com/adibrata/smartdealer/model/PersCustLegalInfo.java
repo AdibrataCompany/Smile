@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -47,12 +46,12 @@ public class PersCustLegalInfo implements java.io.Serializable
 		public PersCustLegalInfo()
 			{
 			}
-		
+			
 		public PersCustLegalInfo(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public PersCustLegalInfo(long id, Customer customer, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -78,240 +77,241 @@ public class PersCustLegalInfo implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CustomerId")
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-		
+			
 		public void setCustomer(Customer customer)
 			{
 				this.customer = customer;
 			}
-		
+			
 		@Column(name = "Address")
 		public String getAddress()
 			{
 				return this.address;
 			}
-		
+			
 		public void setAddress(String address)
 			{
 				this.address = address;
 			}
-		
+			
 		@Column(name = "RT", length = 4)
 		public String getRt()
 			{
 				return this.rt;
 			}
-		
+			
 		public void setRt(String rt)
 			{
 				this.rt = rt;
 			}
-		
+			
 		@Column(name = "RW", length = 4)
 		public String getRw()
 			{
 				return this.rw;
 			}
-		
+			
 		public void setRw(String rw)
 			{
 				this.rw = rw;
 			}
-		
+			
 		@Column(name = "Kelurahan", length = 50)
 		public String getKelurahan()
 			{
 				return this.kelurahan;
 			}
-		
+			
 		public void setKelurahan(String kelurahan)
 			{
 				this.kelurahan = kelurahan;
 			}
-		
+			
 		@Column(name = "Kecamatan", length = 50)
 		public String getKecamatan()
 			{
 				return this.kecamatan;
 			}
-		
+			
 		public void setKecamatan(String kecamatan)
 			{
 				this.kecamatan = kecamatan;
 			}
-		
+			
 		@Column(name = "City", length = 50)
 		public String getCity()
 			{
 				return this.city;
 			}
-		
+			
 		public void setCity(String city)
 			{
 				this.city = city;
 			}
-		
+			
 		@Column(name = "Zipcode", length = 50)
 		public String getZipcode()
 			{
 				return this.zipcode;
 			}
-		
+			
 		public void setZipcode(String zipcode)
 			{
 				this.zipcode = zipcode;
 			}
-		
+			
 		@Column(name = "AreaPhone1", length = 4)
 		public String getAreaPhone1()
 			{
 				return this.areaPhone1;
 			}
-		
+			
 		public void setAreaPhone1(String areaPhone1)
 			{
 				this.areaPhone1 = areaPhone1;
 			}
-		
+			
 		@Column(name = "PhoneNo1", length = 20)
 		public String getPhoneNo1()
 			{
 				return this.phoneNo1;
 			}
-		
+			
 		public void setPhoneNo1(String phoneNo1)
 			{
 				this.phoneNo1 = phoneNo1;
 			}
-		
+			
 		@Column(name = "AreaPhone2", length = 4)
 		public String getAreaPhone2()
 			{
 				return this.areaPhone2;
 			}
-		
+			
 		public void setAreaPhone2(String areaPhone2)
 			{
 				this.areaPhone2 = areaPhone2;
 			}
-		
+			
 		@Column(name = "PhoneNo2", length = 20)
 		public String getPhoneNo2()
 			{
 				return this.phoneNo2;
 			}
-		
+			
 		public void setPhoneNo2(String phoneNo2)
 			{
 				this.phoneNo2 = phoneNo2;
 			}
-		
+			
 		@Column(name = "AreaFax", length = 4)
 		public String getAreaFax()
 			{
 				return this.areaFax;
 			}
-		
+			
 		public void setAreaFax(String areaFax)
 			{
 				this.areaFax = areaFax;
 			}
-		
+			
 		@Column(name = "FaxNo", length = 20)
 		public String getFaxNo()
 			{
 				return this.faxNo;
 			}
-		
+			
 		public void setFaxNo(String faxNo)
 			{
 				this.faxNo = faxNo;
 			}
-		
+			
 		@Column(name = "Handphone", length = 20)
 		public String getHandphone()
 			{
 				return this.handphone;
 			}
-		
+			
 		public void setHandphone(String handphone)
 			{
 				this.handphone = handphone;
 			}
-		
+			
 		@Column(name = "FullAddress", length = 500)
 		public String getFullAddress()
 			{
 				return this.fullAddress;
 			}
-		
+			
 		public void setFullAddress(String fullAddress)
 			{
 				this.fullAddress = fullAddress;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 	}

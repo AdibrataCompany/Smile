@@ -1,13 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -43,12 +42,12 @@ public class PettyCashHdr implements java.io.Serializable
 		public PettyCashHdr()
 			{
 			}
-		
+			
 		public PettyCashHdr(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public PettyCashHdr(long id, Employee employee, Office office, Partner partner, String pcno, Date postingDate, Date valueDate, Double pcamount, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<PettyCashDtl> pettyCashDtls)
 			{
@@ -67,167 +66,168 @@ public class PettyCashHdr implements java.io.Serializable
 				this.usrCrt = usrCrt;
 				this.pettyCashDtls = pettyCashDtls;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "EmployeeID")
 		public Employee getEmployee()
 			{
 				return this.employee;
 			}
-		
+			
 		public void setEmployee(Employee employee)
 			{
 				this.employee = employee;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "OfficeId")
 		public Office getOffice()
 			{
 				return this.office;
 			}
-		
+			
 		public void setOffice(Office office)
 			{
 				this.office = office;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "PCNo", length = 50)
 		public String getPcno()
 			{
 				return this.pcno;
 			}
-		
+			
 		public void setPcno(String pcno)
 			{
 				this.pcno = pcno;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "PostingDate", length = 23)
 		public Date getPostingDate()
 			{
 				return this.postingDate;
 			}
-		
+			
 		public void setPostingDate(Date postingDate)
 			{
 				this.postingDate = postingDate;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "ValueDate", length = 23)
 		public Date getValueDate()
 			{
 				return this.valueDate;
 			}
-		
+			
 		public void setValueDate(Date valueDate)
 			{
 				this.valueDate = valueDate;
 			}
-		
+			
 		@Column(name = "PCAmount", precision = 53, scale = 0)
 		public Double getPcamount()
 			{
 				return this.pcamount;
 			}
-		
+			
 		public void setPcamount(Double pcamount)
 			{
 				this.pcamount = pcamount;
 			}
-		
+			
 		@Column(name = "JobId")
 		public Long getJobId()
 			{
 				return this.jobId;
 			}
-		
+			
 		public void setJobId(Long jobId)
 			{
 				this.jobId = jobId;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "pettyCashHdr")
 		public Set<PettyCashDtl> getPettyCashDtls()
 			{
 				return this.pettyCashDtls;
 			}
-		
+			
 		public void setPettyCashDtls(Set<PettyCashDtl> pettyCashDtls)
 			{
 				this.pettyCashDtls = pettyCashDtls;
 			}
-		
+			
 	}

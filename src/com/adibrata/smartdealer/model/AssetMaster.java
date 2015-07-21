@@ -1,13 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -46,12 +45,12 @@ public class AssetMaster implements java.io.Serializable
 		public AssetMaster()
 			{
 			}
-		
+			
 		public AssetMaster(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		public AssetMaster(long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        String usrCrt, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
@@ -73,196 +72,197 @@ public class AssetMaster implements java.io.Serializable
 				this.purchaseOrderDtls = purchaseOrderDtls;
 				this.stocks = stocks;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "AssetTypeId")
 		public Long getAssetTypeId()
 			{
 				return this.assetTypeId;
 			}
-		
+			
 		public void setAssetTypeId(Long assetTypeId)
 			{
 				this.assetTypeId = assetTypeId;
 			}
-		
+			
 		@Column(name = "AssetBrand", length = 20)
 		public String getAssetBrand()
 			{
 				return this.assetBrand;
 			}
-		
+			
 		public void setAssetBrand(String assetBrand)
 			{
 				this.assetBrand = assetBrand;
 			}
-		
+			
 		@Column(name = "AssetType", length = 50)
 		public String getAssetType()
 			{
 				return this.assetType;
 			}
-		
+			
 		public void setAssetType(String assetType)
 			{
 				this.assetType = assetType;
 			}
-		
+			
 		@Column(name = "AssetModel", length = 20)
 		public String getAssetModel()
 			{
 				return this.assetModel;
 			}
-		
+			
 		public void setAssetModel(String assetModel)
 			{
 				this.assetModel = assetModel;
 			}
-		
+			
 		@Column(name = "AssetCode", length = 200)
 		public String getAssetCode()
 			{
 				return this.assetCode;
 			}
-		
+			
 		public void setAssetCode(String assetCode)
 			{
 				this.assetCode = assetCode;
 			}
-		
+			
 		@Column(name = "AssetLevel")
 		public Integer getAssetLevel()
 			{
 				return this.assetLevel;
 			}
-		
+			
 		public void setAssetLevel(Integer assetLevel)
 			{
 				this.assetLevel = assetLevel;
 			}
-		
+			
 		@Column(name = "ResaleValue", precision = 53, scale = 0)
 		public Double getResaleValue()
 			{
 				return this.resaleValue;
 			}
-		
+			
 		public void setResaleValue(Double resaleValue)
 			{
 				this.resaleValue = resaleValue;
 			}
-		
+			
 		@Column(name = "IsActive")
 		public Short getIsActive()
 			{
 				return this.isActive;
 			}
-		
+			
 		public void setIsActive(Short isActive)
 			{
 				this.isActive = isActive;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")
 		public Set<ServiceHdr> getServiceHdrs()
 			{
 				return this.serviceHdrs;
 			}
-		
+			
 		public void setServiceHdrs(Set<ServiceHdr> serviceHdrs)
 			{
 				this.serviceHdrs = serviceHdrs;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")
 		public Set<PurchaseOrderDtl> getPurchaseOrderDtls()
 			{
 				return this.purchaseOrderDtls;
 			}
-		
+			
 		public void setPurchaseOrderDtls(Set<PurchaseOrderDtl> purchaseOrderDtls)
 			{
 				this.purchaseOrderDtls = purchaseOrderDtls;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")
 		public Set<Stock> getStocks()
 			{
 				return this.stocks;
 			}
-		
+			
 		public void setStocks(Set<Stock> stocks)
 			{
 				this.stocks = stocks;
 			}
-		
+			
 	}

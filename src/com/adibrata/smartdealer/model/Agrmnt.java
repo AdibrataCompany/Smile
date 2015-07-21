@@ -1,13 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -133,7 +132,7 @@ public class Agrmnt implements java.io.Serializable
 		public Agrmnt()
 			{
 			}
-		
+			
 		public Agrmnt(long id, long productId, long productOfferingId, long currencyId, short numOfAssetUnit, String interestType, String installmentScheme, short cummulativeTenor, String wayOfPayment, String applicationSource,
 		        double insAssetPremium, double insAssetReceivedInAdv, double insAssetAddPremium, double insAssetCapitalized, double totalOtr, double downPayment, double ntf, double effectiveRate, double flatRate, double supplierRate,
 		        double standardRate, double grossYieldStandard, short numOfAdvanceInstallment, short numOfInstallment, double installmentAmount, short gracePeriod, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee,
@@ -192,7 +191,7 @@ public class Agrmnt implements java.io.Serializable
 				this.nextInstDueNumber = nextInstDueNumber;
 				this.tdpamount = tdpamount;
 			}
-		
+			
 		public Agrmnt(long id, Application application, Customer customer, Office office, Partner partner, String agrmntCode, String coaSchmCode, long productId, long productOfferingId, long currencyId, short numOfAssetUnit, Short tenor,
 		        Date effectiveDate, String interestType, String installmentScheme, String stepUpStepDownType, short cummulativeTenor, String insAssetInsuredBy, String insAssetPaidBy, String insAssetPeriod, Long guarantorId,
 		        String guarantorRelationship, Long spouseId, String wayOfPayment, Date agreementDate, Short isSurveyResidenceAddress, Date newApplicationDate, Date creditScoringDate, Long supplierId, String applicationSource, Long aoid, Long caid,
@@ -310,1162 +309,1163 @@ public class Agrmnt implements java.io.Serializable
 				this.agrmntMailingInfos = agrmntMailingInfos;
 				this.payHistHdrs = payHistHdrs;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "AppId")
 		public Application getApplication()
 			{
 				return this.application;
 			}
-		
+			
 		public void setApplication(Application application)
 			{
 				this.application = application;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CustomerId")
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-		
+			
 		public void setCustomer(Customer customer)
 			{
 				this.customer = customer;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "OfficeId")
 		public Office getOffice()
 			{
 				return this.office;
 			}
-		
+			
 		public void setOffice(Office office)
 			{
 				this.office = office;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-		
+			
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
 			}
-		
+			
 		@Column(name = "AgrmntCode", length = 20)
 		public String getAgrmntCode()
 			{
 				return this.agrmntCode;
 			}
-		
+			
 		public void setAgrmntCode(String agrmntCode)
 			{
 				this.agrmntCode = agrmntCode;
 			}
-		
+			
 		@Column(name = "CoaSchmCode", length = 20)
 		public String getCoaSchmCode()
 			{
 				return this.coaSchmCode;
 			}
-		
+			
 		public void setCoaSchmCode(String coaSchmCode)
 			{
 				this.coaSchmCode = coaSchmCode;
 			}
-		
+			
 		@Column(name = "ProductID", nullable = false)
 		public long getProductId()
 			{
 				return this.productId;
 			}
-		
+			
 		public void setProductId(long productId)
 			{
 				this.productId = productId;
 			}
-		
+			
 		@Column(name = "ProductOfferingID", nullable = false)
 		public long getProductOfferingId()
 			{
 				return this.productOfferingId;
 			}
-		
+			
 		public void setProductOfferingId(long productOfferingId)
 			{
 				this.productOfferingId = productOfferingId;
 			}
-		
+			
 		@Column(name = "CurrencyID", nullable = false)
 		public long getCurrencyId()
 			{
 				return this.currencyId;
 			}
-		
+			
 		public void setCurrencyId(long currencyId)
 			{
 				this.currencyId = currencyId;
 			}
-		
+			
 		@Column(name = "NumOfAssetUnit", nullable = false)
 		public short getNumOfAssetUnit()
 			{
 				return this.numOfAssetUnit;
 			}
-		
+			
 		public void setNumOfAssetUnit(short numOfAssetUnit)
 			{
 				this.numOfAssetUnit = numOfAssetUnit;
 			}
-		
+			
 		@Column(name = "Tenor")
 		public Short getTenor()
 			{
 				return this.tenor;
 			}
-		
+			
 		public void setTenor(Short tenor)
 			{
 				this.tenor = tenor;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "EffectiveDate", length = 23)
 		public Date getEffectiveDate()
 			{
 				return this.effectiveDate;
 			}
-		
+			
 		public void setEffectiveDate(Date effectiveDate)
 			{
 				this.effectiveDate = effectiveDate;
 			}
-		
+			
 		@Column(name = "InterestType", nullable = false, length = 2)
 		public String getInterestType()
 			{
 				return this.interestType;
 			}
-		
+			
 		public void setInterestType(String interestType)
 			{
 				this.interestType = interestType;
 			}
-		
+			
 		@Column(name = "InstallmentScheme", nullable = false, length = 2)
 		public String getInstallmentScheme()
 			{
 				return this.installmentScheme;
 			}
-		
+			
 		public void setInstallmentScheme(String installmentScheme)
 			{
 				this.installmentScheme = installmentScheme;
 			}
-		
+			
 		@Column(name = "StepUpStepDownType", length = 2)
 		public String getStepUpStepDownType()
 			{
 				return this.stepUpStepDownType;
 			}
-		
+			
 		public void setStepUpStepDownType(String stepUpStepDownType)
 			{
 				this.stepUpStepDownType = stepUpStepDownType;
 			}
-		
+			
 		@Column(name = "CummulativeTenor", nullable = false)
 		public short getCummulativeTenor()
 			{
 				return this.cummulativeTenor;
 			}
-		
+			
 		public void setCummulativeTenor(short cummulativeTenor)
 			{
 				this.cummulativeTenor = cummulativeTenor;
 			}
-		
+			
 		@Column(name = "InsAssetInsuredBy", length = 10)
 		public String getInsAssetInsuredBy()
 			{
 				return this.insAssetInsuredBy;
 			}
-		
+			
 		public void setInsAssetInsuredBy(String insAssetInsuredBy)
 			{
 				this.insAssetInsuredBy = insAssetInsuredBy;
 			}
-		
+			
 		@Column(name = "InsAssetPaidBy", length = 10)
 		public String getInsAssetPaidBy()
 			{
 				return this.insAssetPaidBy;
 			}
-		
+			
 		public void setInsAssetPaidBy(String insAssetPaidBy)
 			{
 				this.insAssetPaidBy = insAssetPaidBy;
 			}
-		
+			
 		@Column(name = "InsAssetPeriod", length = 2)
 		public String getInsAssetPeriod()
 			{
 				return this.insAssetPeriod;
 			}
-		
+			
 		public void setInsAssetPeriod(String insAssetPeriod)
 			{
 				this.insAssetPeriod = insAssetPeriod;
 			}
-		
+			
 		@Column(name = "GuarantorID")
 		public Long getGuarantorId()
 			{
 				return this.guarantorId;
 			}
-		
+			
 		public void setGuarantorId(Long guarantorId)
 			{
 				this.guarantorId = guarantorId;
 			}
-		
+			
 		@Column(name = "GuarantorRelationship", length = 20)
 		public String getGuarantorRelationship()
 			{
 				return this.guarantorRelationship;
 			}
-		
+			
 		public void setGuarantorRelationship(String guarantorRelationship)
 			{
 				this.guarantorRelationship = guarantorRelationship;
 			}
-		
+			
 		@Column(name = "SpouseID")
 		public Long getSpouseId()
 			{
 				return this.spouseId;
 			}
-		
+			
 		public void setSpouseId(Long spouseId)
 			{
 				this.spouseId = spouseId;
 			}
-		
+			
 		@Column(name = "WayOfPayment", nullable = false, length = 2)
 		public String getWayOfPayment()
 			{
 				return this.wayOfPayment;
 			}
-		
+			
 		public void setWayOfPayment(String wayOfPayment)
 			{
 				this.wayOfPayment = wayOfPayment;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "AgreementDate", length = 23)
 		public Date getAgreementDate()
 			{
 				return this.agreementDate;
 			}
-		
+			
 		public void setAgreementDate(Date agreementDate)
 			{
 				this.agreementDate = agreementDate;
 			}
-		
+			
 		@Column(name = "IsSurveyResidenceAddress")
 		public Short getIsSurveyResidenceAddress()
 			{
 				return this.isSurveyResidenceAddress;
 			}
-		
+			
 		public void setIsSurveyResidenceAddress(Short isSurveyResidenceAddress)
 			{
 				this.isSurveyResidenceAddress = isSurveyResidenceAddress;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "NewApplicationDate", length = 23)
 		public Date getNewApplicationDate()
 			{
 				return this.newApplicationDate;
 			}
-		
+			
 		public void setNewApplicationDate(Date newApplicationDate)
 			{
 				this.newApplicationDate = newApplicationDate;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "CreditScoringDate", length = 23)
 		public Date getCreditScoringDate()
 			{
 				return this.creditScoringDate;
 			}
-		
+			
 		public void setCreditScoringDate(Date creditScoringDate)
 			{
 				this.creditScoringDate = creditScoringDate;
 			}
-		
+			
 		@Column(name = "SupplierID")
 		public Long getSupplierId()
 			{
 				return this.supplierId;
 			}
-		
+			
 		public void setSupplierId(Long supplierId)
 			{
 				this.supplierId = supplierId;
 			}
-		
+			
 		@Column(name = "ApplicationSource", nullable = false, length = 50)
 		public String getApplicationSource()
 			{
 				return this.applicationSource;
 			}
-		
+			
 		public void setApplicationSource(String applicationSource)
 			{
 				this.applicationSource = applicationSource;
 			}
-		
+			
 		@Column(name = "AOID")
 		public Long getAoid()
 			{
 				return this.aoid;
 			}
-		
+			
 		public void setAoid(Long aoid)
 			{
 				this.aoid = aoid;
 			}
-		
+			
 		@Column(name = "CAID")
 		public Long getCaid()
 			{
 				return this.caid;
 			}
-		
+			
 		public void setCaid(Long caid)
 			{
 				this.caid = caid;
 			}
-		
+			
 		@Column(name = "SalesmanID")
 		public Long getSalesmanId()
 			{
 				return this.salesmanId;
 			}
-		
+			
 		public void setSalesmanId(Long salesmanId)
 			{
 				this.salesmanId = salesmanId;
 			}
-		
+			
 		@Column(name = "SalesSupervisorID")
 		public Long getSalesSupervisorId()
 			{
 				return this.salesSupervisorId;
 			}
-		
+			
 		public void setSalesSupervisorId(Long salesSupervisorId)
 			{
 				this.salesSupervisorId = salesSupervisorId;
 			}
-		
+			
 		@Column(name = "SupplierAdminID")
 		public Long getSupplierAdminId()
 			{
 				return this.supplierAdminId;
 			}
-		
+			
 		public void setSupplierAdminId(Long supplierAdminId)
 			{
 				this.supplierAdminId = supplierAdminId;
 			}
-		
+			
 		@Column(name = "InsAssetPremium", nullable = false, precision = 53, scale = 0)
 		public double getInsAssetPremium()
 			{
 				return this.insAssetPremium;
 			}
-		
+			
 		public void setInsAssetPremium(double insAssetPremium)
 			{
 				this.insAssetPremium = insAssetPremium;
 			}
-		
+			
 		@Column(name = "InsAssetReceivedInAdv", nullable = false, precision = 53, scale = 0)
 		public double getInsAssetReceivedInAdv()
 			{
 				return this.insAssetReceivedInAdv;
 			}
-		
+			
 		public void setInsAssetReceivedInAdv(double insAssetReceivedInAdv)
 			{
 				this.insAssetReceivedInAdv = insAssetReceivedInAdv;
 			}
-		
+			
 		@Column(name = "InsAssetAddPremium", nullable = false, precision = 53, scale = 0)
 		public double getInsAssetAddPremium()
 			{
 				return this.insAssetAddPremium;
 			}
-		
+			
 		public void setInsAssetAddPremium(double insAssetAddPremium)
 			{
 				this.insAssetAddPremium = insAssetAddPremium;
 			}
-		
+			
 		@Column(name = "InsAssetCapitalized", nullable = false, precision = 53, scale = 0)
 		public double getInsAssetCapitalized()
 			{
 				return this.insAssetCapitalized;
 			}
-		
+			
 		public void setInsAssetCapitalized(double insAssetCapitalized)
 			{
 				this.insAssetCapitalized = insAssetCapitalized;
 			}
-		
+			
 		@Column(name = "InsRefundToSupplier", precision = 53, scale = 0)
 		public Double getInsRefundToSupplier()
 			{
 				return this.insRefundToSupplier;
 			}
-		
+			
 		public void setInsRefundToSupplier(Double insRefundToSupplier)
 			{
 				this.insRefundToSupplier = insRefundToSupplier;
 			}
-		
+			
 		@Column(name = "InsRefundToSupplierPaid", precision = 53, scale = 0)
 		public Double getInsRefundToSupplierPaid()
 			{
 				return this.insRefundToSupplierPaid;
 			}
-		
+			
 		public void setInsRefundToSupplierPaid(Double insRefundToSupplierPaid)
 			{
 				this.insRefundToSupplierPaid = insRefundToSupplierPaid;
 			}
-		
+			
 		@Column(name = "InsRefundToSupplierInProcess", precision = 53, scale = 0)
 		public Double getInsRefundToSupplierInProcess()
 			{
 				return this.insRefundToSupplierInProcess;
 			}
-		
+			
 		public void setInsRefundToSupplierInProcess(Double insRefundToSupplierInProcess)
 			{
 				this.insRefundToSupplierInProcess = insRefundToSupplierInProcess;
 			}
-		
+			
 		@Column(name = "TotalOTR", nullable = false, precision = 53, scale = 0)
 		public double getTotalOtr()
 			{
 				return this.totalOtr;
 			}
-		
+			
 		public void setTotalOtr(double totalOtr)
 			{
 				this.totalOtr = totalOtr;
 			}
-		
+			
 		@Column(name = "DownPayment", nullable = false, precision = 53, scale = 0)
 		public double getDownPayment()
 			{
 				return this.downPayment;
 			}
-		
+			
 		public void setDownPayment(double downPayment)
 			{
 				this.downPayment = downPayment;
 			}
-		
+			
 		@Column(name = "NTF", nullable = false, precision = 53, scale = 0)
 		public double getNtf()
 			{
 				return this.ntf;
 			}
-		
+			
 		public void setNtf(double ntf)
 			{
 				this.ntf = ntf;
 			}
-		
+			
 		@Column(name = "EffectiveRate", nullable = false, precision = 53, scale = 0)
 		public double getEffectiveRate()
 			{
 				return this.effectiveRate;
 			}
-		
+			
 		public void setEffectiveRate(double effectiveRate)
 			{
 				this.effectiveRate = effectiveRate;
 			}
-		
+			
 		@Column(name = "FlatRate", nullable = false, precision = 53, scale = 0)
 		public double getFlatRate()
 			{
 				return this.flatRate;
 			}
-		
+			
 		public void setFlatRate(double flatRate)
 			{
 				this.flatRate = flatRate;
 			}
-		
+			
 		@Column(name = "SupplierRate", nullable = false, precision = 53, scale = 0)
 		public double getSupplierRate()
 			{
 				return this.supplierRate;
 			}
-		
+			
 		public void setSupplierRate(double supplierRate)
 			{
 				this.supplierRate = supplierRate;
 			}
-		
+			
 		@Column(name = "StandardRate", nullable = false, precision = 53, scale = 0)
 		public double getStandardRate()
 			{
 				return this.standardRate;
 			}
-		
+			
 		public void setStandardRate(double standardRate)
 			{
 				this.standardRate = standardRate;
 			}
-		
+			
 		@Column(name = "GrossYieldStandard", nullable = false, precision = 53, scale = 0)
 		public double getGrossYieldStandard()
 			{
 				return this.grossYieldStandard;
 			}
-		
+			
 		public void setGrossYieldStandard(double grossYieldStandard)
 			{
 				this.grossYieldStandard = grossYieldStandard;
 			}
-		
+			
 		@Column(name = "PaymentFrequency", length = 1)
 		public Character getPaymentFrequency()
 			{
 				return this.paymentFrequency;
 			}
-		
+			
 		public void setPaymentFrequency(Character paymentFrequency)
 			{
 				this.paymentFrequency = paymentFrequency;
 			}
-		
+			
 		@Column(name = "FirstInstallment", length = 2)
 		public String getFirstInstallment()
 			{
 				return this.firstInstallment;
 			}
-		
+			
 		public void setFirstInstallment(String firstInstallment)
 			{
 				this.firstInstallment = firstInstallment;
 			}
-		
+			
 		@Column(name = "NumOfAdvanceInstallment", nullable = false)
 		public short getNumOfAdvanceInstallment()
 			{
 				return this.numOfAdvanceInstallment;
 			}
-		
+			
 		public void setNumOfAdvanceInstallment(short numOfAdvanceInstallment)
 			{
 				this.numOfAdvanceInstallment = numOfAdvanceInstallment;
 			}
-		
+			
 		@Column(name = "NumOfInstallment", nullable = false)
 		public short getNumOfInstallment()
 			{
 				return this.numOfInstallment;
 			}
-		
+			
 		public void setNumOfInstallment(short numOfInstallment)
 			{
 				this.numOfInstallment = numOfInstallment;
 			}
-		
+			
 		@Column(name = "InstallmentAmount", nullable = false, precision = 53, scale = 0)
 		public double getInstallmentAmount()
 			{
 				return this.installmentAmount;
 			}
-		
+			
 		public void setInstallmentAmount(double installmentAmount)
 			{
 				this.installmentAmount = installmentAmount;
 			}
-		
+			
 		@Column(name = "GracePeriod", nullable = false)
 		public short getGracePeriod()
 			{
 				return this.gracePeriod;
 			}
-		
+			
 		public void setGracePeriod(short gracePeriod)
 			{
 				this.gracePeriod = gracePeriod;
 			}
-		
+			
 		@Column(name = "GracePeriodType", length = 1)
 		public String getGracePeriodType()
 			{
 				return this.gracePeriodType;
 			}
-		
+			
 		public void setGracePeriodType(String gracePeriodType)
 			{
 				this.gracePeriodType = gracePeriodType;
 			}
-		
+			
 		@Column(name = "GracePeriodLC", nullable = false)
 		public short getGracePeriodLc()
 			{
 				return this.gracePeriodLc;
 			}
-		
+			
 		public void setGracePeriodLc(short gracePeriodLc)
 			{
 				this.gracePeriodLc = gracePeriodLc;
 			}
-		
+			
 		@Column(name = "GrossYield", nullable = false, precision = 53, scale = 0)
 		public double getGrossYield()
 			{
 				return this.grossYield;
 			}
-		
+			
 		public void setGrossYield(double grossYield)
 			{
 				this.grossYield = grossYield;
 			}
-		
+			
 		@Column(name = "PercentagePenalty", nullable = false, precision = 53, scale = 0)
 		public double getPercentagePenalty()
 			{
 				return this.percentagePenalty;
 			}
-		
+			
 		public void setPercentagePenalty(double percentagePenalty)
 			{
 				this.percentagePenalty = percentagePenalty;
 			}
-		
+			
 		@Column(name = "AdminFee", nullable = false, precision = 53, scale = 0)
 		public double getAdminFee()
 			{
 				return this.adminFee;
 			}
-		
+			
 		public void setAdminFee(double adminFee)
 			{
 				this.adminFee = adminFee;
 			}
-		
+			
 		@Column(name = "AdminFeePercentage", precision = 53, scale = 0)
 		public Double getAdminFeePercentage()
 			{
 				return this.adminFeePercentage;
 			}
-		
+			
 		public void setAdminFeePercentage(Double adminFeePercentage)
 			{
 				this.adminFeePercentage = adminFeePercentage;
 			}
-		
+			
 		@Column(name = "AddAdminFee", nullable = false, precision = 53, scale = 0)
 		public double getAddAdminFee()
 			{
 				return this.addAdminFee;
 			}
-		
+			
 		public void setAddAdminFee(double addAdminFee)
 			{
 				this.addAdminFee = addAdminFee;
 			}
-		
+			
 		@Column(name = "FiduciaFee", nullable = false, precision = 53, scale = 0)
 		public double getFiduciaFee()
 			{
 				return this.fiduciaFee;
 			}
-		
+			
 		public void setFiduciaFee(double fiduciaFee)
 			{
 				this.fiduciaFee = fiduciaFee;
 			}
-		
+			
 		@Column(name = "ProvisionFee", nullable = false, precision = 53, scale = 0)
 		public double getProvisionFee()
 			{
 				return this.provisionFee;
 			}
-		
+			
 		public void setProvisionFee(double provisionFee)
 			{
 				this.provisionFee = provisionFee;
 			}
-		
+			
 		@Column(name = "NotaryFee", nullable = false, precision = 53, scale = 0)
 		public double getNotaryFee()
 			{
 				return this.notaryFee;
 			}
-		
+			
 		public void setNotaryFee(double notaryFee)
 			{
 				this.notaryFee = notaryFee;
 			}
-		
+			
 		@Column(name = "SurveyFee", nullable = false, precision = 53, scale = 0)
 		public double getSurveyFee()
 			{
 				return this.surveyFee;
 			}
-		
+			
 		public void setSurveyFee(double surveyFee)
 			{
 				this.surveyFee = surveyFee;
 			}
-		
+			
 		@Column(name = "OtherFee", nullable = false, precision = 53, scale = 0)
 		public double getOtherFee()
 			{
 				return this.otherFee;
 			}
-		
+			
 		public void setOtherFee(double otherFee)
 			{
 				this.otherFee = otherFee;
 			}
-		
+			
 		@Column(name = "CrossDefaultApplicationId", length = 20)
 		public String getCrossDefaultApplicationId()
 			{
 				return this.crossDefaultApplicationId;
 			}
-		
+			
 		public void setCrossDefaultApplicationId(String crossDefaultApplicationId)
 			{
 				this.crossDefaultApplicationId = crossDefaultApplicationId;
 			}
-		
+			
 		@Column(name = "Notes", length = 8000)
 		public String getNotes()
 			{
 				return this.notes;
 			}
-		
+			
 		public void setNotes(String notes)
 			{
 				this.notes = notes;
 			}
-		
+			
 		@Column(name = "DiffRateAmount", nullable = false, precision = 53, scale = 0)
 		public double getDiffRateAmount()
 			{
 				return this.diffRateAmount;
 			}
-		
+			
 		public void setDiffRateAmount(double diffRateAmount)
 			{
 				this.diffRateAmount = diffRateAmount;
 			}
-		
+			
 		@Column(name = "DiffRateStdAmount", nullable = false, precision = 53, scale = 0)
 		public double getDiffRateStdAmount()
 			{
 				return this.diffRateStdAmount;
 			}
-		
+			
 		public void setDiffRateStdAmount(double diffRateStdAmount)
 			{
 				this.diffRateStdAmount = diffRateStdAmount;
 			}
-		
+			
 		@Column(name = "CreditScore", nullable = false, precision = 53, scale = 0)
 		public double getCreditScore()
 			{
 				return this.creditScore;
 			}
-		
+			
 		public void setCreditScore(double creditScore)
 			{
 				this.creditScore = creditScore;
 			}
-		
+			
 		@Column(name = "CreditScoringResult", length = 1)
 		public String getCreditScoringResult()
 			{
 				return this.creditScoringResult;
 			}
-		
+			
 		public void setCreditScoringResult(String creditScoringResult)
 			{
 				this.creditScoringResult = creditScoringResult;
 			}
-		
+			
 		@Column(name = "FinanceType", nullable = false, length = 2)
 		public String getFinanceType()
 			{
 				return this.financeType;
 			}
-		
+			
 		public void setFinanceType(String financeType)
 			{
 				this.financeType = financeType;
 			}
-		
+			
 		@Column(name = "ProductType", nullable = false, length = 2)
 		public String getProductType()
 			{
 				return this.productType;
 			}
-		
+			
 		public void setProductType(String productType)
 			{
 				this.productType = productType;
 			}
-		
+			
 		@Column(name = "ContractStatus", nullable = false, length = 3)
 		public String getContractStatus()
 			{
 				return this.contractStatus;
 			}
-		
+			
 		public void setContractStatus(String contractStatus)
 			{
 				this.contractStatus = contractStatus;
 			}
-		
+			
 		@Column(name = "DefaultStatus", nullable = false, length = 3)
 		public String getDefaultStatus()
 			{
 				return this.defaultStatus;
 			}
-		
+			
 		public void setDefaultStatus(String defaultStatus)
 			{
 				this.defaultStatus = defaultStatus;
 			}
-		
+			
 		@Column(name = "ApplicationStep", nullable = false, length = 3)
 		public String getApplicationStep()
 			{
 				return this.applicationStep;
 			}
-		
+			
 		public void setApplicationStep(String applicationStep)
 			{
 				this.applicationStep = applicationStep;
 			}
-		
+			
 		@Column(name = "OSP", nullable = false, precision = 53, scale = 0)
 		public double getOsp()
 			{
 				return this.osp;
 			}
-		
+			
 		public void setOsp(double osp)
 			{
 				this.osp = osp;
 			}
-		
+			
 		@Column(name = "OSI", nullable = false, precision = 53, scale = 0)
 		public double getOsi()
 			{
 				return this.osi;
 			}
-		
+			
 		public void setOsi(double osi)
 			{
 				this.osi = osi;
 			}
-		
+			
 		@Column(name = "OSPUndue", nullable = false, precision = 53, scale = 0)
 		public double getOspundue()
 			{
 				return this.ospundue;
 			}
-		
+			
 		public void setOspundue(double ospundue)
 			{
 				this.ospundue = ospundue;
 			}
-		
+			
 		@Column(name = "OSIUndue", nullable = false, precision = 53, scale = 0)
 		public double getOsiundue()
 			{
 				return this.osiundue;
 			}
-		
+			
 		public void setOsiundue(double osiundue)
 			{
 				this.osiundue = osiundue;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "NextInstDate", length = 23)
 		public Date getNextInstDate()
 			{
 				return this.nextInstDate;
 			}
-		
+			
 		public void setNextInstDate(Date nextInstDate)
 			{
 				this.nextInstDate = nextInstDate;
 			}
-		
+			
 		@Column(name = "NextInstNumber", nullable = false)
 		public short getNextInstNumber()
 			{
 				return this.nextInstNumber;
 			}
-		
+			
 		public void setNextInstNumber(short nextInstNumber)
 			{
 				this.nextInstNumber = nextInstNumber;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "NextInstDueDate", length = 23)
 		public Date getNextInstDueDate()
 			{
 				return this.nextInstDueDate;
 			}
-		
+			
 		public void setNextInstDueDate(Date nextInstDueDate)
 			{
 				this.nextInstDueDate = nextInstDueDate;
 			}
-		
+			
 		@Column(name = "NextInstDueNumber", nullable = false)
 		public short getNextInstDueNumber()
 			{
 				return this.nextInstDueNumber;
 			}
-		
+			
 		public void setNextInstDueNumber(short nextInstDueNumber)
 			{
 				this.nextInstDueNumber = nextInstDueNumber;
 			}
-		
+			
 		@Column(name = "TDPAmount", nullable = false, precision = 53, scale = 0)
 		public double getTdpamount()
 			{
 				return this.tdpamount;
 			}
-		
+			
 		public void setTdpamount(double tdpamount)
 			{
 				this.tdpamount = tdpamount;
 			}
-		
+			
 		@Column(name = "PrepaidAmt", precision = 53, scale = 0)
 		public Double getPrepaidAmt()
 			{
 				return this.prepaidAmt;
 			}
-		
+			
 		public void setPrepaidAmt(Double prepaidAmt)
 			{
 				this.prepaidAmt = prepaidAmt;
 			}
-		
+			
 		@Column(name = "IsSyariah")
 		public Short getIsSyariah()
 			{
 				return this.isSyariah;
 			}
-		
+			
 		public void setIsSyariah(Short isSyariah)
 			{
 				this.isSyariah = isSyariah;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntMnt> getAgrmntMnts()
 			{
 				return this.agrmntMnts;
 			}
-		
+			
 		public void setAgrmntMnts(Set<AgrmntMnt> agrmntMnts)
 			{
 				this.agrmntMnts = agrmntMnts;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<PaymentReceive> getPaymentReceives()
 			{
 				return this.paymentReceives;
 			}
-		
+			
 		public void setPaymentReceives(Set<PaymentReceive> paymentReceives)
 			{
 				this.paymentReceives = paymentReceives;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntFund> getAgrmntFunds()
 			{
 				return this.agrmntFunds;
 			}
-		
+			
 		public void setAgrmntFunds(Set<AgrmntFund> agrmntFunds)
 			{
 				this.agrmntFunds = agrmntFunds;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<InstSchedule> getInstSchedules()
 			{
 				return this.instSchedules;
 			}
-		
+			
 		public void setInstSchedules(Set<InstSchedule> instSchedules)
 			{
 				this.instSchedules = instSchedules;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntColl> getAgrmntColls()
 			{
 				return this.agrmntColls;
 			}
-		
+			
 		public void setAgrmntColls(Set<AgrmntColl> agrmntColls)
 			{
 				this.agrmntColls = agrmntColls;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntAsset> getAgrmntAssets()
 			{
 				return this.agrmntAssets;
 			}
-		
+			
 		public void setAgrmntAssets(Set<AgrmntAsset> agrmntAssets)
 			{
 				this.agrmntAssets = agrmntAssets;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntInsurance> getAgrmntInsurances()
 			{
 				return this.agrmntInsurances;
 			}
-		
+			
 		public void setAgrmntInsurances(Set<AgrmntInsurance> agrmntInsurances)
 			{
 				this.agrmntInsurances = agrmntInsurances;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntReffInfo> getAgrmntReffInfos()
 			{
 				return this.agrmntReffInfos;
 			}
-		
+			
 		public void setAgrmntReffInfos(Set<AgrmntReffInfo> agrmntReffInfos)
 			{
 				this.agrmntReffInfos = agrmntReffInfos;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntMailingInfo> getAgrmntMailingInfos()
 			{
 				return this.agrmntMailingInfos;
 			}
-		
+			
 		public void setAgrmntMailingInfos(Set<AgrmntMailingInfo> agrmntMailingInfos)
 			{
 				this.agrmntMailingInfos = agrmntMailingInfos;
 			}
-		
+			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<PayHistHdr> getPayHistHdrs()
 			{
 				return this.payHistHdrs;
 			}
-		
+			
 		public void setPayHistHdrs(Set<PayHistHdr> payHistHdrs)
 			{
 				this.payHistHdrs = payHistHdrs;
 			}
-		
+			
 	}

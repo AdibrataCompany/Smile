@@ -1,12 +1,10 @@
 
 package com.adibrata.smartdealer.model;
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
-
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,7 +22,7 @@ public class Holiday implements java.io.Serializable
 		private String partnerCode;
 		private Long officeId;
 		private Date holidayDate;
-		private Serializable description;
+		private String description;
 		private boolean isRealHoliday;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -34,16 +32,16 @@ public class Holiday implements java.io.Serializable
 		public Holiday()
 			{
 			}
-		
-		public Holiday(long id, Date holidayDate, Serializable description, boolean isRealHoliday)
+			
+		public Holiday(long id, Date holidayDate, String description, boolean isRealHoliday)
 			{
 				this.id = id;
 				this.holidayDate = holidayDate;
 				this.description = description;
 				this.isRealHoliday = isRealHoliday;
 			}
-		
-		public Holiday(long id, String partnerCode, Long officeId, Date holidayDate, Serializable description, boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+			
+		public Holiday(long id, String partnerCode, Long officeId, Date holidayDate, String description, boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -56,119 +54,120 @@ public class Holiday implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@Column(name = "PartnerCode", length = 20)
 		public String getPartnerCode()
 			{
 				return this.partnerCode;
 			}
-		
+			
 		public void setPartnerCode(String partnerCode)
 			{
 				this.partnerCode = partnerCode;
 			}
-		
+			
 		@Column(name = "OfficeId")
 		public Long getOfficeId()
 			{
 				return this.officeId;
 			}
-		
+			
 		public void setOfficeId(Long officeId)
 			{
 				this.officeId = officeId;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "HolidayDate", nullable = false, length = 23)
 		public Date getHolidayDate()
 			{
 				return this.holidayDate;
 			}
-		
+			
 		public void setHolidayDate(Date holidayDate)
 			{
 				this.holidayDate = holidayDate;
 			}
-		
-		@Column(name = "Description", nullable = false)
-		public Serializable getDescription()
+			
+		@Column(name = "Description", nullable = false, length = 100)
+		public String getDescription()
 			{
 				return this.description;
 			}
-		
-		public void setDescription(Serializable description)
+			
+		public void setDescription(String description)
 			{
 				this.description = description;
 			}
-		
+			
 		@Column(name = "IsRealHoliday", nullable = false)
 		public boolean isIsRealHoliday()
 			{
 				return this.isRealHoliday;
 			}
-		
+			
 		public void setIsRealHoliday(boolean isRealHoliday)
 			{
 				this.isRealHoliday = isRealHoliday;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 23)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 23)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 	}

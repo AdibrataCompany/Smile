@@ -1,11 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-
-// Generated Jul 20, 2015 11:55:15 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -39,7 +38,7 @@ public class CashBankDtl implements java.io.Serializable
 		public CashBankDtl()
 			{
 			}
-		
+			
 		public CashBankDtl(long id, CashBankHdr cashBankHdr, String coaName, String coaCode, String description, double debitAmt, double creditAmt)
 			{
 				this.id = id;
@@ -50,7 +49,7 @@ public class CashBankDtl implements java.io.Serializable
 				this.debitAmt = debitAmt;
 				this.creditAmt = creditAmt;
 			}
-		
+			
 		public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer sequenceNo, String coaName, String coaCode, String description, double debitAmt, double creditAmt, Long departId, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.id = id;
@@ -67,152 +66,153 @@ public class CashBankDtl implements java.io.Serializable
 				this.usrCrt = usrCrt;
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
 			{
 				return this.id;
 			}
-		
+			
 		public void setId(long id)
 			{
 				this.id = id;
 			}
-		
+			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "CashBankHdrID", nullable = false)
 		public CashBankHdr getCashBankHdr()
 			{
 				return this.cashBankHdr;
 			}
-		
+			
 		public void setCashBankHdr(CashBankHdr cashBankHdr)
 			{
 				this.cashBankHdr = cashBankHdr;
 			}
-		
+			
 		@Column(name = "SequenceNo")
 		public Integer getSequenceNo()
 			{
 				return this.sequenceNo;
 			}
-		
+			
 		public void setSequenceNo(Integer sequenceNo)
 			{
 				this.sequenceNo = sequenceNo;
 			}
-		
+			
 		@Column(name = "CoaName", nullable = false, length = 50)
 		public String getCoaName()
 			{
 				return this.coaName;
 			}
-		
+			
 		public void setCoaName(String coaName)
 			{
 				this.coaName = coaName;
 			}
-		
+			
 		@Column(name = "CoaCode", nullable = false, length = 50)
 		public String getCoaCode()
 			{
 				return this.coaCode;
 			}
-		
+			
 		public void setCoaCode(String coaCode)
 			{
 				this.coaCode = coaCode;
 			}
-		
+			
 		@Column(name = "Description", nullable = false, length = 100)
 		public String getDescription()
 			{
 				return this.description;
 			}
-		
+			
 		public void setDescription(String description)
 			{
 				this.description = description;
 			}
-		
+			
 		@Column(name = "DebitAmt", nullable = false, precision = 53, scale = 0)
 		public double getDebitAmt()
 			{
 				return this.debitAmt;
 			}
-		
+			
 		public void setDebitAmt(double debitAmt)
 			{
 				this.debitAmt = debitAmt;
 			}
-		
+			
 		@Column(name = "CreditAmt", nullable = false, precision = 53, scale = 0)
 		public double getCreditAmt()
 			{
 				return this.creditAmt;
 			}
-		
+			
 		public void setCreditAmt(double creditAmt)
 			{
 				this.creditAmt = creditAmt;
 			}
-		
+			
 		@Column(name = "DepartID")
 		public Long getDepartId()
 			{
 				return this.departId;
 			}
-		
+			
 		public void setDepartId(Long departId)
 			{
 				this.departId = departId;
 			}
-		
+			
 		@Column(name = "UsrUpd", length = 50)
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-		
+			
 		public void setUsrUpd(String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmUpd", length = 16)
 		public Date getDtmUpd()
 			{
 				return this.dtmUpd;
 			}
-		
+			
 		public void setDtmUpd(Date dtmUpd)
 			{
 				this.dtmUpd = dtmUpd;
 			}
-		
+			
 		@Column(name = "UsrCrt", length = 50)
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-		
+			
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-		
+			
 		@Temporal(TemporalType.TIMESTAMP)
 		@Column(name = "DtmCrt", length = 16)
 		public Date getDtmCrt()
 			{
 				return this.dtmCrt;
 			}
-		
+			
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
 			}
-		
+			
 	}
