@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -48,6 +48,7 @@ public class Supplier implements java.io.Serializable
 		private Date dtmCrt;
 		private String usrCrt;
 		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
+		private Set<SupplierAccInfo> supplierAccInfos = new HashSet<SupplierAccInfo>(0);
 		private Set<Stock> stocks = new HashSet<Stock>(0);
 		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
@@ -63,8 +64,8 @@ public class Supplier implements java.io.Serializable
 			}
 			
 		public Supplier(long id, Partner partner, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
-		        String areaFax, String faxNo, String handphone, String fullAddress, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<EntrustHdr> entrustHdrs, Set<Stock> stocks, Set<PurchaseOrderHdr> purchaseOrderHdrs,
-		        Set<ReturPurchaseHdr> returPurchaseHdrs, Set<PurchaseInvoice> purchaseInvoices)
+		        String areaFax, String faxNo, String handphone, String fullAddress, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<EntrustHdr> entrustHdrs, Set<SupplierAccInfo> supplierAccInfos, Set<Stock> stocks,
+		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<PurchaseInvoice> purchaseInvoices)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -90,6 +91,7 @@ public class Supplier implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 				this.entrustHdrs = entrustHdrs;
+				this.supplierAccInfos = supplierAccInfos;
 				this.stocks = stocks;
 				this.purchaseOrderHdrs = purchaseOrderHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
@@ -363,6 +365,17 @@ public class Supplier implements java.io.Serializable
 		public void setEntrustHdrs(Set<EntrustHdr> entrustHdrs)
 			{
 				this.entrustHdrs = entrustHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+		public Set<SupplierAccInfo> getSupplierAccInfos()
+			{
+				return this.supplierAccInfos;
+			}
+			
+		public void setSupplierAccInfos(Set<SupplierAccInfo> supplierAccInfos)
+			{
+				this.supplierAccInfos = supplierAccInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")

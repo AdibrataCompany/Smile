@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -38,6 +38,8 @@ public class AssetMaster implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
+		private Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos = new HashSet<AgrmntAssetLevelInfo>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 		private Set<PurchaseOrderDtl> purchaseOrderDtls = new HashSet<PurchaseOrderDtl>(0);
 		private Set<Stock> stocks = new HashSet<Stock>(0);
@@ -52,7 +54,7 @@ public class AssetMaster implements java.io.Serializable
 			}
 			
 		public AssetMaster(long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
+		        String usrCrt, Set<AgrmntAsset> agrmntAssets, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -68,6 +70,8 @@ public class AssetMaster implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.agrmntAssets = agrmntAssets;
+				this.agrmntAssetLevelInfos = agrmntAssetLevelInfos;
 				this.serviceHdrs = serviceHdrs;
 				this.purchaseOrderDtls = purchaseOrderDtls;
 				this.stocks = stocks;
@@ -230,6 +234,28 @@ public class AssetMaster implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")
+		public Set<AgrmntAsset> getAgrmntAssets()
+			{
+				return this.agrmntAssets;
+			}
+			
+		public void setAgrmntAssets(Set<AgrmntAsset> agrmntAssets)
+			{
+				this.agrmntAssets = agrmntAssets;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")
+		public Set<AgrmntAssetLevelInfo> getAgrmntAssetLevelInfos()
+			{
+				return this.agrmntAssetLevelInfos;
+			}
+			
+		public void setAgrmntAssetLevelInfos(Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos)
+			{
+				this.agrmntAssetLevelInfos = agrmntAssetLevelInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetMaster")

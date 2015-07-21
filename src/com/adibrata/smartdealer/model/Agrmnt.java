@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,7 +34,7 @@ public class Agrmnt implements java.io.Serializable
 		private long productId;
 		private long productOfferingId;
 		private long currencyId;
-		private short numOfAssetUnit;
+		private Short numOfAssetUnit;
 		private Short tenor;
 		private Date effectiveDate;
 		private String interestType;
@@ -54,11 +54,6 @@ public class Agrmnt implements java.io.Serializable
 		private Date creditScoringDate;
 		private Long supplierId;
 		private String applicationSource;
-		private Long aoid;
-		private Long caid;
-		private Long salesmanId;
-		private Long salesSupervisorId;
-		private Long supplierAdminId;
 		private double insAssetPremium;
 		private double insAssetReceivedInAdv;
 		private double insAssetAddPremium;
@@ -74,7 +69,7 @@ public class Agrmnt implements java.io.Serializable
 		private double supplierRate;
 		private double standardRate;
 		private double grossYieldStandard;
-		private Character paymentFrequency;
+		private String paymentFrequency;
 		private String firstInstallment;
 		private short numOfAdvanceInstallment;
 		private short numOfInstallment;
@@ -118,32 +113,34 @@ public class Agrmnt implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<AgrmntIns> agrmntInses = new HashSet<AgrmntIns>(0);
+		private Set<GoLive> goLives = new HashSet<GoLive>(0);
 		private Set<AgrmntMnt> agrmntMnts = new HashSet<AgrmntMnt>(0);
-		private Set<PaymentReceive> paymentReceives = new HashSet<PaymentReceive>(0);
 		private Set<AgrmntFund> agrmntFunds = new HashSet<AgrmntFund>(0);
 		private Set<InstSchedule> instSchedules = new HashSet<InstSchedule>(0);
 		private Set<AgrmntColl> agrmntColls = new HashSet<AgrmntColl>(0);
 		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
-		private Set<AgrmntInsurance> agrmntInsurances = new HashSet<AgrmntInsurance>(0);
 		private Set<AgrmntReffInfo> agrmntReffInfos = new HashSet<AgrmntReffInfo>(0);
-		private Set<AgrmntMailingInfo> agrmntMailingInfos = new HashSet<AgrmntMailingInfo>(0);
 		private Set<PayHistHdr> payHistHdrs = new HashSet<PayHistHdr>(0);
+		private Set<PaymentReceive> paymentReceives = new HashSet<PaymentReceive>(0);
+		private Set<AgrmntEmployeeInfo> agrmntEmployeeInfos = new HashSet<AgrmntEmployeeInfo>(0);
+		private Set<AgrmntFund> agrmntFunds_1 = new HashSet<AgrmntFund>(0);
+		private Set<AgrmntMailingInfo> agrmntMailingInfos = new HashSet<AgrmntMailingInfo>(0);
 		
 		public Agrmnt()
 			{
 			}
 			
-		public Agrmnt(long id, long productId, long productOfferingId, long currencyId, short numOfAssetUnit, String interestType, String installmentScheme, short cummulativeTenor, String wayOfPayment, String applicationSource,
-		        double insAssetPremium, double insAssetReceivedInAdv, double insAssetAddPremium, double insAssetCapitalized, double totalOtr, double downPayment, double ntf, double effectiveRate, double flatRate, double supplierRate,
-		        double standardRate, double grossYieldStandard, short numOfAdvanceInstallment, short numOfInstallment, double installmentAmount, short gracePeriod, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee,
-		        double addAdminFee, double fiduciaFee, double provisionFee, double notaryFee, double surveyFee, double otherFee, double diffRateAmount, double diffRateStdAmount, double creditScore, String financeType, String productType,
-		        String contractStatus, String defaultStatus, String applicationStep, double osp, double osi, double ospundue, double osiundue, short nextInstNumber, short nextInstDueNumber, double tdpamount)
+		public Agrmnt(long id, long productId, long productOfferingId, long currencyId, String interestType, String installmentScheme, short cummulativeTenor, String wayOfPayment, String applicationSource, double insAssetPremium,
+		        double insAssetReceivedInAdv, double insAssetAddPremium, double insAssetCapitalized, double totalOtr, double downPayment, double ntf, double effectiveRate, double flatRate, double supplierRate, double standardRate,
+		        double grossYieldStandard, short numOfAdvanceInstallment, short numOfInstallment, double installmentAmount, short gracePeriod, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee, double addAdminFee,
+		        double fiduciaFee, double provisionFee, double notaryFee, double surveyFee, double otherFee, double diffRateAmount, double diffRateStdAmount, double creditScore, String financeType, String productType, String contractStatus,
+		        String defaultStatus, String applicationStep, double osp, double osi, double ospundue, double osiundue, short nextInstNumber, short nextInstDueNumber, double tdpamount)
 			{
 				this.id = id;
 				this.productId = productId;
 				this.productOfferingId = productOfferingId;
 				this.currencyId = currencyId;
-				this.numOfAssetUnit = numOfAssetUnit;
 				this.interestType = interestType;
 				this.installmentScheme = installmentScheme;
 				this.cummulativeTenor = cummulativeTenor;
@@ -192,17 +189,17 @@ public class Agrmnt implements java.io.Serializable
 				this.tdpamount = tdpamount;
 			}
 			
-		public Agrmnt(long id, Application application, Customer customer, Office office, Partner partner, String agrmntCode, String coaSchmCode, long productId, long productOfferingId, long currencyId, short numOfAssetUnit, Short tenor,
+		public Agrmnt(long id, Application application, Customer customer, Office office, Partner partner, String agrmntCode, String coaSchmCode, long productId, long productOfferingId, long currencyId, Short numOfAssetUnit, Short tenor,
 		        Date effectiveDate, String interestType, String installmentScheme, String stepUpStepDownType, short cummulativeTenor, String insAssetInsuredBy, String insAssetPaidBy, String insAssetPeriod, Long guarantorId,
-		        String guarantorRelationship, Long spouseId, String wayOfPayment, Date agreementDate, Short isSurveyResidenceAddress, Date newApplicationDate, Date creditScoringDate, Long supplierId, String applicationSource, Long aoid, Long caid,
-		        Long salesmanId, Long salesSupervisorId, Long supplierAdminId, double insAssetPremium, double insAssetReceivedInAdv, double insAssetAddPremium, double insAssetCapitalized, Double insRefundToSupplier, Double insRefundToSupplierPaid,
-		        Double insRefundToSupplierInProcess, double totalOtr, double downPayment, double ntf, double effectiveRate, double flatRate, double supplierRate, double standardRate, double grossYieldStandard, Character paymentFrequency,
-		        String firstInstallment, short numOfAdvanceInstallment, short numOfInstallment, double installmentAmount, short gracePeriod, String gracePeriodType, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee,
-		        Double adminFeePercentage, double addAdminFee, double fiduciaFee, double provisionFee, double notaryFee, double surveyFee, double otherFee, String crossDefaultApplicationId, String notes, double diffRateAmount,
-		        double diffRateStdAmount, double creditScore, String creditScoringResult, String financeType, String productType, String contractStatus, String defaultStatus, String applicationStep, double osp, double osi, double ospundue,
-		        double osiundue, Date nextInstDate, short nextInstNumber, Date nextInstDueDate, short nextInstDueNumber, double tdpamount, Double prepaidAmt, Short isSyariah, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<AgrmntMnt> agrmntMnts, Set<PaymentReceive> paymentReceives, Set<AgrmntFund> agrmntFunds, Set<InstSchedule> instSchedules, Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<AgrmntInsurance> agrmntInsurances,
-		        Set<AgrmntReffInfo> agrmntReffInfos, Set<AgrmntMailingInfo> agrmntMailingInfos, Set<PayHistHdr> payHistHdrs)
+		        String guarantorRelationship, Long spouseId, String wayOfPayment, Date agreementDate, Short isSurveyResidenceAddress, Date newApplicationDate, Date creditScoringDate, Long supplierId, String applicationSource, double insAssetPremium,
+		        double insAssetReceivedInAdv, double insAssetAddPremium, double insAssetCapitalized, Double insRefundToSupplier, Double insRefundToSupplierPaid, Double insRefundToSupplierInProcess, double totalOtr, double downPayment, double ntf,
+		        double effectiveRate, double flatRate, double supplierRate, double standardRate, double grossYieldStandard, String paymentFrequency, String firstInstallment, short numOfAdvanceInstallment, short numOfInstallment,
+		        double installmentAmount, short gracePeriod, String gracePeriodType, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee, Double adminFeePercentage, double addAdminFee, double fiduciaFee,
+		        double provisionFee, double notaryFee, double surveyFee, double otherFee, String crossDefaultApplicationId, String notes, double diffRateAmount, double diffRateStdAmount, double creditScore, String creditScoringResult,
+		        String financeType, String productType, String contractStatus, String defaultStatus, String applicationStep, double osp, double osi, double ospundue, double osiundue, Date nextInstDate, short nextInstNumber, Date nextInstDueDate,
+		        short nextInstDueNumber, double tdpamount, Double prepaidAmt, Short isSyariah, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntIns> agrmntInses, Set<GoLive> goLives, Set<AgrmntMnt> agrmntMnts,
+		        Set<AgrmntFund> agrmntFunds, Set<InstSchedule> instSchedules, Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<AgrmntReffInfo> agrmntReffInfos, Set<PayHistHdr> payHistHdrs, Set<PaymentReceive> paymentReceives,
+		        Set<AgrmntEmployeeInfo> agrmntEmployeeInfos, Set<AgrmntFund> agrmntFunds_1, Set<AgrmntMailingInfo> agrmntMailingInfos)
 			{
 				this.id = id;
 				this.application = application;
@@ -234,11 +231,6 @@ public class Agrmnt implements java.io.Serializable
 				this.creditScoringDate = creditScoringDate;
 				this.supplierId = supplierId;
 				this.applicationSource = applicationSource;
-				this.aoid = aoid;
-				this.caid = caid;
-				this.salesmanId = salesmanId;
-				this.salesSupervisorId = salesSupervisorId;
-				this.supplierAdminId = supplierAdminId;
 				this.insAssetPremium = insAssetPremium;
 				this.insAssetReceivedInAdv = insAssetReceivedInAdv;
 				this.insAssetAddPremium = insAssetAddPremium;
@@ -298,16 +290,19 @@ public class Agrmnt implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.agrmntInses = agrmntInses;
+				this.goLives = goLives;
 				this.agrmntMnts = agrmntMnts;
-				this.paymentReceives = paymentReceives;
 				this.agrmntFunds = agrmntFunds;
 				this.instSchedules = instSchedules;
 				this.agrmntColls = agrmntColls;
 				this.agrmntAssets = agrmntAssets;
-				this.agrmntInsurances = agrmntInsurances;
 				this.agrmntReffInfos = agrmntReffInfos;
-				this.agrmntMailingInfos = agrmntMailingInfos;
 				this.payHistHdrs = payHistHdrs;
+				this.paymentReceives = paymentReceives;
+				this.agrmntEmployeeInfos = agrmntEmployeeInfos;
+				this.agrmntFunds_1 = agrmntFunds_1;
+				this.agrmntMailingInfos = agrmntMailingInfos;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -426,13 +421,13 @@ public class Agrmnt implements java.io.Serializable
 				this.currencyId = currencyId;
 			}
 			
-		@Column(name = "NumOfAssetUnit", nullable = false)
-		public short getNumOfAssetUnit()
+		@Column(name = "NumOfAssetUnit")
+		public Short getNumOfAssetUnit()
 			{
 				return this.numOfAssetUnit;
 			}
 			
-		public void setNumOfAssetUnit(short numOfAssetUnit)
+		public void setNumOfAssetUnit(Short numOfAssetUnit)
 			{
 				this.numOfAssetUnit = numOfAssetUnit;
 			}
@@ -650,61 +645,6 @@ public class Agrmnt implements java.io.Serializable
 				this.applicationSource = applicationSource;
 			}
 			
-		@Column(name = "AOID")
-		public Long getAoid()
-			{
-				return this.aoid;
-			}
-			
-		public void setAoid(Long aoid)
-			{
-				this.aoid = aoid;
-			}
-			
-		@Column(name = "CAID")
-		public Long getCaid()
-			{
-				return this.caid;
-			}
-			
-		public void setCaid(Long caid)
-			{
-				this.caid = caid;
-			}
-			
-		@Column(name = "SalesmanID")
-		public Long getSalesmanId()
-			{
-				return this.salesmanId;
-			}
-			
-		public void setSalesmanId(Long salesmanId)
-			{
-				this.salesmanId = salesmanId;
-			}
-			
-		@Column(name = "SalesSupervisorID")
-		public Long getSalesSupervisorId()
-			{
-				return this.salesSupervisorId;
-			}
-			
-		public void setSalesSupervisorId(Long salesSupervisorId)
-			{
-				this.salesSupervisorId = salesSupervisorId;
-			}
-			
-		@Column(name = "SupplierAdminID")
-		public Long getSupplierAdminId()
-			{
-				return this.supplierAdminId;
-			}
-			
-		public void setSupplierAdminId(Long supplierAdminId)
-			{
-				this.supplierAdminId = supplierAdminId;
-			}
-			
 		@Column(name = "InsAssetPremium", nullable = false, precision = 53, scale = 0)
 		public double getInsAssetPremium()
 			{
@@ -871,12 +811,12 @@ public class Agrmnt implements java.io.Serializable
 			}
 			
 		@Column(name = "PaymentFrequency", length = 1)
-		public Character getPaymentFrequency()
+		public String getPaymentFrequency()
 			{
 				return this.paymentFrequency;
 			}
 			
-		public void setPaymentFrequency(Character paymentFrequency)
+		public void setPaymentFrequency(String paymentFrequency)
 			{
 				this.paymentFrequency = paymentFrequency;
 			}
@@ -1359,6 +1299,28 @@ public class Agrmnt implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<AgrmntIns> getAgrmntInses()
+			{
+				return this.agrmntInses;
+			}
+			
+		public void setAgrmntInses(Set<AgrmntIns> agrmntInses)
+			{
+				this.agrmntInses = agrmntInses;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<GoLive> getGoLives()
+			{
+				return this.goLives;
+			}
+			
+		public void setGoLives(Set<GoLive> goLives)
+			{
+				this.goLives = goLives;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntMnt> getAgrmntMnts()
 			{
 				return this.agrmntMnts;
@@ -1367,17 +1329,6 @@ public class Agrmnt implements java.io.Serializable
 		public void setAgrmntMnts(Set<AgrmntMnt> agrmntMnts)
 			{
 				this.agrmntMnts = agrmntMnts;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
-		public Set<PaymentReceive> getPaymentReceives()
-			{
-				return this.paymentReceives;
-			}
-			
-		public void setPaymentReceives(Set<PaymentReceive> paymentReceives)
-			{
-				this.paymentReceives = paymentReceives;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
@@ -1425,17 +1376,6 @@ public class Agrmnt implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
-		public Set<AgrmntInsurance> getAgrmntInsurances()
-			{
-				return this.agrmntInsurances;
-			}
-			
-		public void setAgrmntInsurances(Set<AgrmntInsurance> agrmntInsurances)
-			{
-				this.agrmntInsurances = agrmntInsurances;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<AgrmntReffInfo> getAgrmntReffInfos()
 			{
 				return this.agrmntReffInfos;
@@ -1447,17 +1387,6 @@ public class Agrmnt implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
-		public Set<AgrmntMailingInfo> getAgrmntMailingInfos()
-			{
-				return this.agrmntMailingInfos;
-			}
-			
-		public void setAgrmntMailingInfos(Set<AgrmntMailingInfo> agrmntMailingInfos)
-			{
-				this.agrmntMailingInfos = agrmntMailingInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
 		public Set<PayHistHdr> getPayHistHdrs()
 			{
 				return this.payHistHdrs;
@@ -1466,6 +1395,50 @@ public class Agrmnt implements java.io.Serializable
 		public void setPayHistHdrs(Set<PayHistHdr> payHistHdrs)
 			{
 				this.payHistHdrs = payHistHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<PaymentReceive> getPaymentReceives()
+			{
+				return this.paymentReceives;
+			}
+			
+		public void setPaymentReceives(Set<PaymentReceive> paymentReceives)
+			{
+				this.paymentReceives = paymentReceives;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<AgrmntEmployeeInfo> getAgrmntEmployeeInfos()
+			{
+				return this.agrmntEmployeeInfos;
+			}
+			
+		public void setAgrmntEmployeeInfos(Set<AgrmntEmployeeInfo> agrmntEmployeeInfos)
+			{
+				this.agrmntEmployeeInfos = agrmntEmployeeInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<AgrmntFund> getAgrmntFunds_1()
+			{
+				return this.agrmntFunds_1;
+			}
+			
+		public void setAgrmntFunds_1(Set<AgrmntFund> agrmntFunds_1)
+			{
+				this.agrmntFunds_1 = agrmntFunds_1;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<AgrmntMailingInfo> getAgrmntMailingInfos()
+			{
+				return this.agrmntMailingInfos;
+			}
+			
+		public void setAgrmntMailingInfos(Set<AgrmntMailingInfo> agrmntMailingInfos)
+			{
+				this.agrmntMailingInfos = agrmntMailingInfos;
 			}
 			
 	}

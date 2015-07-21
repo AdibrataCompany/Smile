@@ -17,17 +17,17 @@ import org.hibernate.type.DateType;
 import org.hibernate.type.DoubleType;
 import org.hibernate.type.ShortType;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.payhist.LCInstallment;
-import util.adibrata.support.payhist.LCInsurance;
-
 import com.adibrata.smartdealer.model.Agrmnt;
 import com.adibrata.smartdealer.model.AgrmntMnt;
 import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.InstSchedule;
 import com.adibrata.smartdealer.model.PaymentInfo;
+
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.support.payhist.LCInstallment;
+import util.adibrata.support.payhist.LCInsurance;
 
 /**
  * @author Henry
@@ -35,7 +35,7 @@ import com.adibrata.smartdealer.model.PaymentInfo;
 public class ArInfo
 	{
 		Session session;
-		
+
 		public ArInfo() throws Exception
 			{
 				try
@@ -51,19 +51,20 @@ public class ArInfo
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+			
 		public ArInfo(final Session session)
 			{
 				this.session = session;
 			}
-		
+			
+		@SuppressWarnings("unchecked")
 		public PaymentInfo GetDetail(final Session session, final long agrmntid, final Date valuedate) throws Exception
 			{
 				PaymentInfo paymentInfo = new PaymentInfo();
 				double totallcinstallment;
 				double totallcinsurance;
 				final LCInstallment lcinstallment = new LCInstallment(session);
-				
+
 				Query qry;
 				StringBuilder sql = new StringBuilder();
 				Agrmnt agrmnt = new Agrmnt();
@@ -79,7 +80,7 @@ public class ArInfo
 								currency = CurrencyInfo.GetCurrencyInfo(session, agrmnt.getPartner(), agrmnt.getCurrencyId());
 								paymentInfo.setCurrencyrounded(currency.getRounded());
 							}
-						
+							
 						sql = new StringBuilder();
 						sql.append("from AgrmntMnt where AgrmntId = :agrmntid");
 						qry = session.createQuery(sql.toString());
@@ -91,7 +92,7 @@ public class ArInfo
 							{
 								for (final AgrmntMnt aRow : lstinfo)
 									{
-										
+
 										paymentInfo.setAccruedinterest(this.AccruedInfo(agrmnt, valuedate));
 										paymentInfo.setLcinstallmentcurrent(lcinstallment.LCCalc(agrmnt, valuedate));
 										paymentInfo.setLcinsurancecurrent(LCInsurance.LCCalc(session, agrmnt, valuedate));
@@ -99,14 +100,14 @@ public class ArInfo
 										paymentInfo.setOsinterest(agrmnt.getOsi());
 										paymentInfo.setNextinstdate(agrmnt.getNextInstDate());
 										paymentInfo.setNextinstnumber(agrmnt.getNextInstNumber());
-										
+
 										paymentInfo.setPrepaid(agrmnt.getPrepaidAmt());
-										
+
 										paymentInfo.setLastlcinstallmentamount(aRow.getLcinstAmt() - aRow.getLcinstPaid() - aRow.getLcinstWaived());
 										paymentInfo.setLastlcinsuranceamount(aRow.getLcinsAmt() - aRow.getLcinsPaid() - aRow.getLcinsWaived());
-										
+
 										paymentInfo.setOsinsurance(aRow.getInsAmt() - aRow.getInsPaid() - aRow.getInsWaived());
-										
+
 										totallcinstallment = Number.Rounding(paymentInfo.getLastlcinstallmentamount() + paymentInfo.getLcinstallmentcurrent(), paymentInfo.getCurrencyrounded());
 										paymentInfo.setTotallcinstallment(totallcinstallment);
 										// Calculate LC Insurance Amount
@@ -115,15 +116,15 @@ public class ArInfo
 										double totalet;
 										totalet = paymentInfo.getOsprincipalundue() + paymentInfo.getOsinterestundue() + paymentInfo.getOsinstallment() + paymentInfo.getOsinsurance() + paymentInfo.getTotallcinstallment()
 										        + paymentInfo.getTotallcinsurance() + paymentInfo.getPrepaid();
-										
+												
 										paymentInfo.setTotalpayment(totalet - (paymentInfo.getOsprincipalundue() + paymentInfo.getOsinterestundue()));
 										paymentInfo.setTotalearlytermination(totalet);
-										
+
 										paymentInfo.setEarlyterminationpenalty(Number.Rounding(paymentInfo.getOsprincipalundue() * agrmnt.getPercentagePenalty(), paymentInfo.getCurrencyrounded()));
-										
+
 									}
 							}
-						
+							
 						// Select @InstallmentDue = Sum(InstallmentAmount)
 						// from InstallmentSchedule with ( nolock )
 						// where BranchID = @branchID
@@ -134,7 +135,7 @@ public class ArInfo
 						// where installmentschedule.BranchId = Agreement.BranchID
 						// and InstallmentSchedule.ApplicationID = Agreement.ApplicationID
 						// and ContractStatus in ( 'LIV', 'ICP', 'INV' ) )
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -144,9 +145,13 @@ public class ArInfo
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return paymentInfo;
-				
+
 			}
-		
+			
+		@SuppressWarnings(
+			{
+			        "rawtypes", "unchecked"
+			})
 		public double AccruedInfo(final Agrmnt agrmnt, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -165,7 +170,7 @@ public class ArInfo
 						selectQuery.setParameter("agrmntid", agrmnt.getId());
 						selectQuery.setParameter("valuedate", valuedate);
 						selectQuery.setMaxResults(1);
-						
+
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AccruedInfo-AgrmntId" + agrmnt.getId());
 						selectQuery.addScalar("DueDate", new DateType());
@@ -177,7 +182,7 @@ public class ArInfo
 								for (final Object object : lstinfo)
 									{
 										final Map row = (Map) object;
-										
+
 										accrueddate = (Date) row.get("AccruedDate");
 										if (accrueddate != null)
 											{
@@ -201,7 +206,7 @@ public class ArInfo
 						selectQuery.setParameter("agrmntid", agrmnt.getId());
 						selectQuery.setParameter("valuedate", valuedate);
 						selectQuery.setMaxResults(1);
-						
+
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AccruedInfoNextDue-AgrmntId" + agrmnt.getId());
 						selectQuery.addScalar("DueDate", new DateType());
@@ -216,10 +221,10 @@ public class ArInfo
 							}
 						final short period = (short) ((nextduedate.getTime() - duedate.getTime()) / (24 * 60 * 60 * 1000));
 						final short diffday = (short) ((valuedate.getTime() - duedate.getTime()) / (24 * 60 * 60 * 1000));
-						
+
 						result = interestamount * (diffday / period);
-						
-					}// (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+
+					} // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -233,7 +238,7 @@ public class ArInfo
 					}
 				return result;
 			}
-		
+			
 		public double TotalOsInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -264,7 +269,7 @@ public class ArInfo
 					}
 				return result;
 			}
-		
+			
 		public double TotalInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -294,8 +299,11 @@ public class ArInfo
 					}
 				return result;
 			}
-		
-		@SuppressWarnings("unchecked")
+			
+		@SuppressWarnings(
+			{
+			        "unchecked", "rawtypes"
+			})
 		public PaymentInfo GetOsPrincipalandInterest(final long agrmntid, final Date valuedate, final PaymentInfo paymentinfo) throws Exception
 			{
 				final SQLQuery selectQuery;
@@ -314,7 +322,7 @@ public class ArInfo
 						selectQuery.addScalar("OSI", new DoubleType());
 						selectQuery.addScalar("NextInstDueDate", new DateType());
 						selectQuery.addScalar("NextInstDueNumber", new ShortType());
-						
+
 						final List<Object[]> lstinfo = selectQuery.list();
 						if (lstinfo.size() != 0)
 							{
@@ -341,7 +349,8 @@ public class ArInfo
 					}
 				return paymentinfo;
 			}
-		
+			
+		@SuppressWarnings("unchecked")
 		public List<InstSchedule> LstInstSchedule(final long agrmntid) throws Exception
 			{
 				List<InstSchedule> lstresult = new ArrayList<InstSchedule>();
@@ -351,7 +360,7 @@ public class ArInfo
 					{
 						sql.append("from InstSchedule where AgrmntId = :agrmntid order by dueDate");
 						qry = this.session.createQuery(sql.toString());
-						
+
 						qry.setParameter("agrmntid", agrmntid);
 						qry.setCacheable(true);
 						qry.setCacheRegion("LstInstSchedule-AgrmntId" + agrmntid);
@@ -369,6 +378,6 @@ public class ArInfo
 						sql.setLength(0);
 					}
 				return lstresult;
-				
+
 			}
 	}

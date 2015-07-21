@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -55,7 +55,7 @@ public class CoyCust implements java.io.Serializable
 		private String reference;
 		private short isApplyCarLoanBefore;
 		private String applyCarLoanCompanyName;
-		private char activeCustomer;
+		private String activeCustomer;
 		private String notes;
 		private Short isCorporateCreditLine;
 		private Double plafondAmount;
@@ -77,7 +77,7 @@ public class CoyCust implements java.io.Serializable
 			{
 			}
 			
-		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable, short isApplyCarLoanBefore, char activeCustomer,
+		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable, short isApplyCarLoanBefore, String activeCustomer,
 		        String customerGroup)
 			{
 				this.id = id;
@@ -97,7 +97,7 @@ public class CoyCust implements java.io.Serializable
 		public CoyCust(long id, Customer customer, String npwp, String npwpchecking, String companyType, Short numberOfEmployees, Short yearOfEstablished, String industryTypeId, String pengelolaGedungAreaPhone, String pengelolaGedungPhone,
 		        Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable, Double averageDebitTransaction, Double averageCreditTransaction,
 		        Double averageBalance, Double deposito, String additionalCollateralType, Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear, Date rentFinishDate, String bankCode, String bankBranch, String accountNo,
-		        String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, char activeCustomer, String notes, Short isCorporateCreditLine, Double plafondAmount, String customerGroup,
+		        String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes, Short isCorporateCreditLine, Double plafondAmount, String customerGroup,
 		        String noDocumentOfEstablished, Date dateDocumentOfEstablished, String notaryPlace, String notaryName, String lastNoDocumentOfEstablished, Date lastDateDocumentOfEstablished, String lastNotaryPlace, String lastNotaryName,
 		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -533,12 +533,12 @@ public class CoyCust implements java.io.Serializable
 			}
 			
 		@Column(name = "ActiveCustomer", nullable = false, length = 1)
-		public char getActiveCustomer()
+		public String getActiveCustomer()
 			{
 				return this.activeCustomer;
 			}
 			
-		public void setActiveCustomer(char activeCustomer)
+		public void setActiveCustomer(String activeCustomer)
 			{
 				this.activeCustomer = activeCustomer;
 			}

@@ -4,11 +4,19 @@
 <hibernate-reverse-engineering>
   <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCash"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgmntAssetEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Agrmnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAsset"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetLevelInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetLoctInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetOldOwnerInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetOwnerInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetSPBKBInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntColl"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
-  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsurance"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntIns"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsAsset"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMailingInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntReffInfo"/>
@@ -39,6 +47,7 @@
   <table-filter match-catalog="SmartDealer" match-name="Employee"/>
   <table-filter match-catalog="SmartDealer" match-name="EntrustDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="EntrustHdr"/>
+  <table-filter match-catalog="SmartDealer" match-name="GoLive"/>
   <table-filter match-catalog="SmartDealer" match-name="Holiday"/>
   <table-filter match-catalog="SmartDealer" match-name="InstSchedule"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlDtl"/>
@@ -95,6 +104,7 @@
   <table-filter match-catalog="SmartDealer" match-name="Stock"/>
   <table-filter match-catalog="SmartDealer" match-name="StockDocument"/>
   <table-filter match-catalog="SmartDealer" match-name="Supplier"/>
+  <table-filter match-catalog="SmartDealer" match-name="SupplierAccInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Taksasi"/>
   <table-filter match-catalog="SmartDealer" match-name="TransJob"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigDtl"/>

@@ -1,12 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;

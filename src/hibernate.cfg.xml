@@ -55,13 +55,16 @@
         <mapping class="com.adibrata.smartdealer.model.AdvanceCash" />
         <mapping class="com.adibrata.smartdealer.model.Currency" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderHdr" />
+        <mapping class="com.adibrata.smartdealer.model.SupplierAccInfo" />
         <mapping class="com.adibrata.smartdealer.model.DanaTunai" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntReffInfo" />
         <mapping class="com.adibrata.smartdealer.model.ServiceItem" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMnt" />
         <mapping class="com.adibrata.smartdealer.model.JrnlHdr" />
         <mapping class="com.adibrata.smartdealer.model.AssetDocMaster" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntIns" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEmergencyInfo" />
+        <mapping class="com.adibrata.smartdealer.model.GoLive" />
         <mapping class="com.adibrata.smartdealer.model.Office" />
         <mapping class="com.adibrata.smartdealer.model.InstSchedule" />
         <mapping class="com.adibrata.smartdealer.model.MsBigMenuList" />
@@ -69,11 +72,14 @@
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOldOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.TransJob" />
         <mapping class="com.adibrata.smartdealer.model.PayHistDtl" />
         <mapping class="com.adibrata.smartdealer.model.Customer" />
         <mapping class="com.adibrata.smartdealer.model.MsUser" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetLevelInfo" />
         <mapping class="com.adibrata.smartdealer.model.CoyCust" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
@@ -102,15 +108,17 @@
         <mapping class="com.adibrata.smartdealer.model.PaymentReversal" />
         <mapping class="com.adibrata.smartdealer.model.Partner" />
         <mapping class="com.adibrata.smartdealer.model.TrxSeqNo" />
-        <mapping class="com.adibrata.smartdealer.model.AgrmntInsurance" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseDtl" />
         <mapping class="com.adibrata.smartdealer.model.PayReqDtl" />
         <mapping class="com.adibrata.smartdealer.model.TrxConfigHdr" />
+        <mapping class="com.adibrata.smartdealer.model.AgmntAssetEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.EarlyTermination" />
         <mapping class="com.adibrata.smartdealer.model.PersCustJobInfo" />
         <mapping class="com.adibrata.smartdealer.model.Employee" />
         <mapping class="com.adibrata.smartdealer.model.PersCustFamilyInfo" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntColl" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntInsAsset" />
         <mapping class="com.adibrata.smartdealer.model.PersCustTrusteeInfo" />
         <mapping class="com.adibrata.smartdealer.model.TrxConfigDtl" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseInvoice" />
@@ -121,6 +129,8 @@
         <mapping class="com.adibrata.smartdealer.model.ResetPasswordLog" />
         <mapping class="com.adibrata.smartdealer.model.Pvdetail" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAsset" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetSpbkbinfo" />
         <mapping class="com.adibrata.smartdealer.model.Reschedule" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetLoctInfo" />
     </session-factory>
 </hibernate-configuration>

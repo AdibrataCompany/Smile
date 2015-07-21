@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -32,14 +32,14 @@ public class TrxSeqNo implements java.io.Serializable
 		private String seqName;
 		private Integer seqNo;
 		private Integer lengthNumber;
-		private Character resetFlag;
+		private String resetFlag;
 		private String prefix;
 		private String suffix;
 		private String configNumber;
 		private String jrnlSeqName;
 		private Integer jrnlSeqNo;
 		private Integer jrnlLengthNo;
-		private Character jrnlResetFlag;
+		private String jrnlResetFlag;
 		private String jrnlPrefix;
 		private String jrnlSuffix;
 		private String jrnlConfigNumber;
@@ -62,8 +62,8 @@ public class TrxSeqNo implements java.io.Serializable
 				this.dtmUpd = dtmUpd;
 			}
 			
-		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String seqName, Integer seqNo, Integer lengthNumber, Character resetFlag, String prefix, String suffix, String configNumber, String jrnlSeqName,
-		        Integer jrnlSeqNo, Integer jrnlLengthNo, Character jrnlResetFlag, String jrnlPrefix, String jrnlSuffix, String jrnlConfigNumber, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
+		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String seqName, Integer seqNo, Integer lengthNumber, String resetFlag, String prefix, String suffix, String configNumber, String jrnlSeqName,
+		        Integer jrnlSeqNo, Integer jrnlLengthNo, String jrnlResetFlag, String jrnlPrefix, String jrnlSuffix, String jrnlConfigNumber, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.msseqId = msseqId;
 				this.partner = partner;
@@ -170,12 +170,12 @@ public class TrxSeqNo implements java.io.Serializable
 			}
 			
 		@Column(name = "ResetFlag", length = 1)
-		public Character getResetFlag()
+		public String getResetFlag()
 			{
 				return this.resetFlag;
 			}
 			
-		public void setResetFlag(Character resetFlag)
+		public void setResetFlag(String resetFlag)
 			{
 				this.resetFlag = resetFlag;
 			}
@@ -247,12 +247,12 @@ public class TrxSeqNo implements java.io.Serializable
 			}
 			
 		@Column(name = "Jrnl_ResetFlag", length = 1)
-		public Character getJrnlResetFlag()
+		public String getJrnlResetFlag()
 			{
 				return this.jrnlResetFlag;
 			}
 			
-		public void setJrnlResetFlag(Character jrnlResetFlag)
+		public void setJrnlResetFlag(String jrnlResetFlag)
 			{
 				this.jrnlResetFlag = jrnlResetFlag;
 			}

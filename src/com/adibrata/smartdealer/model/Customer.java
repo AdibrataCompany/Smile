@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 1:45:23 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 2:45:30 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -55,6 +55,7 @@ public class Customer implements java.io.Serializable
 		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(0);
 		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(0);
 		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
+		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
 		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
 		private Set<PersCustTrusteeInfo> persCustTrusteeInfos_1 = new HashSet<PersCustTrusteeInfo>(0);
@@ -82,7 +83,7 @@ public class Customer implements java.io.Serializable
 			
 		public Customer(long id, Partner partner, String customerNo, String type, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<SalesInvoice> salesInvoices,
+		        Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<AgrmntAsset> agrmntAssets, Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<SalesInvoice> salesInvoices,
 		        Set<PersCustTrusteeInfo> persCustTrusteeInfos_1, Set<CoyCust> coyCusts, Set<PersCustLegalInfo> persCustLegalInfos, Set<Agrmnt> agrmnts, Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos,
 		        Set<SalesOrderHdr> salesOrderHdrs, Set<CoyCustWhInfo> coyCustWhInfos, Set<PersCustFamilyInfo> persCustFamilyInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts, Set<CoyCustLegalInfo> coyCustLegalInfos_1,
 		        Set<PersCustEmergencyInfo> persCustEmergencyInfos)
@@ -118,6 +119,7 @@ public class Customer implements java.io.Serializable
 				this.persCustCcinfos = persCustCcinfos;
 				this.coyCustShareInfos = coyCustShareInfos;
 				this.coyCustComptInfos = coyCustComptInfos;
+				this.agrmntAssets = agrmntAssets;
 				this.persCustTrusteeInfos = persCustTrusteeInfos;
 				this.salesInvoices = salesInvoices;
 				this.persCustTrusteeInfos_1 = persCustTrusteeInfos_1;
@@ -479,6 +481,17 @@ public class Customer implements java.io.Serializable
 		public void setCoyCustComptInfos(Set<CoyCustComptInfo> coyCustComptInfos)
 			{
 				this.coyCustComptInfos = coyCustComptInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<AgrmntAsset> getAgrmntAssets()
+			{
+				return this.agrmntAssets;
+			}
+			
+		public void setAgrmntAssets(Set<AgrmntAsset> agrmntAssets)
+			{
+				this.agrmntAssets = agrmntAssets;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
