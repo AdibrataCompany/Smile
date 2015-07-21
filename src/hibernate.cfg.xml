@@ -69,9 +69,11 @@
         <mapping class="com.adibrata.smartdealer.model.InstSchedule" />
         <mapping class="com.adibrata.smartdealer.model.MsBigMenuList" />
         <mapping class="com.adibrata.smartdealer.model.OtherDsbDtl" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatInfoDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntEmployee" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOldOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntEmployeeInfo" />
@@ -86,6 +88,7 @@
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.Holiday" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatementInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMailingInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetCategory" />
         <mapping class="com.adibrata.smartdealer.model.ServiceDtl" />

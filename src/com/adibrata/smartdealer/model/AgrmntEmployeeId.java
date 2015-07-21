@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 21, 2015 2:35:33 PM by Hibernate Tools 4.3.1
+// Generated Jul 21, 2015 4:42:42 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 public class AgrmntEmployeeId implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long agrmntId;
 		private Long aoid;
 		private Long caid;
@@ -29,7 +29,12 @@ public class AgrmntEmployeeId implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntEmployeeId(Long id, Long agrmntId, Long aoid, Long caid, Long salesmanId, Long salesSupervisorId, Long supplierAdminId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AgrmntEmployeeId(long id)
+			{
+				this.id = id;
+			}
+			
+		public AgrmntEmployeeId(long id, Long agrmntId, Long aoid, Long caid, Long salesmanId, Long salesSupervisorId, Long supplierAdminId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmntId = agrmntId;
@@ -44,13 +49,13 @@ public class AgrmntEmployeeId implements java.io.Serializable
 				this.usrCrt = usrCrt;
 			}
 			
-		@Column(name = "Id")
-		public Long getId()
+		@Column(name = "Id", nullable = false)
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -175,8 +180,7 @@ public class AgrmntEmployeeId implements java.io.Serializable
 					return false;
 				AgrmntEmployeeId castOther = (AgrmntEmployeeId) other;
 				
-				return ((this.getId() == castOther.getId()) || (this.getId() != null && castOther.getId() != null && this.getId().equals(castOther.getId())))
-				        && ((this.getAgrmntId() == castOther.getAgrmntId()) || (this.getAgrmntId() != null && castOther.getAgrmntId() != null && this.getAgrmntId().equals(castOther.getAgrmntId())))
+				return (this.getId() == castOther.getId()) && ((this.getAgrmntId() == castOther.getAgrmntId()) || (this.getAgrmntId() != null && castOther.getAgrmntId() != null && this.getAgrmntId().equals(castOther.getAgrmntId())))
 				        && ((this.getAoid() == castOther.getAoid()) || (this.getAoid() != null && castOther.getAoid() != null && this.getAoid().equals(castOther.getAoid())))
 				        && ((this.getCaid() == castOther.getCaid()) || (this.getCaid() != null && castOther.getCaid() != null && this.getCaid().equals(castOther.getCaid())))
 				        && ((this.getSalesmanId() == castOther.getSalesmanId()) || (this.getSalesmanId() != null && castOther.getSalesmanId() != null && this.getSalesmanId().equals(castOther.getSalesmanId())))
@@ -193,7 +197,7 @@ public class AgrmntEmployeeId implements java.io.Serializable
 			{
 				int result = 17;
 				
-				result = 37 * result + (getId() == null ? 0 : this.getId().hashCode());
+				result = 37 * result + (int) this.getId();
 				result = 37 * result + (getAgrmntId() == null ? 0 : this.getAgrmntId().hashCode());
 				result = 37 * result + (getAoid() == null ? 0 : this.getAoid().hashCode());
 				result = 37 * result + (getCaid() == null ? 0 : this.getCaid().hashCode());

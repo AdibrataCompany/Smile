@@ -12,7 +12,10 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetOldOwnerInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetOwnerInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetSPBKBInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatInfoDtl"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatementInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntColl"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployee"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntIns"/>
