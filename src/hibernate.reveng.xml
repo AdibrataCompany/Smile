@@ -25,6 +25,10 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntIns"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsAsset"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsCust"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsEndorsInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsInsco"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInsStandardInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMailingInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntReffInfo"/>
@@ -45,6 +49,7 @@
   <table-filter match-catalog="SmartDealer" match-name="CoaSchmHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="CoyCust"/>
   <table-filter match-catalog="SmartDealer" match-name="CoyCustComptInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="CoyCustContactInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="CoyCustLegalInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="CoyCustShareInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="CoyCustWhInfo"/>
@@ -57,6 +62,9 @@
   <table-filter match-catalog="SmartDealer" match-name="EntrustHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="GoLive"/>
   <table-filter match-catalog="SmartDealer" match-name="Holiday"/>
+  <table-filter match-catalog="SmartDealer" match-name="InsCompany"/>
+  <table-filter match-catalog="SmartDealer" match-name="InsCompanyOffice"/>
+  <table-filter match-catalog="SmartDealer" match-name="InsCompanyOfficeFee"/>
   <table-filter match-catalog="SmartDealer" match-name="InstSchedule"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlHdr"/>

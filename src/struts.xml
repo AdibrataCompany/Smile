@@ -9,7 +9,7 @@
 	<constant name="struts.ognl.logMissingProperties" value="=false" />
 	<constant name="struts.el.throwExceptionOnFailure" value="false" />
 	<constant name="struts.ognl.enableExpressionCache" value="true" />
-	<constant name="struts.serve.static" value="false" />
+	<constant name="struts.serve.static" value="false" ></constant>
 	
 	
 	<include file="/struts-login.xml"></include>
@@ -28,5 +28,5 @@
 	<include file="/struts-repair.xml"></include>
 	<include file="/struts-report.xml"></include>
 	<include file="/struts-sales.xml"></include>
-	<include file="/struts-usermanagement.x`ml"></include>
+	<include file="/struts-usermanagement.xml"></include>
 </struts>
