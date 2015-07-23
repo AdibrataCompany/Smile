@@ -33,6 +33,7 @@
         <mapping class="com.adibrata.smartdealer.model.PersCust" />
         <mapping class="com.adibrata.smartdealer.model.Taksasi" />
         <mapping class="com.adibrata.smartdealer.model.PettyCashHdr" />
+        <mapping class="com.adibrata.smartdealer.model.BucketAgingReport" />
         <mapping class="com.adibrata.smartdealer.model.CoaSchmHdr" />
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />

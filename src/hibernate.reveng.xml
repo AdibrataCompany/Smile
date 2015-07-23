@@ -128,4 +128,5 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
+  <table-filter match-catalog="SmartDealer" match-name="BucketAgingReport"/>
 </hibernate-reverse-engineering>
