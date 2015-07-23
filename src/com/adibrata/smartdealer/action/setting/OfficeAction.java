@@ -38,7 +38,7 @@ public class OfficeAction extends ActionSupport implements Preparable {
 	private int pageNumber;
 	private String usrUpd;
 	private String usrCrt;
-	private long id;
+	private long id; private static final long serialVersionUID = 1L;
 
 	private String message;
 

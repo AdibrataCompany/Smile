@@ -39,7 +39,7 @@ public class BankAccountAction extends ActionSupport implements Preparable {
 	private List<MasterTable> lstBankMaster;
 
 	private int pageNumber;
-	private long id;
+	private long id; private static final long serialVersionUID = 1L;
 	private String bankAccountCode;
 	private String bankAccountName;
 	private String address;

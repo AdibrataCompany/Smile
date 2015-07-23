@@ -39,7 +39,7 @@ public class JurnalSchemeAction extends ActionSupport implements Preparable {
 	private String usrUpd;
 	private String usrCrt;
 	private String message;
-	private long id;
+	private long id; private static final long serialVersionUID = 1L;
 
 	@Override
 	public void prepare() throws Exception {

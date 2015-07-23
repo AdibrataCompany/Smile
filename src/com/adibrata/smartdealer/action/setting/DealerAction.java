@@ -27,7 +27,7 @@ public class DealerAction extends ActionSupport implements Preparable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long id;
+	private long id; private static final long serialVersionUID = 1L;
 	private String mode;
 	private DealerService dealerService;
 	private Supplier supplier;
