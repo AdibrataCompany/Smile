@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="amendment" extends="smartdealer-package"
+		namespace="/">
+		<action name="earlytermination"
+			class="com.adibrata.smartdealer.action.amendment.EarlyTerminationAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="assetreplacement"
+			class="com.adibrata.smartdealer.action.amendment.AssetReplacementAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="partialassetprepayment"
+			class="com.adibrata.smartdealer.action.amendment.PartialAssetPrepaymentAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="reschedule"
+			class="com.adibrata.smartdealer.action.amendment.Reschedule"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+	</package>
+</struts>

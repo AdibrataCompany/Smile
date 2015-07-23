@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>			
+	<package name="Credit" extends="smartdealer-package" namespace="/">
+		<action name="applicationdata"
+			class="com.adibrata.smartdealer.action.credit.ApplicationDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		
+	<action name="assetdata"
+			class="com.adibrata.smartdealer.action.credit.AssetDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="insurancedata"
+			class="com.adibrata.smartdealer.action.credit.InsuranceDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="financialdata"
+			class="com.adibrata.smartdealer.action.credit.FinancialDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="commissiondata"
+			class="com.adibrata.smartdealer.action.credit.CommissionDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="completedata"
+			class="com.adibrata.smartdealer.action.credit.CompleteDataAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="purchaseorder"
+			class="com.adibrata.smartdealer.action.credit.PurchaseOrderAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="invoice"
+			class="com.adibrata.smartdealer.action.credit.InvoiceAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="deliveryorder"
+			class="com.adibrata.smartdealer.action.credit.DeliveryOrderAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="golive"
+			class="com.adibrata.smartdealer.action.credit.GoLiveAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+	</package>
+</struts>

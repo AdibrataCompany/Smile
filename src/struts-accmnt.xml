@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="accmnt" extends="smartdealer-package"
+		namespace="/">
+		<action name="paymentrecieve"
+			class="com.adibrata.smartdealer.action.accmnt.PaymentReceiveAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+		<action name="paymentreversal"
+			class="com.adibrata.smartdealer.action.accmnt.PaymentReversalAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+		</action>
+	</package>
+</struts>

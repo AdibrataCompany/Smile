@@ -9,11 +9,21 @@
 	<constant name="struts.ognl.logMissingProperties" value="=false" />
 	<constant name="struts.el.throwExceptionOnFailure" value="false" />
 	<constant name="struts.ognl.enableExpressionCache" value="true" />
-	<constant name="struts.serve.static" value="false" ></constant>
-	
-	
+	<constant name="struts.serve.static" value="false"></constant>
+
+
 	<include file="/struts-login.xml"></include>
-	<include file="/struts-adira.xml"></include>
+
+
+	<include file="/struts-credit.xml"></include>
+	<include file="/struts-accmnt.xml"></include>
+	<include file="/struts-suspend.xml"></include>
+	<include file="/struts-pdcmaint.xml"></include>
+	
+	<include file="/struts-amendment.xml"></include>
+	<include file="/struts-insurance.xml"></include>
+	<include file="/struts-collection.xml"></include>
+	
 	<include file="/struts-setting.xml"></include>
 	<include file="/struts-usermanagement.xml"></include>
 	<include file="/struts-accpay.xml"></include>
