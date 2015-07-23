@@ -50,6 +50,7 @@
   <table-filter match-catalog="SmartDealer" match-name="CoyCustWhInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Currency"/>
   <table-filter match-catalog="SmartDealer" match-name="Customer"/>
+  <table-filter match-catalog="SmartDealer" match-name="DailyARAging"/>
   <table-filter match-catalog="SmartDealer" match-name="DanaTunai"/>
   <table-filter match-catalog="SmartDealer" match-name="EarlyTermination"/>
   <table-filter match-catalog="SmartDealer" match-name="Employee"/>
@@ -122,5 +123,4 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
-  <table-filter match-catalog="SmartDealer" match-name="ZipCode"/>
 </hibernate-reverse-engineering>

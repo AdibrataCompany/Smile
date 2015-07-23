@@ -96,6 +96,76 @@ public class HibernateHelper
 					}
 			}
 		
+		@SuppressWarnings("unused")
+		private static SessionFactory buildSessionFactory(boolean isStateless)
+			{
+				sessionFactory = null;
+				Caching<String, SessionFactory> cache = null;
+				try
+					{
+						cache = new Caching<String, SessionFactory>();
+					}
+				catch (final Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				Caching<String, Configuration> configurationcache = null;
+				try
+					{
+						configurationcache = new Caching<String, Configuration>();
+					}
+				catch (final Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				Configuration configuration;
+				try
+					{
+						if (configurationcache.get("configurationcache") == null)
+							{
+								configuration = new Configuration().configure(HibernateHelper.class.getResource("/hibernate.cfg.xml"));
+								configurationcache.put("configurationcache", configuration);
+							}
+						else
+							{
+								configuration = configurationcache.get("configurationcache");
+							}
+						if (sessionFactory == null)
+							{
+								if (cache.get("sessionFactory") == null)
+									{
+										
+										final StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
+										serviceRegistryBuilder.applySettings(configuration.getProperties());
+										final ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+										sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+										
+										cache.put("sessionFactory", sessionFactory);
+										Password = configuration.getProperty("hibernate.connection.password");
+										UserName = configuration.getProperty("hibernate.connection.username");
+										ConnectionString = configuration.getProperty("hibernate.connection.url");
+									}
+								else
+									{
+										
+										sessionFactory = cache.get("sessionFactory");
+										Password = configuration.getProperty("hibernate.connection.password");
+										UserName = configuration.getProperty("hibernate.connection.username");
+										ConnectionString = configuration.getProperty("hibernate.connection.url");
+									}
+								
+							}
+						return sessionFactory;
+					}
+				catch (final Throwable ex)
+					{
+						System.err.println("Initial SessionFactory creation failed." + ex);
+						
+						throw new ExceptionInInitializerError(ex);
+					}
+			}
 		/**
 		 * @return the connectionString
 		 */

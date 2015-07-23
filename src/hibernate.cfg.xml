@@ -37,6 +37,7 @@
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOffice" />
+        <mapping class="com.adibrata.smartdealer.model.DailyAraging" />
         <mapping class="com.adibrata.smartdealer.model.OtherRcvHdr" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsCust" />
         <mapping class="com.adibrata.smartdealer.model.Stock" />
@@ -107,7 +108,6 @@
         <mapping class="com.adibrata.smartdealer.model.AccountPayable" />
         <mapping class="com.adibrata.smartdealer.model.AssetServiceMaster" />
         <mapping class="com.adibrata.smartdealer.model.MsUserRole" />
-        <mapping class="com.adibrata.smartdealer.model.ZipCode" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseHdr" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />

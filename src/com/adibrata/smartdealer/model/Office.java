@@ -1,12 +1,12 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+// Generated Jul 23, 2015 9:44:44 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Office implements java.io.Serializable
 	{
 		
-		private long id;
+		private long id; private static final long serialVersionUID = 1L;
 		private Partner partner;
 		private String officeCode;
 		private String name;
@@ -64,8 +64,7 @@ public class Office implements java.io.Serializable
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
-		private Set<AccountPayable> accountPayablesForOfficeId = new HashSet<AccountPayable>(0);
-		private Set<AccountPayable> accountPayablesForOfficeDisbId = new HashSet<AccountPayable>(0);
+		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
@@ -83,8 +82,8 @@ public class Office implements java.io.Serializable
 		public Office(long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
 		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers, Set<PurchaseInvoice> purchaseInvoices, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
-		        Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayablesForOfficeId,
-		        Set<AccountPayable> accountPayablesForOfficeDisbId, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
+		        Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables,
+		        Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -126,8 +125,7 @@ public class Office implements java.io.Serializable
 				this.agrmnts = agrmnts;
 				this.danaTunais = danaTunais;
 				this.payReqHdrs = payReqHdrs;
-				this.accountPayablesForOfficeId = accountPayablesForOfficeId;
-				this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
+				this.accountPayables = accountPayables;
 				this.advanceCashes = advanceCashes;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
@@ -579,26 +577,15 @@ public class Office implements java.io.Serializable
 				this.payReqHdrs = payReqHdrs;
 			}
 			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "officeByOfficeId")
-		public Set<AccountPayable> getAccountPayablesForOfficeId()
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+		public Set<AccountPayable> getAccountPayables()
 			{
-				return this.accountPayablesForOfficeId;
+				return this.accountPayables;
 			}
 			
-		public void setAccountPayablesForOfficeId(Set<AccountPayable> accountPayablesForOfficeId)
+		public void setAccountPayables(Set<AccountPayable> accountPayables)
 			{
-				this.accountPayablesForOfficeId = accountPayablesForOfficeId;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "officeByOfficeDisbId")
-		public Set<AccountPayable> getAccountPayablesForOfficeDisbId()
-			{
-				return this.accountPayablesForOfficeDisbId;
-			}
-			
-		public void setAccountPayablesForOfficeDisbId(Set<AccountPayable> accountPayablesForOfficeDisbId)
-			{
-				this.accountPayablesForOfficeDisbId = accountPayablesForOfficeDisbId;
+				this.accountPayables = accountPayables;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

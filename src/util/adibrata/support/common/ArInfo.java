@@ -224,7 +224,7 @@ public class ArInfo
 
 						result = interestamount * (diffday / period);
 
-					} // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+					}             // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -379,5 +379,38 @@ public class ArInfo
 					}
 				return lstresult;
 
+			}
+
+		public int AgrmntDaysOverdue(final long agrmntid, final Date valuedate) throws Exception
+			{
+				int result = (short) 0;
+				final StringBuilder sql = new StringBuilder();
+				final SQLQuery selectQuery;
+				Date duedate;
+				try
+					{
+						sql.append("Select DueDate from InstSchedule where AgrmntId = :agrmntid and instAmt - PaidAmt - WaivedAmt > 0 order by dueDate");
+						selectQuery = this.session.createSQLQuery(sql.toString());
+						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+						selectQuery.setParameter("agrmntid", agrmntid);
+						selectQuery.setMaxResults(1);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("AgrmntDaysOverdue-AgrmntId" + agrmntid);
+						selectQuery.addScalar("DueDate", new DateType());
+						duedate = (Date) (selectQuery.uniqueResult());
+						result = (short) ((valuedate.getTime() - duedate.getTime()) / (24 * 60 * 60 * 1000));
+					}
+				catch (final Exception exp)
+					{
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						sql.setLength(0);
+					}
+				return result;
 			}
 	}

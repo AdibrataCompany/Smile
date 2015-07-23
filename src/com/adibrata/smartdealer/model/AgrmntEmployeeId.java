@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+// Generated Jul 23, 2015 9:44:44 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 public class AgrmntEmployeeId implements java.io.Serializable
 	{
 		
-		private long id;
+		private long id; private static final long serialVersionUID = 1L;
 		private Long agrmntId;
 		private Long aoid;
 		private Long caid;
