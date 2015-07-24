@@ -38,7 +38,7 @@ public class ArInfo
 		Session session;
 		Double bucket1_principle, bucket1_gross, bucket2_principle, bucket2_gross, bucket3_principle, bucket3_gross, bucket4_principle, bucket4_gross, bucket5_principle, bucket5_gross, bucket6_principle, bucket6_gross, bucket7_principle,
 		        bucket7_gross, bucket8_principle, bucket8_gross, bucket9_principle, bucket9_gross, bucket10_principle, bucket10_gross;
-
+				
 		public ArInfo() throws Exception
 			{
 				try
@@ -54,39 +54,39 @@ public class ArInfo
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		public ArInfo(final Session session)
 			{
 				this.session = session;
 			}
-
+			
 		@SuppressWarnings("unchecked")
-		public PaymentInfo GetDetail(final Session session, final long agrmntid, final Date valuedate) throws Exception
+		public PaymentInfo GetDetail(final long agrmntid, final Date valuedate) throws Exception
 			{
 				PaymentInfo paymentInfo = new PaymentInfo();
 				double totallcinstallment;
 				double totallcinsurance;
-				final LCInstallment lcinstallment = new LCInstallment(session);
-
+				final LCInstallment lcinstallment = new LCInstallment(this.session);
+				
 				Query qry;
 				StringBuilder sql = new StringBuilder();
 				Agrmnt agrmnt = new Agrmnt();
 				Currency currency = new Currency();
 				try
 					{
-						agrmnt = AgreementInfo.View(session, agrmntid);
+						agrmnt = AgreementInfo.View(this.session, agrmntid);
 						if ((agrmnt.getContractStatus() == "LIV") || (agrmnt.getContractStatus() == "ICP") || (agrmnt.getContractStatus() == "ICL") || (agrmnt.getContractStatus() == "INV"))
 							{
 								paymentInfo.setOsinstallment(this.TotalOsInstallment(agrmntid, valuedate));
 								paymentInfo.setTotalinstallmentamount(this.TotalInstallment(agrmntid, valuedate));
 								paymentInfo = this.GetOsPrincipalandInterest(agrmntid, valuedate, paymentInfo);
-								currency = CurrencyInfo.GetCurrencyInfo(session, agrmnt.getPartner(), agrmnt.getCurrencyId());
+								currency = CurrencyInfo.GetCurrencyInfo(this.session, agrmnt.getPartner(), agrmnt.getCurrencyId());
 								paymentInfo.setCurrencyrounded(currency.getRounded());
 							}
-
+							
 						sql = new StringBuilder();
 						sql.append("from AgrmntMnt where AgrmntId = :agrmntid");
-						qry = session.createQuery(sql.toString());
+						qry = this.session.createQuery(sql.toString());
 						qry.setParameter("agrmntid", agrmntid);
 						qry.setCacheable(true);
 						qry.setCacheRegion("AgrmntMnt-AgrmntId" + agrmntid);
@@ -95,22 +95,22 @@ public class ArInfo
 							{
 								for (final AgrmntMnt aRow : lstinfo)
 									{
-
+										
 										paymentInfo.setAccruedinterest(this.AccruedInfo(agrmnt, valuedate));
 										paymentInfo.setLcinstallmentcurrent(lcinstallment.LCCalc(agrmnt, valuedate));
-										paymentInfo.setLcinsurancecurrent(LCInsurance.LCCalc(session, agrmnt, valuedate));
+										paymentInfo.setLcinsurancecurrent(LCInsurance.LCCalc(this.session, agrmnt, valuedate));
 										paymentInfo.setOsprincipal(agrmnt.getOsp());
 										paymentInfo.setOsinterest(agrmnt.getOsi());
 										paymentInfo.setNextinstdate(agrmnt.getNextInstDate());
 										paymentInfo.setNextinstnumber(agrmnt.getNextInstNumber());
-
+										
 										paymentInfo.setPrepaid(agrmnt.getPrepaidAmt());
-
+										
 										paymentInfo.setLastlcinstallmentamount(aRow.getLcinstAmt() - aRow.getLcinstPaid() - aRow.getLcinstWaived());
 										paymentInfo.setLastlcinsuranceamount(aRow.getLcinsAmt() - aRow.getLcinsPaid() - aRow.getLcinsWaived());
-
+										
 										paymentInfo.setOsinsurance(aRow.getInsAmt() - aRow.getInsPaid() - aRow.getInsWaived());
-
+										
 										totallcinstallment = Number.Rounding(paymentInfo.getLastlcinstallmentamount() + paymentInfo.getLcinstallmentcurrent(), paymentInfo.getCurrencyrounded());
 										paymentInfo.setTotallcinstallment(totallcinstallment);
 										// Calculate LC Insurance Amount
@@ -119,15 +119,18 @@ public class ArInfo
 										double totalet;
 										totalet = paymentInfo.getOsprincipalundue() + paymentInfo.getOsinterestundue() + paymentInfo.getOsinstallment() + paymentInfo.getOsinsurance() + paymentInfo.getTotallcinstallment()
 										        + paymentInfo.getTotallcinsurance() + paymentInfo.getPrepaid();
-
+												
 										paymentInfo.setTotalpayment(totalet - (paymentInfo.getOsprincipalundue() + paymentInfo.getOsinterestundue()));
 										paymentInfo.setTotalearlytermination(totalet);
-
+										
 										paymentInfo.setEarlyterminationpenalty(Number.Rounding(paymentInfo.getOsprincipalundue() * agrmnt.getPercentagePenalty(), paymentInfo.getCurrencyrounded()));
-
+										paymentInfo.setMaximuminstallment(paymentInfo.getOsinstallment());
+										paymentInfo.setMaximuminsurance(paymentInfo.getOsinsurance());
+										paymentInfo.setMaximumlcinstall(totallcinstallment);
+										paymentInfo.setMaximumlcinsurance(totallcinsurance);
 									}
 							}
-
+							
 						// Select @InstallmentDue = Sum(InstallmentAmount)
 						// from InstallmentSchedule with ( nolock )
 						// where BranchID = @branchID
@@ -138,7 +141,7 @@ public class ArInfo
 						// where installmentschedule.BranchId = Agreement.BranchID
 						// and InstallmentSchedule.ApplicationID = Agreement.ApplicationID
 						// and ContractStatus in ( 'LIV', 'ICP', 'INV' ) )
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -148,9 +151,89 @@ public class ArInfo
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return paymentInfo;
-
+				
 			}
-
+			
+		public PaymentInfo PaymentAllocation(final Agrmnt agrmnt, final Date valuedate, Double amountreceive) throws Exception
+			{
+				PaymentInfo info = new PaymentInfo();
+				int counter = 1;
+				try
+					{
+						
+						info = this.GetDetail(agrmnt.getId(), valuedate);
+						while ((amountreceive > 0) && (counter < 4))
+							{
+								if ((info.getMaximuminstallment() > 0) && (counter == 1))
+									{
+										if ((amountreceive > info.getMaximuminstallment()))
+											{
+												info.setInstallmentallocation(info.getMaximuminstallment());
+												amountreceive -= info.getMaximuminstallment();
+											}
+										else
+											{
+												info.setInstallmentallocation(amountreceive);
+												amountreceive = (double) 0;
+											}
+									}
+								else if ((info.getMaximumlcinstall() > 0) && (counter == 2))
+									{
+										if ((amountreceive > info.getMaximumlcinstall()))
+											{
+												info.setLcinstallallocation(info.getMaximumlcinstall());
+												amountreceive -= info.getMaximumlcinstall();
+											}
+										else
+											{
+												info.setLcinstallallocation(amountreceive);
+												amountreceive = (double) 0;
+											}
+									}
+								else if ((info.getMaximuminsurance() > 0) && (counter == 3))
+									{
+										if ((amountreceive > info.getMaximuminsurance()))
+											{
+												info.setInsuranceallocation(info.getMaximuminsurance());
+												amountreceive -= info.getMaximuminsurance();
+											}
+										else
+											{
+												info.setInsuranceallocation(amountreceive);
+												amountreceive = (double) 0;
+											}
+									}
+								else if ((info.getMaximumlcinsurance() > 0) && (counter == 4))
+									{
+										if ((amountreceive > info.getMaximumlcinsurance()))
+											{
+												info.setLcinsuranceallocation(info.getMaximumlcinsurance());
+												amountreceive -= info.getMaximumlcinsurance();
+											}
+										else
+											{
+												info.setLcinsuranceallocation(amountreceive);
+												amountreceive = (double) 0;
+											}
+									}
+								else if ((amountreceive > 0) && (counter == 5))
+									{
+										info.setPrepaidallocation(amountreceive);
+										amountreceive = 0.00;
+									}
+								counter -= 1;
+							}
+					}
+				catch (final Exception exp)
+					{
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return info;
+			}
+			
 		@SuppressWarnings(
 			{
 			        "rawtypes", "unchecked"
@@ -173,7 +256,7 @@ public class ArInfo
 						selectQuery.setParameter("agrmntid", agrmnt.getId());
 						selectQuery.setParameter("valuedate", valuedate);
 						selectQuery.setMaxResults(1);
-
+						
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AccruedInfo-AgrmntId" + agrmnt.getId());
 						selectQuery.addScalar("DueDate", new DateType());
@@ -185,7 +268,7 @@ public class ArInfo
 								for (final Object object : lstinfo)
 									{
 										final Map row = (Map) object;
-
+										
 										accrueddate = (Date) row.get("AccruedDate");
 										if (accrueddate != null)
 											{
@@ -209,7 +292,7 @@ public class ArInfo
 						selectQuery.setParameter("agrmntid", agrmnt.getId());
 						selectQuery.setParameter("valuedate", valuedate);
 						selectQuery.setMaxResults(1);
-
+						
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AccruedInfoNextDue-AgrmntId" + agrmnt.getId());
 						selectQuery.addScalar("DueDate", new DateType());
@@ -224,10 +307,10 @@ public class ArInfo
 							}
 						final short period = (short) ((nextduedate.getTime() - duedate.getTime()) / (24 * 60 * 60 * 1000));
 						final short diffday = (short) ((valuedate.getTime() - duedate.getTime()) / (24 * 60 * 60 * 1000));
-
+						
 						result = interestamount * (diffday / period);
-
-					}                                                        // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+						
+					}                                                                                                      // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -241,7 +324,7 @@ public class ArInfo
 					}
 				return result;
 			}
-
+			
 		public double TotalOsInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -272,7 +355,7 @@ public class ArInfo
 					}
 				return result;
 			}
-
+			
 		public double TotalInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -302,7 +385,7 @@ public class ArInfo
 					}
 				return result;
 			}
-
+			
 		@SuppressWarnings(
 			{
 			        "unchecked", "rawtypes"
@@ -325,7 +408,7 @@ public class ArInfo
 						selectQuery.addScalar("OSI", new DoubleType());
 						selectQuery.addScalar("NextInstDueDate", new DateType());
 						selectQuery.addScalar("NextInstDueNumber", new ShortType());
-
+						
 						final List<Object[]> lstinfo = selectQuery.list();
 						if (lstinfo.size() != 0)
 							{
@@ -352,7 +435,7 @@ public class ArInfo
 					}
 				return paymentinfo;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public List<InstSchedule> LstInstSchedule(final long agrmntid) throws Exception
 			{
@@ -363,7 +446,7 @@ public class ArInfo
 					{
 						sql.append("from InstSchedule where AgrmntId = :agrmntid order by dueDate");
 						qry = this.session.createQuery(sql.toString());
-
+						
 						qry.setParameter("agrmntid", agrmntid);
 						qry.setCacheable(true);
 						qry.setCacheRegion("LstInstSchedule-AgrmntId" + agrmntid);
@@ -382,7 +465,7 @@ public class ArInfo
 					}
 				return lstresult;
 			}
-
+			
 		public int AgrmntDaysOverdue(final long agrmntid, final Date valuedate) throws Exception
 			{
 				int result = 0;
@@ -397,7 +480,7 @@ public class ArInfo
 						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
 						selectQuery.setParameter("agrmntid", agrmntid);
 						selectQuery.setParameter("valuedate", valuedate);
-
+						
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AgrmntDaysOverdue-AgrmntId" + agrmntid);
 						selectQuery.addScalar("DueDate", new DateType());
@@ -418,7 +501,7 @@ public class ArInfo
 											
 											}
 										// overduesum +=
-
+										
 									}
 							}
 						duedate = (Date) (selectQuery.uniqueResult());
@@ -553,7 +636,7 @@ public class ArInfo
 			{
 				return this.session;
 			}
-
+			
 		/**
 		 * @param session
 		 *            the session to set
@@ -562,7 +645,7 @@ public class ArInfo
 			{
 				this.session = session;
 			}
-
+			
 		/**
 		 * @return the bucket1_principle
 		 */
@@ -570,7 +653,7 @@ public class ArInfo
 			{
 				return this.bucket1_principle;
 			}
-
+			
 		/**
 		 * @param bucket1_principle
 		 *            the bucket1_principle to set
@@ -579,7 +662,7 @@ public class ArInfo
 			{
 				this.bucket1_principle = bucket1_principle;
 			}
-
+			
 		/**
 		 * @return the bucket1_gross
 		 */
@@ -587,7 +670,7 @@ public class ArInfo
 			{
 				return this.bucket1_gross;
 			}
-
+			
 		/**
 		 * @param bucket1_gross
 		 *            the bucket1_gross to set
@@ -596,7 +679,7 @@ public class ArInfo
 			{
 				this.bucket1_gross = bucket1_gross;
 			}
-
+			
 		/**
 		 * @return the bucket2_principle
 		 */
@@ -604,7 +687,7 @@ public class ArInfo
 			{
 				return this.bucket2_principle;
 			}
-
+			
 		/**
 		 * @param bucket2_principle
 		 *            the bucket2_principle to set
@@ -613,7 +696,7 @@ public class ArInfo
 			{
 				this.bucket2_principle = bucket2_principle;
 			}
-
+			
 		/**
 		 * @return the bucket2_gross
 		 */
@@ -621,7 +704,7 @@ public class ArInfo
 			{
 				return this.bucket2_gross;
 			}
-
+			
 		/**
 		 * @param bucket2_gross
 		 *            the bucket2_gross to set
@@ -630,7 +713,7 @@ public class ArInfo
 			{
 				this.bucket2_gross = bucket2_gross;
 			}
-
+			
 		/**
 		 * @return the bucket3_principle
 		 */
@@ -638,7 +721,7 @@ public class ArInfo
 			{
 				return this.bucket3_principle;
 			}
-
+			
 		/**
 		 * @param bucket3_principle
 		 *            the bucket3_principle to set
@@ -647,7 +730,7 @@ public class ArInfo
 			{
 				this.bucket3_principle = bucket3_principle;
 			}
-
+			
 		/**
 		 * @return the bucket3_gross
 		 */
@@ -655,7 +738,7 @@ public class ArInfo
 			{
 				return this.bucket3_gross;
 			}
-
+			
 		/**
 		 * @param bucket3_gross
 		 *            the bucket3_gross to set
@@ -664,7 +747,7 @@ public class ArInfo
 			{
 				this.bucket3_gross = bucket3_gross;
 			}
-
+			
 		/**
 		 * @return the bucket4_principle
 		 */
@@ -672,7 +755,7 @@ public class ArInfo
 			{
 				return this.bucket4_principle;
 			}
-
+			
 		/**
 		 * @param bucket4_principle
 		 *            the bucket4_principle to set
@@ -681,7 +764,7 @@ public class ArInfo
 			{
 				this.bucket4_principle = bucket4_principle;
 			}
-
+			
 		/**
 		 * @return the bucket4_gross
 		 */
@@ -689,7 +772,7 @@ public class ArInfo
 			{
 				return this.bucket4_gross;
 			}
-
+			
 		/**
 		 * @param bucket4_gross
 		 *            the bucket4_gross to set
@@ -698,7 +781,7 @@ public class ArInfo
 			{
 				this.bucket4_gross = bucket4_gross;
 			}
-
+			
 		/**
 		 * @return the bucket5_principle
 		 */
@@ -706,7 +789,7 @@ public class ArInfo
 			{
 				return this.bucket5_principle;
 			}
-
+			
 		/**
 		 * @param bucket5_principle
 		 *            the bucket5_principle to set
@@ -715,7 +798,7 @@ public class ArInfo
 			{
 				this.bucket5_principle = bucket5_principle;
 			}
-
+			
 		/**
 		 * @return the bucket5_gross
 		 */
@@ -723,7 +806,7 @@ public class ArInfo
 			{
 				return this.bucket5_gross;
 			}
-
+			
 		/**
 		 * @param bucket5_gross
 		 *            the bucket5_gross to set
@@ -732,7 +815,7 @@ public class ArInfo
 			{
 				this.bucket5_gross = bucket5_gross;
 			}
-
+			
 		/**
 		 * @return the bucket6_principle
 		 */
@@ -740,7 +823,7 @@ public class ArInfo
 			{
 				return this.bucket6_principle;
 			}
-
+			
 		/**
 		 * @param bucket6_principle
 		 *            the bucket6_principle to set
@@ -749,7 +832,7 @@ public class ArInfo
 			{
 				this.bucket6_principle = bucket6_principle;
 			}
-
+			
 		/**
 		 * @return the bucket6_gross
 		 */
@@ -757,7 +840,7 @@ public class ArInfo
 			{
 				return this.bucket6_gross;
 			}
-
+			
 		/**
 		 * @param bucket6_gross
 		 *            the bucket6_gross to set
@@ -766,7 +849,7 @@ public class ArInfo
 			{
 				this.bucket6_gross = bucket6_gross;
 			}
-
+			
 		/**
 		 * @return the bucket7_principle
 		 */
@@ -774,7 +857,7 @@ public class ArInfo
 			{
 				return this.bucket7_principle;
 			}
-
+			
 		/**
 		 * @param bucket7_principle
 		 *            the bucket7_principle to set
@@ -783,7 +866,7 @@ public class ArInfo
 			{
 				this.bucket7_principle = bucket7_principle;
 			}
-
+			
 		/**
 		 * @return the bucket7_gross
 		 */
@@ -791,7 +874,7 @@ public class ArInfo
 			{
 				return this.bucket7_gross;
 			}
-
+			
 		/**
 		 * @param bucket7_gross
 		 *            the bucket7_gross to set
@@ -800,7 +883,7 @@ public class ArInfo
 			{
 				this.bucket7_gross = bucket7_gross;
 			}
-
+			
 		/**
 		 * @return the bucket8_principle
 		 */
@@ -808,7 +891,7 @@ public class ArInfo
 			{
 				return this.bucket8_principle;
 			}
-
+			
 		/**
 		 * @param bucket8_principle
 		 *            the bucket8_principle to set
@@ -817,7 +900,7 @@ public class ArInfo
 			{
 				this.bucket8_principle = bucket8_principle;
 			}
-
+			
 		/**
 		 * @return the bucket8_gross
 		 */
@@ -825,7 +908,7 @@ public class ArInfo
 			{
 				return this.bucket8_gross;
 			}
-
+			
 		/**
 		 * @param bucket8_gross
 		 *            the bucket8_gross to set
@@ -834,7 +917,7 @@ public class ArInfo
 			{
 				this.bucket8_gross = bucket8_gross;
 			}
-
+			
 		/**
 		 * @return the bucket9_principle
 		 */
@@ -842,7 +925,7 @@ public class ArInfo
 			{
 				return this.bucket9_principle;
 			}
-
+			
 		/**
 		 * @param bucket9_principle
 		 *            the bucket9_principle to set
@@ -851,7 +934,7 @@ public class ArInfo
 			{
 				this.bucket9_principle = bucket9_principle;
 			}
-
+			
 		/**
 		 * @return the bucket9_gross
 		 */
@@ -859,7 +942,7 @@ public class ArInfo
 			{
 				return this.bucket9_gross;
 			}
-
+			
 		/**
 		 * @param bucket9_gross
 		 *            the bucket9_gross to set
@@ -868,7 +951,7 @@ public class ArInfo
 			{
 				this.bucket9_gross = bucket9_gross;
 			}
-
+			
 		/**
 		 * @return the bucket10_principle
 		 */
@@ -876,7 +959,7 @@ public class ArInfo
 			{
 				return this.bucket10_principle;
 			}
-
+			
 		/**
 		 * @param bucket10_principle
 		 *            the bucket10_principle to set
@@ -885,7 +968,7 @@ public class ArInfo
 			{
 				this.bucket10_principle = bucket10_principle;
 			}
-
+			
 		/**
 		 * @return the bucket10_gross
 		 */
@@ -893,7 +976,7 @@ public class ArInfo
 			{
 				return this.bucket10_gross;
 			}
-
+			
 		/**
 		 * @param bucket10_gross
 		 *            the bucket10_gross to set
@@ -902,5 +985,5 @@ public class ArInfo
 			{
 				this.bucket10_gross = bucket10_gross;
 			}
-
+			
 	}

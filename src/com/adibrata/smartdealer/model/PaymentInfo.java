@@ -32,12 +32,22 @@ public class PaymentInfo
 		short nextinstduenumber;
 		// total untuk early termination exclude prepayment penalty
 		double totalearlytermination;
-
+		
 		double totalpayment;
-
+		
 		double earlyterminationpenalty;
-
+		
 		double totalosar;
+		
+		double maximuminstallment;
+		double maximuminsurance;
+		double maximumlcinstall;
+		double maximumlcinsurance;
+		double installmentallocation;
+		double insuranceallocation;
+		double lcinsuranceallocation;
+		double lcinstallallocation;
+		double prepaidallocation;
 		
 		public double getLastlcinstallmentamount()
 			{
@@ -353,6 +363,159 @@ public class PaymentInfo
 		public void setEarlyterminationpenalty(final double earlyterminationpenalty)
 			{
 				this.earlyterminationpenalty = earlyterminationpenalty;
+			}
+
+		/**
+		 * @return the maximuminstallment
+		 */
+		public double getMaximuminstallment()
+			{
+				return this.maximuminstallment;
+			}
+
+		/**
+		 * @param maximuminstallment
+		 *            the maximuminstallment to set
+		 */
+		public void setMaximuminstallment(final double maximuminstallment)
+			{
+				this.maximuminstallment = maximuminstallment;
+			}
+
+		/**
+		 * @return the maximuminsurance
+		 */
+		public double getMaximuminsurance()
+			{
+				return this.maximuminsurance;
+			}
+
+		/**
+		 * @param maximuminsurance
+		 *            the maximuminsurance to set
+		 */
+		public void setMaximuminsurance(final double maximuminsurance)
+			{
+				this.maximuminsurance = maximuminsurance;
+			}
+
+		/**
+		 * @return the maximumlcinstall
+		 */
+		public double getMaximumlcinstall()
+			{
+				return this.maximumlcinstall;
+			}
+
+		/**
+		 * @param maximumlcinstall
+		 *            the maximumlcinstall to set
+		 */
+		public void setMaximumlcinstall(final double maximumlcinstall)
+			{
+				this.maximumlcinstall = maximumlcinstall;
+			}
+
+		/**
+		 * @return the maximumlcinsurance
+		 */
+		public double getMaximumlcinsurance()
+			{
+				return this.maximumlcinsurance;
+			}
+
+		/**
+		 * @param maximumlcinsurance
+		 *            the maximumlcinsurance to set
+		 */
+		public void setMaximumlcinsurance(final double maximumlcinsurance)
+			{
+				this.maximumlcinsurance = maximumlcinsurance;
+			}
+			
+		/**
+		 * @return the installmentallocation
+		 */
+		public double getInstallmentallocation()
+			{
+				return this.installmentallocation;
+			}
+			
+		/**
+		 * @param installmentallocation
+		 *            the installmentallocation to set
+		 */
+		public void setInstallmentallocation(final double installmentallocation)
+			{
+				this.installmentallocation = installmentallocation;
+			}
+			
+		/**
+		 * @return the insuranceallocation
+		 */
+		public double getInsuranceallocation()
+			{
+				return this.insuranceallocation;
+			}
+			
+		/**
+		 * @param insuranceallocation
+		 *            the insuranceallocation to set
+		 */
+		public void setInsuranceallocation(final double insuranceallocation)
+			{
+				this.insuranceallocation = insuranceallocation;
+			}
+			
+		/**
+		 * @return the lcinsuranceallocation
+		 */
+		public double getLcinsuranceallocation()
+			{
+				return this.lcinsuranceallocation;
+			}
+			
+		/**
+		 * @param lcinsuranceallocation
+		 *            the lcinsuranceallocation to set
+		 */
+		public void setLcinsuranceallocation(final double lcinsuranceallocation)
+			{
+				this.lcinsuranceallocation = lcinsuranceallocation;
+			}
+			
+		/**
+		 * @return the lcinstallallocation
+		 */
+		public double getLcinstallallocation()
+			{
+				return this.lcinstallallocation;
+			}
+			
+		/**
+		 * @param lcinstallallocation
+		 *            the lcinstallallocation to set
+		 */
+		public void setLcinstallallocation(final double lcinstallallocation)
+			{
+				this.lcinstallallocation = lcinstallallocation;
+			}
+			
+		/**
+		 * @return the prepaidallocation
+		 */
+		public double getPrepaidallocation()
+			{
+				return this.prepaidallocation;
+			}
+			
+		/**
+		 * @param prepaidallocation
+		 *            the prepaidallocation to set
+		 */
+		public void setPrepaidallocation(final double prepaidallocation)
+			{
+				this.prepaidallocation = prepaidallocation;
 			}
 			
 	}
