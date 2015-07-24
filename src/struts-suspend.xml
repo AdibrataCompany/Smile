@@ -43,8 +43,8 @@
 			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
-		<action name="suspendalreversal"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendReversalAction"
+		<action name="suspendalreverse"
+			class="com.adibrata.smartdealer.action.accmnt.SuspendReverseAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

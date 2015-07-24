@@ -36,6 +36,7 @@
   <table-filter match-catalog="SmartDealer" match-name="AssetServiceMaster"/>
   <table-filter match-catalog="SmartDealer" match-name="AssetType"/>
   <table-filter match-catalog="SmartDealer" match-name="BankAccount"/>
+  <table-filter match-catalog="SmartDealer" match-name="BucketAgingReport"/>
   <table-filter match-catalog="SmartDealer" match-name="COAMaster"/>
   <table-filter match-catalog="SmartDealer" match-name="CashBankDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="CashBankHdr"/>
@@ -50,6 +51,7 @@
   <table-filter match-catalog="SmartDealer" match-name="CoyCustWhInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Currency"/>
   <table-filter match-catalog="SmartDealer" match-name="Customer"/>
+  <table-filter match-catalog="SmartDealer" match-name="CustomerBankInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="DailyARAging"/>
   <table-filter match-catalog="SmartDealer" match-name="DanaTunai"/>
   <table-filter match-catalog="SmartDealer" match-name="EarlyTermination"/>
@@ -90,9 +92,13 @@
   <table-filter match-catalog="SmartDealer" match-name="PersCust"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustCCInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustEmergencyInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="PersCustEntInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustFamilyInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="PersCustFinancialData"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustJobInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustLegalInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="PersCustOmsetInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="PersCustOtherBussinessInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustResidenceInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PersCustTrusteeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PettyCashDtl"/>
@@ -123,4 +129,5 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
+  <table-filter match-catalog="SmartDealer" match-name="ZipCode"/>
 </hibernate-reverse-engineering>

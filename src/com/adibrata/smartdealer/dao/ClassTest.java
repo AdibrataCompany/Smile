@@ -9,10 +9,6 @@ import com.adibrata.smartdealer.model.CoaSchmHdr;
 import com.adibrata.smartdealer.model.ListCoaSchmDtl;
 import com.adibrata.smartdealer.model.Partner;
 
-import util.adibrata.support.amortization.InstallmentCalc;
-import util.adibrata.support.amortization.InstallmentCalc.PaymentAdvance;
-import util.adibrata.support.common.CoaInfo;
-
 public class ClassTest
 	{
 
@@ -29,14 +25,16 @@ public class ClassTest
 				b.setPartner(p);
 				b.setId(1);
 
-				final SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-				final Date dudate = fmt.parse("2015-01-06");
-				final Date valuedate = fmt.parse("2015-01-20");
+				final SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+				final Date duedate = fmt.parse("20/12/2015");
+				
+				System.out.print(duedate);
 
-				System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));
-
-				System.out.println((short) ((valuedate.getTime() - dudate.getTime()) / (24 * 60 * 60 * 1000)));
-				System.out.println(InstallmentCalc.PMT(8.9 / 1200, 48, -210000000, PaymentAdvance.no));
+				/*
+				 * System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));
+				 * System.out.println((short) ((valuedate.getTime() - dudate.getTime()) / (24 * 60 * 60 * 1000)));
+				 * System.out.println(InstallmentCalc.PMT(8.9 / 1200, 48, -210000000, PaymentAdvance.no));
+				 */
 
 				// System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));
 				// System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));

@@ -9,27 +9,26 @@ package com.adibrata.smartdealer.dao.othertrans;
  */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import util.adibrata.framework.dataaccess.HibernateHelper;
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.OtherRcvDtl;
 import com.adibrata.smartdealer.model.OtherRcvHdr;
 import com.adibrata.smartdealer.service.othertransactions.OtherReceiveService;
 
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+
 public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 	{
 		String userupd;
 		Session session;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar dtmupd = Calendar.getInstance();
+		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
@@ -53,7 +52,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -63,7 +62,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 		 */
 		@SuppressWarnings("unused")
 		@Override
-		public void Save(String usrupd, OtherRcvHdr otherRcvHdr, List<OtherRcvDtl> lstotherRcvDtl) throws Exception
+		public void Save(final String usrupd, final OtherRcvHdr otherRcvHdr, final List<OtherRcvDtl> lstotherRcvDtl) throws Exception
 			{
 				// TODO Auto-generated method stub
 				this.session.getTransaction().begin();
@@ -71,16 +70,16 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					{
 						final String transno = TransactionNo(this.session, TransactionType.otherreceive, otherRcvHdr.getPartner().getPartnerCode(), otherRcvHdr.getOffice().getId());
 						otherRcvHdr.setOtherRcvNo(transno);
-						otherRcvHdr.setDtmCrt(this.dtmupd.getTime());
-						otherRcvHdr.setDtmUpd(this.dtmupd.getTime());
+						otherRcvHdr.setDtmCrt(this.dtmupd);
+						otherRcvHdr.setDtmUpd(this.dtmupd);
 						this.session.save(otherRcvHdr);
 						
 						for (final OtherRcvDtl arow : lstotherRcvDtl)
 							{
 								final OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
 								otherRcvDtl.setOtherRcvHdr(otherRcvHdr);
-								otherRcvDtl.setDtmCrt(this.dtmupd.getTime());
-								otherRcvDtl.setDtmUpd(this.dtmupd.getTime());
+								otherRcvDtl.setDtmCrt(this.dtmupd);
+								otherRcvDtl.setDtmUpd(this.dtmupd);
 								this.session.save(otherRcvDtl);
 							}
 						this.session.getTransaction().commit();
@@ -95,7 +94,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -104,7 +103,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 		 */
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception
+		public List<OtherRcvHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -135,10 +134,10 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-		
+
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<OtherRcvHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception
+		public List<OtherRcvHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -169,5 +168,5 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-		
+
 	}

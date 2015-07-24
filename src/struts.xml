@@ -2,7 +2,9 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
 <struts>
+
 	<constant name="struts.devMode" value="false"></constant>
 	<constant name="struts.freemarker.templatesCache" value="true" />
 	<constant name="struts.xslt.nocache" value="false" />
@@ -19,11 +21,11 @@
 	<include file="/struts-accmnt.xml"></include>
 	<include file="/struts-suspend.xml"></include>
 	<include file="/struts-pdcmaint.xml"></include>
-	
+
 	<include file="/struts-amendment.xml"></include>
 	<include file="/struts-insurance.xml"></include>
 	<include file="/struts-collection.xml"></include>
-	
+
 	<include file="/struts-setting.xml"></include>
 	<include file="/struts-usermanagement.xml"></include>
 	<include file="/struts-accpay.xml"></include>

@@ -63,7 +63,7 @@
 			</result>
 		</action>
 		<action name="reschedule"
-			class="com.adibrata.smartdealer.action.amendment.Reschedule"
+			class="com.adibrata.smartdealer.action.amendment.RescheduleAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

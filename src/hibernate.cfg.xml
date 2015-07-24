@@ -57,7 +57,9 @@
         <mapping class="com.adibrata.smartdealer.model.EntrustDtl" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsStandardInfo" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderDtl" />
+        <mapping class="com.adibrata.smartdealer.model.CustomerBankInfo" />
         <mapping class="com.adibrata.smartdealer.model.OtherDsbHdr" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustOmsetInfo" />
         <mapping class="com.adibrata.smartdealer.model.PersCustResidenceInfo" />
         <mapping class="com.adibrata.smartdealer.model.EntrustHdr" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustLegalInfo" />
@@ -93,12 +95,14 @@
         <mapping class="com.adibrata.smartdealer.model.Customer" />
         <mapping class="com.adibrata.smartdealer.model.MsUser" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetLevelInfo" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustFinancialData" />
         <mapping class="com.adibrata.smartdealer.model.CoyCust" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.Holiday" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustOtherBussinessInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatementInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMailingInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetCategory" />
@@ -109,6 +113,7 @@
         <mapping class="com.adibrata.smartdealer.model.AccountPayable" />
         <mapping class="com.adibrata.smartdealer.model.AssetServiceMaster" />
         <mapping class="com.adibrata.smartdealer.model.MsUserRole" />
+        <mapping class="com.adibrata.smartdealer.model.ZipCode" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseHdr" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />
@@ -119,6 +124,7 @@
         <mapping class="com.adibrata.smartdealer.model.MsMenuRole" />
         <mapping class="com.adibrata.smartdealer.model.ReturSalesDtl" />
         <mapping class="com.adibrata.smartdealer.model.PaymentReversal" />
+        <mapping class="com.adibrata.smartdealer.model.PersCustEntInfo" />
         <mapping class="com.adibrata.smartdealer.model.Partner" />
         <mapping class="com.adibrata.smartdealer.model.TrxSeqNo" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseDtl" />
