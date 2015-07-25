@@ -36,9 +36,10 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-		private String assetdocumentcode;
-		private String assetdocumentname;
+		private String documentCode;
+		private String documentName;
 		private String assetType;
+		private String status;
 
 		/**
 		 * @throws Exception
@@ -55,6 +56,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 
 				this.setPartner(partner);
 				this.setOffice(office);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.setAssetDocMaster(assetDocMaster);
 				if (this.pageNumber == 0)
 					{
@@ -64,7 +66,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 *
+		 * @throws Exception
 		 */
 		/*
 		 * public AssetDocAction(AssetDocMasterService assetDocMasterService) {
@@ -77,10 +79,8 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				String strMode;
 				strMode = this.mode;
-
 				if (this.mode != null)
 					{
-
 						switch (strMode)
 							{
 								case "search" :
@@ -93,9 +93,19 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								case "edit" :
-
-								case "del" :
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e1)
+										{
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									break;
+								case "savedel" :
 									try
 										{
 											strMode = this.SaveDelete();
@@ -105,16 +115,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
-								case "add" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									break;
 								case "saveadd" :
 									try
 										{
@@ -125,6 +126,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								case "saveedit" :
 									try
 										{
@@ -135,11 +137,9 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
-								case "back" :
-									;
-
+									break;
 								case "first" :
-									this.pageNumber -= 1;
+									this.pageNumber = 1;
 									try
 										{
 											this.Paging();
@@ -149,15 +149,15 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								case "prev" :
-
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
 									try
 										{
-											this.pageNumber -= 1;
-											if (this.pageNumber <= 1)
-												{
-													this.pageNumber = 1;
-												}
 											this.Paging();
 										}
 									catch (final Exception e)
@@ -165,11 +165,11 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								case "next" :
-									
+									this.pageNumber += 1;
 									try
 										{
-											this.pageNumber += 1;
 											this.Paging();
 										}
 									catch (final Exception e)
@@ -177,22 +177,34 @@ public class AssetDocAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								case "last" :
 									try
 										{
-											this.LastPage();
+											this.Paging(1);
 										}
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
+									break;
 								default :
-									return ERROR;
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
@@ -201,10 +213,11 @@ public class AssetDocAction extends BaseAction implements Preparable
 		/**
 		 *
 		 */
+
 		private String WhereCond()
 			{
 				String wherecond = "";
-				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals(""))
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
 							{
@@ -218,34 +231,12 @@ public class AssetDocAction extends BaseAction implements Preparable
 				return wherecond;
 			}
 
-		private void LastPage() throws Exception
-			{
-				try
-					{
-						/* int lastPageNumber = (int) ((countResults / pageSize) + 1); */
-
-						this.pageNumber = (int) ((this.assetDocMasterService.TotalRecord(this.WhereCond()) / BaseAction.PageRecord()) + 1);
-						this.Paging();
-					}
-
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-			}
-
 		private void Paging() throws Exception
 			{
 				try
 					{
 						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
-
 					}
-
 				catch (final Exception exp)
 					{
 
@@ -255,82 +246,123 @@ public class AssetDocAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 
+			}
+
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetDocMasterService.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		public void ViewData() throws Exception
+			{
+				this.assetDocMaster = new AssetDocMaster();
+				try
+					{
+						this.assetDocMaster = this.assetDocMasterService.View(this.id);
+						this.documentCode = this.assetDocMaster.getDocumentCode();
+						this.documentName = this.assetDocMaster.getDocumentName();
+						this.assetType = this.assetDocMaster.getAssetType();
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 
 		private String SaveAdd() throws Exception
 			{
-				String status = "";
 				try
 					{
+						this.status = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
-						assetDocMaster.setDocumentCode(this.getAssetdocumentcode());
-						assetDocMaster.setDocumentName(this.getAssetdocumentname());
+						assetDocMaster.setDocumentCode(this.documentCode);
+						assetDocMaster.setDocumentName(this.documentName);
+						assetDocMaster.setPartner(this.partner);
+
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
 
 		private String SaveEdit() throws Exception
 			{
-				String status = "";
 				try
 					{
+						this.status = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setId(this.getId());
-						assetDocMaster.setDocumentCode(this.getAssetdocumentcode());
-						assetDocMaster.setDocumentName(this.getAssetdocumentname());
+						assetDocMaster.setDocumentCode(this.documentCode);
+						assetDocMaster.setDocumentName(this.documentName);
+						assetDocMaster.setPartner(this.partner);
+						assetDocMaster.setUsrUpd(this.usrUpd);
 						this.assetDocMasterService.SaveEdit(assetDocMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
 
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
 				try
 					{
+						this.status = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setId(this.getId());
 
 						this.assetDocMasterService.SaveDel(assetDocMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
-
-		/** Getter Setter */
 
 		/**
 		 * @return the serialversionuid
@@ -506,24 +538,6 @@ public class AssetDocAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param documentCode
-		 *            the documentCode to set
-		 */
-		public void setDocumentCode(final String documentCode)
-			{
-				this.assetdocumentcode = documentCode;
-			}
-
-		/**
-		 * @param documentName
-		 *            the documentName to set
-		 */
-		public void setDocumentName(final String documentName)
-			{
-				this.assetdocumentname = documentName;
-			}
-
-		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
 		 */
@@ -563,40 +577,6 @@ public class AssetDocAction extends BaseAction implements Preparable
 				this.pageNumber = pageNumber;
 			}
 
-		/**
-		 * @return the assetdocumentcode
-		 */
-		public String getAssetdocumentcode()
-			{
-				return this.assetdocumentcode;
-			}
-
-		/**
-		 * @param assetdocumentcode
-		 *            the assetdocumentcode to set
-		 */
-		public void setAssetdocumentcode(final String assetdocumentcode)
-			{
-				this.assetdocumentcode = assetdocumentcode;
-			}
-
-		/**
-		 * @return the assetdocumentname
-		 */
-		public String getAssetdocumentname()
-			{
-				return this.assetdocumentname;
-			}
-
-		/**
-		 * @param assetdocumentname
-		 *            the assetdocumentname to set
-		 */
-		public void setAssetdocumentname(final String assetdocumentname)
-			{
-				this.assetdocumentname = assetdocumentname;
-			}
-
 		public String getAssetType()
 			{
 				return this.assetType;
@@ -624,9 +604,43 @@ public class AssetDocAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 
+		public String getStatus()
+			{
+				return this.status;
+			}
+
+		public void setStatus(final String status)
+			{
+				this.status = status;
+			}
+
+		public String getDocumentCode()
+			{
+				return this.documentCode;
+			}
+
+		public void setDocumentCode(final String documentCode)
+			{
+				this.documentCode = documentCode;
+			}
+
+		public String getDocumentName()
+			{
+				return this.documentName;
+			}
+
+		public void setDocumentName(final String documentName)
+			{
+				this.documentName = documentName;
+			}
+
 		/**
 		 * @return the wherecond
 		 */
-		// endregion
+
+		/**
+		 * @param searchBy
+		 *            the searchBy to set
+		 */
 
 	}

@@ -3,20 +3,18 @@ package com.adibrata.smartdealer.action.setting;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.DealerDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.Supplier;
 import com.adibrata.smartdealer.service.setting.DealerService;
-/**
- * @author Henry
- */
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class DealerAction extends ActionSupport implements Preparable
+public class DealerAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -53,6 +51,28 @@ public class DealerAction extends ActionSupport implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		
+		private String message;
+		
+		public DealerAction() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				final DealerService dealerService = new DealerDao();
+				
+				this.dealerService = dealerService;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final Supplier supplier = new Supplier();
+				
+				this.setPartner(partner);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.setOffice(office);
+				this.setSupplier(supplier);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+			}
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -65,66 +85,138 @@ public class DealerAction extends ActionSupport implements Preparable
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
 						switch (strMode)
 							{
 								case "search" :
-									strMode = this.Paging();
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									
-									strMode = this.SaveAdd();
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
 									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
 									strMode = this.SaveEdit();
-								case "back" :
-								
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return "failed";
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstDealer = this.dealerService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstDealer = this.dealerService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstDealer = this.dealerService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.supplier = new Supplier();
+				try
+					{
+						this.supplier = this.dealerService.View(this.id);
+						this.name = this.supplier.getName();
+						this.address = this.supplier.getAddress();
+						this.rt = this.supplier.getRt();
+						this.rw = this.supplier.getRw();
+						this.kelurahan = this.supplier.getKelurahan();
+						this.city = this.supplier.getCity();
+						this.zipcode = this.supplier.getZipcode();
+						this.type = this.supplier.getType();
+						this.areaPhone1 = this.supplier.getAreaPhone1();
+						this.phoneNo1 = this.supplier.getPhoneNo1();
+						this.areaPhone2 = this.supplier.getAreaPhone2();
+						this.phoneNo2 = this.supplier.getPhoneNo2();
+						this.areaFax = this.supplier.getAreaFax();
+						this.faxNo = this.supplier.getFaxNo();
+						this.handphone = this.supplier.getHandphone();
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -134,27 +226,30 @@ public class DealerAction extends ActionSupport implements Preparable
 					{
 						
 						final Supplier supplier = new Supplier();
-						supplier.setName(this.getName());
-						supplier.setAddress(this.getAddress());
-						supplier.setRt(this.getRt());
-						supplier.setRw(this.getRw());
-						supplier.setKelurahan(this.getKelurahan());
-						supplier.setCity(this.getCity());
-						supplier.setZipcode(this.getZipcode());
-						supplier.setAreaPhone1(this.getAreaPhone1());
-						supplier.setAreaPhone2(this.getAreaPhone2());
-						supplier.setPhoneNo1(this.getPhoneNo1());
-						supplier.setPhoneNo2(this.getPhoneNo2());
-						supplier.setAreaFax(this.getAreaFax());
-						supplier.setFaxNo(this.getFaxNo());
-						supplier.setHandphone(this.getHandphone());
-						
+						supplier.setName(this.name);
+						supplier.setAddress(this.address);
+						supplier.setRt(this.rt);
+						supplier.setRw(this.rw);
+						supplier.setKelurahan(this.kelurahan);
+						supplier.setCity(this.city);
+						supplier.setZipcode(this.zipcode);
+						supplier.setType(this.type);
+						supplier.setAreaPhone1(this.areaPhone1);
+						supplier.setAreaPhone2(this.areaPhone2);
+						supplier.setPhoneNo1(this.phoneNo1);
+						supplier.setPhoneNo2(this.areaPhone2);
+						supplier.setAreaFax(this.areaFax);
+						supplier.setFaxNo(this.faxNo);
+						supplier.setHandphone(this.handphone);
+						supplier.setPartner(this.partner);
 						this.dealerService.SaveAdd(supplier);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -185,13 +280,16 @@ public class DealerAction extends ActionSupport implements Preparable
 						supplier.setAreaFax(this.getAreaFax());
 						supplier.setFaxNo(this.getFaxNo());
 						supplier.setHandphone(this.getHandphone());
-						
+						supplier.setPartner(this.partner);
+						supplier.setUsrUpd(this.usrUpd);
 						this.dealerService.SaveAdd(supplier);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -210,10 +308,12 @@ public class DealerAction extends ActionSupport implements Preparable
 						supplier.setId(this.getId());
 						this.dealerService.SaveDel(supplier);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -680,6 +780,16 @@ public class DealerAction extends ActionSupport implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
+			}
+			
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
+		public void setMessage(final String message)
+			{
+				this.message = message;
 			}
 			
 	}

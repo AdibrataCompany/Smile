@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 24, 2015 11:34:06 AM by Hibernate Tools 4.3.1
+// Generated Jul 24, 2015 6:14:22 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -114,6 +114,7 @@ public class Agrmnt implements java.io.Serializable
 		private Date dtmCrt;
 		private String usrCrt;
 		private Set<GoLive> goLives = new HashSet<GoLive>(0);
+		private Set<SuspendAllocation> suspendAllocations = new HashSet<SuspendAllocation>(0);
 		private Set<AgrmntMnt> agrmntMnts = new HashSet<AgrmntMnt>(0);
 		private Set<AgrmntFund> agrmntFunds = new HashSet<AgrmntFund>(0);
 		private Set<InstSchedule> instSchedules = new HashSet<InstSchedule>(0);
@@ -199,9 +200,9 @@ public class Agrmnt implements java.io.Serializable
 		        double installmentAmount, short gracePeriod, String gracePeriodType, short gracePeriodLc, double grossYield, double percentagePenalty, double adminFee, Double adminFeePercentage, double addAdminFee, double fiduciaFee,
 		        double provisionFee, double notaryFee, double surveyFee, double otherFee, String crossDefaultApplicationId, String notes, double diffRateAmount, double diffRateStdAmount, double creditScore, String creditScoringResult,
 		        String financeType, String productType, String contractStatus, String defaultStatus, String applicationStep, double osp, double osi, double ospundue, double osiundue, Date nextInstDate, short nextInstNumber, Date nextInstDueDate,
-		        short nextInstDueNumber, double tdpamount, Double prepaidAmt, Short isSyariah, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<GoLive> goLives, Set<AgrmntMnt> agrmntMnts, Set<AgrmntFund> agrmntFunds,
-		        Set<InstSchedule> instSchedules, Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos, Set<AgrmntReffInfo> agrmntReffInfos, Set<PayHistHdr> payHistHdrs,
-		        Set<PaymentReceive> paymentReceives, Set<AgrmntEmployee> agrmntEmployees, Set<AgrmntIns> agrmntInses, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos_1, Set<AgrmntEmployeeInfo> agrmntEmployeeInfos,
+		        short nextInstDueNumber, double tdpamount, Double prepaidAmt, Short isSyariah, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<GoLive> goLives, Set<SuspendAllocation> suspendAllocations, Set<AgrmntMnt> agrmntMnts,
+		        Set<AgrmntFund> agrmntFunds, Set<InstSchedule> instSchedules, Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos, Set<AgrmntReffInfo> agrmntReffInfos,
+		        Set<PayHistHdr> payHistHdrs, Set<PaymentReceive> paymentReceives, Set<AgrmntEmployee> agrmntEmployees, Set<AgrmntIns> agrmntInses, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos_1, Set<AgrmntEmployeeInfo> agrmntEmployeeInfos,
 		        Set<AgrmntMailingInfo> agrmntMailingInfos)
 			{
 				this.id = id;
@@ -294,6 +295,7 @@ public class Agrmnt implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 				this.goLives = goLives;
+				this.suspendAllocations = suspendAllocations;
 				this.agrmntMnts = agrmntMnts;
 				this.agrmntFunds = agrmntFunds;
 				this.instSchedules = instSchedules;
@@ -1312,6 +1314,17 @@ public class Agrmnt implements java.io.Serializable
 		public void setGoLives(Set<GoLive> goLives)
 			{
 				this.goLives = goLives;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")
+		public Set<SuspendAllocation> getSuspendAllocations()
+			{
+				return this.suspendAllocations;
+			}
+			
+		public void setSuspendAllocations(Set<SuspendAllocation> suspendAllocations)
+			{
+				this.suspendAllocations = suspendAllocations;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmnt")

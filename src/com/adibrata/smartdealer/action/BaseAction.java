@@ -10,11 +10,12 @@ public class BaseAction extends ActionSupport implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String messagedescription;
-		public SimpleDateFormat formatdate = new SimpleDateFormat("dd/MM/yyyy");
+		
+		public SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 		
 		public BaseAction()
 			{
@@ -26,6 +27,11 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				// TODO Auto-generated method stub
 				
+			}
+			
+		public static void RenderMenu()
+			{
+			
 			}
 			
 		public static String ErrorMessage()
@@ -45,9 +51,14 @@ public class BaseAction extends ActionSupport implements Preparable
 				return "001";
 			}
 			
-		public static String sesOfficeId()
+		public static long sesOfficeId()
 			{
-				return "001";
+				return 1;
+			}
+			
+		public static String sesLoginName()
+			{
+				return "Arga";
 			}
 			
 		public static int PageRecord()

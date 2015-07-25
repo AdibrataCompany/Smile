@@ -19,6 +19,10 @@
 			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="first">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 
 		</action>
 
@@ -26,6 +30,10 @@
 			class="com.adibrata.smartdealer.action.setting.AssetMasterAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
+			<result name="success">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
+			<result name="error">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 			<result name="search">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
@@ -41,12 +49,24 @@
 			</result>
 			<result name="saveedit">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
+			<result name="first">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
+			<result name="prev">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
+			<result name="next">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
+			<result name="last">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			</result>
 		</action>
 
 		<action name="bankaccount"
 			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
 			method="execute">
 			<result name="start">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
+			<result name="success">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
+			<result name="error">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="search">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
@@ -62,11 +82,21 @@
 			</result>
 			<result name="saveedit">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
+			<result name="first">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
+			<result name="prev">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
+			<result name="next">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
+			<result name="last">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			</result>
 		</action>
 
 		<action name="dealer"
 			class="com.adibrata.smartdealer.action.setting.DealerAction" method="execute">
 			<result name="start">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="success">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="error">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
@@ -74,36 +104,54 @@
 			<result name="end">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="add">/Pages/Setting/Dealer/addDealer.jsp</result>
 			<result name="saveedit">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="first">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="prev">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="next">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="last">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
 
-		<action name="jurnalscheme"
-			class="com.adibrata.smartdealer.action.setting.JurnalSchemeAction"
+		<action name="Journalscheme"
+			class="com.adibrata.smartdealer.action.setting.JournalSchemeAction"
 			method="execute">
-			<result name="start">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="start">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="search">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="success">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="edit">/Pages/Setting/JurnalScheme/editJurnalSchHdr.jsp
+			<result name="error">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="del">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="search">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="saveadd">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="edit">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-			<result name="end">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="del">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="add">/Pages/Setting/JurnalScheme/addJurnalSchHdr.jsp
+			<result name="saveadd">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="saveedit">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="end">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="detail">/Pages/Setting/JurnalScheme/pageJurnalSchDtl.jsp
+			<result name="add">/Pages/Setting/JournalScheme/addJournalSchHdr.jsp
 			</result>
-			<result name="saveDetail">/Pages/Setting/JurnalScheme/pageJurnalSchHdr.jsp
+			<result name="saveedit">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			</result>
+			<result name="detail">/Pages/Setting/JournalScheme/pageJournalSchDtl.jsp
+			</result>
+			<result name="saveDetail">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			</result>
+			<result name="first">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			</result>
+			<result name="prev">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			</result>
+			<result name="next">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			</result>
+			<result name="last">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 		</action>
 
 		<action name="master"
 			class="com.adibrata.smartdealer.action.setting.MasterAction" method="execute">
 			<result name="start">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="success">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="error">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="search">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
@@ -111,10 +159,16 @@
 			<result name="end">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="add">/Pages/Setting/Master/addMaster.jsp</result>
 			<result name="saveedit">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="first">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="prev">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="next">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="last">/Pages/Setting/Master/pageMaster.jsp</result>
 		</action>
 		<action name="office"
 			class="com.adibrata.smartdealer.action.setting.OfficeAction" method="execute">
 			<result name="start">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="success">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="error">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="search">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
@@ -122,11 +176,17 @@
 			<result name="end">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="add">/Pages/Setting/Office/addOffice.jsp</result>
 			<result name="saveedit">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="first">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="prev">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="next">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="last">/Pages/Setting/Office/pageOffice.jsp</result>
 		</action>
 		<action name="workshop"
 			class="com.adibrata.smartdealer.action.setting.WorkshopAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="success">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="error">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="search">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
@@ -134,10 +194,16 @@
 			<result name="end">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="add">/Pages/Setting/Workshop/addWorkshop.jsp</result>
 			<result name="saveedit">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="first">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="prev">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="next">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="last">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 		</action>
 		<action name="zipcode"
 			class="com.adibrata.smartdealer.action.setting.ZipCodeAction" method="execute">
 			<result name="start">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="success">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="error">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="search">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
@@ -145,11 +211,17 @@
 			<result name="end">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="add">/Pages/Setting/ZipCode/addZipCode.jsp</result>
 			<result name="saveedit">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="first">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="prev">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="next">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="last">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 		</action>
 
 		<action name="taksasi"
 			class="com.adibrata.smartdealer.action.setting.TaksasiAction" method="execute">
 			<result name="start">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="success">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="error">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
 			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
@@ -157,6 +229,10 @@
 			<result name="end">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="add">/Pages/Setting/Taksasi/addTaksasi.jsp</result>
 			<result name="saveedit">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="first">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="prev">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="next">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="last">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 24, 2015 11:34:06 AM by Hibernate Tools 4.3.1
+// Generated Jul 24, 2015 6:14:22 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -65,6 +65,7 @@ public class Office implements java.io.Serializable
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
+		private Set<Suspend> suspends = new HashSet<Suspend>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
@@ -83,7 +84,7 @@ public class Office implements java.io.Serializable
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
 		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers, Set<PurchaseInvoice> purchaseInvoices, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 		        Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables,
-		        Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
+		        Set<Suspend> suspends, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -126,6 +127,7 @@ public class Office implements java.io.Serializable
 				this.danaTunais = danaTunais;
 				this.payReqHdrs = payReqHdrs;
 				this.accountPayables = accountPayables;
+				this.suspends = suspends;
 				this.advanceCashes = advanceCashes;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
@@ -586,6 +588,17 @@ public class Office implements java.io.Serializable
 		public void setAccountPayables(Set<AccountPayable> accountPayables)
 			{
 				this.accountPayables = accountPayables;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+		public Set<Suspend> getSuspends()
+			{
+				return this.suspends;
+			}
+			
+		public void setSuspends(Set<Suspend> suspends)
+			{
+				this.suspends = suspends;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

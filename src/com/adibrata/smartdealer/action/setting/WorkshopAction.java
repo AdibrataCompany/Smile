@@ -1,22 +1,20 @@
 
 package com.adibrata.smartdealer.action.setting;
 
-/**
- * @author Henry
- */
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.WorkshopDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.Workshop;
 import com.adibrata.smartdealer.service.setting.WorkshopService;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class WorkshopAction extends ActionSupport implements Preparable
+public class WorkshopAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -54,97 +52,24 @@ public class WorkshopAction extends ActionSupport implements Preparable
 		private String faxNo;
 		private String handphone;
 		
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
+		public WorkshopAction() throws Exception
 			{
-				return serialVersionUID;
-			}
-			
-		/**
-		 * @return the workshop
-		 */
-		public Workshop getWorkshop()
-			{
-				return this.workshop;
-			}
-			
-		/**
-		 * @return the workshopService
-		 */
-		public WorkshopService getWorkshopService()
-			{
-				return this.workshopService;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the lstWorkshop
-		 */
-		public List<Workshop> getLstWorkshop()
-			{
-				return this.lstWorkshop;
-			}
-			
-		/**
-		 * @param workshop
-		 *            the workshop to set
-		 */
-		public void setWorkshop(final Workshop workshop)
-			{
-				this.workshop = workshop;
-			}
-			
-		/**
-		 * @param workshopService
-		 *            the workshopService to set
-		 */
-		public void setWorkshopService(final WorkshopService workshopService)
-			{
-				this.workshopService = workshopService;
-			}
-			
-		/**
-		 * @param partner
-		 *            the partner to set
-		 */
-		public void setPartner(final Partner partner)
-			{
-				this.partner = partner;
-			}
-			
-		/**
-		 * @param office
-		 *            the office to set
-		 */
-		public void setOffice(final Office office)
-			{
-				this.office = office;
-			}
-			
-		/**
-		 * @param lstWorkshop
-		 *            the lstWorkshop to set
-		 */
-		public void setLstWorkshop(final List<Workshop> lstWorkshop)
-			{
-				this.lstWorkshop = lstWorkshop;
+				// TODO Auto-generated constructor stub
+				final WorkshopService workservice = new WorkshopDao();
+				
+				this.workshopService = workservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final Workshop workshop = new Workshop();
+				
+				this.setPartner(partner);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.setOffice(office);
+				this.setWorkshop(workshop);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
 			}
 			
 		@Override
@@ -155,110 +80,140 @@ public class WorkshopAction extends ActionSupport implements Preparable
 			}
 			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
 						switch (strMode)
 							{
 								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "add" :
-									
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
-									try
+									strMode = this.SaveEdit();
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
 										{
-											strMode = this.SaveEdit();
+											this.pageNumber = 1;
 										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return "failed";
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstWorkshop = this.workshopService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstWorkshop = this.workshopService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstWorkshop = this.workshopService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.workshop = new Workshop();
+				try
+					{
+						this.workshop = this.workshopService.View(this.id);
+						this.name = this.workshop.getName();
+						this.address = this.workshop.getAddress();
+						this.rt = this.workshop.getRt();
+						this.rw = this.workshop.getRw();
+						this.kelurahan = this.workshop.getKelurahan();
+						this.city = this.workshop.getCity();
+						this.zipcode = this.workshop.getZipCode();
+						this.areaPhone1 = this.workshop.getAreaPhone1();
+						this.areaPhone2 = this.workshop.getAreaPhone2();
+						this.phoneNo1 = this.workshop.getPhoneNo1();
+						this.phoneNo2 = this.workshop.getPhoneNo2();
+						this.areaFax = this.workshop.getAreaFax();
+						this.faxNo = this.workshop.getFaxNo();
+						this.handphone = this.workshop.getHandphone();
+					}
+				catch (final Exception exp)
+					{
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -282,12 +237,15 @@ public class WorkshopAction extends ActionSupport implements Preparable
 						workshop.setAreaFax(this.getAreaFax());
 						workshop.setFaxNo(this.getFaxNo());
 						workshop.setHandphone(this.getHandphone());
+						workshop.setPartner(this.partner);
 						this.workshopService.SaveAdd(workshop);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -318,12 +276,16 @@ public class WorkshopAction extends ActionSupport implements Preparable
 						workshop.setAreaFax(this.getAreaFax());
 						workshop.setFaxNo(this.getFaxNo());
 						workshop.setHandphone(this.getHandphone());
+						workshop.setPartner(this.partner);
+						workshop.setUsrUpd(this.usrUpd);
 						this.workshopService.SaveEdit(workshop);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -342,10 +304,12 @@ public class WorkshopAction extends ActionSupport implements Preparable
 						workshop.setId(this.getId());
 						this.workshopService.SaveDel(workshop);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -532,14 +496,6 @@ public class WorkshopAction extends ActionSupport implements Preparable
 			}
 			
 		/**
-		 * @return the zipcode
-		 */
-		public String getZipcode()
-			{
-				return this.zipcode;
-			}
-			
-		/**
 		 * @return the type
 		 */
 		public String getType()
@@ -658,15 +614,6 @@ public class WorkshopAction extends ActionSupport implements Preparable
 			}
 			
 		/**
-		 * @param zipcode
-		 *            the zipcode to set
-		 */
-		public void setZipcode(final String zipcode)
-			{
-				this.zipcode = zipcode;
-			}
-			
-		/**
 		 * @param type
 		 *            the type to set
 		 */
@@ -736,6 +683,109 @@ public class WorkshopAction extends ActionSupport implements Preparable
 		public void setHandphone(final String handphone)
 			{
 				this.handphone = handphone;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
+		/**
+		 * @return the workshop
+		 */
+		public Workshop getWorkshop()
+			{
+				return this.workshop;
+			}
+			
+		/**
+		 * @return the workshopService
+		 */
+		public WorkshopService getWorkshopService()
+			{
+				return this.workshopService;
+			}
+			
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @return the lstWorkshop
+		 */
+		public List<Workshop> getLstWorkshop()
+			{
+				return this.lstWorkshop;
+			}
+			
+		/**
+		 * @param workshop
+		 *            the workshop to set
+		 */
+		public void setWorkshop(final Workshop workshop)
+			{
+				this.workshop = workshop;
+			}
+			
+		/**
+		 * @param workshopService
+		 *            the workshopService to set
+		 */
+		public void setWorkshopService(final WorkshopService workshopService)
+			{
+				this.workshopService = workshopService;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+			
+		/**
+		 * @param lstWorkshop
+		 *            the lstWorkshop to set
+		 */
+		public void setLstWorkshop(final List<Workshop> lstWorkshop)
+			{
+				this.lstWorkshop = lstWorkshop;
+			}
+			
+		public String getZipcode()
+			{
+				return this.zipcode;
+			}
+			
+		public void setZipcode(final String zipcode)
+			{
+				this.zipcode = zipcode;
 			}
 			
 	}

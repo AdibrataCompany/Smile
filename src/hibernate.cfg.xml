@@ -49,6 +49,7 @@
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOfficeFee" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustComptInfo" />
         <mapping class="com.adibrata.smartdealer.model.Sales" />
+        <mapping class="com.adibrata.smartdealer.model.Suspend" />
         <mapping class="com.adibrata.smartdealer.model.StockDocument" />
         <mapping class="com.adibrata.smartdealer.model.BankAccount" />
         <mapping class="com.adibrata.smartdealer.model.Supplier" />
@@ -58,6 +59,7 @@
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsStandardInfo" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.CustomerBankInfo" />
+        <mapping class="com.adibrata.smartdealer.model.SuspendReverse" />
         <mapping class="com.adibrata.smartdealer.model.OtherDsbHdr" />
         <mapping class="com.adibrata.smartdealer.model.PersCustOmsetInfo" />
         <mapping class="com.adibrata.smartdealer.model.PersCustResidenceInfo" />
@@ -82,6 +84,7 @@
         <mapping class="com.adibrata.smartdealer.model.InstSchedule" />
         <mapping class="com.adibrata.smartdealer.model.MsBigMenuList" />
         <mapping class="com.adibrata.smartdealer.model.OtherDsbDtl" />
+        <mapping class="com.adibrata.smartdealer.model.SuspendAllocation" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatInfoDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />

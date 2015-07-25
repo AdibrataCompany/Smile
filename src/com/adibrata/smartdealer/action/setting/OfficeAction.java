@@ -3,19 +3,17 @@ package com.adibrata.smartdealer.action.setting;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.OfficeDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.OfficeService;
-/**
- * @author Henry
- */
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class OfficeAction extends ActionSupport implements Preparable
+public class OfficeAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -57,6 +55,24 @@ public class OfficeAction extends ActionSupport implements Preparable
 		// private String fullAddress; save di dao office
 		private Character isActive;
 		
+		public OfficeAction() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				final OfficeService officeservice = new OfficeDao();
+				
+				this.officeService = officeservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				
+				this.setPartner(partner);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.setOffice(office);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+			}
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -65,110 +81,142 @@ public class OfficeAction extends ActionSupport implements Preparable
 			}
 			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
 						switch (strMode)
 							{
 								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e4)
-										{
-											// TODO Auto-generated catch block
-											e4.printStackTrace();
-										}
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e3)
-										{
-											// TODO Auto-generated catch block
-											e3.printStackTrace();
-										}
-								case "add" :
-									
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e2)
-										{
-											// TODO Auto-generated catch block
-											e2.printStackTrace();
-										}
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e1)
-										{
-											// TODO Auto-generated catch block
-											e1.printStackTrace();
-										}
+									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
-									try
+									strMode = this.SaveEdit();
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
 										{
-											strMode = this.SaveEdit();
+											this.pageNumber = 1;
 										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return "failed";
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstoffice = this.officeService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.office = new Office();
+				try
+					{
+						this.office = this.officeService.View(this.id);
+						this.officeCode = this.office.getOfficeCode();
+						this.name = this.office.getName();
+						this.address = this.office.getAddress();
+						this.rt = this.office.getRt();
+						this.rw = this.office.getRw();
+						this.kelurahan = this.office.getKelurahan();
+						this.city = this.office.getCity();
+						this.zipcode = this.office.getZipcode();
+						this.areaPhone1 = this.office.getAreaPhone1();
+						this.areaPhone2 = this.office.getAreaPhone2();
+						this.phoneNo1 = this.office.getPhoneNo1();
+						this.phoneNo2 = this.office.getPhoneNo2();
+						this.areaFax = this.office.getAreaFax();
+						this.faxNo = this.office.getFaxNo();
+						this.handphone = this.office.getHandphone();
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -191,13 +239,16 @@ public class OfficeAction extends ActionSupport implements Preparable
 						office.setPhoneNo2(this.getPhoneNo2());
 						office.setAreaFax(this.getAreaFax());
 						office.setFaxNo(this.getFaxNo());
-						
+						office.setHandphone(this.handphone);
+						office.setPartner(this.partner);
 						this.officeService.SaveAdd(office);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -227,13 +278,16 @@ public class OfficeAction extends ActionSupport implements Preparable
 						office.setPhoneNo2(this.getPhoneNo2());
 						office.setAreaFax(this.getAreaFax());
 						office.setFaxNo(this.getFaxNo());
-						
+						office.setPartner(this.partner);
+						office.setUsrUpd(this.usrUpd);
 						this.officeService.SaveEdit(office);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -251,10 +305,12 @@ public class OfficeAction extends ActionSupport implements Preparable
 						office.setId(this.getId());
 						this.officeService.SaveDel(office);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

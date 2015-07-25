@@ -1,22 +1,20 @@
 
 package com.adibrata.smartdealer.action.setting;
 
-/**
- * @author Henry
- */
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.TaksasiDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.Taksasi;
 import com.adibrata.smartdealer.service.setting.TaksasiService;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class TaksasiAction extends ActionSupport implements Preparable
+public class TaksasiAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -43,111 +41,150 @@ public class TaksasiAction extends ActionSupport implements Preparable
 		private String taksasiName;
 		private double taksasiPriceMin;
 		
+		public TaksasiAction() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				final TaksasiService taksasiservice = new TaksasiDao();
+				
+				this.taksasiService = taksasiservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final Taksasi taksasi = new Taksasi();
+				
+				this.setPartner(partner);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.setOffice(office);
+				this.setTaksasi(taksasi);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+			}
+			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
 						switch (strMode)
 							{
 								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "add" :
-									
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
-									try
+									strMode = this.SaveEdit();
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
 										{
-											strMode = this.SaveEdit();
+											this.pageNumber = 1;
 										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return "failed";
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.taksasi = new Taksasi();
+				try
+					{
+						this.taksasi = this.taksasiService.View(this.id);
+						this.taksasiCode = this.taksasi.getTaksasiCode();
+						this.taksasiName = this.taksasi.getTaksasiName();
+						this.taksasiPriceMin = this.taksasi.getTaksasiPriceMin();
+					}
+				catch (final Exception exp)
+					{
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -159,13 +196,15 @@ public class TaksasiAction extends ActionSupport implements Preparable
 						taksasi.setTaksasiCode(this.getTaksasiCode());
 						taksasi.setTaksasiName(this.getTaksasiName());
 						taksasi.setTaksasiPriceMin(this.getTaksasiPriceMin());
-						
+						taksasi.setPartner(this.partner);
 						this.taksasiService.SaveAdd(taksasi);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -183,13 +222,16 @@ public class TaksasiAction extends ActionSupport implements Preparable
 						taksasi.setTaksasiCode(this.getTaksasiCode());
 						taksasi.setTaksasiName(this.getTaksasiName());
 						taksasi.setTaksasiPriceMin(this.getTaksasiPriceMin());
-						
+						taksasi.setUsrUpd(this.usrUpd);
+						taksasi.setPartner(this.partner);
 						this.taksasiService.SaveEdit(taksasi);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -210,10 +252,12 @@ public class TaksasiAction extends ActionSupport implements Preparable
 						
 						this.taksasiService.SaveDel(taksasi);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

@@ -8,6 +8,8 @@ package com.adibrata.smartdealer.service;
  *
  */
 public interface SeviceBase {
-	public void AgrmntInfo();
-	public long TotalRecord(String WherCond) throws Exception;
+	public long TotalRecord(String statement, String wherecond)
+			throws Exception;
+
+	public int getCurrentpage() throws Exception;
 }

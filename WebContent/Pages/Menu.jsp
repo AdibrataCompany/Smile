@@ -7,21 +7,21 @@
 
 </head>
 
-<link href="/SmartDealer/Demo/style/css/bootstrap.min.css"
+<link href="/Smile/Demo/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="/SmartDealer/Demo/style/css/bootstrap-theme.min.css"
+<link href="/Smile/Demo/style/css/bootstrap-theme.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="/SmartDealer/Demo/style/css/jquery.smartmenus.bootstrap.css"
+<link href="/Smile/Demo/style/css/jquery.smartmenus.bootstrap.css"
 	rel="stylesheet" type="text/css" />
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/bootstrap.min.js"></script>
+	src="/Smile/Demo/style/js/bootstrap.min.js"></script>
 <!-- /container -->
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.min.js"></script>
+	src="/Smile/Demo/style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.smartmenus.min.js">
+	src="/Smile/Demo/style/js/jquery.smartmenus.min.js">
 	
 </script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -42,42 +42,42 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<s:form theme="simple">
 				<ul class="nav navbar-nav">
-					<li><a href="/SmartDealer/Demo/Home.jsp">Depan</a></li>
+					<li><a href="home.action">Depan</a></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Pembelian </a>
 						<ul class="dropdown-menu">
-							<li><a href="/SmartDealer/Demo/Purchase/Order/paging.jsp">Pembelian</a></li>
-							<li><a href="/SmartDealer/Demo/Purchase/Retur/paging.jsp">Retur
+							<li><a href="purchaseorder.action">Pembelian</a></li>
+							<li><a href="purchaseretur.action">Retur
 							</a></li>
-							<li><a href="/SmartDealer/Demo/Purchase/Invoice/paging.jsp">Tagihan
+							<li><a href="purchaseinvoice.action">Tagihan
 							</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/report.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/report.jsp">Laporan
 									Pembelian</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Titip/report.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Titip/report.jsp">Laporan
 									Konsinyasi</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Retur/report.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Retur/report.jsp">Laporan
 									Retur Pembelian</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Penjualan </a>
 						<ul class="dropdown-menu">
-							<li><a href="/SmartDealer/Demo/Sales/Order/paging.jsp">Penjualan</a></li>
-							<li><a href="/SmartDealer/Demo/Entrust/paging.jsp">Titipan
+							<li><a href="/Smile/Demo/Sales/Order/paging.jsp">Penjualan</a></li>
+							<li><a href="/Smile/Demo/Entrust/paging.jsp">Titipan
 							</a></li>
-							<li><a href="/SmartDealer/Demo/Sales/Retur/paging.jsp">Retur
+							<li><a href="/Smile/Demo/Sales/Retur/paging.jsp">Retur
 							</a></li>
-							<li><a href="/SmartDealer/Demo/Sales/Invoice/paging.jsp">Tagihan</a></li>
+							<li><a href="/Smile/Demo/Sales/Invoice/paging.jsp">Tagihan</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Penjualan</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Konsinyasi</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Retur Penjualan</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -88,7 +88,7 @@
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Perbaikan</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -99,7 +99,7 @@
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Stock</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -107,12 +107,12 @@
 						aria-expanded="false">Karyawan</a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="/SmartDealer/Demo/CashTransaction/PettyCash/PettyCash.jsp">Pengeluaran
+								href="/Smile/Demo/CashTransaction/PettyCash/PettyCash.jsp">Pengeluaran
 									Karyawan</a></li>
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Pengeluaran Karyawan</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -123,7 +123,7 @@
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Dana Tunain</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -131,24 +131,24 @@
 						aria-expanded="false">Keuangan</a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="/SmartDealer/Demo/AccPay/Selection/ApSelection.jsp">Pembayaran
+								href="/Smile/Demo/AccPay/Selection/ApSelection.jsp">Pembayaran
 									Hutang</a></li>
 							<li><a
-								href="/SmartDealer/Demo/OtherTransaction/OtherDisburse/OtherDisburse.jsp">Pembayaran
+								href="otherdisburse.action">Pembayaran
 									Bukan Hutang</a></li>
 							<li><a
-								href="/SmartDealer/Demo/OtherTransaction/OtherReceive/OtherReceive.jsp">Penerimaan
+								href="otherreceive.action">Penerimaan
 									Bukan Piutang</a></li>
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Hutang</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Piutang</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Pembayaran Bukan Hutang</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Penerimaan Bukan Piutang</a></li>
 
 						</ul></li>
@@ -156,19 +156,19 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Akuntansi</a>
 						<ul class="dropdown-menu">
-							<li><a href="/SmartDealer/Demo/Purchase/Order/paging.jsp">Posting
+							<li><a href="/Smile/Demo/Purchase/Order/paging.jsp">Posting
 									To GL</a></li>
-							<li><a href="/SmartDealer/Demo/Purchase/Order/paging.jsp">Pembayaran
+							<li><a href="/Smile/Demo/Purchase/Order/paging.jsp">Pembayaran
 									Piutang</a></li>
 
 
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Laporan</li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Neraca</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Rugi Laba</a></li>
-							<li><a href="/SmartDealer/Demo/Report/Purchase/Order/paging.jsp">Laporan
+							<li><a href="/Smile/Demo/Report/Purchase/Order/paging.jsp">Laporan
 									Saldo</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="" class="dropdown-toggle"
@@ -187,7 +187,7 @@
 							<li><a href="setting/userregister.action">User Login</a></li>
 
 						</ul></li>
-					<li><a href="../index.jsp">Keluar</a></li>
+					<li><a href="login.action">Keluar</a></li>
 				</ul>
 			</s:form>
 		</div>

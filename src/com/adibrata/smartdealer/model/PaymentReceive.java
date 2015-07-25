@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 24, 2015 11:34:06 AM by Hibernate Tools 4.3.1
+// Generated Jul 24, 2015 6:14:22 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -27,6 +27,7 @@ public class PaymentReceive implements java.io.Serializable
 		private Date postingDate;
 		private String wop;
 		private Long bankAccId;
+		private Long currencyId;
 		private Double currencyRate;
 		private String notes;
 		private Double totalPayment;
@@ -51,7 +52,7 @@ public class PaymentReceive implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public PaymentReceive(long id, Agrmnt agrmnt, Date valueDate, Date postingDate, String wop, Long bankAccId, Double currencyRate, String notes, Double totalPayment, Double instAmt, Double lcamt, Double inssAmt, Double lcinss,
+		public PaymentReceive(long id, Agrmnt agrmnt, Date valueDate, Date postingDate, String wop, Long bankAccId, Long currencyId, Double currencyRate, String notes, Double totalPayment, Double instAmt, Double lcamt, Double inssAmt, Double lcinss,
 		        Double prepaidAmt, Long jobId, Short payHistSeqNo, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -60,6 +61,7 @@ public class PaymentReceive implements java.io.Serializable
 				this.postingDate = postingDate;
 				this.wop = wop;
 				this.bankAccId = bankAccId;
+				this.currencyId = currencyId;
 				this.currencyRate = currencyRate;
 				this.notes = notes;
 				this.totalPayment = totalPayment;
@@ -145,6 +147,17 @@ public class PaymentReceive implements java.io.Serializable
 		public void setBankAccId(Long bankAccId)
 			{
 				this.bankAccId = bankAccId;
+			}
+			
+		@Column(name = "CurrencyId")
+		public Long getCurrencyId()
+			{
+				return this.currencyId;
+			}
+			
+		public void setCurrencyId(Long currencyId)
+			{
+				this.currencyId = currencyId;
 			}
 			
 		@Column(name = "CurrencyRate", precision = 53, scale = 0)

@@ -3,21 +3,19 @@ package com.adibrata.smartdealer.action.setting;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.MasterDao;
 import com.adibrata.smartdealer.model.MasterTable;
 import com.adibrata.smartdealer.model.MasterType;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.MasterService;
-/**
- * @author Henry
- */
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class MasterAction extends ActionSupport implements Preparable
+public class MasterAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -46,6 +44,26 @@ public class MasterAction extends ActionSupport implements Preparable
 		private String masterValue;
 		private Integer isActive;
 		
+		public MasterAction() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				final MasterService masterservice = new MasterDao();
+				
+				this.masterService = masterservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final MasterTable masterTable = new MasterTable();
+				
+				this.setPartner(partner);
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.setOffice(office);
+				this.setMasterTable(masterTable);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+			}
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -54,110 +72,130 @@ public class MasterAction extends ActionSupport implements Preparable
 			}
 			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
 						switch (strMode)
 							{
 								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "add" :
-									
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
-									try
+									strMode = this.SaveEdit();
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
 										{
-											strMode = this.SaveEdit();
+											this.pageNumber = 1;
 										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return "failed";
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstMasterTable = this.masterService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstMasterTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstMasterTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.masterTable = new MasterTable();
+				try
+					{
+						this.masterTable = this.masterService.View(this.id);
+						this.masterCode = this.masterTable.getMasterCode();
+						this.masterValue = this.masterTable.getMasterValue();
+						this.masterType = this.masterTable.getMasterType();
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -167,18 +205,20 @@ public class MasterAction extends ActionSupport implements Preparable
 					{
 						final MasterTable masterTable = new MasterTable();
 						
-						masterTable.setMasterCode(this.getMasterCode());
-						masterTable.setMasterValue(this.getMasterValue());
-						masterTable.setMasterType(this.getMasterType());
-						
+						masterTable.setMasterCode(this.masterCode);
+						masterTable.setMasterValue(this.masterValue);
+						masterTable.setMasterType(this.masterType);
+						masterTable.setPartner(this.partner);
 						final MasterType mastertype = new MasterType();
 						
 						this.masterService.SaveAdd(mastertype, masterTable);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -196,16 +236,19 @@ public class MasterAction extends ActionSupport implements Preparable
 						masterTable.setId(this.getId());
 						masterTable.setMasterCode(this.getMasterCode());
 						masterTable.setMasterValue(this.getMasterValue());
+						masterTable.setUsrUpd(this.usrUpd);
 						masterTable.setMasterType(this.getMasterType());
-						
+						masterTable.setPartner(this.partner);
 						final MasterType mastertype = new MasterType();
 						
 						this.masterService.SaveAdd(mastertype, masterTable);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -224,10 +267,12 @@ public class MasterAction extends ActionSupport implements Preparable
 						
 						this.masterService.SaveDel(masterTable);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

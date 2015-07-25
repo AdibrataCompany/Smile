@@ -7,7 +7,7 @@
 		<sql-type jdbc-type="NUMERIC" hibernate-type="Double" />
 		<sql-type jdbc-type="CHAR" hibernate-type="String" />
 	</type-mapping>
-  <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
+    <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCash"/>
   <table-filter match-catalog="SmartDealer" match-name="AgmntAssetEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Agrmnt"/>
@@ -128,6 +128,9 @@
   <table-filter match-catalog="SmartDealer" match-name="StockDocument"/>
   <table-filter match-catalog="SmartDealer" match-name="Supplier"/>
   <table-filter match-catalog="SmartDealer" match-name="SupplierAccInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="Suspend"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuspendAllocation"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuspendReverse"/>
   <table-filter match-catalog="SmartDealer" match-name="Taksasi"/>
   <table-filter match-catalog="SmartDealer" match-name="TransJob"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigDtl"/>

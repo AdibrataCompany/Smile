@@ -53,6 +53,126 @@ public class CustomerAction extends BaseAction implements Preparable
 				return this.mode;
 			}
 
+	private String WhereCond() {
+		String wherecond = "";
+		if (this.getSearchvalue() != null
+				&& !this.getSearchcriteria().equals("")
+				&& !this.getSearchcriteria().equals("0")) {
+			if (this.getSearchcriteria().contains("%"))
+				wherecond = this.getSearchvalue() + " like '"
+						+ this.getSearchcriteria() + "' ";
+			else
+				wherecond = this.getSearchcriteria() + " = '"
+						+ this.getSearchvalue() + "' ";
+		}
+		return wherecond;
+	}
+
+	private void Paging() throws Exception {
+		try {
+			this.lstCustomer = this.customerMaintService.Paging(this.getPageNumber(),
+					this.WhereCond(), "");
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+
+	}
+
+	private void Paging(int islast) throws Exception {
+		try {
+			this.lstCustomer = this.customerMaintService.Paging(this.getPageNumber(),
+					this.WhereCond(), "", true);
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+
+	}
+
+	public void ViewData() throws Exception {
+		customer = new Customer();
+		try {
+			customer = this.customerMaintService.View(id);
+			customerNo = customer.getCustomerNo();
+			name = customer.getName();
+			address = customer.getAddress();
+			rt = customer.getRt();
+			rw = customer.getRw();
+			kelurahan = customer.getKelurahan();
+			city = customer.getCity();
+			zipcode = customer.getZipcode();
+			areaPhone1 = customer.getAreaPhone1();
+			areaPhone2 = customer.getAreaPhone2();
+			phoneNo1 = customer.getPhoneNo1();
+			phoneNo2 = customer.getPhoneNo2();
+			areaFax = customer.getAreaFax();
+			faxNo = customer.getFaxNo();
+			handphone = customer.getHandphone();
+			prepaidAmount = customer.getPrepaidAmount();
+			aramount = customer.getAramount();
+			arpaid = customer.getArpaid();
+			arwaived = customer.getArwaived();
+		} catch (Exception exp) {
+			this.setMessage(BaseAction.ErrorMessage());
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+	}
+	
+	private String Save() throws Exception {
+		String status = "";
+		try {
+			Customer customer = new Customer();
+			customer.setCustomerNo(customerNo);
+			customer.setName(name);
+			customer.setAddress(address);
+			customer.setRt(rt);
+			customer.setRw(rw);
+			customer.setKelurahan(kelurahan);
+			customer.setCity(city);
+			customer.setZipcode(zipcode);
+			customer.setAreaPhone1(areaPhone1);
+			customer.setAreaPhone2(areaPhone2);
+			customer.setPhoneNo1(phoneNo1);
+			customer.setPhoneNo2(phoneNo2);
+			customer.setAreaFax(areaFax);
+			customer.setFaxNo(faxNo);
+			customer.setHandphone(handphone);
+			customer.setPrepaidAmount(prepaidAmount);
+			customer.setAramount(aramount);
+			customer.setArpaid(arpaid);
+			customer.setArwaived(arwaived);
+			this.customerMaintService.Save(usrUpd,customer);
+			status = SUCCESS;
+			this.setMessage(BaseAction.SuccessMessage());
+		} catch (Exception exp) {
+			status = ERROR;
+			this.setMessage(BaseAction.ErrorMessage());
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return status;
+	}
+	
 		/**
 		 * @return the customerMaintService
 		 */

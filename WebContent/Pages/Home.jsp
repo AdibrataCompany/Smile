@@ -26,7 +26,7 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="Header.jsp"%>
-		<s:form>
+		<s:form action="home.action">
 			<div class="row" align="center">
 				<div class="col-md-3">
 					<a href="PurchaseHome.jsp"><img border="0" alt="W3Schools"

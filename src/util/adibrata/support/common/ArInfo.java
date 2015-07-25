@@ -29,11 +29,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.payhist.LCInstallment;
 import util.adibrata.support.payhist.LCInsurance;
+import util.adibrata.support.service.ARInfoService;
 
 /**
  * @author Henry
  */
-public class ArInfo
+public class ArInfo implements ARInfoService
 	{
 		Session session;
 		Double bucket1_principle, bucket1_gross, bucket2_principle, bucket2_gross, bucket3_principle, bucket3_gross, bucket4_principle, bucket4_gross, bucket5_principle, bucket5_gross, bucket6_principle, bucket6_gross, bucket7_principle,
@@ -60,6 +61,7 @@ public class ArInfo
 				this.session = session;
 			}
 			
+		@Override
 		@SuppressWarnings("unchecked")
 		public PaymentInfo GetDetail(final long agrmntid, final Date valuedate) throws Exception
 			{
@@ -154,6 +156,7 @@ public class ArInfo
 				
 			}
 			
+		@Override
 		public PaymentInfo PaymentAllocation(final Agrmnt agrmnt, final Date valuedate, Double amountreceive) throws Exception
 			{
 				PaymentInfo info = new PaymentInfo();
@@ -234,6 +237,7 @@ public class ArInfo
 				return info;
 			}
 			
+		@Override
 		@SuppressWarnings(
 			{
 			        "rawtypes", "unchecked"
@@ -310,7 +314,7 @@ public class ArInfo
 						
 						result = interestamount * (diffday / period);
 						
-					}                                                                                                      // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+					}                                                                                                        // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -325,6 +329,7 @@ public class ArInfo
 				return result;
 			}
 			
+		@Override
 		public double TotalOsInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -356,6 +361,7 @@ public class ArInfo
 				return result;
 			}
 			
+		@Override
 		public double TotalInstallment(final long agrmntid, final Date valuedate) throws Exception
 			{
 				SQLQuery selectQuery;
@@ -386,6 +392,7 @@ public class ArInfo
 				return result;
 			}
 			
+		@Override
 		@SuppressWarnings(
 			{
 			        "unchecked", "rawtypes"
@@ -436,6 +443,7 @@ public class ArInfo
 				return paymentinfo;
 			}
 			
+		@Override
 		@SuppressWarnings("unchecked")
 		public List<InstSchedule> LstInstSchedule(final long agrmntid) throws Exception
 			{
@@ -466,6 +474,7 @@ public class ArInfo
 				return lstresult;
 			}
 			
+		@Override
 		public int AgrmntDaysOverdue(final long agrmntid, final Date valuedate) throws Exception
 			{
 				int result = 0;

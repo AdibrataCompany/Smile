@@ -123,6 +123,9 @@
   <table-filter match-catalog="SmartDealer" match-name="StockDocument"/>
   <table-filter match-catalog="SmartDealer" match-name="Supplier"/>
   <table-filter match-catalog="SmartDealer" match-name="SupplierAccInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="Suspend"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuspendAllocation"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuspendReverse"/>
   <table-filter match-catalog="SmartDealer" match-name="Taksasi"/>
   <table-filter match-catalog="SmartDealer" match-name="TransJob"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigDtl"/>

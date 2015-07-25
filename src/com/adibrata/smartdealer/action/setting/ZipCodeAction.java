@@ -1,22 +1,20 @@
 
 package com.adibrata.smartdealer.action.setting;
 
-/**
- * @author Henry
- */
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.ZipCodeDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.ZipCode;
 import com.adibrata.smartdealer.service.setting.ZipCodeService;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class ZipCodeAction extends ActionSupport implements Preparable
+public class ZipCodeAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -25,7 +23,7 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 		private static final long serialVersionUID = 1L;
 		
 		private String mode;
-		private ZipCode zipCode;
+		private ZipCode zipcode;
 		private Partner partner;
 		private Office office;
 		private List<ZipCode> lstZipCode;
@@ -38,98 +36,29 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 		private String usrCrt;
 		private String message;
 		private long id;
+		private String kelurahan;
+		private String kecamatan;
+		private String city;
+		private String zipCode;
 		
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
+		public ZipCodeAction() throws Exception
 			{
-				return serialVersionUID;
-			}
-			
-		/**
-		 * @return the zipCode
-		 */
-		public ZipCode getZipCode()
-			{
-				return this.zipCode;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the lstZipCode
-		 */
-		public List<ZipCode> getLstZipCode()
-			{
-				return this.lstZipCode;
-			}
-			
-		/**
-		 * @return the zipCodeService
-		 */
-		public ZipCodeService getZipCodeService()
-			{
-				return this.zipCodeService;
-			}
-			
-		/**
-		 * @param zipCode
-		 *            the zipCode to set
-		 */
-		public void setZipCode(final ZipCode zipCode)
-			{
-				this.zipCode = zipCode;
-			}
-			
-		/**
-		 * @param partner
-		 *            the partner to set
-		 */
-		public void setPartner(final Partner partner)
-			{
-				this.partner = partner;
-			}
-			
-		/**
-		 * @param office
-		 *            the office to set
-		 */
-		public void setOffice(final Office office)
-			{
-				this.office = office;
-			}
-			
-		/**
-		 * @param lstZipCode
-		 *            the lstZipCode to set
-		 */
-		public void setLstZipCode(final List<ZipCode> lstZipCode)
-			{
-				this.lstZipCode = lstZipCode;
-			}
-			
-		/**
-		 * @param zipCodeService
-		 *            the zipCodeService to set
-		 */
-		public void setZipCodeService(final ZipCodeService zipCodeService)
-			{
-				this.zipCodeService = zipCodeService;
+				// TODO Auto-generated constructor stub
+				final ZipCodeService zipcodeservice = new ZipCodeDao();
+				
+				this.zipCodeService = zipcodeservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final ZipCode zipcode = new ZipCode();
+				
+				this.setPartner(partner);
+				this.setOffice(office);
+				this.setZipcode(zipcode);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+					
 			}
 			
 		@Override
@@ -140,110 +69,141 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 			}
 			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						switch (strMode)
-							{
-								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "add" :
-									
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "saveedit" :
-									try
-										{
-											strMode = this.SaveEdit();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
-								default :
-									return "failed";
-							}
-					}
-				else
-					{
-						strMode = "start";
-					}
-				return strMode;
-			}
-			
-		private String Paging() throws Exception
-			{
-				
-				String status = "";
 				try
 					{
-						String wherecond = "";
-						if (this.getSearchcriteria().contains("%"))
+						if (this.mode != null)
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								switch (strMode)
+									{
+										case "search" :
+											this.Paging();
+											break;
+										case "edit" :
+											this.ViewData();
+											break;
+										case "savedel" :
+											strMode = this.SaveDelete();
+											break;
+										case "saveadd" :
+											strMode = this.SaveAdd();
+											break;
+										case "saveedit" :
+											strMode = this.SaveEdit();
+											break;
+										case "first" :
+											this.pageNumber = 1;
+											this.Paging();
+											break;
+										case "prev" :
+											this.pageNumber -= 1;
+											if (this.pageNumber <= 1)
+												{
+													this.pageNumber = 1;
+												}
+											this.Paging();
+											break;
+										case "next" :
+											this.pageNumber += 1;
+											this.Paging();
+											break;
+										case "last" :
+											this.Paging(1);
+											break;
+										default :
+											break;
+									}
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								this.pageNumber = 1;
+								this.Paging();
+								strMode = "start";
 							}
-							
-						this.lstZipCode = this.zipCodeService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return strMode;
+			}
+			
+		private String WhereCond()
+			{
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						if (this.getSearchcriteria().contains("%"))
+							{
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+							}
+						else
+							{
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+							}
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstZipCode = this.zipCodeService.Paging(this.getPageNumber(), this.WhereCond(), "");
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstZipCode = this.zipCodeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.zipcode = new ZipCode();
+				try
+					{
+						this.zipcode = this.zipCodeService.View(this.id);
+						this.kelurahan = this.zipcode.getKelurahan();
+						this.kecamatan = this.zipcode.getKecamatan();
+						this.city = this.zipcode.getCity();
+						this.zipCode = this.zipcode.getZipCode();
+					}
+				catch (final Exception exp)
+					{
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
@@ -251,15 +211,20 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 				String status = "";
 				try
 					{
-						final ZipCode zipCode = new ZipCode();
-						zipCode.setId(this.getId());
-						
-						this.zipCodeService.SaveDel(zipCode);
+						final ZipCode zipcode = new ZipCode();
+						zipcode.setId(this.getId());
+						zipcode.setKelurahan(this.kelurahan);
+						zipcode.setKecamatan(this.kecamatan);
+						zipcode.setCity(this.city);
+						zipcode.setZipCode(this.zipCode);
+						this.zipCodeService.SaveDel(zipcode);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -273,15 +238,21 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 				String status = "";
 				try
 					{
-						final ZipCode zipCode = new ZipCode();
-						zipCode.setId(this.getId());
-						
-						this.zipCodeService.SaveDel(zipCode);
+						final ZipCode zipcode = new ZipCode();
+						zipcode.setId(this.getId());
+						zipcode.setKelurahan(this.kelurahan);
+						zipcode.setKecamatan(this.kecamatan);
+						zipcode.setCity(this.city);
+						zipcode.setZipCode(this.zipCode);
+						zipcode.setUsrUpd(this.usrUpd);
+						this.zipCodeService.SaveDel(zipcode);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -295,15 +266,17 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 				String status = "";
 				try
 					{
-						final ZipCode zipCode = new ZipCode();
-						zipCode.setId(this.getId());
+						final ZipCode zipcode = new ZipCode();
+						zipcode.setId(this.getId());
 						
-						this.zipCodeService.SaveDel(zipCode);
+						this.zipCodeService.SaveDel(zipcode);
 						status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -439,6 +412,96 @@ public class ZipCodeAction extends ActionSupport implements Preparable
 		public void setId(final long id)
 			{
 				this.id = id;
+			}
+			
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+			
+		public List<ZipCode> getLstZipCode()
+			{
+				return this.lstZipCode;
+			}
+			
+		public void setLstZipCode(final List<ZipCode> lstZipCode)
+			{
+				this.lstZipCode = lstZipCode;
+			}
+			
+		public ZipCodeService getZipCodeService()
+			{
+				return this.zipCodeService;
+			}
+			
+		public void setZipCodeService(final ZipCodeService zipCodeService)
+			{
+				this.zipCodeService = zipCodeService;
+			}
+			
+		public ZipCode getZipcode()
+			{
+				return this.zipcode;
+			}
+			
+		public void setZipcode(final ZipCode zipcode)
+			{
+				this.zipcode = zipcode;
+			}
+			
+		public String getKelurahan()
+			{
+				return this.kelurahan;
+			}
+			
+		public void setKelurahan(final String kelurahan)
+			{
+				this.kelurahan = kelurahan;
+			}
+			
+		public String getKecamatan()
+			{
+				return this.kecamatan;
+			}
+			
+		public void setKecamatan(final String kecamatan)
+			{
+				this.kecamatan = kecamatan;
+			}
+			
+		public String getCity()
+			{
+				return this.city;
+			}
+			
+		public void setCity(final String city)
+			{
+				this.city = city;
+			}
+			
+		public String getZipCode()
+			{
+				return this.zipCode;
+			}
+			
+		public void setZipCode(final String zipCode)
+			{
+				this.zipCode = zipCode;
 			}
 			
 	}

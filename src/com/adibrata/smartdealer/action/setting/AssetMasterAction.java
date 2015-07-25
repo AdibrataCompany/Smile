@@ -3,20 +3,18 @@ package com.adibrata.smartdealer.action.setting;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.setting.AssetMasterDao;
 import com.adibrata.smartdealer.model.AssetMaster;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.AssetMasterService;
-/**
- * @author Henry
- */
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class AssetMasterAction extends ActionSupport implements Preparable
+public class AssetMasterAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -35,6 +33,9 @@ public class AssetMasterAction extends ActionSupport implements Preparable
 		private int pageNumber;
 		private String usrUpd;
 		private String usrCrt;
+		private String message;
+		private String status;
+		
 		private long id;
 		private String assetType;
 		private String assetBrand;
@@ -42,142 +43,228 @@ public class AssetMasterAction extends ActionSupport implements Preparable
 		private String assetCode;
 		private Integer assetLevel;
 		
+		public AssetMasterAction() throws Exception
+			{
+				final AssetMasterService assetmasterservice = new AssetMasterDao();
+				
+				this.assetMasterService = assetmasterservice;
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				final AssetMaster assetMaster = new AssetMaster();
+				
+				this.setPartner(partner);
+				this.setOffice(office);
+				this.setAssetmaster(assetMaster);
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+					
+			}
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
-						
 						switch (strMode)
 							{
 								case "search" :
-									strMode = this.Paging();
+									this.Paging();
+									break;
 								case "edit" :
-								
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									
-									strMode = this.SaveAdd();
+									this.ViewData();
+									break;
+								case "savedel" :
+									strMode = this.SaveDelete();
+									break;
 								case "saveadd" :
 									strMode = this.SaveAdd();
+									break;
 								case "saveedit" :
 									strMode = this.SaveEdit();
-								case "back" :
-								
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
-									return ERROR;
+									break;
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						this.Paging();
 						strMode = "start";
 					}
 				return strMode;
 			}
 			
-		private String Paging() throws Exception
+		private String WhereCond()
 			{
-				
-				String status = "";
-				try
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						String wherecond = "";
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstAssetMaster = this.assetMasterService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "Success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstAssetMaster = this.assetMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstAssetMaster = this.assetMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				this.assetmaster = new AssetMaster();
+				try
+					{
+						this.assetmaster = this.assetMasterService.View(this.id);
+						this.assetBrand = this.assetmaster.getAssetBrand();
+						this.assetType = this.assetmaster.getAssetType();
+						this.assetModel = this.assetmaster.getAssetModel();
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 			
 		private String SaveAdd() throws Exception
 			{
-				String status = "";
 				try
 					{
+						this.status = "";
 						final AssetMaster assetMaster = new AssetMaster();
-						assetMaster.setAssetBrand(this.getAssetBrand());
-						assetMaster.setAssetType(this.getAssetType());
-						assetMaster.setAssetModel(this.getAssetModel());
-						
+						assetMaster.setAssetBrand(this.assetBrand);
+						assetMaster.setAssetType(this.assetType);
+						assetMaster.setAssetModel(this.assetModel);
+						assetMaster.setPartner(this.partner);
 						this.assetMasterService.SaveAdd(assetMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
 			
 		private String SaveEdit() throws Exception
 			{
-				String status = "";
+				this.status = "";
 				try
 					{
 						final AssetMaster assetMaster = new AssetMaster();
-						assetMaster.setAssetBrand(this.getAssetBrand());
-						assetMaster.setAssetType(this.getAssetType());
-						assetMaster.setAssetModel(this.getAssetModel());
 						assetMaster.setId(this.getId());
+						assetMaster.setAssetBrand(this.assetBrand);
+						assetMaster.setAssetType(this.assetType);
+						assetMaster.setAssetModel(this.assetModel);
+						assetMaster.setPartner(this.partner);
+						assetMaster.setUsrUpd(this.usrUpd);
 						this.assetMasterService.SaveAdd(assetMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
 			
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				this.status = "";
 				try
 					{
 						final AssetMaster assetMaster = new AssetMaster();
 						
 						assetMaster.setId(this.getId());
 						this.assetMasterService.SaveDel(assetMaster);
-						status = SUCCESS;
+						this.status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.status;
 			}
 			
 		/**
@@ -475,6 +562,26 @@ public class AssetMasterAction extends ActionSupport implements Preparable
 		public void setAssetLevel(final Integer assetLevel)
 			{
 				this.assetLevel = assetLevel;
+			}
+			
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
+		public void setMessage(final String message)
+			{
+				this.message = message;
+			}
+			
+		public String getStatus()
+			{
+				return this.status;
+			}
+			
+		public void setStatus(final String status)
+			{
+				this.status = status;
 			}
 			
 	}

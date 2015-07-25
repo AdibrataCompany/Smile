@@ -7,27 +7,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>DMS-Dealer Management System</title>
 
-<link href="/SmartDealer/Demo/style/css/bootstrap.min.css"
+<link href="/Smile/Demo/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="/SmartDealer/Demo/style/css/bootstrap-theme.min.css"
+<link href="/Smile/Demo/style/css/bootstrap-theme.min.css"
 	rel="stylesheet" type="text/css" />
-<link href="/SmartDealer/Demo/style/css/jquery.smartmenus.bootstrap.css"
+<link href="/Smile/Demo/style/css/jquery.smartmenus.bootstrap.css"
 	rel="stylesheet" type="text/css" />
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/bootstrap.min.js"></script>
+	src="/Smile/Demo/style/js/bootstrap.min.js"></script>
 <!-- /container -->
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.min.js"></script>
+	src="/Smile/Demo/style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/bootstrap.min.js"></script>
+	src="/Smile/Demo/style/js/bootstrap.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.min.js"></script>
+	src="/Smile/Demo/style/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.smartmenus.min.js"></script>
+	src="/Smile/Demo/style/js/jquery.smartmenus.min.js"></script>
 <script type="text/javascript" language="javascript"
-	src="/SmartDealer/Demo/style/js/jquery.smartmenus.bootstrap.min.js"></script>
+	src="/Smile/Demo/style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
 
@@ -42,13 +42,13 @@
 				
 					<td width="25%"><div>
 							<img width="100%" height="100" border="0" alt="W3Schools"
-								src="/SmartDealer/images/smartdealer/LogoDealer.jpg">
+								src="/Smile/images/smartdealer/LogoDealer.jpg">
 						</div></td>
 					<td align="center">Sun Motor</td>
 
 					<td width="25%"><div>
 							<img width="100%" height="100" border="0" alt="W3Schools"
-								src="/SmartDealer/images/smartdealer/LogoDealer.jpg">
+								src="/Smile/images/smartdealer/LogoDealer.jpg">
 						</div></td>
 				</tr>
 				<tr>
