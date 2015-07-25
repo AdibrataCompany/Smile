@@ -31,6 +31,8 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	public ZipCodeDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -59,7 +61,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	 * .smartdealer.model.ZipCode)
 	 */
 	@Override
-	public void SaveAdd(ZipCode zipcode)throws Exception {
+	public void SaveAdd(ZipCode zipcode) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -88,7 +90,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	 * adibrata.smartdealer.model.ZipCode)
 	 */
 	@Override
-	public void SaveEdit(ZipCode zipcode)throws Exception {
+	public void SaveEdit(ZipCode zipcode) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -117,7 +119,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	 * .smartdealer.model.ZipCode)
 	 */
 	@Override
-	public void SaveDel(ZipCode zipcode) throws Exception{
+	public void SaveDel(ZipCode zipcode) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -144,7 +146,8 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<ZipCode> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception{
+	public List<ZipCode> Paging(int CurrentPage, String WhereCond, String SortBy)
+			throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<ZipCode> list = null;
@@ -173,7 +176,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 	}
 
 	@Override
-	public ZipCode View(long id) throws Exception{
+	public ZipCode View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		ZipCode zipCode = null;
 		try {
@@ -193,20 +196,22 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 
 	@Override
 	public List<ZipCode> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception{
+			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<ZipCode> list = null;
+
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "") {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
@@ -220,6 +225,15 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
 
 }

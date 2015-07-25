@@ -3,25 +3,22 @@ package com.adibrata.smartdealer.action.setting;
 
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.MasterTable;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
-/**
- * @author Henry
- */
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class BankAccountAction extends ActionSupport implements Preparable
+public class BankAccountAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		
@@ -37,6 +34,8 @@ public class BankAccountAction extends ActionSupport implements Preparable
 		private long id;
 		private String bankAccountCode;
 		private String bankAccountName;
+		private String bankAccountType;
+		private String bankAccountPurpose;
 		private String address;
 		private String rt;
 		private String rw;
@@ -140,7 +139,8 @@ public class BankAccountAction extends ActionSupport implements Preparable
 						bankAccount.setBankAccountCode(this.getBankAccountCode());
 						bankAccount.setBankAccountName(this.getBankAccountName());
 						bankAccount.setCoacode(this.getCoacode());
-						
+						bankAccount.setType(this.getBankAccountType());
+						bankAccount.setPurpose(this.getBankAccountPurpose());
 						bankAccount.setAddress(this.getAddress());
 						bankAccount.setRt(this.getRt());
 						bankAccount.setRw(this.getRw());
@@ -177,6 +177,8 @@ public class BankAccountAction extends ActionSupport implements Preparable
 						bankAccount.setId(this.getId());
 						bankAccount.setBankAccountCode(this.getBankAccountCode());
 						bankAccount.setBankAccountName(this.getBankAccountName());
+						bankAccount.setType(this.getBankAccountType());
+						bankAccount.setPurpose(this.getBankAccountPurpose());
 						bankAccount.setCoacode(this.getCoacode());
 						bankAccount.setAddress(this.getAddress());
 						bankAccount.setRt(this.getRt());
@@ -735,6 +737,44 @@ public class BankAccountAction extends ActionSupport implements Preparable
 		public void setFaxNo(final String faxNo)
 			{
 				this.faxNo = faxNo;
+			}
+
+		/**
+		 * @return the bankaccounttype
+		 */
+		
+		/**
+		 * @return the bankAccountType
+		 */
+		public String getBankAccountType()
+			{
+				return this.bankAccountType;
+			}
+			
+		/**
+		 * @param bankAccountType
+		 *            the bankAccountType to set
+		 */
+		public void setBankAccountType(final String bankAccountType)
+			{
+				this.bankAccountType = bankAccountType;
+			}
+			
+		/**
+		 * @return the bankAccountPurpose
+		 */
+		public String getBankAccountPurpose()
+			{
+				return this.bankAccountPurpose;
+			}
+			
+		/**
+		 * @param bankAccountPurpose
+		 *            the bankAccountPurpose to set
+		 */
+		public void setBankAccountPurpose(final String bankAccountPurpose)
+			{
+				this.bankAccountPurpose = bankAccountPurpose;
 			}
 			
 	}

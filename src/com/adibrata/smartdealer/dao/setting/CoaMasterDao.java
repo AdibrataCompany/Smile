@@ -33,6 +33,8 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	public CoaMasterDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -103,7 +105,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveAdd(Coamaster coamaster) throws Exception {
+	public void SaveAdd(Coamaster coamaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -132,7 +134,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveEdit(Coamaster coamaster) {
+	public void SaveEdit(Coamaster coamaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -155,7 +157,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	 * .smartdealer.model.Coamaster)
 	 */
 	@Override
-	public void SaveDel(Coamaster coamaster) throws Exception {
+	public void SaveDel(Coamaster coamaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -176,7 +178,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 	}
 
 	@Override
-	public Coamaster View(long id) throws Exception {
+	public Coamaster View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		Coamaster coamaster = null;
 		try {
@@ -196,20 +198,21 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 
 	@Override
 	public List<Coamaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception {
-		// TODO Auto-generated method stub
+			String SortBy, boolean islast) throws Exception{
 		StringBuilder hql = new StringBuilder();
 		List<Coamaster> list = null;
+
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "") {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
@@ -223,6 +226,15 @@ public class CoaMasterDao extends DaoBase implements COAMasterService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
 
 }

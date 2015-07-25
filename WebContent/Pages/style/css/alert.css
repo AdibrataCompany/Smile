@@ -1,0 +1,55 @@
+body{
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.info, .success, .warning, .error, .valid , .search, .path{
+border: 1px solid;
+padding:2px;
+background-repeat: no-repeat;
+}
+
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+	border-color: #AACEF9;
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+	border-color: #C9DAC5;
+}
+.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+	border-color: #E5D7BB;
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+	border-color: #E6A7C1;
+}
+.valid {
+    color: #696969;
+    background-color: #DCDCDC;
+	border-color: #CECECE;
+}
+.search {
+    color: #696969;
+    background-color: #EBEBEB;
+	border-color: #DCDCDC;
+}
+.path {
+    color: #696969;
+    background-color: #F5F5F5;
+	border-color: #DBDBDB;
+}
+
+.fold {
+    text-align: justify;
+    width: 100px;
+}
+
+.fold img {
+    display: block;
+    margin: 0 auto;
+}

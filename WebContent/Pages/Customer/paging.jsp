@@ -9,109 +9,84 @@
 
 <title>DMS-Dealer Management System</title>
 
-
 </head>
-<script type="text/javascript">
-	function search() {
-		document.getElementById("mode").value = "search";
-	}
-	function edit() {
-		document.getElementById("mode").value = "edit";
-	}
-	function del() {
-		document.getElementById("mode").value = "savedel";
-	}
-	function add() {
-		document.getElementById("mode").value = "add";
-	}
-</script>
+
 <body>
+
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
 		<!-- Main component for a primary marketing message or call to action -->
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetdoc.action" theme="simple">
-			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+
+		<s:form action="customer.action" theme="simple">
 			<center>
-				<table width="95%">
+				<h2>Customer</h2>
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<table width="100%">
 					<tr>
-						<td width="25%">Search By</td>
 						<td><select name="searchcriteria">
-								<option value="0">Parameter</option>
-								<option value="documentCode">Document Code</option>
-								<option value="documentName">Document Name</option>
-								<option value="assetType">Asset Type</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td>Search Criteria</td>
-						<td><input name="searchvalue" /></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="right">
+								<option value="">Parameter</option>
+								<option value="name">Nama</option>
+								<option value="type">Tipe</option>
+								<option value="fullAddress">Alamat</option>
+						</select> <input name="searchvalue" placeholder="Pencarian" />
 							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Search</button>
+								onclick="search()">Cari</button></td>
+						<td align="right">
+							<button type="submit" onclick="addpersonal()">
+								Add<br>Personal
+							</button>
+							<button type="submit" onclick="addcompany()">
+								Add<br>Company
+							</button>
+							<button class="btn btn-sm btn-warning" type="submit"
+								onclick="entry()">
+								<span class="glyphicon glyphicon-edit"></span><br>Ubah
+							</button>
 						</td>
 					</tr>
 				</table>
 				<br>
-				<table width="95%" border="1">
+				<s:label name="message"></s:label>
+				<br>
+				<table class="table table-bordered">
 					<tr>
-						<th>Document<br>Code
-						</th>
-						<th>Document<br>Name
-						</th>
-						<th>Asset<br>Type
-						</th>
-						<th><button class="btn btn-sm btn-primary" type="submit"
-								onclick="edit()">Ubah</button></th>
-						<th><button class="btn btn-sm btn-primary" type="submit"
-								onclick="del()">Hapus</button></th>
+						<th style="text-align: center;">No.</th>
+						<th style="text-align: center;">Nama</th>
+						<th style="text-align: center;">Alamat</th>
+						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
-					<s:iterator value="lstAssetDocMasters">
-						<tr id="row_<s:property value="id"/>">
-							<td>${documentCode}</td>
-							<td>${documentName}</td>
-							<td>${assetType}</td>
-							<td><input type="radio" id="<s:property value="id"/>"
-								checked /></td>
-							<td><input type="radio" id="<s:property value="id"/>"
-								checked /></td>
+					<s:iterator value="lstCustomer">
+						<tr id="row_${id}">
+							<td>${name}</td>
+							<td>${type}</td>
+							<td>${fullAddress}</td>
+							<td style="text-align: center;"><input type="radio"
+								id="<s:property value="id"/>" checked /></td>
 						</tr>
 					</s:iterator>
 				</table>
-				<left>
-				<table width="95%" align="left"></table>
-				<tr>
-					<td width="30%">
-						<button class="btn btn-sm btn-primary" type="submit"
-							onclick="first()">|<</button>
-						<button class="btn btn-sm btn-primary" type="submit"
-							onclick="prev()"><</button>
-						<button class="btn btn-sm btn-primary" type="submit"
-							onclick="next()">></button>
-						<button class="btn btn-sm btn-primary" type="submit"
-							onclick="last()">>|</button>
-					</td>
-					<td colspan="2"><input name="pageNumber" value="1"/>
-						<button class="btn btn-sm btn-primary" type="submit"
-							onclick="first()">Go</button></td>
-				</tr>
-				</table>
-				<table width="95%">
-					<tr>
-						<td colspan="2" align="right">
-							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="add()">Add</button>
-						</td>
-					</tr>
-				</table>
-				</left>
+				<%@include file="/Pages/Paging.jsp"%>
 			</center>
+
 		</s:form>
 	</div>
-</body>
 
+</body>
+<script type="text/javascript">
+	function search() {
+		document.getElementById("mode").value = "search";
+	}
+	function addpersonal() {
+		document.getElementById("mode").value = "addpersonal";
+	}
+	function addcompany() {
+		document.getElementById("mode").value = "addcompany";
+	}
+	function edit() {
+		document.getElementById("mode").value = "edit";
+	}
+</script>
 </html>

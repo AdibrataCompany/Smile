@@ -24,16 +24,19 @@ import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.*;
 import util.adibrata.support.transno.GetTransNo;
-public class AssetMasterDao extends DaoBase implements AssetMasterService{
-	String userupd; 
+
+public class AssetMasterDao extends DaoBase implements AssetMasterService {
+	String userupd;
 	Session session;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Calendar dtmupd = Calendar.getInstance();
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
-	
-	public AssetMasterDao() throws Exception{
+	private int currentpage;
+	private long totalrecord;
+
+	public AssetMasterDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -51,16 +54,23 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Save(com.adibrata.smartdealer.service.setting.AssetMaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.AssetMaster#Save(com.adibrata
+	 * .smartdealer.service.setting.AssetMaster)
 	 */
-	
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Paging(int, java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Paging(int,
+	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<AssetMaster> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception{
+	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
+			String SortBy) throws Exception {
 
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
@@ -71,14 +81,14 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-			
+
 			Query selectQuery = session.createQuery(hql.toString());
 			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -88,30 +98,29 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception{
-		// TODO Auto-generated method stub
-
-		// TODO Auto-generated method stub
+			String SortBy, boolean islast) throws Exception {
 		StringBuilder hql = new StringBuilder();
 		List<AssetMaster> list = null;
+
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "") {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-			
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord (WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
 			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
 					.getClassName());
@@ -122,54 +131,70 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 		return list;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveAdd(com.adibrata.smartdealer.service.setting.AssetMaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveAdd(com.adibrata
+	 * .smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
-	public void SaveAdd(AssetMaster assetMaster) throws Exception{
+	public void SaveAdd(AssetMaster assetMaster) throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
 			assetMaster.setDtmCrt(dtmupd.getTime());
 			assetMaster.setDtmUpd(dtmupd.getTime());
 			session.save(assetMaster);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveEdit(com.adibrata.smartdealer.service.setting.AssetMaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveEdit(com.adibrata
+	 * .smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
 	public void SaveEdit(AssetMaster assetMaster) throws Exception{
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
-			
+
 			assetMaster.setDtmUpd(dtmupd.getTime());
 			session.update(assetMaster);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata.smartdealer.service.setting.AssetMaster)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata
+	 * .smartdealer.service.setting.AssetMaster)
 	 */
 	@Override
 	public void SaveDel(AssetMaster assetMaster) throws Exception{
@@ -178,36 +203,46 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService{
 		try {
 
 			session.delete(assetMaster);
-			
+
 			session.getTransaction().commit();
 
 		} catch (Exception exp) {
 			session.getTransaction().rollback();
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 	}
 
-	
 	@Override
 	public AssetMaster View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		AssetMaster assetmaster = null;
 		try {
-			assetmaster =  (AssetMaster) session.get(AssetMaster.class, id);
-			
+			assetmaster = (AssetMaster) session.get(AssetMaster.class, id);
+
 		} catch (Exception exp) {
-			
+
 			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return assetmaster;
 	}
 
-	
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
+	}
 
 }

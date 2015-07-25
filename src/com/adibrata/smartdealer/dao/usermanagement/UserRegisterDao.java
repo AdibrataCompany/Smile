@@ -32,6 +32,8 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private long totalrecord;
+	private int currentpage;
 	public UserRegisterDao() throws Exception {
 		// TODO Auto-generated constructor stub
 		try {
@@ -145,7 +147,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	 * (int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<MsUser> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception  {
+	public List<MsUser> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MsUser> list = null;
@@ -173,7 +175,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 		return list;
 	}
 
-	public boolean PasswordVerification(MsUser msUser)throws Exception  {
+	public boolean PasswordVerification(MsUser msUser) throws Exception {
 		boolean isValid = false;
 
 		String unVerifiedPassowrd = EncryptionHelper.EncryptSHA(msUser
@@ -241,7 +243,7 @@ public class UserRegisterDao extends DaoBase implements UserService {
 	}
 
 	@Override
-	public MsUser View(long id)throws Exception  {
+	public MsUser View(long id) throws Exception {
 		// TODO Auto-generated method stub
 		MsUser msUser = null;
 		try {
@@ -271,8 +273,10 @@ public class UserRegisterDao extends DaoBase implements UserService {
 					}
 
 					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord(WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+					this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+					this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+					selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 					selectQuery.setMaxResults(pagesize);
 					list = selectQuery.list();
 

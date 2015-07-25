@@ -34,6 +34,8 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	public OfficeDao() throws Exception{
 		// TODO Auto-generated constructor stub
@@ -60,7 +62,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception {
+	public List<Office> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Office> list = null;
@@ -210,7 +212,7 @@ public class OfficeDao extends DaoBase implements OfficeService {
 	}
 
 	@Override
-	public Office View(long id)throws Exception {
+	public Office View(long id) throws Exception{
 		// TODO Auto-generated method stub
 		Office office = null;
 		try {
@@ -234,16 +236,18 @@ public class OfficeDao extends DaoBase implements OfficeService {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Office> list = null;
+
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "") {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
@@ -257,6 +261,15 @@ public class OfficeDao extends DaoBase implements OfficeService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
 
 }

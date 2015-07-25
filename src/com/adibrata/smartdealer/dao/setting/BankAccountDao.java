@@ -9,6 +9,7 @@ package com.adibrata.smartdealer.dao.setting;
  */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -35,6 +36,8 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
+		private int currentpage;
+		private long totalrecord;
 		
 		public BankAccountDao() throws Exception
 			{
@@ -97,9 +100,9 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 		@Override
 		public List<BankAccount> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
-				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<BankAccount> list = null;
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -108,10 +111,11 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-							
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
+						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						
+						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
 						
@@ -238,28 +242,40 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 			}
 			
 		@Override
-		public List<BankAccount> List(final Partner partner, final Office office, final String Type, final String Purpose) throws Exception
+		public int getCurrentpage()
+			{
+				return this.currentpage;
+			}
+			
+		public void setCurrentpage(final int currentpage)
+			{
+				this.currentpage = currentpage;
+			}
+			
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<BankAccount> listBankAccount(final Partner partner, final Office office, final String type, final String purpose) throws Exception
 			{
 				// TODO Auto-generated method stub
-				final StringBuilder hql = new StringBuilder();
-				List<BankAccount> list = null;
+				List<BankAccount> list = new ArrayList<BankAccount>();
 				try
 					{
-						hql.append(this.strStatement);
 
-						hql.append(" where partnercode = :partnercode and officeid = :office and Type=:type and purpose =:purpose ");
+						this.hql.append(this.strStatement);
+						this.hql.append(" Where partnercode = :partnercode and officeid = :officeid and type =:type and purpose = :purpose");
 
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(this.hql.toString());
 						selectQuery.setParameter("partnercode", partner.getPartnerCode());
 						selectQuery.setParameter("office", office.getId());
-						selectQuery.setParameter("type", Type);
-						selectQuery.setParameter("purpose", Purpose);
-						list = selectQuery.list();
+						selectQuery.setParameter("officeid", office.getId());
+						selectQuery.setParameter("type", type);
+						selectQuery.setParameter("purpose", purpose);
 
+						list = selectQuery.list();
 					}
 				catch (final Exception exp)
 					{
-
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

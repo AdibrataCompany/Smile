@@ -31,6 +31,8 @@ public class RoleDao extends DaoBase implements RoleService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private long totalrecord;
+	private int currentpage;
 
 	public RoleDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -145,8 +147,7 @@ public class RoleDao extends DaoBase implements RoleService {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy)
-			throws Exception {
+	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception {
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<MsRole> list = null;
@@ -158,7 +159,7 @@ public class RoleDao extends DaoBase implements RoleService {
 			}
 
 			Query selectQuery = session.createQuery(hql.toString());
-
+			
 			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
@@ -198,31 +199,33 @@ public class RoleDao extends DaoBase implements RoleService {
 	public List<MsRole> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
-		StringBuilder hql = new StringBuilder();
-		List<MsRole> list = null;
-		try {
-			hql.append(strStatement);
-			if (WhereCond != "") {
-				hql.append(" where ");
-				hql.append(WhereCond);
-			}
+				StringBuilder hql = new StringBuilder();
+				List<MsRole> list = null;
+				try {
+					hql.append(strStatement);
+					if (WhereCond != "") {
+						hql.append(" where ");
+						hql.append(WhereCond);
+					}
 
-			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-			selectQuery.setMaxResults(pagesize);
-			list = selectQuery.list();
+					Query selectQuery = session.createQuery(hql.toString());
+					this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+					this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
 
-		} catch (Exception exp) {
+					selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
+					selectQuery.setMaxResults(pagesize);
+					list = selectQuery.list();
 
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return list;
+				} catch (Exception exp) {
+
+					ExceptionEntities lEntExp = new ExceptionEntities();
+					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+							.getClassName());
+					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+							.getMethodName());
+					ExceptionHelper.WriteException(lEntExp, exp);
+				}
+				return list;
 	}
 
 }

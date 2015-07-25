@@ -59,9 +59,10 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		private String coaCode;
 		private Double amount;
 		private String description;
+		private String bankpurpose;
 		private int SeqNo;
 		private double totalAmount;
-		
+		private String Wop;
 		private List<BankAccount> bankAccounts;
 		private BankAccount bankAccount;
 		private BankAccountService bankAccountService;
@@ -300,17 +301,17 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				try
 					{
-
-						this.bankAccounts = this.bankAccountService.list();
-
+						
+						this.bankAccounts = this.bankAccountService.listBankAccount(this.partner, this.office, this.Wop, this.bankpurpose);
+						
 						this.bankAccountList = new HashMap<Long, String>();
-
+						
 						for (final Iterator<BankAccount> iterator = this.bankAccounts.iterator(); iterator.hasNext();)
 							{
 								this.bankAccount = iterator.next();
 								this.bankAccountList.put(this.bankAccount.getId(), this.bankAccount.getBankAccountName().trim());
 							}
-						System.out.println("bankAccountList" + this.bankAccountList);
+							
 					}
 				catch (final Exception e)
 					{
@@ -318,7 +319,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-
+			
 		public Office getOffice()
 			{
 				return this.office;
@@ -589,6 +590,23 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		public void setValueDate(final String valueDate)
 			{
 				this.valueDate = valueDate;
+			}
+			
+		/**
+		 * @return the wop
+		 */
+		public String getWop()
+			{
+				return this.Wop;
+			}
+			
+		/**
+		 * @param wop
+		 *            the wop to set
+		 */
+		public void setWop(final String wop)
+			{
+				this.Wop = wop;
 			}
 
 	}

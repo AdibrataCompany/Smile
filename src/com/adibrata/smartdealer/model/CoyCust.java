@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 24, 2015 6:14:22 PM by Hibernate Tools 4.3.1
+// Generated Jul 25, 2015 1:37:58 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -31,23 +31,6 @@ public class CoyCust implements java.io.Serializable
 		private String industryTypeId;
 		private String pengelolaGedungAreaPhone;
 		private String pengelolaGedungPhone;
-		private Double currentRatio;
-		private Double roi;
-		private Double der;
-		private double modalDasar;
-		private double modalDisetor;
-		private double netProfitMargin;
-		private String bankAccountType;
-		private double allowanceAvailable;
-		private Double averageDebitTransaction;
-		private Double averageCreditTransaction;
-		private Double averageBalance;
-		private Double deposito;
-		private String additionalCollateralType;
-		private Double additionalCollateralAmount;
-		private String companyStatus;
-		private Short companyStatusSinceYear;
-		private Date rentFinishDate;
 		private String bankCode;
 		private String bankBranch;
 		private String accountNo;
@@ -77,29 +60,22 @@ public class CoyCust implements java.io.Serializable
 			{
 			}
 			
-		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable, short isApplyCarLoanBefore, String activeCustomer,
-		        String customerGroup)
+		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
 			{
 				this.id = id;
 				this.npwp = npwp;
 				this.npwpchecking = npwpchecking;
 				this.companyType = companyType;
 				this.industryTypeId = industryTypeId;
-				this.modalDasar = modalDasar;
-				this.modalDisetor = modalDisetor;
-				this.netProfitMargin = netProfitMargin;
-				this.allowanceAvailable = allowanceAvailable;
 				this.isApplyCarLoanBefore = isApplyCarLoanBefore;
 				this.activeCustomer = activeCustomer;
 				this.customerGroup = customerGroup;
 			}
 			
 		public CoyCust(long id, Customer customer, String npwp, String npwpchecking, String companyType, Short numberOfEmployees, Short yearOfEstablished, String industryTypeId, String pengelolaGedungAreaPhone, String pengelolaGedungPhone,
-		        Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable, Double averageDebitTransaction, Double averageCreditTransaction,
-		        Double averageBalance, Double deposito, String additionalCollateralType, Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear, Date rentFinishDate, String bankCode, String bankBranch, String accountNo,
-		        String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes, Short isCorporateCreditLine, Double plafondAmount, String customerGroup,
-		        String noDocumentOfEstablished, Date dateDocumentOfEstablished, String notaryPlace, String notaryName, String lastNoDocumentOfEstablished, Date lastDateDocumentOfEstablished, String lastNotaryPlace, String lastNotaryName,
-		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		        String bankCode, String bankBranch, String accountNo, String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes, Short isCorporateCreditLine,
+		        Double plafondAmount, String customerGroup, String noDocumentOfEstablished, Date dateDocumentOfEstablished, String notaryPlace, String notaryName, String lastNoDocumentOfEstablished, Date lastDateDocumentOfEstablished,
+		        String lastNotaryPlace, String lastNotaryName, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -111,23 +87,6 @@ public class CoyCust implements java.io.Serializable
 				this.industryTypeId = industryTypeId;
 				this.pengelolaGedungAreaPhone = pengelolaGedungAreaPhone;
 				this.pengelolaGedungPhone = pengelolaGedungPhone;
-				this.currentRatio = currentRatio;
-				this.roi = roi;
-				this.der = der;
-				this.modalDasar = modalDasar;
-				this.modalDisetor = modalDisetor;
-				this.netProfitMargin = netProfitMargin;
-				this.bankAccountType = bankAccountType;
-				this.allowanceAvailable = allowanceAvailable;
-				this.averageDebitTransaction = averageDebitTransaction;
-				this.averageCreditTransaction = averageCreditTransaction;
-				this.averageBalance = averageBalance;
-				this.deposito = deposito;
-				this.additionalCollateralType = additionalCollateralType;
-				this.additionalCollateralAmount = additionalCollateralAmount;
-				this.companyStatus = companyStatus;
-				this.companyStatusSinceYear = companyStatusSinceYear;
-				this.rentFinishDate = rentFinishDate;
 				this.bankCode = bankCode;
 				this.bankBranch = bankBranch;
 				this.accountNo = accountNo;
@@ -265,194 +224,6 @@ public class CoyCust implements java.io.Serializable
 		public void setPengelolaGedungPhone(String pengelolaGedungPhone)
 			{
 				this.pengelolaGedungPhone = pengelolaGedungPhone;
-			}
-			
-		@Column(name = "CurrentRatio", precision = 53, scale = 0)
-		public Double getCurrentRatio()
-			{
-				return this.currentRatio;
-			}
-			
-		public void setCurrentRatio(Double currentRatio)
-			{
-				this.currentRatio = currentRatio;
-			}
-			
-		@Column(name = "ROI", precision = 53, scale = 0)
-		public Double getRoi()
-			{
-				return this.roi;
-			}
-			
-		public void setRoi(Double roi)
-			{
-				this.roi = roi;
-			}
-			
-		@Column(name = "DER", precision = 53, scale = 0)
-		public Double getDer()
-			{
-				return this.der;
-			}
-			
-		public void setDer(Double der)
-			{
-				this.der = der;
-			}
-			
-		@Column(name = "ModalDasar", nullable = false, precision = 53, scale = 0)
-		public double getModalDasar()
-			{
-				return this.modalDasar;
-			}
-			
-		public void setModalDasar(double modalDasar)
-			{
-				this.modalDasar = modalDasar;
-			}
-			
-		@Column(name = "ModalDisetor", nullable = false, precision = 53, scale = 0)
-		public double getModalDisetor()
-			{
-				return this.modalDisetor;
-			}
-			
-		public void setModalDisetor(double modalDisetor)
-			{
-				this.modalDisetor = modalDisetor;
-			}
-			
-		@Column(name = "NetProfitMargin", nullable = false, precision = 53, scale = 0)
-		public double getNetProfitMargin()
-			{
-				return this.netProfitMargin;
-			}
-			
-		public void setNetProfitMargin(double netProfitMargin)
-			{
-				this.netProfitMargin = netProfitMargin;
-			}
-			
-		@Column(name = "BankAccountType", length = 10)
-		public String getBankAccountType()
-			{
-				return this.bankAccountType;
-			}
-			
-		public void setBankAccountType(String bankAccountType)
-			{
-				this.bankAccountType = bankAccountType;
-			}
-			
-		@Column(name = "AllowanceAvailable", nullable = false, precision = 53, scale = 0)
-		public double getAllowanceAvailable()
-			{
-				return this.allowanceAvailable;
-			}
-			
-		public void setAllowanceAvailable(double allowanceAvailable)
-			{
-				this.allowanceAvailable = allowanceAvailable;
-			}
-			
-		@Column(name = "AverageDebitTransaction", precision = 53, scale = 0)
-		public Double getAverageDebitTransaction()
-			{
-				return this.averageDebitTransaction;
-			}
-			
-		public void setAverageDebitTransaction(Double averageDebitTransaction)
-			{
-				this.averageDebitTransaction = averageDebitTransaction;
-			}
-			
-		@Column(name = "AverageCreditTransaction", precision = 53, scale = 0)
-		public Double getAverageCreditTransaction()
-			{
-				return this.averageCreditTransaction;
-			}
-			
-		public void setAverageCreditTransaction(Double averageCreditTransaction)
-			{
-				this.averageCreditTransaction = averageCreditTransaction;
-			}
-			
-		@Column(name = "AverageBalance", precision = 53, scale = 0)
-		public Double getAverageBalance()
-			{
-				return this.averageBalance;
-			}
-			
-		public void setAverageBalance(Double averageBalance)
-			{
-				this.averageBalance = averageBalance;
-			}
-			
-		@Column(name = "Deposito", precision = 53, scale = 0)
-		public Double getDeposito()
-			{
-				return this.deposito;
-			}
-			
-		public void setDeposito(Double deposito)
-			{
-				this.deposito = deposito;
-			}
-			
-		@Column(name = "AdditionalCollateralType", length = 50)
-		public String getAdditionalCollateralType()
-			{
-				return this.additionalCollateralType;
-			}
-			
-		public void setAdditionalCollateralType(String additionalCollateralType)
-			{
-				this.additionalCollateralType = additionalCollateralType;
-			}
-			
-		@Column(name = "AdditionalCollateralAmount", precision = 53, scale = 0)
-		public Double getAdditionalCollateralAmount()
-			{
-				return this.additionalCollateralAmount;
-			}
-			
-		public void setAdditionalCollateralAmount(Double additionalCollateralAmount)
-			{
-				this.additionalCollateralAmount = additionalCollateralAmount;
-			}
-			
-		@Column(name = "CompanyStatus", length = 10)
-		public String getCompanyStatus()
-			{
-				return this.companyStatus;
-			}
-			
-		public void setCompanyStatus(String companyStatus)
-			{
-				this.companyStatus = companyStatus;
-			}
-			
-		@Column(name = "CompanyStatusSinceYear")
-		public Short getCompanyStatusSinceYear()
-			{
-				return this.companyStatusSinceYear;
-			}
-			
-		public void setCompanyStatusSinceYear(Short companyStatusSinceYear)
-			{
-				this.companyStatusSinceYear = companyStatusSinceYear;
-			}
-			
-		@Temporal(TemporalType.TIMESTAMP)
-		@Column(name = "RentFinishDate", length = 23)
-		public Date getRentFinishDate()
-			{
-				return this.rentFinishDate;
-			}
-			
-		public void setRentFinishDate(Date rentFinishDate)
-			{
-				this.rentFinishDate = rentFinishDate;
 			}
 			
 		@Column(name = "BankCode", length = 20)

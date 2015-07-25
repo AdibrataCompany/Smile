@@ -33,6 +33,8 @@ public class MasterDao extends DaoBase implements MasterService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	public MasterDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -60,7 +62,8 @@ public class MasterDao extends DaoBase implements MasterService {
 	 * smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveAdd(MasterType masterType, MasterTable masterTable) throws Exception {
+	public void SaveAdd(MasterType masterType, MasterTable masterTable)
+			throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -90,7 +93,8 @@ public class MasterDao extends DaoBase implements MasterService {
 	 * com.adibrata.smartdealer.model.MasterTable)
 	 */
 	@Override
-	public void SaveEdit(MasterType masterType, MasterTable masterTable) throws Exception {
+	public void SaveEdit(MasterType masterType, MasterTable masterTable)
+			throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -191,31 +195,42 @@ public class MasterDao extends DaoBase implements MasterService {
 	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception {
 		// TODO Auto-generated method stub
-				StringBuilder hql = new StringBuilder();
-				List<MasterTable> list = null;
-				try {
-					hql.append(strStatement);
-					if (WhereCond != "") {
-						hql.append(" where ");
-						hql.append(WhereCond);
-					}
+		StringBuilder hql = new StringBuilder();
+		List<MasterTable> list = null;
 
-					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord (WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
-					selectQuery.setMaxResults(pagesize);
-					list = selectQuery.list();
+		try {
+			hql.append(strStatement);
+			if (WhereCond != "") {
+				hql.append(" where ");
+				hql.append(WhereCond);
+			}
+			Query selectQuery = session.createQuery(hql.toString());
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
 
-				} catch (Exception exp) {
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
+			selectQuery.setMaxResults(pagesize);
+			list = selectQuery.list();
 
-					ExceptionEntities lEntExp = new ExceptionEntities();
-					lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-							.getClassName());
-					lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-							.getMethodName());
-					ExceptionHelper.WriteException(lEntExp, exp);
-				}
-				return list;
+		} catch (Exception exp) {
+
+			ExceptionEntities lEntExp = new ExceptionEntities();
+			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
+					.getClassName());
+			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
+					.getMethodName());
+			ExceptionHelper.WriteException(lEntExp, exp);
+		}
+		return list;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
 
 }

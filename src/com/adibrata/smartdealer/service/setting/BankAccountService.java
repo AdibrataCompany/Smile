@@ -17,17 +17,17 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface BankAccountService extends SeviceBase
 	{
 		public void SaveAdd(BankAccount bankAccount) throws Exception;
-
+		
 		public void SaveEdit(BankAccount bankAccount) throws Exception;
-
+		
 		public void SaveDel(BankAccount bankAccount) throws Exception;
-
+		
 		public List<BankAccount> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception;
-
+		
 		public List<BankAccount> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
-
+		
 		public BankAccount View(long id) throws Exception;
-
-		public List<BankAccount> List(Partner partner, Office office, String Type, String Purpose) throws Exception;
-
+		
+		public List<BankAccount> listBankAccount(final Partner partner, final Office office, final String type, final String purpose) throws Exception;
+		
 	}

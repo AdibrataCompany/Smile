@@ -33,11 +33,13 @@ public class DealerDao extends DaoBase implements DealerService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	/**
 	 * 
 	 */
-	public DealerDao()throws Exception {
+	public DealerDao() throws Exception{
 		// TODO Auto-generated constructor stub
 		try {
 			session = HibernateHelper.getSessionFactory().openSession();
@@ -158,7 +160,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 */
 
 	@Override
-	public void SaveDel(Supplier supplier) throws Exception{
+	public void SaveDel(Supplier supplier)throws Exception {
 		// TODO Auto-generated method stub
 		session.getTransaction().begin();
 		try {
@@ -186,7 +188,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	 */
 	@Override
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy)throws Exception {
+			String SortBy) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Supplier> list = null;
@@ -215,7 +217,7 @@ public class DealerDao extends DaoBase implements DealerService {
 	}
 
 	@Override
-	public Supplier View(long id) throws Exception{
+	public Supplier View(long id)throws Exception {
 		// TODO Auto-generated method stub
 		Supplier supplier = null;
 		try {
@@ -235,20 +237,22 @@ public class DealerDao extends DaoBase implements DealerService {
 
 	@Override
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception {
+			String SortBy, boolean islast) throws Exception{
 		// TODO Auto-generated method stub
 		StringBuilder hql = new StringBuilder();
 		List<Supplier> list = null;
+
 		try {
 			hql.append(strStatement);
 			if (WhereCond != "") {
 				hql.append(" where ");
 				hql.append(WhereCond);
 			}
-
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
@@ -262,6 +266,15 @@ public class DealerDao extends DaoBase implements DealerService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
 
 }

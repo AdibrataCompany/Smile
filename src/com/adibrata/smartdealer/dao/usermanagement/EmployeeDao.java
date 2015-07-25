@@ -31,6 +31,8 @@ public class EmployeeDao extends DaoBase implements EmployeeService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private int currentpage;
+	private long totalrecord;
 
 	public EmployeeDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -207,8 +209,10 @@ public class EmployeeDao extends DaoBase implements EmployeeService {
 			}
 
 			Query selectQuery = session.createQuery(hql.toString());
-			long totalrecord = TotalRecord(WhereCond);
-			selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 			selectQuery.setMaxResults(pagesize);
 			list = selectQuery.list();
 
@@ -222,6 +226,79 @@ public class EmployeeDao extends DaoBase implements EmployeeService {
 			ExceptionHelper.WriteException(lEntExp, exp);
 		}
 		return list;
+	}
+
+	public String getUserupd() {
+		return userupd;
+	}
+
+	public void setUserupd(String userupd) {
+		this.userupd = userupd;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+	public DateFormat getDateFormat() {
+		return dateFormat;
+	}
+
+	public void setDateFormat(DateFormat dateFormat) {
+		this.dateFormat = dateFormat;
+	}
+
+	public Calendar getDtmupd() {
+		return dtmupd;
+	}
+
+	public void setDtmupd(Calendar dtmupd) {
+		this.dtmupd = dtmupd;
+	}
+
+	public String getStrStatement() {
+		return strStatement;
+	}
+
+	public void setStrStatement(String strStatement) {
+		this.strStatement = strStatement;
+	}
+
+	public StringBuilder getHql() {
+		return hql;
+	}
+
+	public void setHql(StringBuilder hql) {
+		this.hql = hql;
+	}
+
+	public int getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
+	}
+
+	@Override
+	public int getCurrentpage() {
+		return currentpage;
+	}
+
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
+	}
+
+	public long getTotalrecord() {
+		return totalrecord;
+	}
+
+	public void setTotalrecord(long totalrecord) {
+		this.totalrecord = totalrecord;
 	}
 
 }
