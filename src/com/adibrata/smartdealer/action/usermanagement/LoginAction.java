@@ -54,7 +54,7 @@ public class LoginAction extends ActionSupport implements Preparable {
 			 * this.getPageNumber(), wherecond, "");
 			 */
 
-			status = "Success";
+			status = "SUCCESS";
 		} catch (Exception exp) {
 			status = "Failed";
 			ExceptionEntities lEntExp = new ExceptionEntities();

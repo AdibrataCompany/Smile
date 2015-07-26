@@ -26,19 +26,19 @@ public class DealerAction extends ActionSupport implements Preparable{
 			if(kode!=null&&kode.length()>1){
 				if(kode.equals("001")){
 					dealerSatu();
-					mode = "success";
+					mode = "SUCCESS";
 				}
 				else if(kode.equals("002")){
 					dealerDua();
-					mode = "success";
+					mode = "SUCCESS";
 				}
 				else{
-					mode = "error";
+					mode = "ERROR";
 				}
 
 			}
 			else{
-				mode = "error";
+				mode = "ERROR";
 			}
 			return mode;
 		} catch (Exception e) {

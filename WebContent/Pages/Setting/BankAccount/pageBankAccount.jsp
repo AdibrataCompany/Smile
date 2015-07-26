@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -26,15 +26,15 @@
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
-						<td width="10%">Pencarian</td>
+						<td width="10%">Search</td>
 						<td><select name="searchcriteria">
-								<option value="">Pilih Kriteria</option>
-								<option value="bankName">Nama Bank</option>
-								<option value="bankAccountCode">Kode Akun</option>
-								<option value="bankAccountName">Nama Akun</option>
-						</select> <input type="text" name="searchvalue" placeholder="Masukan Nilai" />
+								<option value="">Criteria</option>
+								<option value="bankName">Bank Name</option>
+								<option value="bankAccountCode">Bank Account Code</option>
+								<option value="bankAccountName">Bank Account Name</option>
+						</select> <input type="text" name="searchvalue" placeholder="Search Value" />
 							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Cari</button></td>
+								onclick="search()">Search</button></td>
 						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%>
 						</td>
 					</tr>
@@ -45,10 +45,10 @@
 				<br>
 				<table class="table table-bordered">
 					<tr>
-						<th style="text-align: center;">Nama Bank</th>
-						<th style="text-align: center;">Kode Akun</th>
-						<th style="text-align: center;">Nama Akun</th>
-						<th style="text-align: center;" width="5%">Pilih</th>
+						<th style="text-align: center;">Bank Name</th>
+						<th style="text-align: center;">Bank Account Code</th>
+						<th style="text-align: center;">Bank Account Name</th>
+						<th style="text-align: center;" width="5%">Select</th>
 					</tr>
 					<s:iterator value="lstBankAccount">
 						<tr id="row_${id}">

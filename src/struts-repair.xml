@@ -6,8 +6,8 @@
 	<package name="repair" extends="smartdealer-package" namespace="/">
 		<action name="repair" class="com.adibrata.smartdealer.action.repair.RepairAction" method="execute">
 			<result name="start">/Pages/Repair/paging.jsp</result>
-			<result name="success">/Pages/Repair/paging.jsp</result>
-			<result name="error">/Pages/Repair/entry.jsp</result>
+			<result name="SUCCESS">/Pages/Repair/paging.jsp</result>
+			<result name="ERROR">/Pages/Repair/entry.jsp</result>
 
 			<result name="search">/Pages/Repair/paging.jsp</result>
 			<result name="entry">/Pages/Repair/entry.jsp</result>

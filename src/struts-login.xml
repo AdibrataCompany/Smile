@@ -15,8 +15,8 @@
 		<action name="home"
 			class="com.adibrata.smartdealer.action.usermanagement.LoginAction"
 			method="home">
-			<result name="success">/Pages/Home.jsp</result>
-			<result name="error">index.jsp</result>
+			<result name="SUCCESS">/Pages/Home.jsp</result>
+			<result name="ERROR">index.jsp</result>
 		</action>
 	</package>
 </struts>

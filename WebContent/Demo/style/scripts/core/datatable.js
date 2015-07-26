@@ -84,7 +84,7 @@ var Datatable = function () {
                         "type": "POST",
                         "url": sSource,
                         "data": aoData,
-                        "success": function(res, textStatus, jqXHR) {
+                        "SUCCESS": function(res, textStatus, jqXHR) {
                             if (res.sMessage) {
                                 App.alert({type: (res.sStatus == 'OK' ? 'success' : 'danger'), icon: (res.sStatus == 'OK' ? 'check' : 'warning'), message: res.sMessage, container: tableWrapper, place: 'prepend'});
                             } 
@@ -102,7 +102,7 @@ var Datatable = function () {
                             }
                             fnCallback(res, textStatus, jqXHR);
                         },
-                        "error": function() {
+                        "ERROR": function() {
                             if (tableOptions.onError) {
                                 tableOptions.onError.call(the);
                             }

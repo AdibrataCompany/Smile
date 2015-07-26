@@ -47,7 +47,7 @@ public class ExceptionHelper extends Exception {
 			logger.warn(Message);
 				
 			break;
-		case "error":
+		case "ERROR":
 			logger.error(Message, t);
 			break;
 			

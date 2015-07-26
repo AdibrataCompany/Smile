@@ -11,8 +11,8 @@
 
 		<action name="adira*" class="com.adibrata.smartdealer.action.DealerAction" method="execute">
 			<param name="kode">{1}</param>
-			<result name="success">/style/index.jsp</result>
-			<result name="error">/style/error.jsp</result>
+			<result name="SUCCESS">/style/index.jsp</result>
+			<result name="ERROR">/style/error.jsp</result>
 		</action>
 
 	</package>

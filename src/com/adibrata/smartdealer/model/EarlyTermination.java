@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 25, 2015 1:37:58 PM by Hibernate Tools 4.3.1
+// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +22,7 @@ public class EarlyTermination implements java.io.Serializable
 	{
 		
 		private long id;
-		private Long agrmntId;
+		private Agrmnt agrmnt;
 		private String etcode;
 		private double currencyRate;
 		private Date efectiveDate;
@@ -168,7 +171,7 @@ public class EarlyTermination implements java.io.Serializable
 				this.accruedAdminFeeEom = accruedAdminFeeEom;
 			}
 			
-		public EarlyTermination(long id, Long agrmntId, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double outstandingPrincipal,
+		public EarlyTermination(long id, Agrmnt agrmnt, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double outstandingPrincipal,
 		        double outstandingInterest, double outstandingPrincipalBankPortion, double outstandingInterestBankPortion, double osinstallmentDue, double osinstallmentDueBankPortion, double osinsuranceDue, double oslcinstallment,
 		        double oslcinsurance, double lcinstallmentCurrent, double lcinsuranceCurrent, double osinstallCollectionFee, double osinsurCollectionFee, double ospdcbounceFee, double osstnkrenewalFee, double osinsuranceClaimExpense,
 		        double osrepossesFee, double prepaymentFee, double accruedInterest, Double accruedInterestBankPortion, double lcinstallmentAmountDisc, double lcinsuranceAmountDisc, double installCollectionFeeDisc, double insurCollectionFeeDisc,
@@ -180,7 +183,7 @@ public class EarlyTermination implements java.io.Serializable
 		        Double ossurveyFee, Double accruedSurveyFeeEom, Double oscostOfSurveyFee, Double accruedCostOfSurveyFeeEom, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
-				this.agrmntId = agrmntId;
+				this.agrmnt = agrmnt;
 				this.etcode = etcode;
 				this.currencyRate = currencyRate;
 				this.efectiveDate = efectiveDate;
@@ -280,15 +283,16 @@ public class EarlyTermination implements java.io.Serializable
 				this.id = id;
 			}
 			
-		@Column(name = "AgrmntId")
-		public Long getAgrmntId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AgrmntId")
+		public Agrmnt getAgrmnt()
 			{
-				return this.agrmntId;
+				return this.agrmnt;
 			}
 			
-		public void setAgrmntId(Long agrmntId)
+		public void setAgrmnt(Agrmnt agrmnt)
 			{
-				this.agrmntId = agrmntId;
+				this.agrmnt = agrmnt;
 			}
 			
 		@Column(name = "ETCode", nullable = false, length = 20)

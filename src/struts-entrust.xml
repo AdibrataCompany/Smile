@@ -9,7 +9,7 @@
 			class="com.adibrata.smartdealer.action.entrust.EntrustAction" method="execute">
 			<result name="start">/Pages/Entrust/pagingstock.jsp
 			</result>
-			<result name="success">/Pages/Entrust/pagingstock.jsp
+			<result name="SUCCESS">/Pages/Entrust/pagingstock.jsp
 			</result>
 			<result name="searchstock">/Pages/Entrust/pagingstock.jsp
 			</result>
@@ -19,7 +19,7 @@
 			</result>
 			<result name="backstock">/Pages/Entrust/pagingstock.jsp
 			</result>
-			<result name="error">/Pages/Entrust/entry.jsp
+			<result name="ERROR">/Pages/Entrust/entry.jsp
 			</result>
 			<result name="entry">/Pages/Entrust/entry.jsp
 			</result>

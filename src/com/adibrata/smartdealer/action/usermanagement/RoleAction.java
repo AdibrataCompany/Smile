@@ -58,7 +58,7 @@ public class RoleAction extends BaseAction implements Preparable
 							
 						this.lstRole = this.roleService.Paging(this.getPageNumber(), wherecond, "");
 						
-						status = "Success";
+						status = "SUCCESS";
 					}
 				catch (final Exception exp)
 					{

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -26,30 +26,65 @@
 					<h2>Bank Account</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
-					<table class="table table-striped">
-						<tr>
-							<td>Nama Bank</td>
-							<td><input type="text" name="bankName" /></td>
-						</tr>
-						<tr>
-							<td>Kode Akun</td>
-							<td><input type="text" name="bankAccountCode" /></td>
-						</tr>
-						<tr>
-							<td>Nama Akun</td>
-							<td><input type="text" name="bankAccountName" /></td>
-						</tr>
-					</table>
+
+
+					<div align="left" class="form-group">
+						<label>Bank Name</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="bankName" style="width:95%"
+								placeholder="Bank Name" class="form-control" />
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Bank Account Code</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="bankAccountCode" style="width:95%"
+								placeholder="Bank Account Code" class="form-control" />
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Bank Account Name</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="bankAccountName" style="width:95%"
+								placeholder="Bank Account Name" class="form-control" />
+						</div>
+					</div>
+
+					<div align="left" class="form-group">
+						<label>Type</label>
+						<div align="left" class="form-inline">
+						<select name="type">
+								<option value="">Type</option>
+								<option value="BA">BANK</option>
+								<option value="CA">CASH</option>
+								
+						</select> 
+						
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Purpose</label>
+						<div align="left" class="form-inline">
+						<select name="purpose">
+								<option value="">Purpose</option>
+								<option value="EC">ESCROW</option>
+								<option value="PC">PETTY CASH</option>
+								<option value="FD">FUNDING</option>
+						</select> 
+						</div>
+					</div>
+					<%@include file="/Pages/Include/Address.jsp"%>
+					
 					<br>
 					<table width="100%">
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveadd()">Simpan</button>
+									onclick="saveadd()">Save</button>
 
 							</td>
 						</tr>

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -29,31 +29,46 @@
 						style="visibility: hidden;"></input>
 					<s:hidden name="id" />
 
-
-					<table class="table table-striped">
-						<tr>
-							<td>Merk</td>
-							<td><s:textfield name="assetBrand" /></td>
-						</tr>
-						<tr>
-							<td>Type</td>
-							<td><s:textfield name="assetType" /></td>
-						</tr>
-						<tr>
-							<td>Model</td>
-							<td><s:textfield name="assetModel" /></td>
-						</tr>
-					</table>
+<div align="left" class="form-group">
+					<label>Brand</label>
+					<div align="left" class="form-inline">
+						<s:textfield name="assetBrand" style="width:95%"
+							placeholder="Asset Brand" class="form-control" />
+					</div>
+				</div>
+				<div align="left" class="form-group">
+					<label>Type</label>
+					<div align="left" class="form-inline">
+						<s:textfield name="assetType" style="width:95%"
+							placeholder="Asset Type" class="form-control" />
+					</div>
+				</div>
+				<div align="left" class="form-group">
+					<label>Model</label>
+					<div align="left" class="form-inline">
+						<s:textfield name="assetModel" style="width:95%"
+							placeholder="Asset Model" class="form-control" />
+					</div>
+				</div>
+				<div align="left" class="form-group">
+				
+					<div align="left" class="form-inline">
+					<label>Active</label>
+						<s:checkbox name="isActive" style="align:left"
+							placeholder="Active" class="form-control" />
+					</div>
+				</div>
+					
 					<br>
 					<table width="100%">
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Simpan</button>
+									onclick="saveedit()">Save</button>
 							</td>
 						</tr>
 					</table>

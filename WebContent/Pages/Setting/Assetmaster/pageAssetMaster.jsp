@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -25,13 +25,13 @@
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
-						<td width="10%">Pencarian</td>
+						<td width="10%">Searching</td>
 						<td><select name="searchcriteria">
 								<option value="">Pilih Kriteria</option>
 								<option value="assetLevel">Level 3</option>
 						</select> <input type="text" name="searchvalue" placeholder="Masukan Nilai" />
 							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Cari</button></td>
+								onclick="search()">Search</button></td>
 						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 					</tr>
 				</table>

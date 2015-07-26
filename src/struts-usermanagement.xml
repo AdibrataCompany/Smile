@@ -20,7 +20,7 @@
 			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 
-			<result name="success">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="SUCCESS">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 		</action>
 
@@ -39,7 +39,7 @@
 			</result>
 			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="success">/pages/setting/assetdoc/pageAssetMaster.jsp
+			<result name="SUCCESS">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
 			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 		</action>

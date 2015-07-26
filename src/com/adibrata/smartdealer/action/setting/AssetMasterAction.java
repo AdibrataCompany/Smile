@@ -18,7 +18,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		
@@ -35,8 +35,8 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private String message;
 		private String status;
-		
-		private long id;
+		private boolean isActive;
+		private Long id;
 		private String assetType;
 		private String assetBrand;
 		private String assetModel;
@@ -48,9 +48,12 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				final AssetMasterService assetmasterservice = new AssetMasterDao();
 				
 				this.assetMasterService = assetmasterservice;
+				final AssetMaster assetMaster = new AssetMaster();
+				
 				final Partner partner = new Partner();
 				final Office office = new Office();
-				final AssetMaster assetMaster = new AssetMaster();
+				partner.setPartnerCode(BaseAction.sesPartnerCode());
+				office.setId(BaseAction.sesOfficeId());
 				
 				this.setPartner(partner);
 				this.setOffice(office);
@@ -174,10 +177,20 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				this.assetmaster = new AssetMaster();
 				try
 					{
-						this.assetmaster = this.assetMasterService.View(this.id);
-						this.assetBrand = this.assetmaster.getAssetBrand();
-						this.assetType = this.assetmaster.getAssetType();
-						this.assetModel = this.assetmaster.getAssetModel();
+						if (this.getId() != null)
+							{
+								this.assetmaster = this.assetMasterService.View(this.getId());
+								this.partner = this.assetmaster.getPartner();
+								this.assetBrand = this.assetmaster.getAssetBrand();
+								this.assetType = this.assetmaster.getAssetType();
+								this.assetModel = this.assetmaster.getAssetModel();
+								this.isActive = this.assetmaster.getIsActive() > 0 ? true : false;
+							}
+						else
+							{
+								this.status = "end";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -195,10 +208,11 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					{
 						this.status = "";
 						final AssetMaster assetMaster = new AssetMaster();
-						assetMaster.setAssetBrand(this.assetBrand);
-						assetMaster.setAssetType(this.assetType);
-						assetMaster.setAssetModel(this.assetModel);
-						assetMaster.setPartner(this.partner);
+						assetMaster.setAssetBrand(this.getAssetBrand());
+						assetMaster.setAssetType(this.getAssetType());
+						assetMaster.setAssetModel(this.getAssetModel());
+						assetMaster.setPartner(this.getPartner());
+						assetMaster.setIsActive((short) (this.isActive() ? 1 : 0));
 						this.assetMasterService.SaveAdd(assetMaster);
 						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -214,7 +228,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				this.status = "";
@@ -222,12 +236,13 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					{
 						final AssetMaster assetMaster = new AssetMaster();
 						assetMaster.setId(this.getId());
-						assetMaster.setAssetBrand(this.assetBrand);
-						assetMaster.setAssetType(this.assetType);
-						assetMaster.setAssetModel(this.assetModel);
-						assetMaster.setPartner(this.partner);
+						assetMaster.setAssetBrand(this.getAssetBrand());
+						assetMaster.setAssetType(this.getAssetType());
+						assetMaster.setAssetModel(this.getAssetModel());
+						assetMaster.setIsActive((short) (this.isActive() ? 1 : 0));
+						assetMaster.setPartner(this.getPartner());
 						assetMaster.setUsrUpd(this.usrUpd);
-						this.assetMasterService.SaveAdd(assetMaster);
+						this.assetMasterService.SaveEdit(assetMaster);
 						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -248,12 +263,20 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				this.status = "";
 				try
 					{
-						final AssetMaster assetMaster = new AssetMaster();
-						
-						assetMaster.setId(this.getId());
-						this.assetMasterService.SaveDel(assetMaster);
-						this.status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
+						if (this.getId() != null)
+							{
+								final AssetMaster assetMaster = new AssetMaster();
+								
+								assetMaster.setId(this.getId());
+								this.assetMasterService.SaveDel(assetMaster);
+								this.status = SUCCESS;
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.status = "end";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -396,7 +419,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -441,15 +464,6 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
-			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
 			}
 			
 		/**
@@ -582,6 +596,32 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		public void setStatus(final String status)
 			{
 				this.status = status;
+			}
+
+		/**
+		 * @return the isActive
+		 */
+		public boolean isActive()
+			{
+				return this.isActive;
+			}
+
+		/**
+		 * @param isActive
+		 *            the isActive to set
+		 */
+		public void setActive(final boolean isActive)
+			{
+				this.isActive = isActive;
+			}
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
 			}
 			
 	}

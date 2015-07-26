@@ -25,16 +25,16 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
  */
 public class LCInstallment
 	{
-
+		
 		Session session;
 		private final Date dtmUpd = Calendar.getInstance().getTime();
-
+		
 		public LCInstallment()
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openSession();
 			}
-
+			
 		/**
 		 * @param session
 		 */
@@ -42,7 +42,7 @@ public class LCInstallment
 			{
 				this.session = session;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public void SaveDetail(final String usrUpd, final PaymentReceive paymentReceive, final PayHistHdr hdr) throws Exception
 			{
@@ -70,13 +70,13 @@ public class LCInstallment
 								qry = this.session.createQuery(qryInst.toString());
 								final List<Object[]> lst = qry.list();
 								final Iterator<Object[]> it = lst.iterator();
-
+								
 								while (it.hasNext() && (amountreceive > 0))
 									{
 										final Object[] objrow = it.next();
 										final InstSchedule aRow = (InstSchedule) objrow[0];
 										final Agrmnt arowagrmnt = (Agrmnt) objrow[1];
-
+										
 										osinstallment = aRow.getInstAmt() - aRow.getPaidAmt() - aRow.getWaivedAmt();
 										if (osinstallment > 0)
 											{
@@ -91,7 +91,7 @@ public class LCInstallment
 														amountreceive = 0;
 													}
 											}
-
+											
 										final InstSchedule inst = new InstSchedule();
 										lcamount = 0.00;
 										// Calculate LC Amount
@@ -103,7 +103,7 @@ public class LCInstallment
 										inst.setLcamt(inst.getLcamt() + lcamount);
 										inst.setUsrUpd(usrUpd);
 										inst.setDtmUpd(this.dtmUpd);
-
+										
 										final PayHistDtl dtl = new PayHistDtl();
 										dtl.setPayHistHdr(hdr);
 										dtl.setInstSeqNo(aRow.getInstSeqNo());
@@ -119,15 +119,15 @@ public class LCInstallment
 										dtl.setUsrCrt(usrUpd);
 										dtl.setDtmCrt(this.dtmUpd);
 										dtl.setDtmUpd(this.dtmUpd);
-
+										
 										mnt.setInstPaid(mnt.getInstPaid() + amountallocation);
 										mnt.setLcinstAmt(mnt.getLcinstAmt() + lcamount);
 										mnt.setLastLccalcInstDate(paymentReceive.getValueDate());
 										// need more code in here
 										mnt.setUsrUpd(usrUpd);
 										mnt.setDtmUpd(this.dtmUpd);
-
-										osp = arowagrmnt.getOsp() - aRow.getOsPamt();
+										
+										osp = arowagrmnt.getOsP() - aRow.getOsPamt();
 										if (interestallocation > osp)
 											{
 												principal = osp;
@@ -154,18 +154,18 @@ public class LCInstallment
 														interest = 0;
 													}
 											}
-
-										agrmnt.setOsp(agrmnt.getOsp() - principal);
-										agrmnt.setOsi(agrmnt.getOsi() - interest);
-
+											
+										agrmnt.setOsP(agrmnt.getOsP() - principal);
+										agrmnt.setOsI(agrmnt.getOsI() - interest);
+										
 										//
 										this.session.save(dtl);
 										this.session.update(inst);
 										this.session.update(mnt);
-
+										
 										final List<InstSchedule> lstinst = qry.list();
 										final Iterator<InstSchedule> itInst = lstinst.iterator();
-
+										
 										while (itInst.hasNext())
 											{
 												final InstSchedule rowInst = itInst.next();
@@ -176,9 +176,9 @@ public class LCInstallment
 													}
 											}
 										this.session.update(agrmnt);
-									}         // end while
+									}          // end while
 							}
-					}         // end try
+					}          // end try
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -186,9 +186,9 @@ public class LCInstallment
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public double LCCalcAmountperSeqNo(final Agrmnt agrmnt, final Date valueDate, final Short instseqno) throws Exception
 			{
@@ -213,10 +213,10 @@ public class LCInstallment
 								final Object[] objrow = it.next();
 								final InstSchedule aRow = (InstSchedule) objrow[0];
 								this.LCCalcDaysperSeqNo(agrmnt, valueDate, instseqno);
-
+								
 								osinstallment = aRow.getInstAmt() - aRow.getPaidAmt() - aRow.getWaivedAmt();
 								lcamount = Math.ceil((((lcdays * osinstallment) * (agrmnt.getPercentagePenalty() / 1000)) * 1.0) / currencyrouded) * currencyrouded;
-
+								
 							}
 					}
 				catch (final Exception exp)
@@ -227,9 +227,9 @@ public class LCInstallment
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return lcamount;
-
+				
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public short LCCalcDaysperSeqNo(final Agrmnt agrmnt, final Date valuedate, final Short instseqno) throws Exception
 			{
@@ -248,12 +248,12 @@ public class LCInstallment
 						final Iterator<Object[]> it = lst.iterator();
 						Date paiddate;
 						Date duedate;
-
+						
 						while (it.hasNext())
 							{
 								final Object[] objrow = it.next();
 								final InstSchedule aRow = (InstSchedule) objrow[0];
-
+								
 								if (aRow.getPaidDate() == null)
 									{
 										duedate = aRow.getDueDate();
@@ -281,11 +281,11 @@ public class LCInstallment
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 				return lcdays;
-
+				
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public double LCCalc(final Agrmnt agrmnt, final Date valuedate) throws Exception
 			{
@@ -295,7 +295,7 @@ public class LCInstallment
 				final Query qry;
 				double osinstallment;
 				final double currencyrouded = 0;
-
+				
 				try
 					{
 						qryInst.append("from InstSchedule, Agrmnt where AgrmntId = :agrmntid and instAmt - paidAmt - waivedAmt > 0 order by duedate");
@@ -309,7 +309,7 @@ public class LCInstallment
 							{
 								final Object[] objrow = it.next();
 								final InstSchedule aRow = (InstSchedule) objrow[0];
-
+								
 								lcdays = this.LCCalcDaysperSeqNo(agrmnt, valuedate, aRow.getInstSeqNo());
 								osinstallment = aRow.getInstAmt() - aRow.getPaidAmt() - aRow.getWaivedAmt();
 								lcamount += Math.ceil((((lcdays * osinstallment) * (agrmnt.getPercentagePenalty() / 1000)) * 1.0) / currencyrouded) * currencyrouded;
@@ -322,12 +322,12 @@ public class LCInstallment
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 				return lcamount;
-
+				
 			}
 	}
-
+	
 // Declare @NextInstallmentNumber AS Int,
 // @NextInstallmentDate as Datetime
 //

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 
 </head>
@@ -26,15 +26,21 @@
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
-						<td width="10%">Pencarian</td>
-						<td><select name="searchcriteria">
-								<option value="0">Pilih Kriteria</option>
-								<option value="documentCode">Kode</option>
-								<option value="documentName">Nama</option>
-								<option value="assetType">Tipe</option>
-						</select> <input name="searchvalue" placeholder="Masukan Nilai" />
-							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Cari</button></td>
+						<td width="10%">Searching</td>
+						<td><div align="left" class="form-inline">
+								<select name="searchcriteria">
+									<option value="0">Search Critera</option>
+									<option value="documentCode">Code</option>
+									<option value="documentName">Name</option>
+									<option value="assetType">Asset Type</option>
+								</select>
+								<s:textfield name="searchvalue" style="width:200px"
+									placeholder="Search value" class="form-control" />
+										<button class="btn btn-sm btn-primary" type="submit"
+								onclick="search()">Search</button>
+							</div>
+
+						</td>
 
 						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 					</tr>
@@ -45,9 +51,9 @@
 				<br>
 				<table class="table table-bordered">
 					<tr>
-						<th style="text-align: center;">Kode</th>
-						<th style="text-align: center;">Nama</th>
-						<th style="text-align: center;">Tipe</th>
+						<th style="text-align: center;">Code</th>
+						<th style="text-align: center;">Name</th>
+						<th style="text-align: center;">Asset Type</th>
 						<th style="text-align: center;" width="5%">Pilih</th>
 
 					</tr>
@@ -71,9 +77,6 @@
 <script type="text/javascript">
 	function search() {
 		document.getElementById("mode").value = "search";
-	}
-	function add() {
-		document.getElementById("mode").value = "add";
 	}
 </script>
 </html>

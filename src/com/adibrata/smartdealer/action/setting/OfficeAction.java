@@ -15,12 +15,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class OfficeAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		private String mode;
 		private Partner partner;
 		private Office office;
@@ -33,37 +33,38 @@ public class OfficeAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private long id;
-		
+
 		private String message;
-		
+
 		private String officeCode;
 		private String name;
 		private String address;
 		private String rt;
 		private String rw;
 		private String kelurahan;
+		private String kecamatan;
 		private String city;
 		private String zipcode;
 		private String type;
-		private String areaPhone1;
-		private String phoneNo1;
-		private String areaPhone2;
-		private String phoneNo2;
-		private String areaFax;
-		private String faxNo;
+		private String areaphone1;
+		private String phoneno1;
+		private String areaphone2;
+		private String phoneno2;
+		private String areafax;
+		private String faxno;
 		private String handphone;
 		// private String fullAddress; save di dao office
 		private Character isActive;
-		
+
 		public OfficeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				final OfficeService officeservice = new OfficeDao();
-				
+
 				this.officeService = officeservice;
 				final Partner partner = new Partner();
 				final Office office = new Office();
-				
+
 				this.setPartner(partner);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.setOffice(office);
@@ -72,14 +73,14 @@ public class OfficeAction extends BaseAction implements Preparable
 						this.pageNumber = 1;
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -135,7 +136,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
 				String wherecond = "";
@@ -152,7 +153,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
@@ -161,15 +162,15 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -178,15 +179,15 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		public void ViewData() throws Exception
 			{
 				this.office = new Office();
@@ -199,14 +200,15 @@ public class OfficeAction extends BaseAction implements Preparable
 						this.rt = this.office.getRt();
 						this.rw = this.office.getRw();
 						this.kelurahan = this.office.getKelurahan();
+						this.kecamatan = this.office.getKecamatan();
 						this.city = this.office.getCity();
 						this.zipcode = this.office.getZipcode();
-						this.areaPhone1 = this.office.getAreaPhone1();
-						this.areaPhone2 = this.office.getAreaPhone2();
-						this.phoneNo1 = this.office.getPhoneNo1();
-						this.phoneNo2 = this.office.getPhoneNo2();
-						this.areaFax = this.office.getAreaFax();
-						this.faxNo = this.office.getFaxNo();
+						this.areaphone1 = this.office.getAreaPhone1();
+						this.areaphone2 = this.office.getAreaPhone2();
+						this.phoneno1 = this.office.getPhoneNo1();
+						this.phoneno2 = this.office.getPhoneNo2();
+						this.areafax = this.office.getAreaFax();
+						this.faxno = this.office.getFaxNo();
 						this.handphone = this.office.getHandphone();
 					}
 				catch (final Exception exp)
@@ -231,14 +233,16 @@ public class OfficeAction extends BaseAction implements Preparable
 						office.setRt(this.getRt());
 						office.setRw(this.getRw());
 						office.setKelurahan(this.getKelurahan());
+						office.setKecamatan(this.getKecamatan());
+
 						office.setCity(this.getCity());
 						office.setZipcode(this.getZipcode());
-						office.setAreaPhone1(this.getAreaPhone1());
-						office.setAreaPhone2(this.getAreaPhone2());
-						office.setPhoneNo1(this.getPhoneNo1());
-						office.setPhoneNo2(this.getPhoneNo2());
-						office.setAreaFax(this.getAreaFax());
-						office.setFaxNo(this.getFaxNo());
+						office.setAreaPhone1(this.getAreaphone1());
+						office.setAreaPhone2(this.getAreaphone1());
+						office.setPhoneNo1(this.getPhoneno2());
+						office.setPhoneNo2(this.getPhoneno2());
+						office.setAreaFax(this.getAreafax());
+						office.setFaxNo(this.getFaxno());
 						office.setHandphone(this.handphone);
 						office.setPartner(this.partner);
 						this.officeService.SaveAdd(office);
@@ -256,7 +260,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -270,14 +274,15 @@ public class OfficeAction extends BaseAction implements Preparable
 						office.setRt(this.getRt());
 						office.setRw(this.getRw());
 						office.setKelurahan(this.getKelurahan());
+						office.setKecamatan(this.getKecamatan());
 						office.setCity(this.getCity());
 						office.setZipcode(this.getZipcode());
-						office.setAreaPhone1(this.getAreaPhone1());
-						office.setAreaPhone2(this.getAreaPhone2());
-						office.setPhoneNo1(this.getPhoneNo1());
-						office.setPhoneNo2(this.getPhoneNo2());
-						office.setAreaFax(this.getAreaFax());
-						office.setFaxNo(this.getFaxNo());
+						office.setAreaPhone1(this.getAreaphone1());
+						office.setAreaPhone2(this.getAreaphone1());
+						office.setPhoneNo1(this.getPhoneno2());
+						office.setPhoneNo2(this.getPhoneno2());
+						office.setAreaFax(this.getAreafax());
+						office.setFaxNo(this.getFaxno());
 						office.setPartner(this.partner);
 						office.setUsrUpd(this.usrUpd);
 						this.officeService.SaveEdit(office);
@@ -295,7 +300,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -318,7 +323,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -326,7 +331,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -334,7 +339,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -342,7 +347,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @return the lstoffice
 		 */
@@ -350,7 +355,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.lstoffice;
 			}
-			
+
 		/**
 		 * @return the officeService
 		 */
@@ -358,7 +363,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.officeService;
 			}
-			
+
 		/**
 		 * @return the lstOffice
 		 */
@@ -366,7 +371,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.lstOffice;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -375,7 +380,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -384,7 +389,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @param lstoffice
 		 *            the lstoffice to set
@@ -393,7 +398,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.lstoffice = lstoffice;
 			}
-			
+
 		/**
 		 * @param officeService
 		 *            the officeService to set
@@ -402,7 +407,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.officeService = officeService;
 			}
-			
+
 		/**
 		 * @param lstOffice
 		 *            the lstOffice to set
@@ -411,17 +416,17 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.lstOffice = lstOffice;
 			}
-			
+
 		public String getMode()
 			{
 				return this.mode;
 			}
-			
+
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -429,7 +434,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -437,7 +442,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -445,7 +450,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -453,7 +458,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -461,7 +466,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -469,7 +474,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -478,7 +483,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -487,7 +492,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -496,7 +501,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -505,7 +510,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -514,7 +519,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -523,7 +528,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the officeCode
 		 */
@@ -531,7 +536,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.officeCode;
 			}
-			
+
 		/**
 		 * @return the name
 		 */
@@ -539,7 +544,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.name;
 			}
-			
+
 		/**
 		 * @return the address
 		 */
@@ -547,7 +552,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.address;
 			}
-			
+
 		/**
 		 * @return the rt
 		 */
@@ -555,7 +560,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.rt;
 			}
-			
+
 		/**
 		 * @return the rw
 		 */
@@ -563,7 +568,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.rw;
 			}
-			
+
 		/**
 		 * @return the kelurahan
 		 */
@@ -571,7 +576,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.kelurahan;
 			}
-			
+
 		/**
 		 * @return the city
 		 */
@@ -579,7 +584,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.city;
 			}
-			
+
 		/**
 		 * @return the zipcode
 		 */
@@ -587,7 +592,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.zipcode;
 			}
-			
+
 		/**
 		 * @return the type
 		 */
@@ -597,61 +602,13 @@ public class OfficeAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the areaPhone1
-		 */
-		public String getAreaPhone1()
-			{
-				return this.areaPhone1;
-			}
-			
-		/**
-		 * @return the phoneNo1
-		 */
-		public String getPhoneNo1()
-			{
-				return this.phoneNo1;
-			}
-			
-		/**
-		 * @return the areaPhone2
-		 */
-		public String getAreaPhone2()
-			{
-				return this.areaPhone2;
-			}
-			
-		/**
-		 * @return the phoneNo2
-		 */
-		public String getPhoneNo2()
-			{
-				return this.phoneNo2;
-			}
-			
-		/**
-		 * @return the areaFax
-		 */
-		public String getAreaFax()
-			{
-				return this.areaFax;
-			}
-			
-		/**
-		 * @return the faxNo
-		 */
-		public String getFaxNo()
-			{
-				return this.faxNo;
-			}
-			
-		/**
 		 * @return the handphone
 		 */
 		public String getHandphone()
 			{
 				return this.handphone;
 			}
-			
+
 		/**
 		 * @return the isActive
 		 */
@@ -659,7 +616,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.isActive;
 			}
-			
+
 		/**
 		 * @param officeCode
 		 *            the officeCode to set
@@ -668,7 +625,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.officeCode = officeCode;
 			}
-			
+
 		/**
 		 * @param name
 		 *            the name to set
@@ -677,7 +634,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.name = name;
 			}
-			
+
 		/**
 		 * @param address
 		 *            the address to set
@@ -686,7 +643,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.address = address;
 			}
-			
+
 		/**
 		 * @param rt
 		 *            the rt to set
@@ -695,7 +652,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.rt = rt;
 			}
-			
+
 		/**
 		 * @param rw
 		 *            the rw to set
@@ -704,7 +661,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.rw = rw;
 			}
-			
+
 		/**
 		 * @param kelurahan
 		 *            the kelurahan to set
@@ -713,7 +670,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.kelurahan = kelurahan;
 			}
-			
+
 		/**
 		 * @param city
 		 *            the city to set
@@ -722,7 +679,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.city = city;
 			}
-			
+
 		/**
 		 * @param zipcode
 		 *            the zipcode to set
@@ -731,7 +688,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.zipcode = zipcode;
 			}
-			
+
 		/**
 		 * @param type
 		 *            the type to set
@@ -740,61 +697,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.type = type;
 			}
-			
-		/**
-		 * @param areaPhone1
-		 *            the areaPhone1 to set
-		 */
-		public void setAreaPhone1(final String areaPhone1)
-			{
-				this.areaPhone1 = areaPhone1;
-			}
-			
-		/**
-		 * @param phoneNo1
-		 *            the phoneNo1 to set
-		 */
-		public void setPhoneNo1(final String phoneNo1)
-			{
-				this.phoneNo1 = phoneNo1;
-			}
-			
-		/**
-		 * @param areaPhone2
-		 *            the areaPhone2 to set
-		 */
-		public void setAreaPhone2(final String areaPhone2)
-			{
-				this.areaPhone2 = areaPhone2;
-			}
-			
-		/**
-		 * @param phoneNo2
-		 *            the phoneNo2 to set
-		 */
-		public void setPhoneNo2(final String phoneNo2)
-			{
-				this.phoneNo2 = phoneNo2;
-			}
-			
-		/**
-		 * @param areaFax
-		 *            the areaFax to set
-		 */
-		public void setAreaFax(final String areaFax)
-			{
-				this.areaFax = areaFax;
-			}
-			
-		/**
-		 * @param faxNo
-		 *            the faxNo to set
-		 */
-		public void setFaxNo(final String faxNo)
-			{
-				this.faxNo = faxNo;
-			}
-			
+
 		/**
 		 * @param handphone
 		 *            the handphone to set
@@ -803,7 +706,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.handphone = handphone;
 			}
-			
+
 		/**
 		 * @param isActive
 		 *            the isActive to set
@@ -812,7 +715,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				this.isActive = isActive;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -820,7 +723,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -830,4 +733,123 @@ public class OfficeAction extends BaseAction implements Preparable
 				this.id = id;
 			}
 			
+		/**
+		 * @return the areaphone1
+		 */
+		public String getAreaphone1()
+			{
+				return this.areaphone1;
+			}
+			
+		/**
+		 * @param areaphone1
+		 *            the areaphone1 to set
+		 */
+		public void setAreaphone1(final String areaphone1)
+			{
+				this.areaphone1 = areaphone1;
+			}
+			
+		/**
+		 * @return the areaphone2
+		 */
+		public String getAreaphone2()
+			{
+				return this.areaphone2;
+			}
+			
+		/**
+		 * @param areaphone2
+		 *            the areaphone2 to set
+		 */
+		public void setAreaphone2(final String areaphone2)
+			{
+				this.areaphone2 = areaphone2;
+			}
+			
+		/**
+		 * @return the phoneno2
+		 */
+		public String getPhoneno2()
+			{
+				return this.phoneno2;
+			}
+			
+		/**
+		 * @param phoneno2
+		 *            the phoneno2 to set
+		 */
+		public void setPhoneno2(final String phoneno2)
+			{
+				this.phoneno2 = phoneno2;
+			}
+			
+		/**
+		 * @return the faxno
+		 */
+		public String getFaxno()
+			{
+				return this.faxno;
+			}
+			
+		/**
+		 * @param faxno
+		 *            the faxno to set
+		 */
+		public void setFaxno(final String faxno)
+			{
+				this.faxno = faxno;
+			}
+
+		/**
+		 * @return the areafax
+		 */
+		public String getAreafax()
+			{
+				return this.areafax;
+			}
+
+		/**
+		 * @param areafax
+		 *            the areafax to set
+		 */
+		public void setAreafax(final String areafax)
+			{
+				this.areafax = areafax;
+			}
+
+		/**
+		 * @return the phoneno1
+		 */
+		public String getPhoneno1()
+			{
+				return this.phoneno1;
+			}
+
+		/**
+		 * @param phoneno1
+		 *            the phoneno1 to set
+		 */
+		public void setPhoneno1(final String phoneno1)
+			{
+				this.phoneno1 = phoneno1;
+			}
+
+		/**
+		 * @return the kecamatan
+		 */
+		public String getKecamatan()
+			{
+				return this.kecamatan;
+			}
+
+		/**
+		 * @param kecamatan
+		 *            the kecamatan to set
+		 */
+		public void setKecamatan(final String kecamatan)
+			{
+				this.kecamatan = kecamatan;
+			}
+
 	}

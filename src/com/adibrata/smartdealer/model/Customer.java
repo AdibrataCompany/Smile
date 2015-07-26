@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 25, 2015 1:37:58 PM by Hibernate Tools 4.3.1
+// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -52,30 +52,31 @@ public class Customer implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(0);
-		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(0);
-		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
-		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
 		private Set<PersCustOmsetInfo> persCustOmsetInfos = new HashSet<PersCustOmsetInfo>(0);
 		private Set<CoyCustContactInfo> coyCustContactInfos = new HashSet<CoyCustContactInfo>(0);
-		private Set<PersCustFinancialData> persCustFinancialDatas = new HashSet<PersCustFinancialData>(0);
-		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
-		private Set<CustomerBankInfo> customerBankInfos = new HashSet<CustomerBankInfo>(0);
-		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
 		private Set<CoyCust> coyCusts = new HashSet<CoyCust>(0);
 		private Set<PersCustEntInfo> persCustEntInfos = new HashSet<PersCustEntInfo>(0);
-		private Set<PersCustLegalInfo> persCustLegalInfos = new HashSet<PersCustLegalInfo>(0);
 		private Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos = new HashSet<PersCustOtherBussinessInfo>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<PersCustJobInfo> persCustJobInfos = new HashSet<PersCustJobInfo>(0);
 		private Set<PersCustResidenceInfo> persCustResidenceInfos = new HashSet<PersCustResidenceInfo>(0);
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+		private Set<DailyAraging> dailyAragings = new HashSet<DailyAraging>(0);
 		private Set<CoyCustWhInfo> coyCustWhInfos = new HashSet<CoyCustWhInfo>(0);
-		private Set<PersCustFamilyInfo> persCustFamilyInfos = new HashSet<PersCustFamilyInfo>(0);
 		private Set<CoyCustLegalInfo> coyCustLegalInfos = new HashSet<CoyCustLegalInfo>(0);
 		private Set<PersCust> persCusts = new HashSet<PersCust>(0);
 		private Set<CoyCustLegalInfo> coyCustLegalInfos_1 = new HashSet<CoyCustLegalInfo>(0);
 		private Set<PersCustEmergencyInfo> persCustEmergencyInfos = new HashSet<PersCustEmergencyInfo>(0);
+		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(0);
+		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(0);
+		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
+		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
+		private Set<PersCustFinancialData> persCustFinancialDatas = new HashSet<PersCustFinancialData>(0);
+		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
+		private Set<CustomerBankInfo> customerBankInfos = new HashSet<CustomerBankInfo>(0);
+		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
+		private Set<PersCustLegalInfo> persCustLegalInfos = new HashSet<PersCustLegalInfo>(0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
+		private Set<PersCustFamilyInfo> persCustFamilyInfos = new HashSet<PersCustFamilyInfo>(0);
 		
 		public Customer()
 			{
@@ -88,11 +89,11 @@ public class Customer implements java.io.Serializable
 			
 		public Customer(long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
-		        Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<AgrmntAsset> agrmntAssets, Set<PersCustOmsetInfo> persCustOmsetInfos,
-		        Set<CoyCustContactInfo> coyCustContactInfos, Set<PersCustFinancialData> persCustFinancialDatas, Set<SalesInvoice> salesInvoices, Set<CustomerBankInfo> customerBankInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos,
-		        Set<CoyCust> coyCusts, Set<PersCustEntInfo> persCustEntInfos, Set<PersCustLegalInfo> persCustLegalInfos, Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos, Set<Agrmnt> agrmnts, Set<PersCustJobInfo> persCustJobInfos,
-		        Set<PersCustResidenceInfo> persCustResidenceInfos, Set<SalesOrderHdr> salesOrderHdrs, Set<CoyCustWhInfo> coyCustWhInfos, Set<PersCustFamilyInfo> persCustFamilyInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts,
-		        Set<CoyCustLegalInfo> coyCustLegalInfos_1, Set<PersCustEmergencyInfo> persCustEmergencyInfos)
+		        Set<PersCustOmsetInfo> persCustOmsetInfos, Set<CoyCustContactInfo> coyCustContactInfos, Set<CoyCust> coyCusts, Set<PersCustEntInfo> persCustEntInfos, Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos, Set<Agrmnt> agrmnts,
+		        Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos, Set<DailyAraging> dailyAragings, Set<CoyCustWhInfo> coyCustWhInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts,
+		        Set<CoyCustLegalInfo> coyCustLegalInfos_1, Set<PersCustEmergencyInfo> persCustEmergencyInfos, Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos,
+		        Set<AgrmntAsset> agrmntAssets, Set<PersCustFinancialData> persCustFinancialDatas, Set<SalesInvoice> salesInvoices, Set<CustomerBankInfo> customerBankInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos,
+		        Set<PersCustLegalInfo> persCustLegalInfos, Set<SalesOrderHdr> salesOrderHdrs, Set<PersCustFamilyInfo> persCustFamilyInfos)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -122,30 +123,31 @@ public class Customer implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
-				this.persCustCcinfos = persCustCcinfos;
-				this.coyCustShareInfos = coyCustShareInfos;
-				this.coyCustComptInfos = coyCustComptInfos;
-				this.agrmntAssets = agrmntAssets;
 				this.persCustOmsetInfos = persCustOmsetInfos;
 				this.coyCustContactInfos = coyCustContactInfos;
-				this.persCustFinancialDatas = persCustFinancialDatas;
-				this.salesInvoices = salesInvoices;
-				this.customerBankInfos = customerBankInfos;
-				this.persCustTrusteeInfos = persCustTrusteeInfos;
 				this.coyCusts = coyCusts;
 				this.persCustEntInfos = persCustEntInfos;
-				this.persCustLegalInfos = persCustLegalInfos;
 				this.persCustOtherBussinessInfos = persCustOtherBussinessInfos;
 				this.agrmnts = agrmnts;
 				this.persCustJobInfos = persCustJobInfos;
 				this.persCustResidenceInfos = persCustResidenceInfos;
-				this.salesOrderHdrs = salesOrderHdrs;
+				this.dailyAragings = dailyAragings;
 				this.coyCustWhInfos = coyCustWhInfos;
-				this.persCustFamilyInfos = persCustFamilyInfos;
 				this.coyCustLegalInfos = coyCustLegalInfos;
 				this.persCusts = persCusts;
 				this.coyCustLegalInfos_1 = coyCustLegalInfos_1;
 				this.persCustEmergencyInfos = persCustEmergencyInfos;
+				this.persCustCcinfos = persCustCcinfos;
+				this.coyCustShareInfos = coyCustShareInfos;
+				this.coyCustComptInfos = coyCustComptInfos;
+				this.agrmntAssets = agrmntAssets;
+				this.persCustFinancialDatas = persCustFinancialDatas;
+				this.salesInvoices = salesInvoices;
+				this.customerBankInfos = customerBankInfos;
+				this.persCustTrusteeInfos = persCustTrusteeInfos;
+				this.persCustLegalInfos = persCustLegalInfos;
+				this.salesOrderHdrs = salesOrderHdrs;
+				this.persCustFamilyInfos = persCustFamilyInfos;
 			}
 			
 		@Id
@@ -462,50 +464,6 @@ public class Customer implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<PersCustCcinfo> getPersCustCcinfos()
-			{
-				return this.persCustCcinfos;
-			}
-			
-		public void setPersCustCcinfos(Set<PersCustCcinfo> persCustCcinfos)
-			{
-				this.persCustCcinfos = persCustCcinfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<CoyCustShareInfo> getCoyCustShareInfos()
-			{
-				return this.coyCustShareInfos;
-			}
-			
-		public void setCoyCustShareInfos(Set<CoyCustShareInfo> coyCustShareInfos)
-			{
-				this.coyCustShareInfos = coyCustShareInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<CoyCustComptInfo> getCoyCustComptInfos()
-			{
-				return this.coyCustComptInfos;
-			}
-			
-		public void setCoyCustComptInfos(Set<CoyCustComptInfo> coyCustComptInfos)
-			{
-				this.coyCustComptInfos = coyCustComptInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<AgrmntAsset> getAgrmntAssets()
-			{
-				return this.agrmntAssets;
-			}
-			
-		public void setAgrmntAssets(Set<AgrmntAsset> agrmntAssets)
-			{
-				this.agrmntAssets = agrmntAssets;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 		public Set<PersCustOmsetInfo> getPersCustOmsetInfos()
 			{
 				return this.persCustOmsetInfos;
@@ -528,50 +486,6 @@ public class Customer implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<PersCustFinancialData> getPersCustFinancialDatas()
-			{
-				return this.persCustFinancialDatas;
-			}
-			
-		public void setPersCustFinancialDatas(Set<PersCustFinancialData> persCustFinancialDatas)
-			{
-				this.persCustFinancialDatas = persCustFinancialDatas;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<SalesInvoice> getSalesInvoices()
-			{
-				return this.salesInvoices;
-			}
-			
-		public void setSalesInvoices(Set<SalesInvoice> salesInvoices)
-			{
-				this.salesInvoices = salesInvoices;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<CustomerBankInfo> getCustomerBankInfos()
-			{
-				return this.customerBankInfos;
-			}
-			
-		public void setCustomerBankInfos(Set<CustomerBankInfo> customerBankInfos)
-			{
-				this.customerBankInfos = customerBankInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<PersCustTrusteeInfo> getPersCustTrusteeInfos()
-			{
-				return this.persCustTrusteeInfos;
-			}
-			
-		public void setPersCustTrusteeInfos(Set<PersCustTrusteeInfo> persCustTrusteeInfos)
-			{
-				this.persCustTrusteeInfos = persCustTrusteeInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 		public Set<CoyCust> getCoyCusts()
 			{
 				return this.coyCusts;
@@ -591,17 +505,6 @@ public class Customer implements java.io.Serializable
 		public void setPersCustEntInfos(Set<PersCustEntInfo> persCustEntInfos)
 			{
 				this.persCustEntInfos = persCustEntInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<PersCustLegalInfo> getPersCustLegalInfos()
-			{
-				return this.persCustLegalInfos;
-			}
-			
-		public void setPersCustLegalInfos(Set<PersCustLegalInfo> persCustLegalInfos)
-			{
-				this.persCustLegalInfos = persCustLegalInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
@@ -649,14 +552,14 @@ public class Customer implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<SalesOrderHdr> getSalesOrderHdrs()
+		public Set<DailyAraging> getDailyAragings()
 			{
-				return this.salesOrderHdrs;
+				return this.dailyAragings;
 			}
 			
-		public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs)
+		public void setDailyAragings(Set<DailyAraging> dailyAragings)
 			{
-				this.salesOrderHdrs = salesOrderHdrs;
+				this.dailyAragings = dailyAragings;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
@@ -668,17 +571,6 @@ public class Customer implements java.io.Serializable
 		public void setCoyCustWhInfos(Set<CoyCustWhInfo> coyCustWhInfos)
 			{
 				this.coyCustWhInfos = coyCustWhInfos;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-		public Set<PersCustFamilyInfo> getPersCustFamilyInfos()
-			{
-				return this.persCustFamilyInfos;
-			}
-			
-		public void setPersCustFamilyInfos(Set<PersCustFamilyInfo> persCustFamilyInfos)
-			{
-				this.persCustFamilyInfos = persCustFamilyInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
@@ -723,6 +615,127 @@ public class Customer implements java.io.Serializable
 		public void setPersCustEmergencyInfos(Set<PersCustEmergencyInfo> persCustEmergencyInfos)
 			{
 				this.persCustEmergencyInfos = persCustEmergencyInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustCcinfo> getPersCustCcinfos()
+			{
+				return this.persCustCcinfos;
+			}
+			
+		public void setPersCustCcinfos(Set<PersCustCcinfo> persCustCcinfos)
+			{
+				this.persCustCcinfos = persCustCcinfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<CoyCustShareInfo> getCoyCustShareInfos()
+			{
+				return this.coyCustShareInfos;
+			}
+			
+		public void setCoyCustShareInfos(Set<CoyCustShareInfo> coyCustShareInfos)
+			{
+				this.coyCustShareInfos = coyCustShareInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<CoyCustComptInfo> getCoyCustComptInfos()
+			{
+				return this.coyCustComptInfos;
+			}
+			
+		public void setCoyCustComptInfos(Set<CoyCustComptInfo> coyCustComptInfos)
+			{
+				this.coyCustComptInfos = coyCustComptInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<AgrmntAsset> getAgrmntAssets()
+			{
+				return this.agrmntAssets;
+			}
+			
+		public void setAgrmntAssets(Set<AgrmntAsset> agrmntAssets)
+			{
+				this.agrmntAssets = agrmntAssets;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustFinancialData> getPersCustFinancialDatas()
+			{
+				return this.persCustFinancialDatas;
+			}
+			
+		public void setPersCustFinancialDatas(Set<PersCustFinancialData> persCustFinancialDatas)
+			{
+				this.persCustFinancialDatas = persCustFinancialDatas;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<SalesInvoice> getSalesInvoices()
+			{
+				return this.salesInvoices;
+			}
+			
+		public void setSalesInvoices(Set<SalesInvoice> salesInvoices)
+			{
+				this.salesInvoices = salesInvoices;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<CustomerBankInfo> getCustomerBankInfos()
+			{
+				return this.customerBankInfos;
+			}
+			
+		public void setCustomerBankInfos(Set<CustomerBankInfo> customerBankInfos)
+			{
+				this.customerBankInfos = customerBankInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustTrusteeInfo> getPersCustTrusteeInfos()
+			{
+				return this.persCustTrusteeInfos;
+			}
+			
+		public void setPersCustTrusteeInfos(Set<PersCustTrusteeInfo> persCustTrusteeInfos)
+			{
+				this.persCustTrusteeInfos = persCustTrusteeInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustLegalInfo> getPersCustLegalInfos()
+			{
+				return this.persCustLegalInfos;
+			}
+			
+		public void setPersCustLegalInfos(Set<PersCustLegalInfo> persCustLegalInfos)
+			{
+				this.persCustLegalInfos = persCustLegalInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<SalesOrderHdr> getSalesOrderHdrs()
+			{
+				return this.salesOrderHdrs;
+			}
+			
+		public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs)
+			{
+				this.salesOrderHdrs = salesOrderHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustFamilyInfo> getPersCustFamilyInfos()
+			{
+				return this.persCustFamilyInfos;
+			}
+			
+		public void setPersCustFamilyInfos(Set<PersCustFamilyInfo> persCustFamilyInfos)
+			{
+				this.persCustFamilyInfos = persCustFamilyInfos;
 			}
 			
 	}

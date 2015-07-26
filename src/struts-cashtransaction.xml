@@ -10,9 +10,9 @@
 			method="execute">
 			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			<result name="SUCCESS">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			<result name="ERROR">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
 			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
@@ -28,13 +28,13 @@
 			method="execute">
 			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="SUCCESS">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="ERROR">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
 			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
 			</result>
@@ -44,13 +44,13 @@
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="SUCCESS">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="search">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="end">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="ERROR">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="entry">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -62,13 +62,13 @@
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="SUCCESS">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="search">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="end">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="ERROR">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="entry">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>

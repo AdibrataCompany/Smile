@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -54,38 +54,22 @@
 				<table class="table table-bordered">
 					<tr>
 						<th style="text-align: center;">Nama</th>
-						<th style="text-align: center;">Alamat</th>
-						<th style="text-align: center;">RT</th>
-						<th style="text-align: center;">RW</th>
-						<th style="text-align: center;">Kelurahan</th>
-						<th style="text-align: center;">City</th>
-						<th style="text-align: center;">Zip Code</th>
+						<th style="text-align: center;">Address</th>
 						<th style="text-align: center;">Type.</th>
-						<th style="text-align: center;">Phone1 Area</th>
-						<th style="text-align: center;">Phone1 No.</th>
-						<th style="text-align: center;">Phone2 Area</th>
-						<th style="text-align: center;">Phone2 No.</th>
-						<th style="text-align: center;">Fax Area</th>
-						<th style="text-align: center;">Fax No.</th>
+						<th style="text-align: center;">Phone1</th>
+						<th style="text-align: center;">Phone2</th>
+						<th style="text-align: center;">Fax</th>
 						<th style="text-align: center;">Handphone</th>
-						<th style="text-align: center;" width="5%">Pilih</th>
+						<th style="text-align: center;" width="5%">Select</th>
 					</tr>
 					<s:iterator value="lstOffice">
 						<tr id="row_${id}">
 							<td>${name}</td>
-							<td>${address}</td>
-							<td>${rt}</td>
-							<td>${rw}</td>
-							<td>${kelurahan}</td>
-							<td>${city}</td>
-							<td>${zipcode}</td>
+							<td>${fulladdress}</td>
 							<td>${type}</td>
-							<td>${areaPhone1}</td>
-							<td>${phoneNo1}</td>
-							<td>${areaPhone2}</td>
-							<td>${phoneNo2}</td>
-							<td>${areaFax}</td>
-							<td>${faxNo}</td>
+							<td>(${areaPhone1}) - ${phoneNo1}</td>
+							<td>(${areaPhone2}) - ${phoneNo2}</td>
+							<td>(${areaFax}) - ${faxNo}</td>
 							<td>${handphone}</td>
 							<td><input type="radio" id="${id}" checked /></td>
 						</tr>

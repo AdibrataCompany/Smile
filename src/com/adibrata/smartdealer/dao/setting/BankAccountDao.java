@@ -18,6 +18,7 @@ import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.BankAccount;
+import com.adibrata.smartdealer.model.BankMaster;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
@@ -241,6 +242,34 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				return bankaccount;
 			}
 			
+		@Override
+		public List<BankMaster> ListBankMaster(final String partnercode) throws Exception
+			{
+				final StringBuilder hql = new StringBuilder();
+				List<BankMaster> list = null;
+
+				try
+					{
+						hql.append("from MsTable where partnercode = :partnercode and mastertypecode = 'BANK'");
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						selectQuery.setParameter("partnercode", partnercode);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("BankMaster" + partnercode);
+
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
 		@Override
 		public int getCurrentpage()
 			{

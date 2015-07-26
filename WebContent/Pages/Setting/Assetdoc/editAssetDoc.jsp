@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 </head>
 <body>
 
@@ -17,54 +17,55 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetdoc.action" theme="simple">
+		<s:form action="assetdoc.action" theme="simple" validate="true">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-
-
 					<h2>Asset Document Master</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
 					<s:hidden name="id" />
-					<table class="table table-striped">
-						<tr>
-							<td width="25%">Kode</td>
-							<td><s:textfield name="documentCode" /></td>
-						</tr>
-						<tr>
-							<td>Nama</td>
-							<td><s:textfield name="documentName" /></td>
-						</tr>
-						<tr>
-							<td>Tipe</td>
-							<td><s:textfield name="assetType" /></td>
-						</tr>
-					</table>
+					<div align="left" class="form-group">
+						<label>Code</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="documentCode" style="width:95%"
+								placeholder="Asset Document Code" class="form-control" />
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Name </label>
+						<div align="left" class="form-inline">
+							<s:textfield name="documentName" style="width:95%"
+								placeholder="Asset Document Name" class="form-control" />
+						</div>
+					</div>
+
+					<div align="left" class="form-group">
+						<label>Asset Type </label>
+						<div align="left" class="form-inline">
+							<s:textfield name="assettype" style="width:95%"
+								placeholder="Asset Type" class="form-control" />
+						</div>
+					</div>
 					<br>
 					<table width="100%">
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Simpan</button>
+									onclick="saveedit()">Save</button>
 							</td>
 						</tr>
 					</table>
-
 				</div>
 			</center>
 		</s:form>
-
-
-
-		<!-- 	</div> -->
-
 	</div>
-	<!-- /container -->
+
+	<!-- 	</div> -->
 
 </body>
 <script type="text/javascript">

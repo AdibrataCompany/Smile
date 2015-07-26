@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 25, 2015 1:37:58 PM by Hibernate Tools 4.3.1
+// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -62,7 +62,7 @@ public class Partner implements java.io.Serializable
 		private Set<TrxSeqNo> trxSeqNos = new HashSet<TrxSeqNo>(0);
 		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
-		private Set<MasterTable> masterTables = new HashSet<MasterTable>(0);
+		private Set<MsTable> msTables = new HashSet<MsTable>(0);
 		private Set<Workshop> workshops = new HashSet<Workshop>(0);
 		private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
@@ -98,11 +98,11 @@ public class Partner implements java.io.Serializable
 		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
 		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters, Set<MsRole> msRoles,
 		        Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs,
-		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais,
-		        Set<MasterTable> masterTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<Suspend> suspends,
-		        Set<PurchaseInvoice> purchaseInvoices, Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles,
-		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
+		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<MsTable> msTables,
+		        Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices,
+		        Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<Suspend> suspends, Set<PurchaseInvoice> purchaseInvoices,
+		        Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles, Set<ResetPasswordLog> resetPasswordLogs,
+		        Set<Office> offices)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -144,7 +144,7 @@ public class Partner implements java.io.Serializable
 				this.trxSeqNos = trxSeqNos;
 				this.accountPayables = accountPayables;
 				this.danaTunais = danaTunais;
-				this.masterTables = masterTables;
+				this.msTables = msTables;
 				this.workshops = workshops;
 				this.assetServiceHdrs = assetServiceHdrs;
 				this.agrmnts = agrmnts;
@@ -614,14 +614,14 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<MasterTable> getMasterTables()
+		public Set<MsTable> getMsTables()
 			{
-				return this.masterTables;
+				return this.msTables;
 			}
 			
-		public void setMasterTables(Set<MasterTable> masterTables)
+		public void setMsTables(Set<MsTable> msTables)
 			{
-				this.masterTables = masterTables;
+				this.msTables = msTables;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

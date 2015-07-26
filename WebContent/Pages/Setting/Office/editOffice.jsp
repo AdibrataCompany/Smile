@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -22,69 +22,40 @@
 			<center>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-
 					<h2>Office</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
 					<s:hidden name="id" />
-					<table class="table table-striped">
-						<tr>
-							<td>Name</td>
-							<td><s:textfield name="name" /></td>
-							<td>Phone1 Area</td>
-							<td><s:textfield name="areaPhone1" /></td>
-						</tr>
-						<tr>
-							<td>Address</td>
-							<td><s:textfield name="address" /></td>
-							<td>Phone1 No.</td>
-							<td><s:textfield name="phoneNo1" /></td>
-						</tr>
-						<tr>
-							<td>RT</td>
-							<td><s:textfield name="rt" /></td>
-							<td>Phone2 Area</td>
-							<td><s:textfield name="areaPhone2" /></td>
-						</tr>
-						<tr>
-							<td>RW</td>
-							<td><s:textfield name="rw" /></td>
-							<td>Phone2 No.</td>
-							<td><s:textfield name="phoneNo2" /></td>
-						</tr>
-						<tr>
-							<td>Kelurahan</td>
-							<td><s:textfield name="kelurahan" /></td>
-							<td>Fax Area</td>
-							<td><s:textfield name="type" /></td>
-						</tr>
-						<tr>
-							<td>City</td>
-							<td><s:textfield name="city" /></td>
-							<td>Fax No.</td>
-							<td><s:textfield name="faxNo" /></td>
-						</tr>
-						<tr>
-							<td>Zip Code</td>
-							<td><s:textfield name="zipcode" /></td>
-							<td>Handphone</td>
-							<td><s:textfield name="handphone" /></td>
-						</tr>
-						<tr>
-							<td>Type</td>
-							<td><s:textfield name="type" /></td>
-						</tr>
-					</table>
+					<br>
+					<div align="left" class="form-group">
+						<label>Name</label>
+						<div align="left" class="form-inline">
+								<s:textfield name="name" style="width:75%"  class="form-control"/>
+						</div>
+					</div>
+					<%@include file="/Pages/Include/Address.jsp"%>
+					<div align="left" class="form-group">
+						<label>Handphone</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="handphone" style="width:150px"  class="form-control"/>
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Office Type</label>
+						<div align="left" class="form-inline"><s:textfield name="type" style="width:100px"  class="form-control"/> 
+						
+						</div>
+					</div>
 					<br>
 					<table width="100%">
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Simpan</button>
+									onclick="saveedit()">Save</button>
 							</td>
 						</tr>
 					</table>

@@ -1,12 +1,14 @@
 
 package com.adibrata.smartdealer.action.setting;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.setting.MasterDao;
-import com.adibrata.smartdealer.model.MasterTable;
 import com.adibrata.smartdealer.model.MasterType;
+import com.adibrata.smartdealer.model.MsTable;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.MasterService;
@@ -17,60 +19,59 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class MasterAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		private String mode;
-		private MasterType masterType;
-		private MasterTable masterTable;
-		private MasterService masterService;
+		private MsTable msTable;
+		private final MasterService masterService;
+		
 		private Partner partner;
 		private Office office;
-		private List<MasterType> lstMasterType;
-		
-		private List<MasterTable> lstMasterTable;
+
+		private Map<String, String> lstMasterType;
+		private List<MsTable> lstMsTable;
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
-		
-		private String masterCode;
-		private String masterValue;
+		private Long id;
+
+		private String mastercode;
+		private String mastervalue;
+		private String mastertypecode;
 		private Integer isActive;
-		
+
 		public MasterAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				final MasterService masterservice = new MasterDao();
-				
+
 				this.masterService = masterservice;
 				final Partner partner = new Partner();
 				final Office office = new Office();
-				final MasterTable masterTable = new MasterTable();
 				
 				this.setPartner(partner);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.setOffice(office);
-				this.setMasterTable(masterTable);
+				
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
-				// TODO Auto-generated method stub
-				
-			}
 			
+			}
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -122,14 +123,16 @@ public class MasterAction extends BaseAction implements Preparable
 					{
 						this.pageNumber = 1;
 						this.Paging();
+						
 						strMode = "start";
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
-				String wherecond = "";
+				String wherecond = " mastertypecode = '" + this.getMastertypecode() + "' ";
+				
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -143,50 +146,55 @@ public class MasterAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstMasterTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.ListMasterType();
+						this.lstMsTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						this.lstMasterTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.ListMasterType();
+						this.lstMsTable = this.masterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		public void ViewData() throws Exception
 			{
-				this.masterTable = new MasterTable();
+				this.msTable = new MsTable();
 				try
 					{
-						this.masterTable = this.masterService.View(this.id);
-						this.masterCode = this.masterTable.getMasterCode();
-						this.masterValue = this.masterTable.getMasterValue();
-						this.masterType = this.masterTable.getMasterType();
+						if (this.getId() != null)
+							{
+								this.msTable = this.masterService.View(this.getId());
+								this.mastercode = this.msTable.getMasterCode();
+								this.mastervalue = this.msTable.getMasterValue();
+								this.mastertypecode = this.msTable.getMasterTypeCode();
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -197,21 +205,22 @@ public class MasterAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
 				try
 					{
-						final MasterTable masterTable = new MasterTable();
-						
-						masterTable.setMasterCode(this.masterCode);
-						masterTable.setMasterValue(this.masterValue);
-						masterTable.setMasterType(this.masterType);
-						masterTable.setPartner(this.partner);
-						final MasterType mastertype = new MasterType();
-						
-						this.masterService.SaveAdd(mastertype, masterTable);
+						final MsTable MsTable = new MsTable();
+
+						MsTable.setMasterCode(this.getMastercode());
+						MsTable.setMasterValue(this.getMastervalue());
+
+						MsTable.setUsrUpd(this.getUsrUpd());
+						MsTable.setMasterTypeCode(this.getMastertypecode());
+						MsTable.setPartner(this.getPartner());
+
+						this.masterService.SaveAdd(MsTable);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -226,22 +235,22 @@ public class MasterAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
 				try
 					{
-						final MasterTable masterTable = new MasterTable();
-						masterTable.setId(this.getId());
-						masterTable.setMasterCode(this.getMasterCode());
-						masterTable.setMasterValue(this.getMasterValue());
-						masterTable.setUsrUpd(this.usrUpd);
-						masterTable.setMasterType(this.getMasterType());
-						masterTable.setPartner(this.partner);
-						final MasterType mastertype = new MasterType();
-						
-						this.masterService.SaveAdd(mastertype, masterTable);
+						final MsTable MsTable = new MsTable();
+						MsTable.setId(this.getId());
+						MsTable.setMasterCode(this.getMastercode());
+						MsTable.setMasterValue(this.getMastervalue());
+
+						MsTable.setUsrUpd(this.getUsrUpd());
+						MsTable.setMasterTypeCode(this.getMastertypecode());
+						MsTable.setPartner(this.getPartner());
+
+						this.masterService.SaveAdd(MsTable);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -256,16 +265,16 @@ public class MasterAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
 				try
 					{
-						final MasterTable masterTable = new MasterTable();
-						masterTable.setId(this.getId());
-						
-						this.masterService.SaveDel(masterTable);
+						final MsTable MsTable = new MsTable();
+						MsTable.setId(this.getId());
+
+						this.masterService.SaveDel(MsTable);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -280,39 +289,46 @@ public class MasterAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
+
+		private void ListMasterType() throws Exception
 			{
-				return serialVersionUID;
+				try
+					{
+						final List<MasterType> lst = this.masterService.ListMasterType();
+
+						this.lstMasterType = new HashMap<String, String>();
+						for (final MasterType row : lst)
+							{
+								this.lstMasterType.put(row.getMasterTypeCode(), row.getMasterTypeCode().trim());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
-			
+
 		/**
-		 * @return the masterType
+		 * @return the mode
 		 */
-		public MasterType getMasterType()
+		public String getMode()
 			{
-				return this.masterType;
+				return this.mode;
 			}
-			
+
 		/**
-		 * @return the masterTable
+		 * @param mode
+		 *            the mode to set
 		 */
-		public MasterTable getMasterTable()
+		public void setMode(final String mode)
 			{
-				return this.masterTable;
+				this.mode = mode;
 			}
-			
-		/**
-		 * @return the masterService
-		 */
-		public MasterService getMasterService()
-			{
-				return this.masterService;
-			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -320,58 +336,7 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the lstMasterType
-		 */
-		public List<MasterType> getLstMasterType()
-			{
-				return this.lstMasterType;
-			}
-			
-		/**
-		 * @return the lstMasterTable
-		 */
-		public List<MasterTable> getLstMasterTable()
-			{
-				return this.lstMasterTable;
-			}
-			
-		/**
-		 * @param masterType
-		 *            the masterType to set
-		 */
-		public void setMasterType(final MasterType masterType)
-			{
-				this.masterType = masterType;
-			}
-			
-		/**
-		 * @param masterTable
-		 *            the masterTable to set
-		 */
-		public void setMasterTable(final MasterTable masterTable)
-			{
-				this.masterTable = masterTable;
-			}
-			
-		/**
-		 * @param masterService
-		 *            the masterService to set
-		 */
-		public void setMasterService(final MasterService masterService)
-			{
-				this.masterService = masterService;
-			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -380,7 +345,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -389,35 +362,24 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
-		 * @param lstMasterType
-		 *            the lstMasterType to set
+		 * @return the lstMsTable
 		 */
-		public void setLstMasterType(final List<MasterType> lstMasterType)
+		public List<MsTable> getLstMsTable()
 			{
-				this.lstMasterType = lstMasterType;
+				return this.lstMsTable;
 			}
-			
+
 		/**
-		 * @param lstMasterTable
-		 *            the lstMasterTable to set
+		 * @param lstMsTable
+		 *            the lstMsTable to set
 		 */
-		public void setLstMasterTable(final List<MasterTable> lstMasterTable)
+		public void setLstMsTable(final List<MsTable> lstMsTable)
 			{
-				this.lstMasterTable = lstMasterTable;
+				this.lstMsTable = lstMsTable;
 			}
-			
-		public String getMode()
-			{
-				return this.mode;
-			}
-			
-		public void setMode(final String mode)
-			{
-				this.mode = mode;
-			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -425,47 +387,7 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
-			}
-			
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -474,7 +396,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
+		/**
+		 * @return the searchvalue
+		 */
+		public String getSearchvalue()
+			{
+				return this.searchvalue;
+			}
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -483,7 +413,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -492,7 +430,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -501,7 +447,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -510,7 +464,15 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -519,23 +481,58 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
-		 * @return the masterCode
+		 * @return the id
 		 */
-		public String getMasterCode()
+		public Long getId()
 			{
-				return this.masterCode;
+				return this.id;
 			}
-			
+
 		/**
-		 * @return the masterValue
+		 * @param id
+		 *            the id to set
 		 */
-		public String getMasterValue()
+		public void setId(final Long id)
 			{
-				return this.masterValue;
+				this.id = id;
 			}
-			
+
+		/**
+		 * @return the mastercode
+		 */
+		public String getMastercode()
+			{
+				return this.mastercode;
+			}
+
+		/**
+		 * @param mastercode
+		 *            the mastercode to set
+		 */
+		public void setMastercode(final String mastercode)
+			{
+				this.mastercode = mastercode;
+			}
+
+		/**
+		 * @return the mastervalue
+		 */
+		public String getMastervalue()
+			{
+				return this.mastervalue;
+			}
+
+		/**
+		 * @param mastervalue
+		 *            the mastervalue to set
+		 */
+		public void setMastervalue(final String mastervalue)
+			{
+				this.mastervalue = mastervalue;
+			}
+
 		/**
 		 * @return the isActive
 		 */
@@ -543,25 +540,7 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				return this.isActive;
 			}
-			
-		/**
-		 * @param masterCode
-		 *            the masterCode to set
-		 */
-		public void setMasterCode(final String masterCode)
-			{
-				this.masterCode = masterCode;
-			}
-			
-		/**
-		 * @param masterValue
-		 *            the masterValue to set
-		 */
-		public void setMasterValue(final String masterValue)
-			{
-				this.masterValue = masterValue;
-			}
-			
+
 		/**
 		 * @param isActive
 		 *            the isActive to set
@@ -570,22 +549,72 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.isActive = isActive;
 			}
-			
+
 		/**
-		 * @return the id
+		 * @return the serialversionuid
 		 */
-		public long getId()
+		public static long getSerialversionuid()
 			{
-				return this.id;
+				return serialVersionUID;
+			}
+
+		/**
+		 * @return the masterService
+		 */
+		public MasterService getMasterService()
+			{
+				return this.masterService;
+			}
+
+		/**
+		 * @return the mastertypecode
+		 */
+		public String getMastertypecode()
+			{
+				return this.mastertypecode;
 			}
 			
 		/**
-		 * @param id
-		 *            the id to set
+		 * @param mastertypecode
+		 *            the mastertypecode to set
 		 */
-		public void setId(final long id)
+		public void setMastertypecode(final String mastertypecode)
 			{
-				this.id = id;
+				this.mastertypecode = mastertypecode;
+			}
+			
+		/**
+		 * @return the lstMasterType
+		 */
+		public Map<String, String> getLstMasterType()
+			{
+				return this.lstMasterType;
+			}
+			
+		/**
+		 * @param lstMasterType
+		 *            the lstMasterType to set
+		 */
+		public void setLstMasterType(final Map<String, String> lstMasterType)
+			{
+				this.lstMasterType = lstMasterType;
+			}
+
+		/**
+		 * @return the msTable
+		 */
+		public MsTable getMsTable()
+			{
+				return this.msTable;
+			}
+
+		/**
+		 * @param msTable
+		 *            the msTable to set
+		 */
+		public void setMsTable(final MsTable msTable)
+			{
+				this.msTable = msTable;
 			}
 			
 	}

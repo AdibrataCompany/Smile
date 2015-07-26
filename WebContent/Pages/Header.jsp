@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 <link href="/Smile/Demo/style/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
@@ -35,7 +35,7 @@
 <body>
 	<br>
 	<br>
-	<div class="jumbotron">
+	<!-- <div class="jumbotron"> -->
 		<s:form>
 			<table align="center" width="100%">
 				<tr>
@@ -47,8 +47,6 @@
 					<td align="center">Sun Motor</td>
 
 					<td width="25%"><div>
-							<img width="100%" height="100" border="0" alt="W3Schools"
-								src="/Smile/images/smartdealer/LogoDealer.jpg">
 						</div></td>
 				</tr>
 				<tr>
@@ -60,6 +58,6 @@
 				</tr>
 			</table>
 		</s:form>
-	</div>
+	<!-- </div> -->
 </body>
 </html>

@@ -1,236 +1,275 @@
 /**
- * 
- */
-package com.adibrata.smartdealer.dao.setting;
-
-/**
- * @author Henry
  *
  */
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
+package com.adibrata.smartdealer.dao.setting;
+
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
-import com.adibrata.smartdealer.model.*;
+import com.adibrata.smartdealer.model.MasterType;
+import com.adibrata.smartdealer.model.MsTable;
 import com.adibrata.smartdealer.service.setting.MasterService;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
-import util.adibrata.support.transno.GetTransNo;
 
-public class MasterDao extends DaoBase implements MasterService {
-	String userupd;
-	Session session;
-	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	Calendar dtmupd = Calendar.getInstance();
-	String strStatement;
-	StringBuilder hql = new StringBuilder();
-	int pagesize;
-	private int currentpage;
-	private long totalrecord;
-
-	public MasterDao() throws Exception {
-		// TODO Auto-generated constructor stub
-		try {
-			session = HibernateHelper.getSessionFactory().openSession();
-			pagesize = HibernateHelper.getPagesize();
-			strStatement = " from MasterTable ";
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.Master#SaveAdd(com.adibrata.
-	 * smartdealer.model.MasterType, com.adibrata.smartdealer.model.MasterTable)
-	 */
-	@Override
-	public void SaveAdd(MasterType masterType, MasterTable masterTable)
-			throws Exception {
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-			masterTable.setDtmCrt(dtmupd.getTime());
-			masterTable.setDtmUpd(dtmupd.getTime());
-			session.save(masterTable);
-
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.Master#SaveEdit(com.adibrata
-	 * .smartdealer.model.MasterType,
-	 * com.adibrata.smartdealer.model.MasterTable)
-	 */
-	@Override
-	public void SaveEdit(MasterType masterType, MasterTable masterTable)
-			throws Exception {
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-
-			masterTable.setDtmUpd(dtmupd.getTime());
-			session.update(masterTable);
-
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.adibrata.smartdealer.service.setting.Master#SaveDel(com.adibrata.
-	 * smartdealer.model.MasterTable)
-	 */
-	@Override
-	public void SaveDel(MasterTable masterTable) throws Exception {
-		// TODO Auto-generated method stub
-		session.getTransaction().begin();
-		try {
-
-			session.delete(masterTable);
-
-			session.getTransaction().commit();
-
-		} catch (Exception exp) {
-			session.getTransaction().rollback();
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.adibrata.smartdealer.service.setting.Master#Paging(int,
-	 * java.lang.String, java.lang.String)
-	 */
-	@Override
-	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
-			String SortBy) throws Exception {
-		// TODO Auto-generated method stub
+public class MasterDao extends DaoBase implements MasterService
+	{
+		String userupd;
+		Session session;
+		
+		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		List<MasterTable> list = null;
-		try {
-			hql.append(strStatement);
-			if (WhereCond != "") {
-				hql.append(" where ");
-				hql.append(WhereCond);
+		int pagesize;
+		private int currentpage;
+		private long totalrecord;
+
+		public MasterDao() throws Exception
+			{
+				// TODO Auto-generated constructor stub
+				try
+					{
+						this.session = HibernateHelper.getSessionFactory().openSession();
+						this.pagesize = HibernateHelper.getPagesize();
+						this.strStatement = "from MsTable ";
+
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+			
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.Master#SaveAdd(com.adibrata.
+		 * smartdealer.model.MasterType, com.adibrata.smartdealer.model.MsTable)
+		 */
+		@Override
+		public void SaveAdd(final MsTable MsTable) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.session.getTransaction().begin();
+				try
+					{
+						MsTable.setDtmCrt(this.dtmupd);
+						MsTable.setDtmUpd(this.dtmupd);
+						this.session.save(MsTable);
+
+						this.session.getTransaction().commit();
+
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
 
-			Query selectQuery = session.createQuery(hql.toString());
-			selectQuery.setFirstResult((CurrentPage - 1) * pagesize);
-			selectQuery.setMaxResults(pagesize);
-			list = selectQuery.list();
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.Master#SaveEdit(com.adibrata
+		 * .smartdealer.model.MasterType,
+		 * com.adibrata.smartdealer.model.MsTable)
+		 */
+		@Override
+		public void SaveEdit(final MsTable MsTable) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.session.getTransaction().begin();
+				try
+					{
 
-		} catch (Exception exp) {
+						MsTable.setDtmUpd(this.dtmupd);
+						this.session.update(MsTable);
 
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return list;
-	}
+						this.session.getTransaction().commit();
 
-	@Override
-	public List<MasterType> ListMasterType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MasterTable View(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<MasterTable> Paging(int CurrentPage, String WhereCond,
-			String SortBy, boolean islast) throws Exception {
-		// TODO Auto-generated method stub
-		StringBuilder hql = new StringBuilder();
-		List<MasterTable> list = null;
-
-		try {
-			hql.append(strStatement);
-			if (WhereCond != "") {
-				hql.append(" where ");
-				hql.append(WhereCond);
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
 			}
-			Query selectQuery = session.createQuery(hql.toString());
-			this.totalrecord = TotalRecord(hql.toString(), WhereCond);
-			this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
 
-			selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
-			selectQuery.setMaxResults(pagesize);
-			list = selectQuery.list();
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.Master#SaveDel(com.adibrata.
+		 * smartdealer.model.MsTable)
+		 */
+		@Override
+		public void SaveDel(final MsTable MsTable) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.session.getTransaction().begin();
+				try
+					{
 
-		} catch (Exception exp) {
+						this.session.delete(MsTable);
 
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return list;
+						this.session.getTransaction().commit();
+
+					}
+				catch (final Exception exp)
+					{
+						this.session.getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+
+		/*
+		 * (non-Javadoc)
+		 * @see com.adibrata.smartdealer.service.setting.Master#Paging(int,
+		 * java.lang.String, java.lang.String)
+		 */
+		@Override
+		public List<MsTable> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<MsTable> list = null;
+				try
+					{
+						hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								hql.append(" where ");
+								hql.append(WhereCond);
+							}
+
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("MsTable" + WhereCond);
+						selectQuery.setMaxResults(this.pagesize);
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
+		@Override
+		public List<MasterType> ListMasterType() throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<MasterType> list = null;
+				try
+					{
+						hql.append("from MasterType");
+
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("MasterType");
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
+		@Override
+		public MsTable View(final long id) throws Exception
+			{
+				MsTable MsTable = null;
+				try
+					{
+						MsTable = (MsTable) this.session.get(MsTable.class, id);
+						
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return MsTable;
+			}
+
+		@Override
+		public List<MsTable> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<MsTable> list = null;
+
+				try
+					{
+						hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								hql.append(" where ");
+								hql.append(WhereCond);
+							}
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
+						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("MsTable" + WhereCond);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
+		@Override
+		public int getCurrentpage()
+			{
+				return this.currentpage;
+			}
+
+		public void setCurrentpage(final int currentpage)
+			{
+				this.currentpage = currentpage;
+			}
+
 	}
-
-	@Override
-	public int getCurrentpage() {
-		return currentpage;
-	}
-
-	public void setCurrentpage(int currentpage) {
-		this.currentpage = currentpage;
-	}
-
-}

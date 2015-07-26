@@ -5,10 +5,16 @@
 package com.adibrata.smartdealer.dao.accmaint;
 
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.type.LongType;
+import org.hibernate.type.StringType;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.model.AgreementList;
 import com.adibrata.smartdealer.model.Agrmnt;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
@@ -28,8 +34,15 @@ import util.adibrata.support.payhist.Header;
  */
 public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 	{
+
+		String userupd;
 		Session session;
 		
+		String strStatement;
+		StringBuilder hql = new StringBuilder();
+		int pagesize;
+		String strCountStatement;
+
 		/**
 		*
 		*/
@@ -37,6 +50,11 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openSession();
+
+				this.pagesize = HibernateHelper.getPagesize();
+				this.strStatement = "Select Agrmnt.id as AgrmntId, Agrmnt.AgrmntCode, Customer.Name as CustomerName, Customer.FullAddress as Address,	" + "Currency.Code as Currency from agrmnt "
+				        + "inner join customer on agrmnt.CustomerId = customer.id " + "inner join currency on agrmnt.CurrencyID = currency.id ";
+				this.strCountStatement = "Select Count(1) as total from agrmnt " + "inner join customer on agrmnt.CustomerId = customer.id " + "inner join currency on agrmnt.CurrencyID = currency.id ";
 			}
 
 		public PaymentReceiveDao(final Session session) throws Exception
@@ -102,4 +120,115 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 					}
 
 			}
+
+		@Override
+		public List<AgreementList> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder sql = new StringBuilder();
+				List<AgreementList> list = null;
+				final SQLQuery selectQuery;
+				try
+					{
+						this.hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								this.hql.append(" where ");
+								this.hql.append(WhereCond);
+							}
+						selectQuery = this.session.createSQLQuery(sql.toString());
+						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+						selectQuery.setCacheable(true);
+						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setCacheRegion("ListAgrmntId" + WhereCond);
+						selectQuery.addScalar("AgrmntId", new LongType());
+						selectQuery.addScalar("AgrmntCode", new StringType());
+						selectQuery.addScalar("CustomerName", new StringType());
+						selectQuery.addScalar("Address", new StringType());
+						selectQuery.addScalar("Currency", new StringType());
+						
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						sql.setLength(0);
+					}
+				return list;
+			}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<AgreementList> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
+			{
+				final StringBuilder sql = new StringBuilder();
+				final StringBuilder sqlcount = new StringBuilder();
+
+				List<AgreementList> list = null;
+				SQLQuery selectQuery;
+				SQLQuery selectQueryCount;
+
+				Long totalrecord;
+				int currentpage;
+				try
+					{
+						sql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								sql.append(" where ");
+								sql.append(WhereCond);
+							}
+							
+						sqlcount.append(this.strCountStatement);
+						if (WhereCond != "")
+							{
+								sqlcount.append(" where ");
+								sqlcount.append(WhereCond);
+							}
+							
+						selectQueryCount = this.session.createSQLQuery(sqlcount.toString());
+						selectQueryCount.setCacheable(true);
+						selectQueryCount.setCacheRegion("CountListAgrmnt" + WhereCond);
+						totalrecord = (long) selectQueryCount.uniqueResult();
+
+						selectQuery = this.session.createSQLQuery(sql.toString());
+						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+						selectQuery.setCacheable(true);
+						currentpage = (int) ((totalrecord / this.pagesize) + 1);
+						selectQuery.setFirstResult((currentpage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setCacheRegion("ListAgrmnt" + WhereCond);
+						selectQuery.addScalar("AgrmntId", new LongType());
+						selectQuery.addScalar("AgrmntCode", new StringType());
+						selectQuery.addScalar("CustomerName", new StringType());
+						selectQuery.addScalar("Address", new StringType());
+						selectQuery.addScalar("Currency", new StringType());
+
+						list = selectQuery.list();
+						
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						this.hql.setLength(0);
+					}
+				return list;
+			}
+			
 	}

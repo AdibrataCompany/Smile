@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 
@@ -27,28 +27,29 @@
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
 					<s:hidden name="id" />
-					<table class="table table-striped">
-						<tr>
-							<td>Tipe</td>
-							<td><select name="mastertype">
-									<s:iterator>
-										<option value="0">Pilih Kriteria</option>
-										<option value=${selectvalue}>${selectdesc}</option>
-										<option value="documentName">Nama</option>
-										<option value="assetType">Tipe</option>
-									</s:iterator>
-							</select> <s:textfield name="masterType" /></td>
-						</tr>
-						<tr>
-							<td>Code</td>
-							<td><s:textfield name="masterCode" /></td>
-						</tr>
-						<tr>
-							<td>Value</td>
-							<td><s:textfield name="masterValue" /></td>
-						</tr>
-
-					</table>
+					<div align="left" class="form-group">
+						<label>Master Type</label>
+						<div align="left" class="form-inline">
+						
+						</div>
+					</div>
+					
+					<div align="left" class="form-group">
+						<label>Master Code</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="masterCode" style="width:95%"
+								placeholder="Master Code" class="form-control" />
+						</div>
+					</div>
+					
+					<div align="left" class="form-group">
+						<label>Master Value</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="masterValue" style="width:95%"
+								placeholder="Master Value" class="form-control" />
+						</div>
+					</div>
+					
 					<br>
 					<table width="100%">
 						<tr>

@@ -8,13 +8,13 @@
 			class="com.adibrata.smartdealer.action.accpay.AccPayAction" method="execute">
 			<result name="start">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
-			<result name="success">/Pages/AccPay/Selection/ApSelection.jsp
+			<result name="SUCCESS">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
 			<result name="search">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
 			<result name="end">/Pages/AccPay/Selection/ApSelection.jsp
 			</result>
-			<result name="error">/Pages/AccPay/Selection/ApSelectionEntry.jsp
+			<result name="ERROR">/Pages/AccPay/Selection/ApSelectionEntry.jsp
 			</result>
 			<result name="entry">/Pages/AccPay/Selection/ApSelectionEntry.jsp
 			</result>
@@ -26,13 +26,13 @@
 			method="execute">
 			<result name="start">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
-			<result name="success">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
+			<result name="SUCCESS">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
 			<result name="search">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
 			<result name="end">/Pages/AccPay/PaymentVoucher/PVDisburse.jsp
 			</result>
-			<result name="error">/Pages/AccPay/PaymentVoucher/PVDisburseEntry.jsp
+			<result name="ERROR">/Pages/AccPay/PaymentVoucher/PVDisburseEntry.jsp
 			</result>
 			<result name="entry">/Pages/AccPay/PaymentVoucher/PVDisburseEntry.jsp
 			</result>

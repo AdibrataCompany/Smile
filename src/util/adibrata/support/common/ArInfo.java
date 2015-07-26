@@ -82,7 +82,7 @@ public class ArInfo implements ARInfoService
 								paymentInfo.setOsinstallment(this.TotalOsInstallment(agrmntid, valuedate));
 								paymentInfo.setTotalinstallmentamount(this.TotalInstallment(agrmntid, valuedate));
 								paymentInfo = this.GetOsPrincipalandInterest(agrmntid, valuedate, paymentInfo);
-								currency = CurrencyInfo.GetCurrencyInfo(this.session, agrmnt.getPartner(), agrmnt.getCurrencyId());
+								currency = CurrencyInfo.GetCurrencyInfo(this.session, agrmnt.getPartner(), agrmnt.getCurrency().getId());
 								paymentInfo.setCurrencyrounded(currency.getRounded());
 							}
 							
@@ -101,8 +101,8 @@ public class ArInfo implements ARInfoService
 										paymentInfo.setAccruedinterest(this.AccruedInfo(agrmnt, valuedate));
 										paymentInfo.setLcinstallmentcurrent(lcinstallment.LCCalc(agrmnt, valuedate));
 										paymentInfo.setLcinsurancecurrent(LCInsurance.LCCalc(this.session, agrmnt, valuedate));
-										paymentInfo.setOsprincipal(agrmnt.getOsp());
-										paymentInfo.setOsinterest(agrmnt.getOsi());
+										paymentInfo.setOsprincipal(agrmnt.getOsP());
+										paymentInfo.setOsinterest(agrmnt.getOsI());
 										paymentInfo.setNextinstdate(agrmnt.getNextInstDate());
 										paymentInfo.setNextinstnumber(agrmnt.getNextInstNumber());
 										
@@ -314,7 +314,7 @@ public class ArInfo implements ARInfoService
 						
 						result = interestamount * (diffday / period);
 						
-					}                                                                                                        // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+					}                                                                                                          // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();

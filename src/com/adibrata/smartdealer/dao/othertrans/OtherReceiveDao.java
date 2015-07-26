@@ -9,6 +9,7 @@ package com.adibrata.smartdealer.dao.othertrans;
  */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -28,10 +29,12 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 		String userupd;
 		Session session;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		
+		Calendar dtmupd = Calendar.getInstance();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
+		private long totalrecord;
+		private int currentpage;
 		
 		public OtherReceiveDao() throws Exception
 			{
@@ -52,15 +55,11 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
-		 * @see
-		 * com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save
-		 * (com.adibrata.smartdealer.model.OtherRcvHdr,
-		 * com.adibrata.smartdealer.model.OtherRcvDtl)
+		 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save(com.adibrata.smartdealer.model.OtherRcvHdr, com.adibrata.smartdealer.model.OtherRcvDtl)
 		 */
-		@SuppressWarnings("unused")
 		@Override
 		public void Save(final String usrupd, final OtherRcvHdr otherRcvHdr, final List<OtherRcvDtl> lstotherRcvDtl) throws Exception
 			{
@@ -70,18 +69,18 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					{
 						final String transno = TransactionNo(this.session, TransactionType.otherreceive, otherRcvHdr.getPartner().getPartnerCode(), otherRcvHdr.getOffice().getId());
 						otherRcvHdr.setOtherRcvNo(transno);
-						otherRcvHdr.setDtmCrt(this.dtmupd);
-						otherRcvHdr.setDtmUpd(this.dtmupd);
+						otherRcvHdr.setDtmCrt(this.dtmupd.getTime());
+						otherRcvHdr.setDtmUpd(this.dtmupd.getTime());
 						this.session.save(otherRcvHdr);
-						
 						for (final OtherRcvDtl arow : lstotherRcvDtl)
 							{
 								final OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
-								otherRcvDtl.setOtherRcvHdr(otherRcvHdr);
-								otherRcvDtl.setDtmCrt(this.dtmupd);
-								otherRcvDtl.setDtmUpd(this.dtmupd);
+								otherRcvDtl.setDtmCrt(this.dtmupd.getTime());
+								otherRcvDtl.setDtmUpd(this.dtmupd.getTime());
+								
 								this.session.save(otherRcvDtl);
 							}
+							
 						this.session.getTransaction().commit();
 						
 					}
@@ -94,14 +93,11 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
-		 * @see
-		 * com.adibrata.smartdealer.service.othertransactions.OtherReceive#Paging
-		 * (int, java.lang.String, java.lang.String)
+		 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Paging(int, java.lang.String, java.lang.String)
 		 */
-		@SuppressWarnings("unchecked")
 		@Override
 		public List<OtherRcvHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
@@ -118,8 +114,10 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
+						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						
+						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
 						
@@ -134,8 +132,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-
-		@SuppressWarnings("unchecked")
+			
 		@Override
 		public List<OtherRcvHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
@@ -152,11 +149,12 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
+						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						
+						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
 					}
 				catch (final Exception exp)
 					{
@@ -168,5 +166,5 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-
+			
 	}

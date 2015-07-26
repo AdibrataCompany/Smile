@@ -3,6 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
+
+
 <struts>
 	<package name="Setting" extends="smartdealer-package"
 		namespace="/setting">
@@ -10,8 +12,8 @@
 			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="success">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="error">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="ERROR">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
@@ -23,7 +25,6 @@
 			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-
 		</action>
 
 		<action name="assetmaster"
@@ -31,9 +32,9 @@
 			method="execute">
 			<result name="start">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="success">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			<result name="SUCCESS">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="error">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			<result name="ERROR">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 			<result name="search">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
@@ -64,9 +65,9 @@
 			method="execute">
 			<result name="start">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
-			<result name="success">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="SUCCESS">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
-			<result name="error">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="ERROR">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="search">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
@@ -95,8 +96,8 @@
 		<action name="dealer"
 			class="com.adibrata.smartdealer.action.setting.DealerAction" method="execute">
 			<result name="start">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="success">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="error">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="ERROR">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
@@ -115,9 +116,9 @@
 			method="execute">
 			<result name="start">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="success">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			<result name="SUCCESS">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="error">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			<result name="ERROR">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 			<result name="search">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
@@ -150,8 +151,8 @@
 		<action name="master"
 			class="com.adibrata.smartdealer.action.setting.MasterAction" method="execute">
 			<result name="start">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="success">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="error">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="ERROR">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="search">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
@@ -167,8 +168,8 @@
 		<action name="office"
 			class="com.adibrata.smartdealer.action.setting.OfficeAction" method="execute">
 			<result name="start">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="success">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="error">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="ERROR">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="search">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
@@ -185,8 +186,8 @@
 			class="com.adibrata.smartdealer.action.setting.WorkshopAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="success">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="error">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="ERROR">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="search">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
@@ -202,8 +203,8 @@
 		<action name="zipcode"
 			class="com.adibrata.smartdealer.action.setting.ZipCodeAction" method="execute">
 			<result name="start">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="success">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="error">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="ERROR">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="search">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
@@ -220,8 +221,8 @@
 		<action name="taksasi"
 			class="com.adibrata.smartdealer.action.setting.TaksasiAction" method="execute">
 			<result name="start">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="success">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="error">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="SUCCESS">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="ERROR">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
 			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
 			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>

@@ -12,16 +12,16 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-
 import com.adibrata.smartdealer.model.Agrmnt;
 import com.adibrata.smartdealer.model.AgrmntMnt;
 import com.adibrata.smartdealer.model.InstSchedule;
 import com.adibrata.smartdealer.model.PayHistDtl;
 import com.adibrata.smartdealer.model.PayHistHdr;
 import com.adibrata.smartdealer.model.PaymentReceive;
+
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 /**
  * @author Henry
@@ -30,8 +30,8 @@ public class Insurance
 	{
 		
 		/**
-	 *
-	 */
+		*
+		*/
 		Session session;
 		
 		private final Date dtmUpd = Calendar.getInstance().getTime();
@@ -41,12 +41,12 @@ public class Insurance
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openSession();
 			}
-		
+
 		public Insurance(final Session session)
 			{
 				this.session = session;
 			}
-		
+
 		@SuppressWarnings("unchecked")
 		public void SaveDetail(final String usrUpd, final PaymentReceive paymentReceive, final PayHistHdr hdr) throws Exception
 			{
@@ -95,7 +95,7 @@ public class Insurance
 														amountreceive = 0;
 													}
 											}
-										
+
 										final InstSchedule inst = new InstSchedule();
 										inst.setPaidAmt(inst.getPaidAmt() - amountallocation);
 										
@@ -138,7 +138,7 @@ public class Insurance
 											{
 												final Agrmnt arowagrmnt = itagrmnt.next();
 												
-												osp = arowagrmnt.getOsp() - aRow.getOsPamt();
+												osp = arowagrmnt.getOsP() - aRow.getOsPamt();
 												if (interestallocation > osp)
 													{
 														principal = osp;
@@ -166,9 +166,9 @@ public class Insurance
 															}
 													}
 											}
-										
-										agrmnt.setOsp(agrmnt.getOsp() - principal);
-										agrmnt.setOsi(agrmnt.getOsi() - interest);
+
+										agrmnt.setOsP(agrmnt.getOsP() - principal);
+										agrmnt.setOsI(agrmnt.getOsI() - interest);
 										
 										agrmnt.setNextInstNumber(aRow.getInstSeqNo());
 										agrmnt.setNextInstDate(aRow.getDueDate());
@@ -188,7 +188,7 @@ public class Insurance
 														agrmnt.setNextInstDate(aRow.getDueDate());
 														agrmnt.setNextInstNumber(aRow.getInstSeqNo());
 													}
-												
+
 											}
 										this.session.update(agrmnt);
 									}
@@ -201,6 +201,6 @@ public class Insurance
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				
+
 			}
 	}

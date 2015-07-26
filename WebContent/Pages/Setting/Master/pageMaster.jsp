@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 
@@ -26,15 +26,21 @@
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
-						<td width="10%">Pencarian</td>
+						<td>Master Type</td>
+						<td><s:select list="lstMasterType" name="mastertypecode" value = "mastertypecode" label = "Select Master Type"
+								headerKey="" 
+								headerValue="Select Master Type" /></td>
+								<!-- key="mastertype.mastertypecode" -->
+					</tr>
+					<tr>
+						<td width="10%">Search</td>
 						<td><select name="searchcriteria">
 								<option value="">Pilih</option>
 								<option value="masterCode">Code</option>
 								<option value="masterValue">Value</option>
-								<option value="masterType">Tipe</option>
-						</select> <input name="searchvalue" placeholder="Masukan Nilai" />
+						</select> <input name="searchvalue" placeholder="Search Criteria" />
 							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Cari</button></td>
+								onclick="search()">Search</button></td>
 
 						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 
@@ -47,16 +53,16 @@
 					<tr>
 						<th style="text-align: center;">Code</th>
 						<th style="text-align: center;">Value</th>
-						<th style="text-align: center;">Tipe</th>
+					<th style="text-align: center;">ID</th>
+				
 						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
-					<s:iterator value="lstMasterTable">
+					<s:iterator value="lstMsTable">
 						<tr id="row_<s:property value="id"/>">
 							<td>${masterCode}</td>
 							<td>${masterValue}</td>
-							<td>${masterType}</td>
-							<td style="text-align: center;"><input type="radio"
-								id="${id}" checked /></td>
+							<td>${id}</td>
+							<td style="text-align: center;"><input type="radio" id="${id}"/></td>
 						</tr>
 					</s:iterator>
 				</table>

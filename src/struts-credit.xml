@@ -9,9 +9,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -29,9 +29,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -48,9 +48,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -67,9 +67,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -86,9 +86,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -105,9 +105,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -124,9 +124,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -143,9 +143,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -162,9 +162,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -181,9 +181,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp

@@ -34,6 +34,7 @@
         <mapping class="com.adibrata.smartdealer.model.Taksasi" />
         <mapping class="com.adibrata.smartdealer.model.PettyCashHdr" />
         <mapping class="com.adibrata.smartdealer.model.BucketAgingReport" />
+        <mapping class="com.adibrata.smartdealer.model.MsTable" />
         <mapping class="com.adibrata.smartdealer.model.CoaSchmHdr" />
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
@@ -44,7 +45,6 @@
         <mapping class="com.adibrata.smartdealer.model.Stock" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsInsco" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustContactInfo" />
-        <mapping class="com.adibrata.smartdealer.model.MasterTable" />
         <mapping class="com.adibrata.smartdealer.model.PayReqHdr" />
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOfficeFee" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustComptInfo" />
@@ -89,7 +89,6 @@
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
         <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
-        <mapping class="com.adibrata.smartdealer.model.AgrmntEmployee" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOldOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntEmployeeInfo" />
@@ -118,6 +117,7 @@
         <mapping class="com.adibrata.smartdealer.model.MsUserRole" />
         <mapping class="com.adibrata.smartdealer.model.ZipCode" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseHdr" />
+        <mapping class="com.adibrata.smartdealer.model.CoyCustFinancialInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />
         <mapping class="com.adibrata.smartdealer.model.Workshop" />

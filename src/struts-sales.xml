@@ -8,8 +8,8 @@
 			class="com.adibrata.smartdealer.action.sales.SalesOrderAction"
 			method="execute">
 			<result name="start">/Pages/Sales/Order/paging.jsp</result>
-			<result name="success">/Pages/Sales/Order/paging.jsp</result>
-			<result name="error">/Pages/Sales/Order/entry.jsp</result>
+			<result name="SUCCESS">/Pages/Sales/Order/paging.jsp</result>
+			<result name="ERROR">/Pages/Sales/Order/entry.jsp</result>
 
 			<result name="search">/Pages/Sales/Order/paging.jsp</result>
 			<result name="entry">/Pages/Sales/Order/entry.jsp</result>
@@ -20,8 +20,8 @@
 			class="com.adibrata.smartdealer.action.sales.SalesReturAction"
 			method="execute">
 			<result name="start">/Pages/Sales/Retur/paging.jsp</result>
-			<result name="success">/Pages/Sales/Retur/paging.jsp</result>
-			<result name="error">/Pages/Sales/Retur/entry.jsp</result>
+			<result name="SUCCESS">/Pages/Sales/Retur/paging.jsp</result>
+			<result name="ERROR">/Pages/Sales/Retur/entry.jsp</result>
 
 			<result name="search">/Pages/Sales/Retur/paging.jsp</result>
 			<result name="entry">/Pages/Sales/Retur/entry.jsp</result>
@@ -32,8 +32,8 @@
 			class="com.adibrata.smartdealer.action.sales.SalesInvoiceAction"
 			method="execute">
 			<result name="start">/Pages/Sales/Invoice/paging.jsp</result>
-			<result name="success">/Pages/Sales/Invoice/paging.jsp</result>
-			<result name="error">/Pages/Sales/Invoice/entry.jsp</result>
+			<result name="SUCCESS">/Pages/Sales/Invoice/paging.jsp</result>
+			<result name="ERROR">/Pages/Sales/Invoice/entry.jsp</result>
 
 			<result name="search">/Pages/Sales/Invoice/paging.jsp</result>
 			<result name="entry">/Pages/Sales/Invoice/entry.jsp</result>

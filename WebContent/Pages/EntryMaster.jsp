@@ -8,13 +8,13 @@
 </head>
 <body>
 	<button class="btn btn-sm btn-success" type="submit" onclick="add()">
-		<span class="glyphicon glyphicon-plus-sign"></span><br>Tambah
+		<span class="glyphicon glyphicon-plus-sign"></span><br>Add
 	</button>
 	<button class="btn btn-sm btn-warning" type="submit" onclick="edit()">
-		<span class="glyphicon glyphicon-edit"></span><br>Ubah
+		<span class="glyphicon glyphicon-edit"></span><br>Edit
 	</button>
 	<button class="btn btn-sm btn-danger" type="submit" onclick="savedel()">
-		<span class="glyphicon glyphicon-remove-sign"></span><br>Hapus
+		<span class="glyphicon glyphicon-remove-sign"></span><br>Delete
 	</button>
 	<!-- <table width="95%">
 		<tr>

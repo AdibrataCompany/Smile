@@ -23,31 +23,31 @@ public class DailyAgingDao
 	{
 		private final StatelessSession session;
 		Date dtmupd = Calendar.getInstance().getTime();
-
+		
 		public DailyAgingDao()
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
-
+				
 			}
-
+			
 		public DailyAgingDao(final Date valuedate) throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
 				this.DailyAgingEOD(valuedate);
-
+				
 			}
-
+			
 		public DailyAgingDao(final Date valuedate, final Office office) throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
 				this.DailyAgingEOD(valuedate);
 				this.DailyAgingEOM(valuedate);
-
+				
 			}
-
+			
 		// Session session = sessionFactory.openSession();
 		// Transaction tx = session.beginTransaction();
 		//
@@ -67,7 +67,7 @@ public class DailyAgingDao
 		//
 		// tx.commit();
 		// session.close();
-
+		
 		private void DailyAgingEOD(final Date valuedate) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
@@ -81,48 +81,48 @@ public class DailyAgingDao
 						hql.append("from Agrmnt, AgrmntMnt where Agrmnt.id = AgrmntMnt.agrmnt and ContractStatus In ('LIV', 'ICP', 'ICL') ");
 						qry = this.session.createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
 						while (qry.next())
-
+							
 							{
 								final Agrmnt agrmnt = (Agrmnt) qry.get(0);
 								final AgrmntMnt mnt = (AgrmntMnt) qry.get(1);
-
+								
 								final DailyAraging araging = new DailyAraging();
 								araging.setDailyMonthly("D");
 								araging.setAgingDate(valuedate);
-								araging.setAgrmntId(agrmnt.getId());
-								araging.setCustomerId(agrmnt.getCustomer().getId());
-								araging.setCurrencyId(agrmnt.getCurrencyId());
+								araging.setAgrmnt(agrmnt);
+								araging.setCustomer(agrmnt.getCustomer());
+								araging.setCurrency(agrmnt.getCurrency());
 								araging.setAmountOverDueGross(0.00);
 								araging.setAmountOverDuePrinciple(0.00);
-
+								
 								araging.setDaysOverdue(arInfo.AgrmntDaysOverdue(agrmnt.getId(), valuedate));
-								araging.setOsp(agrmnt.getOsp());
-								araging.setOsi(agrmnt.getOsi());
-								araging.setOspundue(agrmnt.getOspundue());
-
+								araging.setOsp(agrmnt.getOsP());
+								araging.setOsi(agrmnt.getOsI());
+								araging.setOspundue(agrmnt.getOsPundue());
+								
 								araging.setInstDue(mnt.getInstAmt());
 								araging.setInstDuePaid(mnt.getInstPaid());
 								araging.setInstDueWaived(mnt.getInstWaived());
-
+								
 								araging.setInsDue(mnt.getInsAmt());
 								araging.setInsDuePaid(mnt.getInsPaid());
 								araging.setInsDueWaived(mnt.getInsWaived());
-
+								
 								araging.setLcinst(mnt.getLcinstAmt());
 								araging.setLcinstPaid(mnt.getLcinstPaid());
 								araging.setLcinstWaived(mnt.getLcinstWaived());
 								araging.setLastLcinstCalcDate(mnt.getLastLccalcInstDate());
-
+								
 								araging.setLcins(mnt.getLcinsAmt());
 								araging.setLcinsPaid(mnt.getLcinsPaid());
 								araging.setLcinsWaived(mnt.getLcinsWaived());
 								araging.setLastLcinsCalcDate(mnt.getLastLccalcInsDate());
-
+								
 								araging.setPrepaidAmount(agrmnt.getPrepaidAmt());
-
+								
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
-
+								
 								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
 								this.session.update(agrmnt);
 							}
@@ -139,7 +139,7 @@ public class DailyAgingDao
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private void DailyAgingEOM(final Date valuedate) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
@@ -152,49 +152,49 @@ public class DailyAgingDao
 					{
 						hql.append("from Agrmnt, AgrmntMnt where Agrmnt.id = AgrmntMnt.agrmnt and ContractStatus In ('LIV', 'ICP', 'ICL') ");
 						qry = this.session.createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
-
+						
 						while (qry.next())
 							{
 								final Agrmnt agrmnt = (Agrmnt) qry.get(0);
 								final AgrmntMnt mnt = (AgrmntMnt) qry.get(1);
-
+								
 								final DailyAraging araging = new DailyAraging();
 								araging.setDailyMonthly("M");
 								araging.setAgingDate(valuedate);
-								araging.setAgrmntId(agrmnt.getId());
-								araging.setCustomerId(agrmnt.getCustomer().getId());
-								araging.setCurrencyId(agrmnt.getCurrencyId());
+								araging.setAgrmnt(agrmnt);
+								araging.setCustomer(agrmnt.getCustomer());
+								araging.setCurrency(agrmnt.getCurrency());
 								araging.setAmountOverDueGross(0.00);
 								araging.setAmountOverDuePrinciple(0.00);
-
+								
 								araging.setDaysOverdue(arInfo.AgrmntDaysOverdue(agrmnt.getId(), valuedate));
-								araging.setOsp(agrmnt.getOsp());
-								araging.setOsi(agrmnt.getOsi());
-								araging.setOspundue(agrmnt.getOspundue());
-
+								araging.setOsp(agrmnt.getOsP());
+								araging.setOsi(agrmnt.getOsI());
+								araging.setOspundue(agrmnt.getOsPundue());
+								
 								araging.setInstDue(mnt.getInstAmt());
 								araging.setInstDuePaid(mnt.getInstPaid());
 								araging.setInstDueWaived(mnt.getInstWaived());
-
+								
 								araging.setInsDue(mnt.getInsAmt());
 								araging.setInsDuePaid(mnt.getInsPaid());
 								araging.setInsDueWaived(mnt.getInsWaived());
-
+								
 								araging.setLcinst(mnt.getLcinstAmt());
 								araging.setLcinstPaid(mnt.getLcinstPaid());
 								araging.setLcinstWaived(mnt.getLcinstWaived());
 								araging.setLastLcinstCalcDate(mnt.getLastLccalcInstDate());
-
+								
 								araging.setLcins(mnt.getLcinsAmt());
 								araging.setLcinsPaid(mnt.getLcinsPaid());
 								araging.setLcinsWaived(mnt.getLcinsWaived());
 								araging.setLastLcinsCalcDate(mnt.getLastLccalcInsDate());
-
+								
 								araging.setPrepaidAmount(agrmnt.getPrepaidAmt());
-
+								
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
-
+								
 								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
 								this.session.update(agrmnt);
 							}

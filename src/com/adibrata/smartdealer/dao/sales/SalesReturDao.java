@@ -36,6 +36,8 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 	String strStatement;
 	StringBuilder hql = new StringBuilder();
 	int pagesize;
+	private long totalrecord;
+	private int currentpage;
 
 	public SalesReturDao() throws Exception {
 		// TODO Auto-generated constructor stub
@@ -148,8 +150,10 @@ public class SalesReturDao extends DaoBase implements SalesReturnService {
 						hql.append(WhereCond);
 					}
 					Query selectQuery = session.createQuery(hql.toString());
-					long totalrecord = TotalRecord(WhereCond);
-					selectQuery.setFirstResult((int) ((totalrecord - 1) * pagesize));
+					this.totalrecord = TotalRecord(hql.toString(), WhereCond);
+					this.currentpage = (int) ((this.totalrecord / pagesize) + 1);
+
+					selectQuery.setFirstResult((this.currentpage - 1) * pagesize);
 					selectQuery.setMaxResults(pagesize);
 					list = selectQuery.list();
 

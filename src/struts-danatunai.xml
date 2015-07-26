@@ -9,10 +9,10 @@
 			class="com.adibrata.smartdealer.action.danatunai.DanaTunaiAction"
 			method="execute">
 			<result name="start">/Pages/DanaTunai/paging.jsp</result>
-			<result name="success">/Pages/DanaTunai/paging.jsp</result>
+			<result name="SUCCESS">/Pages/DanaTunai/paging.jsp</result>
 			<result name="search">/Pages/DanaTunai/paging.jsp</result>
 			<result name="end">/Pages/DanaTunai/paging.jsp</result>
-			<result name="error">/Pages/DanaTunai/entry.jsp</result>
+			<result name="ERROR">/Pages/DanaTunai/entry.jsp</result>
 			<result name="entry">/Pages/DanaTunai/entry.jsp</result>
 			<result name="adddetail">/Pages/DanaTunai/entry.jsp</result>
 		</action>

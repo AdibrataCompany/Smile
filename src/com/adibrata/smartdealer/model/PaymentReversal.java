@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 25, 2015 1:37:58 PM by Hibernate Tools 4.3.1
+// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +22,7 @@ public class PaymentReversal implements java.io.Serializable
 	{
 		
 		private long id;
-		private Long agmrnId;
+		private Agrmnt agrmnt;
 		private Date valueDate;
 		private Date postingDate;
 		private Long bankAccId;
@@ -44,11 +47,11 @@ public class PaymentReversal implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public PaymentReversal(long id, Long agmrnId, Date valueDate, Date postingDate, Long bankAccId, Double currencyRate, String notes, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
+		public PaymentReversal(long id, Agrmnt agrmnt, Date valueDate, Date postingDate, Long bankAccId, Double currencyRate, String notes, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
-				this.agmrnId = agmrnId;
+				this.agrmnt = agrmnt;
 				this.valueDate = valueDate;
 				this.postingDate = postingDate;
 				this.bankAccId = bankAccId;
@@ -78,15 +81,16 @@ public class PaymentReversal implements java.io.Serializable
 				this.id = id;
 			}
 			
-		@Column(name = "AgmrnId")
-		public Long getAgmrnId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AgmrnId")
+		public Agrmnt getAgrmnt()
 			{
-				return this.agmrnId;
+				return this.agrmnt;
 			}
 			
-		public void setAgmrnId(Long agmrnId)
+		public void setAgrmnt(Agrmnt agrmnt)
 			{
-				this.agmrnId = agmrnId;
+				this.agrmnt = agrmnt;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)
