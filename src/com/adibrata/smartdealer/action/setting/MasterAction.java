@@ -14,6 +14,7 @@ import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.MasterService;
 import com.opensymphony.xwork2.Preparable;
 
+import util.adibrata.framework.cachehelper.Caching;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
@@ -59,7 +60,7 @@ public class MasterAction extends BaseAction implements Preparable
 				this.setPartner(partner);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.setOffice(office);
-				
+
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
@@ -69,7 +70,7 @@ public class MasterAction extends BaseAction implements Preparable
 		@Override
 		public void prepare() throws Exception
 			{
-			
+				this.ListMasterType();
 			}
 
 		@Override
@@ -121,14 +122,13 @@ public class MasterAction extends BaseAction implements Preparable
 					}
 				else
 					{
+						this.ListMasterType();
 						this.pageNumber = 1;
-						this.Paging();
-						
 						strMode = "start";
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = " mastertypecode = '" + this.getMastertypecode() + "' ";
@@ -211,16 +211,16 @@ public class MasterAction extends BaseAction implements Preparable
 				String status = "";
 				try
 					{
-						final MsTable MsTable = new MsTable();
+						final MsTable mstable = new MsTable();
 
-						MsTable.setMasterCode(this.getMastercode());
-						MsTable.setMasterValue(this.getMastervalue());
+						mstable.setMasterCode(this.getMastercode());
+						mstable.setMasterValue(this.getMastervalue());
 
-						MsTable.setUsrUpd(this.getUsrUpd());
-						MsTable.setMasterTypeCode(this.getMastertypecode());
-						MsTable.setPartner(this.getPartner());
+						mstable.setUsrUpd(this.getUsrUpd());
+						mstable.setMasterTypeCode(this.getMastertypecode());
+						mstable.setPartner(this.getPartner());
 
-						this.masterService.SaveAdd(MsTable);
+						this.masterService.SaveAdd(mstable);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -294,13 +294,23 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						final List<MasterType> lst = this.masterService.ListMasterType();
-
-						this.lstMasterType = new HashMap<String, String>();
-						for (final MasterType row : lst)
+						final Caching<String, Map<String, String>> cache = new Caching<String, Map<String, String>>();
+						if (cache.get("MasterTypeHash") == null)
 							{
-								this.lstMasterType.put(row.getMasterTypeCode(), row.getMasterTypeCode().trim());
+								final List<MasterType> lst = this.masterService.ListMasterType();
+
+								this.lstMasterType = new HashMap<String, String>();
+								for (final MasterType row : lst)
+									{
+										this.lstMasterType.put(row.getMasterTypeCode(), row.getMasterTypeCode());
+									}
+								cache.put("MasterTypeHash", this.lstMasterType);
 							}
+						else
+							{
+								this.lstMasterType = cache.get("MasterTypeHash");
+							}
+
 					}
 				catch (final Exception exp)
 					{

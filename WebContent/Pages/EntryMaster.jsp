@@ -26,12 +26,15 @@
 		</tr>
 	</table> -->
 </body>
+
 <script type="text/javascript">
 	function add() {
 		document.getElementById("mode").value = "add";
+
 	}
 	function edit() {
 		document.getElementById("mode").value = "edit";
+
 	}
 	function savedel() {
 		document.getElementById("mode").value = "savedel";

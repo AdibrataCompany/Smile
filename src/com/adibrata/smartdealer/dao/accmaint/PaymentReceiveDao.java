@@ -34,15 +34,15 @@ import util.adibrata.support.payhist.Header;
  */
 public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 	{
-
+		
 		String userupd;
 		Session session;
-		
+
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
 		String strCountStatement;
-
+		
 		/**
 		*
 		*/
@@ -50,19 +50,19 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openSession();
-
+				
 				this.pagesize = HibernateHelper.getPagesize();
 				this.strStatement = "Select Agrmnt.id as AgrmntId, Agrmnt.AgrmntCode, Customer.Name as CustomerName, Customer.FullAddress as Address,	" + "Currency.Code as Currency from agrmnt "
 				        + "inner join customer on agrmnt.CustomerId = customer.id " + "inner join currency on agrmnt.CurrencyID = currency.id ";
 				this.strCountStatement = "Select Count(1) as total from agrmnt " + "inner join customer on agrmnt.CustomerId = customer.id " + "inner join currency on agrmnt.CurrencyID = currency.id ";
 			}
-
+			
 		public PaymentReceiveDao(final Session session) throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.session = session;
 			}
-			
+
 		@Override
 		public PaymentInfo PaymentAllocation(final long AgrmntId, final double amountreceive, final Date valuedate) throws Exception
 			{
@@ -70,7 +70,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 				// TODO Auto-generated method stub
 				try
 					{
-						
+
 						final ArInfo arinfo = new ArInfo();
 						final Agrmnt agrmnt = new Agrmnt();
 						agrmnt.setId(AgrmntId);
@@ -86,7 +86,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 					}
 				return info;
 			}
-
+			
 		@Override
 		public void PaymentReceiveSave(final String usrupd, final PaymentReceive paymentreceive) throws Exception
 			{
@@ -106,7 +106,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 						paymentreceive.setJobId(jobid);
 						paymentreceive.setDtmUpd(this.dtmupd);
 						paymentreceive.setDtmCrt(this.dtmupd);
-
+						
 						this.session.save(paymentreceive);
 						this.session.getTransaction().commit();
 					}
@@ -118,9 +118,10 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
+		@SuppressWarnings("unchecked")
 		@Override
 		public List<AgreementList> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
@@ -147,13 +148,13 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 						selectQuery.addScalar("CustomerName", new StringType());
 						selectQuery.addScalar("Address", new StringType());
 						selectQuery.addScalar("Currency", new StringType());
-						
-						list = selectQuery.list();
 
+						list = selectQuery.list();
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -165,18 +166,18 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<AgreementList> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				final StringBuilder sql = new StringBuilder();
 				final StringBuilder sqlcount = new StringBuilder();
-
+				
 				List<AgreementList> list = null;
 				SQLQuery selectQuery;
 				SQLQuery selectQueryCount;
-
+				
 				Long totalrecord;
 				int currentpage;
 				try
@@ -187,19 +188,19 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 								sql.append(" where ");
 								sql.append(WhereCond);
 							}
-							
+
 						sqlcount.append(this.strCountStatement);
 						if (WhereCond != "")
 							{
 								sqlcount.append(" where ");
 								sqlcount.append(WhereCond);
 							}
-							
+
 						selectQueryCount = this.session.createSQLQuery(sqlcount.toString());
 						selectQueryCount.setCacheable(true);
 						selectQueryCount.setCacheRegion("CountListAgrmnt" + WhereCond);
 						totalrecord = (long) selectQueryCount.uniqueResult();
-
+						
 						selectQuery = this.session.createSQLQuery(sql.toString());
 						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
 						selectQuery.setCacheable(true);
@@ -212,13 +213,13 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 						selectQuery.addScalar("CustomerName", new StringType());
 						selectQuery.addScalar("Address", new StringType());
 						selectQuery.addScalar("Currency", new StringType());
-
-						list = selectQuery.list();
 						
+						list = selectQuery.list();
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -230,5 +231,5 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 					}
 				return list;
 			}
-			
+
 	}

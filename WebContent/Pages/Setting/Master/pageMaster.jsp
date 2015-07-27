@@ -28,8 +28,7 @@
 					<tr>
 						<td>Master Type</td>
 						<td><s:select list="lstMasterType" name="mastertypecode" value = "mastertypecode" label = "Select Master Type"
-								headerKey="" 
-								headerValue="Select Master Type" /></td>
+								headerKey="" headerValue="Select Master Type" /></td>
 								<!-- key="mastertype.mastertypecode" -->
 					</tr>
 					<tr>

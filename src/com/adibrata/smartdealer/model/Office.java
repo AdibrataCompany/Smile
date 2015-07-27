@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -65,7 +65,7 @@ public class Office implements java.io.Serializable
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
-		private Set<Suspend> suspends = new HashSet<Suspend>(0);
+		private Set<SuspendReceive> suspendReceives = new HashSet<SuspendReceive>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
@@ -84,7 +84,7 @@ public class Office implements java.io.Serializable
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
 		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers, Set<PurchaseInvoice> purchaseInvoices, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
 		        Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables,
-		        Set<Suspend> suspends, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
+		        Set<SuspendReceive> suspendReceives, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -127,7 +127,7 @@ public class Office implements java.io.Serializable
 				this.danaTunais = danaTunais;
 				this.payReqHdrs = payReqHdrs;
 				this.accountPayables = accountPayables;
-				this.suspends = suspends;
+				this.suspendReceives = suspendReceives;
 				this.advanceCashes = advanceCashes;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
@@ -591,14 +591,14 @@ public class Office implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
-		public Set<Suspend> getSuspends()
+		public Set<SuspendReceive> getSuspendReceives()
 			{
-				return this.suspends;
+				return this.suspendReceives;
 			}
 			
-		public void setSuspends(Set<Suspend> suspends)
+		public void setSuspendReceives(Set<SuspendReceive> suspendReceives)
 			{
-				this.suspends = suspends;
+				this.suspendReceives = suspendReceives;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

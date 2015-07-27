@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class SuspendReverse implements java.io.Serializable
 	{
 		
 		private long id;
-		private Suspend suspend;
+		private SuspendReceive suspendReceive;
 		private Long jobId;
 		private String partnerCode;
 		private Long officeId;
@@ -46,11 +46,11 @@ public class SuspendReverse implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public SuspendReverse(long id, Suspend suspend, Long jobId, String partnerCode, Long officeId, Date valueDate, Date postingDate, Double amount, Long bankAccountId, Long currencyId, Double currencyRate, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt)
+		public SuspendReverse(long id, SuspendReceive suspendReceive, Long jobId, String partnerCode, Long officeId, Date valueDate, Date postingDate, Double amount, Long bankAccountId, Long currencyId, Double currencyRate, Date dtmUpd,
+		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
-				this.suspend = suspend;
+				this.suspendReceive = suspendReceive;
 				this.jobId = jobId;
 				this.partnerCode = partnerCode;
 				this.officeId = officeId;
@@ -81,14 +81,14 @@ public class SuspendReverse implements java.io.Serializable
 			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "SuspendId")
-		public Suspend getSuspend()
+		public SuspendReceive getSuspendReceive()
 			{
-				return this.suspend;
+				return this.suspendReceive;
 			}
 			
-		public void setSuspend(Suspend suspend)
+		public void setSuspendReceive(SuspendReceive suspendReceive)
 			{
-				this.suspend = suspend;
+				this.suspendReceive = suspendReceive;
 			}
 			
 		@Column(name = "JobId")

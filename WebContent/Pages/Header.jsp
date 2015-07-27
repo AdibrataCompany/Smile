@@ -41,10 +41,10 @@
 				<tr>
 				
 					<td width="25%"><div>
-							<img width="100%" height="100" border="0" alt="W3Schools"
-								src="/Smile/images/smartdealer/LogoDealer.jpg">
+							<img width="50%" height="100" border="0" alt="W3Schools"
+								src="/Smile/images/logo-adibrata.png">
 						</div></td>
-					<td align="center">Sun Motor</td>
+					<td align="center">PT Adibrata Optima Solusi</td>
 
 					<td width="25%"><div>
 						</div></td>

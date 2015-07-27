@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ public class SuspendAllocation implements java.io.Serializable
 		
 		private long id;
 		private Agrmnt agrmnt;
-		private Suspend suspend;
+		private SuspendReceive suspendReceive;
 		private Date valueDate;
 		private Date postingDate;
 		private Long bankAccountId;
@@ -52,12 +52,12 @@ public class SuspendAllocation implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public SuspendAllocation(long id, Agrmnt agrmnt, Suspend suspend, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt, Double inssAmt,
-		        Double lcinss, Double prepaidAmt, Short payHistSeqNo, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public SuspendAllocation(long id, Agrmnt agrmnt, SuspendReceive suspendReceive, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt,
+		        Double inssAmt, Double lcinss, Double prepaidAmt, Short payHistSeqNo, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
-				this.suspend = suspend;
+				this.suspendReceive = suspendReceive;
 				this.valueDate = valueDate;
 				this.postingDate = postingDate;
 				this.bankAccountId = bankAccountId;
@@ -105,14 +105,14 @@ public class SuspendAllocation implements java.io.Serializable
 			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "SuspendId")
-		public Suspend getSuspend()
+		public SuspendReceive getSuspendReceive()
 			{
-				return this.suspend;
+				return this.suspendReceive;
 			}
 			
-		public void setSuspend(Suspend suspend)
+		public void setSuspendReceive(SuspendReceive suspendReceive)
 			{
-				this.suspend = suspend;
+				this.suspendReceive = suspendReceive;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)

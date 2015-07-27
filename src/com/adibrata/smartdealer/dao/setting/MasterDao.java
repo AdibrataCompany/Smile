@@ -4,6 +4,7 @@
 
 package com.adibrata.smartdealer.dao.setting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -14,6 +15,7 @@ import com.adibrata.smartdealer.model.MasterType;
 import com.adibrata.smartdealer.model.MsTable;
 import com.adibrata.smartdealer.service.setting.MasterService;
 
+import util.adibrata.framework.cachehelper.Caching;
 import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
@@ -178,20 +180,39 @@ public class MasterDao extends DaoBase implements MasterService
 				return list;
 			}
 
+		@SuppressWarnings("null")
 		@Override
 		public List<MasterType> ListMasterType() throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
-				List<MasterType> list = null;
+				List<MasterType> list = new ArrayList<MasterType>();
+				final Query selectQuery;
+
 				try
 					{
 						hql.append("from MasterType");
 
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						// selectQuery = this.session.createQuery(hql.toString());
+						// selectQuery.setCacheable(true);
+						// selectQuery.setCacheRegion("MasterType");
+						// list = selectQuery.list();
+
+						// cache.put("MasterType", list);
+
+						selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("MasterType");
-						list = selectQuery.list();
+						final Caching<String, List<MasterType>> cache = new Caching<String, List<MasterType>>();
+						if (cache.get("MasterTypeCache") == null)
+							{
+								list = selectQuery.list();
+								cache.put("MasterTypeCache", list);
+							}
+						else
+							{
+								list = cache.get("MasterTypeCache");
+							}
 
 					}
 				catch (final Exception exp)
@@ -231,7 +252,7 @@ public class MasterDao extends DaoBase implements MasterService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<MsTable> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);

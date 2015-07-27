@@ -10,8 +10,8 @@ import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.PaymentReceive;
-import com.adibrata.smartdealer.model.Suspend;
 import com.adibrata.smartdealer.model.SuspendAllocation;
+import com.adibrata.smartdealer.model.SuspendReceive;
 import com.adibrata.smartdealer.service.accmaint.SuspendAllocationService;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
@@ -25,18 +25,18 @@ import util.adibrata.support.payhist.Header;
  */
 public class SuspendAllocationDao extends DaoBase implements SuspendAllocationService
 	{
-
+		
 		/**
 		 *
 		 */
 		Session session;
-
+		
 		public SuspendAllocationDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.session = HibernateHelper.getSessionFactory().openSession();
 			}
-
+			
 		@Override
 		public void SuspendAllocationSave(final String usrupd, final SuspendAllocation allocation) throws Exception
 			{
@@ -49,8 +49,8 @@ public class SuspendAllocationDao extends DaoBase implements SuspendAllocationSe
 				long jobid;
 				office = allocation.getAgrmnt().getOffice();
 				final PaymentReceive paymentReceive = new PaymentReceive();
-				final Suspend suspend = new Suspend();
-
+				final SuspendReceive suspend = new SuspendReceive();
+				
 				try
 					{
 						paymentReceive.setAgrmnt(allocation.getAgrmnt());
@@ -58,22 +58,22 @@ public class SuspendAllocationDao extends DaoBase implements SuspendAllocationSe
 						paymentReceive.setCurrencyRate(allocation.getCurrencyRate());
 						paymentReceive.setCurrencyId(allocation.getCurrencyId());
 						paymentReceive.setTotalPayment(allocation.getTotalPayment());
-
+						
 						paymentReceive.setInssAmt(allocation.getInssAmt());
 						paymentReceive.setInstAmt(allocation.getInstAmt());
 						paymentReceive.setLcamt(allocation.getLcamt());
 						paymentReceive.setLcinss(allocation.getLcinss());
 						paymentReceive.setPrepaidAmt(allocation.getPrepaidAmt());
-
+						
 						jobid = JobPost.JobSave(this.session, partner.getPartnerCode(), office.getId(), JobPost.JobCode.suspendallocation, allocation.getAgrmnt().getCoaSchmCode(), allocation.getValueDate(), allocation.getPostingDate(), usrupd)
 						        .getId();
 						allocation.setPayHistSeqNo(header.SavePayHistHeader(usrupd, paymentReceive));
 						allocation.setJobId(jobid);
 						allocation.setDtmUpd(this.dtmupd);
 						allocation.setDtmCrt(this.dtmupd);
-
+						
 						this.session.save(allocation);
-						suspend.setId(allocation.getSuspend().getId());
+						suspend.setId(allocation.getSuspendReceive().getId());
 						suspend.setStatus("AL");
 						this.session.update(suspend);
 						this.session.getTransaction().commit();
@@ -86,7 +86,7 @@ public class SuspendAllocationDao extends DaoBase implements SuspendAllocationSe
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 	}

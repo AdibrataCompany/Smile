@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 26, 2015 5:46:46 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -75,7 +75,7 @@ public class Partner implements java.io.Serializable
 		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 		private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
 		private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
-		private Set<Suspend> suspends = new HashSet<Suspend>(0);
+		private Set<SuspendReceive> suspendReceives = new HashSet<SuspendReceive>(0);
 		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
 		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 		private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(0);
@@ -100,7 +100,7 @@ public class Partner implements java.io.Serializable
 		        Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs,
 		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<MsTable> msTables,
 		        Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices,
-		        Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<Suspend> suspends, Set<PurchaseInvoice> purchaseInvoices,
+		        Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices,
 		        Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles, Set<ResetPasswordLog> resetPasswordLogs,
 		        Set<Office> offices)
 			{
@@ -157,7 +157,7 @@ public class Partner implements java.io.Serializable
 				this.entrustHdrs = entrustHdrs;
 				this.otherDsbHdrs = otherDsbHdrs;
 				this.otherRcvHdrs = otherRcvHdrs;
-				this.suspends = suspends;
+				this.suspendReceives = suspendReceives;
 				this.purchaseInvoices = purchaseInvoices;
 				this.cashBankHdrs = cashBankHdrs;
 				this.assetServiceMasters = assetServiceMasters;
@@ -757,14 +757,14 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Suspend> getSuspends()
+		public Set<SuspendReceive> getSuspendReceives()
 			{
-				return this.suspends;
+				return this.suspendReceives;
 			}
 			
-		public void setSuspends(Set<Suspend> suspends)
+		public void setSuspendReceives(Set<SuspendReceive> suspendReceives)
 			{
-				this.suspends = suspends;
+				this.suspendReceives = suspendReceives;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

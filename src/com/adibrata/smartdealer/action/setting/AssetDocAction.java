@@ -47,19 +47,14 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public AssetDocAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final AssetDocMasterService assetdocmasterservice = new AssetDocMasterDao();
 				
-				this.assetDocMasterService = assetdocmasterservice;
-				
-				final AssetDocMaster assetDocMaster = new AssetDocMaster();
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				partner.setPartnerCode(BaseAction.sesPartnerCode());
-				office.setId(BaseAction.sesOfficeId());
-				this.setPartner(partner);
-				this.setOffice(office);
+				this.assetDocMasterService = new AssetDocMasterDao();
+				this.assetDocMaster = new AssetDocMaster();
+				this.partner = new Partner();
+				this.office = new Office();
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setAssetDocMaster(assetDocMaster);
+				this.office.setId(BaseAction.sesOfficeId());
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;

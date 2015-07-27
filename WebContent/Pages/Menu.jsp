@@ -134,10 +134,10 @@
 								href="/Smile/Demo/AccPay/Selection/ApSelection.jsp">Pembayaran
 									Hutang</a></li>
 							<li><a
-								href="otherdisburse.action">Pembayaran
+								href="/Smile/otherdisburse.action">Pembayaran
 									Bukan Hutang</a></li>
 							<li><a
-								href="otherreceive.action">Penerimaan
+								href="/Smile/otherreceive.action">Penerimaan
 									Bukan Piutang</a></li>
 
 							<li role="separator" class="divider"></li>

@@ -49,11 +49,11 @@
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOfficeFee" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustComptInfo" />
         <mapping class="com.adibrata.smartdealer.model.Sales" />
-        <mapping class="com.adibrata.smartdealer.model.Suspend" />
         <mapping class="com.adibrata.smartdealer.model.StockDocument" />
         <mapping class="com.adibrata.smartdealer.model.BankAccount" />
         <mapping class="com.adibrata.smartdealer.model.Supplier" />
         <mapping class="com.adibrata.smartdealer.model.OtherRcvDtl" />
+        <mapping class="com.adibrata.smartdealer.model.SuspendReceive" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustShareInfo" />
         <mapping class="com.adibrata.smartdealer.model.EntrustDtl" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsStandardInfo" />
