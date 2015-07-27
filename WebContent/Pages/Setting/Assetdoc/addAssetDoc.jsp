@@ -31,23 +31,23 @@
 					<div align="left" class="form-group">
 						<label>Code</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="documentCode" style="width:95%" placeholder="Asset Document Code"
-								class="form-control" />
+							<s:textfield name="documentCode" style="width:95%"
+								placeholder="Asset Document Code" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Name </label>
 						<div align="left" class="form-inline">
-							<s:textfield name="documentName" style="width:95%" placeholder="Asset Document Name"
-								class="form-control" />
+							<s:textfield name="documentName" style="width:95%"
+								placeholder="Asset Document Name" class="form-control" />
 						</div>
 					</div>
 
 					<div align="left" class="form-group">
 						<label>Asset Type </label>
 						<div align="left" class="form-inline">
-							<s:textfield name="assettype" style="width:95%" placeholder="Asset Type"
-								class="form-control" />
+							<s:textfield name="assettype" style="width:95%"
+								placeholder="Asset Type" class="form-control" />
 						</div>
 					</div>
 					<br>
@@ -66,7 +66,7 @@
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

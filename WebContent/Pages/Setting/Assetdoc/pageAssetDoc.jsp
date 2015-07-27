@@ -63,7 +63,7 @@
 							<td>${documentName}</td>
 							<td>${assetType}</td>
 							<td colspan="2" style="text-align: center;"><input
-								type="radio" name="id" value="${id}" checked /></td>
+								type="radio" name="id" value="${id}"/></td>
 						</tr>
 					</s:iterator>
 				</table>
@@ -71,6 +71,7 @@
 
 			</center>
 		</s:form>
+		<%@include file="/Pages/Footer.jsp"%>
 	</div>
 
 </body>

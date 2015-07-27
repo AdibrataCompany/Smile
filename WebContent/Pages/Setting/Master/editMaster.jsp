@@ -22,7 +22,6 @@
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-
 					<h2>Master</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
@@ -30,14 +29,13 @@
 					<div align="left" class="form-group">
 						<label>Master Type</label>
 						<div align="left" class="form-inline">
-						
+							<s:label name="mastertypecode"/> 
 						</div>
 					</div>
-					
 					<div align="left" class="form-group">
 						<label>Master Code</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="masterCode" style="width:95%"
+							<s:textfield name="mastercode" style="width:95%"
 								placeholder="Master Code" class="form-control" />
 						</div>
 					</div>
@@ -45,7 +43,7 @@
 					<div align="left" class="form-group">
 						<label>Master Value</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="masterValue" style="width:95%"
+							<s:textfield name="mastervalue" style="width:95%"
 								placeholder="Master Value" class="form-control" />
 						</div>
 					</div>
@@ -55,11 +53,11 @@
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Simpan</button>
+									onclick="saveedit()">Save</button>
 							</td>
 						</tr>
 					</table>
@@ -67,7 +65,7 @@
 			</center>
 		</s:form>
 	</div>
-
+<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {

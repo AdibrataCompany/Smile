@@ -22,8 +22,8 @@
 	<script type="text/javascript" language="javascript" src="../../style/js/jquery.smartmenus.bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script type="text/javascript">
-	function saveDetail(){
-		document.getElementById("mode").value="saveDetail";
+	function simpan(){
+		document.getElementById("mode").value="simpan";
 	}
 	function back(){
 		document.getElementById("mode").value="back";
@@ -70,7 +70,7 @@
 						COA Scheme Code
 					</td>
 					<td>
-						<s:label name="coaSchmCode" />
+						<input type="text" name="coaSchmCode"/>
 					</td>
 				</tr>
 				<tr>
@@ -78,53 +78,21 @@
 						COA Scheme Description
 					</td>
 					<td>
-						<s:label name="coacodeCode"/>
+						<input type="text" name="coaSchmDesc"/>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						Active
 					</td>
-					<td>					
-						<s:label name="isActive"/>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<br>
-						<table border="1">
-							<tr>
-								<th>COA Name</th>
-								<th>COA Description</th>
-								<th>COA Code</th>
-								<th>System</th>
-								<th>Active</th>
-							</tr>
-						<s:iterator value="">
-							<tr id="row_<s:property value="id"/>">
-								<td>
-									<s:property value="coaName"/>
-								</td>
-								<td>
-									<s:property value="coaDescription"/>
-								</td>
-								<td>
-									<s:property value="coacode"/>
-								</td>
-								<td>
-									<s:property value="isSystem"/>
-								</td>
-								<td>
-									<s:property value="isActive"/>
-								</td>
-							</tr>
-						</s:iterator>
-						</table>
+					<td>
+						<input type="text" name="isActive"/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<button class="btn btn-sm btn-primary" type="submit" onclick="saveDetail()">Save</button>
+						<br>
+						<button class="btn btn-sm btn-primary" type="submit" onclick="simpan()">Save</button>
 						<button class="btn btn-sm btn-primary" type="submit" onclick="back()">Back</button>
 					</td>
 				</tr>
@@ -132,5 +100,6 @@
 		</center>
 	</s:form>
 	</div>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 </html>

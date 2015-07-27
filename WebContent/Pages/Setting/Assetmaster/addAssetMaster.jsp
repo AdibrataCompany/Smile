@@ -24,7 +24,7 @@
 
 				<h2>Aset Master</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-					<div class="col-md-4"></div>
+				<div class="col-md-4"></div>
 				<div class="col-md-4">
 
 					<div align="left" class="form-group">
@@ -74,7 +74,7 @@
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

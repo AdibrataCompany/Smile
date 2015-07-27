@@ -64,7 +64,7 @@
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 	<!-- 	</div> -->
 
 </body>

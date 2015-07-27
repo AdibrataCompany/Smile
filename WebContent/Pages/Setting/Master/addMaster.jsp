@@ -31,14 +31,14 @@
 					<div align="left" class="form-group">
 						<label>Master Type</label>
 						<div align="left" class="form-inline">
-						<s:property name="mastertype" class="form-control" />
+						<s:label name="mastertypecode"/>
 						</div>
 					</div>
 					
 					<div align="left" class="form-group">
 						<label>Master Code</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="masterCode" style="width:95%"
+							<s:textfield name="mastercode" style="width:95%"
 								placeholder="Master Code" class="form-control" />
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 					<div align="left" class="form-group">
 						<label>Master Value</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="masterValue" style="width:95%"
+							<s:textfield name="mastervalue" style="width:95%"
 								placeholder="Master Value" class="form-control" />
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 			</center>
 		</s:form>
 	</div>
-
+<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

@@ -53,7 +53,7 @@
 					<tr>
 						<th style="text-align: center;">Code</th>
 						<th style="text-align: center;">Value</th>
-					<th style="text-align: center;">ID</th>
+					
 				
 						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
@@ -61,8 +61,7 @@
 						<tr id="row_<s:property value="id"/>">
 							<td>${masterCode}</td>
 							<td>${masterValue}</td>
-							<td>${id}</td>
-							<td style="text-align: center;"><input type="radio" id="${id}"/></td>
+							<td style="text-align: center;"><input type="radio" name="id" value="${id}"/></td>
 						</tr>
 					</s:iterator>
 				</table>
@@ -71,7 +70,7 @@
 
 		</s:form>
 	</div>
-
+<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function search() {
