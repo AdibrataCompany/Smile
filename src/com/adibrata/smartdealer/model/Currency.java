@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 2:07:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,6 +25,7 @@ public class Currency implements java.io.Serializable
 	{
 		
 		private long id;
+		private Partner partner;
 		private String code;
 		private String description;
 		private Double rounded;
@@ -33,8 +36,10 @@ public class Currency implements java.io.Serializable
 		private Date dtmCrt;
 		private String usrCrt;
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
+		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 		private Set<DailyAraging> dailyAragings = new HashSet<DailyAraging>(0);
 		private Set<InsCompanyOfficeFee> insCompanyOfficeFees = new HashSet<InsCompanyOfficeFee>(0);
+		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		
 		public Currency()
 			{
@@ -46,10 +51,11 @@ public class Currency implements java.io.Serializable
 				this.sandiBi = sandiBi;
 			}
 			
-		public Currency(long id, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<DailyAraging> dailyAragings,
-		        Set<InsCompanyOfficeFee> insCompanyOfficeFees)
+		public Currency(long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
+		        Set<DailyAraging> dailyAragings, Set<InsCompanyOfficeFee> insCompanyOfficeFees, Set<CashierHistory> cashierHistories)
 			{
 				this.id = id;
+				this.partner = partner;
 				this.code = code;
 				this.description = description;
 				this.rounded = rounded;
@@ -60,8 +66,10 @@ public class Currency implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
 				this.agrmnts = agrmnts;
+				this.bankAccounts = bankAccounts;
 				this.dailyAragings = dailyAragings;
 				this.insCompanyOfficeFees = insCompanyOfficeFees;
+				this.cashierHistories = cashierHistories;
 			}
 			
 		@Id
@@ -75,6 +83,18 @@ public class Currency implements java.io.Serializable
 		public void setId(long id)
 			{
 				this.id = id;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "PartnerCode")
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		public void setPartner(Partner partner)
+			{
+				this.partner = partner;
 			}
 			
 		@Column(name = "Code", length = 10)
@@ -190,6 +210,17 @@ public class Currency implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
+		public Set<BankAccount> getBankAccounts()
+			{
+				return this.bankAccounts;
+			}
+			
+		public void setBankAccounts(Set<BankAccount> bankAccounts)
+			{
+				this.bankAccounts = bankAccounts;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
 		public Set<DailyAraging> getDailyAragings()
 			{
 				return this.dailyAragings;
@@ -209,6 +240,17 @@ public class Currency implements java.io.Serializable
 		public void setInsCompanyOfficeFees(Set<InsCompanyOfficeFee> insCompanyOfficeFees)
 			{
 				this.insCompanyOfficeFees = insCompanyOfficeFees;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
+		public Set<CashierHistory> getCashierHistories()
+			{
+				return this.cashierHistories;
+			}
+			
+		public void setCashierHistories(Set<CashierHistory> cashierHistories)
+			{
+				this.cashierHistories = cashierHistories;
 			}
 			
 	}

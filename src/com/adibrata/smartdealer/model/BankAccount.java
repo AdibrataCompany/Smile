@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 2:07:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,6 +25,7 @@ public class BankAccount implements java.io.Serializable
 	{
 		
 		private long id;
+		private Currency currency;
 		private Partner partner;
 		private Long officeId;
 		private String bankName;
@@ -69,11 +70,12 @@ public class BankAccount implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public BankAccount(long id, Partner partner, Long officeId, String bankName, String bankAccountCode, String bankAccountName, String type, String purpose, String address, String rt, String rw, String kelurahan, String kecamatan, String city,
-		        String zipCode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax, String faxNo, String fullAddress, Double endingBalance, String coacode, Long seqNo, String resetFlag, String formatSeqNo,
-		        Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AdvanceCash> advanceCashes, Set<CashBankHdr> cashBankHdrs, Set<PayReqHdr> payReqHdrs)
+		public BankAccount(long id, Currency currency, Partner partner, Long officeId, String bankName, String bankAccountCode, String bankAccountName, String type, String purpose, String address, String rt, String rw, String kelurahan,
+		        String kecamatan, String city, String zipCode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax, String faxNo, String fullAddress, Double endingBalance, String coacode, Long seqNo,
+		        String resetFlag, String formatSeqNo, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AdvanceCash> advanceCashes, Set<CashBankHdr> cashBankHdrs, Set<PayReqHdr> payReqHdrs)
 			{
 				this.id = id;
+				this.currency = currency;
 				this.partner = partner;
 				this.officeId = officeId;
 				this.bankName = bankName;
@@ -121,6 +123,18 @@ public class BankAccount implements java.io.Serializable
 		public void setId(long id)
 			{
 				this.id = id;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "CurrencyId")
+		public Currency getCurrency()
+			{
+				return this.currency;
+			}
+			
+		public void setCurrency(Currency currency)
+			{
+				this.currency = currency;
 			}
 			
 		@ManyToOne(fetch = FetchType.LAZY)

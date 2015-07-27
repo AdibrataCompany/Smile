@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 2:07:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -65,6 +65,7 @@ public class Partner implements java.io.Serializable
 		private Set<MsTable> msTables = new HashSet<MsTable>(0);
 		private Set<Workshop> workshops = new HashSet<Workshop>(0);
 		private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(0);
+		private Set<Currency> currencies = new HashSet<Currency>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
@@ -99,10 +100,10 @@ public class Partner implements java.io.Serializable
 		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters, Set<MsRole> msRoles,
 		        Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs,
 		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<MsTable> msTables,
-		        Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices,
-		        Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices,
-		        Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles, Set<ResetPasswordLog> resetPasswordLogs,
-		        Set<Office> offices)
+		        Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs,
+		        Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<SuspendReceive> suspendReceives,
+		        Set<PurchaseInvoice> purchaseInvoices, Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles,
+		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -147,6 +148,7 @@ public class Partner implements java.io.Serializable
 				this.msTables = msTables;
 				this.workshops = workshops;
 				this.assetServiceHdrs = assetServiceHdrs;
+				this.currencies = currencies;
 				this.agrmnts = agrmnts;
 				this.paymentVouchers = paymentVouchers;
 				this.serviceHdrs = serviceHdrs;
@@ -644,6 +646,17 @@ public class Partner implements java.io.Serializable
 		public void setAssetServiceHdrs(Set<AssetServiceHdr> assetServiceHdrs)
 			{
 				this.assetServiceHdrs = assetServiceHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Currency> getCurrencies()
+			{
+				return this.currencies;
+			}
+			
+		public void setCurrencies(Set<Currency> currencies)
+			{
+				this.currencies = currencies;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

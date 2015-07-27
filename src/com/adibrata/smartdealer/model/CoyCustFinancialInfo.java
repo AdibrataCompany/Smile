@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
+// Generated Jul 27, 2015 2:07:03 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

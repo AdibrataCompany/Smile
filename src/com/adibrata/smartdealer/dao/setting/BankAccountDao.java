@@ -287,18 +287,26 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 			{
 				// TODO Auto-generated method stub
 				List<BankAccount> list = new ArrayList<BankAccount>();
+				Query selectQuery = null;
 				try
 					{
 
 						this.hql.append(this.strStatement);
 						this.hql.append(" Where partnercode = :partnercode and officeid = :officeid and type =:type and purpose = :purpose");
+						if (!type.equals(""))
+							{
+								this.hql.append(" and type = :type ");
+								selectQuery.setParameter("type", type);
+							}
+						else if (!purpose.equals(""))
+							{
+								this.hql.append(" and purpose = :purpose");
+								selectQuery.setParameter("purpose", purpose);
+							}
 
-						final Query selectQuery = this.session.createQuery(this.hql.toString());
+						selectQuery = this.session.createQuery(this.hql.toString());
 						selectQuery.setParameter("partnercode", partner.getPartnerCode());
-						selectQuery.setParameter("office", office.getId());
 						selectQuery.setParameter("officeid", office.getId());
-						selectQuery.setParameter("type", type);
-						selectQuery.setParameter("purpose", purpose);
 
 						list = selectQuery.list();
 					}

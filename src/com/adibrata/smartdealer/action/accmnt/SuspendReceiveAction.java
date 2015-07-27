@@ -43,7 +43,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		private Long bankAccountId;
 		private String status;
 		private String valuedate;
-
+		
 		public SuspendReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -51,35 +51,33 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.service = new SuspendEntryDao();
 				this.receive = new SuspendReceive();
 				this.ListBankAccount();
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
-
+						
 						switch (strMode)
 							{
-								case "edit" :
-								
 								case "save" :
 									strMode = this.SaveSuspend();
-									
+
 								default :
 									return ERROR;
 							}
@@ -90,7 +88,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String SaveSuspend() throws Exception
 			{
 				String status = "";
@@ -103,14 +101,14 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 						this.receive.setPartner(this.getPartner());
 						this.receive.setOffice(this.getOffice());
 						this.receive.setCurrencyRate(this.getCurrencyRate());
-
+						
 						this.service.SuspendEntrySave(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.receive);
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -119,18 +117,18 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-
+			
 		public void ListBankAccount() throws Exception
 			{
 				try
 					{
 						final BankAccountService bankaccountservice = new BankAccountDao();
 						final List<BankAccount> lst = bankaccountservice.listBankAccount(this.getPartner(), this.getOffice(), "BA", "");
-
+						
 						this.lstBankAccount = new HashMap<Long, String>();
 						for (final BankAccount row : lst)
 							{
@@ -148,7 +146,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 						exp.printStackTrace();
 					}
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -156,7 +154,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -165,7 +163,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -173,7 +171,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -182,7 +180,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -190,7 +188,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -199,7 +197,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -207,7 +205,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -216,7 +214,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -224,7 +222,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -233,7 +231,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -241,7 +239,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -250,7 +248,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -258,7 +256,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -267,7 +265,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -275,7 +273,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -284,7 +282,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -292,7 +290,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the receive
 		 */
@@ -300,7 +298,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.receive;
 			}
-
+			
 		/**
 		 * @param receive
 		 *            the receive to set
@@ -309,7 +307,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.receive = receive;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -317,7 +315,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -326,7 +324,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -334,7 +332,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -343,7 +341,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the postingDate
 		 */
@@ -351,7 +349,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.postingDate;
 			}
-
+			
 		/**
 		 * @param postingDate
 		 *            the postingDate to set
@@ -360,7 +358,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.postingDate = postingDate;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -368,7 +366,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-
+			
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -377,7 +375,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-
+			
 		/**
 		 * @return the currencyId
 		 */
@@ -385,7 +383,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.currencyId;
 			}
-
+			
 		/**
 		 * @param currencyId
 		 *            the currencyId to set
@@ -394,7 +392,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.currencyId = currencyId;
 			}
-
+			
 		/**
 		 * @return the currencyRate
 		 */
@@ -402,7 +400,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.currencyRate;
 			}
-
+			
 		/**
 		 * @param currencyRate
 		 *            the currencyRate to set
@@ -411,7 +409,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.currencyRate = currencyRate;
 			}
-
+			
 		/**
 		 * @return the bankAccountId
 		 */
@@ -419,7 +417,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.bankAccountId;
 			}
-
+			
 		/**
 		 * @param bankAccountId
 		 *            the bankAccountId to set
@@ -428,7 +426,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.bankAccountId = bankAccountId;
 			}
-
+			
 		/**
 		 * @return the status
 		 */
@@ -436,7 +434,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.status;
 			}
-
+			
 		/**
 		 * @param status
 		 *            the status to set
@@ -445,7 +443,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.status = status;
 			}
-			
+
 		/**
 		 * @param valueDate
 		 *            the valueDate to set
@@ -453,7 +451,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		public void setValueDate(final String valueDate)
 			{
 			}
-
+			
 		/**
 		 * @return the valuedate
 		 */
@@ -461,7 +459,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-
+			
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -470,7 +468,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the lstBankAccount
 		 */
@@ -478,7 +476,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				return this.lstBankAccount;
 			}
-			
+
 		/**
 		 * @param lstBankAccount
 		 *            the lstBankAccount to set
@@ -487,7 +485,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.lstBankAccount = lstBankAccount;
 			}
-			
+
 		/**
 		 * @return the service
 		 */

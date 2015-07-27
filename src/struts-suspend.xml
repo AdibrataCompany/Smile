@@ -8,20 +8,15 @@
 		<action name="suspendreceive"
 			class="com.adibrata.smartdealer.action.accmnt.SuspendReceiveAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="start">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="SUCCESS">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="ERROR">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="save">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
 		</action>
 		<action name="suspendallocation"
