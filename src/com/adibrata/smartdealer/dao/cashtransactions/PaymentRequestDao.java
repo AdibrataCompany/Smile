@@ -35,17 +35,17 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
-		
+
 		public PaymentRequestDao() throws Exception
 			{
-				
+
 				// TODO Auto-generated constructor stub
 				try
 					{
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Office ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -56,7 +56,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -64,7 +64,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 		 * #SavePaymentRequest(com.adibrata.smartdealer.model.PayReqHdr,
 		 * com.adibrata.smartdealer.model.PayReqDtl)
 		 */
-		
+
 		@Override
 		public void SavePaymentRequest(final String usrupd, final PayReqHdr payReqHdr, final List<PayReqDtl> lstpayReqDtl) throws Exception
 			{
@@ -72,11 +72,11 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 				this.session.getTransaction().begin();
 				final Partner partner = payReqHdr.getPartner();
 				final Office office = payReqHdr.getOffice();
-				
+
 				try
 					{
-						
-						final String transno = TransactionNo(this.session, TransactionType.paymentrequest, partner.getPartnerCode(), office.getId());
+
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.paymentrequest);
 						payReqHdr.setPayReqNo(transno);
 						payReqHdr.setDtmCrt(this.dtmupd.getTime());
 						payReqHdr.setDtmUpd(this.dtmupd.getTime());
@@ -90,7 +90,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 								this.session.save(payReqHdr);
 							}
 						this.session.getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -101,7 +101,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -115,7 +115,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PayReqHdr> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -129,11 +129,11 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -141,33 +141,33 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 					}
 				return list;
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.cashtransactions.PaymentRequestService
 		 * #TotalRecord(java.lang.String)
 		 */
-		
+
 		@Override
 		public List<PayReqHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast)
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 		@Override
 		public List<PayReqDtl> lstPayReqDtl(final int CurrentPage, final String WhereCond, final String SortBy)
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 		@Override
 		public PayReqDtl View(final long id)
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 	}

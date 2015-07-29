@@ -26,7 +26,7 @@ public class JobPost
 			{
 				accountpayable("APD"), advancerequest("ADV"), advancereturn("ADR"), danatunai("DTN"), entrustout("ENTO"), entrustreceive("ENTR"), otherdisburse("OTD"), otherreceive("OTR"), paymentrequest("PYR"), paymentvoucher(
 				        "PVD"), pettycashcorretion("PCO"), pettycashreimburse("PCR"), pettycashtransaction("PCT"), prepaidreceive("PRV"), purchaseinvoice("PRI"), purchaseorder("PRO"), purchasereturn("PRR"), salesorder("SAO"), salesorderreturn(
-				                "SAR"), service("SVC"), suspendallocation("SUL"), suspendreverse("SUR"), suspendentry("SUS"), paymentreceive("PAR"), paymentreverse("PAC"), PDCClearing("PDC"), GoLive("GLV");
+				                "SAR"), service("SVC"), suspendallocation("SUA"), suspendreverse("SUC"), suspendreceive("SUR"), paymentreceive("PAR"), paymentreverse("PAC"), PDCClearing("PDC"), GoLive("GLV");
 								
 				private String statusCode;
 				
@@ -41,6 +41,7 @@ public class JobPost
 					}
 					
 			}
+			
 		private static Calendar dtmupd = Calendar.getInstance();
 		
 		static Session session;

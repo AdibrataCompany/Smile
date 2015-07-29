@@ -314,7 +314,7 @@ public class ArInfo implements ARInfoService
 						
 						result = interestamount * (diffday / period);
 						
-					}                                                                                                          // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
+					}                                                                                                            // (InterestAmount / DATEDIFF(day, PrevDueDate, DueDate)) * (DiffDays + @IncrementDiffDays) as AmountHasToBeRecognize,
 				catch (final Exception exp)
 					{
 						final ExceptionEntities lEntExp = new ExceptionEntities();
@@ -474,6 +474,7 @@ public class ArInfo implements ARInfoService
 				return lstresult;
 			}
 			
+		@SuppressWarnings("unchecked")
 		@Override
 		public int AgrmntDaysOverdue(final long agrmntid, final Date valuedate) throws Exception
 			{
@@ -531,6 +532,7 @@ public class ArInfo implements ARInfoService
 				return result;
 			}
 			
+		@SuppressWarnings("unchecked")
 		private void CalculateBucket(final long agrmntid, final int daysoverdue) throws Exception
 			{
 				final StringBuilder sql = new StringBuilder();

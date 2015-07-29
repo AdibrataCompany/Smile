@@ -52,8 +52,6 @@
 					<tr>
 						<th style="text-align: center;">Code</th>
 						<th style="text-align: center;">Value</th>
-					
-				
 						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
 					<s:iterator value="lstMsTable">

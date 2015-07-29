@@ -14,16 +14,16 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.OtherDsbDtl;
 import com.adibrata.smartdealer.model.OtherDsbHdr;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.othertransactions.OtherDisburseService;
+
+import util.adibrata.framework.dataaccess.HibernateHelper;
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 	{
@@ -34,7 +34,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 		Session session;
 		String strStatement;
 		String userupd;
-		
+
 		public OtherDisburseDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -43,7 +43,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Office ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -54,7 +54,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -64,21 +64,21 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 		 */
 		@SuppressWarnings("unused")
 		@Override
-		public void Save(String usrupd, OtherDsbHdr otherDsbHdr, List<OtherDsbDtl> lstotherDsbDtl) throws Exception
+		public void Save(final String usrupd, final OtherDsbHdr otherDsbHdr, final List<OtherDsbDtl> lstotherDsbDtl) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final Partner partner = otherDsbHdr.getPartner();
 				final Office office = otherDsbHdr.getOffice();
-				
+
 				this.session.getTransaction().begin();
 				try
 					{
-						final String transno = TransactionNo(this.session, TransactionType.otherdisburse, partner.getPartnerCode(), office.getId());
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.otherdisburse);
 						otherDsbHdr.setOtherDisbNo(transno);
 						otherDsbHdr.setDtmCrt(this.dtmupd.getTime());
 						otherDsbHdr.setDtmUpd(this.dtmupd.getTime());
 						this.session.save(otherDsbHdr);
-						
+
 						for (final OtherDsbDtl arow : lstotherDsbDtl)
 							{
 								final OtherDsbDtl otherDsbDtl = new OtherDsbDtl();
@@ -87,7 +87,7 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 								this.session.save(otherDsbDtl);
 							}
 						this.session.getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -98,12 +98,12 @@ public class OtherDisburseDao extends DaoBase implements OtherDisburseService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.othertransactions.OtherDisburse#Paging
 		 * (int, java.lang.String, java.lang.String)
 		 */
-		
+
 	}

@@ -10,9 +10,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="SUCCESS">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="ERROR">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -29,9 +29,9 @@
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="SUCCESS">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			<result name="success">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="ERROR">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			<result name="error">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
 
 			<result name="search">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp

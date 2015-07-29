@@ -10,10 +10,10 @@
 			class="com.adibrata.smartdealer.action.customer.CustomerAction"
 			method="execute">
 			<result name="start">/Pages/Customer/paging.jsp</result>
-			<result name="SUCCESS">/Pages/Customer/paging.jsp</result>
+			<result name="success">/Pages/Customer/paging.jsp</result>
 			<result name="search">/Pages/Customer/paging.jsp</result>
 			<result name="end">/Pages/Customer/paging.jsp</result>
-			<result name="ERROR">/Pages/Customer/entry.jsp</result>
+			<result name="error">/Pages/Customer/entry.jsp</result>
 			<result name="entry">/Pages/Customer/entry.jsp</result>
 			<result name="adddetail">/Pages/Customer/entry.jsp</result>
 		</action>

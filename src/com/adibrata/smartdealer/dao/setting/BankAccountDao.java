@@ -292,19 +292,19 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					{
 
 						this.hql.append(this.strStatement);
-						this.hql.append(" Where partnercode = :partnercode and officeid = :officeid and type =:type and purpose = :purpose");
+						this.hql.append(" Where partnercode = :partnercode and officeid = :officeid");
 						if (!type.equals(""))
 							{
-								this.hql.append(" and type = :type ");
-								selectQuery.setParameter("type", type);
+								this.hql.append(" and type = '" + type + "' ");
+
 							}
 						else if (!purpose.equals(""))
 							{
-								this.hql.append(" and purpose = :purpose");
-								selectQuery.setParameter("purpose", purpose);
+								this.hql.append(" and purpose = '" + purpose + "' ");
 							}
 
 						selectQuery = this.session.createQuery(this.hql.toString());
+
 						selectQuery.setParameter("partnercode", partner.getPartnerCode());
 						selectQuery.setParameter("officeid", office.getId());
 

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Jul 27, 2015 2:07:03 PM by Hibernate Tools 4.3.1
+// Generated Jul 29, 2015 11:56:50 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 public class CoyCustFinancialInfoId implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long customerId;
 		private Date rentFinishDate;
 		private Double currentRatio;
@@ -41,15 +41,16 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 			{
 			}
 			
-		public CoyCustFinancialInfoId(double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
+		public CoyCustFinancialInfoId(long id, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
 			{
+				this.id = id;
 				this.modalDasar = modalDasar;
 				this.modalDisetor = modalDisetor;
 				this.netProfitMargin = netProfitMargin;
 				this.allowanceAvailable = allowanceAvailable;
 			}
 			
-		public CoyCustFinancialInfoId(Long id, Long customerId, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
+		public CoyCustFinancialInfoId(long id, Long customerId, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
 		        Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito, String additionalCollateralType, Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear,
 		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -78,13 +79,13 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 			}
 			
-		@Column(name = "Id")
-		public Long getId()
+		@Column(name = "Id", nullable = false)
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -341,8 +342,7 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 					return false;
 				CoyCustFinancialInfoId castOther = (CoyCustFinancialInfoId) other;
 				
-				return ((this.getId() == castOther.getId()) || (this.getId() != null && castOther.getId() != null && this.getId().equals(castOther.getId())))
-				        && ((this.getCustomerId() == castOther.getCustomerId()) || (this.getCustomerId() != null && castOther.getCustomerId() != null && this.getCustomerId().equals(castOther.getCustomerId())))
+				return (this.getId() == castOther.getId()) && ((this.getCustomerId() == castOther.getCustomerId()) || (this.getCustomerId() != null && castOther.getCustomerId() != null && this.getCustomerId().equals(castOther.getCustomerId())))
 				        && ((this.getRentFinishDate() == castOther.getRentFinishDate()) || (this.getRentFinishDate() != null && castOther.getRentFinishDate() != null && this.getRentFinishDate().equals(castOther.getRentFinishDate())))
 				        && ((this.getCurrentRatio() == castOther.getCurrentRatio()) || (this.getCurrentRatio() != null && castOther.getCurrentRatio() != null && this.getCurrentRatio().equals(castOther.getCurrentRatio())))
 				        && ((this.getRoi() == castOther.getRoi()) || (this.getRoi() != null && castOther.getRoi() != null && this.getRoi().equals(castOther.getRoi())))
@@ -373,7 +373,7 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 			{
 				int result = 17;
 				
-				result = 37 * result + (getId() == null ? 0 : this.getId().hashCode());
+				result = 37 * result + (int) this.getId();
 				result = 37 * result + (getCustomerId() == null ? 0 : this.getCustomerId().hashCode());
 				result = 37 * result + (getRentFinishDate() == null ? 0 : this.getRentFinishDate().hashCode());
 				result = 37 * result + (getCurrentRatio() == null ? 0 : this.getCurrentRatio().hashCode());

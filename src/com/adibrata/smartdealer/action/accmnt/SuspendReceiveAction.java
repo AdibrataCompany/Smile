@@ -1,6 +1,7 @@
 
 package com.adibrata.smartdealer.action.accmnt;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -38,12 +39,14 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		private Partner partner;
 		private Date postingDate;
 		private Double amount;
-		private Long currencyId;
-		private Double currencyRate;
-		private Long bankAccountId;
+		private Long currencyid;
+		private Double currencyrate;
+		private Long bankAccountid;
 		private String status;
 		private String valuedate;
-		
+		private String bankaccountname;
+		private String notes;
+
 		public SuspendReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -69,14 +72,15 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "save" :
 									strMode = this.SaveSuspend();
+									break;
 
 								default :
 									return ERROR;
@@ -85,10 +89,20 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 				else
 					{
 						strMode = "start";
+						this.InitiallInput();
 					}
 				return strMode;
 			}
-			
+
+		private void InitiallInput() throws ParseException
+			{
+				this.setAmount(0.00);
+				this.setValuedate(this.dateformat.format(BaseAction.sesBussinessDate()));
+				this.setNotes("");
+				this.setCurrencyrate(1.00);
+
+			}
+
 		private String SaveSuspend() throws Exception
 			{
 				String status = "";
@@ -98,17 +112,21 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 						this.receive.setAmount(this.getAmount());
 						this.receive.setValueDate(this.dateformat.parse(this.getValuedate()));
 						this.receive.setBankAccountId(this.getBankAccountId());
+						this.receive.setPostingDate(BaseAction.sesBussinessDate());
 						this.receive.setPartner(this.getPartner());
 						this.receive.setOffice(this.getOffice());
-						this.receive.setCurrencyRate(this.getCurrencyRate());
-						
+						this.receive.setCurrencyRate(this.getCurrencyrate());
+						this.receive.setNotes(this.getNotes());
+						this.receive.setUsrUpd(BaseAction.sesLoginName());
+						this.receive.setUsrCrt(BaseAction.sesLoginName());
 						this.service.SuspendEntrySave(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.receive);
 						status = SUCCESS;
+						this.InitiallInput();
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -117,7 +135,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 				return status;
 			}
@@ -381,7 +399,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public Long getCurrencyId()
 			{
-				return this.currencyId;
+				return this.currencyid;
 			}
 			
 		/**
@@ -390,24 +408,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public void setCurrencyId(final Long currencyId)
 			{
-				this.currencyId = currencyId;
-			}
-			
-		/**
-		 * @return the currencyRate
-		 */
-		public Double getCurrencyRate()
-			{
-				return this.currencyRate;
-			}
-			
-		/**
-		 * @param currencyRate
-		 *            the currencyRate to set
-		 */
-		public void setCurrencyRate(final Double currencyRate)
-			{
-				this.currencyRate = currencyRate;
+				this.currencyid = currencyId;
 			}
 			
 		/**
@@ -415,7 +416,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public Long getBankAccountId()
 			{
-				return this.bankAccountId;
+				return this.bankAccountid;
 			}
 			
 		/**
@@ -424,7 +425,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public void setBankAccountId(final Long bankAccountId)
 			{
-				this.bankAccountId = bankAccountId;
+				this.bankAccountid = bankAccountId;
 			}
 			
 		/**
@@ -492,5 +493,90 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		public SuspendEntryService getService()
 			{
 				return this.service;
+			}
+
+		/**
+		 * @return the currencyid
+		 */
+		public Long getCurrencyid()
+			{
+				return this.currencyid;
+			}
+
+		/**
+		 * @param currencyid
+		 *            the currencyid to set
+		 */
+		public void setCurrencyid(final Long currencyid)
+			{
+				this.currencyid = currencyid;
+			}
+
+		/**
+		 * @return the bankAccountid
+		 */
+		public Long getBankAccountid()
+			{
+				return this.bankAccountid;
+			}
+
+		/**
+		 * @param bankAccountid
+		 *            the bankAccountid to set
+		 */
+		public void setBankAccountid(final Long bankAccountid)
+			{
+				this.bankAccountid = bankAccountid;
+			}
+
+		/**
+		 * @return the bankaccountname
+		 */
+		public String getBankaccountname()
+			{
+				return this.bankaccountname;
+			}
+
+		/**
+		 * @param bankaccountname
+		 *            the bankaccountname to set
+		 */
+		public void setBankaccountname(final String bankaccountname)
+			{
+				this.bankaccountname = bankaccountname;
+			}
+			
+		/**
+		 * @return the currencyrate
+		 */
+		public Double getCurrencyrate()
+			{
+				return this.currencyrate;
+			}
+			
+		/**
+		 * @param currencyrate
+		 *            the currencyrate to set
+		 */
+		public void setCurrencyrate(final Double currencyrate)
+			{
+				this.currencyrate = currencyrate;
+			}
+
+		/**
+		 * @return the notes
+		 */
+		public String getNotes()
+			{
+				return this.notes;
+			}
+
+		/**
+		 * @param notes
+		 *            the notes to set
+		 */
+		public void setNotes(final String notes)
+			{
+				this.notes = notes;
 			}
 	}

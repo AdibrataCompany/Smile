@@ -24,47 +24,49 @@
 			<center>
 				<h2>Bank Account</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-				<table width="100%">
-					<tr>
-						<td width="10%">Search</td>
-						<td><select name="searchcriteria">
-								<option value="">Criteria</option>
-								<option value="bankName">Bank Name</option>
-								<option value="bankAccountCode">Bank Account Code</option>
-								<option value="bankAccountName">Bank Account Name</option>
-						</select> <input type="text" name="searchvalue" placeholder="Search Value" />
-							<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Search</button></td>
-						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%>
-						</td>
-					</tr>
-				</table>
-
+				<div class="table-responsive">
+					<table width="100%">
+						<tr>
+							<td width="10%">Search</td>
+							<td><select name="searchcriteria">
+									<option value="">Criteria</option>
+									<option value="bankName">Bank Name</option>
+									<option value="bankAccountCode">Bank Account Code</option>
+									<option value="bankAccountName">Bank Account Name</option>
+							</select> <input type="text" name="searchvalue" placeholder="Search Value" />
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="search()">Search</button></td>
+							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%>
+							</td>
+						</tr>
+					</table>
+				</div>
 				<br>
 				<s:label name="message"></s:label>
 				<br>
-				<table class="table table-bordered">
-					<tr>
-						<th style="text-align: center;">Bank Name</th>
-						<th style="text-align: center;">Bank Account Code</th>
-						<th style="text-align: center;">Bank Account Name</th>
-						<th style="text-align: center;" width="5%">Select</th>
-					</tr>
-					<s:iterator value="lstBankAccount">
-						<tr id="row_${id}">
-							<td>${bankName}</td>
-							<td>${bankAccountCode}</td>
-							<td>${bankAccountName}</td>
-							<td style="text-align: center;"><input type="radio"
-								name="id" value="${id}" checked /></td>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th style="text-align: center;">Bank Name</th>
+							<th style="text-align: center;">Bank Account Code</th>
+							<th style="text-align: center;">Bank Account Name</th>
+							<th style="text-align: center;" width="5%">Select</th>
 						</tr>
-					</s:iterator>
-				</table>
+						<s:iterator value="lstBankAccount">
+							<tr id="row_${id}">
+								<td>${bankName}</td>
+								<td>${bankAccountCode}</td>
+								<td>${bankAccountName}</td>
+								<td style="text-align: center;"><input type="radio" name="id" value="${id}"/></td>
+							</tr>
+						</s:iterator>
+					</table>
+				</div>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function search() {

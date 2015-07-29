@@ -55,7 +55,7 @@ public class MenuAction extends ActionSupport implements Preparable
 							
 						this.lstMenu = this.menuService.Paging(this.getPageNumber(), wherecond, "");
 						
-						status = "SUCCESS";
+						status = "success";
 					}
 				catch (final Exception exp)
 					{

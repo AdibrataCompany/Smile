@@ -114,8 +114,8 @@ public class Header
 
 								inst.SaveDetail(UsrUpd, paymentReceive, hdr);
 							}
-						this.session.flush();
-						this.session.clear();
+						
+						
 					}
 				catch (final Exception exp)
 					{

@@ -1,77 +1,87 @@
 
 package com.adibrata.smartdealer.action;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 public class BaseAction extends ActionSupport implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String messagedescription;
-
+		
 		public SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-
+		
 		public BaseAction()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		public static void RenderMenu()
 			{
-
+			
 			}
-
+			
 		public static String ErrorMessage()
 			{
 				return "Failed on Save";
-
+				
 			}
-
+			
 		public static String SuccessMessage()
 			{
 				return "Success On Save";
-
+				
 			}
-			
+
 		public static String SelectFirst()
 			{
 				return "Please Select a Data First";
-
+				
 			}
-			
+
 		public static String sesPartnerCode()
 			{
 				return "001";
 			}
-
+			
+		public static Date sesBussinessDate() throws ParseException
+			{
+				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+				return df.parse(df.format(Calendar.getInstance().getTime()));
+				
+			}
+			
 		public static long sesOfficeId()
 			{
 				return 1;
 			}
-
+			
 		public static String sesLoginName()
 			{
 				return "Arga";
 			}
-
+			
 		public static int PageRecord()
 			{
 				return 10;
 			}
-
+			
 		/**
 		 * @return the messagedescription
 		 */
@@ -79,7 +89,7 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				return this.messagedescription;
 			}
-
+			
 		/**
 		 * @param messagedescription
 		 *            the messagedescription to set
@@ -88,5 +98,5 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				this.messagedescription = messagedescription;
 			}
-
+			
 	}

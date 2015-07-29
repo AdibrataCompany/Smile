@@ -16,7 +16,8 @@
 <body>
 	<td width="30%">
 		<div class="input-append date">
-			<s:textfield name="valueDate"/>
+			<s:textfield name="valuedate" placeholder="Value Date" 
+				class="form-control" />
 			<span class="add-on"><i class="icon-th"><img
 					src="Pages/style/calendar.png" /></i></span>
 		</div>

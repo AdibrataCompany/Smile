@@ -34,7 +34,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
-		
+
 		public AdvanceCashDao() throws Exception
 			{
 				try
@@ -42,7 +42,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from AdvanceCash ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -53,7 +53,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -67,18 +67,18 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 				this.session.getTransaction().begin();
 				final Partner partner = advancecash.getPartner();
 				final Office office = advancecash.getOffice();
-				
+
 				try
 					{
-						
-						final String transno = TransactionNo(this.session, TransactionType.advancerequest, partner.getPartnerCode(), office.getId());
+
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.advancerequest);
 						advancecash.setAdvanceNo(transno);
 						advancecash.setDtmCrt(this.dtmupd.getTime());
 						advancecash.setDtmUpd(this.dtmupd.getTime());
 						this.session.save(advancecash);
-						
+
 						this.session.getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -89,7 +89,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -102,7 +102,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<AdvanceCash> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -116,11 +116,11 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -128,7 +128,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public AdvanceCash View(final long id) throws Exception
 			{
@@ -137,11 +137,11 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 				try
 					{
 						advanceCash = (AdvanceCash) this.session.get(AdvanceCash.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -149,14 +149,14 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 					}
 				return advanceCash;
 			}
-			
+
 		@Override
 		public List<AdvanceCash> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<AdvanceCash> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -170,11 +170,11 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -182,5 +182,5 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 					}
 				return list;
 			}
-			
+
 	}

@@ -35,7 +35,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 		int pagesize;
 		private long totalrecord;
 		private int currentpage;
-		
+
 		public OtherReceiveDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -44,7 +44,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Office ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -55,7 +55,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Save(com.adibrata.smartdealer.model.OtherRcvHdr, com.adibrata.smartdealer.model.OtherRcvDtl)
@@ -67,7 +67,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 				this.session.getTransaction().begin();
 				try
 					{
-						final String transno = TransactionNo(this.session, TransactionType.otherreceive, otherRcvHdr.getPartner().getPartnerCode(), otherRcvHdr.getOffice().getId());
+						final String transno = TransactionNo(this.session, otherRcvHdr.getPartner().getPartnerCode(), otherRcvHdr.getOffice().getId(), TransactionType.otherreceive);
 						otherRcvHdr.setOtherRcvNo(transno);
 						otherRcvHdr.setDtmCrt(this.dtmupd.getTime());
 						otherRcvHdr.setDtmUpd(this.dtmupd.getTime());
@@ -77,12 +77,12 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 								final OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
 								otherRcvDtl.setDtmCrt(this.dtmupd.getTime());
 								otherRcvDtl.setDtmUpd(this.dtmupd.getTime());
-								
+
 								this.session.save(otherRcvDtl);
 							}
-							
+
 						this.session.getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -93,7 +93,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.othertransactions.OtherReceive#Paging(int, java.lang.String, java.lang.String)
@@ -104,7 +104,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<OtherRcvHdr> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -116,15 +116,15 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						final Query selectQuery = this.session.createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -132,14 +132,14 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public List<OtherRcvHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<OtherRcvHdr> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -151,14 +151,14 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 						final Query selectQuery = this.session.createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -166,5 +166,5 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 					}
 				return list;
 			}
-			
+
 	}

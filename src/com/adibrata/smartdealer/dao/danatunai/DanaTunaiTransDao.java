@@ -36,7 +36,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 		int pagesize;
 		private long totalrecord;
 		private int currentpage;
-		
+
 		public DanaTunaiTransDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -45,7 +45,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Office ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -55,9 +55,9 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -70,17 +70,17 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 				// TODO Auto-generated method stub
 				final Partner partner = danaTunai.getPartner();
 				final Office office = danaTunai.getOffice();
-				
+
 				this.session.getTransaction().begin();
 				try
 					{
-						final String transno = TransactionNo(this.session, TransactionType.danatunai, partner.getPartnerCode(), office.getId());
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.danatunai);
 						danaTunai.setDanaTunaiNo(transno);
 						danaTunai.setDtmCrt(this.dtmupd.getTime());
 						danaTunai.setDtmUpd(this.dtmupd.getTime());
 						this.session.save(danaTunai);
 						this.session.getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -91,14 +91,14 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.danatunai.DanaTunaiTransactions#TotalRecord
 		 * (java.lang.String)
 		 */
-		
+
 		@Override
 		public DanaTunai viewDanaTunai(final long id) throws Exception
 			{
@@ -107,11 +107,11 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 				try
 					{
 						danaTunai = (DanaTunai) this.session.get(DanaTunai.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -119,7 +119,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 					}
 				return danaTunai;
 			}
-			
+
 		@Override
 		public List<DanaTunai> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
@@ -138,11 +138,11 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -150,7 +150,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 					}
 				return list;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<DanaTunai> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean isLast) throws Exception
@@ -158,7 +158,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<DanaTunai> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -170,15 +170,15 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 						final Query selectQuery = this.session.createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

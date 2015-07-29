@@ -23,6 +23,7 @@
 			<center>
 				<h2>Office</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				  <div class="table-responsive">   
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>
@@ -48,9 +49,11 @@
 
 					</tr>
 				</table>
+				</div>
 				<br>
 				<s:label name="message"></s:label>
 				<br>
+				  <div class="table-responsive">   
 				<table class="table table-bordered">
 					<tr>
 						<th style="text-align: center;">Nama</th>
@@ -71,10 +74,11 @@
 							<td>(${areaPhone2}) - ${phoneNo2}</td>
 							<td>(${areaFax}) - ${faxNo}</td>
 							<td>${handphone}</td>
-							<td><input type="radio" id="${id}" checked /></td>
+							<td><input type="radio" name="id" value="${id}"/></td>
 						</tr>
 					</s:iterator>
 				</table>
+				</div>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>
 		</s:form>

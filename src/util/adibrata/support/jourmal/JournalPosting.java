@@ -831,8 +831,8 @@ public class JournalPosting
 						jrnlhdr.setDtmCrt(this.dtmUpd);
 						
 						session.save(jrnlhdr);
-						this.session.flush();
-						this.session.clear();
+						
+						
 					}
 				catch (final Exception exp)
 					{
@@ -892,8 +892,8 @@ public class JournalPosting
 						jrnldtl.setDtmCrt(this.dtmUpd);
 						
 						session.save(jrnldtl);
-						this.session.flush();
-						this.session.clear();
+						
+						
 					}
 				catch (final Exception exp)
 					{
@@ -916,8 +916,8 @@ public class JournalPosting
 						transjob.setUsrCrt(this.userupd);
 						transjob.setDtmUpd(this.dtmUpd);
 						session.update(transjob);
-						this.session.flush();
-						this.session.clear();
+						
+						
 					}
 				catch (final Exception exp)
 					{

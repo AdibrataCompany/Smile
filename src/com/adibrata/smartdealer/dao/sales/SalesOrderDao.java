@@ -81,7 +81,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 						        salesOrderHdr.getUsrCrt()).getId();
 								
 						salesOrderHdr.setJobId(jobid);
-						final String transno = TransactionNo(this.session, TransactionType.salesorder, partner.getPartnerCode(), office.getId());
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.salesorder);
 						salesOrderHdr.setSono(transno);
 						salesOrderHdr.setDtmCrt(this.dtmupd.getTime());
 						salesOrderHdr.setDtmUpd(this.dtmupd.getTime());

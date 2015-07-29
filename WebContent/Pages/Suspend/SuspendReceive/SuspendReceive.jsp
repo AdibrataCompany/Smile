@@ -18,7 +18,7 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="bankaccount.action" theme="simple">
+		<s:form action="suspendreceive.action" theme="simple">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
@@ -30,28 +30,35 @@
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankName" style="width:95%"
-								placeholder="Bank Account" class="form-control" />
+							<s:select list="lstBankAccount" name="bankAccountid" value = "bankaccountname" label = "Select Bank Account"
+								headerKey="" headerValue="Select Bank Account" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Value Date</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankAccountCode" style="width:95%"
-								placeholder="Value Date" class="form-control" />
+						<%@include file="/Pages/DatePicker.jsp"%>
+							
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Amount Receive</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankAccountName" style="width:95%"
+							<s:textfield name="amount" style="width:95%"
 								placeholder="Amount Receive" class="form-control" />
+						</div>
+					</div>
+						<div align="left" class="form-group">
+						<label>Currency Rate</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="currencyrate" style="width:95%"
+								placeholder="Currency Rate" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Notes</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankAccountName" style="width:95%"
+							<s:textfield name="notes" style="width:95%"
 								placeholder="Notes" class="form-control" />
 						</div>
 					</div>
@@ -64,7 +71,7 @@
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Save</button>
+									onclick="save()">Save</button>
 							</td>
 						</tr>
 					</table>
@@ -75,7 +82,7 @@
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function saveedit() {
+	function save() {
 		document.getElementById("mode").value = "save";
 	}
 	function end() {

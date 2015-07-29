@@ -54,7 +54,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 							
 						this.lstUser = this.userService.Paging(this.getPageNumber(), wherecond, "");
 						
-						status = "SUCCESS";
+						status = "success";
 					}
 				catch (final Exception exp)
 					{

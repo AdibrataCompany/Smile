@@ -9,8 +9,8 @@
 			class="com.adibrata.smartdealer.action.purchase.PurchaseOrderAction"
 			method="execute">
 			<result name="start">/Pages/Purchase/Order/paging.jsp</result>
-			<result name="SUCCESS">/Pages/Purchase/Order/paging.jsp</result>
-			<result name="ERROR">/Pages/Purchase/Order/entry.jsp</result>
+			<result name="success">/Pages/Purchase/Order/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Order/entry.jsp</result>
 
 			<result name="search">/Pages/Purchase/Order/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Order/entry.jsp</result>
@@ -21,8 +21,8 @@
 			class="com.adibrata.smartdealer.action.purchase.PurchaseInvoiceAction"
 			method="execute">
 			<result name="start">/Pages/Purchase/Invoice/paging.jsp</result>
-			<result name="SUCCESS">/Pages/Purchase/Invoice/paging.jsp</result>
-			<result name="ERROR">/Pages/Purchase/Invoice/entry.jsp</result>
+			<result name="success">/Pages/Purchase/Invoice/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Invoice/entry.jsp</result>
 
 			<result name="search">/Pages/Purchase/Invoice/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Invoice/entry.jsp</result>
@@ -34,8 +34,8 @@
 			class="com.adibrata.smartdealer.action.purchase.PurchaseReturAction"
 			method="execute">
 			<result name="start">/Pages/Purchase/Retur/paging.jsp</result>
-			<result name="SUCCESS">/Pages/Purchase/Retur/paging.jsp</result>
-			<result name="ERROR">/Pages/Purchase/Retur/entry.jsp</result>
+			<result name="success">/Pages/Purchase/Retur/paging.jsp</result>
+			<result name="error">/Pages/Purchase/Retur/entry.jsp</result>
 
 			<result name="search">/Pages/Purchase/Retur/paging.jsp</result>
 			<result name="entry">/Pages/Purchase/Retur/entry.jsp</result>

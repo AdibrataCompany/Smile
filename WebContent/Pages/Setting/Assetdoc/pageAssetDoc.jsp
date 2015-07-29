@@ -24,49 +24,51 @@
 			<center>
 				<h2>Asset Document Master</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-				<table width="100%">
-					<tr>
-						<td width="10%">Searching</td>
-						<td><div align="left" class="form-inline">
-								<select name="searchcriteria">
-									<option value="0">Search Critera</option>
-									<option value="documentCode">Code</option>
-									<option value="documentName">Name</option>
-									<option value="assetType">Asset Type</option>
-								</select>
-								<s:textfield name="searchvalue" style="width:200px"
-									placeholder="Search value" class="form-control" />
-										<button class="btn btn-sm btn-primary" type="submit"
-								onclick="search()">Search</button>
-							</div>
+				<div class="table-responsive">
+					<table width="100%">
+						<tr>
+							<td width="10%">Searching</td>
+							<td><div align="left" class="form-inline">
+									<select name="searchcriteria">
+										<option value="0">Search Critera</option>
+										<option value="documentCode">Code</option>
+										<option value="documentName">Name</option>
+										<option value="assetType">Asset Type</option>
+									</select>
+									<s:textfield name="searchvalue" style="width:200px"
+										placeholder="Search value" class="form-control" />
+									<button class="btn btn-sm btn-primary" type="submit"
+										onclick="search()">Search</button>
+								</div></td>
 
-						</td>
+							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
+						</tr>
 
-						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
-					</tr>
-
-				</table>
+					</table>
+				</div>
 				<br>
 				<s:label name="message"></s:label>
 				<br>
-				<table class="table table-bordered">
-					<tr>
-						<th style="text-align: center;">Code</th>
-						<th style="text-align: center;">Name</th>
-						<th style="text-align: center;">Asset Type</th>
-						<th style="text-align: center;" width="5%">Pilih</th>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th style="text-align: center;">Code</th>
+							<th style="text-align: center;">Name</th>
+							<th style="text-align: center;">Asset Type</th>
+							<th style="text-align: center;" width="5%">Pilih</th>
 
-					</tr>
-					<s:iterator value="lstAssetDocMasters">
-						<tr id="row_${id}">
-							<td>${documentCode}</td>
-							<td>${documentName}</td>
-							<td>${assetType}</td>
-							<td colspan="2" style="text-align: center;"><input
-								type="radio" name="id" value="${id}"/></td>
 						</tr>
-					</s:iterator>
-				</table>
+						<s:iterator value="lstAssetDocMasters">
+							<tr id="row_${id}">
+								<td>${documentCode}</td>
+								<td>${documentName}</td>
+								<td>${assetType}</td>
+								<td colspan="2" style="text-align: center;"><input
+									type="radio" name="id" value="${id}" /></td>
+							</tr>
+						</s:iterator>
+					</table>
+				</div>
 				<%@include file="/Pages/Paging.jsp"%>
 
 			</center>

@@ -2,16 +2,23 @@
 package com.adibrata.smartdealer.action.accmnt;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.accmaint.SuspendEntryDao;
+import com.adibrata.smartdealer.dao.accmaint.SuspendReversalDao;
+import com.adibrata.smartdealer.dao.setting.BankAccountDao;
+import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
+import com.adibrata.smartdealer.model.SuspendList;
 import com.adibrata.smartdealer.model.SuspendReceive;
 import com.adibrata.smartdealer.model.SuspendReverse;
 import com.adibrata.smartdealer.service.accmaint.SuspendEntryService;
 import com.adibrata.smartdealer.service.accmaint.SuspendReversalService;
+import com.adibrata.smartdealer.service.setting.BankAccountService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -26,21 +33,27 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		private Long id;
 		private Partner partner;
 		private Office office;
+		private Map<Long, String> lstBankAccount;
 
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
+		private SuspendReceive receive;
 		private SuspendReverse reverse;
 		private SuspendReversalService service;
-		private List<SuspendReceive> lstSuspendReceive;
-		private SuspendReceive receive;
+		private List<SuspendList> lstSuspendReceive;
 
+		private String valuedatesearch;
+		private String postingdatesearch;
+		private String amountstart;
+		private String amountend;
 		private Date postingDate;
 		private Double amount;
 		private Long currencyId;
 		private Double currencyRate;
-		private Long bankAccountId;
+		private Long bankaccountId;
+		private String bankaccountname;
 		private String status;
 		private String valuedate;
 		private String strStatement;
@@ -48,24 +61,26 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		int pagesize;
 		private int currentpage;
 		private long totalrecord;
+		private String notes;
 
-		public SuspendReverseAction()
+		public SuspendReverseAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.office = new Office();
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				this.service = new SuspendReversalDao();
+				this.reverse = new SuspendReverse();
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
 
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -141,7 +156,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									return ERROR;
 							}
@@ -159,12 +174,16 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 				this.reverse = new SuspendReverse();
 				try
 					{
-						this.reverse.setSuspendReceive(this.getReceive());
-						this.reverse.setAmount(this.getAmount());
-						this.reverse.setValueDate(this.dateformat.parse(this.getValuedate()));
-						this.reverse.setBankAccountId(this.getBankAccountId());
-						this.reverse.setCurrencyRate(this.getCurrencyRate());
 
+						this.reverse.setSuspendReceive(this.getReceive());
+						this.reverse.setAmount(this.receive.getAmount());
+						this.reverse.setValueDate(this.receive.getValueDate());
+						this.reverse.setPostingDate(BaseAction.sesBussinessDate());
+						this.reverse.setBankAccountId(this.receive.getBankAccountId());
+						this.reverse.setCurrencyRate(this.receive.getCurrencyRate());
+						this.reverse.setUsrUpd(BaseAction.sesLoginName());
+						this.reverse.setUsrCrt(BaseAction.sesLoginName());
+						this.reverse.setNotes(this.getNotes());
 						this.service.SuspendReversalSave(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.reverse);
 						status = SUCCESS;
 					}
@@ -187,21 +206,49 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 
 		private String WhereCond()
 			{
-				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				final StringBuilder sql = new StringBuilder();
+				
+				sql.append(" partnercode = '" + BaseAction.sesPartnerCode() + "' and office = '" + BaseAction.sesOfficeId() + "' and status = 'NE' ");
+				
+				if (this.getBankaccountId() != null)
+					{
+						sql.append(" and  bankaccountid = " + this.getBankaccountId());
+						
+					}
+
+				if (!this.valuedatesearch.equals(""))
+					{
+						sql.append(" and  valuedate  <= " + this.valuedatesearch);
+					}
+					
+				if (!this.postingdatesearch.equals(""))
+					{
+						sql.append(" and  valuedate  <= " + this.postingdatesearch);
+						
+					}
+				if (!this.amountstart.equals(""))
+					{
+						sql.append(" and amount > " + this.amountstart);
+					}
+				if (!this.amountend.equals(""))
+					{
+						sql.append(" and amount <= " + this.amountend);
+					}
+
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+								sql.append(" and " + this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ");
 							}
 						else
 							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+								sql.append("and " + this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
 							}
 					}
-				return wherecond;
+				return sql.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -211,15 +258,15 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -241,11 +288,18 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						final SuspendEntryService entryService = new SuspendEntryDao();
 						if (this.getId() != null)
 							{
-							
+								this.receive = entryService.View(this.getId());
+								this.setValuedate(this.dateformat.format(this.receive.getValueDate()));
+								this.setPostingDate(this.dateformat.parse(this.dateformat.format(this.receive.getPostingDate())));
+								this.setAmount(this.receive.getAmount());
+								this.setBankaccountId(this.receive.getBankAccountId());
+								this.setCurrencyId(this.receive.getCurrencyId());
+								this.setCurrencyRate(this.receive.getCurrencyRate());
 							}
-						final SuspendEntryService entryService = new SuspendEntryDao();
+							
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = entryService.getCurrentpage();
 					}
@@ -259,6 +313,31 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 					}
 			}
 			
+		public void ListBankAccount() throws Exception
+			{
+				try
+					{
+						final BankAccountService bankaccountservice = new BankAccountDao();
+						final List<BankAccount> lst = bankaccountservice.listBankAccount(this.getPartner(), this.getOffice(), "BA", "");
+
+						this.lstBankAccount = new HashMap<Long, String>();
+						for (final BankAccount row : lst)
+							{
+								this.lstBankAccount.put(row.getId(), row.getBankAccountName().trim());
+							}
+					}
+				catch (final Exception exp)
+					{
+						// TODO: handle exception
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+						exp.printStackTrace();
+					}
+			}
+
 		/**
 		 * @return the mode
 		 */
@@ -309,7 +388,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -457,7 +536,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		/**
 		 * @return the lstSuspendReceive
 		 */
-		public List<SuspendReceive> getLstSuspendReceive()
+		public List<SuspendList> getLstSuspendReceive()
 			{
 				return this.lstSuspendReceive;
 			}
@@ -466,7 +545,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		 * @param lstSuspendReceive
 		 *            the lstSuspendReceive to set
 		 */
-		public void setLstSuspendReceive(final List<SuspendReceive> lstSuspendReceive)
+		public void setLstSuspendReceive(final List<SuspendList> lstSuspendReceive)
 			{
 				this.lstSuspendReceive = lstSuspendReceive;
 			}
@@ -555,7 +634,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				this.totalrecord = totalrecord;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -563,7 +642,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -642,23 +721,6 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the bankAccountId
-		 */
-		public Long getBankAccountId()
-			{
-				return this.bankAccountId;
-			}
-
-		/**
-		 * @param bankAccountId
-		 *            the bankAccountId to set
-		 */
-		public void setBankAccountId(final Long bankAccountId)
-			{
-				this.bankAccountId = bankAccountId;
-			}
-
-		/**
 		 * @return the status
 		 */
 		public String getStatus()
@@ -691,7 +753,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the receive
 		 */
@@ -699,7 +761,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				return this.receive;
 			}
-			
+
 		/**
 		 * @param receive
 		 *            the receive to set
@@ -707,5 +769,141 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		public void setReceive(final SuspendReceive receive)
 			{
 				this.receive = receive;
+			}
+
+		/**
+		 * @return the lstBankAccount
+		 */
+		public Map<Long, String> getLstBankAccount()
+			{
+				return this.lstBankAccount;
+			}
+
+		/**
+		 * @param lstBankAccount
+		 *            the lstBankAccount to set
+		 */
+		public void setLstBankAccount(final Map<Long, String> lstBankAccount)
+			{
+				this.lstBankAccount = lstBankAccount;
+			}
+
+		/**
+		 * @return the bankaccountId
+		 */
+		public Long getBankaccountId()
+			{
+				return this.bankaccountId;
+			}
+
+		/**
+		 * @param bankaccountId
+		 *            the bankaccountId to set
+		 */
+		public void setBankaccountId(final Long bankaccountId)
+			{
+				this.bankaccountId = bankaccountId;
+			}
+
+		/**
+		 * @return the valuedatesearch
+		 */
+		public String getValuedatesearch()
+			{
+				return this.valuedatesearch;
+			}
+
+		/**
+		 * @param valuedatesearch
+		 *            the valuedatesearch to set
+		 */
+		public void setValuedatesearch(final String valuedatesearch)
+			{
+				this.valuedatesearch = valuedatesearch;
+			}
+
+		/**
+		 * @return the postingdatesearch
+		 */
+		public String getPostingdatesearch()
+			{
+				return this.postingdatesearch;
+			}
+
+		/**
+		 * @param postingdatesearch
+		 *            the postingdatesearch to set
+		 */
+		public void setPostingdatesearch(final String postingdatesearch)
+			{
+				this.postingdatesearch = postingdatesearch;
+			}
+
+		/**
+		 * @return the amountstart
+		 */
+		public String getAmountstart()
+			{
+				return this.amountstart;
+			}
+
+		/**
+		 * @param amountstart
+		 *            the amountstart to set
+		 */
+		public void setAmountstart(final String amountstart)
+			{
+				this.amountstart = amountstart;
+			}
+			
+		/**
+		 * @param amountend
+		 *            the amountend to set
+		 */
+		public void setAmountend(final String amountend)
+			{
+				this.amountend = amountend;
+			}
+
+		/**
+		 * @return the amountend
+		 */
+		public String getAmountend()
+			{
+				return this.amountend;
+			}
+
+		/**
+		 * @return the bankaccountname
+		 */
+		public String getBankaccountname()
+			{
+				return this.bankaccountname;
+			}
+
+		/**
+		 * @param bankaccountname
+		 *            the bankaccountname to set
+		 */
+		public void setBankaccountname(final String bankaccountname)
+			{
+				this.bankaccountname = bankaccountname;
+			}
+
+		/**
+		 * @return the notes
+		 */
+		public String getNotes()
+			{
+				return this.notes;
+			}
+
+		/**
+		 * @param notes
+		 *            the notes to set
+		 */
+		public void setNotes(final String notes)
+			{
+				this.notes = notes;
 			}
 	}
