@@ -46,7 +46,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		private String valuedate;
 		private String bankaccountname;
 		private String notes;
-
+		
 		public SuspendReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -122,11 +122,12 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 						this.service.SuspendEntrySave(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.receive);
 						status = SUCCESS;
 						this.InitiallInput();
+						this.setMessage(SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -135,11 +136,11 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-			
+
 		public void ListBankAccount() throws Exception
 			{
 				try

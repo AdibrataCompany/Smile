@@ -4,32 +4,30 @@
 
 package com.adibrata.smartdealer.model;
 
-import java.util.Date;
-
 /**
  * @author Henry
  */
 
 public class SuspendList
 	{
-		
+
 		/**
 		 *
 		 */
 		Long Id;
 		String BankAccountName;
-		Date valuedate;
-		Date postingdate;
-
+		String valuedate;
+		String postingdate;
+		String SuspendCode;
 		String CurrencyCode;
 		Double Amount;
 		Double CurrencyRate;
-
+		
 		public SuspendList()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -40,7 +38,7 @@ public class SuspendList
 			{
 				return this.Id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -49,7 +47,7 @@ public class SuspendList
 			{
 				this.Id = id;
 			}
-
+			
 		/**
 		 * @return the bankAccountName
 		 */
@@ -57,7 +55,7 @@ public class SuspendList
 			{
 				return this.BankAccountName;
 			}
-
+			
 		/**
 		 * @param bankAccountName
 		 *            the bankAccountName to set
@@ -68,47 +66,13 @@ public class SuspendList
 			}
 
 		/**
-		 * @return the valuedate
-		 */
-		public Date getValuedate()
-			{
-				return this.valuedate;
-			}
-
-		/**
-		 * @param valuedate
-		 *            the valuedate to set
-		 */
-		public void setValuedate(final Date valuedate)
-			{
-				this.valuedate = valuedate;
-			}
-
-		/**
-		 * @return the postingdate
-		 */
-		public Date getPostingdate()
-			{
-				return this.postingdate;
-			}
-
-		/**
-		 * @param postingdate
-		 *            the postingdate to set
-		 */
-		public void setPostingdate(final Date postingdate)
-			{
-				this.postingdate = postingdate;
-			}
-
-		/**
 		 * @return the currencyCode
 		 */
 		public String getCurrencyCode()
 			{
 				return this.CurrencyCode;
 			}
-
+			
 		/**
 		 * @param currencyCode
 		 *            the currencyCode to set
@@ -117,7 +81,7 @@ public class SuspendList
 			{
 				this.CurrencyCode = currencyCode;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -125,7 +89,7 @@ public class SuspendList
 			{
 				return this.Amount;
 			}
-
+			
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -134,7 +98,7 @@ public class SuspendList
 			{
 				this.Amount = amount;
 			}
-
+			
 		/**
 		 * @return the currencyRate
 		 */
@@ -142,7 +106,7 @@ public class SuspendList
 			{
 				return this.CurrencyRate;
 			}
-
+			
 		/**
 		 * @param currencyRate
 		 *            the currencyRate to set
@@ -151,5 +115,56 @@ public class SuspendList
 			{
 				this.CurrencyRate = currencyRate;
 			}
-
+			
+		/**
+		 * @return the suspendCode
+		 */
+		public String getSuspendCode()
+			{
+				return this.SuspendCode;
+			}
+			
+		/**
+		 * @param suspendCode
+		 *            the suspendCode to set
+		 */
+		public void setSuspendCode(final String suspendCode)
+			{
+				this.SuspendCode = suspendCode;
+			}
+			
+		/**
+		 * @param valuedate
+		 *            the valuedate to set
+		 */
+		public void setValuedate(final String valuedate)
+			{
+				this.valuedate = valuedate;
+			}
+			
+		/**
+		 * @param postingdate
+		 *            the postingdate to set
+		 */
+		public void setPostingdate(final String postingdate)
+			{
+				this.postingdate = postingdate;
+			}
+			
+		/**
+		 * @return the valuedate
+		 */
+		public String getValuedate()
+			{
+				return this.valuedate;
+			}
+			
+		/**
+		 * @return the postingdate
+		 */
+		public String getPostingdate()
+			{
+				return this.postingdate;
+			}
+			
 	}

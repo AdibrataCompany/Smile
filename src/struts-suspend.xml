@@ -22,40 +22,40 @@
 		<action name="suspendallocation"
 			class="com.adibrata.smartdealer.action.accmnt.SuspendAllocationAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="error">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="entry">/Pages/Suspend/SuspendReverse/entry.jsp
 			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 		</action>
-		<action name="suspendalreverse"
+		<action name="suspendreverse"
 			class="com.adibrata.smartdealer.action.accmnt.SuspendReverseAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="error">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="entry">/Pages/Suspend/SuspendReverse/entry.jsp
 			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
+			<result name="first">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="prev">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="next">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="last">/Pages/Suspend/SuspendReverse/paging.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -18,11 +18,11 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="suspendreceive.action" theme="simple">
+		<s:form action="suspendreverse.action" theme="simple">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-					<h2>Suspend Receive</h2>
+					<h2>Suspend Reverse</h2>
 					<s:hidden name="id" />
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
@@ -30,30 +30,23 @@
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:select list="lstBankAccount" name="bankAccountid"
-								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" />
+							<s:label name="bankAccountname" style="width:95%"/>
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Value Date</label>
-						<div align="left" class="form-inline">
-							<%@include file="/Pages/DatePicker.jsp"%>
-
-						</div>
+							<s:label name="valuedate" style="width:95%"/>
 					</div>
 					<div align="left" class="form-group">
 						<label>Amount Receive</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="amount" style="width:95%"
-								placeholder="Amount Receive" class="form-control" />
+							<s:label name="amount" style="width:95%"/>
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Currency Rate</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="currencyrate" style="width:95%"
-								placeholder="Currency Rate" class="form-control" />
+							<s:label name="currencyrate" style="width:95%"/>
 						</div>
 					</div>
 					<div align="left" class="form-group">

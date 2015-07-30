@@ -30,7 +30,7 @@ public class DaoBase implements SeviceBase
 		String userupd;
 		Session session;
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		public DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		public Date dtmupd = Calendar.getInstance().getTime();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
@@ -133,6 +133,7 @@ public class DaoBase implements SeviceBase
 				
 			}
 			
+		@Override
 		public List<AgreementList> AgreementPaging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
 				// TODO Auto-generated method stub
@@ -164,6 +165,7 @@ public class DaoBase implements SeviceBase
 				return list;
 			}
 
+		@Override
 		public List<AgreementList> AgreementPaging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub

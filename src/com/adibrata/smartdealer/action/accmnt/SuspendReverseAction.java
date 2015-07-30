@@ -72,13 +72,13 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.service = new SuspendReversalDao();
 				this.reverse = new SuspendReverse();
+				this.ListBankAccount();
 			}
 
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
 			}
 
 		@Override
@@ -92,8 +92,21 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 
 						switch (strMode)
 							{
+								case "search" :
+									this.pageNumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "save" :
 									strMode = this.SaveSuspendReverse();
+									break;
 								case "first" :
 									this.pageNumber = 1;
 									try
@@ -148,7 +161,8 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 								case "entry" :
 									try
 										{
-											this.ViewData();
+											strMode = this.ViewData();
+											break;
 										}
 									catch (final Exception e)
 										{
@@ -174,7 +188,6 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 				this.reverse = new SuspendReverse();
 				try
 					{
-
 						this.reverse.setSuspendReceive(this.getReceive());
 						this.reverse.setAmount(this.receive.getAmount());
 						this.reverse.setValueDate(this.receive.getValueDate());
@@ -185,6 +198,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 						this.reverse.setUsrCrt(BaseAction.sesLoginName());
 						this.reverse.setNotes(this.getNotes());
 						this.service.SuspendReversalSave(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.reverse);
+						this.setMessage("Transaction Saving Success");
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
@@ -208,31 +222,31 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			{
 				final StringBuilder sql = new StringBuilder();
 				
-				sql.append(" partnercode = '" + BaseAction.sesPartnerCode() + "' and office = '" + BaseAction.sesOfficeId() + "' and status = 'NE' ");
+				sql.append(" A.partnercode = '" + BaseAction.sesPartnerCode() + "' and A.office = '" + BaseAction.sesOfficeId() + "' and A.status = 'NE' ");
 				
 				if (this.getBankaccountId() != null)
 					{
-						sql.append(" and  bankaccountid = " + this.getBankaccountId());
+						sql.append(" and  A.bankAccountid = " + this.getBankaccountId());
 						
 					}
 
 				if (!this.valuedatesearch.equals(""))
 					{
-						sql.append(" and  valuedate  <= " + this.valuedatesearch);
+						sql.append(" and  A.valueDate  <= " + this.valuedatesearch);
 					}
 					
 				if (!this.postingdatesearch.equals(""))
 					{
-						sql.append(" and  valuedate  <= " + this.postingdatesearch);
+						sql.append(" and  A.valueDate  <= " + this.postingdatesearch);
 						
 					}
 				if (!this.amountstart.equals(""))
 					{
-						sql.append(" and amount > " + this.amountstart);
+						sql.append(" and A.amount > " + this.amountstart);
 					}
 				if (!this.amountend.equals(""))
 					{
-						sql.append(" and amount <= " + this.amountend);
+						sql.append(" and A.amount <= " + this.amountend);
 					}
 
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
@@ -254,7 +268,8 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
-						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), "", "");
+
 					}
 				catch (final Exception exp)
 					{
@@ -274,6 +289,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 						final SuspendEntryService entryService = new SuspendEntryDao();
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = entryService.getCurrentpage();
+
 					}
 				catch (final Exception exp)
 					{
@@ -284,24 +300,31 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 					}
 			}
 
-		private void ViewData() throws Exception
+		private String ViewData() throws Exception
 			{
+				String status = "";
+
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
+						final BankAccountService baservice = new BankAccountDao();
 						if (this.getId() != null)
 							{
 								this.receive = entryService.View(this.getId());
 								this.setValuedate(this.dateformat.format(this.receive.getValueDate()));
 								this.setPostingDate(this.dateformat.parse(this.dateformat.format(this.receive.getPostingDate())));
 								this.setAmount(this.receive.getAmount());
-								this.setBankaccountId(this.receive.getBankAccountId());
+								this.setBankaccountname(baservice.View(this.receive.getBankAccountId()).getBankAccountName());
 								this.setCurrencyId(this.receive.getCurrencyId());
 								this.setCurrencyRate(this.receive.getCurrencyRate());
+								status = "entry";
+								
+							}
+						else
+							{
+								status = "search";
 							}
 							
-						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = entryService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -311,6 +334,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return status;
 			}
 			
 		public void ListBankAccount() throws Exception
