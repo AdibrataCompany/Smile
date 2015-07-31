@@ -7,11 +7,7 @@
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Bootstrap CSS and bootstrap datepicker CSS used for styling the demo pages-->
-<link rel="stylesheet" href="/Smile/Pages/style/css/datepicker.css">
-<link rel="stylesheet" href="/Smile/Pages/style/css/bootstrap.css">
-<link rel="stylesheet" href="/Smile/Pages/style/css/alert.css">
-<script src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
-<script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
+
 </head>
 <body>
 	<div align="left" class="form-group">
@@ -27,12 +23,5 @@
 	</div>
 	
 </body>
-<script type="text/javascript">
-	// When the document is ready
-	$(document).ready(function() {
-		$('.date').datepicker({
-			format : "dd/mm/yyyy"
-		});
-	});
-</script>
+
 </html>

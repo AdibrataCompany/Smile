@@ -20,7 +20,7 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="suspendreverse.action" theme="simple">
 			<center>
-				<div class="col-md-4"></div>
+				
 				<div class="col-md-4">
 					<h2>Suspend Reverse</h2>
 					<s:hidden name="id" />
@@ -61,7 +61,7 @@
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"

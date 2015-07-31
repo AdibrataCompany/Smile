@@ -16,12 +16,12 @@ import com.adibrata.smartdealer.model.SuspendReverse;
 import com.adibrata.smartdealer.service.accmaint.SuspendEntryService;
 import com.adibrata.smartdealer.service.accmaint.SuspendReversalService;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
-import com.opensymphony.xwork2.Preparable;
+import com.opensymphony.xwork2.Action;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class SuspendReverseAction extends BaseAction implements Preparable
+public class SuspendReverseAction extends BaseAction implements Action
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -54,6 +54,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		private String postingdate;
 		private String strStatement;
 		private StringBuilder hql = new StringBuilder();
+		private String searchcode;
 		int pagesize;
 		private int currentpage;
 		private long totalrecord;
@@ -78,7 +79,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 			}
 
 		@Override
-		public String execute() throws Exception
+		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
@@ -101,7 +102,15 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 										}
 									break;
 								case "save" :
-									strMode = this.SaveSuspendReverse();
+									try
+										{
+											strMode = this.SaveSuspendReverse();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
 									this.pageNumber = 1;
@@ -158,7 +167,6 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 									try
 										{
 											strMode = this.ViewData();
-											break;
 										}
 									catch (final Exception e)
 										{
@@ -169,6 +177,7 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 
 								default :
 									return ERROR;
+									
 							}
 					}
 				else
@@ -883,5 +892,22 @@ public class SuspendReverseAction extends BaseAction implements Preparable
 		public void setPostingdate(final String postingdate)
 			{
 				this.postingdate = postingdate;
+			}
+			
+		/**
+		 * @return the searchcode
+		 */
+		public String getSearchcode()
+			{
+				return this.searchcode;
+			}
+			
+		/**
+		 * @param searchcode
+		 *            the searchcode to set
+		 */
+		public void setSearchcode(final String searchcode)
+			{
+				this.searchcode = searchcode;
 			}
 	}

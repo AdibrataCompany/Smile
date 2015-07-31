@@ -20,7 +20,7 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="suspendreceive.action" theme="simple">
 			<center>
-				<div class="col-md-4"></div>
+
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
 					<s:hidden name="id" />
@@ -89,5 +89,8 @@
 	function end() {
 		document.getElementById("mode").value = "end";
 	}
+	
+	
 </script>
+
 </html>
