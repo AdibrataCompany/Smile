@@ -27,13 +27,22 @@ public class ClassTest
 				b.setId(1);
 				
 				final SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-				final Date duedate = fmt.parse("20/12/2015");
-
-				System.out.print(duedate);
-
+				fmt.parse("20/12/2015");
+				
 				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-				final Date test = df.parse(df.format(Calendar.getInstance().getTime()));
-				System.out.print(test);
+				df.parse(df.format(Calendar.getInstance().getTime()));
+				
+				final String dt = "2008-01-01";  // Start date
+				
+				final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				final Date test = sdf.parse(dt);
+				
+				final Calendar c = Calendar.getInstance();
+				c.setTime(test);
+				c.add(Calendar.DATE, -1);  // number of days to add
+				
+				System.out.print(c.getTime());
+				
 				/*
 				 * System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));
 				 * System.out.println((short) ((valuedate.getTime() - dudate.getTime()) / (24 * 60 * 60 * 1000)));
@@ -62,7 +71,7 @@ public class ClassTest
 				/* System.out.println(g); */
 				
 			}
-
+			
 		/*
 		 * public static void main(String[] args) throws ParseException { //
 		 * TODO

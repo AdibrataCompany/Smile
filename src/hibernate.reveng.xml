@@ -139,4 +139,5 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
   <table-filter match-catalog="SmartDealer" match-name="ZipCode"/>
+  <table-filter match-catalog="SmartDealer" match-name="AdvanceCashReversal"/>
 </hibernate-reverse-engineering>

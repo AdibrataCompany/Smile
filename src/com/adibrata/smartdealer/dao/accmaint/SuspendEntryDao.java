@@ -48,7 +48,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				 * "select A.Id, A.ValueDate, A.SuspendCode, A.PostingDate, A.Amount, C.Code as Currency, A.CurrencyRate, A.Notes, B.bankAccountName As BankAccountName From SuspendReceive A Inner Join BankAccount B on A.BankAccountId = B.ID inner join Currency C on A.CurrencyId = C.ID";
 				 * this.strStatementCount = "select Count(1) From SuspendReceive A Inner Join BankAccount B on A.BankAccountId = B.ID inner join Currency C on A.CurrencyId = C.ID";
 				 */
-				this.strStatement = "From SuspendReceive A, BankAccount B, Currency C  where  A.bankAccountId = B.id and A.currencyId = C.id ";
+				this.strStatement = "From SuspendReceive A, BankAccount B, Currency C, Partner P, Office O where  A.partner = P.partnerCode and A.bankAccountId = B.id and A.currencyId = C.id  and A.office = O.id";
 				
 			}
 
@@ -105,7 +105,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						hql.append(this.strStatement);
 						if (WhereCond != "")
 							{
-								hql.append(" where ");
+								hql.append(" and ");
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.session.createQuery(hql.toString());

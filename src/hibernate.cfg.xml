@@ -23,8 +23,6 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.use_sql_comments">false</property>
         <property name="hibernate.validator.apply_to_ddl">auto</property>
-        <mapping class="com.adibrata.smartdealer.model.SuspendList"/>
-        
         <mapping class="com.adibrata.smartdealer.model.PettyCashDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.InsCompany" />
@@ -79,6 +77,7 @@
         <mapping class="com.adibrata.smartdealer.model.JrnlHdr" />
         <mapping class="com.adibrata.smartdealer.model.AssetDocMaster" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntIns" />
+        <mapping class="com.adibrata.smartdealer.model.AdvanceCashReversal" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEmergencyInfo" />
         <mapping class="com.adibrata.smartdealer.model.GoLive" />
         <mapping class="com.adibrata.smartdealer.model.Office" />

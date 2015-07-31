@@ -28,29 +28,25 @@
 				<div class="table-responsive">
 					<table width="100%">
 						<tr>
-							<td>Bank Account</td>
-							<td><s:select list="lstBankAccount" name="bankAccountid"
+							<td width="15%">Bank Account</td>
+							<td><s:select list="lstBankAccount" name="bankaccountid"
 									value="bankaccountname" label="Select Bank Account"
 									headerKey="" headerValue="Select Bank Account" /></td>
 						</tr>
+					</table>
+
+					<%@include file="/Pages/Include/ValueDate.jsp"%>
+					<%@include file="/Pages/Include/PostingDate.jsp"%>
+					<table width="100%">
 						<tr>
-							<td><%@include file="/Pages/Include/ValueDate.jsp"%>
-							</td>
-						</tr>
-						<tr>
-							<td><%@include file="/Pages/Include/PostingDate.jsp"%>
-							</td>
-						</tr>
-						<tr>
-							<th>Amount</th>
+							<th width="15%">Amount</th>
 							<td><s:textfield name="amountstart" style="width:200px"
 									placeholder="Amount >" class="form-control" /> and <s:textfield
 									name="amountend" style="width:200px" placeholder="Amount <="
 									class="form-control" /></td>
 						</tr>
 						<tr>
-
-							<td width="10%">Searching</td>
+							<td width="15%">Searching</td>
 							<td><div align="left" class="form-inline">
 									<select name="searchcriteria">
 										<option value="0">Search Critera</option>

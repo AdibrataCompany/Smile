@@ -18,25 +18,32 @@
 			</result>
 			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			<result name="save">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="adddetail">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-			</result>
+
 		</action>
 		<action name="advancecashreverse"
-			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceRequestAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceReverseAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceReturn.jsp
 			</result>
-			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
-			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceReturn.jsp
 			</result>
-			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceReverse.jsp
+			<result name="entry">/Pages/CashTransaction/AdvanceTransaction/AdvanceReturn.jsp
+			</result>
+			<result name="first">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
+			</result>
+			<result name="prev">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
+			</result>
+			<result name="next">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jspp
+			</result>
+			<result name="last">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
 		</action>
 		<action name="paymentrequest"
@@ -58,6 +65,45 @@
 			</result>
 		</action>
 		<action name="pettycash"
+			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="end">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+		</action>
+
+		<action name="pettycashcorrection"
+			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="end">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			</result>
+		</action>
+
+
+		<action name="pettycashreimbursement"
 			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp

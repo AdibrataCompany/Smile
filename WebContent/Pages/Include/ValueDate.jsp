@@ -14,19 +14,18 @@
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
-	<table width="100%">
-		<tr>
-			<td  width="30%">Value Date</td>
-			<td>
-				<div class="input-append date">
+	<div align="left" class="form-group">
+		<label>Value Date</label>
+		<div align="left" class="form-inline">
+			<div class="input-append date">
 					<s:textfield name="valuedate" placeholder="Value Date"
 						class="form-control" />
 					<span class="add-on"><i class="icon-th"><img
 							src="Pages/style/calendar.png" /></i></span>
 				</div>
-			</td>
-		</tr>
-	</table>
+		</div>
+	</div>
+	
 </body>
 <script type="text/javascript">
 	// When the document is ready

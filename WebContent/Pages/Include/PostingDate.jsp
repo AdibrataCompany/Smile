@@ -14,19 +14,18 @@
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
-	<table>
-		<tr>
-			<td width="30%">Posting Date</td>
-			<td>
-				<div class="input-append date">
-					<s:textfield name="postingdate" placeholder="Posting Date"
-						class="form-control" />
-					<span class="add-on"><i class="icon-th"><img
-							src="Pages/style/calendar.png" /></i></span>
-				</div>
-			</td>
-		</tr>
-	</table>
+
+	<div align="left" class="form-group">
+		<label>Posting Date</label>
+		<div align="left" class="form-inline">
+			<s:textfield name="postingdate" placeholder="Posting Date"
+				class="form-control" />
+			<span class="add-on"><i class="icon-th"><img
+					src="Pages/style/calendar.png" /></i></span>
+		</div>
+	</div>
+	
+
 </body>
 <script type="text/javascript">
 	// When the document is ready
