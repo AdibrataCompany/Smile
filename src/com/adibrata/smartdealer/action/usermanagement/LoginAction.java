@@ -1,284 +1,304 @@
+
 package com.adibrata.smartdealer.action.usermanagement;
 
-/**
- * @author Henry
- *
- */
-import com.opensymphony.xwork2.ActionSupport;
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.usermanagement.LoginDao;
+import com.adibrata.smartdealer.model.MsUser;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
+import com.adibrata.smartdealer.service.usermanagement.LoginService;
 import com.opensymphony.xwork2.Preparable;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
-
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
-import util.adibrata.support.common.*;
-
-import com.adibrata.smartdealer.model.*;
-import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
-import com.adibrata.smartdealer.service.usermanagement.UserService;
-
-public class LoginAction extends ActionSupport implements Preparable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private String mode;
-	private UserService userService;
-	private Partner partner;
-	private Office office;
-	private List<MsUser> lstMsUser;
-	private String searchcriteria;
-	private String searchvalue;
-	private int pageNumber;
-	private String usrUpd;
-	private String usrCrt;
-	private String message;
-
-	private String Paging() throws Exception {
-
-		String status = "";
-		try {
-			/*
-			 * String wherecond = ""; if
-			 * (this.getSearchcriteria().contains("%")) wherecond =
-			 * this.getSearchvalue() + " like " + this.getSearchcriteria(); else
-			 * wherecond = this.getSearchvalue() + " = " +
-			 * this.getSearchcriteria();
-			 * 
-			 * this.lstBankAccount = this.bankAccountService.Paging(
-			 * this.getPageNumber(), wherecond, "");
-			 */
-
-			status = "success";
-		} catch (Exception exp) {
-			status = "Failed";
-			ExceptionEntities lEntExp = new ExceptionEntities();
-			lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1]
-					.getClassName());
-			lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1]
-					.getMethodName());
-			ExceptionHelper.WriteException(lEntExp, exp);
-		}
-		return status;
-	}
-
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	/**
-	 * @return the userService
-	 */
-	public UserService getUserService() {
-		return userService;
-	}
-
-	/**
-	 * @return the partner
-	 */
-	public Partner getPartner() {
-		return partner;
-	}
-
-	/**
-	 * @return the office
-	 */
-	public Office getOffice() {
-		return office;
-	}
-
-	/**
-	 * @return the lstMsUser
-	 */
-	public List<MsUser> getLstMsUser() {
-		return lstMsUser;
-	}
-
-	/**
-	 * @param userService
-	 *            the userService to set
-	 */
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-
-	/**
-	 * @param partner
-	 *            the partner to set
-	 */
-	public void setPartner(Partner partner) {
-		this.partner = partner;
-	}
-
-	/**
-	 * @param office
-	 *            the office to set
-	 */
-	public void setOffice(Office office) {
-		this.office = office;
-	}
-
-	/**
-	 * @param lstMsUser
-	 *            the lstMsUser to set
-	 */
-	public void setLstMsUser(List<MsUser> lstMsUser) {
-		this.lstMsUser = lstMsUser;
-	}
-
-	public String login() {
-		if (mode != null) {
-			if (mode.equals("home")) {
-				return "home";
+public class LoginAction extends BaseAction implements Preparable
+	{
+		
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		private String mode;
+		private LoginService service;
+		private Partner partner;
+		private Office office;
+		private MsUser msuser;
+		private int pageNumber;
+		private String usrUpd;
+		private String usrCrt;
+		private String message;
+		private String username;
+		private String password;
+		
+		@Override
+		public String execute()
+			{
+				String strMode;
+				strMode = this.mode;
+				
+				if (this.mode != null)
+					{
+						switch (strMode)
+							{
+								case "login" :
+									try
+										{
+											strMode = this.Checklogin();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+									
+								default :
+									return ERROR;
+							}
+					}
+				else
+					{
+						strMode = "login";
+						this.username = "";
+						this.password = "";
+						
+					}
+				return strMode;
 			}
-		} else {
-			return "login";
-		}
-		return mode;
-	}
-
-	public String home() {
-		return SUCCESS;
-	}
-
-	public String getMode() {
-		return mode;
-	}
-
-	public void setMode(String mode) {
-
-		this.mode = mode;
-	}
-
-	@Override
-	public void prepare() throws Exception {
-
-		// TODO Auto-generated method stub
-
-	}
-
-	public String execute() {
-		String strMode;
-		strMode = mode;
-
-		if (mode != null) {
-			switch (strMode) {
-			case "search":
-				try {
-					strMode = Paging();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			case "edit":
-
-			case "back":
-
-			default:
-				return "failed";
+			
+		@Override
+		public void prepare()
+			{
+				try
+					{
+						this.service = new LoginDao();
+					}
+				catch (final Exception e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
-		} else {
-			strMode = "start";
-		}
-		return strMode;
-	}
 
-	/**
-	 * @return the searchcriteria
-	 */
-	public String getSearchcriteria() {
-		return searchcriteria;
+		private String Checklogin() throws Exception
+			{
+				String status = "login";
+				if (this.getUsername().equals(""))
+					{
+						this.setMessage("Please input User Name");
+					}
+				else if (this.getPassword().equals(""))
+					{
+						this.setMessage("Please input password");
+					}
+				else
+					{
+						this.service = new LoginDao();
+						if (this.service.PasswordVerification(this.getUsername(), this.getPassword()))
+							{
+								status = SUCCESS;
+							}
+						else
+							{
+								this.setMessage("Please verify your username and password");
+							}
+							
+					}
+				return status;
+			}
+			
+		/**
+		 * @return the mode
+		 */
+		public String getMode()
+			{
+				return this.mode;
+			}
+			
+		/**
+		 * @param mode
+		 *            the mode to set
+		 */
+		public void setMode(final String mode)
+			{
+				this.mode = mode;
+			}
+			
+		/**
+		 * @return the service
+		 */
+		public LoginService getService()
+			{
+				return this.service;
+			}
+			
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final LoginService service)
+			{
+				this.service = service;
+			}
+			
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+			
+		/**
+		 * @return the msuser
+		 */
+		public MsUser getMsuser()
+			{
+				return this.msuser;
+			}
+			
+		/**
+		 * @param msuser
+		 *            the msuser to set
+		 */
+		public void setMsuser(final MsUser msuser)
+			{
+				this.msuser = msuser;
+			}
+			
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+			
+		/**
+		 * @param pageNumber
+		 *            the pageNumber to set
+		 */
+		public void setPageNumber(final int pageNumber)
+			{
+				this.pageNumber = pageNumber;
+			}
+			
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+			
+		/**
+		 * @param usrUpd
+		 *            the usrUpd to set
+		 */
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+			
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+			
+		/**
+		 * @param usrCrt
+		 *            the usrCrt to set
+		 */
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
+		/**
+		 * @param message
+		 *            the message to set
+		 */
+		public void setMessage(final String message)
+			{
+				this.message = message;
+			}
+			
+		/**
+		 * @return the username
+		 */
+		public String getUsername()
+			{
+				return this.username;
+			}
+			
+		/**
+		 * @param username
+		 *            the username to set
+		 */
+		public void setUsername(final String username)
+			{
+				this.username = username;
+			}
+			
+		/**
+		 * @return the password
+		 */
+		public String getPassword()
+			{
+				return this.password;
+			}
+			
+		/**
+		 * @param password
+		 *            the password to set
+		 */
+		public void setPassword(final String password)
+			{
+				this.password = password;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
 	}
-
-	/**
-	 * @return the searchvalue
-	 */
-	public String getSearchvalue() {
-		return searchvalue;
-	}
-
-	/**
-	 * @return the pageNumber
-	 */
-	public int getPageNumber() {
-		return pageNumber;
-	}
-
-	/**
-	 * @return the usrUpd
-	 */
-	public String getUsrUpd() {
-		return usrUpd;
-	}
-
-	/**
-	 * @return the usrCrt
-	 */
-	public String getUsrCrt() {
-		return usrCrt;
-	}
-
-	/**
-	 * @return the message
-	 */
-	public String getMessage() {
-		return message;
-	}
-
-	/**
-	 * @param searchcriteria
-	 *            the searchcriteria to set
-	 */
-	public void setSearchcriteria(String searchcriteria) {
-		this.searchcriteria = searchcriteria;
-	}
-
-	/**
-	 * @param searchvalue
-	 *            the searchvalue to set
-	 */
-	public void setSearchvalue(String searchvalue) {
-		this.searchvalue = searchvalue;
-	}
-
-	/**
-	 * @param pageNumber
-	 *            the pageNumber to set
-	 */
-	public void setPageNumber(int pageNumber) {
-		this.pageNumber = pageNumber;
-	}
-
-	/**
-	 * @param usrUpd
-	 *            the usrUpd to set
-	 */
-	public void setUsrUpd(String usrUpd) {
-		this.usrUpd = usrUpd;
-	}
-
-	/**
-	 * @param usrCrt
-	 *            the usrCrt to set
-	 */
-	public void setUsrCrt(String usrCrt) {
-		this.usrCrt = usrCrt;
-	}
-
-	/**
-	 * @param message
-	 *            the message to set
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-}

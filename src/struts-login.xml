@@ -7,9 +7,10 @@
 		namespace="/">
 		<action name="login"
 			class="com.adibrata.smartdealer.action.usermanagement.LoginAction"
-			method="login">
-			<result name="login">Index.jsp</result>
-			<result name="home">menu.jsp</result>
+			method="execute">
+			<result name="login">/index.jsp</result>
+			
+			<result name="success">/Pages/Home.jsp</result>
 		</action>
 
 		<action name="home"
