@@ -57,6 +57,11 @@ public class BaseAction extends ActionSupport implements Preparable
 				
 			}
 			
+		public static Long sesCashierHistoryId()
+			{
+				return (long) 1;
+			}
+			
 		public static String SuccessMessage()
 			{
 				return "Success On Save";
@@ -71,6 +76,7 @@ public class BaseAction extends ActionSupport implements Preparable
 
 		public static String sesPartnerCode()
 			{
+				
 				return "001";
 			}
 			

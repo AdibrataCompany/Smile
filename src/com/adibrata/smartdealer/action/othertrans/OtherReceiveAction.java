@@ -27,7 +27,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class OtherReceiveAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
@@ -38,12 +38,12 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		private Office office;
 		private Partner partner;
 		private OtherReceiveService otherReceiveService;
-
+		
 		private List<OtherRcvDtl> lstOtherRcvDtl;
 		private OtherRcvHdr otherRcvHdr;
-
+		
 		private long id;
-
+		
 		private String message;
 		private String mode;
 		private Map<String, Object> headersession;
@@ -67,23 +67,23 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		private BankAccount bankAccount;
 		private BankAccountService bankAccountService;
 		private Map<Long, String> bankAccountList;
-
+		
 		public OtherReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
 						final OtherReceiveService otherReceiveService = new OtherReceiveDao();
-
+						
 						this.otherReceiveService = otherReceiveService;
-						
-						final BankAccountService bankAccountService = new BankAccountDao();
 
-						this.bankAccountService = bankAccountService;
+						final BankAccountService bankAccountService = new BankAccountDao();
 						
+						this.bankAccountService = bankAccountService;
+
 						final Partner partner = new Partner();
 						final Office office = new Office();
-
+						
 						this.setPartner(partner);
 						this.setOffice(office);
 						this.partner.setPartnerCode(BaseAction.sesPartnerCode());
@@ -91,16 +91,16 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -121,7 +121,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -131,7 +131,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					{
 						switch (strMode)
 							{
-
+								
 								case "savedel" :
 									try
 										{
@@ -147,7 +147,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 									try
 										{
 											this.SaveAdd();
-
+											
 										}
 									catch (final Exception e)
 										{
@@ -166,20 +166,20 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
 							}
 					}
 				else
 					{
-
+						
 						this.Initialisasi();
 						strMode = "start";
 					}
 				return strMode;
 			}
-
+			
 		private void Initialisasi()
 			{
 				RenderMenu();
@@ -189,7 +189,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 				this.otherRcvHdr = new OtherRcvHdr();
 				this.SeqNo = 1;
 			}
-
+			
 		private void SaveAdd() throws Exception
 			{
 				try
@@ -201,16 +201,16 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						otherRcvHdr.setValueDate(DateConvertion.convertStringToDate(this.valueDate));
 						otherRcvHdr.setBankAccountId(this.bankAccountId);
 						otherRcvHdr.setNotes(this.notes);
-
+						
 						final OtherRcvDtl otherRcvDtl = new OtherRcvDtl();
-
+						
 						otherRcvDtl.setCoaName(this.coaName);
 						otherRcvDtl.setCoaCode(this.coaCode);
 						otherRcvDtl.setAmount(this.amount);
 						otherRcvDtl.setDescription(this.description);
-
+						
 						this.lstOtherRcvDtl.add(otherRcvDtl);
-
+						
 						this.session.put("lstOtherRcvDtlSession", this.lstOtherRcvDtl);
 						this.totalAmount = 0.00;
 						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
@@ -220,14 +220,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		private void SaveDel() throws Exception
 			{
@@ -236,27 +236,27 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						this.lstOtherRcvDtl = (List<OtherRcvDtl>) this.session.get("lstOtherRcvDtlSession");
 						this.SeqNo = this.SeqNo - 1;
 						this.lstOtherRcvDtl.remove(this.SeqNo);
-
+						
 						this.session.put("lstOtherRcvDtlSession", this.lstOtherRcvDtl);
 						this.lstOtherRcvDtl = (List<OtherRcvDtl>) this.session.get("lstOtherRcvDtlSession");
 						this.totalAmount = 0.00;
 						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
 							{
 								this.totalAmount += aRow.getAmount();
-
+								
 							}
-
+							
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		private String Save() throws Exception
 			{
 				String status;
@@ -272,15 +272,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						otherRcvHdr.setValueDate(DateConvertion.convertStringToDate(this.valueDate));
 						otherRcvHdr.setBankAccountId(this.bankAccountId);
 						otherRcvHdr.setNotes(this.notes);
-
-						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
-							{
-								aRow.setCoaName(this.coaName);
-								aRow.setCoaCode(this.coaCode);
-								aRow.setAmount(this.amount);
-								aRow.setDescription(this.description);
-							}
-							
+						
 						this.otherReceiveService.Save(sesLoginName(), otherRcvHdr, this.lstOtherRcvDtl);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -296,22 +288,22 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		public void bankAccountComboBox() throws Exception
 			{
 				try
 					{
-						
+
 						this.bankAccounts = this.bankAccountService.listBankAccount(this.partner, this.office, this.Wop, this.bankpurpose);
-						
+
 						this.bankAccountList = new HashMap<Long, String>();
-						
+
 						for (final Iterator<BankAccount> iterator = this.bankAccounts.iterator(); iterator.hasNext();)
 							{
 								this.bankAccount = iterator.next();
 								this.bankAccountList.put(this.bankAccount.getId(), this.bankAccount.getBankAccountName().trim());
 							}
-							
+
 					}
 				catch (final Exception e)
 					{
@@ -319,279 +311,279 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-			
+
 		public Office getOffice()
 			{
 				return this.office;
 			}
-
+			
 		public void setOffice(final Office office)
 			{
 				this.office = office;
 			}
-
+			
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-
+			
 		public void setPartner(final Partner partner)
 			{
 				this.partner = partner;
 			}
-
+			
 		public OtherReceiveService getOtherReceiveService()
 			{
 				return this.otherReceiveService;
 			}
-
+			
 		public void setOtherReceiveService(final OtherReceiveService otherReceiveService)
 			{
 				this.otherReceiveService = otherReceiveService;
 			}
-
+			
 		public long getId()
 			{
 				return this.id;
 			}
-
+			
 		public void setId(final long id)
 			{
 				this.id = id;
 			}
-
+			
 		public String getMessage()
 			{
 				return this.message;
 			}
-
+			
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public Map<String, Object> getSession()
 			{
 				return this.session;
 			}
-
+			
 		public void setSession(final Map<String, Object> session)
 			{
 				this.session = session;
 			}
-
+			
 		public String getRcvFrom()
 			{
 				return this.rcvFrom;
 			}
-
+			
 		public void setRcvFrom(final String rcvFrom)
 			{
 				this.rcvFrom = rcvFrom;
 			}
-			
+
 		// @RequiredFieldValidator(message = "The name is required")
 		public Double getRcvAmount()
 			{
 				return this.rcvAmount;
 			}
-
+			
 		public void setRcvAmount(final Double rcvAmount)
 			{
 				this.rcvAmount = rcvAmount;
 			}
-
+			
 		public String getReffNo()
 			{
 				return this.reffNo;
 			}
-
+			
 		public void setReffNo(final String reffNo)
 			{
 				this.reffNo = reffNo;
 			}
-
+			
 		public Date getPostingDate()
 			{
 				return this.postingDate;
 			}
-
+			
 		public void setPostingDate(final Date postingDate)
 			{
 				this.postingDate = postingDate;
 			}
-
+			
 		public Long getBankAccountId()
 			{
 				return this.bankAccountId;
 			}
-
+			
 		public void setBankAccountId(final Long bankAccountId)
 			{
 				this.bankAccountId = bankAccountId;
 			}
-
+			
 		public String getNotes()
 			{
 				return this.notes;
 			}
-
+			
 		public void setNotes(final String notes)
 			{
 				this.notes = notes;
 			}
-
+			
 		public String getCoaName()
 			{
 				return this.coaName;
 			}
-
+			
 		public void setCoaName(final String coaName)
 			{
 				this.coaName = coaName;
 			}
-
+			
 		public String getCoaCode()
 			{
 				return this.coaCode;
 			}
-
+			
 		public void setCoaCode(final String coaCode)
 			{
 				this.coaCode = coaCode;
 			}
-
+			
 		public Double getAmount()
 			{
 				return this.amount;
 			}
-
+			
 		public void setAmount(final Double amount)
 			{
 				this.amount = amount;
 			}
-
+			
 		public String getDescription()
 			{
 				return this.description;
 			}
-
+			
 		public void setDescription(final String description)
 			{
 				this.description = description;
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		public List<OtherRcvDtl> getLstOtherRcvDtl()
 			{
 				return this.lstOtherRcvDtl;
 			}
-
+			
 		public void setLstOtherRcvDtl(final List<OtherRcvDtl> lstOtherRcvDtl)
 			{
 				this.lstOtherRcvDtl = lstOtherRcvDtl;
 			}
-
+			
 		public OtherRcvHdr getOtherRcvHdr()
 			{
 				return this.otherRcvHdr;
 			}
-
+			
 		public void setOtherRcvHdr(final OtherRcvHdr otherRcvHdr)
 			{
-
+				
 				this.otherRcvHdr = otherRcvHdr;
 			}
-
+			
 		public int getSeqNo()
 			{
 				return this.SeqNo;
 			}
-
+			
 		public void setSeqNo(final int seqNo)
 			{
 				this.SeqNo = seqNo;
 			}
-
+			
 		public double getTotalAmount()
 			{
 				return this.totalAmount;
 			}
-
+			
 		public void setTotalAmount(final double totalAmount)
 			{
 				this.totalAmount = totalAmount;
 			}
-
+			
 		public Map<String, Object> getHeadersession()
 			{
 				return this.headersession;
 			}
-
+			
 		public void setHeadersession(final Map<String, Object> headersession)
 			{
 				this.headersession = headersession;
 			}
-			
+
 		public BankAccount getBankAccount()
 			{
 				return this.bankAccount;
 			}
-			
+
 		public void setBankAccount(final BankAccount bankAccount)
 			{
 				this.bankAccount = bankAccount;
 			}
-			
+
 		public List<BankAccount> getBankAccounts()
 			{
 				return this.bankAccounts;
 			}
-			
+
 		public void setBankAccounts(final List<BankAccount> bankAccounts)
 			{
 				this.bankAccounts = bankAccounts;
 			}
-
+			
 		public Map<Long, String> getBankAccountList()
 			{
 				return this.bankAccountList;
 			}
-
+			
 		public void setBankAccountList(final Map<Long, String> bankAccountList)
 			{
 				this.bankAccountList = bankAccountList;
 			}
-
+			
 		public BankAccountService getBankAccountService()
 			{
 				return this.bankAccountService;
 			}
-			
+
 		public void setBankAccountService(final BankAccountService bankAccountService)
 			{
 				this.bankAccountService = bankAccountService;
 			}
-
+			
 		public String getValueDate()
 			{
 				return this.valueDate;
 			}
-
+			
 		public void setValueDate(final String valueDate)
 			{
 				this.valueDate = valueDate;
 			}
-			
+
 		/**
 		 * @return the wop
 		 */
@@ -599,7 +591,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				return this.Wop;
 			}
-			
+
 		/**
 		 * @param wop
 		 *            the wop to set
@@ -608,5 +600,5 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				this.Wop = wop;
 			}
-
+			
 	}

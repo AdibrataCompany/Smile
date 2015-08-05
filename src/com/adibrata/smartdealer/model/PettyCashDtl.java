@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 3, 2015 11:53:04 AM by Hibernate Tools 4.3.1
+// Generated Aug 5, 2015 10:58:53 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -24,9 +24,10 @@ public class PettyCashDtl implements java.io.Serializable
 		private long id;
 		private PettyCashHdr pettyCashHdr;
 		private Integer seqNo;
-		private String description;
 		private String coaName;
+		private String coaCode;
 		private Double amount;
+		private String description;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -41,14 +42,15 @@ public class PettyCashDtl implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public PettyCashDtl(long id, PettyCashHdr pettyCashHdr, Integer seqNo, String description, String coaName, Double amount, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public PettyCashDtl(long id, PettyCashHdr pettyCashHdr, Integer seqNo, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.pettyCashHdr = pettyCashHdr;
 				this.seqNo = seqNo;
-				this.description = description;
 				this.coaName = coaName;
+				this.coaCode = coaCode;
 				this.amount = amount;
+				this.description = description;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
@@ -91,17 +93,6 @@ public class PettyCashDtl implements java.io.Serializable
 				this.seqNo = seqNo;
 			}
 			
-		@Column(name = "Description", length = 50)
-		public String getDescription()
-			{
-				return this.description;
-			}
-			
-		public void setDescription(String description)
-			{
-				this.description = description;
-			}
-			
 		@Column(name = "CoaName", length = 20)
 		public String getCoaName()
 			{
@@ -113,6 +104,17 @@ public class PettyCashDtl implements java.io.Serializable
 				this.coaName = coaName;
 			}
 			
+		@Column(name = "CoaCode", length = 50)
+		public String getCoaCode()
+			{
+				return this.coaCode;
+			}
+			
+		public void setCoaCode(String coaCode)
+			{
+				this.coaCode = coaCode;
+			}
+			
 		@Column(name = "Amount", precision = 53, scale = 0)
 		public Double getAmount()
 			{
@@ -122,6 +124,17 @@ public class PettyCashDtl implements java.io.Serializable
 		public void setAmount(Double amount)
 			{
 				this.amount = amount;
+			}
+			
+		@Column(name = "Description", length = 50)
+		public String getDescription()
+			{
+				return this.description;
+			}
+			
+		public void setDescription(String description)
+			{
+				this.description = description;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)

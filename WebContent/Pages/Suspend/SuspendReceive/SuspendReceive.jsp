@@ -20,19 +20,21 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="suspendreceive.action" theme="simple">
 			<center>
-
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
 					<s:hidden name="id" />
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
+						<s:textfield name="bankaccountid" style="visibility: hidden;"/> 
+							<s:textfield name="bankaccountname" style="visibility: hidden;"/> 
 					<s:label name="message" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:select list="lstBankAccount" name="bankAccountid"
+						<%-- 	<s:select list="lstBankAccount" name="bankAccountid"
 								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" />
+								headerValue="Select Bank Account" /> --%>
+								<s:label name="bankaccountname"/>
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -68,7 +70,7 @@
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"

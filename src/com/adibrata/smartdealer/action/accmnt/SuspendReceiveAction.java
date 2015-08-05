@@ -3,9 +3,7 @@ package com.adibrata.smartdealer.action.accmnt;
 
 import java.text.ParseException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.accmaint.SuspendEntryDao;
@@ -27,13 +25,15 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+
+		private int pageNumber;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
-		private int pageNumber;
+		
 		private String message;
 		private SuspendReceive receive;
-		private Map<Long, String> lstBankAccount;
+		private List<BankAccount> lstBankAccount;
 		private final SuspendEntryService service;
 		private Office office;
 		private Partner partner;
@@ -41,11 +41,14 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		private Double amount;
 		private Long currencyid;
 		private Double currencyrate;
-		private Long bankAccountid;
+		private Long bankaccountid;
 		private String status;
 		private String valuedate;
 		private String bankaccountname;
 		private String notes;
+		
+		private final BankAccountService bankaccountservice;
+		private BankAccount bankaccount;
 
 		public SuspendReceiveAction() throws Exception
 			{
@@ -54,12 +57,18 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.service = new SuspendEntryDao();
 				this.receive = new SuspendReceive();
-				this.ListBankAccount();
-			}
+				// this.ListBankAccount();
 
+				this.bankaccountservice = new BankAccountDao();
+				if (this.pageNumber == 0)
+					{
+						this.pageNumber = 1;
+					}
+			}
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -82,6 +91,32 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 									strMode = this.SaveSuspend();
 									break;
 									
+								case "select" :
+									strMode = this.ViewData();
+									break;
+
+								case "search" :
+									this.Paging();
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									this.Paging();
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									this.Paging();
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+									break;
+								case "last" :
+									this.Paging(1);
+									break;
 								default :
 									return ERROR;
 							}
@@ -96,6 +131,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			
 		private void InitiallInput() throws ParseException
 			{
+
 				this.setAmount(0.00);
 				this.setValuedate(this.dateformat.format(BaseAction.sesBussinessDate()));
 				this.setNotes("");
@@ -140,31 +176,111 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
-		public void ListBankAccount() throws Exception
+
+		public String ViewData() throws Exception
 			{
+				this.bankaccount = new BankAccount();
+				String status = this.mode;
 				try
 					{
-						final BankAccountService bankaccountservice = new BankAccountDao();
-						final List<BankAccount> lst = bankaccountservice.listBankAccount(this.getPartner(), this.getOffice(), "BA", "");
-
-						this.lstBankAccount = new HashMap<Long, String>();
-						for (final BankAccount row : lst)
+						if (this.getId() != null)
 							{
-								this.lstBankAccount.put(row.getId(), row.getBankAccountName().trim());
+								this.bankaccount = this.bankaccountservice.View(this.getId());
+								this.bankaccountname = this.bankaccount.getBankAccountName();
+								this.bankaccountid = this.getId();
+							}
+						else
+							{
+								status = "end";
+								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
 				catch (final Exception exp)
 					{
-						// TODO: handle exception
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
-						exp.printStackTrace();
 					}
+				return status;
 			}
+
+		private String WhereCond()
+			{
+				String wherecond = "";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						if (this.getSearchcriteria().contains("%"))
+							{
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+							}
+						else
+							{
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+							}
+					}
+				return wherecond;
+			}
+
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstBankAccount = this.bankaccountservice.Paging(this.getPageNumber(), this.WhereCond(), "");
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						this.lstBankAccount = this.bankaccountservice.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		// public void ListBankAccount() throws Exception
+		// {
+		// try
+		// {
+		// final BankAccountService bankaccountservice = new BankAccountDao();
+		// final List<BankAccount> lst = bankaccountservice.listBankAccount(this.getPartner(), this.getOffice(), "BA", "");
+		//
+		// this.lstBankAccount = new HashMap<Long, String>();
+		// for (final BankAccount row : lst)
+		// {
+		// this.lstBankAccount.put(row.getId(), row.getBankAccountName().trim());
+		// }
+		// }
+		// catch (final Exception exp)
+		// {
+		// // TODO: handle exception
+		// this.setMessage(BaseAction.ErrorMessage());
+		// final ExceptionEntities lEntExp = new ExceptionEntities();
+		// lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+		// lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+		// ExceptionHelper.WriteException(lEntExp, exp);
+		// exp.printStackTrace();
+		// }
+		// }
 
 		/**
 		 * @return the mode
@@ -216,24 +332,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
-			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -417,7 +516,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public Long getBankAccountId()
 			{
-				return this.bankAccountid;
+				return this.bankaccountid;
 			}
 
 		/**
@@ -426,7 +525,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public void setBankAccountId(final Long bankAccountId)
 			{
-				this.bankAccountid = bankAccountId;
+				this.bankaccountid = bankAccountId;
 			}
 
 		/**
@@ -470,24 +569,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
-		/**
-		 * @return the lstBankAccount
-		 */
-		public Map<Long, String> getLstBankAccount()
-			{
-				return this.lstBankAccount;
-			}
-			
-		/**
-		 * @param lstBankAccount
-		 *            the lstBankAccount to set
-		 */
-		public void setLstBankAccount(final Map<Long, String> lstBankAccount)
-			{
-				this.lstBankAccount = lstBankAccount;
-			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -518,7 +600,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public Long getBankAccountid()
 			{
-				return this.bankAccountid;
+				return this.bankaccountid;
 			}
 			
 		/**
@@ -527,7 +609,7 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		 */
 		public void setBankAccountid(final Long bankAccountid)
 			{
-				this.bankAccountid = bankAccountid;
+				this.bankaccountid = bankAccountid;
 			}
 			
 		/**
@@ -579,5 +661,81 @@ public class SuspendReceiveAction extends BaseAction implements Preparable
 		public void setNotes(final String notes)
 			{
 				this.notes = notes;
+			}
+
+		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+
+		/**
+		 * @return the bankaccount
+		 */
+		public BankAccount getBankaccount()
+			{
+				return this.bankaccount;
+			}
+
+		/**
+		 * @param bankaccount
+		 *            the bankaccount to set
+		 */
+		public void setBankaccount(final BankAccount bankaccount)
+			{
+				this.bankaccount = bankaccount;
+			}
+
+		/**
+		 * @return the bankaccountservice
+		 */
+		public BankAccountService getBankaccountservice()
+			{
+				return this.bankaccountservice;
+			}
+
+		/**
+		 * @return the lstBankAccount
+		 */
+		public List<BankAccount> getLstBankAccount()
+			{
+				return this.lstBankAccount;
+			}
+
+		/**
+		 * @param lstBankAccount
+		 *            the lstBankAccount to set
+		 */
+		public void setLstBankAccount(final List<BankAccount> lstBankAccount)
+			{
+				this.lstBankAccount = lstBankAccount;
+			}
+			
+		/**
+		 * @return the bankaccountid
+		 */
+		public Long getBankaccountid()
+			{
+				return this.bankaccountid;
+			}
+			
+		/**
+		 * @param bankaccountid
+		 *            the bankaccountid to set
+		 */
+		public void setBankaccountid(final Long bankaccountid)
+			{
+				this.bankaccountid = bankaccountid;
 			}
 	}

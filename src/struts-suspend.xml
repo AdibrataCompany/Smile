@@ -3,14 +3,13 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	
+
 	<package name="suspend" extends="smartdealer-package"
 		namespace="/">
 		<action name="suspendreceive"
 			class="com.adibrata.smartdealer.action.accmnt.SuspendReceiveAction"
 			method="execute">
-			
-			<result name="start">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="start">/Pages/Include/BankAccountPaging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
@@ -18,7 +17,23 @@
 			</result>
 			<result name="save">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-			<result name="end">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="select">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			</result>
+
+			<result name="end">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			
+			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="first">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="prev">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="next">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="last">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="search">/Pages/Include/BankAccountPaging.jsp
 			</result>
 		</action>
 		<action name="suspendallocation"
