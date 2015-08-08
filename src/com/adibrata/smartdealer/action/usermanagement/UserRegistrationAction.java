@@ -1,81 +1,313 @@
 
 package com.adibrata.smartdealer.action.usermanagement;
 
+import java.util.HashMap;
 /**
  * @author Henry
  */
 import java.util.List;
+import java.util.Map;
 
+import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.usermanagement.UserRegisterDao;
 import com.adibrata.smartdealer.model.MsUser;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
+import com.adibrata.smartdealer.model.UserList;
 import com.adibrata.smartdealer.service.usermanagement.UserService;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class UserRegistrationAction extends ActionSupport implements Preparable
+public class UserRegistrationAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mode;
-		private UserService userService;
+		private UserService service;
+		
 		private Partner partner;
 		private Office office;
-		private List<MsUser> lstUser;
+		private List<UserList> lstuser;
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
 		
-		private String Paging() throws Exception
+		private String username;
+		private Long employeeid;
+		private String employeename;
+		private String password;
+		private Short isactive;
+		private Long Id;
+		private Map<Long, String> lstemployee;
+		
+		public UserRegistrationAction() throws Exception
 			{
 				
-				String status = "";
-				try
+				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+				
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
+				if (this.pageNumber == 0)
 					{
-						String wherecond = "";
+						this.pageNumber = 1;
+					}
+					
+				this.service = new UserRegisterDao();
+				this.lstemployee = new HashMap<Long, String>();
+				this.lstemployee = this.ListEmployee(this.partner, this.office);
+				
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+		@Override
+		public String execute()
+			{
+				String strMode;
+				strMode = this.mode;
+				if (this.mode != null)
+					{
+						switch (strMode)
+							{
+								case "search" :
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "edit" :
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e1)
+										{
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									break;
+								case "savedel" :
+									try
+										{
+											strMode = this.SaveDelete();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "saveadd" :
+									try
+										{
+											strMode = this.SaveAdd();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "saveedit" :
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "last" :
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+									
+								default :
+									break;
+									
+							}
+					}
+				else
+					{
+						this.pageNumber = 1;
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						strMode = "start";
+					}
+				return strMode;
+			}
+			
+		/**
+		 *
+		 */
+		
+		private String WhereCond()
+			{
+				String wherecond = "C.partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
 							}
-							
-						this.lstUser = this.userService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "success";
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstuser = this.service.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
 			}
 			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						
+						this.lstuser = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.service.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public void ViewData() throws Exception
+			{
+				MsUser msuser = new MsUser();
+				try
+					{
+						if (this.getId() != null)
+							{
+								msuser = this.service.View(this.getId());
+								this.username = msuser.getUserName();
+								this.password = msuser.getPassword();
+								this.employeeid = msuser.getEmployeeId();
+							}
+						else
+							{
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
 				try
 					{
 						final MsUser msUser = new MsUser();
-						msUser.setId(this.getId());
-						
-						this.userService.SaveAdd(msUser);
+						msUser.setUserName(this.getUsername());
+						msUser.setPassword(this.getPassword());
+						msUser.setEmployeeId(this.getEmployeeid());
+						msUser.setIsActive(this.isactive);
+						this.service.SaveAdd(msUser);
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
@@ -96,8 +328,11 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					{
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
-						
-						this.userService.SaveEdit(msUser);
+						msUser.setUserName(this.getUsername());
+						msUser.setPassword(this.getPassword());
+						msUser.setEmployeeId(this.getEmployeeid());
+						msUser.setIsActive(this.isactive);
+						this.service.SaveEdit(msUser);
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
@@ -119,7 +354,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
 						
-						this.userService.SaveDel(msUser);
+						this.service.SaveDel(msUser);
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
@@ -146,7 +381,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		 */
 		public UserService getUserService()
 			{
-				return this.userService;
+				return this.service;
 			}
 			
 		/**
@@ -180,7 +415,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		 */
 		public void setUserService(final UserService userService)
 			{
-				this.userService = userService;
+				this.service = userService;
 			}
 			
 		/**
@@ -199,84 +434,6 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		public void setOffice(final Office office)
 			{
 				this.office = office;
-			}
-			
-		public UserRegistrationAction()
-			{
-				// TODO Auto-generated constructor stub
-			}
-			
-		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-				
-			}
-			
-		@Override
-		public String execute()
-			{
-				String strMode;
-				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						switch (strMode)
-							{
-								case "search" :
-									try
-										{
-											strMode = this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "edit" :
-								
-								case "del" :
-									try
-										{
-											return this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-										
-								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "saveedit" :
-									try
-										{
-											strMode = this.SaveEdit();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-								case "back" :
-								
-								default :
-									return "failed";
-							}
-					}
-				else
-					{
-						strMode = "start";
-					}
-				return strMode;
 			}
 			
 		/**
@@ -380,39 +537,166 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.message = message;
 			}
+
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
 			
+		/**
+		 * @return the lstemployee
+		 */
+		public Map<Long, String> getLstemployee()
+			{
+				return this.lstemployee;
+			}
+			
+		/**
+		 * @param lstemployee
+		 *            the lstemployee to set
+		 */
+		public void setLstemployee(final Map<Long, String> lstemployee)
+			{
+				this.lstemployee = lstemployee;
+			}
+			
+		/**
+		 * @return the lstuser
+		 */
+		public List<UserList> getLstuser()
+			{
+				return this.lstuser;
+			}
+			
+		/**
+		 * @param lstuser
+		 *            the lstuser to set
+		 */
+		public void setLstuser(final List<UserList> lstuser)
+			{
+				this.lstuser = lstuser;
+			}
+			
+		/**
+		 * @return the service
+		 */
+		public UserService getService()
+			{
+				return this.service;
+			}
+			
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final UserService service)
+			{
+				this.service = service;
+			}
+			
+		/**
+		 * @return the username
+		 */
+		public String getUsername()
+			{
+				return this.username;
+			}
+			
+		/**
+		 * @param username
+		 *            the username to set
+		 */
+		public void setUsername(final String username)
+			{
+				this.username = username;
+			}
+			
+		/**
+		 * @return the employeeid
+		 */
+		public Long getEmployeeid()
+			{
+				return this.employeeid;
+			}
+			
+		/**
+		 * @param employeeid
+		 *            the employeeid to set
+		 */
+		public void setEmployeeid(final Long employeeid)
+			{
+				this.employeeid = employeeid;
+			}
+			
+		/**
+		 * @return the employeename
+		 */
+		public String getEmployeename()
+			{
+				return this.employeename;
+			}
+			
+		/**
+		 * @param employeename
+		 *            the employeename to set
+		 */
+		public void setEmployeename(final String employeename)
+			{
+				this.employeename = employeename;
+			}
+			
+		/**
+		 * @return the password
+		 */
+		public String getPassword()
+			{
+				return this.password;
+			}
+			
+		/**
+		 * @param password
+		 *            the password to set
+		 */
+		public void setPassword(final String password)
+			{
+				this.password = password;
+			}
+
+		/**
+		 * @return the isactive
+		 */
+		public Short getIsactive()
+			{
+				return this.isactive;
+			}
+
+		/**
+		 * @param isactive
+		 *            the isactive to set
+		 */
+		public void setIsactive(final Short isactive)
+			{
+				this.isactive = isactive;
+			}
+
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
-				return this.id;
+				return this.Id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
-				this.id = id;
+				this.Id = id;
 			}
-			
-		/**
-		 * @return the lstUser
-		 */
-		public List<MsUser> getLstUser()
-			{
-				return this.lstUser;
-			}
-			
-		/**
-		 * @param lstUser
-		 *            the lstUser to set
-		 */
-		public void setLstUser(final List<MsUser> lstUser)
-			{
-				this.lstUser = lstUser;
-			}
-			
+
 	}

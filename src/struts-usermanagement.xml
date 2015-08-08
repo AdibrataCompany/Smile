@@ -22,6 +22,12 @@
 
 			<result name="success">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
+			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="first">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+
 		</action>
 
 		<action name="menu"
@@ -66,14 +72,37 @@
 		<action name="userregister"
 			class="com.adibrata.smartdealer.action.usermanagement.UserRegistrationAction"
 			method="execute">
-			<result name="start">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="search">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="edit">/pages/setting/dealer/editDealer.jsp</result>
-			<result name="del">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="saveadd">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="end">/pages/setting/dealer/pageDealer.jsp</result>
-			<result name="add">/pages/setting/dealer/addDealer.jsp</result>
-			<result name="saveedit">/pages/setting/dealer/pageDealer.jsp</result>
+			<result name="start">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="success">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="error">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="search">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="edit">/Pages/UserManagement/UserRegistration/edituser.jsp
+			</result>
+			<result name="del">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="saveadd">/Pages/UserManagement/UserRegistration/adduser.jsp
+			</result>
+			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="add">/Pages/UserManagement/UserRegistration/adduser.jsp
+			</result>
+			<result name="saveedit">/Pages/UserManagement/UserRegistration/adduser.jsp
+			</result>
+			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="first">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="prev">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="next">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+			<result name="last">/Pages/UserManagement/UserRegistration/paging.jsp
+			</result>
+
 		</action>
 	</package>
 </struts>

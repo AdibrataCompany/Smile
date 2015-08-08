@@ -4,20 +4,17 @@
 
 package com.adibrata.smartdealer.dao.usermanagement;
 
-/**
- * @author Henry
- */
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
+import com.adibrata.smartdealer.model.Employee;
 import com.adibrata.smartdealer.model.MsUser;
 import com.adibrata.smartdealer.model.ResetPasswordLog;
+import com.adibrata.smartdealer.model.UserList;
 import com.adibrata.smartdealer.service.usermanagement.UserService;
 
 import util.adibrata.framework.dataaccess.HibernateHelper;
@@ -29,8 +26,6 @@ public class UserRegisterDao extends DaoBase implements UserService
 	{
 		String userupd;
 		Session session;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar dtmupd = Calendar.getInstance();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
@@ -44,7 +39,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 					{
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
-						this.strStatement = " from MsUser ";
+						this.strStatement = "from MsUser A, Employee B, Partner C where A.employeeId = B.id and A.partner = C.partnerCode ";
 						
 					}
 				catch (final Exception exp)
@@ -70,8 +65,8 @@ public class UserRegisterDao extends DaoBase implements UserService
 				this.session.getTransaction().begin();
 				try
 					{
-						msUser.setDtmCrt(this.dtmupd.getTime());
-						msUser.setDtmUpd(this.dtmupd.getTime());
+						msUser.setDtmCrt(this.dtmupd);
+						msUser.setDtmUpd(this.dtmupd);
 						msUser.setIsActive((short) 1);
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
 						this.session.save(msUser);
@@ -102,7 +97,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 				try
 					{
 						
-						msUser.setDtmUpd(this.dtmupd.getTime());
+						msUser.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
 						this.session.update(msUser);
 						
@@ -149,44 +144,6 @@ public class UserRegisterDao extends DaoBase implements UserService
 			
 		/*
 		 * (non-Javadoc)
-		 * @see
-		 * com.adibrata.smartdealer.service.usermanagement.UserRegisterService#Paging
-		 * (int, java.lang.String, java.lang.String)
-		 */
-		@Override
-		public List<MsUser> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
-			{
-				// TODO Auto-generated method stub
-				final StringBuilder hql = new StringBuilder();
-				List<MsUser> list = null;
-				try
-					{
-						hql.append(this.strStatement);
-						if (WhereCond != "")
-							{
-								hql.append(" where ");
-								hql.append(WhereCond);
-							}
-							
-						final Query selectQuery = this.session.createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
-						list = selectQuery.list();
-						
-					}
-				catch (final Exception exp)
-					{
-						
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return list;
-			}
-			
-		/*
-		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.usermanagement.UserService#ResetPassword(com.adibrata.smartdealer.model.MsUser)
 		 */
 		@Override
@@ -199,15 +156,15 @@ public class UserRegisterDao extends DaoBase implements UserService
 				try
 					{
 						
-						msUser.setDtmUpd(this.dtmupd.getTime());
-						resetpasswordlog.setDtmCrt(this.dtmupd.getTime());
-						resetpasswordlog.setDtmUpd(this.dtmupd.getTime());
+						msUser.setDtmUpd(this.dtmupd);
+						resetpasswordlog.setDtmCrt(this.dtmupd);
+						resetpasswordlog.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA("Password"));
 						this.session.update(msUser);
 						
 						resetpasswordlog.setPartner(msUser.getPartner());
 						resetpasswordlog.setUserName(msUser.getUserName());
-						resetpasswordlog.setResetPasswordTime(this.dtmupd.getTime());
+						resetpasswordlog.setResetPasswordTime(this.dtmupd);
 						resetpasswordlog.setResetBy("Admin");
 						resetpasswordlog.setUsrUpd(msUser.getUsrUpd());
 						resetpasswordlog.setUsrCrt(msUser.getUsrCrt());
@@ -247,40 +204,113 @@ public class UserRegisterDao extends DaoBase implements UserService
 					}
 				return msUser;
 			}
-			
+
+		@SuppressWarnings("unchecked")
 		@Override
-		public List<MsUser> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
+		public List<UserList> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
+
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
-				List<MsUser> list = null;
+				List<UserList> list = null;
+				MsUser msuser = new MsUser();
+				Employee employee = new Employee();
 				try
 					{
 						hql.append(this.strStatement);
 						if (WhereCond != "")
 							{
-								hql.append(" where ");
+								hql.append(" and ");
 								hql.append(WhereCond);
 							}
-							
+
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
-						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
-						
-						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
+						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("UserList" + WhereCond);
 						selectQuery.setMaxResults(this.pagesize);
-						list = selectQuery.list();
-						
+
+						final List<Object[]> lst = selectQuery.list();
+						list = new ArrayList<UserList>();
+						if (lst.size() != 0)
+							{
+								for (final Object[] aRow : lst)
+									{
+										msuser = (MsUser) aRow[0];
+										employee = (Employee) aRow[1];
+										
+										final UserList userlist = new UserList();
+										userlist.setId(msuser.getId());
+										userlist.setEmployeeName(employee.getName());
+										userlist.setUserName(msuser.getUserName());
+										list.add(userlist);
+									}
+							}
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				finally
+					{
+						hql.setLength(0);
+					}
 				return list;
 			}
-			
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<UserList> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
+			{
+				final StringBuilder hql = new StringBuilder();
+				List<UserList> list = null;
+
+				try
+					{
+						hql.append(this.strStatement);
+						if (WhereCond != "")
+							{
+								hql.append(" and ");
+								hql.append(WhereCond);
+							}
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
+						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("UserList" + WhereCond);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
+						list = selectQuery.list();
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				finally
+					{
+						hql.setLength(0);
+					}
+				return list;
+			}
+
+		@Override
+		public int getCurrentpage()
+			{
+				return this.currentpage;
+			}
+
+		public void setCurrentpage(final int currentpage)
+			{
+				this.currentpage = currentpage;
+			}
 	}
