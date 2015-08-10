@@ -10,6 +10,7 @@ package com.adibrata.smartdealer.action.usermanagement;
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.usermanagement.RoleDao;
 import com.adibrata.smartdealer.model.MsRole;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
@@ -21,13 +22,14 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class RoleAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mode;
-		private RoleService roleService;
+		private RoleService service;
+		private MsRole role;
 		private Partner partner;
 		private Office office;
 		private MsRole msRole;
@@ -38,60 +40,349 @@ public class RoleAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
-		
-		private String Paging()
+		private Long id;
+		private Boolean isactive;
+		private String rolename;
+
+		public RoleAction() throws Exception
 			{
-				
-				String status = "";
-				try
+				this.partner = new Partner();
+				this.office = new Office();
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
+
+				if (this.pageNumber == 0)
 					{
-						String wherecond = "";
+						this.pageNumber = 1;
+					}
+
+				this.service = new RoleDao();
+				this.role = new MsRole();
+			}
+
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+		@Override
+		public String execute()
+			{
+				String strMode;
+				strMode = this.mode;
+				if (this.mode != null)
+					{
+						switch (strMode)
+							{
+								case "search" :
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "edit" :
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e1)
+										{
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									break;
+								case "savedel" :
+									try
+										{
+											strMode = this.SaveDelete();
+											break;
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "saveadd" :
+									try
+										{
+											strMode = this.SaveAdd();
+											break;
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "saveedit" :
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "first" :
+									this.pageNumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "next" :
+									this.pageNumber += 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "last" :
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+
+								default :
+									break;
+
+							}
+					}
+				else
+					{
+						this.pageNumber = 1;
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						strMode = "start";
+					}
+				return strMode;
+			}
+
+		/**
+		 *
+		 */
+
+		private String WhereCond()
+			{
+				final StringBuilder wherecond = new StringBuilder();
+				wherecond.append("partnerCode = '" + BaseAction.sesPartnerCode() + "'");
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						wherecond.append(" and ");
 						if (this.getSearchcriteria().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
+								wherecond.append(this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ");
 							}
 						else
 							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
+								wherecond.append(this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
 							}
-							
-						this.lstRole = this.roleService.Paging(this.getPageNumber(), wherecond, "");
-						
-						status = "success";
+					}
+				return wherecond.toString();
+			}
+
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstRole = this.service.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						status = "Failed";
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						try
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+
+						this.lstRole = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.service.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		public void ViewData() throws Exception
+			{
+
+				try
+					{
+						if (this.getId() != null)
 							{
-								ExceptionHelper.WriteException(lEntExp, exp);
+								this.role = new MsRole();
+								this.role = this.service.View(this.getId());
+								this.rolename = this.role.getRoleName();
+								if (this.role.getIsActive() == 1)
+									{
+										this.isactive = true;
+									}
+								else
+									{
+										this.isactive = false;
+									}
 							}
-						catch (final Exception e)
+						else
 							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								this.setMessage(BaseAction.SelectFirst());
 							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+
+		private String SaveAdd() throws Exception
+			{
+				String status = this.mode;
+				try
+					{
+						this.role = new MsRole();
+						this.role.setPartner(this.getPartner());
+						this.role.setRoleName(this.getRolename());
+						if (this.isactive)
+							{
+								this.role.setIsActive((short) 1);
+							}
+						else
+							{
+								this.role.setIsActive((short) 0);
+							}
+						this.role.setUsrCrt(BaseAction.sesLoginName());
+						this.role.setUsrUpd(BaseAction.sesLoginName());
+						this.service.SaveAdd(this.role);
+						status = SUCCESS;
+
+					}
+				catch (final Exception exp)
+
+					{
+						status = ERROR;
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return status;
+
+			}
+
+		private String SaveEdit() throws Exception
+			{
+				String status = this.mode;
+				try
+					{
+						if (this.getId() != null)
+							{
+								this.role = this.service.View(this.getId());
+								this.role.setId(this.getId());
+								this.role.setPartner(this.getPartner());
+								this.role.setRoleName(this.getRolename());
+								if (this.isactive)
+									{
+										this.role.setIsActive((short) 1);
+									}
+								else
+									{
+										this.role.setIsActive((short) 0);
+									}
+								this.role.setUsrCrt(BaseAction.sesLoginName());
+								this.role.setUsrUpd(BaseAction.sesLoginName());
+								this.service.SaveEdit(this.role);
+								status = SUCCESS;
+							}
+						else
+							{
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						status = ERROR;
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return status;
 			}
 			
-		private String SaveAdd()
+		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				String status = this.mode;
 				try
 					{
-						final MsRole msRole = new MsRole();
-						/*
-						 * bankAccount.setBankAccountCode(this.getBankAccountCode());
-						 * bankAccount.setBankAccountName(this.getBankAccountName());
-						 * bankAccount.setCoacode(this.getCoacode());
-						 */
-						
-						this.roleService.SaveAdd(msRole);
+						this.role.setId(this.getId());
+						this.service.SaveDel(this.role);
 						status = SUCCESS;
 					}
 				catch (final Exception exp)
@@ -100,84 +391,11 @@ public class RoleAction extends BaseAction implements Preparable
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						try
-							{
-								ExceptionHelper.WriteException(lEntExp, exp);
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return status;
 			}
-			
-		private String SaveEdit()
-			{
-				String status = "";
-				try
-					{
-						final MsRole msRole = new MsRole();
-						msRole.setId(this.getId());
-						
-						/*
-						 * bankAccount.setBankAccountCode(this.getBankAccountCode());
-						 * bankAccount.setBankAccountName(this.getBankAccountName());
-						 * bankAccount.setCoacode(this.getCoacode());
-						 */
-						
-						this.roleService.SaveEdit(msRole);
-						status = SUCCESS;
-					}
-				catch (final Exception exp)
-					{
-						status = ERROR;
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						try
-							{
-								ExceptionHelper.WriteException(lEntExp, exp);
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
-				return status;
-			}
-			
-		private String SaveDelete()
-			{
-				String status = "";
-				try
-					{
-						final MsRole msRole = new MsRole();
-						msRole.setId(this.getId());
-						this.roleService.SaveDel(msRole);
-						status = SUCCESS;
-					}
-				catch (final Exception exp)
-					{
-						status = ERROR;
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						try
-							{
-								ExceptionHelper.WriteException(lEntExp, exp);
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-					}
-				return status;
-			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -185,47 +403,7 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
-		/**
-		 * @return the roleService
-		 */
-		public RoleService getRoleService()
-			{
-				return this.roleService;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the msRole
-		 */
-		public MsRole getMsRole()
-			{
-				return this.msRole;
-			}
-			
-		/**
-		 * @return the lstRole
-		 */
-		public List<MsRole> getLstRole()
-			{
-				return this.lstRole;
-			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -234,16 +412,32 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
-		 * @param roleService
-		 *            the roleService to set
+		 * @return the service
 		 */
-		public void setRoleService(final RoleService roleService)
+		public RoleService getService()
 			{
-				this.roleService = roleService;
+				return this.service;
 			}
-			
+
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final RoleService service)
+			{
+				this.service = service;
+			}
+
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -252,7 +446,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -261,7 +463,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
+		/**
+		 * @return the msRole
+		 */
+		public MsRole getMsRole()
+			{
+				return this.msRole;
+			}
+
 		/**
 		 * @param msRole
 		 *            the msRole to set
@@ -270,7 +480,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.msRole = msRole;
 			}
-			
+
+		/**
+		 * @return the lstRole
+		 */
+		public List<MsRole> getLstRole()
+			{
+				return this.lstRole;
+			}
+
 		/**
 		 * @param lstRole
 		 *            the lstRole to set
@@ -279,58 +497,7 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.lstRole = lstRole;
 			}
-			
-		/**
-		 * 
-		 */
-		public RoleAction()
-			{
-				// TODO Auto-generated constructor stub
-			}
-			
-		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-				
-			}
-			
-		@Override
-		public String execute()
-			{
-				String strMode;
-				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						switch (strMode)
-							{
-								case "search" :
-									strMode = this.Paging();
-								case "edit" :
-								
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									
-									strMode = this.SaveAdd();
-								case "saveadd" :
-									strMode = this.SaveAdd();
-								case "saveedit" :
-									strMode = this.SaveEdit();
-								case "back" :
-								
-								default :
-									return "failed";
-							}
-					}
-				else
-					{
-						strMode = "start";
-					}
-				return strMode;
-			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -338,47 +505,7 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
-			}
-			
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -387,7 +514,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
+		/**
+		 * @return the searchvalue
+		 */
+		public String getSearchvalue()
+			{
+				return this.searchvalue;
+			}
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -396,7 +531,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -405,7 +548,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -414,7 +565,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -423,7 +582,15 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -432,22 +599,81 @@ public class RoleAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
-			
+
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+
+		/**
+		 * @return the isactive
+		 */
+		public Boolean getIsactive()
+			{
+				return this.isactive;
+			}
+
+		/**
+		 * @param isactive
+		 *            the isactive to set
+		 */
+		public void setIsactive(final Boolean isactive)
+			{
+				this.isactive = isactive;
+			}
+
+		/**
+		 * @return the rolename
+		 */
+		public String getRolename()
+			{
+				return this.rolename;
+			}
+
+		/**
+		 * @param rolename
+		 *            the rolename to set
+		 */
+		public void setRolename(final String rolename)
+			{
+				this.rolename = rolename;
+			}
+
+		/**
+		 * @return the role
+		 */
+		public MsRole getRole()
+			{
+				return this.role;
+			}
+
+		/**
+		 * @param role
+		 *            the role to set
+		 */
+		public void setRole(final MsRole role)
+			{
+				this.role = role;
+			}
+
 	}

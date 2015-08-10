@@ -24,9 +24,9 @@
 				<div class="col-md-8">
 
 					<h2>Dealer</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+						<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<table class="table table-striped">
 						<tr>
 							<td>Name</td>

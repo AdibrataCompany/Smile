@@ -9,6 +9,7 @@
 
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
+
 </head>
 <body>
 
@@ -18,70 +19,52 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="advancecashrequest.action" theme="simple">
+		<s:form action="role.action" theme="simple" validate="true">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-					<h2>Suspend Receive</h2>
+
+					<h2>Role Edit</h2>
 					<s:hidden name="mode" id="mode" value="" />
-					<s:hidden name="id" />
+					<s:hidden name="id"/>
 					<s:label name="message" id="message" />
-					<div align="left" class="form-group">
-						<label>Bank Account</label>
-						<div align="left" class="form-inline">
-							<s:select list="lstbankaccount" name="bankaccountid"
-								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" />
-						</div>
-					</div>
-					<div align="left" class="form-group">
-						<label>Employee</label>
-						<div align="left" class="form-inline">
-							<s:select list="lstemployee" name="employeeid"
-								value="employeename" label="Select Employee" headerKey=""
-								headerValue="Select Employee" />
-						</div>
-					</div>
-					<div align="left" class="form-group">
-						<%@include file="/Pages/Include/ValueDate.jsp"%>
-					</div>
 
 					<div align="left" class="form-group">
-						<label>Amount Receive</label>
+						<label>Role Name</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="amount" style="width:95%"
-								placeholder="Advance Receive" class="form-control" />
+							<s:textfield name="rolename" style="width:95%"
+								placeholder="Role Name" class="form-control" />
 						</div>
 					</div>
-
 					<div align="left" class="form-group">
-						<label>Notes</label>
+						<label>Is Active </label>
 						<div align="left" class="form-inline">
-							<s:textfield name="notes" style="width:95%" placeholder="Notes"
-								class="form-control" />
+							<s:checkbox name="isactive" style="width:95%" id="isactive"
+								value="isactive" placeholder="Is Active" class="form-control" />
 						</div>
 					</div>
 					<br>
 					<table width="100%">
 						<tr>
-							<td>
+							<td><button class="btn btn-sm btn-primary" type="submit"
+									onclick="end()">Back</button></td>
+							<td colspan="2" align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
-							</td>
-							<td align="right">
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="save()">Save</button>
+									onclick="saveedit()">Save</button>
 							</td>
 						</tr>
 					</table>
+
+				</div>
 			</center>
 		</s:form>
 	</div>
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function save() {
-		document.getElementById("mode").value = "save";
+	function saveedit() {
+		alert(document.getElementById("mode").value);
+		document.getElementById("mode").value = "saveedit";
 	}
 	function end() {
 		document.getElementById("mode").value = "end";

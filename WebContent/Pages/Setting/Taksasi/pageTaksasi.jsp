@@ -23,7 +23,8 @@
 		<s:form action="taksasi.action" theme="simple">
 			<center>
 				<h2>Taksasi</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>
@@ -65,7 +66,7 @@
 
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function search() {

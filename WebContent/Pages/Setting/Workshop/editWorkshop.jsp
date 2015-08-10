@@ -24,8 +24,9 @@
 				<div class="col-md-8">
 
 					<h2>Workshop</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<s:hidden name="id" />
 					<table class="table table-striped">
 						<tr>
@@ -92,7 +93,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {

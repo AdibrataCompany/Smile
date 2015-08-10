@@ -23,7 +23,9 @@
 		<s:form action="assetdoc.action" theme="simple">
 			<center>
 				<h2>Asset Document Master</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+
+				<s:label name="message" id="message" />
 				<div class="table-responsive">
 					<table width="100%">
 						<tr>

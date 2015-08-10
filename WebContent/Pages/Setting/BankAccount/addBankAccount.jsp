@@ -24,9 +24,9 @@
 				<div class="col-md-4">
 
 					<h2>Bank Account</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
-
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 
 					<div align="left" class="form-group">
 						<label>Bank Name</label>
@@ -53,28 +53,28 @@
 					<div align="left" class="form-group">
 						<label>Type</label>
 						<div align="left" class="form-inline">
-						<select name="type">
+							<select name="type">
 								<option value="">Type</option>
 								<option value="BA">BANK</option>
 								<option value="CA">CASH</option>
-								
-						</select> 
-						
+
+							</select>
+
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Purpose</label>
 						<div align="left" class="form-inline">
-						<select name="purpose">
+							<select name="purpose">
 								<option value="">Purpose</option>
 								<option value="EC">ESCROW</option>
 								<option value="PC">PETTY CASH</option>
 								<option value="FD">FUNDING</option>
-						</select> 
+							</select>
 						</div>
 					</div>
 					<%@include file="/Pages/Include/Address.jsp"%>
-					
+
 					<br>
 					<table width="100%">
 						<tr>
@@ -94,7 +94,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

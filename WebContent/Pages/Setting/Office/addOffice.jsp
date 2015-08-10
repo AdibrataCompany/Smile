@@ -25,25 +25,28 @@
 				<div class="col-md-8">
 
 					<h2>Office</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<div align="left" class="form-group">
 						<label>Name</label>
 						<div align="left" class="form-inline">
-								<s:textfield name="name" style="width:75%"  class="form-control"/>
+							<s:textfield name="name" style="width:75%" class="form-control" />
 						</div>
 					</div>
 					<%@include file="/Pages/Include/Address.jsp"%>
 					<div align="left" class="form-group">
 						<label>Handphone</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="handphone" style="width:150px"  class="form-control"/>
+							<s:textfield name="handphone" style="width:150px"
+								class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Office Type</label>
-						<div align="left" class="form-inline"><s:textfield name="type" style="width:100px"  class="form-control"/> 
-						
+						<div align="left" class="form-inline">
+							<s:textfield name="type" style="width:100px" class="form-control" />
+
 						</div>
 					</div>
 					<br>
@@ -63,7 +66,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

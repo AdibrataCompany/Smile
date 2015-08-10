@@ -24,9 +24,9 @@
 				<div class="col-md-4">
 
 					<h2>COA Master</h2>
+					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:label name="message" id="message" />
 
 					<table class="table table-striped">
 						<tr>
@@ -60,7 +60,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {

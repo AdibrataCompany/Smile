@@ -22,9 +22,9 @@
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<h2>Asset Document Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<div align="left" class="form-group">
 						<label>Code</label>
 						<div align="left" class="form-inline">

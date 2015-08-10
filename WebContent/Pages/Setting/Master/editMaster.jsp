@@ -23,13 +23,14 @@
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<h2>Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<s:hidden name="id" />
 					<div align="left" class="form-group">
 						<label>Master Type</label>
 						<div align="left" class="form-inline">
-							<s:label name="mastertypecode"/> 
+							<s:label name="mastertypecode" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -39,7 +40,7 @@
 								placeholder="Master Code" class="form-control" />
 						</div>
 					</div>
-					
+
 					<div align="left" class="form-group">
 						<label>Master Value</label>
 						<div align="left" class="form-inline">
@@ -47,7 +48,7 @@
 								placeholder="Master Value" class="form-control" />
 						</div>
 					</div>
-					
+
 					<br>
 					<table width="100%">
 						<tr>
@@ -65,7 +66,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {

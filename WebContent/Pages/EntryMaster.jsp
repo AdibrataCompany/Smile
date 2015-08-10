@@ -33,6 +33,7 @@
 
 	}
 	function edit() {
+
 		document.getElementById("mode").value = "edit";
 
 	}

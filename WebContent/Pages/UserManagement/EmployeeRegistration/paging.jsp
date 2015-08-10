@@ -23,7 +23,9 @@
 		<s:form action="employee.action" theme="simple">
 			<center>
 				<h2>Employee Master</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+				<s:label name="message" id="message" />
+
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>

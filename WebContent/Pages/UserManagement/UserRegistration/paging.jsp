@@ -23,7 +23,9 @@
 		<s:form action="userregister.action" theme="simple">
 			<center>
 				<h2>User Register</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+				<s:label name="message" id="message" />
+
 				<div class="table-responsive">
 					<table width="100%">
 						<tr>
@@ -31,8 +33,8 @@
 							<td><div align="left" class="form-inline">
 									<select name="searchcriteria">
 										<option value="0">Search Critera</option>
-										<option value="A.UserName">User Name</option>
-										<option value="B.Name">Employee Name</option>
+										<option value="A.userName">User Name</option>
+										<option value="B.name">Employee Name</option>
 									</select>
 									<s:textfield name="searchvalue" style="width:200px"
 										placeholder="Search value" class="form-control" />
@@ -53,7 +55,7 @@
 						<tr>
 							<th style="text-align: center;">User Name</th>
 							<th style="text-align: center;">Employee Name</th>
-							
+
 							<th style="text-align: center;" width="5%">Pilih</th>
 
 						</tr>
@@ -61,7 +63,7 @@
 							<tr id="row_${id}">
 								<td>${userName}</td>
 								<td>${employeeName}</td>
-								
+
 								<td colspan="2" style="text-align: center;"><input
 									type="radio" name="id" value="${id}" /></td>
 							</tr>

@@ -25,8 +25,9 @@
 				<div class="col-md-4">
 
 					<h2>Zip Code</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<table class="table table-striped">
 						<tr>
 							<td>Kelurahan</td>
@@ -62,7 +63,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveadd() {

@@ -8,8 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
-
-
 </head>
 <body>
 
@@ -23,33 +21,27 @@
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-
 					<h2>Asset Document Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
-
-					<div align="left" class="form-group">
-						<label>Code</label>
-						<div align="left" class="form-inline">
-							<s:textfield name="documentCode" style="width:95%"
-								placeholder="Asset Document Code" class="form-control" />
-						</div>
-					</div>
-					<div align="left" class="form-group">
-						<label>Name </label>
-						<div align="left" class="form-inline">
-							<s:textfield name="documentName" style="width:95%"
-								placeholder="Asset Document Name" class="form-control" />
-						</div>
-					</div>
-
-					<div align="left" class="form-group">
-						<label>Asset Type </label>
-						<div align="left" class="form-inline">
-							<s:textfield name="assettype" style="width:95%"
-								placeholder="Asset Type" class="form-control" />
-						</div>
-					</div>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
+					<table class="table table-striped">
+						<tr>
+							<td>Code</td>
+							<td><s:textfield name="documentCode" style="width:95%"
+									placeholder="Document Code" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Name</td>
+							<td><s:textfield name="documentName" style="width:95%"
+									placeholder="Document Name" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Asset Type</td>
+							<td><s:textfield name="assetType" style="width:95%"
+									placeholder="Asset Type" class="form-control" /></td>
+						</tr>
+					</table>
 					<br>
 					<table width="100%">
 						<tr>

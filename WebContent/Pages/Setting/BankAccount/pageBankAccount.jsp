@@ -23,7 +23,9 @@
 		<s:form action="bankaccount.action" theme="simple">
 			<center>
 				<h2>Bank Account</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
 				<div class="table-responsive">
 					<table width="100%">
 						<tr>
@@ -57,7 +59,8 @@
 								<td>${bankName}</td>
 								<td>${bankAccountCode}</td>
 								<td>${bankAccountName}</td>
-								<td style="text-align: center;"><input type="radio" name="id" value="${id}"/></td>
+								<td style="text-align: center;"><input type="radio"
+									name="id" value="${id}" /></td>
 							</tr>
 						</s:iterator>
 					</table>

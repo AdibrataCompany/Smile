@@ -52,21 +52,35 @@
 		<action name="role"
 			class="com.adibrata.smartdealer.action.usermanagement.RoleAction"
 			method="execute">
-			<result name="start">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="start">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="search">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="success">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="edit">/pages/setting/bankAccount/editBankAccount.jsp
+			<result name="error">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="del">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="search">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="saveadd">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="edit">/Pages/UserManagement/RoleRegistration/editrole.jsp
 			</result>
-			<result name="end">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="del">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="add">/pages/setting/bankAccount/addBankAccount.jsp
+			<result name="saveadd">/Pages/UserManagement/RoleRegistration/addrole.jsp
 			</result>
-			<result name="saveedit">/pages/setting/bankAccount/pageBankAccount.jsp
+			<result name="end">/Pages/UserManagement/RoleRegistration/paging.jsp
+			</result>
+			<result name="add">/Pages/UserManagement/RoleRegistration/addrole.jsp
+			</result>
+			<result name="saveedit">/Pages/UserManagement/RoleRegistration/editrole.jsp
+			</result>
+			<result name="search">/Pages/UserManagement/RoleRegistration/paging.jsp
+			</result>
+			<result name="first">/Pages/UserManagement/RoleRegistration/paging.jsp
+			</result>
+			<result name="prev">/Pages/UserManagement/RoleRegistration/paging.jsp
+			</result>
+			<result name="next">/Pages/UserManagement/RoleRegistration/paging.jsp
+			</result>
+			<result name="last">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
 		</action>
 		<action name="userregister"
@@ -84,13 +98,13 @@
 			</result>
 			<result name="del">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
-			<result name="saveadd">/Pages/UserManagement/UserRegistration/adduser.jsp
-			</result>
 			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
 			<result name="add">/Pages/UserManagement/UserRegistration/adduser.jsp
 			</result>
-			<result name="saveedit">/Pages/UserManagement/UserRegistration/adduser.jsp
+			<result name="saveedit">/Pages/UserManagement/UserRegistration/edituser.jsp
+			</result>
+			<result name="saveadd">/Pages/UserManagement/UserRegistration/adduser.jsp
 			</result>
 			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>

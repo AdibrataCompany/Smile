@@ -23,9 +23,10 @@
 			<center>
 				<h2>Supplier</h2>
 				<div class="table-responsive">
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
-					<table width="100%">
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
+					<table class="table table-striped">
 						<tr>
 							<td width="10%">Search</td>
 							<td><select name="searchcriteria">
@@ -54,24 +55,24 @@
 				<br>
 				<s:label name="message"></s:label>
 				<br>
-					<div class="table-responsive">
-				<table class="table table-bordered">
-					<tr>
-						<th style="text-align: center;">Name</th>
-						<th style="text-align: center;">Address</th>
-						<th style="text-align: center;">Type.</th>
-						<th style="text-align: center;">Phone </th>
-						<th style="text-align: center;" width="5%">Pilih</th>
-					</tr>
-					<s:iterator value="lstDealer">
-						<tr id="row_${id}">
-							<td>${name}</td>
-							<td>${fulladdress}</td>
-							<td>(${areaPhone1})-${phoneNo1}</td>
-							<td><input type="radio" id="${id}" checked /></td>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th style="text-align: center;">Name</th>
+							<th style="text-align: center;">Address</th>
+							<th style="text-align: center;">Type.</th>
+							<th style="text-align: center;">Phone</th>
+							<th style="text-align: center;" width="5%">Pilih</th>
 						</tr>
-					</s:iterator>
-				</table>
+						<s:iterator value="lstDealer">
+							<tr id="row_${id}">
+								<td>${name}</td>
+								<td>${fulladdress}</td>
+								<td>(${areaPhone1})-${phoneNo1}</td>
+								<td><input type="radio" id="${id}" checked /></td>
+							</tr>
+						</s:iterator>
+					</table>
 				</div>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>

@@ -25,40 +25,40 @@
 				<div class="col-md-4">
 
 					<h2>Asset Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 
-<div align="left" class="form-group">
-					<label>Brand</label>
-					<div align="left" class="form-inline">
-						<s:textfield name="assetBrand" style="width:95%"
-							placeholder="Asset Brand" class="form-control" />
+					<div align="left" class="form-group">
+						<label>Brand</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="assetBrand" style="width:95%"
+								placeholder="Asset Brand" class="form-control" />
+						</div>
 					</div>
-				</div>
-				<div align="left" class="form-group">
-					<label>Type</label>
-					<div align="left" class="form-inline">
-						<s:textfield name="assetType" style="width:95%"
-							placeholder="Asset Type" class="form-control" />
+					<div align="left" class="form-group">
+						<label>Type</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="assetType" style="width:95%"
+								placeholder="Asset Type" class="form-control" />
+						</div>
 					</div>
-				</div>
-				<div align="left" class="form-group">
-					<label>Model</label>
-					<div align="left" class="form-inline">
-						<s:textfield name="assetModel" style="width:95%"
-							placeholder="Asset Model" class="form-control" />
+					<div align="left" class="form-group">
+						<label>Model</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="assetModel" style="width:95%"
+								placeholder="Asset Model" class="form-control" />
+						</div>
 					</div>
-				</div>
-				<div align="left" class="form-group">
-				
-					<div align="left" class="form-inline">
-					<label>Active</label>
-						<s:checkbox name="isActive" style="align:left"
-							placeholder="Active" class="form-control" />
+					<div align="left" class="form-group">
+
+						<div align="left" class="form-inline">
+							<label>Active</label>
+							<s:checkbox name="isActive" style="align:left"
+								placeholder="Active" class="form-control" />
+						</div>
 					</div>
-				</div>
-					
+
 					<br>
 					<table width="100%">
 						<tr>
@@ -77,7 +77,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {

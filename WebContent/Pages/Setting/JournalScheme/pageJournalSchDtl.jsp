@@ -23,8 +23,9 @@
 		<s:form action="journalscheme.action" theme="simple">
 			<center>
 				<h2>Journal Scheme</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-				<s:hidden name="id"></s:hidden>
+				<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 			</center>
 			<table width="100%">
 				<tr>

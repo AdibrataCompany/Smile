@@ -23,13 +23,15 @@
 		<s:form action="master.action" theme="simple">
 			<center>
 				<h2>Master</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode" value="" />
+				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
 						<td>Master Type</td>
-						<td><s:select list="lstMasterType" name="mastertypecode" value = "mastertypecode" label = "Select Master Type"
-								headerKey="" headerValue="Select Master Type" /></td>
-								<!-- key="mastertype.mastertypecode" -->
+						<td><s:select list="lstMasterType" name="mastertypecode"
+								value="mastertypecode" label="Select Master Type" headerKey=""
+								headerValue="Select Master Type" /></td>
+						<!-- key="mastertype.mastertypecode" -->
 					</tr>
 					<tr>
 						<td width="10%">Search</td>
@@ -58,7 +60,8 @@
 						<tr id="row_<s:property value="id"/>">
 							<td>${masterCode}</td>
 							<td>${masterValue}</td>
-							<td style="text-align: center;"><input type="radio" name="id" value="${id}"/></td>
+							<td style="text-align: center;"><input type="radio"
+								name="id" value="${id}" /></td>
 						</tr>
 					</s:iterator>
 				</table>
@@ -67,7 +70,7 @@
 
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function search() {

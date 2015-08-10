@@ -25,8 +25,9 @@
 
 					<h2>Bank Account</h2>
 					<s:hidden name="id" />
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<div align="left" class="form-group">
 						<label>Bank Name</label>
 						<div align="left" class="form-inline">
@@ -56,7 +57,7 @@
 								<option value="">Type</option>
 								<option value="BA">BANK</option>
 								<option value="CA">CASH</option>
-						</select> 
+							</select>
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -67,8 +68,8 @@
 								<option value="EC">ESCROW</option>
 								<option value="PC">PETTY CASH</option>
 								<option value="FD">FUNDING</option>
-								
-						</select> 
+
+							</select>
 						</div>
 					</div>
 					<%@include file="/Pages/Include/Address.jsp"%>
@@ -89,7 +90,7 @@
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {
