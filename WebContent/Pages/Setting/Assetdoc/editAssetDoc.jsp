@@ -10,7 +10,6 @@
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 </head>
 <body>
-
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
 		<!-- Main component for a primary marketing message or call to action -->
