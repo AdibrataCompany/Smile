@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,19 +23,17 @@ public class ExcelUtility
 		private String excelfile;
 		@SuppressWarnings("rawtypes")
 		private List lst;
-		
+
 		public ExcelUtility()
 			{
-
+				
 				// TODO Auto-generated constructor stub
 			}
-
-		public List<Map<Long, Object[]>> ReadExcel()
+			
+		public List<Map<Long, Object>> ReadExcel()
 			{
-				final List<Map<Long, Object[]>> lstexcel;
-				final int countercol = 0;
-				final int counterrow = 0;
-				final Map<Long, Object[]> col;
+				final List<Map<Long, Object>> lstexcel = new ArrayList<Map<Long, Object>>();
+				Map<Long, Object> col = null;
 				try
 					{
 
@@ -57,14 +56,14 @@ public class ExcelUtility
 
 								while (cellIterator.hasNext())
 									{
-										col = new HashMap<Long, Object[]>();
+										col = new HashMap<Long, Object>();
 										final Cell cell = cellIterator.next();
 
 										switch (cell.getCellType())
 											{
 												case Cell.CELL_TYPE_BOOLEAN :
 													System.out.print(cell.getBooleanCellValue() + "\t\t");
-													col.put(cell.getRowIndex(), <Object[]>cell.getBooleanCellValue());
+													col.put((long) cell.getRowIndex(), cell.getBooleanCellValue());
 													break;
 												case Cell.CELL_TYPE_NUMERIC :
 													System.out.print(cell.getNumericCellValue() + "\t\t");
@@ -95,7 +94,7 @@ public class ExcelUtility
 					}
 				return lstexcel;
 			}
-		
+
 		/**
 		 * @return the excelfile
 		 */
@@ -103,7 +102,7 @@ public class ExcelUtility
 			{
 				return this.excelfile;
 			}
-
+			
 		/**
 		 * @param excelfile
 		 *            the excelfile to set
@@ -112,7 +111,7 @@ public class ExcelUtility
 			{
 				this.excelfile = excelfile;
 			}
-
+			
 		/**
 		 * @return the lst
 		 */
@@ -120,7 +119,7 @@ public class ExcelUtility
 			{
 				return this.lst;
 			}
-
+			
 		/**
 		 * @param lst
 		 *            the lst to set
@@ -129,5 +128,5 @@ public class ExcelUtility
 			{
 				this.lst = lst;
 			}
-			
+
 	}
