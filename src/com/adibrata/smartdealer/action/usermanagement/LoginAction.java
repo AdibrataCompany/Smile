@@ -7,10 +7,11 @@ package com.adibrata.smartdealer.action.usermanagement;
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.dao.usermanagement.LoginDao;
 import com.adibrata.smartdealer.model.MsUser;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.usermanagement.UserService;
+import com.adibrata.smartdealer.service.usermanagement.LoginService;
 import com.opensymphony.xwork2.Preparable;
 
 public class LoginAction extends BaseAction implements Preparable
@@ -21,7 +22,7 @@ public class LoginAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-		private UserService userService;
+		private LoginService service;
 		private Partner partner;
 		private Office office;
 		private List<MsUser> lstMsUser;
@@ -37,7 +38,7 @@ public class LoginAction extends BaseAction implements Preparable
 
 		public LoginAction() throws Exception
 			{
-				super();
+				
 				// TODO Auto-generated constructor stub
 			}
 
@@ -50,14 +51,23 @@ public class LoginAction extends BaseAction implements Preparable
 
 		public String signin() throws Exception
 			{
-				return SUCCESS;
-
+				this.service = new LoginDao();
+				String status;
+				if (this.service.PasswordVerification(this.username, this.password))
+					{
+						status = SUCCESS;
+					}
+				else
+					{
+						status = "input";
+					}
+				return status;
+				
 			}
-
+			
 		public String home() throws Exception
 			{
 				return "start";
-
 			}
 
 		// @Override
@@ -84,15 +94,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
-		/**
-		 * @return the userService
-		 */
-		public UserService getUserService()
-			{
-				return this.userService;
-			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -116,16 +118,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.lstMsUser;
 			}
-
-		/**
-		 * @param userService
-		 *            the userService to set
-		 */
-		public void setUserService(final UserService userService)
-			{
-				this.userService = userService;
-			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
