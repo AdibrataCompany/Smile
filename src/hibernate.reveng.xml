@@ -6,12 +6,16 @@
 
 		<sql-type jdbc-type="NUMERIC" hibernate-type="Double" />
 		<sql-type jdbc-type="CHAR" hibernate-type="String" />
+		<sql-type jdbc-type="VARBINARY" hibernate-type="Byte[]" />
+		
 	</type-mapping>
    <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCash"/>
+  <table-filter match-catalog="SmartDealer" match-name="AdvanceCashReversal"/>
   <table-filter match-catalog="SmartDealer" match-name="AgmntAssetEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Agrmnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAsset"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetDoc"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetLevelInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetLoctInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntAssetOldOwnerInfo"/>
@@ -20,7 +24,6 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatInfoDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatementInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntColl"/>
-  <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployee"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntIns"/>
@@ -129,8 +132,8 @@
   <table-filter match-catalog="SmartDealer" match-name="StockDocument"/>
   <table-filter match-catalog="SmartDealer" match-name="Supplier"/>
   <table-filter match-catalog="SmartDealer" match-name="SupplierAccInfo"/>
-  <table-filter match-catalog="SmartDealer" match-name="SuspendReceive"/>
   <table-filter match-catalog="SmartDealer" match-name="SuspendAllocation"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuspendReceive"/>
   <table-filter match-catalog="SmartDealer" match-name="SuspendReverse"/>
   <table-filter match-catalog="SmartDealer" match-name="Taksasi"/>
   <table-filter match-catalog="SmartDealer" match-name="TransJob"/>
@@ -139,5 +142,4 @@
   <table-filter match-catalog="SmartDealer" match-name="TrxSeqNo"/>
   <table-filter match-catalog="SmartDealer" match-name="Workshop"/>
   <table-filter match-catalog="SmartDealer" match-name="ZipCode"/>
-  <table-filter match-catalog="SmartDealer" match-name="AdvanceCashReversal"/>
 </hibernate-reverse-engineering>

@@ -92,6 +92,7 @@
         <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOldOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetDoc" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.TransJob" />
         <mapping class="com.adibrata.smartdealer.model.PayHistDtl" />

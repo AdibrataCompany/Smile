@@ -4,12 +4,6 @@
 
 package com.adibrata.smartdealer.dao.cashtransactions;
 
-/**
- * @author Henry
- */
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -30,8 +24,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 	{
 		String userupd;
 		Session session;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar dtmupd = Calendar.getInstance();
+		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
@@ -78,15 +71,15 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 
 						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.paymentrequest);
 						payReqHdr.setPayReqNo(transno);
-						payReqHdr.setDtmCrt(this.dtmupd.getTime());
-						payReqHdr.setDtmUpd(this.dtmupd.getTime());
+						payReqHdr.setDtmCrt(this.dtmupd);
+						payReqHdr.setDtmUpd(this.dtmupd);
 						for (final PayReqDtl arow : lstpayReqDtl)
 							{
 								PayReqDtl payReqDtl = new PayReqDtl();
 								payReqDtl = arow;
 								payReqDtl.setPayReqHdr(payReqHdr);
-								payReqDtl.setDtmCrt(this.dtmupd.getTime());
-								payReqDtl.setDtmUpd(this.dtmupd.getTime());
+								payReqDtl.setDtmCrt(this.dtmupd);
+								payReqDtl.setDtmUpd(this.dtmupd);
 								this.session.save(payReqHdr);
 							}
 						this.session.getTransaction().commit();

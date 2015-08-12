@@ -1,6 +1,7 @@
 
 package com.adibrata.smartdealer.action.customer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
@@ -16,66 +17,86 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class CustomerAction extends BaseAction implements Preparable
 	{
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		private String mode;
-		private CustomerMaintService customerMaintService;
 		private Partner partner;
 		private Customer customer;
-		private List<Customer> lstCustomer;
+
+		private CustomerMaintService customerMaintService;
+		private List<Customer> lstcustomer;
+
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
+		private String mode;
+		private String message;
 		private String usrUpd;
 		private String usrCrt;
+		private int pageNumber;
 		private long id;
-		private String message;
-		
-		private String customerNo;
+
+		private String type;
 		private String name;
 		private String address;
 		private String rt;
 		private String rw;
 		private String kelurahan;
+		private String kecamatan;
 		private String city;
 		private String zipcode;
-		private String type;
-		private String areaPhone1;
-		private String phoneNo1;
-		private String areaPhone2;
-		private String phoneNo2;
-		private String areaFax;
-		private String faxNo;
+		private String areaphone1;
+		private String phoneno1;
+		private String areaphone2;
+		private String phoneno2;
+		private String areafax;
+		private String faxno;
 		private String handphone;
-		private double prepaidAmount;
-		private double aramount;
-		private double arpaid;
-		private double arwaived;
-		
+		private Double prepaidamount;
+		private Double aramount;
+		private Double arpaid;
+		private Double arwaived;
+		private String custtag;
+
 		public CustomerAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final CustomerMaintService customermaintservice = new CustomerDao();
-				
-				this.customerMaintService = customermaintservice;
-				final Partner partner = new Partner();
-				this.setPartner(partner);
+				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setCustomer(this.customer);
+
+				this.customerMaintService = new CustomerDao();
+				this.customer = new Customer();
+
+				this.Initialisasi();
+
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
-				// TODO Auto-generated method stub
-				
+				try
+					{
+						// TODO Auto-generated method stub
+					}
+				catch (final Exception e)
+					{
+						// TODO: handle exception
+						e.printStackTrace();
+					}
 			}
-			
+
+		private void Initialisasi()
+			{
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+
+				this.lstcustomer = new ArrayList<Customer>();
+				this.customer = new Customer();
+			}
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -86,17 +107,27 @@ public class CustomerAction extends BaseAction implements Preparable
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
-									break;
-								case "entry" :
-									this.ViewData();
-									break;
-								case "save" :
-									strMode = this.Save();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
 									this.pageNumber = 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "prev" :
 									this.pageNumber -= 1;
@@ -104,14 +135,38 @@ public class CustomerAction extends BaseAction implements Preparable
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "last" :
-									this.Paging(1);
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								default :
 									break;
@@ -120,14 +175,22 @@ public class CustomerAction extends BaseAction implements Preparable
 				else
 					{
 						this.pageNumber = 1;
-						strMode = "start";
+						try
+							{
+								strMode = "start";
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
-				String wherecond = "";
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -141,471 +204,370 @@ public class CustomerAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstCustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstcustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						this.lstCustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.lstcustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.customerMaintService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
-		public void ViewData() throws Exception
-			{
-				this.customer = new Customer();
-				try
-					{
-						this.customer = this.customerMaintService.View(this.id);
-						this.customerNo = this.customer.getCustomerNo();
-						this.name = this.customer.getName();
-						this.address = this.customer.getAddress();
-						this.rt = this.customer.getRt();
-						this.rw = this.customer.getRw();
-						this.kelurahan = this.customer.getKelurahan();
-						this.city = this.customer.getCity();
-						this.zipcode = this.customer.getZipcode();
-						this.areaPhone1 = this.customer.getAreaPhone1();
-						this.areaPhone2 = this.customer.getAreaPhone2();
-						this.phoneNo1 = this.customer.getPhoneNo1();
-						this.phoneNo2 = this.customer.getPhoneNo2();
-						this.areaFax = this.customer.getAreaFax();
-						this.faxNo = this.customer.getFaxNo();
-						this.handphone = this.customer.getHandphone();
-						this.prepaidAmount = this.customer.getPrepaidAmount();
-						this.aramount = this.customer.getAramount();
-						this.arpaid = this.customer.getArpaid();
-						this.arwaived = this.customer.getArwaived();
-					}
-				catch (final Exception exp)
-					{
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-			}
-			
-		private String Save() throws Exception
-			{
-				String status = "";
-				try
-					{
-						final Customer customer = new Customer();
-						customer.setCustomerNo(this.customerNo);
-						customer.setName(this.name);
-						customer.setAddress(this.address);
-						customer.setRt(this.rt);
-						customer.setRw(this.rw);
-						customer.setKelurahan(this.kelurahan);
-						customer.setCity(this.city);
-						customer.setZipcode(this.zipcode);
-						customer.setAreaPhone1(this.areaPhone1);
-						customer.setAreaPhone2(this.areaPhone2);
-						customer.setPhoneNo1(this.phoneNo1);
-						customer.setPhoneNo2(this.phoneNo2);
-						customer.setAreaFax(this.areaFax);
-						customer.setFaxNo(this.faxNo);
-						customer.setHandphone(this.handphone);
-						customer.setPrepaidAmount(this.prepaidAmount);
-						customer.setAramount(this.aramount);
-						customer.setArpaid(this.arpaid);
-						customer.setArwaived(this.arwaived);
-						this.customerMaintService.Save(this.usrUpd, customer);
-						status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
-					}
-				catch (final Exception exp)
-					{
-						status = ERROR;
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return status;
-			}
-			
-		/**
-		 * @return the mode
-		 */
-		public String getMode()
-			{
-				return this.mode;
-			}
-			
-		/**
-		 * @return the customerMaintService
-		 */
-		public CustomerMaintService getCustomerMaintService()
-			{
-				return this.customerMaintService;
-			}
-			
-		/**
-		 * @return the partner
-		 */
+
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-			
-		/**
-		 * @return the customer
-		 */
-		public Customer getCustomer()
-			{
-				return this.customer;
-			}
-			
-		/**
-		 * @return the lstCustomer
-		 */
-		public List<Customer> getLstCustomer()
-			{
-				return this.lstCustomer;
-			}
-			
-		/**
-		 * @param mode
-		 *            the mode to set
-		 */
-		public void setMode(final String mode)
-			{
-				this.mode = mode;
-			}
-			
-		/**
-		 * @param customerMaintService
-		 *            the customerMaintService to set
-		 */
-		public void setCustomerMaintService(final CustomerMaintService customerMaintService)
-			{
-				this.customerMaintService = customerMaintService;
-			}
-			
-		/**
-		 * @param partner
-		 *            the partner to set
-		 */
+
 		public void setPartner(final Partner partner)
 			{
 				this.partner = partner;
 			}
-			
-		/**
-		 * @param customer
-		 *            the customer to set
-		 */
+
+		public Customer getCustomer()
+			{
+				return this.customer;
+			}
+
 		public void setCustomer(final Customer customer)
 			{
 				this.customer = customer;
 			}
-			
-		/**
-		 * @param lstCustomer
-		 *            the lstCustomer to set
-		 */
-		public void setLstCustomer(final List<Customer> lstCustomer)
+
+		public CustomerMaintService getCustomerMaintService()
 			{
-				this.lstCustomer = lstCustomer;
+				return this.customerMaintService;
 			}
-			
-		public String getSearchcriteria()
+
+		public void setCustomerMaintService(final CustomerMaintService customerMaintService)
 			{
-				return this.searchcriteria;
+				this.customerMaintService = customerMaintService;
 			}
-			
-		public void setSearchcriteria(final String searchcriteria)
+
+		public List<Customer> getLstcustomer()
 			{
-				this.searchcriteria = searchcriteria;
+				return this.lstcustomer;
 			}
-			
-		public String getSearchvalue()
+
+		public void setLstcustomer(final List<Customer> lstcustomer)
 			{
-				return this.searchvalue;
+				this.lstcustomer = lstcustomer;
 			}
-			
-		public void setSearchvalue(final String searchvalue)
+
+		public String getMode()
 			{
-				this.searchvalue = searchvalue;
+				return this.mode;
 			}
-			
-		public int getPageNumber()
+
+		public void setMode(final String mode)
 			{
-				return this.pageNumber;
+				this.mode = mode;
 			}
-			
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-			
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-			
-		public long getId()
-			{
-				return this.id;
-			}
-			
-		public void setId(final long id)
-			{
-				this.id = id;
-			}
-			
+
 		public String getMessage()
 			{
 				return this.message;
 			}
-			
+
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-			
-		public String getCustomerNo()
+
+		public String getSearchcriteria()
 			{
-				return this.customerNo;
+				return this.searchcriteria;
 			}
-			
-		public void setCustomerNo(final String customerNo)
+
+		public void setSearchcriteria(final String searchcriteria)
 			{
-				this.customerNo = customerNo;
+				this.searchcriteria = searchcriteria;
 			}
-			
-		public String getName()
+
+		public String getSearchvalue()
 			{
-				return this.name;
+				return this.searchvalue;
 			}
-			
-		public void setName(final String name)
+
+		public void setSearchvalue(final String searchvalue)
 			{
-				this.name = name;
+				this.searchvalue = searchvalue;
 			}
-			
-		public String getAddress()
+
+		public String getUsrUpd()
 			{
-				return this.address;
+				return this.usrUpd;
 			}
-			
-		public void setAddress(final String address)
+
+		public void setUsrUpd(final String usrUpd)
 			{
-				this.address = address;
+				this.usrUpd = usrUpd;
 			}
-			
-		public String getRt()
+
+		public String getUsrCrt()
 			{
-				return this.rt;
+				return this.usrCrt;
 			}
-			
-		public void setRt(final String rt)
+
+		public void setUsrCrt(final String usrCrt)
 			{
-				this.rt = rt;
+				this.usrCrt = usrCrt;
 			}
-			
-		public String getRw()
+
+		public int getPageNumber()
 			{
-				return this.rw;
+				return this.pageNumber;
 			}
-			
-		public void setRw(final String rw)
+
+		public void setPageNumber(final int pageNumber)
 			{
-				this.rw = rw;
+				this.pageNumber = pageNumber;
 			}
-			
-		public String getKelurahan()
+
+		public long getId()
 			{
-				return this.kelurahan;
+				return this.id;
 			}
-			
-		public void setKelurahan(final String kelurahan)
+
+		public void setId(final long id)
 			{
-				this.kelurahan = kelurahan;
+				this.id = id;
 			}
-			
-		public String getCity()
-			{
-				return this.city;
-			}
-			
-		public void setCity(final String city)
-			{
-				this.city = city;
-			}
-			
-		public String getZipcode()
-			{
-				return this.zipcode;
-			}
-			
-		public void setZipcode(final String zipcode)
-			{
-				this.zipcode = zipcode;
-			}
-			
+
 		public String getType()
 			{
 				return this.type;
 			}
-			
+
 		public void setType(final String type)
 			{
 				this.type = type;
 			}
-			
-		public String getAreaPhone1()
+
+		public String getName()
 			{
-				return this.areaPhone1;
+				return this.name;
 			}
-			
-		public void setAreaPhone1(final String areaPhone1)
+
+		public void setName(final String name)
 			{
-				this.areaPhone1 = areaPhone1;
+				this.name = name;
 			}
-			
-		public String getPhoneNo1()
+
+		public String getAddress()
 			{
-				return this.phoneNo1;
+				return this.address;
 			}
-			
-		public void setPhoneNo1(final String phoneNo1)
+
+		public void setAddress(final String address)
 			{
-				this.phoneNo1 = phoneNo1;
+				this.address = address;
 			}
-			
-		public String getAreaPhone2()
+
+		public String getRt()
 			{
-				return this.areaPhone2;
+				return this.rt;
 			}
-			
-		public void setAreaPhone2(final String areaPhone2)
+
+		public void setRt(final String rt)
 			{
-				this.areaPhone2 = areaPhone2;
+				this.rt = rt;
 			}
-			
-		public String getPhoneNo2()
+
+		public String getRw()
 			{
-				return this.phoneNo2;
+				return this.rw;
 			}
-			
-		public void setPhoneNo2(final String phoneNo2)
+
+		public void setRw(final String rw)
 			{
-				this.phoneNo2 = phoneNo2;
+				this.rw = rw;
 			}
-			
-		public String getAreaFax()
+
+		public String getKelurahan()
 			{
-				return this.areaFax;
+				return this.kelurahan;
 			}
-			
-		public void setAreaFax(final String areaFax)
+
+		public void setKelurahan(final String kelurahan)
 			{
-				this.areaFax = areaFax;
+				this.kelurahan = kelurahan;
 			}
-			
-		public String getFaxNo()
+
+		public String getKecamatan()
 			{
-				return this.faxNo;
+				return this.kecamatan;
 			}
-			
-		public void setFaxNo(final String faxNo)
+
+		public void setKecamatan(final String kecamatan)
 			{
-				this.faxNo = faxNo;
+				this.kecamatan = kecamatan;
 			}
-			
+
+		public String getCity()
+			{
+				return this.city;
+			}
+
+		public void setCity(final String city)
+			{
+				this.city = city;
+			}
+
+		public String getZipcode()
+			{
+				return this.zipcode;
+			}
+
+		public void setZipcode(final String zipcode)
+			{
+				this.zipcode = zipcode;
+			}
+
+		public String getAreaphone1()
+			{
+				return this.areaphone1;
+			}
+
+		public void setAreaphone1(final String areaphone1)
+			{
+				this.areaphone1 = areaphone1;
+			}
+
+		public String getPhoneno1()
+			{
+				return this.phoneno1;
+			}
+
+		public void setPhoneno1(final String phoneno1)
+			{
+				this.phoneno1 = phoneno1;
+			}
+
+		public String getAreaphone2()
+			{
+				return this.areaphone2;
+			}
+
+		public void setAreaphone2(final String areaphone2)
+			{
+				this.areaphone2 = areaphone2;
+			}
+
+		public String getPhoneno2()
+			{
+				return this.phoneno2;
+			}
+
+		public void setPhoneno2(final String phoneno2)
+			{
+				this.phoneno2 = phoneno2;
+			}
+
+		public String getAreafax()
+			{
+				return this.areafax;
+			}
+
+		public void setAreafax(final String areafax)
+			{
+				this.areafax = areafax;
+			}
+
+		public String getFaxno()
+			{
+				return this.faxno;
+			}
+
+		public void setFaxno(final String faxno)
+			{
+				this.faxno = faxno;
+			}
+
 		public String getHandphone()
 			{
 				return this.handphone;
 			}
-			
+
 		public void setHandphone(final String handphone)
 			{
 				this.handphone = handphone;
 			}
-			
-		public double getPrepaidAmount()
+
+		public Double getPrepaidamount()
 			{
-				return this.prepaidAmount;
+				return this.prepaidamount;
 			}
-			
-		public void setPrepaidAmount(final double prepaidAmount)
+
+		public void setPrepaidamount(final Double prepaidamount)
 			{
-				this.prepaidAmount = prepaidAmount;
+				this.prepaidamount = prepaidamount;
 			}
-			
-		public double getAramount()
+
+		public Double getAramount()
 			{
 				return this.aramount;
 			}
-			
-		public void setAramount(final double aramount)
+
+		public void setAramount(final Double aramount)
 			{
 				this.aramount = aramount;
 			}
-			
-		public double getArpaid()
+
+		public Double getArpaid()
 			{
 				return this.arpaid;
 			}
-			
-		public void setArpaid(final double arpaid)
+
+		public void setArpaid(final Double arpaid)
 			{
 				this.arpaid = arpaid;
 			}
-			
-		public double getArwaived()
+
+		public Double getArwaived()
 			{
 				return this.arwaived;
 			}
-			
-		public void setArwaived(final double arwaived)
+
+		public void setArwaived(final Double arwaived)
 			{
 				this.arwaived = arwaived;
 			}
-			
+
+		public String getCusttag()
+			{
+				return this.custtag;
+			}
+
+		public void setCusttag(final String custtag)
+			{
+				this.custtag = custtag;
+			}
+
 	}

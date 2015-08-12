@@ -1,145 +1,98 @@
 
 package com.adibrata.smartdealer.action.usermanagement;
 
+/**
+ * @author Henry
+ */
+import java.util.List;
+
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.usermanagement.LoginDao;
 import com.adibrata.smartdealer.model.MsUser;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.usermanagement.LoginService;
+import com.adibrata.smartdealer.service.usermanagement.UserService;
 import com.opensymphony.xwork2.Preparable;
 
 public class LoginAction extends BaseAction implements Preparable
 	{
-		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		private String mode;
-		private LoginService service;
+		private UserService userService;
 		private Partner partner;
 		private Office office;
-		private MsUser msuser;
+		private List<MsUser> lstMsUser;
+		private String searchcriteria;
+		private String searchvalue;
 		private int pageNumber;
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
+
 		private String username;
 		private String password;
-		
-		@Override
-		public String execute()
+
+		public LoginAction() throws Exception
 			{
-				String strMode;
-				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						switch (strMode)
-							{
-								case "login" :
-									try
-										{
-											strMode = this.Checklogin();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-									
-								default :
-									return ERROR;
-							}
-					}
-				else
-					{
-						strMode = "login";
-						this.username = "";
-						this.password = "";
-						
-					}
-				return strMode;
-			}
-			
-		@Override
-		public void prepare()
-			{
-				try
-					{
-						this.service = new LoginDao();
-					}
-				catch (final Exception e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				super();
+				// TODO Auto-generated constructor stub
 			}
 
-		private String Checklogin() throws Exception
+		@Override
+		public String execute() throws Exception
 			{
-				String status = "login";
-				if (this.getUsername().equals(""))
-					{
-						this.setMessage("Please input User Name");
-					}
-				else if (this.getPassword().equals(""))
-					{
-						this.setMessage("Please input password");
-					}
-				else
-					{
-						this.service = new LoginDao();
-						if (this.service.PasswordVerification(this.getUsername(), this.getPassword()))
-							{
-								status = SUCCESS;
-							}
-						else
-							{
-								this.setMessage("Please verify your username and password");
-							}
-							
-					}
-				return status;
+				return "start";
+
 			}
-			
+
+		public String signin() throws Exception
+			{
+				return SUCCESS;
+
+			}
+
+		public String home() throws Exception
+			{
+				return "start";
+
+			}
+
+		// @Override
+		// public void validate()
+		// {
+		// if (this.getUsername().length() == 0)
+		// {
+		// this.addFieldError("userName", "UserName.required");
+		// }
+		// else if (!this.getUsername().equals("Arpit"))
+		// {
+		// this.addFieldError("userName", "Invalid User");
+		// }
+		// if (this.getPassword().length() == 0)
+		// {
+		// this.addFieldError("password", this.getText("password.required"));
+		// }
+		// }
+
 		/**
-		 * @return the mode
+		 * @return the serialversionuid
 		 */
-		public String getMode()
+		public static long getSerialversionuid()
 			{
-				return this.mode;
+				return serialVersionUID;
 			}
-			
+
 		/**
-		 * @param mode
-		 *            the mode to set
+		 * @return the userService
 		 */
-		public void setMode(final String mode)
+		public UserService getUserService()
 			{
-				this.mode = mode;
+				return this.userService;
 			}
-			
-		/**
-		 * @return the service
-		 */
-		public LoginService getService()
-			{
-				return this.service;
-			}
-			
-		/**
-		 * @param service
-		 *            the service to set
-		 */
-		public void setService(final LoginService service)
-			{
-				this.service = service;
-			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -147,7 +100,32 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
+		/**
+		 * @return the lstMsUser
+		 */
+		public List<MsUser> getLstMsUser()
+			{
+				return this.lstMsUser;
+			}
+
+		/**
+		 * @param userService
+		 *            the userService to set
+		 */
+		public void setUserService(final UserService userService)
+			{
+				this.userService = userService;
+			}
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -156,15 +134,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -173,24 +143,51 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
-		 * @return the msuser
+		 * @param lstMsUser
+		 *            the lstMsUser to set
 		 */
-		public MsUser getMsuser()
+		public void setLstMsUser(final List<MsUser> lstMsUser)
 			{
-				return this.msuser;
+				this.lstMsUser = lstMsUser;
 			}
-			
+
+		public String getMode()
+			{
+				return this.mode;
+			}
+
+		public void setMode(final String mode)
+			{
+
+				this.mode = mode;
+			}
+
+		@Override
+		public void prepare() throws Exception
+			{
+
+				// TODO Auto-generated method stub
+
+			}
+
 		/**
-		 * @param msuser
-		 *            the msuser to set
+		 * @return the searchcriteria
 		 */
-		public void setMsuser(final MsUser msuser)
+		public String getSearchcriteria()
 			{
-				this.msuser = msuser;
+				return this.searchcriteria;
 			}
-			
+
+		/**
+		 * @return the searchvalue
+		 */
+		public String getSearchvalue()
+			{
+				return this.searchvalue;
+			}
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -198,7 +195,49 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+
+		/**
+		 * @param searchcriteria
+		 *            the searchcriteria to set
+		 */
+		public void setSearchcriteria(final String searchcriteria)
+			{
+				this.searchcriteria = searchcriteria;
+			}
+
+		/**
+		 * @param searchvalue
+		 *            the searchvalue to set
+		 */
+		public void setSearchvalue(final String searchvalue)
+			{
+				this.searchvalue = searchvalue;
+			}
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -207,15 +246,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -224,15 +255,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -241,15 +264,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -258,47 +273,25 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
-		/**
-		 * @return the username
-		 */
-		public String getUsername()
-			{
-				return this.username;
-			}
-			
-		/**
-		 * @param username
-		 *            the username to set
-		 */
-		public void setUsername(final String username)
-			{
-				this.username = username;
-			}
-			
-		/**
-		 * @return the password
-		 */
+
 		public String getPassword()
 			{
 				return this.password;
 			}
-			
-		/**
-		 * @param password
-		 *            the password to set
-		 */
+
 		public void setPassword(final String password)
 			{
 				this.password = password;
 			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
+
+		public String getUsername()
 			{
-				return serialVersionUID;
+				return this.username;
 			}
-			
+
+		public void setUsername(final String username)
+			{
+				this.username = username;
+			}
+
 	}

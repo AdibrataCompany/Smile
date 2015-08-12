@@ -1,5 +1,5 @@
 
-package util.adibrata.support.common;
+package util.adibrata.support.file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,10 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -23,20 +21,32 @@ public class ExcelUtility
 		private String excelfile;
 		@SuppressWarnings("rawtypes")
 		private List lst;
+		
+		private Long seqno;
+		private String datatype;
+		private Object cellvalue;
+		private Long colno;
 
 		public ExcelUtility()
 			{
-				
+
 				// TODO Auto-generated constructor stub
 			}
-			
-		public List<Map<Long, Object>> ReadExcel()
+
+		public ExcelUtility(final Long seqno, final Long colno, final String datatype, final Object cellvalue)
 			{
-				final List<Map<Long, Object>> lstexcel = new ArrayList<Map<Long, Object>>();
-				Map<Long, Object> col = null;
+				this.seqno = seqno;
+				this.datatype = datatype;
+				this.cellvalue = cellvalue;
+				this.colno = colno;
+			}
+
+		public List<List<ExcelUtility>> ReadExcel()
+			{
+				final List<List<ExcelUtility>> lstexcel = new ArrayList<List<ExcelUtility>>();
+				List<ExcelUtility> col = null;
 				try
 					{
-
 						final FileInputStream file = new FileInputStream(new File(this.excelfile));
 
 						// Get the workbook instance for XLS file
@@ -53,36 +63,36 @@ public class ExcelUtility
 
 								// For each row, iterate through each columns
 								final Iterator<Cell> cellIterator = row.cellIterator();
-
+								col = new ArrayList<ExcelUtility>();
 								while (cellIterator.hasNext())
 									{
-										col = new HashMap<Long, Object>();
 										final Cell cell = cellIterator.next();
 
+										// System.out.print(cell.getRowIndex() + "\t\t");
 										switch (cell.getCellType())
 											{
 												case Cell.CELL_TYPE_BOOLEAN :
-													System.out.print(cell.getBooleanCellValue() + "\t\t");
-													col.put((long) cell.getRowIndex(), cell.getBooleanCellValue());
+													// System.out.print(cell.getBooleanCellValue() + "\t\t");
+													col.add(new ExcelUtility((long) cell.getRowIndex(), (long) cell.getColumnIndex(), "B", cell.getBooleanCellValue()));
+
 													break;
 												case Cell.CELL_TYPE_NUMERIC :
-													System.out.print(cell.getNumericCellValue() + "\t\t");
-													col.put((long) cell.getRowIndex(), cell.getNumericCellValue());
+													// System.out.print(cell.getNumericCellValue() + "\t\t");
+
+													col.add(new ExcelUtility((long) cell.getRowIndex(), (long) cell.getColumnIndex(), "N", cell.getNumericCellValue()));
 													break;
 												case Cell.CELL_TYPE_STRING :
-													System.out.print(cell.getStringCellValue() + "\t\t");
-													col.put((long) cell.getRowIndex(), cell.getNumericCellValue());
+													// System.out.print(cell.getStringCellValue() + "\t\t");
+													col.add(new ExcelUtility((long) cell.getRowIndex(), (long) cell.getColumnIndex(), "S", cell.getStringCellValue()));
 													break;
 											}
 									}
 								lstexcel.add(col);
-								System.out.println("");
 							}
 						file.close();
 						final FileOutputStream out = new FileOutputStream(new File(this.excelfile));
 						workbook.write(out);
 						out.close();
-
 					}
 				catch (final FileNotFoundException e)
 					{
@@ -102,7 +112,7 @@ public class ExcelUtility
 			{
 				return this.excelfile;
 			}
-			
+
 		/**
 		 * @param excelfile
 		 *            the excelfile to set
@@ -111,22 +121,92 @@ public class ExcelUtility
 			{
 				this.excelfile = excelfile;
 			}
-			
+
 		/**
 		 * @return the lst
 		 */
+		@SuppressWarnings("rawtypes")
 		public List getLst()
 			{
 				return this.lst;
 			}
-			
+
 		/**
 		 * @param lst
 		 *            the lst to set
 		 */
+		@SuppressWarnings("rawtypes")
 		public void setLst(final List lst)
 			{
 				this.lst = lst;
 			}
 
+		/**
+		 * @return the seqno
+		 */
+		public Long getSeqno()
+			{
+				return this.seqno;
+			}
+
+		/**
+		 * @param seqno
+		 *            the seqno to set
+		 */
+		public void setSeqno(final Long seqno)
+			{
+				this.seqno = seqno;
+			}
+
+		/**
+		 * @return the datatype
+		 */
+		public String getDatatype()
+			{
+				return this.datatype;
+			}
+
+		/**
+		 * @param datatype
+		 *            the datatype to set
+		 */
+		public void setDatatype(final String datatype)
+			{
+				this.datatype = datatype;
+			}
+
+		/**
+		 * @return the cellvalue
+		 */
+		public Object getCellvalue()
+			{
+				return this.cellvalue;
+			}
+
+		/**
+		 * @param cellvalue
+		 *            the cellvalue to set
+		 */
+		public void setCellvalue(final Object cellvalue)
+			{
+				this.cellvalue = cellvalue;
+			}
+			
+		/**
+		 * @return the colno
+		 */
+		public Long getColno()
+			{
+				return this.colno;
+			}
+			
+		/**
+		 * @param colno
+		 *            the colno to set
+		 */
+		public void setColno(final Long colno)
+			{
+				this.colno = colno;
+			}
+			
 	}
