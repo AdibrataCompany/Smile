@@ -6,7 +6,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class CashierOpenAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
@@ -19,34 +19,34 @@ public class CashierOpenAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-
-		public CashierOpenAction()
+		
+		public CashierOpenAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
-
+						
 						switch (strMode)
 							{
 								case "search" :
 									this.Paging();
 								case "open" :
-								
+
 								case "close" :
 									strMode = this.SaveAdd();
 								case "back" :
@@ -61,7 +61,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -69,7 +69,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -78,7 +78,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -86,7 +86,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -95,7 +95,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -103,7 +103,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -112,7 +112,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -120,7 +120,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -129,7 +129,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -137,7 +137,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -146,7 +146,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -154,7 +154,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -163,7 +163,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -171,7 +171,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -180,7 +180,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -188,7 +188,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -197,7 +197,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */

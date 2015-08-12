@@ -7,7 +7,6 @@ package com.adibrata.smartdealer.dao.usermanagement;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.MsUser;
@@ -25,7 +24,7 @@ public class LoginDao extends DaoBase implements LoginService
 		/**
 		 *
 		 */
-		Session session;
+		
 		Partner partner;
 		
 		public LoginDao() throws Exception
@@ -41,7 +40,7 @@ public class LoginDao extends DaoBase implements LoginService
 				final String encrypt = EncryptionHelper.EncryptSHA(password);
 				final StringBuilder hqluser = new StringBuilder();
 				hqluser.append(" from MsUser  Where userName = :username and isActive = 1 ");
-				final Query qryuser = this.session.createQuery(hqluser.toString());
+				final Query qryuser = this.getSession().createQuery(hqluser.toString());
 
 				qryuser.setParameter("username", username);
 				final List<MsUser> lstuser = qryuser.list();
@@ -61,23 +60,6 @@ public class LoginDao extends DaoBase implements LoginService
 
 					}
 				return isValid;
-			}
-
-		/**
-		 * @return the session
-		 */
-		public Session getSession()
-			{
-				return this.session;
-			}
-
-		/**
-		 * @param session
-		 *            the session to set
-		 */
-		public void setSession(final Session session)
-			{
-				this.session = session;
 			}
 
 		/**

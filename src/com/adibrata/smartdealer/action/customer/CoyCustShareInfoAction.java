@@ -18,24 +18,24 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class CoyCustShareInfoAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		*
 		*/
 		private static final long serialVersionUID = 1L;
-
+		
 		private CustomerMaintService customermaintservice;
 		private Customer customer;
 		private Map<String, Object> session;
 		private List<CoyCustShareInfo> lstshareinfo;
-
+		
 		private String mode;
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
 		private long id;
 		private long customerid;
-
+		
 		private String name;
 		private String idnumber;
 		private String jobpositionid;
@@ -43,20 +43,19 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 		private String phone;
 		private Double sharepercentage;
 		private int seqno;
-
+		
 		public CoyCustShareInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				RenderMenu();
-
+				
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
 				this.lstshareinfo = new ArrayList<CoyCustShareInfo>();
-
+				
 				this.customerid = this.customer.getId();
 				this.seqno = 1;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -76,7 +75,7 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -136,26 +135,26 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		public void Add() throws Exception
 			{
 				try
 					{
 						final CoyCustShareInfo shareinfo = new CoyCustShareInfo();
-
+						
 						shareinfo.setName(this.getName());
 						shareinfo.setIdnumber(this.getIdnumber());
 						shareinfo.setJobPositionId(this.getJobpositionid());
 						shareinfo.setAddress(this.getAddress());
 						shareinfo.setPhone(this.getPhone());
 						shareinfo.setSharePercentage(this.getSharepercentage());
-
+						
 						this.lstshareinfo.add(shareinfo);
 						this.session.put("lstShareInfoSession", this.lstshareinfo);
 					}
 				catch (final Exception exp)
 					{
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -163,7 +162,7 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		public void Del() throws Exception
 			{
@@ -172,13 +171,13 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 						this.lstshareinfo = (List<CoyCustShareInfo>) this.session.get("lstShareInfoSession");
 						this.seqno = this.seqno - 1;
 						this.lstshareinfo.remove(this.seqno);
-
+						
 						this.session.put("lstShareInfoSession", this.lstshareinfo);
 						this.lstshareinfo = (List<CoyCustShareInfo>) this.session.get("lstShareInfoSession");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -186,7 +185,7 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		public void Save() throws Exception
 			{
 				try
@@ -201,12 +200,12 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 								shareinfo.setPhone(this.getPhone());
 								shareinfo.setSharePercentage(this.getSharepercentage());
 							}
-
+							
 						this.customermaintservice.SaveCompanyCustomerShare(sesLoginName(), this.lstshareinfo);
 					}
 				catch (final Exception exp)
 					{
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -214,175 +213,175 @@ public class CoyCustShareInfoAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		public CustomerMaintService getCustomermaintservice()
 			{
 				return this.customermaintservice;
 			}
-
+			
 		public void setCustomermaintservice(final CustomerMaintService customermaintservice)
 			{
 				this.customermaintservice = customermaintservice;
 			}
-
+			
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-
+			
 		public void setCustomer(final Customer customer)
 			{
 				this.customer = customer;
 			}
-
+			
 		public Map<String, Object> getSession()
 			{
 				return this.session;
 			}
-
+			
 		public void setSession(final Map<String, Object> session)
 			{
 				this.session = session;
 			}
-
+			
 		public List<CoyCustShareInfo> getLstshareinfo()
 			{
 				return this.lstshareinfo;
 			}
-
+			
 		public void setLstshareinfo(final List<CoyCustShareInfo> lstshareinfo)
 			{
 				this.lstshareinfo = lstshareinfo;
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		public String getMessage()
 			{
 				return this.message;
 			}
-
+			
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-
+			
 		public void setUsrUpd(final String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-
+			
 		public void setUsrCrt(final String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		public long getId()
 			{
 				return this.id;
 			}
-
+			
 		public void setId(final long id)
 			{
 				this.id = id;
 			}
-
+			
 		public String getName()
 			{
 				return this.name;
 			}
-
+			
 		public void setName(final String name)
 			{
 				this.name = name;
 			}
-
+			
 		public String getIdnumber()
 			{
 				return this.idnumber;
 			}
-
+			
 		public void setIdnumber(final String idnumber)
 			{
 				this.idnumber = idnumber;
 			}
-
+			
 		public String getJobpositionid()
 			{
 				return this.jobpositionid;
 			}
-
+			
 		public void setJobpositionid(final String jobpositionid)
 			{
 				this.jobpositionid = jobpositionid;
 			}
-
+			
 		public String getAddress()
 			{
 				return this.address;
 			}
-
+			
 		public void setAddress(final String address)
 			{
 				this.address = address;
 			}
-
+			
 		public String getPhone()
 			{
 				return this.phone;
 			}
-
+			
 		public void setPhone(final String phone)
 			{
 				this.phone = phone;
 			}
-
+			
 		public Double getSharepercentage()
 			{
 				return this.sharepercentage;
 			}
-
+			
 		public void setSharepercentage(final Double sharepercentage)
 			{
 				this.sharepercentage = sharepercentage;
 			}
-
+			
 		public int getSeqno()
 			{
 				return this.seqno;
 			}
-
+			
 		public void setSeqno(final int seqno)
 			{
 				this.seqno = seqno;
 			}
-
+			
 		public long getCustomerid()
 			{
 				return this.customerid;
 			}
-
+			
 		public void setCustomerid(final long customerid)
 			{
 				this.customerid = customerid;
 			}
-
+			
 	}

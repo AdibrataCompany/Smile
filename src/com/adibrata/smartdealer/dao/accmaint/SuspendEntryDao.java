@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.dao.setting.BankAccountDao;
@@ -19,30 +18,24 @@ import com.adibrata.smartdealer.model.SuspendReceive;
 import com.adibrata.smartdealer.service.accmaint.SuspendEntryService;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.job.JobPost;
 
 public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 	{
-		
-		Session session;
+
 		String userupd;
 
 		String strStatement;
 		String strStatementCount;
 		StringBuilder hql = new StringBuilder();
-		int pagesize;
 		int currentpage;
 		private long totalrecord;
 
 		public SuspendEntryDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				this.session = HibernateHelper.getSessionFactory().openSession();
-
-				this.pagesize = HibernateHelper.getPagesize();
 				/*
 				 * this.strStatement =
 				 * "select A.Id, A.ValueDate, A.SuspendCode, A.PostingDate, A.Amount, C.Code as Currency, A.CurrencyRate, A.Notes, B.bankAccountName As BankAccountName From SuspendReceive A Inner Join BankAccount B on A.BankAccountId = B.ID inner join Currency C on A.CurrencyId = C.ID";
@@ -58,25 +51,25 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
 				long jobid;
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						final BankAccountService baservice = new BankAccountDao();
-						jobid = JobPost.JobSave(this.session, partner.getPartnerCode(), office.getId(), JobPost.JobCode.suspendreceive, "", suspend.getValueDate(), suspend.getPostingDate(), usrupd).getId();
-						suspend.setSuspendCode(DaoBase.TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.suspendreceive));
+						jobid = JobPost.JobSave(this.getSession(), partner.getPartnerCode(), office.getId(), JobPost.JobCode.suspendreceive, "", suspend.getValueDate(), suspend.getPostingDate(), usrupd).getId();
+						suspend.setSuspendCode(DaoBase.TransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), TransactionType.suspendreceive));
 						suspend.setCurrencyId(baservice.View(suspend.getBankAccountId()).getCurrency().getId());
 						suspend.setJobId(jobid);
 						suspend.setDtmUpd(this.dtmupd);
 						suspend.setDtmCrt(this.dtmupd);
 						suspend.setStatus("NE");
-						this.session.save(suspend);
+						this.getSession().save(suspend);
 						
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -108,9 +101,9 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 								hql.append(" and ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.session.createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
 						
@@ -185,14 +178,14 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final SQLQuery selectQuery = this.session.createSQLQuery(hql.toString());
+						final SQLQuery selectQuery = this.getSession().createSQLQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
-						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
 						
-						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setMaxResults(this.getPagesize());
 						// selectQuery.addScalar("Id", new LongType());
 						// selectQuery.addScalar("SuspendCode", new StringType());
 						// selectQuery.addScalar("ValueDate", new DateType());
@@ -267,7 +260,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				SuspendReceive receive = null;
 				try
 					{
-						receive = (SuspendReceive) this.session.get(SuspendReceive.class, id);
+						receive = (SuspendReceive) this.getSession().get(SuspendReceive.class, id);
 
 					}
 				catch (final Exception exp)

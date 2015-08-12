@@ -4,16 +4,9 @@
 
 package com.adibrata.smartdealer.dao.entrust;
 
-/**
- * @author Henry
- */
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.EntrustDtl;
@@ -22,7 +15,6 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.entrust.EntrustService;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.transno.GetTransNo;
@@ -30,26 +22,20 @@ import util.adibrata.support.transno.GetTransNo;
 public class EntrustTransactionsDao extends DaoBase implements EntrustService
 	{
 		String userupd;
-		Session session;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar dtmupd = Calendar.getInstance();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		int pagesize;
 		
 		public EntrustTransactionsDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.session = HibernateHelper.getSessionFactory().openSession();
-						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Office ";
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -65,32 +51,32 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 		public void Save(final String usrupd, final EntrustHdr entrustHdr, final List<EntrustDtl> lstentrustDtl) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				final Partner partner = entrustHdr.getPartner();
 				final Office office = entrustHdr.getOffice();
 				
 				try
 					{
-						final String transno = GetTransNo.GenerateTransactionNo(this.session, partner.getPartnerCode(), office.getId(), "ENTO", this.dtmupd.getTime());
+						final String transno = GetTransNo.GenerateTransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), "ENTO", this.dtmupd);
 						entrustHdr.setEntrustNo(transno);
-						entrustHdr.setDtmCrt(this.dtmupd.getTime());
-						entrustHdr.setDtmUpd(this.dtmupd.getTime());
-						this.session.save(entrustHdr);
+						entrustHdr.setDtmCrt(this.dtmupd);
+						entrustHdr.setDtmUpd(this.dtmupd);
+						this.getSession().save(entrustHdr);
 						for (final EntrustDtl arow : lstentrustDtl)
 							{
 								EntrustDtl entrustDtl = new EntrustDtl();
 								entrustDtl = arow;
 								entrustDtl.setEntrustHdr(entrustHdr);
-								entrustDtl.setDtmCrt(this.dtmupd.getTime());
-								entrustDtl.setDtmUpd(this.dtmupd.getTime());
-								this.session.save(entrustDtl);
+								entrustDtl.setDtmCrt(this.dtmupd);
+								entrustDtl.setDtmUpd(this.dtmupd);
+								this.getSession().save(entrustDtl);
 							}
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -118,9 +104,9 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 								hql.append(WhereCond);
 							}
 							
-						final Query selectQuery = this.session.createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 						
 					}
@@ -142,7 +128,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 				EntrustHdr entrustHdr = null;
 				try
 					{
-						entrustHdr = (EntrustHdr) this.session.get(EntrustHdr.class, id);
+						entrustHdr = (EntrustHdr) this.getSession().get(EntrustHdr.class, id);
 						
 					}
 				catch (final Exception exp)
@@ -166,7 +152,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 					{
 						hql.append(this.strStatement);
 						
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						list = selectQuery.list();
 						
 					}
@@ -195,10 +181,10 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 						
 					}

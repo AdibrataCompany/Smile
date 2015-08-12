@@ -29,13 +29,13 @@ public class DaoBase implements SeviceBase
 	{
 		String userupd;
 		Session session;
-		
+
 		public DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		public Date dtmupd = Calendar.getInstance().getTime();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
-		
+
 		/**
 		 * @throws Exception
 		 */
@@ -46,7 +46,7 @@ public class DaoBase implements SeviceBase
 					{
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -57,7 +57,7 @@ public class DaoBase implements SeviceBase
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public long TotalRecord(final String strStatement, final String WhereCond) throws Exception
 			{
@@ -69,16 +69,16 @@ public class DaoBase implements SeviceBase
 						if (WhereCond != "")
 							{
 								countQ = " where " + WhereCond;
-								
+
 							}
-							
+
 						final Query countQuery = this.session.createQuery(countQ);
 						countResults = (long) countQuery.uniqueResult();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -86,53 +86,53 @@ public class DaoBase implements SeviceBase
 					}
 				return countResults;
 			}
-			
+
 		@Override
 		public int getCurrentpage() throws Exception
 			{
 				// TODO Auto-generated method stub
 				return 0;
 			}
-			
+
 		public enum TransactionType
 			{
-				
+
 				accountpayable("APD"), advancerequest("ADV"), advancereturn("ADR"), danatunai("DTN"), entrustout("ENTO"), entrustreceive("ENTR"), otherdisburse("OTD"), otherreceive("OTR"), paymentrequest("PYR"), paymentvoucher(
 				        "PVD"), pettycashcorretion("PCO"), pettycashreimburse("PCR"), pettycashtransaction("PCT"), prepaidreceive("PRV"), purchaseinvoice("PRI"), purchaseorder("PRO"), purchasereturn("PRR"), salesorder("SAO"), salesorderreturn(
 				                "SAR"), service("SVC"), suspendallocation("SUA"), suspendreverse("SUC"), suspendreceive("SUR"), paymentreceive("PAR"), paymentreverse("PAC"), PDCClearing("PDC"), GoLive("GLV");
-
+								
 				private String transactiontype;
-				
+
 				private TransactionType(final String s)
 					{
-						
+
 						this.transactiontype = s;
-						
+
 					}
-					
+
 				public String getTransactionType()
 					{
-						
+
 						return this.transactiontype;
-						
+
 					}
 			}
-			
+
 		public static String TransactionNo(final Session session, final String partnercode, final long officeid, final TransactionType trans
-		
+
 		) throws Exception
 			{
-				
+
 				String transno = "";
-				
+
 				transno = GetTransNo.GenerateTransactionNo(session, partnercode,
-				
+
 				officeid, trans.getTransactionType(), Calendar.getInstance().getTime());
-				
+
 				return transno;
-				
+
 			}
-			
+
 		@Override
 		public List<AgreementList> AgreementPaging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
@@ -152,11 +152,11 @@ public class DaoBase implements SeviceBase
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -164,7 +164,7 @@ public class DaoBase implements SeviceBase
 					}
 				return list;
 			}
-
+			
 		@Override
 		public List<AgreementList> AgreementPaging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
@@ -187,22 +187,141 @@ public class DaoBase implements SeviceBase
 						final SQLQuery selectQuery = this.session.createSQLQuery(this.hql.toString());
 						totalrecord = this.TotalRecord(hqlcount.toString(), WhereCond);
 						currentpage = (int) ((totalrecord / this.pagesize) + 1);
-						
+
 						selectQuery.setFirstResult((currentpage - 1) * this.pagesize);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return list;
+			}
+			
+		/**
+		 * @return the userupd
+		 */
+		public String getUserupd()
+			{
+				return this.userupd;
+			}
+			
+		/**
+		 * @param userupd
+		 *            the userupd to set
+		 */
+		public void setUserupd(final String userupd)
+			{
+				this.userupd = userupd;
+			}
+			
+		/**
+		 * @return the session
+		 */
+		public Session getSession()
+			{
+				return this.session;
+			}
+			
+		/**
+		 * @param session
+		 *            the session to set
+		 */
+		public void setSession(final Session session)
+			{
+				this.session = session;
+			}
+			
+		/**
+		 * @return the dateFormat
+		 */
+		public DateFormat getDateFormat()
+			{
+				return this.dateFormat;
+			}
+			
+		/**
+		 * @param dateFormat
+		 *            the dateFormat to set
+		 */
+		public void setDateFormat(final DateFormat dateFormat)
+			{
+				this.dateFormat = dateFormat;
+			}
+			
+		/**
+		 * @return the dtmupd
+		 */
+		public Date getDtmupd()
+			{
+				return this.dtmupd;
+			}
+			
+		/**
+		 * @param dtmupd
+		 *            the dtmupd to set
+		 */
+		public void setDtmupd(final Date dtmupd)
+			{
+				this.dtmupd = dtmupd;
+			}
+			
+		/**
+		 * @return the strStatement
+		 */
+		public String getStrStatement()
+			{
+				return this.strStatement;
+			}
+			
+		/**
+		 * @param strStatement
+		 *            the strStatement to set
+		 */
+		public void setStrStatement(final String strStatement)
+			{
+				this.strStatement = strStatement;
+			}
+			
+		/**
+		 * @return the hql
+		 */
+		public StringBuilder getHql()
+			{
+				return this.hql;
+			}
+			
+		/**
+		 * @param hql
+		 *            the hql to set
+		 */
+		public void setHql(final StringBuilder hql)
+			{
+				this.hql = hql;
+			}
+			
+		/**
+		 * @return the pagesize
+		 */
+		public int getPagesize()
+			{
+				return this.pagesize;
+			}
+			
+		/**
+		 * @param pagesize
+		 *            the pagesize to set
+		 */
+		public void setPagesize(final int pagesize)
+			{
+				this.pagesize = pagesize;
 			}
 	}

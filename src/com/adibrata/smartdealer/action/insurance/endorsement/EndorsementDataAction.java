@@ -2,7 +2,11 @@
 package com.adibrata.smartdealer.action.insurance.endorsement;
 
 import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.model.AssetDocMaster;
 import com.opensymphony.xwork2.Preparable;
+
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class EndorsementDataAction extends BaseAction implements Preparable
 	{
@@ -10,7 +14,7 @@ public class EndorsementDataAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
@@ -22,55 +26,313 @@ public class EndorsementDataAction extends BaseAction implements Preparable
 			}
 			
 		@Override
-		public String execute() throws Exception
+		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-
 				if (this.mode != null)
 					{
-
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "edit" :
-
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									strMode = this.SaveAdd();
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e1)
+										{
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									break;
+								case "savedel" :
+									try
+										{
+											strMode = this.SaveDelete();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "saveadd" :
-									strMode = this.SaveAdd();
+									try
+										{
+											strMode = this.SaveAdd();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "saveedit" :
-									strMode = this.SaveEdit();
-								case "back" :
-									;
-
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "first" :
-									this.pageNumber -= 1;
-									this.Paging();
+									this.pageNumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "prev" :
 									this.pageNumber -= 1;
 									if (this.pageNumber <= 1)
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "last" :
-									this.LastPage();
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+
 								default :
-									return ERROR;
+									break;
+									
 							}
 					}
 				else
 					{
+						this.pageNumber = 1;
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
+			}
+
+		/**
+		 *
+		 */
+
+		private String WhereCond()
+			{
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						if (this.getSearchcriteria().contains("%"))
+							{
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+							}
+						else
+							{
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+							}
+					}
+				return wherecond;
+			}
+
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetDocMasterService.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		public void ViewData() throws Exception
+			{
+				this.assetDocMaster = new AssetDocMaster();
+				try
+					{
+						if (this.getId() != null)
+							{
+								this.assetDocMaster = this.assetDocMasterService.View(this.id);
+								this.documentCode = this.assetDocMaster.getDocumentCode();
+								this.documentName = this.assetDocMaster.getDocumentName();
+								this.assetType = this.assetDocMaster.getAssetType();
+							}
+						else
+							{
+								this.status = "end";
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+
+		private String SaveAdd() throws Exception
+			{
+				try
+					{
+						this.status = "";
+						final AssetDocMaster assetDocMaster = new AssetDocMaster();
+						assetDocMaster.setDocumentCode(this.getDocumentCode());
+						assetDocMaster.setDocumentName(this.getDocumentName());
+						assetDocMaster.setPartner(this.getPartner());
+						assetDocMaster.setUsrUpd(this.getUsrUpd());
+
+						this.assetDocMasterService.SaveAdd(assetDocMaster);
+						this.status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
+					}
+				catch (final Exception exp)
+					{
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.status;
+			}
+
+		private String SaveEdit() throws Exception
+			{
+				try
+					{
+						this.status = "";
+						final AssetDocMaster assetDocMaster = new AssetDocMaster();
+						assetDocMaster.setId(this.getId());
+						assetDocMaster.setDocumentCode(this.getDocumentCode());
+						assetDocMaster.setDocumentName(this.getDocumentName());
+						assetDocMaster.setPartner(this.getPartner());
+						assetDocMaster.setUsrUpd(this.getUsrUpd());
+						this.assetDocMasterService.SaveEdit(assetDocMaster);
+						this.status = SUCCESS;
+						this.setMessage(BaseAction.SuccessMessage());
+					}
+				catch (final Exception exp)
+					{
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.status;
+			}
+
+		private String SaveDelete() throws Exception
+			{
+				try
+					{
+						this.status = "";
+						if (this.getId() == null)
+							{
+								final AssetDocMaster assetDocMaster = new AssetDocMaster();
+
+								assetDocMaster.setId(this.getId());
+
+								this.assetDocMasterService.SaveDel(assetDocMaster);
+								this.status = SUCCESS;
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.status = "end";
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.status = ERROR;
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.status;
 			}
 			
 		/**

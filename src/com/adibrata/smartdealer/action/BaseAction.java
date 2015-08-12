@@ -36,9 +36,10 @@ public class BaseAction extends ActionSupport implements Preparable
 
 		public SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 
-		public BaseAction()
+		public BaseAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				RenderMenu();
 			}
 
 		@Override
@@ -48,7 +49,7 @@ public class BaseAction extends ActionSupport implements Preparable
 
 			}
 
-		public static String RenderMenu() throws Exception
+		private static String RenderMenu() throws Exception
 			{
 				final MenuService service = new MenuDao();
 				return service.MenuRender((long) 0, (long) 0, (long) 0);

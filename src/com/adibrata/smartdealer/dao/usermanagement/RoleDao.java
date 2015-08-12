@@ -7,24 +7,20 @@ package com.adibrata.smartdealer.dao.usermanagement;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.MsRole;
 import com.adibrata.smartdealer.service.usermanagement.RoleService;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class RoleDao extends DaoBase implements RoleService
 	{
 		String userupd;
-		Session session;
 
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		int pagesize;
 		private long totalrecord;
 		private int currentpage;
 
@@ -33,14 +29,13 @@ public class RoleDao extends DaoBase implements RoleService
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.session = HibernateHelper.getSessionFactory().openSession();
-						this.pagesize = HibernateHelper.getPagesize();
+
 						this.strStatement = "from MsRole ";
 
 					}
 				catch (final Exception exp)
 					{
-						this.session.close();
+						this.getSession().close();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -58,19 +53,19 @@ public class RoleDao extends DaoBase implements RoleService
 		public void SaveAdd(final MsRole msRole) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						msRole.setDtmCrt(this.dtmupd);
 						msRole.setDtmUpd(this.dtmupd);
-						this.session.save(msRole);
+						this.getSession().save(msRole);
 
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -79,7 +74,7 @@ public class RoleDao extends DaoBase implements RoleService
 				finally
 					{
 
-						this.session.close();
+						this.getSession().close();
 					}
 
 			}
@@ -94,19 +89,19 @@ public class RoleDao extends DaoBase implements RoleService
 		public void SaveEdit(final MsRole msRole) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 
 						msRole.setDtmUpd(this.dtmupd);
-						this.session.update(msRole);
+						this.getSession().update(msRole);
 
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -124,18 +119,18 @@ public class RoleDao extends DaoBase implements RoleService
 		public void SaveDel(final MsRole msRole) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 
-						this.session.delete(msRole);
+						this.getSession().delete(msRole);
 
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -164,10 +159,10 @@ public class RoleDao extends DaoBase implements RoleService
 								hql.append(WhereCond);
 							}
 
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 
 					}
@@ -181,7 +176,7 @@ public class RoleDao extends DaoBase implements RoleService
 					}
 				finally
 					{
-						this.session.close();
+						this.getSession().close();
 						this.hql.setLength(0);
 					}
 				return list;
@@ -194,7 +189,7 @@ public class RoleDao extends DaoBase implements RoleService
 				MsRole msRole = null;
 				try
 					{
-						msRole = (MsRole) this.session.get(MsRole.class, Id);
+						msRole = (MsRole) this.getSession().get(MsRole.class, Id);
 
 					}
 				catch (final Exception exp)
@@ -223,12 +218,12 @@ public class RoleDao extends DaoBase implements RoleService
 								hql.append(WhereCond);
 							}
 
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
-						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
 
-						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 
 					}

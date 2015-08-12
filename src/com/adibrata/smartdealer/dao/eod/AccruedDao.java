@@ -1,11 +1,14 @@
+
 package com.adibrata.smartdealer.dao.eod;
 
-public class AccruedDao
+import com.adibrata.smartdealer.dao.DaoBase;
+
+public class AccruedDao extends DaoBase
 	{
-		
-		public AccruedDao()
+
+		public AccruedDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 	}

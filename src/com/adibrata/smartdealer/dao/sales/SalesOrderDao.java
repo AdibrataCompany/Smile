@@ -4,13 +4,9 @@
 
 package com.adibrata.smartdealer.dao.sales;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Customer;
@@ -20,7 +16,6 @@ import com.adibrata.smartdealer.model.SalesOrderDtl;
 import com.adibrata.smartdealer.model.SalesOrderHdr;
 import com.adibrata.smartdealer.service.sales.SalesOrderService;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.job.JobPost;
@@ -33,12 +28,8 @@ import util.adibrata.support.job.JobPost;
 public class SalesOrderDao extends DaoBase implements SalesOrderService
 	{
 		String userupd;
-		Session session;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar dtmupd = Calendar.getInstance();
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		int pagesize;
 		private long totalrecord;
 		private int currentpage;
 		
@@ -47,14 +38,12 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.session = HibernateHelper.getSessionFactory().openSession();
-						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from SalesOrderHdr ";
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -70,36 +59,36 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 		public void Save(final String usrupd, final SalesOrderHdr salesOrderHdr, final List<SalesOrderDtl> lstsalesOrderDtl) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				final Partner partner = salesOrderHdr.getPartner();
 				final Office office = salesOrderHdr.getOffice();
 				long jobid = 0;
 				
 				try
 					{
-						jobid = JobPost.JobSave(this.session, partner.getPartnerCode(), office.getId(), JobPost.JobCode.salesorder, salesOrderHdr.getCoaSchmHdr().getCoaSchmCode(), salesOrderHdr.getValueDate(), salesOrderHdr.getPostingDate(),
+						jobid = JobPost.JobSave(this.getSession(), partner.getPartnerCode(), office.getId(), JobPost.JobCode.salesorder, salesOrderHdr.getCoaSchmHdr().getCoaSchmCode(), salesOrderHdr.getValueDate(), salesOrderHdr.getPostingDate(),
 						        salesOrderHdr.getUsrCrt()).getId();
 								
 						salesOrderHdr.setJobId(jobid);
-						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.salesorder);
+						final String transno = TransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), TransactionType.salesorder);
 						salesOrderHdr.setSono(transno);
-						salesOrderHdr.setDtmCrt(this.dtmupd.getTime());
-						salesOrderHdr.setDtmUpd(this.dtmupd.getTime());
-						this.session.save(salesOrderHdr);
+						salesOrderHdr.setDtmCrt(this.dtmupd);
+						salesOrderHdr.setDtmUpd(this.dtmupd);
+						this.getSession().save(salesOrderHdr);
 						for (final SalesOrderDtl arow : lstsalesOrderDtl)
 							{
 								SalesOrderDtl salesOrderDtl = new SalesOrderDtl();
 								salesOrderDtl = arow;
-								salesOrderDtl.setDtmCrt(this.dtmupd.getTime());
-								salesOrderDtl.setDtmUpd(this.dtmupd.getTime());
-								this.session.save(salesOrderDtl);
+								salesOrderDtl.setDtmCrt(this.dtmupd);
+								salesOrderDtl.setDtmUpd(this.dtmupd);
+								this.getSession().save(salesOrderDtl);
 							}
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -126,9 +115,9 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 								hql.append(WhereCond);
 							}
 							
-						final Query selectQuery = this.session.createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 						
 					}
@@ -150,7 +139,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				SalesOrderHdr salesOrderHdr = null;
 				try
 					{
-						salesOrderHdr = (SalesOrderHdr) this.session.get(SalesOrderHdr.class, id);
+						salesOrderHdr = (SalesOrderHdr) this.getSession().get(SalesOrderHdr.class, id);
 						
 					}
 				catch (final Exception exp)
@@ -171,7 +160,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				Customer customer = null;
 				try
 					{
-						customer = (Customer) this.session.get(Customer.class, id);
+						customer = (Customer) this.getSession().get(Customer.class, id);
 						
 					}
 				catch (final Exception exp)
@@ -194,7 +183,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				try
 					{
 						hql.append(this.strStatement);
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						
 						list = selectQuery.list();
 						
@@ -225,12 +214,12 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
-						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
 						
-						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 						
 					}
@@ -244,17 +233,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return list;
 			}
-			
-		public int getPagesize()
-			{
-				return this.pagesize;
-			}
-			
-		public void setPagesize(final int pagesize)
-			{
-				this.pagesize = pagesize;
-			}
-			
+
 		public long getTotalrecord()
 			{
 				return this.totalrecord;

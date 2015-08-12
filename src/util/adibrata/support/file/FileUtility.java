@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 public class FileUtility
 	{
-		
+
 		private String filepath;
 		private String filename;
 		private String filextention;
@@ -16,39 +16,40 @@ public class FileUtility
 		private byte[] filebinary;
 		private File filevalue;
 		private String path;
-		
+
 		public FileUtility()
 			{
 				// TODO Auto-generated constructor stub
 				this.filebinary = null;
 			}
-			
+
 		public FileUtility(final String filepath) throws IOException
 			{
 				this.filebinary = null;
 				this.filepath = filepath;
+				this.filevalue = new File(this.filepath);
 				this.filebinary = this.ReadFile();
 			}
-			
+
 		public byte[] ReadFile() throws IOException
 			{
-				this.filevalue = new File(this.filename);
+
 				this.filebinary = getBytesFromFile(this.filevalue);
 				this.filename = this.filevalue.getName();
 				this.path = this.filevalue.getPath();
-
+				
 				this.filesize = this.filevalue.length();
 				return this.filebinary;
 			}
-
+			
 		@SuppressWarnings("resource")
 		private static byte[] getBytesFromFile(final File file) throws IOException
 			{
 				final InputStream is = new FileInputStream(file);
-
+				
 				// Get the size of the file
 				final long length = file.length();
-
+				
 				// You cannot create an array using a long type.
 				// It needs to be an int type.
 				// Before converting to an int type, check
@@ -57,10 +58,10 @@ public class FileUtility
 					{
 						// File is too large
 					}
-
+					
 				// Create the byte array to hold the data
 				final byte[] bytes = new byte[(int) length];
-
+				
 				// Read in the bytes
 				int offset = 0;
 				int numRead = 0;
@@ -68,18 +69,18 @@ public class FileUtility
 					{
 						offset += numRead;
 					}
-
+					
 				// Ensure all the bytes have been read in
 				if (offset < bytes.length)
 					{
 						throw new IOException("Could not completely read file " + file.getName());
 					}
-
+					
 				// Close the input stream and return bytes
 				is.close();
 				return bytes;
 			}
-
+			
 		/**
 		 * @return the filepath
 		 */
@@ -87,7 +88,7 @@ public class FileUtility
 			{
 				return this.filepath;
 			}
-			
+
 		/**
 		 * @param filepath
 		 *            the filepath to set
@@ -96,7 +97,7 @@ public class FileUtility
 			{
 				this.filepath = filepath;
 			}
-			
+
 		/**
 		 * @return the filename
 		 */
@@ -104,7 +105,7 @@ public class FileUtility
 			{
 				return this.filename;
 			}
-			
+
 		/**
 		 * @param filename
 		 *            the filename to set
@@ -113,7 +114,7 @@ public class FileUtility
 			{
 				this.filename = filename;
 			}
-			
+
 		/**
 		 * @return the filextention
 		 */
@@ -121,7 +122,7 @@ public class FileUtility
 			{
 				return this.filextention;
 			}
-			
+
 		/**
 		 * @param filextention
 		 *            the filextention to set
@@ -130,7 +131,7 @@ public class FileUtility
 			{
 				this.filextention = filextention;
 			}
-			
+
 		/**
 		 * @return the filesize
 		 */
@@ -138,7 +139,7 @@ public class FileUtility
 			{
 				return this.filesize;
 			}
-			
+
 		/**
 		 * @param filesize
 		 *            the filesize to set
@@ -147,7 +148,7 @@ public class FileUtility
 			{
 				this.filesize = filesize;
 			}
-			
+
 		/**
 		 * @return the filebinary
 		 */
@@ -155,7 +156,7 @@ public class FileUtility
 			{
 				return this.filebinary;
 			}
-			
+
 		/**
 		 * @param filebinary
 		 *            the filebinary to set
@@ -164,7 +165,7 @@ public class FileUtility
 			{
 				this.filebinary = filebinary;
 			}
-
+			
 		/**
 		 * @return the filevalue
 		 */
@@ -172,7 +173,7 @@ public class FileUtility
 			{
 				return this.filevalue;
 			}
-
+			
 		/**
 		 * @param filevalue
 		 *            the filevalue to set
@@ -181,7 +182,7 @@ public class FileUtility
 			{
 				this.filevalue = filevalue;
 			}
-			
+
 		/**
 		 * @return the path
 		 */
@@ -189,7 +190,7 @@ public class FileUtility
 			{
 				return this.path;
 			}
-			
+
 		/**
 		 * @param path
 		 *            the path to set
@@ -198,9 +199,9 @@ public class FileUtility
 			{
 				this.path = path;
 			}
-
+			
 	}
-	
+
 ////////////////
 // package action;
 //

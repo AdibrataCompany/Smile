@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.Preparable;
 public class PaymentRequestAction extends BaseAction implements Preparable
 	{
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -21,18 +21,18 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 		private PaymentRequestService paymentRequestService;
 		private PayReqDtl payReqDtl;
 		private PayReqHdr payReqHdr;
-		
-		public PaymentRequestAction()
+
+		public PaymentRequestAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -48,7 +48,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -56,7 +56,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -64,7 +64,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -72,7 +72,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @return the paymentRequestService
 		 */
@@ -80,7 +80,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.paymentRequestService;
 			}
-			
+
 		/**
 		 * @return the payReqDtl
 		 */
@@ -88,7 +88,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.payReqDtl;
 			}
-			
+
 		/**
 		 * @return the payReqHdr
 		 */
@@ -96,14 +96,14 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				return this.payReqHdr;
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -112,7 +112,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -121,7 +121,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -130,7 +130,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @param paymentRequestService
 		 *            the paymentRequestService to set
@@ -139,7 +139,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.paymentRequestService = paymentRequestService;
 			}
-			
+
 		/**
 		 * @param payReqDtl
 		 *            the payReqDtl to set
@@ -148,7 +148,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.payReqDtl = payReqDtl;
 			}
-			
+
 		/**
 		 * @param payReqHdr
 		 *            the payReqHdr to set
@@ -157,5 +157,5 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 			{
 				this.payReqHdr = payReqHdr;
 			}
-			
+
 	}

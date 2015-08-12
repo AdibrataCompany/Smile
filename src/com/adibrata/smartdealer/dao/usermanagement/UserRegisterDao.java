@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Employee;
@@ -17,7 +16,6 @@ import com.adibrata.smartdealer.model.ResetPasswordLog;
 import com.adibrata.smartdealer.model.UserList;
 import com.adibrata.smartdealer.service.usermanagement.UserService;
 
-import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.encryption.EncryptionHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
@@ -25,10 +23,9 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class UserRegisterDao extends DaoBase implements UserService
 	{
 		String userupd;
-		Session session;
+		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		int pagesize;
 		private long totalrecord;
 		private int currentpage;
 		
@@ -37,14 +34,12 @@ public class UserRegisterDao extends DaoBase implements UserService
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.session = HibernateHelper.getSessionFactory().openSession();
-						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = "from MsUser A, Employee B, Partner C where A.employeeId = B.id and A.partner = C.partnerCode ";
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -62,20 +57,20 @@ public class UserRegisterDao extends DaoBase implements UserService
 		public void SaveAdd(final MsUser msUser) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						msUser.setDtmCrt(this.dtmupd);
 						msUser.setDtmUpd(this.dtmupd);
 						msUser.setIsActive((short) 1);
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
-						this.session.save(msUser);
-						this.session.getTransaction().commit();
+						this.getSession().save(msUser);
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -93,20 +88,20 @@ public class UserRegisterDao extends DaoBase implements UserService
 		public void SaveEdit(final MsUser msUser) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						
 						msUser.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
-						this.session.update(msUser);
+						this.getSession().update(msUser);
 						
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -123,18 +118,18 @@ public class UserRegisterDao extends DaoBase implements UserService
 		public void SaveDel(final MsUser msUser) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						
-						this.session.delete(msUser);
+						this.getSession().delete(msUser);
 						
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -152,7 +147,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 				// TODO Auto-generated method stub
 				final ResetPasswordLog resetpasswordlog = new ResetPasswordLog();
 				
-				this.session.getTransaction().begin();
+				this.getSession().getTransaction().begin();
 				try
 					{
 						
@@ -160,7 +155,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						resetpasswordlog.setDtmCrt(this.dtmupd);
 						resetpasswordlog.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA("Password"));
-						this.session.update(msUser);
+						this.getSession().update(msUser);
 						
 						resetpasswordlog.setPartner(msUser.getPartner());
 						resetpasswordlog.setUserName(msUser.getUserName());
@@ -169,14 +164,14 @@ public class UserRegisterDao extends DaoBase implements UserService
 						resetpasswordlog.setUsrUpd(msUser.getUsrUpd());
 						resetpasswordlog.setUsrCrt(msUser.getUsrCrt());
 						
-						this.session.save(resetpasswordlog);
+						this.getSession().save(resetpasswordlog);
 						
-						this.session.getTransaction().commit();
+						this.getSession().getTransaction().commit();
 						
 					}
 				catch (final Exception exp)
 					{
-						this.session.getTransaction().rollback();
+						this.getSession().getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -191,7 +186,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 				MsUser msUser = null;
 				try
 					{
-						msUser = (MsUser) this.session.get(MsUser.class, id);
+						msUser = (MsUser) this.getSession().get(MsUser.class, id);
 						
 					}
 				catch (final Exception exp)
@@ -224,11 +219,11 @@ public class UserRegisterDao extends DaoBase implements UserService
 								hql.append(WhereCond);
 							}
 
-						final Query selectQuery = this.session.createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("UserList" + WhereCond);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setMaxResults(this.getPagesize());
 
 						final List<Object[]> lst = selectQuery.list();
 						list = new ArrayList<UserList>();
@@ -278,13 +273,13 @@ public class UserRegisterDao extends DaoBase implements UserService
 								hql.append(" and ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.session.createQuery(hql.toString());
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
-						this.currentpage = (int) ((this.totalrecord / this.pagesize) + 1);
+						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("UserList" + WhereCond);
-						selectQuery.setFirstResult((this.currentpage - 1) * this.pagesize);
-						selectQuery.setMaxResults(this.pagesize);
+						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
+						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
 
 					}

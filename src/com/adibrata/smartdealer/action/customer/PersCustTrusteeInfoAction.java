@@ -50,7 +50,6 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 		public PersCustTrusteeInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				RenderMenu();
 
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
