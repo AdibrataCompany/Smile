@@ -76,11 +76,11 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						final OtherReceiveService otherReceiveService = new OtherReceiveDao();
 						
 						this.otherReceiveService = otherReceiveService;
-
+						
 						final BankAccountService bankAccountService = new BankAccountDao();
 						
 						this.bankAccountService = bankAccountService;
-
+						
 						final Partner partner = new Partner();
 						final Office office = new Office();
 						
@@ -182,7 +182,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			
 		private void Initialisasi()
 			{
-				RenderMenu();
+				
 				this.office.setId(sesOfficeId());
 				this.partner.setPartnerCode(sesPartnerCode());
 				this.lstOtherRcvDtl = new ArrayList<OtherRcvDtl>();
@@ -273,6 +273,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						otherRcvHdr.setBankAccountId(this.bankAccountId);
 						otherRcvHdr.setNotes(this.notes);
 						
+						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
+							{
+								aRow.setCoaName(this.coaName);
+								aRow.setCoaCode(this.coaCode);
+								aRow.setAmount(this.amount);
+								aRow.setDescription(this.description);
+							}
+							
 						this.otherReceiveService.Save(sesLoginName(), otherRcvHdr, this.lstOtherRcvDtl);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -293,17 +301,17 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				try
 					{
-
+						
 						this.bankAccounts = this.bankAccountService.listBankAccount(this.partner, this.office, this.Wop, this.bankpurpose);
-
+						
 						this.bankAccountList = new HashMap<Long, String>();
-
+						
 						for (final Iterator<BankAccount> iterator = this.bankAccounts.iterator(); iterator.hasNext();)
 							{
 								this.bankAccount = iterator.next();
 								this.bankAccountList.put(this.bankAccount.getId(), this.bankAccount.getBankAccountName().trim());
 							}
-
+							
 					}
 				catch (final Exception e)
 					{
@@ -311,7 +319,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-
+			
 		public Office getOffice()
 			{
 				return this.office;
@@ -381,7 +389,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				this.rcvFrom = rcvFrom;
 			}
-
+			
 		// @RequiredFieldValidator(message = "The name is required")
 		public Double getRcvAmount()
 			{
@@ -533,22 +541,22 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				this.headersession = headersession;
 			}
-
+			
 		public BankAccount getBankAccount()
 			{
 				return this.bankAccount;
 			}
-
+			
 		public void setBankAccount(final BankAccount bankAccount)
 			{
 				this.bankAccount = bankAccount;
 			}
-
+			
 		public List<BankAccount> getBankAccounts()
 			{
 				return this.bankAccounts;
 			}
-
+			
 		public void setBankAccounts(final List<BankAccount> bankAccounts)
 			{
 				this.bankAccounts = bankAccounts;
@@ -568,7 +576,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				return this.bankAccountService;
 			}
-
+			
 		public void setBankAccountService(final BankAccountService bankAccountService)
 			{
 				this.bankAccountService = bankAccountService;
@@ -583,7 +591,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				this.valueDate = valueDate;
 			}
-
+			
 		/**
 		 * @return the wop
 		 */
@@ -591,7 +599,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				return this.Wop;
 			}
-
+			
 		/**
 		 * @param wop
 		 *            the wop to set
