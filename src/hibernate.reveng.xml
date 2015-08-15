@@ -26,12 +26,14 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntColl"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntGoLive"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntIns"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsAsset"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsCust"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsEndorsInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsInsco"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntInsStandardInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntInvoice"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMailingInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntReffInfo"/>
@@ -63,16 +65,19 @@
   <table-filter match-catalog="SmartDealer" match-name="CustomerBankInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="DailyARAging"/>
   <table-filter match-catalog="SmartDealer" match-name="DanaTunai"/>
+  <table-filter match-catalog="SmartDealer" match-name="DeliveryOrder"/>
   <table-filter match-catalog="SmartDealer" match-name="EarlyTermination"/>
   <table-filter match-catalog="SmartDealer" match-name="Employee"/>
   <table-filter match-catalog="SmartDealer" match-name="EntrustDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="EntrustHdr"/>
+  <table-filter match-catalog="SmartDealer" match-name="FundingCoy"/>
   <table-filter match-catalog="SmartDealer" match-name="GoLive"/>
   <table-filter match-catalog="SmartDealer" match-name="Holiday"/>
   <table-filter match-catalog="SmartDealer" match-name="InsCompany"/>
   <table-filter match-catalog="SmartDealer" match-name="InsCompanyOffice"/>
   <table-filter match-catalog="SmartDealer" match-name="InsCompanyOfficeFee"/>
   <table-filter match-catalog="SmartDealer" match-name="InstSchedule"/>
+  <table-filter match-catalog="SmartDealer" match-name="Invoice"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="Leasing"/>

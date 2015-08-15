@@ -89,6 +89,8 @@
         <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatInfoDtl" />
         <mapping class="com.adibrata.smartdealer.model.AssetMaster" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderHdr" />
+        <mapping class="com.adibrata.smartdealer.model.Invoice" />
+        <mapping class="com.adibrata.smartdealer.model.FundingCoy" />
         <mapping class="com.adibrata.smartdealer.model.PersCustCcinfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOldOwnerInfo" />
         <mapping class="com.adibrata.smartdealer.model.Coamaster" />
@@ -104,6 +106,7 @@
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntInvoice" />
         <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.Holiday" />
         <mapping class="com.adibrata.smartdealer.model.PersCustOtherBussinessInfo" />
@@ -122,6 +125,7 @@
         <mapping class="com.adibrata.smartdealer.model.CoyCustFinancialInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />
+        <mapping class="com.adibrata.smartdealer.model.DeliveryOrder" />
         <mapping class="com.adibrata.smartdealer.model.Workshop" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntFund" />
         <mapping class="com.adibrata.smartdealer.model.Application" />
@@ -137,6 +141,7 @@
         <mapping class="com.adibrata.smartdealer.model.TrxConfigHdr" />
         <mapping class="com.adibrata.smartdealer.model.AgmntAssetEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.EarlyTermination" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntGoLive" />
         <mapping class="com.adibrata.smartdealer.model.PersCustJobInfo" />
         <mapping class="com.adibrata.smartdealer.model.Employee" />
         <mapping class="com.adibrata.smartdealer.model.PersCustFamilyInfo" />

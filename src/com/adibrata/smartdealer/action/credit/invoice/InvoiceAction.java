@@ -211,7 +211,7 @@ public class InvoiceAction extends BaseAction implements Preparable
 							}
 						else
 							{
-								this.status = "end";
+								this.mode = "end";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -225,11 +225,11 @@ public class InvoiceAction extends BaseAction implements Preparable
 					}
 			}
 
-		private String SaveAdd() throws Exception
+		public String SaveAdd() throws Exception
 			{
 				try
 					{
-						this.status = "";
+						this.mode = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
 						assetDocMaster.setDocumentName(this.getDocumentName());
@@ -237,26 +237,26 @@ public class InvoiceAction extends BaseAction implements Preparable
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
-						this.status = SUCCESS;
+						this.mode = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
 
-		private String SaveEdit() throws Exception
+		public String SaveEdit() throws Exception
 			{
 				try
 					{
-						this.status = "";
+						this.mode = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setId(this.getId());
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
@@ -264,26 +264,26 @@ public class InvoiceAction extends BaseAction implements Preparable
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 						this.assetDocMasterService.SaveEdit(assetDocMaster);
-						this.status = SUCCESS;
+						this.mode = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
 
-		private String SaveDelete() throws Exception
+		public String SaveDelete() throws Exception
 			{
 				try
 					{
-						this.status = "";
+						this.mode = "";
 						if (this.getId() == null)
 							{
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -291,25 +291,25 @@ public class InvoiceAction extends BaseAction implements Preparable
 								assetDocMaster.setId(this.getId());
 
 								this.assetDocMasterService.SaveDel(assetDocMaster);
-								this.status = SUCCESS;
+								this.mode = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
 							}
 						else
 							{
-								this.status = "end";
+								this.mode = "end";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
 			
 		/**
