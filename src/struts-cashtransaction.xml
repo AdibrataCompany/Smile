@@ -6,7 +6,7 @@
 	<package name="cashtransaction" extends="smartdealer-package"
 		namespace="/">
 		<action name="advancecashrequest"
-			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceRequestAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.advancetransaction.advancerequest.AdvanceRequestAction"
 			method="execute">
 			<result name="start">/Pages/Include/BankAccountPaging.jsp
 			</result>
@@ -33,8 +33,8 @@
 			<result name="search">/Pages/Include/BankAccountPaging.jsp
 			</result>
 		</action>
-		<action name="advancecashreverse"
-			class="com.adibrata.smartdealer.action.cashtransaction.AdvanceReverseAction"
+		<action name="advancecashreturn"
+			class="com.adibrata.smartdealer.action.cashtransaction.advancetransaction.advancereturn.AdvanceReturnAction"
 			method="execute">
 			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
@@ -58,7 +58,43 @@
 			</result>
 		</action>
 		<action name="paymentrequest"
-			class="com.adibrata.smartdealer.action.cashtransaction.PaymentRequestAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.payment.request.PaymentRequestAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="end">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+		</action>
+		<action name="paymentrequesttransfer"
+			class="com.adibrata.smartdealer.action.cashtransaction.payment.transfer.PayReqTransferAction"
+			method="execute">
+			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="search">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="end">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="error">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="entry">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+			<result name="adddetail">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			</result>
+		</action>
+		<action name="paymentrequestreconcile"
+			class="com.adibrata.smartdealer.action.cashtransaction.payment.reconcile.PayReqReconcileAction"
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -76,7 +112,7 @@
 			</result>
 		</action>
 		<action name="pettycash"
-			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.transaction.PettyCashTransactionAction"
 			method="execute">
 			<result name="start">/Pages/Include/BankAccountPaging.jsp
 			</result>
@@ -105,7 +141,7 @@
 		</action>
 
 		<action name="pettycashcorrection"
-			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.correction.PettyCashCorrectionAction"
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
@@ -125,7 +161,7 @@
 
 
 		<action name="pettycashreimbursement"
-			class="com.adibrata.smartdealer.action.cashtransaction.PettyCashAction"
+			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.reimburse.PettyCashReimburseAction"
 			method="execute">
 			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>

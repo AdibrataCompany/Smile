@@ -21,16 +21,16 @@ import com.opensymphony.xwork2.Preparable;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class AdvanceReverseAction extends BaseAction implements Preparable
+public class AdvanceReturnAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
 		private static final long serialVersionUID = 1L;
 		private Partner partner;
 		private Office office;
-		
+
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
@@ -39,7 +39,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-		
+
 		private String valuedate;
 		private String postingdate;
 		private String notes;
@@ -51,8 +51,8 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 		private AdvanceCashReversal reversal;
 		private int agingdays;
 		private Double amount;
-		
-		public AdvanceReverseAction() throws Exception
+
+		public AdvanceReturnAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
@@ -75,19 +75,19 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
@@ -168,7 +168,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									return ERROR;
 							}
@@ -179,30 +179,30 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
 				final StringBuilder sql = new StringBuilder();
-				
+
 				sql.append(" P.partnerCode = '" + BaseAction.sesPartnerCode() + "' and O.id = " + BaseAction.sesOfficeId() + " and A.status = 'NE' ");
-				
+
 				if (this.getBankaccountid() != null)
 					{
 						sql.append(" and  B.id = " + this.getBankaccountid());
-						
+
 					}
-					
+
 				if (!this.valuedate.equals(""))
 					{
 						sql.append(" and  A.valueDate  <= " + this.valuedate);
 					}
-					
+
 				if (!this.postingdate.equals(""))
 					{
 						sql.append(" and  A.postingDate  <= " + this.postingdate);
-						
+
 					}
-					
+
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -216,26 +216,26 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 					}
 				return sql.toString();
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
 					{
 						final AdvanceCashService entryService = new AdvanceCashDao();
 						this.lstadvance = entryService.Paging(this.getPageNumber(), this.WhereCond(), "");
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -243,7 +243,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 						final AdvanceCashService entryService = new AdvanceCashDao();
 						this.lstadvance = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = entryService.getCurrentpage();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -253,38 +253,38 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String ViewData() throws Exception
 			{
 				String status = "";
-				
+
 				try
 					{
-						
+
 						if (this.getId() != null)
 							{
 								final AdvanceCashService entryService = new AdvanceCashDao();
 								final BankAccountService baservice = new BankAccountDao();
 								this.advancecash = new AdvanceCash();
 								this.advancecash = entryService.View(this.getId());
-								
+
 								this.setValuedate(this.dateformat.format(this.advancecash.getValueDate()));
 								this.setPostingdate(this.dateformat.format(this.advancecash.getPostingDate()));
 								this.setAmount(this.advancecash.getAdvanceAmount());
 								this.setBankaccountname(baservice.View(this.advancecash.getBankAccount().getId()).getBankAccountName());
-								
+
 								status = "entry";
-								
+
 							}
 						else
 							{
 								status = "search";
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -292,13 +292,13 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private void setBankaccountname(final String bankAccountName)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		private String SaveAdvanceReversal() throws Exception
 			{
 				String status = "";
@@ -308,9 +308,9 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 						final BankAccount bank = new BankAccount();
 						bank.setId(this.getBankaccountid());
 						this.reversal.setAdvanceCash(this.advancecash);
-						
+
 						this.reversal.setReverseAmount(this.getAmount());
-						
+
 						this.reversal.setBankAccount(bank);
 						this.reversal.setValueDate(this.dateformat.parse(this.getValuedate()));
 						this.reversal.setPostingDate(BaseAction.sesBussinessDate());
@@ -320,13 +320,13 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 						this.reversal.setUsrCrt(BaseAction.sesLoginName());
 						this.service.Save(BaseAction.sesLoginName(), this.reversal);
 						status = SUCCESS;
-						
+
 						this.setMessage(SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -335,11 +335,11 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -347,7 +347,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -356,7 +356,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -364,7 +364,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -373,7 +373,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -381,7 +381,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -390,7 +390,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -398,7 +398,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -407,7 +407,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -415,7 +415,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -424,7 +424,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -432,7 +432,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -441,7 +441,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -449,7 +449,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -458,7 +458,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -466,7 +466,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -475,7 +475,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -483,7 +483,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -492,7 +492,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -500,7 +500,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -509,7 +509,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the valuedate
 		 */
@@ -517,7 +517,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-			
+
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -526,7 +526,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the postingdate
 		 */
@@ -534,7 +534,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.postingdate;
 			}
-			
+
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -543,7 +543,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.postingdate = postingdate;
 			}
-			
+
 		/**
 		 * @return the notes
 		 */
@@ -551,7 +551,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-			
+
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -560,7 +560,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-			
+
 		/**
 		 * @return the bankaccountid
 		 */
@@ -568,7 +568,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountid;
 			}
-			
+
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -577,7 +577,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.bankaccountid = bankaccountid;
 			}
-			
+
 		/**
 		 * @return the lstadvance
 		 */
@@ -585,7 +585,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.lstadvance;
 			}
-			
+
 		/**
 		 * @param lstadvance
 		 *            the lstadvance to set
@@ -594,7 +594,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.lstadvance = lstadvance;
 			}
-			
+
 		/**
 		 * @return the lstbankaccount
 		 */
@@ -602,7 +602,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.lstbankaccount;
 			}
-			
+
 		/**
 		 * @param lstbankaccount
 		 *            the lstbankaccount to set
@@ -611,7 +611,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.lstbankaccount = lstbankaccount;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -619,7 +619,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -628,7 +628,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the advancecash
 		 */
@@ -636,7 +636,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.advancecash;
 			}
-			
+
 		/**
 		 * @param advancecash
 		 *            the advancecash to set
@@ -645,7 +645,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.advancecash = advancecash;
 			}
-			
+
 		/**
 		 * @return the reversal
 		 */
@@ -653,7 +653,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.reversal;
 			}
-			
+
 		/**
 		 * @param reversal
 		 *            the reversal to set
@@ -662,7 +662,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.reversal = reversal;
 			}
-			
+
 		/**
 		 * @return the agingdays
 		 */
@@ -670,7 +670,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.agingdays;
 			}
-			
+
 		/**
 		 * @param agingdays
 		 *            the agingdays to set
@@ -679,7 +679,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.agingdays = agingdays;
 			}
-			
+
 		/**
 		 * @return the amount
 		 */
@@ -687,7 +687,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-			
+
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -696,7 +696,7 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -704,5 +704,5 @@ public class AdvanceReverseAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 	}

@@ -3,10 +3,10 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="othertrans" extends="smartdealer-package"
+	<package name="product" extends="smartdealer-package"
 		namespace="/">
-		<action name="otherdisburse"
-			class="com.adibrata.smartdealer.action.othertrans.disburse.OtherDisbAction"
+		<action name="productho"
+			class="com.adibrata.smartdealer.action.credit.product.ho.ProductBranchAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -24,8 +24,27 @@
 			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
-		<action name="otherreceive"
-			class="com.adibrata.smartdealer.action.othertrans.receive.OtherReceiveAction"
+		<action name="productoffice"
+			class="com.adibrata.smartdealer.action.credit.product.office.ProductOfficeAction"
+			method="execute">
+			<result name="start">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+		</action>
+		<action name="productoffering"
+			class="com.adibrata.smartdealer.action.credit.product.offering.ProductOfferingAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
