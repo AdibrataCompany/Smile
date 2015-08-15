@@ -63,7 +63,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		private String message;
 		private List<Employee> lstEmployee;
 
-		long id;
+		private Long id;
 
 		public EmployeeAction() throws Exception
 			{
@@ -83,7 +83,6 @@ public class EmployeeAction extends BaseAction implements Preparable
 					{
 						this.pageNumber = 1;
 					}
-					
 			}
 
 		@Override
