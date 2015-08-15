@@ -40,6 +40,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private String documentName;
 		private String assetType;
 		private String status;
+		private String lbltest;
 
 		/**
 		 * @throws Exception
@@ -47,20 +48,32 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public AssetDocAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				final AssetDocMasterService assetdocmasterservice = new AssetDocMasterDao();
 
-				this.assetDocMasterService = new AssetDocMasterDao();
-				this.assetDocMaster = new AssetDocMaster();
+				this.assetDocMasterService = assetdocmasterservice;
 
-				this.partner = new Partner();
-				this.office = new Office();
-				
+				final AssetDocMaster assetDocMaster = new AssetDocMaster();
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				partner.setPartnerCode(BaseAction.sesPartnerCode());
+				office.setId(BaseAction.sesOfficeId());
+				this.setPartner(partner);
+				this.setOffice(office);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.office.setId(BaseAction.sesOfficeId());
+				this.setAssetDocMaster(assetDocMaster);
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
 					}
 
+				final StringBuilder str = new StringBuilder();
+				str.append("<table border = '1'>");
+				str.append("<tr>");
+				str.append("<td>Arga");
+				str.append("</td>");
+				str.append("</tr>");
+				str.append("</table>");
+				this.setLbltest(str.toString());
 			}
 
 		/**
@@ -89,6 +102,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -100,6 +114,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e1)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e1.printStackTrace();
 										}
 									break;
@@ -111,28 +126,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "saveedit" :
-									try
-										{
-											strMode = this.SaveEdit();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -145,6 +139,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -161,6 +156,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -173,6 +169,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -184,13 +181,14 @@ public class AssetDocAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
 
 								default :
 									break;
-									
+
 							}
 					}
 				else
@@ -275,6 +273,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 						if (this.getId() != null)
 							{
 								this.assetDocMaster = this.assetDocMasterService.View(this.id);
+								this.partner = this.assetDocMaster.getPartner();
 								this.documentCode = this.assetDocMaster.getDocumentCode();
 								this.documentName = this.assetDocMaster.getDocumentName();
 								this.assetType = this.assetDocMaster.getAssetType();
@@ -295,38 +294,35 @@ public class AssetDocAction extends BaseAction implements Preparable
 					}
 			}
 
-		private String SaveAdd() throws Exception
+		public String SaveAdd() throws Exception
 			{
 				try
 					{
-						this.status = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
 						assetDocMaster.setDocumentName(this.getDocumentName());
+						assetDocMaster.setAssetType(this.getAssetType());
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
-						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return SUCCESS;
 			}
 
-		private String SaveEdit() throws Exception
+		public String SaveEdit() throws Exception
 			{
 				try
 					{
-						this.status = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setId(this.getId());
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
@@ -334,19 +330,17 @@ public class AssetDocAction extends BaseAction implements Preparable
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 						this.assetDocMasterService.SaveEdit(assetDocMaster);
-						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return SUCCESS;
 			}
 
 		private String SaveDelete() throws Exception
@@ -385,7 +379,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -619,7 +613,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				return this.documentCode;
 			}
-			
+
 		// @RequiredFieldValidator(type = ValidatorType.FIELD, message = "You must enter a value Document Name bar.")
 		public void setDocumentCode(final String documentCode)
 			{
@@ -630,7 +624,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				return this.documentName;
 			}
-			
+
 		// @RequiredFieldValidator(type = ValidatorType.FIELD, message = "You must enter a value Document Name bar.")
 		public void setDocumentName(final String documentName)
 			{
@@ -652,6 +646,16 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public void setId(final Long id)
 			{
 				this.id = id;
+			}
+
+		public String getLbltest()
+			{
+				return this.lbltest;
+			}
+
+		public void setLbltest(final String lbltest)
+			{
+				this.lbltest = lbltest;
 			}
 
 		// @Override

@@ -16,12 +16,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AssetMasterAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private AssetMasterService assetMasterService;
 		private AssetMaster assetmaster;
@@ -42,28 +42,29 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		private String assetModel;
 		private String assetCode;
 		private Integer assetLevel;
-
+		
 		public AssetMasterAction() throws Exception
 			{
-
-				this.partner = new Partner();
-				this.office = new Office();
-				this.assetMasterService = new AssetMasterDao();
-				this.assetmaster = new AssetMaster();
+				final AssetMasterService assetmasterservice = new AssetMasterDao();
 				
-				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.office.setId(BaseAction.sesOfficeId());
-
-				this.setPartner(this.partner);
-				this.setOffice(this.office);
+				this.assetMasterService = assetmasterservice;
+				final AssetMaster assetMaster = new AssetMaster();
 				
+				final Partner partner = new Partner();
+				final Office office = new Office();
+				partner.setPartnerCode(BaseAction.sesPartnerCode());
+				office.setId(BaseAction.sesOfficeId());
+				
+				this.setPartner(partner);
+				this.setOffice(office);
+				this.setAssetmaster(assetMaster);
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
 					}
-
+					
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -74,23 +75,77 @@ public class AssetMasterAction extends BaseAction implements Preparable
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "edit" :
-									this.ViewData();
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "savedel" :
-									strMode = this.SaveDelete();
+									try
+										{
+											strMode = this.SaveDelete();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveadd" :
-									strMode = this.SaveAdd();
+									try
+										{
+											strMode = this.SaveAdd();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveedit" :
-									strMode = this.SaveEdit();
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
 									this.pageNumber = 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "prev" :
 									this.pageNumber -= 1;
@@ -98,14 +153,41 @@ public class AssetMasterAction extends BaseAction implements Preparable
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "last" :
-									this.Paging(1);
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								default :
 									break;
@@ -114,15 +196,24 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				else
 					{
 						this.pageNumber = 1;
-						this.Paging();
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								strMode = ERROR;
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
-				String wherecond = "";
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -136,7 +227,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -145,32 +236,33 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
 						this.lstAssetMaster = this.assetMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetMasterService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public void ViewData() throws Exception
 			{
 				this.assetmaster = new AssetMaster();
@@ -200,7 +292,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -256,7 +348,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				this.status = "";
@@ -265,7 +357,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 						if (this.getId() != null)
 							{
 								final AssetMaster assetMaster = new AssetMaster();
-
+								
 								assetMaster.setId(this.getId());
 								this.assetMasterService.SaveDel(assetMaster);
 								this.status = SUCCESS;
@@ -288,15 +380,15 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the assetMasterService
 		 */
@@ -304,7 +396,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetMasterService;
 			}
-
+			
 		/**
 		 * @return the assetmaster
 		 */
@@ -312,7 +404,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetmaster;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -320,7 +412,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -328,7 +420,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @return the lstAssetMaster
 		 */
@@ -336,7 +428,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.lstAssetMaster;
 			}
-
+			
 		/**
 		 * @param assetMasterService
 		 *            the assetMasterService to set
@@ -345,7 +437,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetMasterService = assetMasterService;
 			}
-
+			
 		/**
 		 * @param assetmaster
 		 *            the assetmaster to set
@@ -354,7 +446,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetmaster = assetmaster;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -363,7 +455,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -372,7 +464,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @param lstAssetMaster
 		 *            the lstAssetMaster to set
@@ -381,24 +473,24 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.lstAssetMaster = lstAssetMaster;
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -406,7 +498,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -414,7 +506,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -422,7 +514,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -430,7 +522,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -438,7 +530,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -446,7 +538,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -455,7 +547,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -464,7 +556,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -473,7 +565,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -482,7 +574,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -491,7 +583,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the assetType
 		 */
@@ -499,7 +591,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetType;
 			}
-
+			
 		/**
 		 * @return the assetBrand
 		 */
@@ -507,7 +599,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetBrand;
 			}
-
+			
 		/**
 		 * @return the assetModel
 		 */
@@ -515,7 +607,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetModel;
 			}
-
+			
 		/**
 		 * @return the assetCode
 		 */
@@ -523,7 +615,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetCode;
 			}
-
+			
 		/**
 		 * @return the assetLevel
 		 */
@@ -531,7 +623,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetLevel;
 			}
-
+			
 		/**
 		 * @param assetType
 		 *            the assetType to set
@@ -540,7 +632,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetType = assetType;
 			}
-
+			
 		/**
 		 * @param assetBrand
 		 *            the assetBrand to set
@@ -549,7 +641,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetBrand = assetBrand;
 			}
-
+			
 		/**
 		 * @param assetModel
 		 *            the assetModel to set
@@ -558,7 +650,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetModel = assetModel;
 			}
-
+			
 		/**
 		 * @param assetCode
 		 *            the assetCode to set
@@ -567,7 +659,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetCode = assetCode;
 			}
-
+			
 		/**
 		 * @param assetLevel
 		 *            the assetLevel to set
@@ -576,22 +668,22 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetLevel = assetLevel;
 			}
-
+			
 		public String getMessage()
 			{
 				return this.message;
 			}
-
+			
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public String getStatus()
 			{
 				return this.status;
 			}
-
+			
 		public void setStatus(final String status)
 			{
 				this.status = status;
@@ -613,7 +705,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.isActive = isActive;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -622,5 +714,5 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 	}

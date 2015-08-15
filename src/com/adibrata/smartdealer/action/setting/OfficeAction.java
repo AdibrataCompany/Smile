@@ -32,7 +32,7 @@ public class OfficeAction extends BaseAction implements Preparable
 		private int pageNumber;
 		private String usrUpd;
 		private String usrCrt;
-		private Long id;
+		private long id;
 		
 		private String message;
 		
@@ -59,15 +59,15 @@ public class OfficeAction extends BaseAction implements Preparable
 		public OfficeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final OfficeService officeservice = new OfficeDao();
-				
-				this.officeService = officeservice;
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				
-				this.setPartner(partner);
+				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setOffice(office);
+				
+				this.office = new Office();
+				this.setOffice(this.office);
+
+				this.officeService = new OfficeDao();
+				this.office = new Office();
+				
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
@@ -91,23 +91,77 @@ public class OfficeAction extends BaseAction implements Preparable
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "edit" :
-									this.ViewData();
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "savedel" :
-									strMode = this.SaveDelete();
+									try
+										{
+											strMode = this.SaveDelete();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveadd" :
-									strMode = this.SaveAdd();
+									try
+										{
+											strMode = this.SaveAdd();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveedit" :
-									strMode = this.SaveEdit();
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
 									this.pageNumber = 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "prev" :
 									this.pageNumber -= 1;
@@ -115,14 +169,41 @@ public class OfficeAction extends BaseAction implements Preparable
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "last" :
-									this.Paging(1);
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								default :
 									break;
@@ -131,7 +212,16 @@ public class OfficeAction extends BaseAction implements Preparable
 				else
 					{
 						this.pageNumber = 1;
-						this.Paging();
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								strMode = ERROR;
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
@@ -139,7 +229,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			
 		private String WhereCond()
 			{
-				String wherecond = "";
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -159,7 +249,6 @@ public class OfficeAction extends BaseAction implements Preparable
 				try
 					{
 						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "");
-
 					}
 				catch (final Exception exp)
 					{
@@ -177,6 +266,7 @@ public class OfficeAction extends BaseAction implements Preparable
 				try
 					{
 						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.officeService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -195,6 +285,7 @@ public class OfficeAction extends BaseAction implements Preparable
 				try
 					{
 						this.office = this.officeService.View(this.id);
+						this.partner = this.office.getPartner();
 						this.officeCode = this.office.getOfficeCode();
 						this.name = this.office.getName();
 						this.address = this.office.getAddress();
@@ -328,7 +419,7 @@ public class OfficeAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -720,7 +811,7 @@ public class OfficeAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
@@ -729,7 +820,7 @@ public class OfficeAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}

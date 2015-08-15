@@ -56,10 +56,7 @@
 		<action name="suspendreverse"
 			class="com.adibrata.smartdealer.action.accmnt.SuspendReverseAction"
 			method="execute">
-			<result type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
-			</result>
+			
 			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp

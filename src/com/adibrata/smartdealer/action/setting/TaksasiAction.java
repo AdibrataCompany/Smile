@@ -18,7 +18,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		
@@ -34,7 +34,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private Long id;
+		private long id;
 		
 		private String assetMasterCode;
 		private String taksasiCode;
@@ -44,17 +44,15 @@ public class TaksasiAction extends BaseAction implements Preparable
 		public TaksasiAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final TaksasiService taksasiservice = new TaksasiDao();
-				
-				this.taksasiService = taksasiservice;
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				final Taksasi taksasi = new Taksasi();
-				
-				this.setPartner(partner);
+				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setOffice(office);
-				this.setTaksasi(taksasi);
+				
+				this.office = new Office();
+				this.setOffice(this.office);
+
+				this.taksasiService = new TaksasiDao();
+				this.taksasi = new Taksasi();
+				
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
@@ -71,23 +69,77 @@ public class TaksasiAction extends BaseAction implements Preparable
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "edit" :
-									this.ViewData();
+									try
+										{
+											this.ViewData();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "savedel" :
-									strMode = this.SaveDelete();
+									try
+										{
+											strMode = this.SaveDelete();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveadd" :
-									strMode = this.SaveAdd();
+									try
+										{
+											strMode = this.SaveAdd();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "saveedit" :
-									strMode = this.SaveEdit();
+									try
+										{
+											strMode = this.SaveEdit();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
 									this.pageNumber = 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "prev" :
 									this.pageNumber -= 1;
@@ -95,14 +147,41 @@ public class TaksasiAction extends BaseAction implements Preparable
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								case "last" :
-									this.Paging(1);
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											strMode = ERROR;
+											e.printStackTrace();
+										}
 									break;
 								default :
 									break;
@@ -111,7 +190,16 @@ public class TaksasiAction extends BaseAction implements Preparable
 				else
 					{
 						this.pageNumber = 1;
-						this.Paging();
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								strMode = ERROR;
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
@@ -119,7 +207,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			
 		private String WhereCond()
 			{
-				String wherecond = "";
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -156,6 +244,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 				try
 					{
 						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.taksasiService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -174,6 +263,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 				try
 					{
 						this.taksasi = this.taksasiService.View(this.id);
+						this.partner = this.office.getPartner();
 						this.taksasiCode = this.taksasi.getTaksasiCode();
 						this.taksasiName = this.taksasi.getTaksasiName();
 						this.taksasiPriceMin = this.taksasi.getTaksasiPriceMin();
@@ -246,10 +336,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 				try
 					{
 						final Taksasi taksasi = new Taksasi();
-						taksasi.setTaksasiCode(this.getTaksasiCode());
-						taksasi.setTaksasiName(this.getTaksasiName());
-						taksasi.setTaksasiPriceMin(this.getTaksasiPriceMin());
-						
+						this.office.setId(this.getId());
 						this.taksasiService.SaveDel(taksasi);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -269,7 +356,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -481,7 +568,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
@@ -522,7 +609,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}

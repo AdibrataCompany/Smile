@@ -37,7 +37,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private Long id;
+		private long id;
 		private String coaSchmCode;
 		private String coaSchmDesc;
 		private Integer isActive;
@@ -302,7 +302,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -541,7 +541,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
@@ -550,7 +550,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}

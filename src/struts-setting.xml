@@ -2,30 +2,43 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
-
-
-
 <struts>
-	<package name="Setting" extends="smartdealer-package"
+	<package name="assetdoc" extends="smartdealer-package"
 		namespace="/setting">
 		<action name="assetdoc"
 			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="success">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="error">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="saveadd">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="saveedit">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="first">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 		</action>
+		<action name="assetdoc_saveadd"
+			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
+			method="SaveAdd">
+			<result name="input">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">assetdoc</param>
+			</result>
+		</action>
+		<action name="assetdoc_saveedit"
+			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
+			method="SaveEdit">
+			<result name="input">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">assetdoc</param>
+			</result>
+		</action>
+
+	</package>
+
+	<package name="Setting" extends="smartdealer-package"
+		namespace="/setting">
 
 		<action name="assetmaster"
 			class="com.adibrata.smartdealer.action.setting.AssetMasterAction"
@@ -111,7 +124,7 @@
 			<result name="last">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
 
-		<action name="Journalscheme"
+		<action name="journalscheme"
 			class="com.adibrata.smartdealer.action.setting.JournalSchemeAction"
 			method="execute">
 			<result name="start">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp

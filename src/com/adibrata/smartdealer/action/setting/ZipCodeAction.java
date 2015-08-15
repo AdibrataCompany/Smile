@@ -18,7 +18,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		
@@ -35,7 +35,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private Long id;
+		private long id;
 		private String kelurahan;
 		private String kecamatan;
 		private String city;
@@ -44,16 +44,15 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		public ZipCodeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final ZipCodeService zipcodeservice = new ZipCodeDao();
+				this.partner = new Partner();
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				
-				this.zipCodeService = zipcodeservice;
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				final ZipCode zipcode = new ZipCode();
+				this.office = new Office();
+				this.setOffice(this.office);
+
+				this.zipCodeService = new ZipCodeDao();
+				this.zipcode = new ZipCode();
 				
-				this.setPartner(partner);
-				this.setOffice(office);
-				this.setZipcode(zipcode);
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
@@ -80,23 +79,77 @@ public class ZipCodeAction extends BaseAction implements Preparable
 								switch (strMode)
 									{
 										case "search" :
-											this.Paging();
+											try
+												{
+													this.Paging();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "edit" :
-											this.ViewData();
+											try
+												{
+													this.ViewData();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "savedel" :
-											strMode = this.SaveDelete();
+											try
+												{
+													strMode = this.SaveDelete();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "saveadd" :
-											strMode = this.SaveAdd();
+											try
+												{
+													strMode = this.SaveAdd();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "saveedit" :
-											strMode = this.SaveEdit();
+											try
+												{
+													strMode = this.SaveEdit();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "first" :
 											this.pageNumber = 1;
-											this.Paging();
+											try
+												{
+													this.Paging();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "prev" :
 											this.pageNumber -= 1;
@@ -104,14 +157,41 @@ public class ZipCodeAction extends BaseAction implements Preparable
 												{
 													this.pageNumber = 1;
 												}
-											this.Paging();
+											try
+												{
+													this.Paging();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "next" :
 											this.pageNumber += 1;
-											this.Paging();
+											try
+												{
+													this.Paging();
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										case "last" :
-											this.Paging(1);
+											try
+												{
+													this.Paging(1);
+												}
+											catch (final Exception e)
+												{
+													// TODO Auto-generated catch block
+													strMode = ERROR;
+													e.printStackTrace();
+												}
 											break;
 										default :
 											break;
@@ -120,8 +200,17 @@ public class ZipCodeAction extends BaseAction implements Preparable
 						else
 							{
 								this.pageNumber = 1;
-								this.Paging();
-								strMode = "start";
+								try
+									{
+										this.Paging();
+										strMode = "start";
+									}
+								catch (final Exception e)
+									{
+										// TODO Auto-generated catch block
+										strMode = ERROR;
+										e.printStackTrace();
+									}
 							}
 					}
 				catch (final Exception exp)
@@ -400,7 +489,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
@@ -409,7 +498,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}

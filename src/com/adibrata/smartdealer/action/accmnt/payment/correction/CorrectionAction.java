@@ -52,14 +52,6 @@ public class PaymentReversalAction extends BaseAction implements Preparable
 									this.Paging();
 								case "edit" :
 								
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									strMode = this.SaveAdd();
-								case "saveadd" :
-									strMode = this.SaveAdd();
-								case "saveedit" :
-									strMode = this.SaveEdit();
 								case "back" :
 									;
 									
