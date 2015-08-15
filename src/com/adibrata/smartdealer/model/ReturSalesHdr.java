@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class ReturSalesHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private CoaSchmHdr coaSchmHdr;
 		private Office office;
 		private Partner partner;
@@ -43,12 +43,12 @@ public class ReturSalesHdr implements java.io.Serializable
 			{
 			}
 			
-		public ReturSalesHdr(long id)
+		public ReturSalesHdr(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ReturSalesHdr(long id, CoaSchmHdr coaSchmHdr, Office office, Partner partner, SalesOrderHdr salesOrderHdr, String returSalesNo, Date valueDate, Date postingDate, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+		public ReturSalesHdr(Long id, CoaSchmHdr coaSchmHdr, Office office, Partner partner, SalesOrderHdr salesOrderHdr, String returSalesNo, Date valueDate, Date postingDate, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<ReturSalesDtl> returSalesDtls)
 			{
 				this.id = id;
@@ -70,12 +70,12 @@ public class ReturSalesHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

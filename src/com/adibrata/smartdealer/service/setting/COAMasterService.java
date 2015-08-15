@@ -26,5 +26,5 @@ public interface COAMasterService extends SeviceBase {
 	public List<Coamaster> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public Coamaster View(long id) throws Exception;
+	public Coamaster View(Long id) throws Exception;
 }

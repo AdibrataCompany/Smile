@@ -25,5 +25,5 @@ public interface AssetMasterService extends SeviceBase {
 	public List<AssetMaster> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public AssetMaster View(long id) throws Exception;
+	public AssetMaster View(Long id) throws Exception;
 }

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class CashierHistory implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Currency currency;
 		private String partnerCode;
 		private Long officeId;
@@ -41,12 +41,12 @@ public class CashierHistory implements java.io.Serializable
 			{
 			}
 			
-		public CashierHistory(long id)
+		public CashierHistory(Long id)
 			{
 				this.id = id;
 			}
 			
-		public CashierHistory(long id, Currency currency, String partnerCode, Long officeId, Long employeeId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd,
+		public CashierHistory(Long id, Currency currency, String partnerCode, Long officeId, Long employeeId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -69,12 +69,12 @@ public class CashierHistory implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -17,5 +17,5 @@ public interface PVDisbursementService extends SeviceBase{
 
 	public List<PaymentVoucher>  Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
 
-		public PaymentVoucher View(long id)throws Exception;
+		public PaymentVoucher View(Long id)throws Exception;
 }

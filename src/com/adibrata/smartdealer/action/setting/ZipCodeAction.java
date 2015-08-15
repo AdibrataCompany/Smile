@@ -35,7 +35,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
+		private Long id;
 		private String kelurahan;
 		private String kecamatan;
 		private String city;
@@ -400,7 +400,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -409,7 +409,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}

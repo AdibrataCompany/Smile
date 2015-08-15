@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Holiday implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String partnerCode;
 		private Long officeId;
 		private Date holidayDate;
@@ -33,7 +33,7 @@ public class Holiday implements java.io.Serializable
 			{
 			}
 			
-		public Holiday(long id, Date holidayDate, String description, boolean isRealHoliday)
+		public Holiday(Long id, Date holidayDate, String description, boolean isRealHoliday)
 			{
 				this.id = id;
 				this.holidayDate = holidayDate;
@@ -41,7 +41,7 @@ public class Holiday implements java.io.Serializable
 				this.isRealHoliday = isRealHoliday;
 			}
 			
-		public Holiday(long id, String partnerCode, Long officeId, Date holidayDate, String description, boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public Holiday(Long id, String partnerCode, Long officeId, Date holidayDate, String description, boolean isRealHoliday, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partnerCode = partnerCode;
@@ -58,12 +58,12 @@ public class Holiday implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

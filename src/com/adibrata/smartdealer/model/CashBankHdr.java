@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class CashBankHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private BankAccount bankAccount;
 		private Currency currency;
 		private Office office;
@@ -58,12 +58,12 @@ public class CashBankHdr implements java.io.Serializable
 			{
 			}
 			
-		public CashBankHdr(long id)
+		public CashBankHdr(Long id)
 			{
 				this.id = id;
 			}
 			
-		public CashBankHdr(long id, BankAccount bankAccount, Currency currency, Office office, Partner partner, String voucherNo, Date valueDt, Date postingDt, String description, String rcvDsbFlag, String wop, Double amount, String rcvFrom,
+		public CashBankHdr(Long id, BankAccount bankAccount, Currency currency, Office office, Partner partner, String voucherNo, Date valueDt, Date postingDt, String description, String rcvDsbFlag, String wop, Double amount, String rcvFrom,
 		        String reffNo, String receiptNo, Long cashierId, Integer openingSequence, Long officeIdX, String isReconcile, Date reconcileDate, String reconcileBy, Integer jrnlTrxId, Long agrmntId, Long jobId, String usrUpd, Date dtmUpd,
 		        String usrCrt, Date dtmCrt, Set<CashBankDtl> cashBankDtls)
 			{
@@ -101,12 +101,12 @@ public class CashBankHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -23,7 +23,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 		StringBuilder hql = new StringBuilder();
 		
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public AssetDocMasterDao() throws Exception
 			{
@@ -210,7 +210,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 			}
 
 		@Override
-		public AssetDocMaster View(final long id) throws Exception
+		public AssetDocMaster View(final Long id) throws Exception
 			{
 				AssetDocMaster assetDocMaster = null;
 				try
@@ -240,12 +240,12 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 				this.currentpage = currentpage;
 			}
 
-		public long getTotalrecord()
+		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
 
-		public void setTotalrecord(final long totalrecord)
+		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}

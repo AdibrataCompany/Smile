@@ -26,7 +26,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 		
 		public UserRegisterDao() throws Exception
@@ -180,7 +180,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 			}
 			
 		@Override
-		public MsUser View(final long id) throws Exception
+		public MsUser View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				MsUser msUser = null;

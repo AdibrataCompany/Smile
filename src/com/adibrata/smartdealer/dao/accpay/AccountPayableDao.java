@@ -122,7 +122,7 @@ public class AccountPayableDao extends DaoBase implements APSelectionService
 		 */
 		
 		@Override
-		public AccountPayable View(final long id) throws Exception
+		public AccountPayable View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				AccountPayable accountPayable = null;

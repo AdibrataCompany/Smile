@@ -23,5 +23,5 @@ public interface PurchaseReturnService extends SeviceBase {
 	public List<PurchaseOrderHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast);
 
-	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) throws Exception;
+	public PurchaseOrderHdr viewPurchaseOrderHdr(Long id) throws Exception;
 }

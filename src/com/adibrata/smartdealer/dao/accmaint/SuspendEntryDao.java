@@ -31,7 +31,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 		String strStatementCount;
 		StringBuilder hql = new StringBuilder();
 		int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public SuspendEntryDao() throws Exception
 			{
@@ -50,7 +50,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 			{
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
-				long jobid;
+				Long jobid;
 				this.getSession().getTransaction().begin();
 				try
 					{

@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Office implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String officeCode;
 		private String name;
@@ -75,12 +75,12 @@ public class Office implements java.io.Serializable
 			{
 			}
 			
-		public Office(long id)
+		public Office(Long id)
 			{
 				this.id = id;
 			}
 			
-		public Office(long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
+		public Office(Long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
 		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PaymentVoucher> paymentVouchers, Set<PurchaseInvoice> purchaseInvoices, Set<SalesInvoice> salesInvoices,
 		        Set<SalesOrderHdr> salesOrderHdrs, Set<CashBankHdr> cashBankHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Stock> stocks, Set<Agrmnt> agrmnts, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs,
@@ -137,12 +137,12 @@ public class Office implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

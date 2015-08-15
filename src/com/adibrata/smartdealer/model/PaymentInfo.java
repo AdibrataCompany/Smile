@@ -25,7 +25,7 @@ public class PaymentInfo
 		double totallcinsurance;
 		double totalinstallmentamount;
 		double currencyrounded;
-		long currencyid;
+		Long currencyid;
 		Date nextinstdate;
 		Date nextinstduedate;
 		short nextinstnumber;
@@ -269,12 +269,12 @@ public class PaymentInfo
 				this.currencyrounded = currencyrounded;
 			}
 			
-		public long getCurrencyid()
+		public Long getCurrencyid()
 			{
 				return this.currencyid;
 			}
 			
-		public void setCurrencyid(final long currencyid)
+		public void setCurrencyid(final Long currencyid)
 			{
 				this.currencyid = currencyid;
 			}

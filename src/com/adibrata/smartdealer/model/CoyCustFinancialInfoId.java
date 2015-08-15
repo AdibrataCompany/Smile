@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 public class CoyCustFinancialInfoId implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Long customerId;
 		private Date rentFinishDate;
 		private Double currentRatio;
@@ -41,7 +41,7 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 			{
 			}
 			
-		public CoyCustFinancialInfoId(long id, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
+		public CoyCustFinancialInfoId(Long id, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
 			{
 				this.id = id;
 				this.modalDasar = modalDasar;
@@ -50,7 +50,7 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 				this.allowanceAvailable = allowanceAvailable;
 			}
 			
-		public CoyCustFinancialInfoId(long id, Long customerId, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
+		public CoyCustFinancialInfoId(Long id, Long customerId, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
 		        Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito, String additionalCollateralType, Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear,
 		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -80,12 +80,12 @@ public class CoyCustFinancialInfoId implements java.io.Serializable
 			}
 			
 		@Column(name = "Id", nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

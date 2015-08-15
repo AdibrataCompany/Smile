@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class CoyCustFinancialInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Customer customer;
 		private Date rentFinishDate;
 		private Double currentRatio;
@@ -49,7 +49,7 @@ public class CoyCustFinancialInfo implements java.io.Serializable
 			{
 			}
 			
-		public CoyCustFinancialInfo(long id, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
+		public CoyCustFinancialInfo(Long id, double modalDasar, double modalDisetor, double netProfitMargin, double allowanceAvailable)
 			{
 				this.id = id;
 				this.modalDasar = modalDasar;
@@ -58,7 +58,7 @@ public class CoyCustFinancialInfo implements java.io.Serializable
 				this.allowanceAvailable = allowanceAvailable;
 			}
 			
-		public CoyCustFinancialInfo(long id, Customer customer, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
+		public CoyCustFinancialInfo(Long id, Customer customer, Date rentFinishDate, Double currentRatio, Double roi, Double der, double modalDasar, double modalDisetor, double netProfitMargin, String bankAccountType, double allowanceAvailable,
 		        Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito, String additionalCollateralType, Double additionalCollateralAmount, String companyStatus, Short companyStatusSinceYear,
 		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -90,12 +90,12 @@ public class CoyCustFinancialInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

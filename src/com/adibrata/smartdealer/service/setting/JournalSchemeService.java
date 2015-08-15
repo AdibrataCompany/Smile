@@ -35,6 +35,6 @@ public interface JournalSchemeService {
 
 	public List<CoaSchmDtl> ViewDetail(CoaSchmHdr coaSchmHdr) throws Exception;
 
-	public CoaSchmHdr ViewHeader(long id) throws Exception;
+	public CoaSchmHdr ViewHeader(Long id) throws Exception;
 
 }

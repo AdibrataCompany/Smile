@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAssetLevelInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AgrmntAsset agrmntAsset;
 		private AssetMaster assetMaster;
 		private String usrCrt;
@@ -33,12 +33,12 @@ public class AgrmntAssetLevelInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAssetLevelInfo(long id)
+		public AgrmntAssetLevelInfo(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntAssetLevelInfo(long id, AgrmntAsset agrmntAsset, AssetMaster assetMaster, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AgrmntAssetLevelInfo(Long id, AgrmntAsset agrmntAsset, AssetMaster assetMaster, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmntAsset = agrmntAsset;
@@ -52,12 +52,12 @@ public class AgrmntAssetLevelInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

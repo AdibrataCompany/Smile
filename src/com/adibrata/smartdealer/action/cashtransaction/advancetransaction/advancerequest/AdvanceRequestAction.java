@@ -463,7 +463,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

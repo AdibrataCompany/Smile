@@ -25,7 +25,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public BankAccountDao() throws Exception
 			{
@@ -205,7 +205,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 			}
 
 		@Override
-		public BankAccount View(final long id) throws Exception
+		public BankAccount View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				BankAccount bankaccount = null;

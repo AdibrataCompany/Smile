@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class MsUser implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String userName;
 		private String password;
@@ -36,12 +36,12 @@ public class MsUser implements java.io.Serializable
 			{
 			}
 			
-		public MsUser(long id)
+		public MsUser(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MsUser(long id, Partner partner, String userName, String password, Long employeeId, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public MsUser(Long id, Partner partner, String userName, String password, Long employeeId, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -58,12 +58,12 @@ public class MsUser implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

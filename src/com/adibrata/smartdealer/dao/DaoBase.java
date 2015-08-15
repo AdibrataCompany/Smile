@@ -59,10 +59,10 @@ public class DaoBase implements SeviceBase
 			}
 
 		@Override
-		public long TotalRecord(final String strStatement, final String WhereCond) throws Exception
+		public Long TotalRecord(final String strStatement, final String WhereCond) throws Exception
 			{
 				// TODO Auto-generated method stub
-				long countResults = 0;
+				Long countResults = 0;
 				try
 					{
 						String countQ = "Select count (id) " + strStatement;
@@ -73,7 +73,7 @@ public class DaoBase implements SeviceBase
 							}
 
 						final Query countQuery = this.session.createQuery(countQ);
-						countResults = (long) countQuery.uniqueResult();
+						countResults = (Long) countQuery.uniqueResult();
 
 					}
 				catch (final Exception exp)
@@ -118,7 +118,7 @@ public class DaoBase implements SeviceBase
 					}
 			}
 
-		public static String TransactionNo(final Session session, final String partnercode, final long officeid, final TransactionType trans
+		public static String TransactionNo(final Session session, final String partnercode, final Long officeid, final TransactionType trans
 
 		) throws Exception
 			{

@@ -112,7 +112,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
@@ -151,7 +151,7 @@ public class PaymentRequestDao extends DaoBase implements PaymentRequestService
 			}
 			
 		@Override
-		public PayReqDtl View(final long id)
+		public PayReqDtl View(final Long id)
 			{
 				// TODO Auto-generated method stub
 				return null;

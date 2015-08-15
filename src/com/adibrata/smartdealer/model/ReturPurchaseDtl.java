@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class ReturPurchaseDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private ReturPurchaseHdr returPurchaseHdr;
 		private Stock stock;
 		private Date dtmUpd;
@@ -33,12 +33,12 @@ public class ReturPurchaseDtl implements java.io.Serializable
 			{
 			}
 			
-		public ReturPurchaseDtl(long id)
+		public ReturPurchaseDtl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ReturPurchaseDtl(long id, ReturPurchaseHdr returPurchaseHdr, Stock stock, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public ReturPurchaseDtl(Long id, ReturPurchaseHdr returPurchaseHdr, Stock stock, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.returPurchaseHdr = returPurchaseHdr;
@@ -52,12 +52,12 @@ public class ReturPurchaseDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

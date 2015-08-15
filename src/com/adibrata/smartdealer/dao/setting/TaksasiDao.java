@@ -21,7 +21,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public TaksasiDao() throws Exception
 			{
@@ -168,7 +168,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService
 			}
 
 		@Override
-		public Taksasi View(final long id) throws Exception
+		public Taksasi View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Taksasi taksasi = null;
@@ -234,12 +234,12 @@ public class TaksasiDao extends DaoBase implements TaksasiService
 				this.currentpage = currentpage;
 			}
 
-		public long getTotalrecord()
+		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
 
-		public void setTotalrecord(final long totalrecord)
+		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}

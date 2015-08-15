@@ -42,7 +42,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		private List<OtherRcvDtl> lstOtherRcvDtl;
 		private OtherRcvHdr otherRcvHdr;
 
-		private long id;
+		private Long id;
 
 		private String message;
 		private String mode;
@@ -114,10 +114,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 							}
 						this.bankAccountComboBox();
 					}
-				catch (final Exception e)
+				catch (final Exception exp)
 					{
-						// TODO: handle exception
-						e.printStackTrace();
+
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
 
@@ -134,7 +138,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 								case "savedel" :
 									try
 										{
-											this.SaveDel();
+											this.DeleteDetail();
 										}
 									catch (final Exception e)
 										{
@@ -145,7 +149,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 								case "saveadd" :
 									try
 										{
-											this.SaveAdd();
+											this.AddDetail();
 
 										}
 									catch (final Exception e)
@@ -189,7 +193,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 				this.SeqNo = 1;
 			}
 
-		private void SaveAdd() throws Exception
+		private void AddDetail() throws Exception
 			{
 				try
 					{
@@ -221,7 +225,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			}
 
 		@SuppressWarnings("unchecked")
-		private void SaveDel() throws Exception
+		private void DeleteDetail() throws Exception
 			{
 				try
 					{
@@ -231,6 +235,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 
 						this.dtl.put("dtl", this.lstOtherRcvDtl);
 						this.lstOtherRcvDtl = (List<OtherRcvDtl>) this.dtl.get("dtl");
+
 						this.totalAmount = 0.00;
 						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
 							{
@@ -340,12 +345,12 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 				this.otherReceiveService = otherReceiveService;
 			}
 
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -616,7 +621,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

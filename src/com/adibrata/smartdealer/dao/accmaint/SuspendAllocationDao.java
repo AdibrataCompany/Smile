@@ -42,7 +42,7 @@ public class SuspendAllocationDao extends DaoBase implements SuspendAllocationSe
 				Partner partner = new Partner();
 				Office office = new Office();
 				partner = allocation.getAgrmnt().getPartner();
-				long jobid;
+				Long jobid;
 				office = allocation.getAgrmnt().getOffice();
 				final PaymentReceive paymentReceive = new PaymentReceive();
 				final SuspendReceive suspend = new SuspendReceive();

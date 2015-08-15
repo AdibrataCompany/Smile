@@ -12,5 +12,5 @@ public interface UserRoleService  extends SeviceBase {
 	public List<MsRole>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public List<MsRole> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	
-	public MsUserRole View(long Id);
+	public MsUserRole View(Long Id);
 }

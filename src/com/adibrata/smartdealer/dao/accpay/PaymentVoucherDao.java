@@ -90,7 +90,7 @@ public class PaymentVoucherDao extends DaoBase implements PVDisbursementService
 		 */
 
 		@Override
-		public PaymentVoucher View(final long id) throws Exception
+		public PaymentVoucher View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				PaymentVoucher paymentVoucher = null;

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntColl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private String usrCrt;
 		private Date dtmUpd;
@@ -32,12 +32,12 @@ public class AgrmntColl implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntColl(long id)
+		public AgrmntColl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntColl(long id, Agrmnt agrmnt, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AgrmntColl(Long id, Agrmnt agrmnt, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -50,12 +50,12 @@ public class AgrmntColl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

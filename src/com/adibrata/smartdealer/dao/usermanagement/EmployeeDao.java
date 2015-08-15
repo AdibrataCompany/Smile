@@ -25,7 +25,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 		
 		public EmployeeDao() throws Exception
 			{
@@ -172,7 +172,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 			}
 			
 		@Override
-		public Employee View(final long id) throws Exception
+		public Employee View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Employee employee = null;

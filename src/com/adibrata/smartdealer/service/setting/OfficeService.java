@@ -18,5 +18,5 @@ public interface OfficeService extends SeviceBase {
 	public List<Office> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public Office View(long id) throws Exception;
+	public Office View(Long id) throws Exception;
 }

@@ -24,7 +24,7 @@ public interface PettyCashService extends SeviceBase
 
 		public List<PettyCashList> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 
-		public PettyCashHdr View(long id) throws Exception;
+		public PettyCashHdr View(Long id) throws Exception;
 
 		public List<PettyCashDtl> ViewDetail(PettyCashHdr pettyCashHdr) throws Exception;
 

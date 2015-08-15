@@ -24,7 +24,7 @@ public class DealerDao extends DaoBase implements DealerService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		/**
 		 *
@@ -210,7 +210,7 @@ public class DealerDao extends DaoBase implements DealerService
 			}
 
 		@Override
-		public Supplier View(final long id) throws Exception
+		public Supplier View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Supplier supplier = null;

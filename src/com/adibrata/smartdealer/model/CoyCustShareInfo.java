@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class CoyCustShareInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Customer customer;
 		private String name;
 		private String idnumber;
@@ -38,14 +38,14 @@ public class CoyCustShareInfo implements java.io.Serializable
 			{
 			}
 			
-		public CoyCustShareInfo(long id, String name, String jobPositionId)
+		public CoyCustShareInfo(Long id, String name, String jobPositionId)
 			{
 				this.id = id;
 				this.name = name;
 				this.jobPositionId = jobPositionId;
 			}
 			
-		public CoyCustShareInfo(long id, Customer customer, String name, String idnumber, String jobPositionId, String address, String phone, Double sharePercentage, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public CoyCustShareInfo(Long id, Customer customer, String name, String idnumber, String jobPositionId, String address, String phone, Double sharePercentage, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -64,12 +64,12 @@ public class CoyCustShareInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AssetType implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String assetTypeCode;
 		private String description;
 		private String labelNo1;
@@ -34,12 +34,12 @@ public class AssetType implements java.io.Serializable
 			{
 			}
 			
-		public AssetType(long id)
+		public AssetType(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AssetType(long id, String assetTypeCode, String description, String labelNo1, String labelNo2, String sandiBils, String sandiBicf, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AssetType(Long id, String assetTypeCode, String description, String labelNo1, String labelNo2, String sandiBils, String sandiBicf, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.assetTypeCode = assetTypeCode;
@@ -57,12 +57,12 @@ public class AssetType implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

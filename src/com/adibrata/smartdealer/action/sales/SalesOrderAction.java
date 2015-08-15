@@ -44,7 +44,7 @@ public class SalesOrderAction extends ActionSupport implements Preparable {
 		this.mode = mode;
 	}
 
-	public static long getSerialversionuid() {
+	public static Long getSerialversionuid() {
 		return serialVersionUID;
 	}
 

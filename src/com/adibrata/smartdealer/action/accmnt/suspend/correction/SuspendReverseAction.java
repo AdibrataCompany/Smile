@@ -57,7 +57,7 @@ public class SuspendReverseAction extends BaseAction implements Action
 		private String searchcode;
 		int pagesize;
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 		private String notes;
 		
 		public SuspendReverseAction() throws Exception
@@ -464,7 +464,7 @@ public class SuspendReverseAction extends BaseAction implements Action
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -625,7 +625,7 @@ public class SuspendReverseAction extends BaseAction implements Action
 		/**
 		 * @return the totalrecord
 		 */
-		public long getTotalrecord()
+		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
@@ -634,7 +634,7 @@ public class SuspendReverseAction extends BaseAction implements Action
 		 * @param totalrecord
 		 *            the totalrecord to set
 		 */
-		public void setTotalrecord(final long totalrecord)
+		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}

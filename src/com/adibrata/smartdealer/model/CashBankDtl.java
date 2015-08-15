@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class CashBankDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private CashBankHdr cashBankHdr;
 		private Integer sequenceNo;
 		private String coaName;
@@ -39,7 +39,7 @@ public class CashBankDtl implements java.io.Serializable
 			{
 			}
 			
-		public CashBankDtl(long id, CashBankHdr cashBankHdr, String coaName, String coaCode, String description, double debitAmt, double creditAmt)
+		public CashBankDtl(Long id, CashBankHdr cashBankHdr, String coaName, String coaCode, String description, double debitAmt, double creditAmt)
 			{
 				this.id = id;
 				this.cashBankHdr = cashBankHdr;
@@ -50,7 +50,7 @@ public class CashBankDtl implements java.io.Serializable
 				this.creditAmt = creditAmt;
 			}
 			
-		public CashBankDtl(long id, CashBankHdr cashBankHdr, Integer sequenceNo, String coaName, String coaCode, String description, double debitAmt, double creditAmt, Long departId, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
+		public CashBankDtl(Long id, CashBankHdr cashBankHdr, Integer sequenceNo, String coaName, String coaCode, String description, double debitAmt, double creditAmt, Long departId, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.id = id;
 				this.cashBankHdr = cashBankHdr;
@@ -70,12 +70,12 @@ public class CashBankDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

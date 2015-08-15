@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class Pvdetail implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AccountPayable accountPayable;
 		private PaymentVoucher paymentVoucher;
 		private Double apBalance;
@@ -35,12 +35,12 @@ public class Pvdetail implements java.io.Serializable
 			{
 			}
 			
-		public Pvdetail(long id)
+		public Pvdetail(Long id)
 			{
 				this.id = id;
 			}
 			
-		public Pvdetail(long id, AccountPayable accountPayable, PaymentVoucher paymentVoucher, Double apBalance, Double pvamount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public Pvdetail(Long id, AccountPayable accountPayable, PaymentVoucher paymentVoucher, Double apBalance, Double pvamount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.accountPayable = accountPayable;
@@ -56,12 +56,12 @@ public class Pvdetail implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

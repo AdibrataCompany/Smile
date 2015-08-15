@@ -13,7 +13,7 @@ import com.adibrata.smartdealer.model.AgreementList;
  */
 public interface SeviceBase
 	{
-		public long TotalRecord(String statement, String wherecond) throws Exception;
+		public Long TotalRecord(String statement, String wherecond) throws Exception;
 
 		public int getCurrentpage() throws Exception;
 

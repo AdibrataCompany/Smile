@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class ServiceDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private ServiceHdr serviceHdr;
 		private Double servicePrice;
 		private String assetType;
@@ -51,12 +51,12 @@ public class ServiceDtl implements java.io.Serializable
 			{
 			}
 			
-		public ServiceDtl(long id)
+		public ServiceDtl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ServiceDtl(long id, ServiceHdr serviceHdr, Double servicePrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor, String machineNo,
+		public ServiceDtl(Long id, ServiceHdr serviceHdr, Double servicePrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor, String machineNo,
 		        String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ServiceItem> serviceItems)
 			{
 				this.id = id;
@@ -86,12 +86,12 @@ public class ServiceDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

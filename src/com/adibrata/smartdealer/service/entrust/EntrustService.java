@@ -27,6 +27,6 @@ public interface EntrustService extends SeviceBase {
 	public List<EntrustDtl> viewEntrusDtl(EntrustHdr entrustHdr)
 			throws Exception;
 
-	public EntrustHdr viewEntrusHdr(long id) throws Exception;
+	public EntrustHdr viewEntrusHdr(Long id) throws Exception;
 
 }

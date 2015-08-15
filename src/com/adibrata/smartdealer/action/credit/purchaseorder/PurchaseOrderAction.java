@@ -3,6 +3,8 @@ package com.adibrata.smartdealer.action.credit.purchaseorder;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.AssetDocMaster;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -10,7 +12,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class PurchaseOrderAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		*
 		*/
@@ -18,17 +20,24 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-
+		Partner partner;
+		Office office;
+		
 		public PurchaseOrderAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+				
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -58,39 +67,6 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 										{
 											// TODO Auto-generated catch block
 											e1.printStackTrace();
-										}
-									break;
-								case "savedel" :
-									try
-										{
-											strMode = this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "saveedit" :
-									try
-										{
-											strMode = this.SaveEdit();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
 										}
 									break;
 								case "first" :
@@ -147,7 +123,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 									
 								default :
 									break;
-
+									
 							}
 					}
 				else
@@ -238,7 +214,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 							}
 						else
 							{
-								this.status = "end";
+								this.mode = "end";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -256,7 +232,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.status = "";
+						
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
 						assetDocMaster.setDocumentName(this.getDocumentName());
@@ -264,26 +240,26 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 						
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
-						this.status = SUCCESS;
+						this.mode = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
 			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						this.status = "";
+						this.mode = "";
 						final AssetDocMaster assetDocMaster = new AssetDocMaster();
 						assetDocMaster.setId(this.getId());
 						assetDocMaster.setDocumentCode(this.getDocumentCode());
@@ -291,26 +267,26 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
 						this.assetDocMasterService.SaveEdit(assetDocMaster);
-						this.status = SUCCESS;
+						this.mode = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
 			
 		private String SaveDelete() throws Exception
 			{
 				try
 					{
-						this.status = "";
+						this.mode = "";
 						if (this.getId() == null)
 							{
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
@@ -318,27 +294,27 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 								assetDocMaster.setId(this.getId());
 								
 								this.assetDocMasterService.SaveDel(assetDocMaster);
-								this.status = SUCCESS;
+								this.mode = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
 							}
 						else
 							{
-								this.status = "end";
+								this.mode = "end";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
 				catch (final Exception exp)
 					{
-						this.status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return this.status;
+				return this.mode;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -346,7 +322,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -355,7 +331,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -363,7 +339,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -372,7 +348,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -380,7 +356,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -389,24 +365,24 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -414,7 +390,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -423,7 +399,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -431,7 +407,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -440,7 +416,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -448,7 +424,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -457,7 +433,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -465,7 +441,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -474,12 +450,46 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
+			}
+			
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
 			}
 	}

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class TrxConfigDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private TrxConfigHdr trxConfigHdr;
 		private Long sequenceNo;
 		private String coaSourceTable;
@@ -45,12 +45,12 @@ public class TrxConfigDtl implements java.io.Serializable
 			{
 			}
 			
-		public TrxConfigDtl(long id)
+		public TrxConfigDtl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public TrxConfigDtl(long id, TrxConfigHdr trxConfigHdr, Long sequenceNo, String coaSourceTable, String coaName, String isCoaHeader, String post, Short isMultipleDtl, String tblSourceDtl, String headerId, String amountTrx, Long departId,
+		public TrxConfigDtl(Long id, TrxConfigHdr trxConfigHdr, Long sequenceNo, String coaSourceTable, String coaName, String isCoaHeader, String post, Short isMultipleDtl, String tblSourceDtl, String headerId, String amountTrx, Long departId,
 		        Short isCreatePaymentHistoryDetail, Short isCreateCashBankMutationDetail, Short isCreateJournalDetail, String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd)
 			{
 				this.id = id;
@@ -77,12 +77,12 @@ public class TrxConfigDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

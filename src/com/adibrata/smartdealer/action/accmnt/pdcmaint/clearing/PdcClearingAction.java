@@ -2,11 +2,13 @@
 package com.adibrata.smartdealer.action.accmnt.pdcmaint.clearing;
 
 import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
 public class PdcClearingAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
@@ -14,17 +16,24 @@ public class PdcClearingAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-		
+		Partner partner;
+		Office office;
+
 		public PdcClearingAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
@@ -47,14 +56,6 @@ public class PdcClearingAction extends BaseAction implements Preparable
 									this.Paging();
 								case "edit" :
 
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									strMode = this.SaveAdd();
-								case "saveadd" :
-									strMode = this.SaveAdd();
-								case "saveedit" :
-									strMode = this.SaveEdit();
 								case "back" :
 									;
 
@@ -83,7 +84,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -91,7 +92,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -100,7 +101,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -108,7 +109,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -117,7 +118,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -125,7 +126,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -134,24 +135,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
-			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -159,7 +143,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -168,7 +152,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -176,7 +160,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -185,7 +169,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -193,7 +177,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -202,7 +186,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -210,7 +194,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -219,12 +203,63 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
+			}
+
+		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
 			}
 	}

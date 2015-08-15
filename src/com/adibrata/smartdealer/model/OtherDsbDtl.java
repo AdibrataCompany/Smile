@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class OtherDsbDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private OtherDsbHdr otherDsbHdr;
 		private String coaName;
 		private String coaCode;
@@ -36,12 +36,12 @@ public class OtherDsbDtl implements java.io.Serializable
 			{
 			}
 			
-		public OtherDsbDtl(long id)
+		public OtherDsbDtl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public OtherDsbDtl(long id, OtherDsbHdr otherDsbHdr, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public OtherDsbDtl(Long id, OtherDsbHdr otherDsbHdr, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.otherDsbHdr = otherDsbHdr;
@@ -58,12 +58,12 @@ public class OtherDsbDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

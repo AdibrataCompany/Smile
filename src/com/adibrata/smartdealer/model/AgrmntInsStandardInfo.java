@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsStandardInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AgrmntIns agrmntIns;
 		private double mainStdPremium;
 		private double srccstdPremium;
@@ -38,7 +38,7 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsStandardInfo(long id, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium)
+		public AgrmntInsStandardInfo(Long id, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium)
 			{
 				this.id = id;
 				this.mainStdPremium = mainStdPremium;
@@ -49,7 +49,7 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 				this.totalStdPremium = totalStdPremium;
 			}
 			
-		public AgrmntInsStandardInfo(long id, AgrmntIns agrmntIns, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium, String usrCrt, Date dtmUpd, String usrUpd,
+		public AgrmntInsStandardInfo(Long id, AgrmntIns agrmntIns, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium, String usrCrt, Date dtmUpd, String usrUpd,
 		        Date dtmCrt)
 			{
 				this.id = id;
@@ -69,12 +69,12 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

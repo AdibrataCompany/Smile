@@ -27,7 +27,7 @@ public interface BankAccountService extends SeviceBase
 
 		public List<BankAccount> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 
-		public BankAccount View(long id) throws Exception;
+		public BankAccount View(Long id) throws Exception;
 
 		public List<BankAccount> listBankAccount(final Partner partner, final Office office, final String type, final String purpose) throws Exception;
 		

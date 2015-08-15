@@ -92,9 +92,9 @@ public class BaseAction extends ActionSupport implements Preparable
 
 			}
 
-		public static long sesOfficeId()
+		public static Long sesOfficeId()
 			{
-				return 1;
+				return (long) 1;
 			}
 
 		public static String sesLoginName()

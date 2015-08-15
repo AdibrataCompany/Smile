@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class PurchaseOrderHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Office office;
 		private Partner partner;
 		private Supplier supplier;
@@ -77,12 +77,12 @@ public class PurchaseOrderHdr implements java.io.Serializable
 			{
 			}
 			
-		public PurchaseOrderHdr(long id)
+		public PurchaseOrderHdr(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PurchaseOrderHdr(long id, Office office, Partner partner, Supplier supplier, String pono, Date podate, Long currencyId, Double currencyRate, Double poamount, Long jobId, String bankCode, String bankBranch, String accountName,
+		public PurchaseOrderHdr(Long id, Office office, Partner partner, Supplier supplier, String pono, Date podate, Long currencyId, Double currencyRate, Double poamount, Long jobId, String bankCode, String bankBranch, String accountName,
 		        String accountNo, Short isMainPo, Date pooriginalExpiredDate, Date poexpiredDate, Short isExpired, Short isEmailSupplier, String emailSupplier, String supplierFaxAreaCode, Short isFaxSupplier, String supplierFaxNumber,
 		        Short isEmailInsCo, String emailInsCo, Short isFaxInsCo, String insCoFaxAreaCode, String insCoFaxNumber, Date supplierBillingDate, Date deliveryDate, Short isCancelled, Date cancellationDate, Integer poextendCounter, Short isRcaagain,
 		        String notes, Long apid, Double contractPrepaidAmount, Long supplierBankId, String supplierBankBranch, String supplierAccountNo, String supplierAccountName, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
@@ -141,12 +141,12 @@ public class PurchaseOrderHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -12,9 +12,9 @@ public interface PurchaseInvoiceService  extends SeviceBase {
 	public void Save(String usrupd, PurchaseInvoice purchaseInvoice) throws Exception;
 
 	
-	public SalesOrderHdr viewSalesOrderHdr (long id)throws Exception;
+	public SalesOrderHdr viewSalesOrderHdr (Long id)throws Exception;
 
-	public PurchaseInvoice View(long id)throws Exception;
+	public PurchaseInvoice View(Long id)throws Exception;
 
 
 }

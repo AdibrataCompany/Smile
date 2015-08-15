@@ -32,7 +32,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 
 		public SelesInvoiceDao() throws Exception
@@ -112,7 +112,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService
 			}
 
 		@Override
-		public SalesOrderHdr View(final long id) throws Exception
+		public SalesOrderHdr View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				SalesOrderHdr salesOrderHdr = null;

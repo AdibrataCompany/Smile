@@ -21,7 +21,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 		
 		public WorkshopDao() throws Exception
 			{
@@ -205,7 +205,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService
 			}
 			
 		@Override
-		public Workshop View(final long id) throws Exception
+		public Workshop View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Workshop workshop = null;
@@ -271,12 +271,12 @@ public class WorkshopDao extends DaoBase implements WorkshopService
 				this.currentpage = currentpage;
 			}
 			
-		public long getTotalrecord()
+		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
 			
-		public void setTotalrecord(final long totalrecord)
+		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}

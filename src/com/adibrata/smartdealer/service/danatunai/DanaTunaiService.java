@@ -18,5 +18,5 @@ public interface DanaTunaiService  extends SeviceBase {
 	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception;
 	public List<DanaTunai> Paging(int CurrentPage, String WhereCond, String SortBy, boolean isLast)throws Exception ;
 	
-	public DanaTunai viewDanaTunai(long id) throws Exception;
+	public DanaTunai viewDanaTunai(Long id) throws Exception;
 }

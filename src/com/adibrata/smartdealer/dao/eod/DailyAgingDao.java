@@ -118,7 +118,7 @@ public class DailyAgingDao extends DaoBase
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
 								
-								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
+								// AgrmntDaysOverdue(final Long agrmntid, final Date valuedate)
 								this.getSession().update(agrmnt);
 							}
 						tx.commit();
@@ -190,7 +190,7 @@ public class DailyAgingDao extends DaoBase
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
 								
-								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
+								// AgrmntDaysOverdue(final Long agrmntid, final Date valuedate)
 								this.getSession().update(agrmnt);
 							}
 						tx.commit();

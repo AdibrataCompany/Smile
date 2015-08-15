@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAssetDoc implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Long agrmntAssetId;
 		private Long assetDocMasterId;
 		private String documentNo;
@@ -32,12 +32,12 @@ public class AgrmntAssetDoc implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAssetDoc(long id)
+		public AgrmntAssetDoc(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntAssetDoc(long id, Long agrmntAssetId, Long assetDocMasterId, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary)
+		public AgrmntAssetDoc(Long id, Long agrmntAssetId, Long assetDocMasterId, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary)
 			{
 				this.id = id;
 				this.agrmntAssetId = agrmntAssetId;
@@ -53,12 +53,12 @@ public class AgrmntAssetDoc implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

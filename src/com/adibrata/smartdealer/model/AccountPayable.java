@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AccountPayable implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Office office;
 		private Partner partner;
 		private String apno;
@@ -34,7 +34,7 @@ public class AccountPayable implements java.io.Serializable
 		private String referenceNo;
 		private String description;
 		private Date dueDate;
-		private long currencyId;
+		private Long currencyId;
 		private double currencyRate;
 		private Double apamount;
 		private Double apdisburse;
@@ -54,7 +54,7 @@ public class AccountPayable implements java.io.Serializable
 			{
 			}
 			
-		public AccountPayable(long id, String referenceNo, String description, long currencyId, double currencyRate, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo)
+		public AccountPayable(Long id, String referenceNo, String description, Long currencyId, double currencyRate, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo)
 			{
 				this.id = id;
 				this.referenceNo = referenceNo;
@@ -68,7 +68,7 @@ public class AccountPayable implements java.io.Serializable
 				this.bankBranchTo = bankBranchTo;
 			}
 			
-		public AccountPayable(long id, Office office, Partner partner, String apno, String aptype, String apstatus, Date apdate, String referenceNo, String description, Date dueDate, long currencyId, double currencyRate, Double apamount,
+		public AccountPayable(Long id, Office office, Partner partner, String apno, String aptype, String apstatus, Date apdate, String referenceNo, String description, Date dueDate, Long currencyId, double currencyRate, Double apamount,
 		        Double apdisburse, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo, Long officeDisbId, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<Pvdetail> pvdetails)
 			{
 				this.id = id;
@@ -101,12 +101,12 @@ public class AccountPayable implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}
@@ -215,12 +215,12 @@ public class AccountPayable implements java.io.Serializable
 			}
 			
 		@Column(name = "CurrencyID", nullable = false)
-		public long getCurrencyId()
+		public Long getCurrencyId()
 			{
 				return this.currencyId;
 			}
 			
-		public void setCurrencyId(long currencyId)
+		public void setCurrencyId(Long currencyId)
 			{
 				this.currencyId = currencyId;
 			}

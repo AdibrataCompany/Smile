@@ -21,7 +21,7 @@ public class RoleDao extends DaoBase implements RoleService
 
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 
 		public RoleDao() throws Exception

@@ -35,7 +35,7 @@ public class MenuAction extends ActionSupport implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private Long Id;
+		private Long id;
 
 		private String Paging() throws Exception
 			{

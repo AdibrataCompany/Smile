@@ -115,7 +115,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
@@ -661,7 +661,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public CoyCust ViewCompanyCustomer(final long customerid) throws Exception
+		public CoyCust ViewCompanyCustomer(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
@@ -695,7 +695,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(final long customerid) throws Exception
+		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -724,7 +724,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public CoyCustWhInfo ViewCompanyCustomerWereHouse(final long customerid) throws Exception
+		public CoyCustWhInfo ViewCompanyCustomerWereHouse(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -756,7 +756,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<CoyCustShareInfo> ViewCompanyShareInfo(final long customerid) throws Exception
+		public List<CoyCustShareInfo> ViewCompanyShareInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -785,7 +785,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public Customer ViewCustomer(final long customerid) throws Exception
+		public Customer ViewCustomer(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -817,7 +817,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCust ViewPersonalCustomer(final long customerid) throws Exception
+		public PersCust ViewPersonalCustomer(final Long customerid) throws Exception
 			{
 				
 				// TODO Auto-generated method stub
@@ -850,7 +850,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(final long customerid) throws Exception
+		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -882,7 +882,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(final long customerid) throws Exception
+		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -911,7 +911,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(final long customerid) throws Exception
+		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -943,7 +943,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(final long customerid) throws Exception
+		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -975,7 +975,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(final long customerid) throws Exception
+		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1004,7 +1004,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustFinancialData ViewPersonalCustomerFinancialData(final long customerid) throws Exception
+		public PersCustFinancialData ViewPersonalCustomerFinancialData(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1036,7 +1036,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustJobInfo ViewPersonalCustomerJobInfo(final long customerid) throws Exception
+		public PersCustJobInfo ViewPersonalCustomerJobInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1068,7 +1068,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(final long customerid) throws Exception
+		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1099,7 +1099,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			}
 			
 		@Override
-		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(final long customerid) throws Exception
+		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				return null;
@@ -1107,7 +1107,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(final long customerid) throws Exception
+		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1139,7 +1139,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(final long customerid) throws Exception
+		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1171,7 +1171,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCust ViewPersonalCustomerTrusteeInfo(final long customerid) throws Exception
+		public PersCust ViewPersonalCustomerTrusteeInfo(final Long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();

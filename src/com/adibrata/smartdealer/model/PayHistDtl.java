@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PayHistDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private PayHistHdr payHistHdr;
 		private String coaName;
 		private short instSeqNo;
@@ -41,7 +41,7 @@ public class PayHistDtl implements java.io.Serializable
 			{
 			}
 			
-		public PayHistDtl(long id, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays)
+		public PayHistDtl(Long id, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays)
 			{
 				this.id = id;
 				this.coaName = coaName;
@@ -55,7 +55,7 @@ public class PayHistDtl implements java.io.Serializable
 				this.lcdays = lcdays;
 			}
 			
-		public PayHistDtl(long id, PayHistHdr payHistHdr, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt,
+		public PayHistDtl(Long id, PayHistHdr payHistHdr, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        String usrCrt)
 			{
 				this.id = id;
@@ -78,12 +78,12 @@ public class PayHistDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class PaymentVoucher implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Office office;
 		private Partner partner;
 		private String pvno;
@@ -41,12 +41,12 @@ public class PaymentVoucher implements java.io.Serializable
 			{
 			}
 			
-		public PaymentVoucher(long id)
+		public PaymentVoucher(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PaymentVoucher(long id, Office office, Partner partner, String pvno, Double pvamount, String pvstatus, Long transJobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Pvdetail> pvdetails)
+		public PaymentVoucher(Long id, Office office, Partner partner, String pvno, Double pvamount, String pvstatus, Long transJobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Pvdetail> pvdetails)
 			{
 				this.id = id;
 				this.office = office;
@@ -65,12 +65,12 @@ public class PaymentVoucher implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

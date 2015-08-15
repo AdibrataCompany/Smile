@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class MsTable implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String masterCode;
 		private String masterTypeCode;
@@ -36,12 +36,12 @@ public class MsTable implements java.io.Serializable
 			{
 			}
 			
-		public MsTable(long id)
+		public MsTable(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MsTable(long id, Partner partner, String masterCode, String masterTypeCode, String masterValue, Integer isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public MsTable(Long id, Partner partner, String masterCode, String masterTypeCode, String masterValue, Integer isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -58,12 +58,12 @@ public class MsTable implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

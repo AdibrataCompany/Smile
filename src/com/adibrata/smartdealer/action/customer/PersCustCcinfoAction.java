@@ -33,8 +33,8 @@ public class PersCustCcinfoAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private long id;
-		private long customerid;
+		private Long id;
+		private Long customerid;
 		
 		private String creditcardno;
 		private String creditcardname;
@@ -286,12 +286,12 @@ public class PersCustCcinfoAction extends BaseAction implements Preparable
 				this.usrCrt = usrCrt;
 			}
 			
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -386,12 +386,12 @@ public class PersCustCcinfoAction extends BaseAction implements Preparable
 				this.lstccinfo = lstccinfo;
 			}
 			
-		public long getCustomerid()
+		public Long getCustomerid()
 			{
 				return this.customerid;
 			}
 			
-		public void setCustomerid(final long customerid)
+		public void setCustomerid(final Long customerid)
 			{
 				this.customerid = customerid;
 			}

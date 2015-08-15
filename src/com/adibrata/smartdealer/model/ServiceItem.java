@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class ServiceItem implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private ServiceDtl serviceDtl;
 		private Taksasi taksasi;
 		private Integer seqNo;
@@ -35,12 +35,12 @@ public class ServiceItem implements java.io.Serializable
 			{
 			}
 			
-		public ServiceItem(long id)
+		public ServiceItem(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ServiceItem(long id, ServiceDtl serviceDtl, Taksasi taksasi, Integer seqNo, Double servicePrice, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public ServiceItem(Long id, ServiceDtl serviceDtl, Taksasi taksasi, Integer seqNo, Double servicePrice, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.serviceDtl = serviceDtl;
@@ -56,12 +56,12 @@ public class ServiceItem implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

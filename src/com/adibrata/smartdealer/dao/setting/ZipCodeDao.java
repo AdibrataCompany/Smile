@@ -22,7 +22,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public ZipCodeDao() throws Exception
 			{
@@ -170,7 +170,7 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService
 			}
 
 		@Override
-		public ZipCode View(final long id) throws Exception
+		public ZipCode View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				ZipCode zipCode = null;
@@ -236,12 +236,12 @@ public class ZipCodeDao extends DaoBase implements ZipCodeService
 				this.currentpage = currentpage;
 			}
 
-		public long getTotalrecord()
+		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
 
-		public void setTotalrecord(final long totalrecord)
+		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}

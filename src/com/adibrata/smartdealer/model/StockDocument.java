@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class StockDocument implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AssetDocMaster assetDocMaster;
 		private Stock stock;
 		private byte[] assetDocumentBinary;
@@ -36,12 +36,12 @@ public class StockDocument implements java.io.Serializable
 			{
 			}
 			
-		public StockDocument(long id)
+		public StockDocument(Long id)
 			{
 				this.id = id;
 			}
 			
-		public StockDocument(long id, AssetDocMaster assetDocMaster, Stock stock, byte[] assetDocumentBinary, String documentNo, Date documentDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public StockDocument(Long id, AssetDocMaster assetDocMaster, Stock stock, byte[] assetDocumentBinary, String documentNo, Date documentDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.assetDocMaster = assetDocMaster;
@@ -58,12 +58,12 @@ public class StockDocument implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

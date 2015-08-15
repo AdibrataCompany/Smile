@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsAsset implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AgrmntAsset agrmntAsset;
 		private AgrmntIns agrmntIns;
 		private String flagInsStatus;
@@ -56,7 +56,7 @@ public class AgrmntInsAsset implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsAsset(long id, String flagInsStatus, short isValid, short isValidAssetYear, short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo,
+		public AgrmntInsAsset(Long id, String flagInsStatus, short isValid, short isValidAssetYear, short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo,
 		        String insuranceType)
 			{
 				this.id = id;
@@ -72,7 +72,7 @@ public class AgrmntInsAsset implements java.io.Serializable
 				this.insuranceType = insuranceType;
 			}
 			
-		public AgrmntInsAsset(long id, AgrmntAsset agrmntAsset, AgrmntIns agrmntIns, String flagInsStatus, Date flagInsStatusDate, Long assetTypeId, Short isUsed, String usageId, Double sumInsured, short isValid, short isValidAssetYear,
+		public AgrmntInsAsset(Long id, AgrmntAsset agrmntAsset, AgrmntIns agrmntIns, String flagInsStatus, Date flagInsStatusDate, Long assetTypeId, Short isUsed, String usageId, Double sumInsured, short isValid, short isValidAssetYear,
 		        short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo, Date renewalDocDate, Double endorsAdditionalPremium, Double endorsToInscoPremium,
 		        String endorsDocNo, String bdendorsDocNo, Date bdendorsDate, Short isAssetReplacement, String sppano, String insuranceType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
@@ -111,12 +111,12 @@ public class AgrmntInsAsset implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

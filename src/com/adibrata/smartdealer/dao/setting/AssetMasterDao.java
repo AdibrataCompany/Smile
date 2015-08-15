@@ -23,7 +23,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 		StringBuilder hql = new StringBuilder();
 		
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public AssetMasterDao() throws Exception
 			{
@@ -251,7 +251,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 			}
 
 		@Override
-		public AssetMaster View(final long id) throws Exception
+		public AssetMaster View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				AssetMaster assetmaster = null;

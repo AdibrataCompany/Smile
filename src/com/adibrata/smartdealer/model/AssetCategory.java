@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AssetCategory implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Long assetTypeId;
 		private String insAssetCategoryCode;
 		private String description;
@@ -31,12 +31,12 @@ public class AssetCategory implements java.io.Serializable
 			{
 			}
 			
-		public AssetCategory(long id)
+		public AssetCategory(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AssetCategory(long id, Long assetTypeId, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AssetCategory(Long id, Long assetTypeId, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.assetTypeId = assetTypeId;
@@ -51,12 +51,12 @@ public class AssetCategory implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

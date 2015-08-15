@@ -15,7 +15,7 @@ public class AssetReplacementAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
@@ -139,7 +139,7 @@ public class AssetReplacementAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -148,7 +148,7 @@ public class AssetReplacementAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -224,7 +224,7 @@ public class AssetReplacementAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

@@ -144,7 +144,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
@@ -162,7 +162,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService
 			}
 			
 		@Override
-		public PettyCashHdr View(final long id)
+		public PettyCashHdr View(final Long id)
 			{
 				// TODO Auto-generated method stub
 				

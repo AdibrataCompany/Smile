@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class PayReqHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private BankAccount bankAccount;
 		private Office office;
 		private Partner partner;
@@ -43,12 +43,12 @@ public class PayReqHdr implements java.io.Serializable
 			{
 			}
 			
-		public PayReqHdr(long id)
+		public PayReqHdr(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PayReqHdr(long id, BankAccount bankAccount, Office office, Partner partner, String payReqNo, Double pettyCashAmount, Date valueDate, Date postingDate, String jobCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+		public PayReqHdr(Long id, BankAccount bankAccount, Office office, Partner partner, String payReqNo, Double pettyCashAmount, Date valueDate, Date postingDate, String jobCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<PayReqDtl> payReqDtls)
 			{
 				this.id = id;
@@ -70,12 +70,12 @@ public class PayReqHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

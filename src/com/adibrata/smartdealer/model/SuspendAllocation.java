@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class SuspendAllocation implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private SuspendReceive suspendReceive;
 		private Date valueDate;
@@ -47,12 +47,12 @@ public class SuspendAllocation implements java.io.Serializable
 			{
 			}
 			
-		public SuspendAllocation(long id)
+		public SuspendAllocation(Long id)
 			{
 				this.id = id;
 			}
 			
-		public SuspendAllocation(long id, Agrmnt agrmnt, SuspendReceive suspendReceive, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt,
+		public SuspendAllocation(Long id, Agrmnt agrmnt, SuspendReceive suspendReceive, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt,
 		        Double inssAmt, Double lcinss, Double prepaidAmt, Short payHistSeqNo, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -81,12 +81,12 @@ public class SuspendAllocation implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

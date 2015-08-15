@@ -69,40 +69,40 @@ public interface CustomerMaintService extends SeviceBase
 		
 		public void SavePersonalCustomerOmset(String usrupd, List<PersCustOmsetInfo> customer) throws Exception;
 		
-		public CoyCust ViewCompanyCustomer(long customerid) throws Exception;
+		public CoyCust ViewCompanyCustomer(Long customerid) throws Exception;
 
-		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(long customerid) throws Exception;
+		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(Long customerid) throws Exception;
 		
-		public CoyCustWhInfo ViewCompanyCustomerWereHouse(long customerid) throws Exception;
+		public CoyCustWhInfo ViewCompanyCustomerWereHouse(Long customerid) throws Exception;
 		
-		public List<CoyCustShareInfo> ViewCompanyShareInfo(long customerid) throws Exception;
+		public List<CoyCustShareInfo> ViewCompanyShareInfo(Long customerid) throws Exception;
 		
-		public Customer ViewCustomer(long customerid) throws Exception;
+		public Customer ViewCustomer(Long customerid) throws Exception;
 		
-		public PersCust ViewPersonalCustomer(long customerid) throws Exception;
+		public PersCust ViewPersonalCustomer(Long customerid) throws Exception;
 
-		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(long customerid) throws Exception;
+		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(Long customerid) throws Exception;
 		
-		public PersCustJobInfo ViewPersonalCustomerJobInfo(long customerid) throws Exception;
+		public PersCustJobInfo ViewPersonalCustomerJobInfo(Long customerid) throws Exception;
 
-		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(long customerid) throws Exception;
+		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(Long customerid) throws Exception;
 		
-		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(long customerid) throws Exception;
+		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(Long customerid) throws Exception;
 
-		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(long customerid) throws Exception;
+		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(Long customerid) throws Exception;
 		
-		public PersCust ViewPersonalCustomerTrusteeInfo(long customerid) throws Exception;
+		public PersCust ViewPersonalCustomerTrusteeInfo(Long customerid) throws Exception;
 
-		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(long customerid) throws Exception;
+		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(Long customerid) throws Exception;
 		
-		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(long customerid) throws Exception;
+		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(Long customerid) throws Exception;
 
-		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(long customerid) throws Exception;
+		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(Long customerid) throws Exception;
 
-		public PersCustFinancialData ViewPersonalCustomerFinancialData(long customerid) throws Exception;
+		public PersCustFinancialData ViewPersonalCustomerFinancialData(Long customerid) throws Exception;
 		
-		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(long customerid) throws Exception;
+		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(Long customerid) throws Exception;
 
-		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(long customerid) throws Exception;
+		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(Long customerid) throws Exception;
 		
 	}

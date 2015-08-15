@@ -23,7 +23,7 @@ import javax.persistence.UniqueConstraint;
 public class TrxConfigHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String trxConfigCode;
 		private String trxConfigDesc;
 		private String trxNo;
@@ -55,13 +55,13 @@ public class TrxConfigHdr implements java.io.Serializable
 			{
 			}
 			
-		public TrxConfigHdr(long id, String trxConfigCode)
+		public TrxConfigHdr(Long id, String trxConfigCode)
 			{
 				this.id = id;
 				this.trxConfigCode = trxConfigCode;
 			}
 			
-		public TrxConfigHdr(long id, String trxConfigCode, String trxConfigDesc, String trxNo, String trxTable, String officeIdX, String jrnlNoCode, String reffNo, String bankAccId, String currId, String currRate, String bankPortion,
+		public TrxConfigHdr(Long id, String trxConfigCode, String trxConfigDesc, String trxNo, String trxTable, String officeIdX, String jrnlNoCode, String reffNo, String bankAccId, String currId, String currRate, String bankPortion,
 		        String rcvDisbFlag, String cashierId, String cashierOpen, String amountTrx, String wop, String receivedFrom, String receiptNo, Short isCreatePaymentHistory, Short isCreateJournal, Short isCreateCashBankMutation, String usrCrt,
 		        Date dtmCrt, String usrUpd, Date dtmUpd, Set<TrxConfigDtl> trxConfigDtls)
 			{
@@ -97,12 +97,12 @@ public class TrxConfigHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

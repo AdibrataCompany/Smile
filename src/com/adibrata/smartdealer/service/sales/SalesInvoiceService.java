@@ -21,5 +21,5 @@ public interface SalesInvoiceService extends SeviceBase {
 	public List<SalesOrderHdr> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public SalesOrderHdr View(long id) throws Exception;
+	public SalesOrderHdr View(Long id) throws Exception;
 }

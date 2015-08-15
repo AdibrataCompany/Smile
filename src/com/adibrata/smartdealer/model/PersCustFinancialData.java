@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PersCustFinancialData implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Customer customer;
 		private Double spouseIncome;
 		private Double avgBalanceAccount;
@@ -43,12 +43,12 @@ public class PersCustFinancialData implements java.io.Serializable
 			{
 			}
 			
-		public PersCustFinancialData(long id)
+		public PersCustFinancialData(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PersCustFinancialData(long id, Customer customer, Double spouseIncome, Double avgBalanceAccount, String bankAccountType, Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito,
+		public PersCustFinancialData(Long id, Customer customer, Double spouseIncome, Double avgBalanceAccount, String bankAccountType, Double averageDebitTransaction, Double averageCreditTransaction, Double averageBalance, Double deposito,
 		        Double livingCostAmount, Double otherLoanInstallment, String additionalCollateralType, Double additionalCollateralAmount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -73,12 +73,12 @@ public class PersCustFinancialData implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

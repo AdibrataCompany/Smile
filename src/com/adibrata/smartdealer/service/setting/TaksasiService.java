@@ -18,5 +18,5 @@ public interface TaksasiService extends SeviceBase {
 	public List<Taksasi> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public Taksasi View(long id) throws Exception;
+	public Taksasi View(Long id) throws Exception;
 }

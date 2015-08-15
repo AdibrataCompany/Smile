@@ -20,6 +20,6 @@ public interface DuplicateCustomerService extends SeviceBase {
 	public List<Customer> SearchDuplicate(String name, String IdNo,
 			String MotherName);
 
-	public List<Customer> View(long id);
+	public List<Customer> View(Long id);
 
 }

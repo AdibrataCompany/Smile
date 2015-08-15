@@ -4,6 +4,7 @@
 
 package com.adibrata.smartdealer.action.accpay.paymentvoucher.disburse;
 
+import com.adibrata.smartdealer.action.BaseAction;
 /**
  * @author Henry
  */
@@ -11,18 +12,13 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.PaymentVoucher;
 import com.adibrata.smartdealer.service.accpay.PVDisbursementService;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-public class PaymentVoucherAction extends ActionSupport implements Preparable
+public class PaymentVoucherAction extends BaseAction implements Preparable
 	{
 		
 		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		/**
-		 * 
+		 *
 		 */
 		private String mode;
 		private Office office;
@@ -30,9 +26,14 @@ public class PaymentVoucherAction extends ActionSupport implements Preparable
 		private PaymentVoucher paymentVoucher;
 		private PVDisbursementService PVDisbursementService;
 		
-		public PaymentVoucherAction()
+		public PaymentVoucherAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
 			
 		@Override

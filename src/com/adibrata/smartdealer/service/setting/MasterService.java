@@ -27,5 +27,5 @@ public interface MasterService extends SeviceBase
 
 		public List<MasterType> ListMasterType() throws Exception;
 
-		public MsTable View(long id) throws Exception;
+		public MsTable View(Long id) throws Exception;
 	}

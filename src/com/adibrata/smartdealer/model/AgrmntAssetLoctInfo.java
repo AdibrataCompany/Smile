@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAssetLoctInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AgrmntAsset agrmntAsset;
 		private String address;
 		private String rt;
@@ -39,13 +39,13 @@ public class AgrmntAssetLoctInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAssetLoctInfo(long id, String zipcode)
+		public AgrmntAssetLoctInfo(Long id, String zipcode)
 			{
 				this.id = id;
 				this.zipcode = zipcode;
 			}
 			
-		public AgrmntAssetLoctInfo(long id, AgrmntAsset agrmntAsset, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AgrmntAssetLoctInfo(Long id, AgrmntAsset agrmntAsset, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmntAsset = agrmntAsset;
@@ -65,12 +65,12 @@ public class AgrmntAssetLoctInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

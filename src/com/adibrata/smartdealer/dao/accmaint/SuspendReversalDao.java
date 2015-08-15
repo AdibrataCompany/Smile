@@ -30,7 +30,7 @@ public class SuspendReversalDao extends DaoBase implements SuspendReversalServic
 			{
 				// TODO Auto-generated method stub
 				this.session.getTransaction().begin();
-				long jobid;
+				Long jobid;
 				final SuspendReceive suspend = new SuspendReceive();
 				try
 					{

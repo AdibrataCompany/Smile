@@ -28,7 +28,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 		String userupd;
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 
 		public JournalSchemeDao() throws Exception
@@ -176,7 +176,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 			}
 
 		@Override
-		public CoaSchmHdr ViewHeader(final long id) throws Exception
+		public CoaSchmHdr ViewHeader(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				CoaSchmHdr coaSchmHdr = null;
@@ -277,13 +277,13 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 									{
 										final Map row = (Map) object;
 										final ListCoaSchmDtl listCoaSchmDtl = new ListCoaSchmDtl();
-										listCoaSchmDtl.setCoamasterid((long) row.get("Id"));
+										listCoaSchmDtl.setCoamasterid((Long) row.get("Id"));
 
 										listCoaSchmDtl.setCoaname(row.get("CoaName").toString());
 										listCoaSchmDtl.setCoadesc(row.get("CoaDescription").toString());
 										listCoaSchmDtl.setCoacode(row.get("CoaCode").toString());
 										lstCoaSchmDtl.add(listCoaSchmDtl);
-										System.out.print((long) row.get("Id"));
+										System.out.print((Long) row.get("Id"));
 									}
 							}
 					}

@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class MsBigMenuList implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String menuGroup;
 		private String menuDescription;
 		private String menuUrl;
@@ -32,12 +32,12 @@ public class MsBigMenuList implements java.io.Serializable
 			{
 			}
 			
-		public MsBigMenuList(long id)
+		public MsBigMenuList(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MsBigMenuList(long id, String menuGroup, String menuDescription, String menuUrl, String menuImage, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public MsBigMenuList(Long id, String menuGroup, String menuDescription, String menuUrl, String menuImage, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.menuGroup = menuGroup;
@@ -53,12 +53,12 @@ public class MsBigMenuList implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

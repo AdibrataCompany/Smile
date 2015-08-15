@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class DailyAraging implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private Currency currency;
 		private Customer customer;
@@ -81,7 +81,7 @@ public class DailyAraging implements java.io.Serializable
 			{
 			}
 			
-		public DailyAraging(long id, Currency currency, Customer customer, double amountOverDueGross, double amountOverDuePrinciple)
+		public DailyAraging(Long id, Currency currency, Customer customer, double amountOverDueGross, double amountOverDuePrinciple)
 			{
 				this.id = id;
 				this.currency = currency;
@@ -90,7 +90,7 @@ public class DailyAraging implements java.io.Serializable
 				this.amountOverDuePrinciple = amountOverDuePrinciple;
 			}
 			
-		public DailyAraging(long id, Agrmnt agrmnt, Currency currency, Customer customer, Date agingDate, String dailyMonthly, Integer daysOverdue, double amountOverDueGross, double amountOverDuePrinciple, Double osp, Double osi, Double ospundue,
+		public DailyAraging(Long id, Agrmnt agrmnt, Currency currency, Customer customer, Date agingDate, String dailyMonthly, Integer daysOverdue, double amountOverDueGross, double amountOverDuePrinciple, Double osp, Double osi, Double ospundue,
 		        Double osiundue, Double lcinst, Double lcinstPaid, Double lcinstWaived, Date lastLcinstCalcDate, Double lcinstCurrrent, Double lcins, Double lcinsPaid, Double lcinsWaived, Date lastLcinsCalcDate, Double instDue, Double instDuePaid,
 		        Double instDueWaived, Double insDue, Double insDuePaid, Double insDueWaived, Double prepaidAmount, Date nadate, Double naamount, Double napaid, Double naother, Date wodate, Double woamount, Double wopaid, Double woother,
 		        Short collStatus, Short exRepo, Short installmentNo, Date installmentDate, String contractStatus, String defaultStatus, Integer numOfAssetUnit, Integer collectibilityId, Short nextInstDueNumber, Date nextInstDueDate, Short isFpd,
@@ -156,12 +156,12 @@ public class DailyAraging implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PersCust implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Customer customer;
 		private String personalCustomerType;
 		private String idtype;
@@ -69,7 +69,7 @@ public class PersCust implements java.io.Serializable
 			{
 			}
 			
-		public PersCust(long id, String personalCustomerType, String idtype, String idnumber, String idnumberChecking, String gender, String birthPlace, String religion, String maritalStatus, String education, String professionId, String nationality,
+		public PersCust(Long id, String personalCustomerType, String idtype, String idnumber, String idnumberChecking, String gender, String birthPlace, String religion, String maritalStatus, String education, String professionId, String nationality,
 		        String homeStatus, String homeLocation, double homePrice, short numOfAssetOwned, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
 			{
 				this.id = id;
@@ -93,7 +93,7 @@ public class PersCust implements java.io.Serializable
 				this.customerGroup = customerGroup;
 			}
 			
-		public PersCust(long id, Customer customer, String personalCustomerType, String idtype, Date idexpDate, String idnumber, String idnumberChecking, Date idtypeIssuedDate, String gender, String birthPlace, Date birthDate, String mobilePhone,
+		public PersCust(Long id, Customer customer, String personalCustomerType, String idtype, Date idexpDate, String idnumber, String idnumberChecking, Date idtypeIssuedDate, String gender, String birthPlace, Date birthDate, String mobilePhone,
 		        String email, String religion, String maritalStatus, Short numOfDependence, String personalNpwp, String noKk, String education, String professionId, String nationality, String wnacountry, String homeStatus, Date rentFinishDate,
 		        String homeLocation, double homePrice, Short staySinceYear, Short staySinceMonth, short numOfAssetOwned, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes,
 		        Short isCorporateCreditLine, Double plafondAmount, String biologicalMothersName, String customerGroup, Short mainBusinessSinceYear, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
@@ -146,12 +146,12 @@ public class PersCust implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

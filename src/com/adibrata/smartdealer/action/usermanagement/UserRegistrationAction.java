@@ -45,7 +45,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		private String employeename;
 		private String password;
 		private Short isactive;
-		private Long Id;
+		private Long id;
 		private Map<Long, String> lstemployee;
 
 		public UserRegistrationAction() throws Exception
@@ -550,7 +550,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

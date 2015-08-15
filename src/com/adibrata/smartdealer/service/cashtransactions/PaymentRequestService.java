@@ -17,7 +17,7 @@ public interface PaymentRequestService  extends SeviceBase {
 	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy)throws Exception;
 	public List<PayReqHdr> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast)throws Exception;
 	public List<PayReqDtl> lstPayReqDtl(int CurrentPage, String WhereCond, String SortBy)throws Exception;
-	public PayReqDtl View (long id)throws Exception;
+	public PayReqDtl View (Long id)throws Exception;
 
 	
 }

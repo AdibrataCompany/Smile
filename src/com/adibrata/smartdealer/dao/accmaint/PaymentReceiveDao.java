@@ -52,7 +52,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 			}
 
 		@Override
-		public PaymentInfo PaymentAllocation(final long AgrmntId, final double amountreceive, final Date valuedate) throws Exception
+		public PaymentInfo PaymentAllocation(final Long AgrmntId, final double amountreceive, final Date valuedate) throws Exception
 			{
 				PaymentInfo info = new PaymentInfo();
 				// TODO Auto-generated method stub
@@ -83,7 +83,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 				Partner partner = new Partner();
 				Office office = new Office();
 				partner = paymentreceive.getAgrmnt().getPartner();
-				long jobid;
+				Long jobid;
 				office = paymentreceive.getAgrmnt().getOffice();
 				try
 					{
@@ -187,7 +187,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 						selectQueryCount = this.getSession().createSQLQuery(sqlcount.toString());
 						selectQueryCount.setCacheable(true);
 						selectQueryCount.setCacheRegion("CountListAgrmnt" + WhereCond);
-						totalrecord = (long) selectQueryCount.uniqueResult();
+						totalrecord = (Long) selectQueryCount.uniqueResult();
 						
 						selectQuery = this.getSession().createSQLQuery(sql.toString());
 						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);

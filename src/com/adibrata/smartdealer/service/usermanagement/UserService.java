@@ -27,5 +27,5 @@ public interface UserService extends SeviceBase
 
 		public void ResetPassword(MsUser msUser) throws Exception;
 
-		public MsUser View(final long id) throws Exception;
+		public MsUser View(final Long id) throws Exception;
 	}

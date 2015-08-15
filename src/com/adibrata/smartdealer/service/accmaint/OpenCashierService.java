@@ -27,6 +27,6 @@ public interface OpenCashierService extends SeviceBase
 
 		public void CashierClose(CashierHistory cashierhistory) throws Exception;
 
-		public Boolean CheckHeadCashier(String partnercode, String officeid, long employeeid) throws Exception;
+		public Boolean CheckHeadCashier(String partnercode, String officeid, Long employeeid) throws Exception;
 
 	}

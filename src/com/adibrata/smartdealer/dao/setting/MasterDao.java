@@ -24,7 +24,7 @@ public class MasterDao extends DaoBase implements MasterService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 		
 		public MasterDao() throws Exception
 			{
@@ -220,7 +220,7 @@ public class MasterDao extends DaoBase implements MasterService
 			}
 			
 		@Override
-		public MsTable View(final long id) throws Exception
+		public MsTable View(final Long id) throws Exception
 			{
 				MsTable MsTable = null;
 				try

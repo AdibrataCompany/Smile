@@ -19,6 +19,6 @@ public interface APSelectionService extends SeviceBase {
 
 	public void Save(AccountPayable accountPayable) throws Exception;
 
-	public AccountPayable View(long id) throws Exception;
+	public AccountPayable View(Long id) throws Exception;
 
 }

@@ -25,6 +25,6 @@ public interface AssetDocMasterService extends SeviceBase
 		
 		public List<AssetDocMaster> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 		
-		public AssetDocMaster View(long id) throws Exception;
+		public AssetDocMaster View(Long id) throws Exception;
 		
 	}

@@ -22,7 +22,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public CoaMasterDao() throws Exception
 			{
@@ -171,7 +171,7 @@ public class CoaMasterDao extends DaoBase implements COAMasterService
 			}
 
 		@Override
-		public Coamaster View(final long id) throws Exception
+		public Coamaster View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Coamaster coamaster = null;

@@ -25,6 +25,6 @@ public interface ZipCodeService extends SeviceBase {
 	public List<ZipCode> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public ZipCode View(long id) throws Exception;
+	public ZipCode View(Long id) throws Exception;
 
 }

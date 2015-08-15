@@ -30,7 +30,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService
 
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 
 		public SalesReturDao() throws Exception
@@ -66,7 +66,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService
 				this.getSession().getTransaction().begin();
 				final Partner partner = returSalesHdr.getPartner();
 				final Office office = returSalesHdr.getOffice();
-				long jobid;
+				Long jobid;
 				try
 					{
 						jobid = JobPost.JobSave(this.getSession(), partner.getPartnerCode(), office.getId(), JobPost.JobCode.salesorder, returSalesHdr.getCoaSchmHdr().getCoaSchmCode(), returSalesHdr.getValueDate(), returSalesHdr.getPostingDate(),

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class ResetPasswordLog implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String userName;
 		private Date resetPasswordTime;
@@ -35,12 +35,12 @@ public class ResetPasswordLog implements java.io.Serializable
 			{
 			}
 			
-		public ResetPasswordLog(long id)
+		public ResetPasswordLog(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ResetPasswordLog(long id, Partner partner, String userName, Date resetPasswordTime, String resetBy, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public ResetPasswordLog(Long id, Partner partner, String userName, Date resetPasswordTime, String resetBy, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -56,12 +56,12 @@ public class ResetPasswordLog implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

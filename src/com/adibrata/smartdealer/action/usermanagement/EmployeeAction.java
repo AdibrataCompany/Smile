@@ -614,7 +614,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -623,7 +623,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -682,7 +682,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		/**
 		 * @return the officeid
 		 */
-		public long getOfficeid()
+		public Long getOfficeid()
 			{
 				return this.officeid;
 			}
@@ -691,7 +691,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		 * @param officeid
 		 *            the officeid to set
 		 */
-		public void setOfficeid(final long officeid)
+		public void setOfficeid(final Long officeid)
 			{
 				this.officeid = officeid;
 			}
@@ -971,7 +971,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		/**
 		 * @return the supervisorid
 		 */
-		public long getSupervisorid()
+		public Long getSupervisorid()
 			{
 				return this.supervisorid;
 			}
@@ -980,7 +980,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		 * @param supervisorid
 		 *            the supervisorid to set
 		 */
-		public void setSupervisorid(final long supervisorid)
+		public void setSupervisorid(final Long supervisorid)
 			{
 				this.supervisorid = supervisorid;
 			}

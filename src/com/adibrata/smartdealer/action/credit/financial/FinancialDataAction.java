@@ -3,6 +3,8 @@ package com.adibrata.smartdealer.action.credit.financial;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.AssetDocMaster;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -14,15 +16,22 @@ public class FinancialDataAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
+		private Long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
+		Partner partner;
+		Office office;
 
 		public FinancialDataAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
 			
 		@Override
@@ -389,7 +398,7 @@ public class FinancialDataAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -398,7 +407,7 @@ public class FinancialDataAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -474,9 +483,43 @@ public class FinancialDataAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
+			}
+			
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
 			}
 			
 	}

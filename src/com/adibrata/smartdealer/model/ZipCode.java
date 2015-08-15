@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class ZipCode implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String kelurahan;
 		private String kecamatan;
 		private String city;
@@ -33,12 +33,12 @@ public class ZipCode implements java.io.Serializable
 			{
 			}
 			
-		public ZipCode(long id)
+		public ZipCode(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ZipCode(long id, String kelurahan, String kecamatan, String city, String zipCode, String isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public ZipCode(Long id, String kelurahan, String kecamatan, String city, String zipCode, String isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.kelurahan = kelurahan;
@@ -55,12 +55,12 @@ public class ZipCode implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

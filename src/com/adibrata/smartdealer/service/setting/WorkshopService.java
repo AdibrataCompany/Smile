@@ -25,5 +25,5 @@ public interface WorkshopService extends SeviceBase {
 	public List<Workshop> Paging(int CurrentPage, String WhereCond,
 			String SortBy, boolean islast) throws Exception;
 
-	public Workshop View(long id) throws Exception;
+	public Workshop View(Long id) throws Exception;
 }

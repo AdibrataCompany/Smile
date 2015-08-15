@@ -23,7 +23,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		private long totalrecord;
+		private Long totalrecord;
 		private int currentpage;
 		
 		public DanaTunaiTransDao() throws Exception
@@ -87,7 +87,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 		 */
 		
 		@Override
-		public DanaTunai viewDanaTunai(final long id) throws Exception
+		public DanaTunai viewDanaTunai(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				DanaTunai danaTunai = null;

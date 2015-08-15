@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AssetDocMaster implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String documentCode;
 		private String documentName;
@@ -40,12 +40,12 @@ public class AssetDocMaster implements java.io.Serializable
 			{
 			}
 			
-		public AssetDocMaster(long id)
+		public AssetDocMaster(Long id)
 			{
 				this.id = id;
 			}
 			
-		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<StockDocument> stockDocuments)
+		public AssetDocMaster(Long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<StockDocument> stockDocuments)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -63,12 +63,12 @@ public class AssetDocMaster implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class InstSchedule implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private Short instSeqNo;
 		private Date dueDate;
@@ -91,7 +91,7 @@ public class InstSchedule implements java.io.Serializable
 			{
 			}
 			
-		public InstSchedule(long id, double instAmt, double paidAmt, double waivedAmt, double lcamt, double princAmt, double intrstAmt, double osPamt, double osIamt, double accruedAmt, double diffRateAmt, double osdiffRateAmt,
+		public InstSchedule(Long id, double instAmt, double paidAmt, double waivedAmt, double lcamt, double princAmt, double intrstAmt, double osPamt, double osIamt, double accruedAmt, double diffRateAmt, double osdiffRateAmt,
 		        double accruedDiffRateAmt, double incentive, double osincentive, double incentiveRecognize, double insuranceIncomeAmount, double outStandingInsuranceIncomeAmount, double insuranceIncomeRecognize, double provision, double osprovision,
 		        short isSmssent, double fundingCoyPortion, double adminFee, double osadminFee, double adminFeeRecognize)
 			{
@@ -123,7 +123,7 @@ public class InstSchedule implements java.io.Serializable
 				this.adminFeeRecognize = adminFeeRecognize;
 			}
 			
-		public InstSchedule(long id, Agrmnt agrmnt, Short instSeqNo, Date dueDate, double instAmt, double paidAmt, double waivedAmt, Date paidDate, double lcamt, Double lcpaid, Double lcwaived, double princAmt, double intrstAmt, double osPamt,
+		public InstSchedule(Long id, Agrmnt agrmnt, Short instSeqNo, Date dueDate, double instAmt, double paidAmt, double waivedAmt, Date paidDate, double lcamt, Double lcpaid, Double lcwaived, double princAmt, double intrstAmt, double osPamt,
 		        double osIamt, double accruedAmt, Date accruedDate, double diffRateAmt, double osdiffRateAmt, double accruedDiffRateAmt, double incentive, double osincentive, double incentiveRecognize, double insuranceIncomeAmount,
 		        double outStandingInsuranceIncomeAmount, double insuranceIncomeRecognize, double provision, double osprovision, Double provisionRecognize, short isSmssent, double fundingCoyPortion, Double spreadAmount, Double spreadRecognize,
 		        Date lastSpreadRecognize, double adminFee, double osadminFee, double adminFeeRecognize, Double otherRefundAmount, Double outStandingOtherRefundAmount, Double otherRefundRecognize, Double admFeeAmount, Double outStandingAdmFeeAmount,
@@ -201,12 +201,12 @@ public class InstSchedule implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

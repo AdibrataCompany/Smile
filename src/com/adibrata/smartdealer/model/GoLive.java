@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class GoLive implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Long agrmntId;
 		private Date effectiveDate;
 		private Date postingDate;
@@ -32,12 +32,12 @@ public class GoLive implements java.io.Serializable
 			{
 			}
 			
-		public GoLive(long id)
+		public GoLive(Long id)
 			{
 				this.id = id;
 			}
 			
-		public GoLive(long id, Long agrmntId, Date effectiveDate, Date postingDate, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public GoLive(Long id, Long agrmntId, Date effectiveDate, Date postingDate, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmntId = agrmntId;
@@ -53,12 +53,12 @@ public class GoLive implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

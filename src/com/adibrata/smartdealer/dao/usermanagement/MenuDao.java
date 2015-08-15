@@ -228,7 +228,7 @@ public class MenuDao extends DaoBase implements MenuService
 										this.menu.append(arow.getMenuCode());
 										this.menu.append("</a> \n");
 										this.menu.append(" <ul class=\"dropdown-menu\">\n");
-										this.MenuRender(arow.getId(), (long) 0, (long) 0);
+										this.MenuRender(arow.getId(), (Long) 0, (Long) 0);
 										this.menu.append(" </ul>\n ");
 										this.menu.append("</li>\n ");
 									}
@@ -242,7 +242,7 @@ public class MenuDao extends DaoBase implements MenuService
 										this.menu.append("</a></li>\n");
 										// this.menu.append(" </ul>\n ");
 										
-										// this.MenuRender(arow.getId(), (long) 0, (long) 0);
+										// this.MenuRender(arow.getId(), (Long) 0, (Long) 0);
 										
 									}
 							}

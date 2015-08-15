@@ -23,5 +23,5 @@ public interface NegativeCustomerService  extends SeviceBase {
 	public List<Customer>  Paging(int CurrentPage, String WhereCond, String SortBy);
 	public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast);
 	
-	public List<Object[]> View(long id);
+	public List<Object[]> View(Long id);
 }

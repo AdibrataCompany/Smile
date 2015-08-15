@@ -17,7 +17,7 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 public interface PaymentReceiveService extends SeviceBase
 	{
-		public PaymentInfo PaymentAllocation(long AgrmntId, double amountreceive, Date valuedate) throws Exception;
+		public PaymentInfo PaymentAllocation(Long AgrmntId, double amountreceive, Date valuedate) throws Exception;
 		
 		public void PaymentReceiveSave(String usrupd, PaymentReceive paymentreceive) throws Exception;
 		

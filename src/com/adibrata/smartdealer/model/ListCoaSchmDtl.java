@@ -13,8 +13,8 @@ import java.util.Date;
 public class ListCoaSchmDtl implements java.io.Serializable
 	{
 		
-		private long coamasterid;
-		private long coaSchmHdrid;
+		private Long coamasterid;
+		private Long coaSchmHdrid;
 		private String coacode;
 		private String coaname;
 		private String coadesc;
@@ -32,7 +32,7 @@ public class ListCoaSchmDtl implements java.io.Serializable
 				// TODO Auto-generated constructor stub
 			}
 			
-		public ListCoaSchmDtl(final long coamasterid, final long coaSchmHdrid, final String coacode, final String coaname, final String coadesc)
+		public ListCoaSchmDtl(final Long coamasterid, final Long coaSchmHdrid, final String coacode, final String coaname, final String coadesc)
 			{
 				
 				// TODO Auto-generated constructor stub
@@ -47,7 +47,7 @@ public class ListCoaSchmDtl implements java.io.Serializable
 		/**
 		 * @return the coamasterid
 		 */
-		public long getCoamasterid()
+		public Long getCoamasterid()
 			{
 				return this.coamasterid;
 			}
@@ -55,7 +55,7 @@ public class ListCoaSchmDtl implements java.io.Serializable
 		/**
 		 * @return the coaSchmHdrid
 		 */
-		public long getCoaSchmHdrid()
+		public Long getCoaSchmHdrid()
 			{
 				return this.coaSchmHdrid;
 			}
@@ -120,7 +120,7 @@ public class ListCoaSchmDtl implements java.io.Serializable
 		 * @param coamasterid
 		 *            the coamasterid to set
 		 */
-		public void setCoamasterid(final long coamasterid)
+		public void setCoamasterid(final Long coamasterid)
 			{
 				this.coamasterid = coamasterid;
 			}
@@ -129,7 +129,7 @@ public class ListCoaSchmDtl implements java.io.Serializable
 		 * @param coaSchmHdrid
 		 *            the coaSchmHdrid to set
 		 */
-		public void setCoaSchmHdrid(final long coaSchmHdrid)
+		public void setCoaSchmHdrid(final Long coaSchmHdrid)
 			{
 				this.coaSchmHdrid = coaSchmHdrid;
 			}

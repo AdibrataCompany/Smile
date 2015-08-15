@@ -86,7 +86,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 		 */
 
 		@Override
-		public AdvanceCash View(final long id) throws Exception
+		public AdvanceCash View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				AdvanceCash advanceCash = new AdvanceCash();
@@ -125,7 +125,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setCacheable(true);
 
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
@@ -187,7 +187,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
 						selectQuery.setMaxResults(this.getPagesize());
 						final List<Object[]> lst = selectQuery.list();

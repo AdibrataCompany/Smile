@@ -24,21 +24,21 @@ import javax.persistence.TemporalType;
 public class PayHistHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private short histSeqNo;
 		private Date valueDt;
 		private Date postingDt;
 		private double amountReceive;
 		private String wop;
-		private long officeIdX;
-		private long bankAccId;
+		private Long officeIdX;
+		private Long bankAccId;
 		private short isCorrection;
 		private short corrHistSeq;
 		private Short printedNum;
 		private String printBy;
 		private Date lastPrtDt;
-		private long jobId;
+		private Long jobId;
 		private String defaultStat;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -50,7 +50,7 @@ public class PayHistHdr implements java.io.Serializable
 			{
 			}
 			
-		public PayHistHdr(long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, long officeIdX, long bankAccId, short isCorrection, short corrHistSeq, long jobId, String defaultStat)
+		public PayHistHdr(Long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, Long officeIdX, Long bankAccId, short isCorrection, short corrHistSeq, Long jobId, String defaultStat)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -67,8 +67,8 @@ public class PayHistHdr implements java.io.Serializable
 				this.defaultStat = defaultStat;
 			}
 			
-		public PayHistHdr(long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, long officeIdX, long bankAccId, short isCorrection, short corrHistSeq, Short printedNum, String printBy,
-		        Date lastPrtDt, long jobId, String defaultStat, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<PayHistDtl> payHistDtls)
+		public PayHistHdr(Long id, Agrmnt agrmnt, short histSeqNo, Date valueDt, Date postingDt, double amountReceive, String wop, Long officeIdX, Long bankAccId, short isCorrection, short corrHistSeq, Short printedNum, String printBy,
+		        Date lastPrtDt, Long jobId, String defaultStat, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<PayHistDtl> payHistDtls)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -96,12 +96,12 @@ public class PayHistHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}
@@ -176,23 +176,23 @@ public class PayHistHdr implements java.io.Serializable
 			}
 			
 		@Column(name = "OfficeID_X", nullable = false)
-		public long getOfficeIdX()
+		public Long getOfficeIdX()
 			{
 				return this.officeIdX;
 			}
 			
-		public void setOfficeIdX(long officeIdX)
+		public void setOfficeIdX(Long officeIdX)
 			{
 				this.officeIdX = officeIdX;
 			}
 			
 		@Column(name = "BankAccID", nullable = false)
-		public long getBankAccId()
+		public Long getBankAccId()
 			{
 				return this.bankAccId;
 			}
 			
-		public void setBankAccId(long bankAccId)
+		public void setBankAccId(Long bankAccId)
 			{
 				this.bankAccId = bankAccId;
 			}
@@ -254,12 +254,12 @@ public class PayHistHdr implements java.io.Serializable
 			}
 			
 		@Column(name = "JobId", nullable = false)
-		public long getJobId()
+		public Long getJobId()
 			{
 				return this.jobId;
 			}
 			
-		public void setJobId(long jobId)
+		public void setJobId(Long jobId)
 			{
 				this.jobId = jobId;
 			}

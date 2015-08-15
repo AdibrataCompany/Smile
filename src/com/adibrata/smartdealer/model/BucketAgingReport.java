@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class BucketAgingReport implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String partnerCode;
 		private String reportCode;
 		private String bucketName;
@@ -61,7 +61,7 @@ public class BucketAgingReport implements java.io.Serializable
 			{
 			}
 			
-		public BucketAgingReport(long id, String bucketName, int bucket1From, int bucket1To, String bucket1Text, int bucket2From, int bucket2To, String bucket2Text, int bucket3From, int bucket3To, String bucket3Text, int bucket4From, int bucket4To,
+		public BucketAgingReport(Long id, String bucketName, int bucket1From, int bucket1To, String bucket1Text, int bucket2From, int bucket2To, String bucket2Text, int bucket3From, int bucket3To, String bucket3Text, int bucket4From, int bucket4To,
 		        String bucket4Text, int bucket5From, int bucket5To, String bucket5Text, int bucket6From, int bucket6To, String bucket6Text, int bucket7From, int bucket7To, String bucket7Text, int bucket8From, int bucket8To, String bucket8Text,
 		        int bucket9From, int bucket9To, String bucket9Text, int bucket10From, int bucket10To, String bucket10Text)
 			{
@@ -99,7 +99,7 @@ public class BucketAgingReport implements java.io.Serializable
 				this.bucket10Text = bucket10Text;
 			}
 			
-		public BucketAgingReport(long id, String partnerCode, String reportCode, String bucketName, int bucket1From, int bucket1To, String bucket1Text, int bucket2From, int bucket2To, String bucket2Text, int bucket3From, int bucket3To,
+		public BucketAgingReport(Long id, String partnerCode, String reportCode, String bucketName, int bucket1From, int bucket1To, String bucket1Text, int bucket2From, int bucket2To, String bucket2Text, int bucket3From, int bucket3To,
 		        String bucket3Text, int bucket4From, int bucket4To, String bucket4Text, int bucket5From, int bucket5To, String bucket5Text, int bucket6From, int bucket6To, String bucket6Text, int bucket7From, int bucket7To, String bucket7Text,
 		        int bucket8From, int bucket8To, String bucket8Text, int bucket9From, int bucket9To, String bucket9Text, int bucket10From, int bucket10To, String bucket10Text, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
@@ -146,12 +146,12 @@ public class BucketAgingReport implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

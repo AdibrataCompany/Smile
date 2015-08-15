@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class TransJob implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private Long officeId;
 		private String jobNo;
@@ -42,12 +42,12 @@ public class TransJob implements java.io.Serializable
 			{
 			}
 			
-		public TransJob(long id)
+		public TransJob(Long id)
 			{
 				this.id = id;
 			}
 			
-		public TransJob(long id, Partner partner, Long officeId, String jobNo, String trxConfigCode, String coaSchmCode, Date jobDate, Date jobPost, String jobStatus, Date jobExecuteDate, String journalNo, String voucherNo, Date dtmUpd,
+		public TransJob(Long id, Partner partner, Long officeId, String jobNo, String trxConfigCode, String coaSchmCode, Date jobDate, Date jobPost, String jobStatus, Date jobExecuteDate, String journalNo, String voucherNo, Date dtmUpd,
 		        String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -71,12 +71,12 @@ public class TransJob implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

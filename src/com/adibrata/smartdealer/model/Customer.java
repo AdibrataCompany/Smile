@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Customer implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String type;
 		private String name;
@@ -83,12 +83,12 @@ public class Customer implements java.io.Serializable
 			{
 			}
 			
-		public Customer(long id)
+		public Customer(Long id)
 			{
 				this.id = id;
 			}
 			
-		public Customer(long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
+		public Customer(Long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<PersCustOmsetInfo> persCustOmsetInfos, Set<CoyCustContactInfo> coyCustContactInfos, Set<CoyCust> coyCusts, Set<PersCustEntInfo> persCustEntInfos, Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos, Set<Agrmnt> agrmnts,
 		        Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos, Set<DailyAraging> dailyAragings, Set<CoyCustWhInfo> coyCustWhInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts,
@@ -155,12 +155,12 @@ public class Customer implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -122,7 +122,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 			}
 			
 		@Override
-		public EntrustHdr viewEntrusHdr(final long id) throws Exception
+		public EntrustHdr viewEntrusHdr(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				EntrustHdr entrustHdr = null;
@@ -182,7 +182,7 @@ public class EntrustTransactionsDao extends DaoBase implements EntrustService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();

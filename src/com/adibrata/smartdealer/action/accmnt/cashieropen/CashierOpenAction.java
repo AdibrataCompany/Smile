@@ -2,7 +2,12 @@
 package com.adibrata.smartdealer.action.accmnt.cashieropen;
 
 import com.adibrata.smartdealer.action.BaseAction;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
+
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class CashierOpenAction extends BaseAction implements Preparable
 	{
@@ -14,15 +19,22 @@ public class CashierOpenAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
 
+		Partner partner;
+		Office office;
+
 		public CashierOpenAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
 			
 		@Override
@@ -61,7 +73,60 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
+			
+		private String WhereCond()
+			{
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						if (this.getSearchcriteria().contains("%"))
+							{
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+							}
+						else
+							{
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+							}
+					}
+				return wherecond;
+			}
 
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetDocMasterService.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+			
 		/**
 		 * @return the mode
 		 */
@@ -111,23 +176,6 @@ public class CashierOpenAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
-			}
-
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
 			}
 
 		/**
@@ -201,8 +249,43 @@ public class CashierOpenAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
+
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+
 	}

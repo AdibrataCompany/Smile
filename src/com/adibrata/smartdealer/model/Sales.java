@@ -18,16 +18,16 @@ import javax.persistence.TemporalType;
 public class Sales implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String partnerCode;
 		private Long officeId;
 		private Long appId;
 		private Long agrmntId;
 		private Date salesDate;
-		private long supplierId;
-		private long aoid;
-		private long aosupervisorId;
-		private long caid;
+		private Long supplierId;
+		private Long aoid;
+		private Long aosupervisorId;
+		private Long caid;
 		private Long gmid;
 		private Long bmid;
 		private Long adhid;
@@ -80,7 +80,7 @@ public class Sales implements java.io.Serializable
 			{
 			}
 			
-		public Sales(long id, Date salesDate, long supplierId, long aoid, long aosupervisorId, long caid, double totalOtr, double downPayment, double ntf, String financeType, String productType, short numOfAssetUnit, double effectiveRate,
+		public Sales(Long id, Date salesDate, Long supplierId, Long aoid, Long aosupervisorId, Long caid, double totalOtr, double downPayment, double ntf, String financeType, String productType, short numOfAssetUnit, double effectiveRate,
 		        double flatRate, double supplierRate, String paymentFrequency, String firstInstallment, String installmentScheme, String interestType, short numOfInstallment, short tenor, short cummulativeTenor, double installmentAmount,
 		        double grossYield, double outstandingPrincipal, double outstandingInterest, double tdpamount, double diffRateAmount, short isAvalist, short isNst, short isIncentiveSupplier)
 			{
@@ -117,7 +117,7 @@ public class Sales implements java.io.Serializable
 				this.isIncentiveSupplier = isIncentiveSupplier;
 			}
 			
-		public Sales(long id, String partnerCode, Long officeId, Long appId, Long agrmntId, Date salesDate, long supplierId, long aoid, long aosupervisorId, long caid, Long gmid, Long bmid, Long adhid, Long salesmanId, Long salesSupervisorId,
+		public Sales(Long id, String partnerCode, Long officeId, Long appId, Long agrmntId, Date salesDate, Long supplierId, Long aoid, Long aosupervisorId, Long caid, Long gmid, Long bmid, Long adhid, Long salesmanId, Long salesSupervisorId,
 		        Long supplierAdminId, double totalOtr, double downPayment, double ntf, String financeType, String productType, short numOfAssetUnit, String wayOfPayment, String floatingPeriod, Double insAssetPremium, Double insAssetReceivedInAdv,
 		        Double insAssetCapitalized, String insAssetInsuredBy, String insAssetPaidBy, String insAssetPeriod, double effectiveRate, double flatRate, double supplierRate, String paymentFrequency, String firstInstallment,
 		        String installmentScheme, String interestType, short numOfInstallment, short tenor, short cummulativeTenor, double installmentAmount, Date gracePeriod, String gracePeriodType, double grossYield, double outstandingPrincipal,
@@ -185,12 +185,12 @@ public class Sales implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}
@@ -252,45 +252,45 @@ public class Sales implements java.io.Serializable
 			}
 			
 		@Column(name = "SupplierID", nullable = false)
-		public long getSupplierId()
+		public Long getSupplierId()
 			{
 				return this.supplierId;
 			}
 			
-		public void setSupplierId(long supplierId)
+		public void setSupplierId(Long supplierId)
 			{
 				this.supplierId = supplierId;
 			}
 			
 		@Column(name = "AOID", nullable = false)
-		public long getAoid()
+		public Long getAoid()
 			{
 				return this.aoid;
 			}
 			
-		public void setAoid(long aoid)
+		public void setAoid(Long aoid)
 			{
 				this.aoid = aoid;
 			}
 			
 		@Column(name = "AOSupervisorID", nullable = false)
-		public long getAosupervisorId()
+		public Long getAosupervisorId()
 			{
 				return this.aosupervisorId;
 			}
 			
-		public void setAosupervisorId(long aosupervisorId)
+		public void setAosupervisorId(Long aosupervisorId)
 			{
 				this.aosupervisorId = aosupervisorId;
 			}
 			
 		@Column(name = "CAID", nullable = false)
-		public long getCaid()
+		public Long getCaid()
 			{
 				return this.caid;
 			}
 			
-		public void setCaid(long caid)
+		public void setCaid(Long caid)
 			{
 				this.caid = caid;
 			}

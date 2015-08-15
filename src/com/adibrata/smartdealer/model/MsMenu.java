@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class MsMenu implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String menuCode;
 		private Long parentMenuId;
 		private Short isActive;
@@ -37,12 +37,12 @@ public class MsMenu implements java.io.Serializable
 			{
 			}
 			
-		public MsMenu(long id)
+		public MsMenu(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MsMenu(long id, String menuCode, Long parentMenuId, Short isActive, String urlString, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
+		public MsMenu(Long id, String menuCode, Long parentMenuId, Short isActive, String urlString, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
 			{
 				this.id = id;
 				this.menuCode = menuCode;
@@ -59,12 +59,12 @@ public class MsMenu implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

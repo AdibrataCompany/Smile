@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class SuspendReceive implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Office office;
 		private Partner partner;
 		private String suspendCode;
@@ -49,12 +49,12 @@ public class SuspendReceive implements java.io.Serializable
 			{
 			}
 			
-		public SuspendReceive(long id)
+		public SuspendReceive(Long id)
 			{
 				this.id = id;
 			}
 			
-		public SuspendReceive(long id, Office office, Partner partner, String suspendCode, Date valueDate, Date postingDate, Double amount, Long currencyId, Double currencyRate, Long bankAccountId, Long cashierHistoryId, Long jobId, String status,
+		public SuspendReceive(Long id, Office office, Partner partner, String suspendCode, Date valueDate, Date postingDate, Double amount, Long currencyId, Double currencyRate, Long bankAccountId, Long cashierHistoryId, Long jobId, String status,
 		        String notes, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<SuspendReverse> suspendReverses, Set<SuspendAllocation> suspendAllocations)
 			{
 				this.id = id;
@@ -82,12 +82,12 @@ public class SuspendReceive implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

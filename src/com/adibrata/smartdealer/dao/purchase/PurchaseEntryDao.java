@@ -195,7 +195,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
@@ -240,7 +240,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 			}
 
 		@Override
-		public PurchaseOrderHdr viewPurchaseOrderHdr(final long id) throws Exception
+		public PurchaseOrderHdr viewPurchaseOrderHdr(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				PurchaseOrderHdr purchaseOrderHdr = null;

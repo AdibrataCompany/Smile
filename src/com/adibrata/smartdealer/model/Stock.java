@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Stock implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AssetMaster assetMaster;
 		private Office office;
 		private Partner partner;
@@ -64,12 +64,12 @@ public class Stock implements java.io.Serializable
 			{
 			}
 			
-		public Stock(long id)
+		public Stock(Long id)
 			{
 				this.id = id;
 			}
 			
-		public Stock(long id, AssetMaster assetMaster, Office office, Partner partner, Supplier supplier, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress,
+		public Stock(Long id, AssetMaster assetMaster, Office office, Partner partner, Supplier supplier, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress,
 		        String vehicleColor, String machineNo, String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Double purchasePrice, Double servicePrice, Double taxPrice, Double netSalesPrice,
 		        Date receiveDate, Date purchaseDate, Date serviceDate, String stockStatus, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<SalesOrderDtl> salesOrderDtls, Set<StockDocument> stockDocuments,
 		        Set<ReturSalesDtl> returSalesDtls, Set<ReturPurchaseDtl> returPurchaseDtls)
@@ -114,12 +114,12 @@ public class Stock implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

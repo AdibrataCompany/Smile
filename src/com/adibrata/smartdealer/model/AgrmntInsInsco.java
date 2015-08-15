@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsInsco implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AgrmntIns agrmntIns;
 		private double srcctoInsco;
 		private double tpltoInsco;
@@ -39,7 +39,7 @@ public class AgrmntInsInsco implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsInsco(long id, double srcctoInsco, double tpltoInsco, double floodToInsCo, double loadingFeeToInsCo, double mainPremiumToInsCo, double premiumAmountToInsCo, double paidAmountToInsco)
+		public AgrmntInsInsco(Long id, double srcctoInsco, double tpltoInsco, double floodToInsCo, double loadingFeeToInsCo, double mainPremiumToInsCo, double premiumAmountToInsCo, double paidAmountToInsco)
 			{
 				this.id = id;
 				this.srcctoInsco = srcctoInsco;
@@ -51,7 +51,7 @@ public class AgrmntInsInsco implements java.io.Serializable
 				this.paidAmountToInsco = paidAmountToInsco;
 			}
 			
-		public AgrmntInsInsco(long id, AgrmntIns agrmntIns, double srcctoInsco, double tpltoInsco, double floodToInsCo, double loadingFeeToInsCo, double mainPremiumToInsCo, double premiumAmountToInsCo, double paidAmountToInsco, String usrCrt,
+		public AgrmntInsInsco(Long id, AgrmntIns agrmntIns, double srcctoInsco, double tpltoInsco, double floodToInsCo, double loadingFeeToInsCo, double mainPremiumToInsCo, double premiumAmountToInsCo, double paidAmountToInsco, String usrCrt,
 		        Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -72,12 +72,12 @@ public class AgrmntInsInsco implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Coamaster implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String coaName;
 		private String coaDescription;
@@ -42,12 +42,12 @@ public class Coamaster implements java.io.Serializable
 			{
 			}
 			
-		public Coamaster(long id)
+		public Coamaster(Long id)
 			{
 				this.id = id;
 			}
 			
-		public Coamaster(long id, Partner partner, String coaName, String coaDescription, String coacode, Short isSystem, Short isActive, Short isScheme, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls)
+		public Coamaster(Long id, Partner partner, String coaName, String coaDescription, String coacode, Short isSystem, Short isActive, Short isScheme, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -67,12 +67,12 @@ public class Coamaster implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

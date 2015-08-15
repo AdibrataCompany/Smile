@@ -22,7 +22,7 @@ public interface AdvanceCashService extends SeviceBase
 		
 		public List<AdvanceTransaction> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 		
-		public AdvanceCash View(long id) throws Exception;
+		public AdvanceCash View(Long id) throws Exception;
 		
 		public void Save(String usrupd, AdvanceCashReversal advancecash) throws Exception;
 		

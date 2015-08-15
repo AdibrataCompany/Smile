@@ -33,7 +33,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
@@ -48,7 +48,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 		private String chasisNo;
 		
 		private String cylinder;
-		private long id;
+		private Long id;
 		private String licensePlate;
 		private List<PurchaseOrderDtl> lstPurchaseOrderDtl;
 		private List<PurchaseOrderHdr> lstPurchaseOrderHdr;
@@ -201,7 +201,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -558,7 +558,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}

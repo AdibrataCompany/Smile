@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class InsCompanyOfficeFee implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Currency currency;
 		private InsCompanyOffice insCompanyOffice;
 		private Double adminFee;
@@ -35,13 +35,13 @@ public class InsCompanyOfficeFee implements java.io.Serializable
 			{
 			}
 			
-		public InsCompanyOfficeFee(long id, Currency currency)
+		public InsCompanyOfficeFee(Long id, Currency currency)
 			{
 				this.id = id;
 				this.currency = currency;
 			}
 			
-		public InsCompanyOfficeFee(long id, Currency currency, InsCompanyOffice insCompanyOffice, Double adminFee, Double stampDutyFee, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public InsCompanyOfficeFee(Long id, Currency currency, InsCompanyOffice insCompanyOffice, Double adminFee, Double stampDutyFee, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.currency = currency;
@@ -57,12 +57,12 @@ public class InsCompanyOfficeFee implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

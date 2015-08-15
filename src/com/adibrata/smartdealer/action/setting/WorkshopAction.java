@@ -34,7 +34,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
+		private Long id;
 		
 		private String name;
 		private String address;
@@ -433,7 +433,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 		/**
 		 * @return the id
 		 */
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
@@ -442,7 +442,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
@@ -688,7 +688,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 		/**
 		 * @return the serialversionuid
 		 */
-		public static long getSerialversionuid()
+		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

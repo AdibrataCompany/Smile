@@ -26,5 +26,5 @@ public interface DealerService extends SeviceBase {
 
 	public void SaveEdit(Supplier supplier) throws Exception;
 
-	public Supplier View(long id) throws Exception;
+	public Supplier View(Long id) throws Exception;
 }

@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
 public class MasterType implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String masterTypeCode;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -30,12 +30,12 @@ public class MasterType implements java.io.Serializable
 			{
 			}
 			
-		public MasterType(long id)
+		public MasterType(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MasterType(long id, String masterTypeCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public MasterType(Long id, String masterTypeCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.masterTypeCode = masterTypeCode;
@@ -48,12 +48,12 @@ public class MasterType implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

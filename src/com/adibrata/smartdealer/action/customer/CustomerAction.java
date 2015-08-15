@@ -33,7 +33,7 @@ public class CustomerAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
-		private long id;
+		private Long id;
 
 		private String type;
 		private String name;
@@ -350,12 +350,12 @@ public class CustomerAction extends BaseAction implements Preparable
 				this.pageNumber = pageNumber;
 			}
 
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}

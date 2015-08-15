@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class EntrustDtl implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private EntrustHdr entrustHdr;
 		private Long stockId;
 		private Double unitPrice;
@@ -48,12 +48,12 @@ public class EntrustDtl implements java.io.Serializable
 			{
 			}
 			
-		public EntrustDtl(long id)
+		public EntrustDtl(Long id)
 			{
 				this.id = id;
 			}
 			
-		public EntrustDtl(long id, EntrustHdr entrustHdr, Long stockId, Double unitPrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor,
+		public EntrustDtl(Long id, EntrustHdr entrustHdr, Long stockId, Double unitPrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor,
 		        String machineNo, String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -83,12 +83,12 @@ public class EntrustDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PersCustOmsetInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Customer customer;
 		private Integer year;
 		private Integer month;
@@ -35,12 +35,12 @@ public class PersCustOmsetInfo implements java.io.Serializable
 			{
 			}
 			
-		public PersCustOmsetInfo(long id)
+		public PersCustOmsetInfo(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PersCustOmsetInfo(long id, Customer customer, Integer year, Integer month, Double amount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public PersCustOmsetInfo(Long id, Customer customer, Integer year, Integer month, Double amount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -56,12 +56,12 @@ public class PersCustOmsetInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

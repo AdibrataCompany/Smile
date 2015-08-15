@@ -21,7 +21,7 @@ public class OfficeDao extends DaoBase implements OfficeService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
-		private long totalrecord;
+		private Long totalrecord;
 
 		public OfficeDao() throws Exception
 			{
@@ -204,7 +204,7 @@ public class OfficeDao extends DaoBase implements OfficeService
 			}
 
 		@Override
-		public Office View(final long id) throws Exception
+		public Office View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Office office = null;

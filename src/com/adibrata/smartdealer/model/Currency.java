@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Currency implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String code;
 		private String description;
@@ -46,13 +46,13 @@ public class Currency implements java.io.Serializable
 			{
 			}
 			
-		public Currency(long id, String sandiBi)
+		public Currency(Long id, String sandiBi)
 			{
 				this.id = id;
 				this.sandiBi = sandiBi;
 			}
 			
-		public Currency(long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
+		public Currency(Long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
 		        Set<CashBankHdr> cashBankHdrs, Set<DailyAraging> dailyAragings, Set<InsCompanyOfficeFee> insCompanyOfficeFees, Set<CashierHistory> cashierHistories)
 			{
 				this.id = id;
@@ -77,12 +77,12 @@ public class Currency implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

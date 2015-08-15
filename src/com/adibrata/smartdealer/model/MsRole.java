@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class MsRole implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Partner partner;
 		private String roleName;
 		private Short isActive;
@@ -38,12 +38,12 @@ public class MsRole implements java.io.Serializable
 			{
 			}
 			
-		public MsRole(long id)
+		public MsRole(Long id)
 			{
 				this.id = id;
 			}
 			
-		public MsRole(long id, Partner partner, String roleName, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
+		public MsRole(Long id, Partner partner, String roleName, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -59,12 +59,12 @@ public class MsRole implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

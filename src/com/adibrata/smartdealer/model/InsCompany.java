@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class InsCompany implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private String partnerCode;
 		private String name;
 		private String address;
@@ -52,12 +52,12 @@ public class InsCompany implements java.io.Serializable
 			{
 			}
 			
-		public InsCompany(long id)
+		public InsCompany(Long id)
 			{
 				this.id = id;
 			}
 			
-		public InsCompany(long id, String partnerCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
+		public InsCompany(Long id, String partnerCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCompanyOffice> insCompanyOffices)
 			{
 				this.id = id;
@@ -90,12 +90,12 @@ public class InsCompany implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

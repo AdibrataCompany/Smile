@@ -26,5 +26,5 @@ public interface RepairService extends SeviceBase {
 			List<ServiceDtl> lstserviceDtls, List<ServiceItem> lstServiceItem)
 					throws Exception;
 
-	public ServiceHdr View(long id) throws Exception;
+	public ServiceHdr View(Long id) throws Exception;
 }

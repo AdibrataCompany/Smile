@@ -48,7 +48,7 @@ public class OpenCashierDao extends DaoBase implements OpenCashierService
 			}
 			
 		@Override
-		public Boolean CheckHeadCashier(final String partnercode, final String officeid, final long employeeid) throws Exception
+		public Boolean CheckHeadCashier(final String partnercode, final String officeid, final Long employeeid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				return null;

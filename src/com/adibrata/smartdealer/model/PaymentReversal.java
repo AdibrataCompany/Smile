@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PaymentReversal implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private Date valueDate;
 		private Date postingDate;
@@ -42,12 +42,12 @@ public class PaymentReversal implements java.io.Serializable
 			{
 			}
 			
-		public PaymentReversal(long id)
+		public PaymentReversal(Long id)
 			{
 				this.id = id;
 			}
 			
-		public PaymentReversal(long id, Agrmnt agrmnt, Date valueDate, Date postingDate, Long bankAccId, Double currencyRate, String notes, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
+		public PaymentReversal(Long id, Agrmnt agrmnt, Date valueDate, Date postingDate, Long bankAccId, Double currencyRate, String notes, Double instAmt, Double lcamt, Double inssAmt, Double lcinss, Double prepaidAmt, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -71,12 +71,12 @@ public class PaymentReversal implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

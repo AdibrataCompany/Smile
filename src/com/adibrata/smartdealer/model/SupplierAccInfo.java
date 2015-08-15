@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class SupplierAccInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Supplier supplier;
 		private Short seqNo;
 		private String bankCode;
@@ -41,12 +41,12 @@ public class SupplierAccInfo implements java.io.Serializable
 			{
 			}
 			
-		public SupplierAccInfo(long id)
+		public SupplierAccInfo(Long id)
 			{
 				this.id = id;
 			}
 			
-		public SupplierAccInfo(long id, Supplier supplier, Short seqNo, String bankCode, String bankBranch, String bankName, String accountNo, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntAsset> agrmntAssets)
+		public SupplierAccInfo(Long id, Supplier supplier, Short seqNo, String bankCode, String bankBranch, String bankName, String accountNo, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntAsset> agrmntAssets)
 			{
 				this.id = id;
 				this.supplier = supplier;
@@ -65,12 +65,12 @@ public class SupplierAccInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

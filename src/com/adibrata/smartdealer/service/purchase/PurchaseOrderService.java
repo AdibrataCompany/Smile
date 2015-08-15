@@ -26,5 +26,5 @@ public interface PurchaseOrderService extends SeviceBase {
 	public List<PurchaseOrderDtl> viewPurchaseOrderDtls(
 			PurchaseOrderHdr purchaseOrderHdr) throws Exception;
 
-	public PurchaseOrderHdr viewPurchaseOrderHdr(long id) throws Exception;
+	public PurchaseOrderHdr viewPurchaseOrderHdr(Long id) throws Exception;
 }

@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AgrmntBankStatementInfo implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private Agrmnt agrmnt;
 		private String bankCode;
 		private String bankBranch;
@@ -46,7 +46,7 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntBankStatementInfo(long id, String bankCode, String bankBranch, String accountNo, String accountName)
+		public AgrmntBankStatementInfo(Long id, String bankCode, String bankBranch, String accountNo, String accountName)
 			{
 				this.id = id;
 				this.bankCode = bankCode;
@@ -55,7 +55,7 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 				this.accountName = accountName;
 			}
 			
-		public AgrmntBankStatementInfo(long id, Agrmnt agrmnt, String bankCode, String bankBranch, String accountNo, String accountName, Double creditCeiling, String typeOfCredit, Double interest, String security, Double startingBalance,
+		public AgrmntBankStatementInfo(Long id, Agrmnt agrmnt, String bankCode, String bankBranch, String accountNo, String accountName, Double creditCeiling, String typeOfCredit, Double interest, String security, Double startingBalance,
 		        Double deposito, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntBankStatInfoDtl> agrmntBankStatInfoDtls)
 			{
 				this.id = id;
@@ -80,12 +80,12 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}

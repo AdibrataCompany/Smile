@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class ServiceHdr implements java.io.Serializable
 	{
 		
-		private long id;
+		private Long id;
 		private AssetMaster assetMaster;
 		private Office office;
 		private Partner partner;
@@ -42,12 +42,12 @@ public class ServiceHdr implements java.io.Serializable
 			{
 			}
 			
-		public ServiceHdr(long id)
+		public ServiceHdr(Long id)
 			{
 				this.id = id;
 			}
 			
-		public ServiceHdr(long id, AssetMaster assetMaster, Office office, Partner partner, Workshop workshop, String serviceNo, Date postingDate, Date valueDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ServiceDtl> serviceDtls)
+		public ServiceHdr(Long id, AssetMaster assetMaster, Office office, Partner partner, Workshop workshop, String serviceNo, Date postingDate, Date valueDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ServiceDtl> serviceDtls)
 			{
 				this.id = id;
 				this.assetMaster = assetMaster;
@@ -67,12 +67,12 @@ public class ServiceHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public long getId()
+		public Long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(long id)
+		public void setId(Long id)
 			{
 				this.id = id;
 			}
