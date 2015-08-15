@@ -22,14 +22,14 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class UserRegistrationAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mode;
 		private UserService service;
-
+		
 		private Partner partner;
 		private Office office;
 		private List<UserList> lstuser;
@@ -39,7 +39,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-
+		
 		private String username;
 		private Long employeeid;
 		private String employeename;
@@ -47,41 +47,41 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		private Short isactive;
 		private Long id;
 		private Map<Long, String> lstemployee;
-
+		
 		public UserRegistrationAction() throws Exception
 			{
-
+				
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-
+				
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
 					}
-
+					
 				this.service = new UserRegisterDao();
 				this.lstemployee = new HashMap<Long, String>();
 				this.lstemployee = this.ListEmployee(this.partner, this.office);
-
+				
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
 				try
 					{
-
+					
 					}
 				catch (final Exception exp)
 					{
 						throw new Exception(exp.getMessage());
 					}
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -197,10 +197,10 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
-
+									
 							}
 					}
 				else
@@ -219,11 +219,11 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 *
 		 */
-
+		
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
@@ -242,7 +242,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				return wherecond.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -251,34 +251,34 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-
+						
 						this.lstuser = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = this.service.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public void ViewData() throws Exception
 			{
 				MsUser msuser = new MsUser();
@@ -305,7 +305,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
@@ -329,7 +329,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -354,7 +354,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -362,7 +362,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					{
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
-
+						
 						this.service.SaveDel(msUser);
 						status = SUCCESS;
 					}
@@ -376,7 +376,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -384,7 +384,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the userService
 		 */
@@ -392,7 +392,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -400,7 +400,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -408,7 +408,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -417,7 +417,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @param userService
 		 *            the userService to set
@@ -426,7 +426,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.service = userService;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -435,7 +435,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -444,7 +444,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -452,7 +452,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -460,7 +460,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -468,7 +468,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -476,7 +476,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -484,7 +484,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -492,7 +492,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -501,7 +501,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -510,7 +510,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -519,7 +519,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -528,7 +528,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -537,7 +537,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -546,7 +546,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -554,7 +554,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the lstemployee
 		 */
@@ -562,7 +562,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-
+			
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -571,7 +571,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.lstemployee = lstemployee;
 			}
-
+			
 		/**
 		 * @return the lstuser
 		 */
@@ -579,7 +579,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.lstuser;
 			}
-
+			
 		/**
 		 * @param lstuser
 		 *            the lstuser to set
@@ -588,7 +588,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.lstuser = lstuser;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -596,7 +596,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -605,7 +605,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the username
 		 */
@@ -613,7 +613,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.username;
 			}
-
+			
 		/**
 		 * @param username
 		 *            the username to set
@@ -622,7 +622,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.username = username;
 			}
-
+			
 		/**
 		 * @return the employeeid
 		 */
@@ -630,7 +630,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-
+			
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -639,7 +639,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-
+			
 		/**
 		 * @return the employeename
 		 */
@@ -647,7 +647,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.employeename;
 			}
-
+			
 		/**
 		 * @param employeename
 		 *            the employeename to set
@@ -656,7 +656,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.employeename = employeename;
 			}
-
+			
 		/**
 		 * @return the password
 		 */
@@ -664,7 +664,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.password;
 			}
-
+			
 		/**
 		 * @param password
 		 *            the password to set
@@ -673,7 +673,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				this.password = password;
 			}
-			
+
 		/**
 		 * @return the isactive
 		 */
@@ -681,7 +681,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 			{
 				return this.isactive;
 			}
-			
+
 		/**
 		 * @param isactive
 		 *            the isactive to set
@@ -696,7 +696,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		 */
 		public Long getId()
 			{
-				return this.Id;
+				return this.id;
 			}
 			
 		/**
@@ -705,7 +705,7 @@ public class UserRegistrationAction extends BaseAction implements Preparable
 		 */
 		public void setId(final Long id)
 			{
-				this.Id = id;
+				this.id = id;
 			}
 			
 	}

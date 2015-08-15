@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Stock implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private AssetMaster assetMaster;
 		private Office office;
 		private Partner partner;
@@ -64,12 +64,12 @@ public class Stock implements java.io.Serializable
 			{
 			}
 			
-		public Stock(Long id)
+		public Stock(long id)
 			{
 				this.id = id;
 			}
 			
-		public Stock(Long id, AssetMaster assetMaster, Office office, Partner partner, Supplier supplier, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress,
+		public Stock(long id, AssetMaster assetMaster, Office office, Partner partner, Supplier supplier, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress,
 		        String vehicleColor, String machineNo, String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Double purchasePrice, Double servicePrice, Double taxPrice, Double netSalesPrice,
 		        Date receiveDate, Date purchaseDate, Date serviceDate, String stockStatus, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<SalesOrderDtl> salesOrderDtls, Set<StockDocument> stockDocuments,
 		        Set<ReturSalesDtl> returSalesDtls, Set<ReturPurchaseDtl> returPurchaseDtls)
@@ -114,12 +114,12 @@ public class Stock implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

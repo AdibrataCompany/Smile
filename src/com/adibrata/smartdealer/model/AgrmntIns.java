@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AgrmntIns implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private InsCompanyOffice insCompanyOffice;
 		private Long currencyId;
@@ -69,7 +69,7 @@ public class AgrmntIns implements java.io.Serializable
 		private Double waivedAmountByCust;
 		private Date paidDate;
 		private double lateCharges;
-		private Long accPayId;
+		private long accPayId;
 		private String insuredBy;
 		private String insurancePaidBy;
 		private double claimAmount;
@@ -115,9 +115,9 @@ public class AgrmntIns implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntIns(Long id, String policyNumber, String policyReceiveBy, String flagReNew, String flagInsStatus, String sppano, String insuranceRateType, double sumInsured, double sellingRate, double sellingAmount, double adminFee,
+		public AgrmntIns(long id, String policyNumber, String policyReceiveBy, String flagReNew, String flagInsStatus, String sppano, String insuranceRateType, double sumInsured, double sellingRate, double sellingAmount, double adminFee,
 		        double meteraiFee, double earnAmount, String insNotes, String accNotes, short insLength, String mainCoverage, String additionalCoverage, String endorsDocNo, String bdendorsDocNo, String bdendorsPolicyNo, double endorsToInsCoPremium,
-		        double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, String flagDocStatus, double paidAmountByCust, double lateCharges, Long accPayId, double claimAmount, double paidClaimAmount, int yearNum,
+		        double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, String flagDocStatus, double paidAmountByCust, double lateCharges, long accPayId, double claimAmount, double paidClaimAmount, int yearNum,
 		        String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Double premiumBaseForRefundSupp, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength,
 		        boolean isValidNumOfAsset, boolean isValid, short isNewCover)
 			{
@@ -167,11 +167,11 @@ public class AgrmntIns implements java.io.Serializable
 				this.isNewCover = isNewCover;
 			}
 			
-		public AgrmntIns(Long id, Agrmnt agrmnt, InsCompanyOffice insCompanyOffice, Long currencyId, String applicationType, Date startDate, Date endDate, String policyNumber, Date policyReceiveDate, String policyReceiveBy, String flagInsActivation,
+		public AgrmntIns(long id, Agrmnt agrmnt, InsCompanyOffice insCompanyOffice, Long currencyId, String applicationType, Date startDate, Date endDate, String policyNumber, Date policyReceiveDate, String policyReceiveBy, String flagInsActivation,
 		        String flagReNew, String flagInsStatus, Date sppadate, String sppano, String insuranceRateType, double sumInsured, Date insCoSelectionDate, double sellingRate, double sellingAmount, double adminFee, double meteraiFee,
 		        double earnAmount, String insNotes, String accNotes, Date requestDate, Date insActivateDate, short insLength, String mainCoverage, String additionalCoverage, String endorsDocNo, String bdendorsDocNo, Date bdendorsDate,
 		        String bdendorsPolicyNo, Date bdendorsPolicyReceiveDate, double endorsToInsCoPremium, double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, Date lastClaimDate, String flagDocStatus,
-		        double paidAmountByCust, Double waivedAmountByCust, Date paidDate, double lateCharges, Long accPayId, String insuredBy, String insurancePaidBy, double claimAmount, double paidClaimAmount, int yearNum, Date terminationDate,
+		        double paidAmountByCust, Double waivedAmountByCust, Date paidDate, double lateCharges, long accPayId, String insuredBy, String insurancePaidBy, double claimAmount, double paidClaimAmount, int yearNum, Date terminationDate,
 		        String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Date renewalDocDate, Double premiumBaseForRefundSupp, String invoiceNo, Double invoiceAmount, Date invoiceDate, Date receivedInvoiceDate,
 		        Date flagInsStatusDate, String sppaprintStatus, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength, boolean isValidNumOfAsset, boolean isValid, Double insCapitalizedAmount,
 		        Double addCapitalizedAmount, short isNewCover, String batchId, Date batchDate, String generate, String typeCorrectionCode, Date confirmDate, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntInsAsset> agrmntInsAssets,
@@ -268,12 +268,12 @@ public class AgrmntIns implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -776,12 +776,12 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "AccPayId", nullable = false)
-		public Long getAccPayId()
+		public long getAccPayId()
 			{
 				return this.accPayId;
 			}
 			
-		public void setAccPayId(Long accPayId)
+		public void setAccPayId(long accPayId)
 			{
 				this.accPayId = accPayId;
 			}

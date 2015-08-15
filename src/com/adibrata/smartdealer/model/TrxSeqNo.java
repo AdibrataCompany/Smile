@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,10 +25,10 @@ import javax.persistence.UniqueConstraint;
 public class TrxSeqNo implements java.io.Serializable
 	{
 		
-		private Long msseqId;
+		private long msseqId;
 		private Partner partner;
 		private String mssequenceCode;
-		private Long officeId;
+		private long officeId;
 		private String seqName;
 		private Integer seqNo;
 		private Integer lengthNumber;
@@ -52,7 +52,7 @@ public class TrxSeqNo implements java.io.Serializable
 			{
 			}
 			
-		public TrxSeqNo(Long msseqId, Partner partner, String mssequenceCode, Long officeId, String usrUpd, Date dtmUpd)
+		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String usrUpd, Date dtmUpd)
 			{
 				this.msseqId = msseqId;
 				this.partner = partner;
@@ -62,7 +62,7 @@ public class TrxSeqNo implements java.io.Serializable
 				this.dtmUpd = dtmUpd;
 			}
 			
-		public TrxSeqNo(Long msseqId, Partner partner, String mssequenceCode, Long officeId, String seqName, Integer seqNo, Integer lengthNumber, String resetFlag, String prefix, String suffix, String configNumber, String jrnlSeqName,
+		public TrxSeqNo(long msseqId, Partner partner, String mssequenceCode, long officeId, String seqName, Integer seqNo, Integer lengthNumber, String resetFlag, String prefix, String suffix, String configNumber, String jrnlSeqName,
 		        Integer jrnlSeqNo, Integer jrnlLengthNo, String jrnlResetFlag, String jrnlPrefix, String jrnlSuffix, String jrnlConfigNumber, String usrUpd, Date dtmUpd, String usrCrt, Date dtmCrt)
 			{
 				this.msseqId = msseqId;
@@ -92,12 +92,12 @@ public class TrxSeqNo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "MSSeqID", unique = true, nullable = false)
-		public Long getMsseqId()
+		public long getMsseqId()
 			{
 				return this.msseqId;
 			}
 			
-		public void setMsseqId(Long msseqId)
+		public void setMsseqId(long msseqId)
 			{
 				this.msseqId = msseqId;
 			}
@@ -126,12 +126,12 @@ public class TrxSeqNo implements java.io.Serializable
 			}
 			
 		@Column(name = "OfficeID", nullable = false)
-		public Long getOfficeId()
+		public long getOfficeId()
 			{
 				return this.officeId;
 			}
 			
-		public void setOfficeId(Long officeId)
+		public void setOfficeId(long officeId)
 			{
 				this.officeId = officeId;
 			}

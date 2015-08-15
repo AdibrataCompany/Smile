@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsStandardInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private AgrmntIns agrmntIns;
 		private double mainStdPremium;
 		private double srccstdPremium;
@@ -38,7 +38,7 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsStandardInfo(Long id, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium)
+		public AgrmntInsStandardInfo(long id, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium)
 			{
 				this.id = id;
 				this.mainStdPremium = mainStdPremium;
@@ -49,7 +49,7 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 				this.totalStdPremium = totalStdPremium;
 			}
 			
-		public AgrmntInsStandardInfo(Long id, AgrmntIns agrmntIns, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium, String usrCrt, Date dtmUpd, String usrUpd,
+		public AgrmntInsStandardInfo(long id, AgrmntIns agrmntIns, double mainStdPremium, double srccstdPremium, double floodStdPremium, double tplstdPremium, double tplstdAmount, double totalStdPremium, String usrCrt, Date dtmUpd, String usrUpd,
 		        Date dtmCrt)
 			{
 				this.id = id;
@@ -69,12 +69,12 @@ public class AgrmntInsStandardInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

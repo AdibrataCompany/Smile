@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsEndorsInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long agrmntInsId;
 		private String usrCrt;
 		private Date dtmUpd;
@@ -29,12 +29,12 @@ public class AgrmntInsEndorsInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsEndorsInfo(Long id)
+		public AgrmntInsEndorsInfo(long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntInsEndorsInfo(Long id, Long agrmntInsId, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AgrmntInsEndorsInfo(long id, Long agrmntInsId, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmntInsId = agrmntInsId;
@@ -47,12 +47,12 @@ public class AgrmntInsEndorsInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

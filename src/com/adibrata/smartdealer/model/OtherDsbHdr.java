@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class OtherDsbHdr implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Office office;
 		private Partner partner;
 		private String otherDisbNo;
@@ -46,12 +46,12 @@ public class OtherDsbHdr implements java.io.Serializable
 			{
 			}
 			
-		public OtherDsbHdr(Long id)
+		public OtherDsbHdr(long id)
 			{
 				this.id = id;
 			}
 			
-		public OtherDsbHdr(Long id, Office office, Partner partner, String otherDisbNo, Double disbAmount, Date postingDate, Date valueDate, Long bankAccountId, String refNo, String notes, String destination, Long jobId, Date dtmUpd, String usrUpd,
+		public OtherDsbHdr(long id, Office office, Partner partner, String otherDisbNo, Double disbAmount, Date postingDate, Date valueDate, Long bankAccountId, String refNo, String notes, String destination, Long jobId, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt, Set<OtherDsbDtl> otherDsbDtls)
 			{
 				this.id = id;
@@ -76,12 +76,12 @@ public class OtherDsbHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

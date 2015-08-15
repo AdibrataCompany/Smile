@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class SuspendReceive implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Office office;
 		private Partner partner;
 		private String suspendCode;
@@ -49,12 +49,12 @@ public class SuspendReceive implements java.io.Serializable
 			{
 			}
 			
-		public SuspendReceive(Long id)
+		public SuspendReceive(long id)
 			{
 				this.id = id;
 			}
 			
-		public SuspendReceive(Long id, Office office, Partner partner, String suspendCode, Date valueDate, Date postingDate, Double amount, Long currencyId, Double currencyRate, Long bankAccountId, Long cashierHistoryId, Long jobId, String status,
+		public SuspendReceive(long id, Office office, Partner partner, String suspendCode, Date valueDate, Date postingDate, Double amount, Long currencyId, Double currencyRate, Long bankAccountId, Long cashierHistoryId, Long jobId, String status,
 		        String notes, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<SuspendReverse> suspendReverses, Set<SuspendAllocation> suspendAllocations)
 			{
 				this.id = id;
@@ -82,12 +82,12 @@ public class SuspendReceive implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

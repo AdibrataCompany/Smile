@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class EntrustHdr implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Office office;
 		private Partner partner;
 		private Supplier supplier;
@@ -42,12 +42,12 @@ public class EntrustHdr implements java.io.Serializable
 			{
 			}
 			
-		public EntrustHdr(Long id)
+		public EntrustHdr(long id)
 			{
 				this.id = id;
 			}
 			
-		public EntrustHdr(Long id, Office office, Partner partner, Supplier supplier, String entrustNo, Date postingDate, Date valueDate, Double totalAmount, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls)
+		public EntrustHdr(long id, Office office, Partner partner, Supplier supplier, String entrustNo, Date postingDate, Date valueDate, Double totalAmount, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<EntrustDtl> entrustDtls)
 			{
 				this.id = id;
 				this.office = office;
@@ -67,12 +67,12 @@ public class EntrustHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

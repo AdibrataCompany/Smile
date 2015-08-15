@@ -32,14 +32,14 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 		StringBuilder hql = new StringBuilder();
 		private Long totalrecord;
 		private int currentpage;
-		
+
 		public SalesOrderDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
 						this.strStatement = " from SalesOrderHdr ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -50,7 +50,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Save()
@@ -62,13 +62,13 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				this.getSession().getTransaction().begin();
 				final Partner partner = salesOrderHdr.getPartner();
 				final Office office = salesOrderHdr.getOffice();
-				Long jobid = 0;
-				
+				Long jobid = (long) 0;
+
 				try
 					{
 						jobid = JobPost.JobSave(this.getSession(), partner.getPartnerCode(), office.getId(), JobPost.JobCode.salesorder, salesOrderHdr.getCoaSchmHdr().getCoaSchmCode(), salesOrderHdr.getValueDate(), salesOrderHdr.getPostingDate(),
 						        salesOrderHdr.getUsrCrt()).getId();
-								
+
 						salesOrderHdr.setJobId(jobid);
 						final String transno = TransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), TransactionType.salesorder);
 						salesOrderHdr.setSono(transno);
@@ -84,7 +84,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 								this.getSession().save(salesOrderDtl);
 							}
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -95,7 +95,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.sales.SalesTransactions#Paging(int,
@@ -114,16 +114,16 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 							{
 								hql.append(WhereCond);
 							}
-							
+
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -131,7 +131,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public SalesOrderHdr viewSalesOrderHdr(final Long id) throws Exception
 			{
@@ -140,11 +140,11 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				try
 					{
 						salesOrderHdr = (SalesOrderHdr) this.getSession().get(SalesOrderHdr.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -152,7 +152,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return salesOrderHdr;
 			}
-			
+
 		@Override
 		public Customer viewCustomer(final Long id) throws Exception
 			{
@@ -161,11 +161,11 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				try
 					{
 						customer = (Customer) this.getSession().get(Customer.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -173,7 +173,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return customer;
 			}
-			
+
 		@Override
 		public List<SalesOrderDtl> viewSalesOrderDtls(final SalesOrderHdr salesOrderHdr) throws Exception
 			{
@@ -184,13 +184,13 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					{
 						hql.append(this.strStatement);
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						
+
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -198,14 +198,14 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public List<Customer> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// / TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<Customer> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -217,15 +217,15 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -233,23 +233,23 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 					}
 				return list;
 			}
-
+			
 		public Long getTotalrecord()
 			{
 				return this.totalrecord;
 			}
-			
+
 		public void setTotalrecord(final Long totalrecord)
 			{
 				this.totalrecord = totalrecord;
 			}
-			
+
 		@Override
 		public int getCurrentpage()
 			{
 				return this.currentpage;
 			}
-			
+
 		public void setCurrentpage(final int currentpage)
 			{
 				this.currentpage = currentpage;

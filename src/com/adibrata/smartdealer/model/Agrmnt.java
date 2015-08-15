@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Agrmnt implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Application application;
 		private Currency currency;
 		private Customer customer;
@@ -74,12 +74,12 @@ public class Agrmnt implements java.io.Serializable
 			{
 			}
 			
-		public Agrmnt(Long id)
+		public Agrmnt(long id)
 			{
 				this.id = id;
 			}
 			
-		public Agrmnt(Long id, Application application, Currency currency, Customer customer, Office office, Partner partner, String agrmntCode, String coaSchmCode, Double osP, Double osI, Double osPundue, Double osIundue, Short nextInstNumber,
+		public Agrmnt(long id, Application application, Currency currency, Customer customer, Office office, Partner partner, String agrmntCode, String coaSchmCode, Double osP, Double osI, Double osPundue, Double osIundue, Short nextInstNumber,
 		        Date nextInstDate, Short nextInstDueNumber, Date nextInstDueDate, Double prepaidAmt, Short tenor, Short cummulativeTenor, Date effectiveDate, Date goLiveDate, Date rrddate, String contractStatus, String defaultStatus,
 		        Double percentagePenalty, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<SuspendAllocation> suspendAllocations, Set<AgrmntMnt> agrmntMnts, Set<AgrmntFund> agrmntFunds, Set<InstSchedule> instSchedules,
 		        Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos, Set<AgrmntReffInfo> agrmntReffInfos, Set<PaymentReversal> paymentReversals, Set<PayHistHdr> payHistHdrs,
@@ -135,12 +135,12 @@ public class Agrmnt implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

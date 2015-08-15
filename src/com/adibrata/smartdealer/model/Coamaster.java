@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Coamaster implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Partner partner;
 		private String coaName;
 		private String coaDescription;
@@ -42,12 +42,12 @@ public class Coamaster implements java.io.Serializable
 			{
 			}
 			
-		public Coamaster(Long id)
+		public Coamaster(long id)
 			{
 				this.id = id;
 			}
 			
-		public Coamaster(Long id, Partner partner, String coaName, String coaDescription, String coacode, Short isSystem, Short isActive, Short isScheme, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls)
+		public Coamaster(long id, Partner partner, String coaName, String coaDescription, String coacode, Short isSystem, Short isActive, Short isScheme, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<CoaSchmDtl> coaSchmDtls)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -67,12 +67,12 @@ public class Coamaster implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

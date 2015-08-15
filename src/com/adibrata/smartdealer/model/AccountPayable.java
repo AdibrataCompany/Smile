@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AccountPayable implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Office office;
 		private Partner partner;
 		private String apno;
@@ -34,7 +34,7 @@ public class AccountPayable implements java.io.Serializable
 		private String referenceNo;
 		private String description;
 		private Date dueDate;
-		private Long currencyId;
+		private long currencyId;
 		private double currencyRate;
 		private Double apamount;
 		private Double apdisburse;
@@ -54,7 +54,7 @@ public class AccountPayable implements java.io.Serializable
 			{
 			}
 			
-		public AccountPayable(Long id, String referenceNo, String description, Long currencyId, double currencyRate, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo)
+		public AccountPayable(long id, String referenceNo, String description, long currencyId, double currencyRate, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo)
 			{
 				this.id = id;
 				this.referenceNo = referenceNo;
@@ -68,7 +68,7 @@ public class AccountPayable implements java.io.Serializable
 				this.bankBranchTo = bankBranchTo;
 			}
 			
-		public AccountPayable(Long id, Office office, Partner partner, String apno, String aptype, String apstatus, Date apdate, String referenceNo, String description, Date dueDate, Long currencyId, double currencyRate, Double apamount,
+		public AccountPayable(long id, Office office, Partner partner, String apno, String aptype, String apstatus, Date apdate, String referenceNo, String description, Date dueDate, long currencyId, double currencyRate, Double apamount,
 		        Double apdisburse, String apto, String accNameTo, String accNoTo, String bankMasterTo, String bankBranchTo, Long officeDisbId, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<Pvdetail> pvdetails)
 			{
 				this.id = id;
@@ -101,12 +101,12 @@ public class AccountPayable implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -215,12 +215,12 @@ public class AccountPayable implements java.io.Serializable
 			}
 			
 		@Column(name = "CurrencyID", nullable = false)
-		public Long getCurrencyId()
+		public long getCurrencyId()
 			{
 				return this.currencyId;
 			}
 			
-		public void setCurrencyId(Long currencyId)
+		public void setCurrencyId(long currencyId)
 			{
 				this.currencyId = currencyId;
 			}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class OtherRcvDtl implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private OtherRcvHdr otherRcvHdr;
 		private String coaName;
 		private String coaCode;
@@ -36,12 +36,12 @@ public class OtherRcvDtl implements java.io.Serializable
 			{
 			}
 			
-		public OtherRcvDtl(Long id)
+		public OtherRcvDtl(long id)
 			{
 				this.id = id;
 			}
 			
-		public OtherRcvDtl(Long id, OtherRcvHdr otherRcvHdr, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public OtherRcvDtl(long id, OtherRcvHdr otherRcvHdr, String coaName, String coaCode, Double amount, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.otherRcvHdr = otherRcvHdr;
@@ -58,12 +58,12 @@ public class OtherRcvDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

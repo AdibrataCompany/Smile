@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class SuspendReverse implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private SuspendReceive suspendReceive;
 		private String reverseCode;
 		private Long jobId;
@@ -43,12 +43,12 @@ public class SuspendReverse implements java.io.Serializable
 			{
 			}
 			
-		public SuspendReverse(Long id)
+		public SuspendReverse(long id)
 			{
 				this.id = id;
 			}
 			
-		public SuspendReverse(Long id, SuspendReceive suspendReceive, String reverseCode, Long jobId, String partnerCode, Long officeId, Date valueDate, Date postingDate, Double amount, Long bankAccountId, Long currencyId, Double currencyRate,
+		public SuspendReverse(long id, SuspendReceive suspendReceive, String reverseCode, Long jobId, String partnerCode, Long officeId, Date valueDate, Date postingDate, Double amount, Long bankAccountId, Long currencyId, Double currencyRate,
 		        String notes, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -73,12 +73,12 @@ public class SuspendReverse implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

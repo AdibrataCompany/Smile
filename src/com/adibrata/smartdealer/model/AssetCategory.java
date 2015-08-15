@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AssetCategory implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long assetTypeId;
 		private String insAssetCategoryCode;
 		private String description;
@@ -31,12 +31,12 @@ public class AssetCategory implements java.io.Serializable
 			{
 			}
 			
-		public AssetCategory(Long id)
+		public AssetCategory(long id)
 			{
 				this.id = id;
 			}
 			
-		public AssetCategory(Long id, Long assetTypeId, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AssetCategory(long id, Long assetTypeId, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.assetTypeId = assetTypeId;
@@ -51,12 +51,12 @@ public class AssetCategory implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

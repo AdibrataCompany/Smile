@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AgrmntBankStatementInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private String bankCode;
 		private String bankBranch;
@@ -46,7 +46,7 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntBankStatementInfo(Long id, String bankCode, String bankBranch, String accountNo, String accountName)
+		public AgrmntBankStatementInfo(long id, String bankCode, String bankBranch, String accountNo, String accountName)
 			{
 				this.id = id;
 				this.bankCode = bankCode;
@@ -55,7 +55,7 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 				this.accountName = accountName;
 			}
 			
-		public AgrmntBankStatementInfo(Long id, Agrmnt agrmnt, String bankCode, String bankBranch, String accountNo, String accountName, Double creditCeiling, String typeOfCredit, Double interest, String security, Double startingBalance,
+		public AgrmntBankStatementInfo(long id, Agrmnt agrmnt, String bankCode, String bankBranch, String accountNo, String accountName, Double creditCeiling, String typeOfCredit, Double interest, String security, Double startingBalance,
 		        Double deposito, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntBankStatInfoDtl> agrmntBankStatInfoDtls)
 			{
 				this.id = id;
@@ -80,12 +80,12 @@ public class AgrmntBankStatementInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

@@ -16,7 +16,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class EmployeeAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		 *
 		 */
@@ -26,13 +26,13 @@ public class EmployeeAction extends BaseAction implements Preparable
 		private Partner partner;
 		private Office office;
 		private Employee employee;
-
+		
 		private String employeecode;
 		private String employeename;
 		private String position;
-
-		private Long officeid;
 		
+		private Long officeid;
+
 		private String address;
 		private String rt;
 		private String rw;
@@ -62,19 +62,19 @@ public class EmployeeAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private String message;
 		private List<Employee> lstEmployee;
-
+		
 		private Long id;
-
+		
 		public EmployeeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				final EmployeeService employeeservice = new EmployeeDao();
-				
+
 				this.employeeService = employeeservice;
 				final Partner partner = new Partner();
 				final Office office = new Office();
 				final Employee employee = new Employee();
-				
+
 				this.setPartner(partner);
 				this.setOffice(office);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
@@ -84,7 +84,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 						this.pageNumber = 1;
 					}
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -161,7 +161,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 										{
 											// TODO Auto-generated catch block
 											e.printStackTrace();
-											
+
 										}
 									break;
 								case "prev" :
@@ -223,7 +223,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = "";
@@ -240,7 +240,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
@@ -249,40 +249,40 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						
+
 						this.lstEmployee = this.employeeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = this.employeeService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
 				try
 					{
 						final Employee employee = new Employee();
-
+						
 						employee.setName(this.getEmployeename());
 						employee.setAddress(this.getAddress());
 						employee.setAddress(this.getAddress());
@@ -313,7 +313,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -321,7 +321,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					{
 						final Employee employee = new Employee();
 						employee.setId(this.getId());
-
+						
 						employee.setName(this.getEmployeename());
 						employee.setAddress(this.getAddress());
 						employee.setAddress(this.getAddress());
@@ -352,7 +352,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -373,14 +373,14 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		public void ViewData() throws Exception
 			{
 				this.employee = new Employee();
 				try
 					{
 						this.employee = this.employeeService.View(this.id);
-
+						
 						this.employeename = this.employee.getName();
 						this.address = this.employee.getAddress();
 						this.rt = this.employee.getRt();
@@ -416,52 +416,20 @@ public class EmployeeAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the employeeService
-		 */
-		public EmployeeService getEmployeeService()
-			{
-				return this.employeeService;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the employee
-		 */
-		public Employee getEmployee()
-			{
-				return this.employee;
-			}
-			
-		/**
-		 * @return the lstEmployee
-		 */
-		public List<Employee> getLstEmployee()
-			{
-				return this.lstEmployee;
-			}
-			
-		/**
 		 * @param mode
 		 *            the mode to set
 		 */
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
+			}
+			
+		/**
+		 * @return the employeeService
+		 */
+		public EmployeeService getEmployeeService()
+			{
+				return this.employeeService;
 			}
 			
 		/**
@@ -474,12 +442,28 @@ public class EmployeeAction extends BaseAction implements Preparable
 			}
 			
 		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
 		 * @param partner
 		 *            the partner to set
 		 */
 		public void setPartner(final Partner partner)
 			{
 				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
 			}
 			
 		/**
@@ -492,140 +476,20 @@ public class EmployeeAction extends BaseAction implements Preparable
 			}
 			
 		/**
+		 * @return the employee
+		 */
+		public Employee getEmployee()
+			{
+				return this.employee;
+			}
+			
+		/**
 		 * @param employee
 		 *            the employee to set
 		 */
 		public void setEmployee(final Employee employee)
 			{
 				this.employee = employee;
-			}
-			
-		/**
-		 * @param lstEmployee
-		 *            the lstEmployee to set
-		 */
-		public void setLstEmployee(final List<Employee> lstEmployee)
-			{
-				this.lstEmployee = lstEmployee;
-			}
-
-		/**
-		 * @return the searchcriteria
-		 */
-		public String getSearchcriteria()
-			{
-				return this.searchcriteria;
-			}
-			
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
-			}
-			
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-			
-		/**
-		 * @param searchcriteria
-		 *            the searchcriteria to set
-		 */
-		public void setSearchcriteria(final String searchcriteria)
-			{
-				this.searchcriteria = searchcriteria;
-			}
-			
-		/**
-		 * @param searchvalue
-		 *            the searchvalue to set
-		 */
-		public void setSearchvalue(final String searchvalue)
-			{
-				this.searchvalue = searchvalue;
-			}
-			
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-			
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-			
-		/**
-		 * @param message
-		 *            the message to set
-		 */
-		public void setMessage(final String message)
-			{
-				this.message = message;
-			}
-			
-		/**
-		 * @return the id
-		 */
-		public Long getId()
-			{
-				return this.id;
-			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final Long id)
-			{
-				this.id = id;
 			}
 			
 		/**
@@ -1003,32 +867,6 @@ public class EmployeeAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the isActive
-		 */
-		public String getIsActive()
-			{
-				return this.isActive;
-			}
-			
-		/**
-		 * @param isActive
-		 *            the isActive to set
-		 */
-		public void setIsActive(final String isActive)
-			{
-				this.isActive = isActive;
-			}
-			
-		/**
-		 * @param officeid
-		 *            the officeid to set
-		 */
-		public void setOfficeid(final Long officeid)
-			{
-				this.officeid = officeid;
-			}
-			
-		/**
 		 * @return the leavedatestart
 		 */
 		public String getLeavedatestart()
@@ -1080,12 +918,164 @@ public class EmployeeAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @param supervisorid
-		 *            the supervisorid to set
+		 * @return the isActive
 		 */
-		public void setSupervisorid(final Long supervisorid)
+		public String getIsActive()
 			{
-				this.supervisorid = supervisorid;
+				return this.isActive;
+			}
+			
+		/**
+		 * @param isActive
+		 *            the isActive to set
+		 */
+		public void setIsActive(final String isActive)
+			{
+				this.isActive = isActive;
+			}
+			
+		/**
+		 * @return the searchcriteria
+		 */
+		public String getSearchcriteria()
+			{
+				return this.searchcriteria;
+			}
+			
+		/**
+		 * @param searchcriteria
+		 *            the searchcriteria to set
+		 */
+		public void setSearchcriteria(final String searchcriteria)
+			{
+				this.searchcriteria = searchcriteria;
+			}
+			
+		/**
+		 * @return the searchvalue
+		 */
+		public String getSearchvalue()
+			{
+				return this.searchvalue;
+			}
+			
+		/**
+		 * @param searchvalue
+		 *            the searchvalue to set
+		 */
+		public void setSearchvalue(final String searchvalue)
+			{
+				this.searchvalue = searchvalue;
+			}
+			
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+			
+		/**
+		 * @param pageNumber
+		 *            the pageNumber to set
+		 */
+		public void setPageNumber(final int pageNumber)
+			{
+				this.pageNumber = pageNumber;
+			}
+			
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+			
+		/**
+		 * @param usrUpd
+		 *            the usrUpd to set
+		 */
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+			
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+			
+		/**
+		 * @param usrCrt
+		 *            the usrCrt to set
+		 */
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
+		/**
+		 * @param message
+		 *            the message to set
+		 */
+		public void setMessage(final String message)
+			{
+				this.message = message;
+			}
+			
+		/**
+		 * @return the lstEmployee
+		 */
+		public List<Employee> getLstEmployee()
+			{
+				return this.lstEmployee;
+			}
+			
+		/**
+		 * @param lstEmployee
+		 *            the lstEmployee to set
+		 */
+		public void setLstEmployee(final List<Employee> lstEmployee)
+			{
+				this.lstEmployee = lstEmployee;
+			}
+			
+		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
 			}
 			
 	}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntMailingInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private String address;
 		private String rt;
@@ -47,13 +47,13 @@ public class AgrmntMailingInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntMailingInfo(Long id, String fullAddress)
+		public AgrmntMailingInfo(long id, String fullAddress)
 			{
 				this.id = id;
 				this.fullAddress = fullAddress;
 			}
 			
-		public AgrmntMailingInfo(Long id, Agrmnt agrmnt, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
+		public AgrmntMailingInfo(long id, Agrmnt agrmnt, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
 		        String faxNo, String handphone, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -82,12 +82,12 @@ public class AgrmntMailingInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

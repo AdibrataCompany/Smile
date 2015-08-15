@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAssetLoctInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private AgrmntAsset agrmntAsset;
 		private String address;
 		private String rt;
@@ -39,13 +39,13 @@ public class AgrmntAssetLoctInfo implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAssetLoctInfo(Long id, String zipcode)
+		public AgrmntAssetLoctInfo(long id, String zipcode)
 			{
 				this.id = id;
 				this.zipcode = zipcode;
 			}
 			
-		public AgrmntAssetLoctInfo(Long id, AgrmntAsset agrmntAsset, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AgrmntAssetLoctInfo(long id, AgrmntAsset agrmntAsset, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.agrmntAsset = agrmntAsset;
@@ -65,12 +65,12 @@ public class AgrmntAssetLoctInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

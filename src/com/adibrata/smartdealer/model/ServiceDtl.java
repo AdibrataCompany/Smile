@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class ServiceDtl implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private ServiceHdr serviceHdr;
 		private Double servicePrice;
 		private String assetType;
@@ -51,12 +51,12 @@ public class ServiceDtl implements java.io.Serializable
 			{
 			}
 			
-		public ServiceDtl(Long id)
+		public ServiceDtl(long id)
 			{
 				this.id = id;
 			}
 			
-		public ServiceDtl(Long id, ServiceHdr serviceHdr, Double servicePrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor, String machineNo,
+		public ServiceDtl(long id, ServiceHdr serviceHdr, Double servicePrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor, String machineNo,
 		        String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<ServiceItem> serviceItems)
 			{
 				this.id = id;
@@ -86,12 +86,12 @@ public class ServiceDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

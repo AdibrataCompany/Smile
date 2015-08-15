@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAsset implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private AssetMaster assetMaster;
 		private Customer customer;
@@ -32,7 +32,7 @@ public class AgrmntAsset implements java.io.Serializable
 		private Long supplierId;
 		private double otrprice;
 		private double dpamount;
-		private Long assetTypeId;
+		private long assetTypeId;
 		private double resaleValue;
 		private String serialNo1;
 		private String serialNo2;
@@ -78,7 +78,7 @@ public class AgrmntAsset implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAsset(Long id, AssetMaster assetMaster, double otrprice, double dpamount, Long assetTypeId, double resaleValue, short isUsed, String assetUsage, short manufacturingYear, String notesBorrowDoc, String notesReleaseDoc,
+		public AgrmntAsset(long id, AssetMaster assetMaster, double otrprice, double dpamount, long assetTypeId, double resaleValue, short isUsed, String assetUsage, short manufacturingYear, String notesBorrowDoc, String notesReleaseDoc,
 		        String assetDocStatus, boolean isAssetReplacementStatus)
 			{
 				this.id = id;
@@ -96,7 +96,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.isAssetReplacementStatus = isAssetReplacementStatus;
 			}
 			
-		public AgrmntAsset(Long id, Agrmnt agrmnt, AssetMaster assetMaster, Customer customer, SupplierAccInfo supplierAccInfo, Long supplierId, double otrprice, double dpamount, Long assetTypeId, double resaleValue, String serialNo1,
+		public AgrmntAsset(long id, Agrmnt agrmnt, AssetMaster assetMaster, Customer customer, SupplierAccInfo supplierAccInfo, Long supplierId, double otrprice, double dpamount, long assetTypeId, double resaleValue, String serialNo1,
 		        String serialNo2, short isUsed, String assetUsage, Short manufacturingMonth, short manufacturingYear, String licPlateNo, Date taxDate, Date buyBackGuaranteeValidDate, String assetDocFilling, String assetDocRack,
 		        String branchIntransit, Date deliveryDate, Date repossesDate, Date inventoryDate, String notes, String notesBorrowDoc, String notesReleaseDoc, String assetDocStatus, String assetStatus, boolean isAssetReplacementStatus, Date rrddate,
 		        Long crossAssetId, String custUseRelation, Long sumInsuredReplacement, String discountOtrtype, Double discountOtrpercentage, Double discountOtramount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
@@ -157,12 +157,12 @@ public class AgrmntAsset implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -249,12 +249,12 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		@Column(name = "AssetTypeId", nullable = false)
-		public Long getAssetTypeId()
+		public long getAssetTypeId()
 			{
 				return this.assetTypeId;
 			}
 			
-		public void setAssetTypeId(Long assetTypeId)
+		public void setAssetTypeId(long assetTypeId)
 			{
 				this.assetTypeId = assetTypeId;
 			}

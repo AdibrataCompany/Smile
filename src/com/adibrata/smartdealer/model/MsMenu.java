@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class MsMenu implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private String menuCode;
 		private Long parentMenuId;
 		private Short isActive;
@@ -37,12 +37,12 @@ public class MsMenu implements java.io.Serializable
 			{
 			}
 			
-		public MsMenu(Long id)
+		public MsMenu(long id)
 			{
 				this.id = id;
 			}
 			
-		public MsMenu(Long id, String menuCode, Long parentMenuId, Short isActive, String urlString, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
+		public MsMenu(long id, String menuCode, Long parentMenuId, Short isActive, String urlString, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<MsMenuRole> msMenuRoles)
 			{
 				this.id = id;
 				this.menuCode = menuCode;
@@ -59,12 +59,12 @@ public class MsMenu implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

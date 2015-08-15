@@ -18,7 +18,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class MenuAction extends ActionSupport implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
@@ -36,10 +36,10 @@ public class MenuAction extends ActionSupport implements Preparable
 		private String usrCrt;
 		private String message;
 		private Long id;
-
+		
 		private String Paging() throws Exception
 			{
-
+				
 				String status = "";
 				try
 					{
@@ -52,9 +52,9 @@ public class MenuAction extends ActionSupport implements Preparable
 							{
 								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
 							}
-
+							
 						this.lstMenu = this.menuService.Paging(this.getPageNumber(), wherecond, "");
-
+						
 						status = "Success";
 					}
 				catch (final Exception exp)
@@ -67,7 +67,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
@@ -75,7 +75,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					{
 						final MsMenu msMenu = new MsMenu();
 						msMenu.setId(this.getId());
-
+						
 						this.menuService.SaveAdd(msMenu);
 						status = SUCCESS;
 					}
@@ -89,7 +89,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -97,7 +97,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					{
 						final MsMenu msMenu = new MsMenu();
 						msMenu.setId(this.getId());
-
+						
 						this.menuService.SaveEdit(msMenu);
 						status = SUCCESS;
 					}
@@ -111,7 +111,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -119,7 +119,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					{
 						final MsMenu msMenu = new MsMenu();
 						msMenu.setId(this.getId());
-
+						
 						this.menuService.SaveDel(msMenu);
 						status = SUCCESS;
 					}
@@ -133,7 +133,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -141,7 +141,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the menuService
 		 */
@@ -149,7 +149,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.menuService;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -157,7 +157,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -165,7 +165,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @return the msMenu
 		 */
@@ -173,7 +173,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.msMenu;
 			}
-
+			
 		/**
 		 * @return the lstMenu
 		 */
@@ -181,7 +181,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.lstMenu;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -190,7 +190,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @param menuService
 		 *            the menuService to set
@@ -199,7 +199,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.menuService = menuService;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -208,7 +208,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -217,7 +217,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @param msMenu
 		 *            the msMenu to set
@@ -226,7 +226,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.msMenu = msMenu;
 			}
-
+			
 		/**
 		 * @param lstMenu
 		 *            the lstMenu to set
@@ -235,25 +235,25 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.lstMenu = lstMenu;
 			}
-
+			
 		public MenuAction()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -261,18 +261,18 @@ public class MenuAction extends ActionSupport implements Preparable
 								case "search" :
 									strMode = this.Paging();
 								case "edit" :
-
+								
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
-
+									
 									strMode = this.SaveAdd();
 								case "saveadd" :
 									strMode = this.SaveAdd();
 								case "saveedit" :
 									strMode = this.SaveEdit();
 								case "back" :
-
+								
 								default :
 									return "failed";
 							}
@@ -283,7 +283,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -291,7 +291,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -299,7 +299,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -307,7 +307,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -315,7 +315,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -323,7 +323,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -331,7 +331,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -340,7 +340,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -349,7 +349,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -358,7 +358,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -367,7 +367,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -376,7 +376,7 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -385,22 +385,30 @@ public class MenuAction extends ActionSupport implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
 		public Long getId()
 			{
-				return this.Id;
+				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
 		 */
 		public void setId(final Long id)
 			{
-				this.Id = id;
+				this.id = id;
 			}
-
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
 	}

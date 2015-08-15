@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PersCustFamilyInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Customer customer;
 		private Short seqNo;
 		private String name;
@@ -37,12 +37,12 @@ public class PersCustFamilyInfo implements java.io.Serializable
 			{
 			}
 			
-		public PersCustFamilyInfo(Long id)
+		public PersCustFamilyInfo(long id)
 			{
 				this.id = id;
 			}
 			
-		public PersCustFamilyInfo(Long id, Customer customer, Short seqNo, String name, String idnumber, Date birthDate, String familyRelationCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public PersCustFamilyInfo(long id, Customer customer, Short seqNo, String name, String idnumber, Date birthDate, String familyRelationCode, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -60,12 +60,12 @@ public class PersCustFamilyInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

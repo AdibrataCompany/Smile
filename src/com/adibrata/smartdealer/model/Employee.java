@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Employee implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Office office;
 		private Partner partner;
 		private String name;
@@ -53,6 +53,7 @@ public class Employee implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
@@ -62,14 +63,14 @@ public class Employee implements java.io.Serializable
 			{
 			}
 			
-		public Employee(Long id)
+		public Employee(long id)
 			{
 				this.id = id;
 			}
 			
-		public Employee(Long id, Office office, Partner partner, String name, String position, Long supervisorId, byte[] signature, Date joinDate, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode,
+		public Employee(long id, Office office, Partner partner, String name, String position, Long supervisorId, byte[] signature, Date joinDate, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode,
 		        String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String handphone, String email, String fullAddress, Date leaveDateStart, Date leaveDateEnd, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt, Set<PettyCashHdr> pettyCashHdrs, Set<DanaTunai> danaTunais, Set<AdvanceCash> advanceCashes, Set<SalesOrderHdr> salesOrderHdrs)
+		        String usrCrt, Set<CashierHistory> cashierHistories, Set<PettyCashHdr> pettyCashHdrs, Set<DanaTunai> danaTunais, Set<AdvanceCash> advanceCashes, Set<SalesOrderHdr> salesOrderHdrs)
 			{
 				this.id = id;
 				this.office = office;
@@ -100,6 +101,7 @@ public class Employee implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.cashierHistories = cashierHistories;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.danaTunais = danaTunais;
 				this.advanceCashes = advanceCashes;
@@ -109,12 +111,12 @@ public class Employee implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -432,6 +434,17 @@ public class Employee implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+		public Set<CashierHistory> getCashierHistories()
+			{
+				return this.cashierHistories;
+			}
+			
+		public void setCashierHistories(Set<CashierHistory> cashierHistories)
+			{
+				this.cashierHistories = cashierHistories;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")

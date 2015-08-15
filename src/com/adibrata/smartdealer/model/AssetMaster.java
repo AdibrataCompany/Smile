@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class AssetMaster implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Partner partner;
 		private Long assetTypeId;
 		private String assetBrand;
@@ -48,12 +48,12 @@ public class AssetMaster implements java.io.Serializable
 			{
 			}
 			
-		public AssetMaster(Long id)
+		public AssetMaster(long id)
 			{
 				this.id = id;
 			}
 			
-		public AssetMaster(Long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
+		public AssetMaster(long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        String usrCrt, Set<AgrmntAsset> agrmntAssets, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
 				this.id = id;
@@ -80,12 +80,12 @@ public class AssetMaster implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

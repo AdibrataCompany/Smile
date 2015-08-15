@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 import com.adibrata.smartdealer.dao.setting.BankAccountDao;
+import com.adibrata.smartdealer.dao.setting.CurrencyDao;
 import com.adibrata.smartdealer.dao.usermanagement.EmployeeDao;
 import com.adibrata.smartdealer.dao.usermanagement.MenuDao;
 import com.adibrata.smartdealer.model.BankAccount;
+import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.Employee;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
+import com.adibrata.smartdealer.service.setting.CurrencyService;
 import com.adibrata.smartdealer.service.usermanagement.EmployeeService;
 import com.adibrata.smartdealer.service.usermanagement.MenuService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -84,7 +87,17 @@ public class BaseAction extends ActionSupport implements Preparable
 
 				return "001";
 			}
-
+			
+		public static Long sesEmployeeId()
+			{
+				return (long) 1;
+			}
+			
+		public static Long sesUserId()
+			{
+				return (long) 1;
+			}
+			
 		public static Date sesBussinessDate() throws ParseException
 			{
 				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -135,6 +148,31 @@ public class BaseAction extends ActionSupport implements Preparable
 						for (final BankAccount row : lst)
 							{
 								map.put(row.getId(), row.getBankAccountName().trim());
+							}
+					}
+				catch (final Exception exp)
+					{
+						// TODO: handle exception
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+						exp.printStackTrace();
+					}
+				return map;
+			}
+
+		public Map<Long, String> ListCurrency(final Partner partner) throws Exception
+			{
+				final Map<Long, String> map = new HashMap<Long, String>();
+				try
+					{
+						final CurrencyService service = new CurrencyDao();
+						final List<Currency> lst = service.CurrencyList(partner);
+
+						for (final Currency row : lst)
+							{
+								map.put(row.getId(), row.getCode().trim());
 							}
 					}
 				catch (final Exception exp)

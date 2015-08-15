@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntFund implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private String fundingBankId;
 		private String fundingCoyId;
@@ -38,12 +38,12 @@ public class AgrmntFund implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntFund(Long id)
+		public AgrmntFund(long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntFund(Long id, Agrmnt agrmnt, String fundingBankId, String fundingCoyId, String fundingContractId, String fundingBatchId, Date fundingBatchDate, String fundingBuyBackReffNo, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AgrmntFund(long id, Agrmnt agrmnt, String fundingBankId, String fundingCoyId, String fundingContractId, String fundingBatchId, Date fundingBatchDate, String fundingBuyBackReffNo, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -62,12 +62,12 @@ public class AgrmntFund implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

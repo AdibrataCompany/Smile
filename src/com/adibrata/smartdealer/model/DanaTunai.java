@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class DanaTunai implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Employee employee;
 		private Leasing leasing;
 		private Office office;
@@ -60,12 +60,12 @@ public class DanaTunai implements java.io.Serializable
 			{
 			}
 			
-		public DanaTunai(Long id)
+		public DanaTunai(long id)
 			{
 				this.id = id;
 			}
 			
-		public DanaTunai(Long id, Employee employee, Leasing leasing, Office office, Partner partner, String danaTunaiNo, String assetBrand, String assetType, String assetModel, Long assetMasterId, String bpkbno, String bpkbname, String bpkbaddress,
+		public DanaTunai(long id, Employee employee, Leasing leasing, Office office, Partner partner, String danaTunaiNo, String assetBrand, String assetType, String assetModel, Long assetMasterId, String bpkbno, String bpkbname, String bpkbaddress,
 		        String vehicleColor, String machineNo, String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, Double otramount, Double dpamount, Double fundingAmount, Double tdpamount,
 		        Double adminFee, Double asuransiAmount, String noStnk, Date stnkdate, Date postingDate, Date valueDate, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
@@ -108,12 +108,12 @@ public class DanaTunai implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

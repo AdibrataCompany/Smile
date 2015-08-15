@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Customer implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Partner partner;
 		private String type;
 		private String name;
@@ -83,12 +83,12 @@ public class Customer implements java.io.Serializable
 			{
 			}
 			
-		public Customer(Long id)
+		public Customer(long id)
 			{
 				this.id = id;
 			}
 			
-		public Customer(Long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
+		public Customer(long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<PersCustOmsetInfo> persCustOmsetInfos, Set<CoyCustContactInfo> coyCustContactInfos, Set<CoyCust> coyCusts, Set<PersCustEntInfo> persCustEntInfos, Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos, Set<Agrmnt> agrmnts,
 		        Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos, Set<DailyAraging> dailyAragings, Set<CoyCustWhInfo> coyCustWhInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts,
@@ -155,12 +155,12 @@ public class Customer implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

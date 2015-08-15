@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class CoyCust implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Customer customer;
 		private String npwp;
 		private String npwpchecking;
@@ -60,7 +60,7 @@ public class CoyCust implements java.io.Serializable
 			{
 			}
 			
-		public CoyCust(Long id, String npwp, String npwpchecking, String companyType, String industryTypeId, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
+		public CoyCust(long id, String npwp, String npwpchecking, String companyType, String industryTypeId, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
 			{
 				this.id = id;
 				this.npwp = npwp;
@@ -72,7 +72,7 @@ public class CoyCust implements java.io.Serializable
 				this.customerGroup = customerGroup;
 			}
 			
-		public CoyCust(Long id, Customer customer, String npwp, String npwpchecking, String companyType, Short numberOfEmployees, Short yearOfEstablished, String industryTypeId, String pengelolaGedungAreaPhone, String pengelolaGedungPhone,
+		public CoyCust(long id, Customer customer, String npwp, String npwpchecking, String companyType, Short numberOfEmployees, Short yearOfEstablished, String industryTypeId, String pengelolaGedungAreaPhone, String pengelolaGedungPhone,
 		        String bankCode, String bankBranch, String accountNo, String accountName, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes, Short isCorporateCreditLine,
 		        Double plafondAmount, String customerGroup, String noDocumentOfEstablished, Date dateDocumentOfEstablished, String notaryPlace, String notaryName, String lastNoDocumentOfEstablished, Date lastDateDocumentOfEstablished,
 		        String lastNotaryPlace, String lastNotaryName, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
@@ -116,12 +116,12 @@ public class CoyCust implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

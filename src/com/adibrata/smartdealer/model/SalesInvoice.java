@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class SalesInvoice implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Customer customer;
 		private Office office;
 		private Partner partner;
@@ -38,12 +38,12 @@ public class SalesInvoice implements java.io.Serializable
 			{
 			}
 			
-		public SalesInvoice(Long id)
+		public SalesInvoice(long id)
 			{
 				this.id = id;
 			}
 			
-		public SalesInvoice(Long id, Customer customer, Office office, Partner partner, SalesOrderHdr salesOrderHdr, Double invoiceAmount, Double invoicePaid, Date invoiceDate, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public SalesInvoice(long id, Customer customer, Office office, Partner partner, SalesOrderHdr salesOrderHdr, Double invoiceAmount, Double invoicePaid, Date invoiceDate, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -62,12 +62,12 @@ public class SalesInvoice implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

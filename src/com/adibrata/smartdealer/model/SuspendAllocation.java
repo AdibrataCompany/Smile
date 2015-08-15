@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class SuspendAllocation implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private SuspendReceive suspendReceive;
 		private Date valueDate;
@@ -47,12 +47,12 @@ public class SuspendAllocation implements java.io.Serializable
 			{
 			}
 			
-		public SuspendAllocation(Long id)
+		public SuspendAllocation(long id)
 			{
 				this.id = id;
 			}
 			
-		public SuspendAllocation(Long id, Agrmnt agrmnt, SuspendReceive suspendReceive, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt,
+		public SuspendAllocation(long id, Agrmnt agrmnt, SuspendReceive suspendReceive, Date valueDate, Date postingDate, Long bankAccountId, Long currencyId, Double currencyRate, Double totalPayment, String notes, Double instAmt, Double lcamt,
 		        Double inssAmt, Double lcinss, Double prepaidAmt, Short payHistSeqNo, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -81,12 +81,12 @@ public class SuspendAllocation implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class Leasing implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private String leasingCode;
 		private String name;
 		private String address;
@@ -43,12 +43,12 @@ public class Leasing implements java.io.Serializable
 			{
 			}
 			
-		public Leasing(Long id)
+		public Leasing(long id)
 			{
 				this.id = id;
 			}
 			
-		public Leasing(Long id, String leasingCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipCode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
+		public Leasing(long id, String leasingCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipCode, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        Set<SalesOrderHdr> salesOrderHdrs, Set<DanaTunai> danaTunais)
 			{
 				this.id = id;
@@ -72,12 +72,12 @@ public class Leasing implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

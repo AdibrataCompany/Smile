@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,9 +24,9 @@ import javax.persistence.TemporalType;
 public class JrnlHdr implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Partner partner;
-		private Long officeId;
+		private long officeId;
 		private String jrnlNo;
 		private String periodYear;
 		private String periodMonth;
@@ -52,7 +52,7 @@ public class JrnlHdr implements java.io.Serializable
 			{
 			}
 			
-		public JrnlHdr(Long id, Long officeId, String jrnlNo, String periodYear, String periodMonth, Date trxDate, String trxDesc, double jrnlAmt, String statusTr, String flag)
+		public JrnlHdr(long id, long officeId, String jrnlNo, String periodYear, String periodMonth, Date trxDate, String trxDesc, double jrnlAmt, String statusTr, String flag)
 			{
 				this.id = id;
 				this.officeId = officeId;
@@ -66,7 +66,7 @@ public class JrnlHdr implements java.io.Serializable
 				this.flag = flag;
 			}
 			
-		public JrnlHdr(Long id, Partner partner, Long officeId, String jrnlNo, String periodYear, String periodMonth, Date trxDate, String reffNo, Date reffDate, String trxDesc, double jrnlAmt, String statusTr, String flag, Short isActive,
+		public JrnlHdr(long id, Partner partner, long officeId, String jrnlNo, String periodYear, String periodMonth, Date trxDate, String reffNo, Date reffDate, String trxDesc, double jrnlAmt, String statusTr, String flag, Short isActive,
 		        Short isValid, String jrnlTrxCode, String coaSchmCode, Long jobId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<JrnlDtl> jrnlDtls)
 			{
 				this.id = id;
@@ -97,12 +97,12 @@ public class JrnlHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -120,12 +120,12 @@ public class JrnlHdr implements java.io.Serializable
 			}
 			
 		@Column(name = "OfficeID", nullable = false)
-		public Long getOfficeId()
+		public long getOfficeId()
 			{
 				return this.officeId;
 			}
 			
-		public void setOfficeId(Long officeId)
+		public void setOfficeId(long officeId)
 			{
 				this.officeId = officeId;
 			}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Reschedule implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long agmrntId;
 		private Long guarantorId;
 		private String status;
@@ -68,10 +68,10 @@ public class Reschedule implements java.io.Serializable
 		private Double osprovision;
 		private Double accruedProvisionEom;
 		private Double accruedProvision;
-		private Long approvalId;
+		private long approvalId;
 		private Date statusDate;
 		private String reasonCode;
-		private Long jobId;
+		private long jobId;
 		private String notes;
 		private double pdcbounceFeeDisc;
 		private double lcinsuranceAmountDisc;
@@ -128,10 +128,10 @@ public class Reschedule implements java.io.Serializable
 			{
 			}
 			
-		public Reschedule(Long id, String status, Date requestDate, Date effectiveDate, double effectiveRate, double flatRate, String paymentFrequency, String installmentScheme, String interestType, short numOfInstallment, short outstandingTenor,
+		public Reschedule(long id, String status, Date requestDate, Date effectiveDate, double effectiveRate, double flatRate, String paymentFrequency, String installmentScheme, String interestType, short numOfInstallment, short outstandingTenor,
 		        short tenor, short cummulativeTenor, double installmentAmount, double partialPrepaymentAmount, double administrationFee, double newPrincipalAmount, double contractPrepaidAmount, double outstandingPrincipalNew,
 		        double outstandingInterestNew, double outstandingPrincipalOld, double outstandingInterestOld, double osinstallmentDue, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double ospdcbounceFee, double accruedAmount,
-		        double eciamount, Long approvalId, String reasonCode, Long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc, double lcinstallmentAmountDisc, double reposessFeeDisc, double totalAmountToBePaid,
+		        double eciamount, long approvalId, String reasonCode, long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc, double lcinstallmentAmountDisc, double reposessFeeDisc, double totalAmountToBePaid,
 		        double totalDiscount, double totalOsar, double osadminFee, double accruedAdminFeeEom, double accruedAdminFee)
 			{
 				this.id = id;
@@ -179,12 +179,12 @@ public class Reschedule implements java.io.Serializable
 				this.accruedAdminFee = accruedAdminFee;
 			}
 			
-		public Reschedule(Long id, Long agmrntId, Long guarantorId, String status, Date requestDate, Date approvalDate, Date effectiveDate, Date reschedulingDate, double effectiveRate, double flatRate, String paymentFrequency,
+		public Reschedule(long id, Long agmrntId, Long guarantorId, String status, Date requestDate, Date approvalDate, Date effectiveDate, Date reschedulingDate, double effectiveRate, double flatRate, String paymentFrequency,
 		        String installmentScheme, String stepUpStepDownType, String interestType, short numOfInstallment, short outstandingTenor, short tenor, short cummulativeTenor, double installmentAmount, Byte gracePeriod, String gracePeriodType,
 		        double partialPrepaymentAmount, double administrationFee, double newPrincipalAmount, double contractPrepaidAmount, double outstandingPrincipalNew, double outstandingInterestNew, double outstandingPrincipalOld,
 		        double outstandingInterestOld, double osinstallmentDue, double osinsuranceDue, double oslcinstallment, double oslcinsurance, double ospdcbounceFee, Double osreposessFee, double accruedAmount, Double arna, double eciamount,
 		        Double osdiffRate, Double accruedDiffRateEom, Double accruedDiffRate, Double osinsuranceIncome, Double accruedInsuranceIncomeEom, Double accruedInsuranceIncome, Double osincentive, Double accruedIncentiveEom, Double accruedIncentive,
-		        Double osprovision, Double accruedProvisionEom, Double accruedProvision, Long approvalId, Date statusDate, String reasonCode, Long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc,
+		        Double osprovision, Double accruedProvisionEom, Double accruedProvision, long approvalId, Date statusDate, String reasonCode, long jobId, String notes, double pdcbounceFeeDisc, double lcinsuranceAmountDisc,
 		        double lcinstallmentAmountDisc, Double principalAmountDisc, Double interestDisc, Double insurancePremiDisc, double reposessFeeDisc, double totalAmountToBePaid, double totalDiscount, double totalOsar, String requestBy, Double oldRate,
 		        Short oldTenor, Double reschOsobligorExposure, Double reschTotalObligorExposure, Double reschRelatedObligorExposure, Double accruedEom, Double accruedResch, Double accruedAdj, Short insSeqNo, String type, Double toleranceAmount,
 		        double osadminFee, double accruedAdminFeeEom, double accruedAdminFee, Double osdeferredInsurInc, Double accDeferredInsurIncEom, Double accDeferredInsurInc, Double osotherRefund, Double accOtherRefundEom, Double accOtherRefund,
@@ -301,12 +301,12 @@ public class Reschedule implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -855,12 +855,12 @@ public class Reschedule implements java.io.Serializable
 			}
 			
 		@Column(name = "ApprovalId", nullable = false)
-		public Long getApprovalId()
+		public long getApprovalId()
 			{
 				return this.approvalId;
 			}
 			
-		public void setApprovalId(Long approvalId)
+		public void setApprovalId(long approvalId)
 			{
 				this.approvalId = approvalId;
 			}
@@ -889,12 +889,12 @@ public class Reschedule implements java.io.Serializable
 			}
 			
 		@Column(name = "JobId", nullable = false)
-		public Long getJobId()
+		public long getJobId()
 			{
 				return this.jobId;
 			}
 			
-		public void setJobId(Long jobId)
+		public void setJobId(long jobId)
 			{
 				this.jobId = jobId;
 			}

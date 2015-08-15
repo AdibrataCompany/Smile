@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PayHistDtl implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private PayHistHdr payHistHdr;
 		private String coaName;
 		private short instSeqNo;
@@ -41,7 +41,7 @@ public class PayHistDtl implements java.io.Serializable
 			{
 			}
 			
-		public PayHistDtl(Long id, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays)
+		public PayHistDtl(long id, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays)
 			{
 				this.id = id;
 				this.coaName = coaName;
@@ -55,7 +55,7 @@ public class PayHistDtl implements java.io.Serializable
 				this.lcdays = lcdays;
 			}
 			
-		public PayHistDtl(Long id, PayHistHdr payHistHdr, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt,
+		public PayHistDtl(long id, PayHistHdr payHistHdr, String coaName, short instSeqNo, short assetSeqNo, short yearNum, String description, double debitAmt, double creditAmt, double lcamt, short lcdays, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        String usrCrt)
 			{
 				this.id = id;
@@ -78,12 +78,12 @@ public class PayHistDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

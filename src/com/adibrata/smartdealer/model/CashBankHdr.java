@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class CashBankHdr implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private BankAccount bankAccount;
 		private Currency currency;
 		private Office office;
@@ -58,12 +58,12 @@ public class CashBankHdr implements java.io.Serializable
 			{
 			}
 			
-		public CashBankHdr(Long id)
+		public CashBankHdr(long id)
 			{
 				this.id = id;
 			}
 			
-		public CashBankHdr(Long id, BankAccount bankAccount, Currency currency, Office office, Partner partner, String voucherNo, Date valueDt, Date postingDt, String description, String rcvDsbFlag, String wop, Double amount, String rcvFrom,
+		public CashBankHdr(long id, BankAccount bankAccount, Currency currency, Office office, Partner partner, String voucherNo, Date valueDt, Date postingDt, String description, String rcvDsbFlag, String wop, Double amount, String rcvFrom,
 		        String reffNo, String receiptNo, Long cashierId, Integer openingSequence, Long officeIdX, String isReconcile, Date reconcileDate, String reconcileBy, Integer jrnlTrxId, Long agrmntId, Long jobId, String usrUpd, Date dtmUpd,
 		        String usrCrt, Date dtmCrt, Set<CashBankDtl> cashBankDtls)
 			{
@@ -101,12 +101,12 @@ public class CashBankHdr implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

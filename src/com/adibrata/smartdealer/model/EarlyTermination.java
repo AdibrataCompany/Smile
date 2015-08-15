@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class EarlyTermination implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private String etcode;
 		private double currencyRate;
@@ -54,11 +54,11 @@ public class EarlyTermination implements java.io.Serializable
 		private String notes;
 		private String reasonTypeId;
 		private String reasonId;
-		private Long jobId;
+		private long jobId;
 		private String etStatus;
 		private Date statusDate;
 		private String requestBy;
-		private Long approvalId;
+		private long approvalId;
 		private Double accruedDiscAmt;
 		private Double osPdue;
 		private Double osPdueBankPortion;
@@ -100,10 +100,10 @@ public class EarlyTermination implements java.io.Serializable
 			{
 			}
 			
-		public EarlyTermination(Long id, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double osP, double osI, double osPbankPortion,
+		public EarlyTermination(long id, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double osP, double osI, double osPbankPortion,
 		        double osIbankPortion, double osInstDue, double osIntDueBankPortion, double osInsDue, double osLcinst, double osLcins, double lcinstCurrent, double lcinsCurrent, double etFeeAmt, double accruedAmt, double lcinstDiscAmt,
-		        double lcinsDiscAmt, double insDiscAmt, double instDiscAmt, double etDiscAmt, double prepaidAmt, String insTermFlag, String notes, String reasonTypeId, String reasonId, Long jobId, String etStatus, Date statusDate, String requestBy,
-		        Long approvalId, double osadminFee, double accruedAdminFeeEom)
+		        double lcinsDiscAmt, double insDiscAmt, double instDiscAmt, double etDiscAmt, double prepaidAmt, String insTermFlag, String notes, String reasonTypeId, String reasonId, long jobId, String etStatus, Date statusDate, String requestBy,
+		        long approvalId, double osadminFee, double accruedAdminFeeEom)
 			{
 				this.id = id;
 				this.etcode = etcode;
@@ -145,10 +145,10 @@ public class EarlyTermination implements java.io.Serializable
 				this.accruedAdminFeeEom = accruedAdminFeeEom;
 			}
 			
-		public EarlyTermination(Long id, Agrmnt agrmnt, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double osP, double osI,
+		public EarlyTermination(long id, Agrmnt agrmnt, String etcode, double currencyRate, Date efectiveDate, Date requestDate, String prepaymentType, double prepaymentAmount, double totalAmountToBePaid, double osP, double osI,
 		        double osPbankPortion, double osIbankPortion, double osInstDue, double osIntDueBankPortion, double osInsDue, double osLcinst, double osLcins, double lcinstCurrent, double lcinsCurrent, double etFeeAmt, double accruedAmt,
-		        Double accruedAmtBankPortion, double lcinstDiscAmt, double lcinsDiscAmt, double insDiscAmt, double instDiscAmt, double etDiscAmt, double prepaidAmt, String insTermFlag, String notes, String reasonTypeId, String reasonId, Long jobId,
-		        String etStatus, Date statusDate, String requestBy, Long approvalId, Double accruedDiscAmt, Double osPdue, Double osPdueBankPortion, Double osIdue, Double osIdueBankPortion, Double principalDueDisc, Double interestDueDisc,
+		        Double accruedAmtBankPortion, double lcinstDiscAmt, double lcinsDiscAmt, double insDiscAmt, double instDiscAmt, double etDiscAmt, double prepaidAmt, String insTermFlag, String notes, String reasonTypeId, String reasonId, long jobId,
+		        String etStatus, Date statusDate, String requestBy, long approvalId, Double accruedDiscAmt, Double osPdue, Double osPdueBankPortion, Double osIdue, Double osIdueBankPortion, Double principalDueDisc, Double interestDueDisc,
 		        Double toleranceAmount, Double osdiffRate, Double accruedDiffRateEom, Double osinsuranceIncome, Double accruedInsuranceIncomeEom, Double osincentive, Double accruedIncentiveEom, Double osprovision, Double accruedProvisionEom,
 		        double osadminFee, double accruedAdminFeeEom, Double osdeferredInsurInc, Double accruedDeferredInsurIncEom, Double osotherRefund, Double accruedOtherRefundEom, Double osadmFee, Double accruedAdmFeeEom, Double osprovisionFee,
 		        Double accruedProvisionFeeEom, Double osotherFee, Double accruedOtherFeeEom, Double ossurveyFee, Double accruedSurveyFeeEom, Double oscostOfSurveyFee, Double accruedCostOfSurveyFeeEom, Date dtmUpd, String usrUpd, Date dtmCrt,
@@ -233,12 +233,12 @@ public class EarlyTermination implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -599,12 +599,12 @@ public class EarlyTermination implements java.io.Serializable
 			}
 			
 		@Column(name = "JobId", nullable = false)
-		public Long getJobId()
+		public long getJobId()
 			{
 				return this.jobId;
 			}
 			
-		public void setJobId(Long jobId)
+		public void setJobId(long jobId)
 			{
 				this.jobId = jobId;
 			}
@@ -644,12 +644,12 @@ public class EarlyTermination implements java.io.Serializable
 			}
 			
 		@Column(name = "ApprovalID", nullable = false)
-		public Long getApprovalId()
+		public long getApprovalId()
 			{
 				return this.approvalId;
 			}
 			
-		public void setApprovalId(Long approvalId)
+		public void setApprovalId(long approvalId)
 			{
 				this.approvalId = approvalId;
 			}

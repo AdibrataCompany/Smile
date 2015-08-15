@@ -12,12 +12,12 @@ public class HeadCashier
 		Double OnHandAmount;
 		String CashierStatus;
 		Date CloseDate;
-		
+
 		public HeadCashier()
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		/**
 		 * @return the employeeName
 		 */
@@ -25,7 +25,7 @@ public class HeadCashier
 			{
 				return this.EmployeeName;
 			}
-			
+
 		/**
 		 * @param employeeName
 		 *            the employeeName to set
@@ -34,7 +34,7 @@ public class HeadCashier
 			{
 				this.EmployeeName = employeeName;
 			}
-			
+
 		/**
 		 * @return the openingDate
 		 */
@@ -42,7 +42,7 @@ public class HeadCashier
 			{
 				return this.OpeningDate;
 			}
-			
+
 		/**
 		 * @param openingDate
 		 *            the openingDate to set
@@ -51,7 +51,7 @@ public class HeadCashier
 			{
 				this.OpeningDate = openingDate;
 			}
-			
+
 		/**
 		 * @return the currencyCode
 		 */
@@ -59,7 +59,7 @@ public class HeadCashier
 			{
 				return this.CurrencyCode;
 			}
-			
+
 		/**
 		 * @param currencyCode
 		 *            the currencyCode to set
@@ -68,7 +68,7 @@ public class HeadCashier
 			{
 				this.CurrencyCode = currencyCode;
 			}
-			
+
 		/**
 		 * @return the openingAmount
 		 */
@@ -76,7 +76,7 @@ public class HeadCashier
 			{
 				return this.OpeningAmount;
 			}
-			
+
 		/**
 		 * @param openingAmount
 		 *            the openingAmount to set
@@ -85,7 +85,7 @@ public class HeadCashier
 			{
 				this.OpeningAmount = openingAmount;
 			}
-			
+
 		/**
 		 * @return the onHandAmount
 		 */
@@ -93,7 +93,7 @@ public class HeadCashier
 			{
 				return this.OnHandAmount;
 			}
-			
+
 		/**
 		 * @param onHandAmount
 		 *            the onHandAmount to set
@@ -102,7 +102,7 @@ public class HeadCashier
 			{
 				this.OnHandAmount = onHandAmount;
 			}
-			
+
 		/**
 		 * @return the cashierStatus
 		 */
@@ -110,7 +110,7 @@ public class HeadCashier
 			{
 				return this.CashierStatus;
 			}
-			
+
 		/**
 		 * @param cashierStatus
 		 *            the cashierStatus to set
@@ -119,7 +119,7 @@ public class HeadCashier
 			{
 				this.CashierStatus = cashierStatus;
 			}
-			
+
 		/**
 		 * @return the closeDate
 		 */
@@ -127,7 +127,7 @@ public class HeadCashier
 			{
 				return this.CloseDate;
 			}
-			
+
 		/**
 		 * @param closeDate
 		 *            the closeDate to set
@@ -136,5 +136,5 @@ public class HeadCashier
 			{
 				this.CloseDate = closeDate;
 			}
-
+			
 	}

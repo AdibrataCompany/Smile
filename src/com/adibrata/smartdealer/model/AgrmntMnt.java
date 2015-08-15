@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntMnt implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Agrmnt agrmnt;
 		private double instAmt;
 		private double instPaid;
@@ -52,7 +52,7 @@ public class AgrmntMnt implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntMnt(Long id, double instAmt, double instPaid, double instWaived, double insAmt, double insPaid, double insWaived, double lcinsWaived, double lcinsAmt, double lcinsPaid, double lcinstWaived, double lcinstAmt, double lcinstPaid,
+		public AgrmntMnt(long id, double instAmt, double instPaid, double instWaived, double insAmt, double insPaid, double insWaived, double lcinsWaived, double lcinsAmt, double lcinsPaid, double lcinstWaived, double lcinstAmt, double lcinstPaid,
 		        double pdcbounceFee, double pdcbounceFeePaid, double pdcbounceFeeWaived, double collectionExpense, double collectionExpensePaid, double collectionExpenseWaived)
 			{
 				this.id = id;
@@ -76,7 +76,7 @@ public class AgrmntMnt implements java.io.Serializable
 				this.collectionExpenseWaived = collectionExpenseWaived;
 			}
 			
-		public AgrmntMnt(Long id, Agrmnt agrmnt, double instAmt, double instPaid, double instWaived, double insAmt, double insPaid, double insWaived, double lcinsWaived, double lcinsAmt, double lcinsPaid, Date lastLccalcInsDate, double lcinstWaived,
+		public AgrmntMnt(long id, Agrmnt agrmnt, double instAmt, double instPaid, double instWaived, double insAmt, double insPaid, double insWaived, double lcinsWaived, double lcinsAmt, double lcinsPaid, Date lastLccalcInsDate, double lcinstWaived,
 		        double lcinstAmt, double lcinstPaid, Date lastLccalcInstDate, double pdcbounceFee, double pdcbounceFeePaid, double pdcbounceFeeWaived, double collectionExpense, double collectionExpensePaid, double collectionExpenseWaived,
 		        String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
@@ -111,12 +111,12 @@ public class AgrmntMnt implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

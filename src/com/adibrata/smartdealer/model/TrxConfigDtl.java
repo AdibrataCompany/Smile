@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class TrxConfigDtl implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private TrxConfigHdr trxConfigHdr;
 		private Long sequenceNo;
 		private String coaSourceTable;
@@ -45,12 +45,12 @@ public class TrxConfigDtl implements java.io.Serializable
 			{
 			}
 			
-		public TrxConfigDtl(Long id)
+		public TrxConfigDtl(long id)
 			{
 				this.id = id;
 			}
 			
-		public TrxConfigDtl(Long id, TrxConfigHdr trxConfigHdr, Long sequenceNo, String coaSourceTable, String coaName, String isCoaHeader, String post, Short isMultipleDtl, String tblSourceDtl, String headerId, String amountTrx, Long departId,
+		public TrxConfigDtl(long id, TrxConfigHdr trxConfigHdr, Long sequenceNo, String coaSourceTable, String coaName, String isCoaHeader, String post, Short isMultipleDtl, String tblSourceDtl, String headerId, String amountTrx, Long departId,
 		        Short isCreatePaymentHistoryDetail, Short isCreateCashBankMutationDetail, Short isCreateJournalDetail, String usrCrt, Date dtmCrt, String usrUpd, Date dtmUpd)
 			{
 				this.id = id;
@@ -77,12 +77,12 @@ public class TrxConfigDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

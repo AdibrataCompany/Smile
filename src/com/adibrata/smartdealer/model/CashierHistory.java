@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,16 +21,18 @@ import javax.persistence.TemporalType;
 public class CashierHistory implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Currency currency;
-		private String partnerCode;
-		private Long officeId;
-		private Long employeeId;
+		private Employee employee;
+		private Office office;
+		private Partner partner;
 		private Short openSeqNo;
+		private Date openDate;
 		private Date openingDtm;
 		private Double openingAmount;
 		private Double balanceAmount;
 		private String cashierStatus;
+		private Date closingDate;
 		private Date closingDtm;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -41,24 +43,26 @@ public class CashierHistory implements java.io.Serializable
 			{
 			}
 			
-		public CashierHistory(Long id)
+		public CashierHistory(long id)
 			{
 				this.id = id;
 			}
 			
-		public CashierHistory(Long id, Currency currency, String partnerCode, Long officeId, Long employeeId, Short openSeqNo, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDtm, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, String usrCrt)
+		public CashierHistory(long id, Currency currency, Employee employee, Office office, Partner partner, Short openSeqNo, Date openDate, Date openingDtm, Double openingAmount, Double balanceAmount, String cashierStatus, Date closingDate,
+		        Date closingDtm, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.currency = currency;
-				this.partnerCode = partnerCode;
-				this.officeId = officeId;
-				this.employeeId = employeeId;
+				this.employee = employee;
+				this.office = office;
+				this.partner = partner;
 				this.openSeqNo = openSeqNo;
+				this.openDate = openDate;
 				this.openingDtm = openingDtm;
 				this.openingAmount = openingAmount;
 				this.balanceAmount = balanceAmount;
 				this.cashierStatus = cashierStatus;
+				this.closingDate = closingDate;
 				this.closingDtm = closingDtm;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
@@ -69,12 +73,12 @@ public class CashierHistory implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}
@@ -91,37 +95,40 @@ public class CashierHistory implements java.io.Serializable
 				this.currency = currency;
 			}
 			
-		@Column(name = "PartnerCode", length = 20)
-		public String getPartnerCode()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "EmployeeId")
+		public Employee getEmployee()
 			{
-				return this.partnerCode;
+				return this.employee;
 			}
 			
-		public void setPartnerCode(String partnerCode)
+		public void setEmployee(Employee employee)
 			{
-				this.partnerCode = partnerCode;
+				this.employee = employee;
 			}
 			
-		@Column(name = "OfficeId")
-		public Long getOfficeId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "OfficeId")
+		public Office getOffice()
 			{
-				return this.officeId;
+				return this.office;
 			}
 			
-		public void setOfficeId(Long officeId)
+		public void setOffice(Office office)
 			{
-				this.officeId = officeId;
+				this.office = office;
 			}
 			
-		@Column(name = "EmployeeId")
-		public Long getEmployeeId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "PartnerCode")
+		public Partner getPartner()
 			{
-				return this.employeeId;
+				return this.partner;
 			}
 			
-		public void setEmployeeId(Long employeeId)
+		public void setPartner(Partner partner)
 			{
-				this.employeeId = employeeId;
+				this.partner = partner;
 			}
 			
 		@Column(name = "OpenSeqNo")
@@ -133,6 +140,18 @@ public class CashierHistory implements java.io.Serializable
 		public void setOpenSeqNo(Short openSeqNo)
 			{
 				this.openSeqNo = openSeqNo;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "OpenDate", length = 23)
+		public Date getOpenDate()
+			{
+				return this.openDate;
+			}
+			
+		public void setOpenDate(Date openDate)
+			{
+				this.openDate = openDate;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)
@@ -178,6 +197,18 @@ public class CashierHistory implements java.io.Serializable
 		public void setCashierStatus(String cashierStatus)
 			{
 				this.cashierStatus = cashierStatus;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "ClosingDate", length = 23)
+		public Date getClosingDate()
+			{
+				return this.closingDate;
+			}
+			
+		public void setClosingDate(Date closingDate)
+			{
+				this.closingDate = closingDate;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)

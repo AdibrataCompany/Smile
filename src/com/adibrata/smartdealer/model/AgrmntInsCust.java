@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class AgrmntInsCust implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private AgrmntIns agrmntIns;
 		private double mainPremiumToCust;
 		private double loadingFeeToCust;
@@ -43,7 +43,7 @@ public class AgrmntInsCust implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsCust(Long id, double mainPremiumToCust, double loadingFeeToCust, double tpltoCust, double floodToCust, double srcctoCust, double premiumAmountByCustBeforeDisc, double discToCustAmount, double premiumAmountByCust,
+		public AgrmntInsCust(long id, double mainPremiumToCust, double loadingFeeToCust, double tpltoCust, double floodToCust, double srcctoCust, double premiumAmountByCustBeforeDisc, double discToCustAmount, double premiumAmountByCust,
 		        double adminFeeToCust, double meteraiFeeToCust, double capitalizedAmount)
 			{
 				this.id = id;
@@ -60,7 +60,7 @@ public class AgrmntInsCust implements java.io.Serializable
 				this.capitalizedAmount = capitalizedAmount;
 			}
 			
-		public AgrmntInsCust(Long id, AgrmntIns agrmntIns, double mainPremiumToCust, double loadingFeeToCust, double tpltoCust, double floodToCust, double srcctoCust, double premiumAmountByCustBeforeDisc, double discToCustAmount,
+		public AgrmntInsCust(long id, AgrmntIns agrmntIns, double mainPremiumToCust, double loadingFeeToCust, double tpltoCust, double floodToCust, double srcctoCust, double premiumAmountByCustBeforeDisc, double discToCustAmount,
 		        double premiumAmountByCust, double adminFeeToCust, double meteraiFeeToCust, double capitalizedAmount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -85,12 +85,12 @@ public class AgrmntInsCust implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class PersCustCcinfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Customer customer;
 		private String creditCardNo;
 		private String creditCardName;
@@ -38,7 +38,7 @@ public class PersCustCcinfo implements java.io.Serializable
 			{
 			}
 			
-		public PersCustCcinfo(Long id, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit)
+		public PersCustCcinfo(long id, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit)
 			{
 				this.id = id;
 				this.creditCardNo = creditCardNo;
@@ -49,7 +49,7 @@ public class PersCustCcinfo implements java.io.Serializable
 				this.creditCardCreditLimit = creditCardCreditLimit;
 			}
 			
-		public PersCustCcinfo(Long id, Customer customer, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit, Date dtmUpd, String usrUpd,
+		public PersCustCcinfo(long id, Customer customer, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -69,12 +69,12 @@ public class PersCustCcinfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

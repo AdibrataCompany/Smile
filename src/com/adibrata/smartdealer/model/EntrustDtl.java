@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class EntrustDtl implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private EntrustHdr entrustHdr;
 		private Long stockId;
 		private Double unitPrice;
@@ -48,12 +48,12 @@ public class EntrustDtl implements java.io.Serializable
 			{
 			}
 			
-		public EntrustDtl(Long id)
+		public EntrustDtl(long id)
 			{
 				this.id = id;
 			}
 			
-		public EntrustDtl(Long id, EntrustHdr entrustHdr, Long stockId, Double unitPrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor,
+		public EntrustDtl(long id, EntrustHdr entrustHdr, Long stockId, Double unitPrice, String assetType, String assetBrand, String assetModel, String assetCode, String bpkbno, String bpkbname, String bpkbaddress, String vehicleColor,
 		        String machineNo, String chasisNo, String cylinder, String licensePlate, String manufacturingMonth, String manufacturingYear, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -83,12 +83,12 @@ public class EntrustDtl implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

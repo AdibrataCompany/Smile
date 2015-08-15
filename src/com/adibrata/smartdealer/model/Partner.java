@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -57,6 +57,7 @@ public class Partner implements java.io.Serializable
 		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<Taksasi> taksasis = new HashSet<Taksasi>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
+		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		private Set<Customer> customers = new HashSet<Customer>(0);
 		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(0);
 		private Set<TrxSeqNo> trxSeqNos = new HashSet<TrxSeqNo>(0);
@@ -99,11 +100,11 @@ public class Partner implements java.io.Serializable
 		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
 		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters, Set<MsRole> msRoles,
 		        Set<ReturSalesHdr> returSalesHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs,
-		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<MsTable> msTables,
-		        Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<SuspendReceive> suspendReceives,
-		        Set<PurchaseInvoice> purchaseInvoices, Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters, Set<MsUserRole> msUserRoles,
-		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
+		        Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<AccountPayable> accountPayables,
+		        Set<DanaTunai> danaTunais, Set<MsTable> msTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<Agrmnt> agrmnts, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs,
+		        Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs,
+		        Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices, Set<CashBankHdr> cashBankHdrs, Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Coamaster> coamasters,
+		        Set<MsUserRole> msUserRoles, Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -140,6 +141,7 @@ public class Partner implements java.io.Serializable
 				this.purchaseOrderHdrs = purchaseOrderHdrs;
 				this.taksasis = taksasis;
 				this.advanceCashes = advanceCashes;
+				this.cashierHistories = cashierHistories;
 				this.customers = customers;
 				this.assetDocMasters = assetDocMasters;
 				this.trxSeqNos = trxSeqNos;
@@ -558,6 +560,17 @@ public class Partner implements java.io.Serializable
 		public void setAdvanceCashes(Set<AdvanceCash> advanceCashes)
 			{
 				this.advanceCashes = advanceCashes;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<CashierHistory> getCashierHistories()
+			{
+				return this.cashierHistories;
+			}
+			
+		public void setCashierHistories(Set<CashierHistory> cashierHistories)
+			{
+				this.cashierHistories = cashierHistories;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

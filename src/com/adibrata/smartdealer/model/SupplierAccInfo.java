@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class SupplierAccInfo implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Supplier supplier;
 		private Short seqNo;
 		private String bankCode;
@@ -41,12 +41,12 @@ public class SupplierAccInfo implements java.io.Serializable
 			{
 			}
 			
-		public SupplierAccInfo(Long id)
+		public SupplierAccInfo(long id)
 			{
 				this.id = id;
 			}
 			
-		public SupplierAccInfo(Long id, Supplier supplier, Short seqNo, String bankCode, String bankBranch, String bankName, String accountNo, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntAsset> agrmntAssets)
+		public SupplierAccInfo(long id, Supplier supplier, Short seqNo, String bankCode, String bankBranch, String bankName, String accountNo, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntAsset> agrmntAssets)
 			{
 				this.id = id;
 				this.supplier = supplier;
@@ -65,12 +65,12 @@ public class SupplierAccInfo implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

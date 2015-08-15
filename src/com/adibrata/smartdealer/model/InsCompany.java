@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class InsCompany implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private String partnerCode;
 		private String name;
 		private String address;
@@ -52,12 +52,12 @@ public class InsCompany implements java.io.Serializable
 			{
 			}
 			
-		public InsCompany(Long id)
+		public InsCompany(long id)
 			{
 				this.id = id;
 			}
 			
-		public InsCompany(Long id, String partnerCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
+		public InsCompany(long id, String partnerCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCompanyOffice> insCompanyOffices)
 			{
 				this.id = id;
@@ -90,12 +90,12 @@ public class InsCompany implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

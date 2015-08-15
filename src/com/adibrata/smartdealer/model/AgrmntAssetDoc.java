@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class AgrmntAssetDoc implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private Long agrmntAssetId;
 		private Long assetDocMasterId;
 		private String documentNo;
@@ -32,12 +32,12 @@ public class AgrmntAssetDoc implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntAssetDoc(Long id)
+		public AgrmntAssetDoc(long id)
 			{
 				this.id = id;
 			}
 			
-		public AgrmntAssetDoc(Long id, Long agrmntAssetId, Long assetDocMasterId, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary)
+		public AgrmntAssetDoc(long id, Long agrmntAssetId, Long assetDocMasterId, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary)
 			{
 				this.id = id;
 				this.agrmntAssetId = agrmntAssetId;
@@ -53,12 +53,12 @@ public class AgrmntAssetDoc implements java.io.Serializable
 		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

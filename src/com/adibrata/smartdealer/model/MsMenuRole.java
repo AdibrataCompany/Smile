@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 12, 2015 1:15:10 PM by Hibernate Tools 4.3.1
+// Generated Aug 15, 2015 10:59:05 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 public class MsMenuRole implements java.io.Serializable
 	{
 		
-		private Long id;
+		private long id;
 		private MsMenu msMenu;
 		private MsRole msRole;
 		private Date dtmUpd;
@@ -33,12 +33,12 @@ public class MsMenuRole implements java.io.Serializable
 			{
 			}
 			
-		public MsMenuRole(Long id)
+		public MsMenuRole(long id)
 			{
 				this.id = id;
 			}
 			
-		public MsMenuRole(Long id, MsMenu msMenu, MsRole msRole, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public MsMenuRole(long id, MsMenu msMenu, MsRole msRole, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.msMenu = msMenu;
@@ -52,12 +52,12 @@ public class MsMenuRole implements java.io.Serializable
 		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(Long id)
+		public void setId(long id)
 			{
 				this.id = id;
 			}

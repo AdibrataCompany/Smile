@@ -27,9 +27,9 @@ import util.adibrata.support.common.ArInfo;
 /**
  * @author Henry
  */
-public class PaymentReceiveAction extends BaseAction implements Preparable
+public class ReceiveAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
@@ -64,38 +64,38 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 		private Double maximuminsurance;
 		private Double maximumlcinsurance;
 		private Double maximumlcinstallment;
-		
+
 		private final PaymentReceiveService receiveService;
-		
-		public PaymentReceiveAction() throws Exception
+
+		public ReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				
+
 				this.receiveService = new PaymentReceiveDao();
 				this.paymentReceive = new PaymentReceive();
 				this.partner = new Partner();
 				this.office = new Office();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
-				
+
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
@@ -109,7 +109,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 								case "edit" :
-								
+
 								case "receive" :
 									this.valuedate = this.dateformat.format(Calendar.getInstance().getTime());
 									try
@@ -141,10 +141,10 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 											// TODO Auto-generated catch block
 											e.printStackTrace();
 										}
-
+										
 								case "back" :
 									;
-									
+
 								case "first" :
 									this.pageNumber -= 1;
 									try
@@ -202,7 +202,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String ReceiveAllocation() throws Exception
 			{
 				String status = "";
@@ -215,17 +215,17 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 						this.agrmnt.setOffice(this.getOffice());
 						paymentinfo = arinfo.PaymentAllocation(this.getAgrmnt(), this.dateformat.parse(this.getValuedate()), this.getAmountreceive());
 						this.instamount = paymentinfo.getInstallmentallocation();
-						
+
 						this.insamount = paymentinfo.getInsuranceallocation();
 						this.lcinsamount = paymentinfo.getLcinsuranceallocation();
 						this.lcinstamount = paymentinfo.getLcinsuranceallocation();
 						this.prepaidamount = paymentinfo.getPrepaidallocation();
-						
+
 						this.maximuminstallment = paymentinfo.getMaximuminstallment();
 						this.maximuminsurance = paymentinfo.getMaximuminsurance();
 						this.maximumlcinstallment = paymentinfo.getMaximumlcinstall();
 						this.maximumlcinsurance = paymentinfo.getMaximumlcinsurance();
-						
+
 						status = "allocation";
 					}
 				catch (final Exception exp)
@@ -239,7 +239,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String PaymentReceiveSave() throws Exception
 			{
 				String status = "";
@@ -263,7 +263,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 						this.paymentReceive.setWop(this.getWop());
 						this.receiveService.PaymentReceiveSave(BaseAction.sesLoginName(), this.getPaymentReceive());
 						status = SUCCESS;
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -276,11 +276,11 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "' and officeid = '" + BaseAction.sesOfficeId() + "' and ContractStatus in ('LIV', 'ICP', 'ICL')";
-				
+
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -294,31 +294,12 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
 						this.lstAgreement = this.receiveService.Paging(this.getPageNumber(), this.WhereCond(), "");
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-			
-		private void Paging(final int islast) throws Exception
-			{
-				try
-					{
-						
-						this.lstAgreement = this.receiveService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.receiveService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -331,6 +312,25 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 					
 			}
 
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+
+						this.lstAgreement = this.receiveService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.receiveService.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+
+			}
+			
 		/**
 		 * @return the mode
 		 */
@@ -338,7 +338,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -347,7 +347,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -355,7 +355,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -364,7 +364,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -372,7 +372,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -381,7 +381,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -389,7 +389,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -398,7 +398,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -406,7 +406,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -415,7 +415,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -423,7 +423,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -432,7 +432,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -440,7 +440,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -449,7 +449,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -457,7 +457,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -466,7 +466,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -474,7 +474,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the lstAgreement
 		 */
@@ -482,7 +482,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.lstAgreement;
 			}
-
+			
 		/**
 		 * @param lstAgreement
 		 *            the lstAgreement to set
@@ -491,7 +491,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.lstAgreement = lstAgreement;
 			}
-
+			
 		/**
 		 * @return the agrmnt
 		 */
@@ -499,7 +499,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.agrmnt;
 			}
-
+			
 		/**
 		 * @param agrmnt
 		 *            the agrmnt to set
@@ -508,7 +508,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.agrmnt = agrmnt;
 			}
-
+			
 		/**
 		 * @return the agrmntmnt
 		 */
@@ -516,7 +516,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.agrmntmnt;
 			}
-
+			
 		/**
 		 * @param agrmntmnt
 		 *            the agrmntmnt to set
@@ -525,7 +525,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.agrmntmnt = agrmntmnt;
 			}
-
+			
 		/**
 		 * @return the paymentReceive
 		 */
@@ -533,7 +533,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.paymentReceive;
 			}
-
+			
 		/**
 		 * @param paymentReceive
 		 *            the paymentReceive to set
@@ -542,7 +542,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.paymentReceive = paymentReceive;
 			}
-			
+
 		/**
 		 * @return the instamount
 		 */
@@ -550,7 +550,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.instamount;
 			}
-			
+
 		/**
 		 * @param instamount
 		 *            the instamount to set
@@ -559,7 +559,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.instamount = instamount;
 			}
-			
+
 		/**
 		 * @return the insamount
 		 */
@@ -567,7 +567,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.insamount;
 			}
-			
+
 		/**
 		 * @param insamount
 		 *            the insamount to set
@@ -576,7 +576,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.insamount = insamount;
 			}
-			
+
 		/**
 		 * @return the lcinstamount
 		 */
@@ -584,7 +584,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.lcinstamount;
 			}
-			
+
 		/**
 		 * @param lcinstamount
 		 *            the lcinstamount to set
@@ -593,7 +593,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.lcinstamount = lcinstamount;
 			}
-			
+
 		/**
 		 * @return the lcinsamount
 		 */
@@ -601,7 +601,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.lcinsamount;
 			}
-			
+
 		/**
 		 * @param lcinsamount
 		 *            the lcinsamount to set
@@ -610,7 +610,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.lcinsamount = lcinsamount;
 			}
-			
+
 		/**
 		 * @return the valuedate
 		 */
@@ -618,7 +618,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-			
+
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -627,7 +627,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the postingdate
 		 */
@@ -635,7 +635,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.postingdate;
 			}
-			
+
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -644,7 +644,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.postingdate = postingdate;
 			}
-			
+
 		/**
 		 * @return the amountreceive
 		 */
@@ -652,7 +652,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.amountreceive;
 			}
-			
+
 		/**
 		 * @param amountreceive
 		 *            the amountreceive to set
@@ -661,7 +661,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.amountreceive = amountreceive;
 			}
-			
+
 		/**
 		 * @return the wop
 		 */
@@ -669,7 +669,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.wop;
 			}
-			
+
 		/**
 		 * @param wop
 		 *            the wop to set
@@ -678,7 +678,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.wop = wop;
 			}
-			
+
 		/**
 		 * @return the bankaccountid
 		 */
@@ -686,7 +686,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountid;
 			}
-			
+
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -695,7 +695,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.bankaccountid = bankaccountid;
 			}
-			
+
 		/**
 		 * @return the notes
 		 */
@@ -703,7 +703,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-			
+
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -712,7 +712,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-			
+
 		/**
 		 * @return the prepaidamount
 		 */
@@ -720,7 +720,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.prepaidamount;
 			}
-			
+
 		/**
 		 * @param prepaidamount
 		 *            the prepaidamount to set
@@ -729,7 +729,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.prepaidamount = prepaidamount;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -737,7 +737,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -745,7 +745,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @return the receiveService
 		 */
@@ -753,7 +753,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.receiveService;
 			}
-			
+
 		/**
 		 * @return the currencyrate
 		 */
@@ -761,7 +761,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.currencyrate;
 			}
-			
+
 		/**
 		 * @param currencyrate
 		 *            the currencyrate to set
@@ -770,7 +770,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.currencyrate = currencyrate;
 			}
-			
+
 		/**
 		 * @return the maximuminstallment
 		 */
@@ -778,7 +778,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.maximuminstallment;
 			}
-			
+
 		/**
 		 * @param maximuminstallment
 		 *            the maximuminstallment to set
@@ -787,7 +787,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.maximuminstallment = maximuminstallment;
 			}
-			
+
 		/**
 		 * @return the maximuminsurance
 		 */
@@ -795,7 +795,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.maximuminsurance;
 			}
-			
+
 		/**
 		 * @param maximuminsurance
 		 *            the maximuminsurance to set
@@ -804,7 +804,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.maximuminsurance = maximuminsurance;
 			}
-			
+
 		/**
 		 * @return the maximumlcinsurance
 		 */
@@ -812,7 +812,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.maximumlcinsurance;
 			}
-			
+
 		/**
 		 * @param maximumlcinsurance
 		 *            the maximumlcinsurance to set
@@ -821,7 +821,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				this.maximumlcinsurance = maximumlcinsurance;
 			}
-			
+
 		/**
 		 * @return the maximumlcinstallment
 		 */
@@ -829,7 +829,7 @@ public class PaymentReceiveAction extends BaseAction implements Preparable
 			{
 				return this.maximumlcinstallment;
 			}
-			
+
 		/**
 		 * @param maximumlcinstallment
 		 *            the maximumlcinstallment to set
