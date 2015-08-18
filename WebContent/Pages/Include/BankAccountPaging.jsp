@@ -21,6 +21,7 @@
 
 
 		<s:form action="banktransaction.action" theme="simple">
+		<s:hidden name="bankaccountid" id="bankaccountid"/>
 			<center>
 				<h2>Bank Account</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>

@@ -8,29 +8,20 @@
 		<action name="advancecashrequest"
 			class="com.adibrata.smartdealer.action.cashtransaction.advancetransaction.advancerequest.AdvanceRequestAction"
 			method="execute">
-			<result name="start">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+			<result name="input">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
 			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-			</result>
-			<result name="search">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
 			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
 			<result name="save">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			<result name="end" type="redirectAction">
+				<param name="actionName">banktransaction</param>
 			</result>
-			<result name="first">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="prev">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="next">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="last">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			<result name="success" type="redirectAction">
+				<param name="actionName">banktransaction</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 		<action name="advancecashreturn"

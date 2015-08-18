@@ -13,7 +13,9 @@
 	<button class="btn btn-sm btn-success" type="submit" onclick="suspendreceive()">
 		<span class="glyphicon glyphicon-plus-sign"></span><br>Unknows Receive
 	</button>
-	
+	<button class="btn btn-sm btn-success" type="submit" onclick="otherdisburse()">
+		<span class="glyphicon glyphicon-plus-sign"></span><br>Other Disburse
+	</button>
 	<button class="btn btn-sm btn-success" type="submit" onclick="otherreceive()">
 		<span class="glyphicon glyphicon-plus-sign"></span><br>Other Receive
 	</button>

@@ -27,12 +27,14 @@
 					<s:hidden name="id" />
 					<s:label name="message" id="message" />
 					<s:hidden name="bankaccountid" />
+					<s:hidden name="bankaccountname" />
+					<s:hidden name="currency" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:select list="lstbankaccount" name="bankaccountid"
-								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" />
+							<s:label name="bankaccountname" />
+							-
+							<s:label name="currency" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -75,6 +77,7 @@
 							</td>
 						</tr>
 					</table>
+				</div>
 			</center>
 		</s:form>
 	</div>

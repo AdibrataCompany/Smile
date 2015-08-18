@@ -15,10 +15,10 @@
 </head>
 <body>
 	<td width="30%">
+	
 		<div class="input-append date">
-			<s:textfield name="valuedate" placeholder="Value Date" 
-				class="form-control" />
-			<span class="add-on"><i class="icon-th"><img
+			<s:textfield name="valuedate" placeholder="Value Date" style="width:100px"
+				class="form-control" /><span class="add-on"><i class="icon-th"><img
 					src="Pages/style/calendar.png" /></i></span>
 		</div>
 

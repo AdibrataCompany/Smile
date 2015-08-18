@@ -24,29 +24,29 @@
 			<result name="last">/Pages/Include/BankAccountPaging.jsp
 			</result>
 			<result name="paymentreceive" type="redirectAction">
-				/Pages/PaymentReceive/agreementpaging.jsp
-				<param name="id">${bankaccountid}</param>
+				<param name="actionName">paymentrecieve</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
-			<result name="suspendreceive">
-				/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
-				<param name="id">${bankaccountid}</param>
+			<result name="suspendreceive" type="redirectAction">
+				<param name="actionName">suspendreceive</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
 			<result name="otherreceive" type="redirectAction">
-				/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
-				<param name="id">${bankaccountid}</param>
+				<param name="actionName">otherreceive</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
-			
+
 			<result name="otherdisburse" type="redirectAction">
-				/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-				<param name="id">${bankaccountid}</param>
+				<param name="actionName">otherdisburse</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
 			<result name="advancetransaction" type="redirectAction">
-				/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-				<param name="id">${bankaccountid}</param>
+				<param name="actionName">advancecashrequest</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
-				<result name="pettycashtransaction" type="redirectAction">
+			<result name="pettycashtransaction" type="redirectAction">
 				/Pages/CashTransaction/PettyCash/PettyCash.jsp
-				<param name="id">${bankaccountid}</param>
+				<param name="bankaccountid">${id}</param>
 			</result>
 		</action>
 
@@ -79,7 +79,7 @@
 			</result>
 			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="end" >/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
 	</package>

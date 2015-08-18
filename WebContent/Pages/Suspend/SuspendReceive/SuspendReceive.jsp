@@ -23,19 +23,17 @@
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
 					<s:hidden name="id" />
-					<s:hidden name="bankaccountid" />
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
-						<s:textfield name="bankaccountid" style="visibility: hidden;"/> 
-							<s:textfield name="bankaccountname" style="visibility: hidden;"/> 
+					<s:hidden name="bankaccountid" id="bankaccountid" />
+					<s:hidden name="mode" id="mode" />
 					<s:label name="message" />
+					<s:hidden name="bankaccountname" />
+					<s:hidden name="currency" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-						<%-- 	<s:select list="lstBankAccount" name="bankAccountid"
-								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" /> --%>
-								<s:label name="bankaccountname"/>
+							<s:label name="bankaccountname" />
+							-
+							<s:label name="currency" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -92,8 +90,6 @@
 	function end() {
 		document.getElementById("mode").value = "end";
 	}
-	
-	
 </script>
 
 </html>

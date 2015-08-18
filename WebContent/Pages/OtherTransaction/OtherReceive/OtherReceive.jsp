@@ -20,42 +20,33 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="otherreceive.action" theme="simple">
 			<center>
-				<h1>Penerimaan Bukan Hutang</h1>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<h1>Other Receive Transactions</h1>
+				<s:hidden name="id" />
+				<s:hidden name="bankaccountid" />
+				<s:hidden name="bankaccountname" />
+				<s:hidden name="currency" />
+				<s:hidden name="mode" id="mode" />
+				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
-						<td width="20%">Terima Dari</td>
-						<td width="30%"><s:textfield name="rcvFrom" /></td>
-						<td width="20%">Cara Bayar</td>
-						<td width="30%">
-							<select name="payment">
-									<option value="">Select Payment</option>
-									<option value="cash">Cash</option>
-									<option value="bank">Bank</option>
-							</select> - 
-							
-							<%-- <select name="type">
-							<option value="">Select Type</option>
-							<option value="1">Citi Bank Escrow</option>
-							<option value="2">BCA Escrow</option>
-							</select> --%>
-							
-							<s:select list="bankAccountList" name="bankAccountType"
-							headerKey="" key="bankAccount.id" headerValue="Select Type"  />
-						
-						</td>
+						<td width="20%">Receive From</td>
+						<td width="30%"><s:textfield name="rcvFrom"
+								placeholder="Receive From" /></td>
+						<td width="20%">Bank Account</td>
+						<td width="30%"><s:label name="bankaccountname" /> - <s:label
+								name="currency" /></td>
 					</tr>
 					<tr>
 						<td>Reference No</td>
-						<td><s:textfield name="reffNo" /></td>
-						<td>Rekening Bank</td>
-						<td><s:textfield name="bankAccountId" type="text" /></td>
+						<td colspan="3"><s:textfield name="reffNo"
+								placeholder="Refference Number" /></td>
 					</tr>
 					<tr>
-						<td>Tanggal Transaksi</td>
+						<td width="20%">Value Date</td>
 						<%@include file="/Pages/DatePicker.jsp"%>
-						<td>Jumlah Penerimaan</td>
-						<td>IDR <s:textfield name="rcvAmount" /></td>
+						<td>Amount Receive</td>
+						<td><s:textfield name="rcvamount"
+								placeholder="Amount Receive" /></td>
 					</tr>
 					<tr>
 						<td valign="top">Notes</td>
@@ -64,34 +55,11 @@
 				</table>
 				<br>
 				<s:label name="message" />
-				<table class="table table-stripped">
-					<tr>
-						<th colspan="4">TRANSACTION</th>
-					</tr>
-					<tr>
-						<td width="20%">COA Name</td>
-						<td width="30%"><input name="coaName" type="text">
-							<button type="submit" onclick="lookup()">
-								<span class="glyphicon glyphicon-search"></span>
-							</button> <s:hidden name="coaCode" /></td>
-					</tr>
-					<tr>
-						<td width="25%">Amount</td>
-						<td width="25%"><input name="amount" type="text"></td>
-					</tr>
-					<tr>
-						<td valign="top">Description</td>
-						<td><textarea rows="5" cols="30" name="description"></textarea></td>
-					</tr>
-				</table>
 				<br>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td><button type="submit" class="btn btn-sm btn-primary"
-								onclick="savedel()">Hapus</button></td>
-						<th align="center">TRANSACTION DETAIL</th>
-						<td align="right"><button type="submit"
-								class="btn btn-sm btn-primary" onclick="saveadd()">Tambah</button>
+								onclick="deldetail()">Hapus</button></td>
 					</tr>
 				</table>
 				<br>
@@ -101,14 +69,30 @@
 						<th width="5%" style="text-align: center;">Pilih</th>
 						<th style="text-align: center;">COA Name</th>
 						<th style="text-align: center;">COA Code</th>
-						<th style="text-align: center;">Keterangan</th>
+						<th style="text-align: center;">Description</th>
 						<th style="text-align: center;">Jumlah</th>
+					</tr>
+					<tr>
+						<td align="center"><button type="submit"
+								class="btn btn-sm btn-primary" onclick="adddetail()">Add</button>
+						</td>
+						<td align="center"><input name="coaname" type="text"
+							placeholder="Coa Name">
+							<button onclick="lookup()">
+								<span class="glyphicon glyphicon-search"></span>
+							</button> <s:hidden name="coacode" /></td>
+						<td></td>
+
+						<td align="center"><s:textfield cols="30" name="description"
+								placeholder="Description" /></td>
+						<td align="center"><s:textfield name="amount" type="text"
+								placeholder="Amount" /></td>
 					</tr>
 					<s:iterator value="lstOtherRcvDtl" status="stat">
 						<tr>
 
 							<td style="text-align: center;"><input type="radio"
-								name="SeqNo" id="SeqNo"
+								name="seqno" id="seqno"
 								value="<s:property value="#stat.count"/>" checked /></td>
 							<td>${coaName}</td>
 							<td>${coaCode}</td>
@@ -118,12 +102,16 @@
 					</s:iterator>
 					<tr>
 						<th colspan="4" style="text-align: right;">Total :</th>
-						<td align="right">${totalAmount}</td>
+						<td align="right">${totalamount}</td>
 					</tr>
 				</table>
 				<br>
 				<table width="100%">
 					<tr>
+						<td>
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="end()">Back</button>
+						</td>
 						<td align="right"><button type="submit" onclick="save()"
 								class="btn btn-sm btn-primary">Simpan</button></td>
 					</tr>
@@ -137,14 +125,17 @@
 	function lookup() {
 		document.getElementById("mode").value = "lookup";
 	}
-	function savedel() {
-		document.getElementById("mode").value = "savedel";
+	function deldetail() {
+		document.getElementById("mode").value = "deldetail";
 	}
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
+	function adddetail() {
+		document.getElementById("mode").value = "adddetail";
 	}
 	function save() {
 		document.getElementById("mode").value = "save";
+	}
+	function end() {
+		document.getElementById("mode").value = "end";
 	}
 </script>
 </html>

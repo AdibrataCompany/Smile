@@ -14,6 +14,7 @@ import com.adibrata.smartdealer.dao.setting.CurrencyDao;
 import com.adibrata.smartdealer.dao.usermanagement.EmployeeDao;
 import com.adibrata.smartdealer.dao.usermanagement.MenuDao;
 import com.adibrata.smartdealer.model.BankAccount;
+import com.adibrata.smartdealer.model.BankAccountInfo;
 import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.Employee;
 import com.adibrata.smartdealer.model.Office;
@@ -103,6 +104,12 @@ public class BaseAction extends ActionSupport implements Preparable
 				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 				return df.parse(df.format(Calendar.getInstance().getTime()));
 
+			}
+
+		public BankAccountInfo BankInfo(final Long id) throws Exception
+			{
+				final BankAccountService service = new BankAccountDao();
+				return service.BankAccountView(id);
 			}
 
 		public static Long sesOfficeId()

@@ -11,7 +11,9 @@ import org.hibernate.Query;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.BankAccount;
+import com.adibrata.smartdealer.model.BankAccountInfo;
 import com.adibrata.smartdealer.model.BankMaster;
+import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
@@ -302,6 +304,35 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return list;
+			}
+
+		@Override
+		public BankAccountInfo BankAccountView(final Long id) throws Exception
+			{
+				// TODO Auto-generated method stub
+				String hql;
+				List<Object[]> lst;
+				hql = "from BankAccount A, Currency C where A.currency = C.id and A.id =:id";
+				final Query selectQuery = this.getSession().createQuery(hql.toString());
+				selectQuery.setParameter("id", id);
+				selectQuery.setCacheable(true);
+				final BankAccountInfo info = new BankAccountInfo();
+				BankAccount account = new BankAccount();
+				Currency currency = new Currency();
+
+				lst = selectQuery.list();
+				for (final Object[] row : lst)
+					{
+						account = (BankAccount) row[0];
+						currency = (Currency) row[1];
+						info.setId(account.getId());
+						info.setName(account.getBankAccountName());
+						info.setPurpose(account.getPurpose());
+						info.setType(account.getType());
+						info.setCurrency(currency.getCode());
+						
+					}
+				return info;
 			}
 			
 	}
