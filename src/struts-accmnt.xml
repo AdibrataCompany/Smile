@@ -3,9 +3,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="accmnt" extends="smartdealer-package"
-		namespace="/">
-			<action name="receivetransaction"
+	<package name="accmnt" extends="smartdealer-package" namespace="/">
+		<action name="banktransaction"
 			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
 			method="execute">
 			<result name="start">/Pages/Include/BankAccountPaging.jsp
@@ -24,13 +23,36 @@
 			</result>
 			<result name="last">/Pages/Include/BankAccountPaging.jsp
 			</result>
-		</action>
-		
-		<action name="paymentrecieve"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReceiveAction"
-			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="paymentreceive" type="redirectAction">
+				/Pages/PaymentReceive/agreementpaging.jsp
+				<param name="id">${bankaccountid}</param>
 			</result>
+			<result name="suspendreceive">
+				/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+				<param name="id">${bankaccountid}</param>
+			</result>
+			<result name="otherreceive" type="redirectAction">
+				/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+				<param name="id">${bankaccountid}</param>
+			</result>
+			
+			<result name="otherdisburse" type="redirectAction">
+				/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+				<param name="id">${bankaccountid}</param>
+			</result>
+			<result name="advancetransaction" type="redirectAction">
+				/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
+				<param name="id">${bankaccountid}</param>
+			</result>
+				<result name="pettycashtransaction" type="redirectAction">
+				/Pages/CashTransaction/PettyCash/PettyCash.jsp
+				<param name="id">${bankaccountid}</param>
+			</result>
+		</action>
+
+		<action name="paymentrecieve"
+			class="com.adibrata.smartdealer.action.accmnt.payment.receive.ReceiveAction"
+			method="save">
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -38,12 +60,11 @@
 
 			<result name="input">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-	
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end" type="redirectAction">/Pages/Include/BankAccountPaging.jsp
 			</result>
 		</action>
 		<action name="paymentreversal"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReversalAction"
+			class="com.adibrata.smartdealer.action.accmnt.payment.correction.CorrectionAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -58,7 +79,7 @@
 			</result>
 			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end" >/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
 	</package>

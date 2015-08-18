@@ -5,8 +5,8 @@
 <struts>
 	<package name="amendment" extends="smartdealer-package"
 		namespace="/">
-		<action name="earlytermination"
-			class="com.adibrata.smartdealer.action.amendment.EarlyTerminationAction"
+		<action name="earlyterminationrequest"
+			class="com.adibrata.smartdealer.action.amendment.earlytermination.request.EarlyTerminationAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -25,7 +25,7 @@
 			</result>
 		</action>
 		<action name="assetreplacement"
-			class="com.adibrata.smartdealer.action.amendment.AssetReplacementAction"
+			class="com.adibrata.smartdealer.action.amendment.assetreplacement.request.AssetReplacementAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -44,7 +44,7 @@
 			</result>
 		</action>
 		<action name="partialassetprepayment"
-			class="com.adibrata.smartdealer.action.amendment.PartialAssetPrepaymentAction"
+			class="com.adibrata.smartdealer.action.amendment.partialasset.request.PartialAssetPrepaymentAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -63,7 +63,7 @@
 			</result>
 		</action>
 		<action name="reschedule"
-			class="com.adibrata.smartdealer.action.amendment.RescheduleAction"
+			class="com.adibrata.smartdealer.action.amendment.reschedule.request.RescheduleAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

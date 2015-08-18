@@ -23,6 +23,7 @@
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
 					<s:hidden name="id" />
+					<s:hidden name="bankaccountid" />
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
 						<s:textfield name="bankaccountid" style="visibility: hidden;"/> 

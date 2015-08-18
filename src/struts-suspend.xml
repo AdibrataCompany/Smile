@@ -6,8 +6,8 @@
 
 	<package name="suspend" extends="smartdealer-package"
 		namespace="/">
-		<action name="suspendreceive"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendReceiveAction"
+		<action name="suspendlist"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.SuspendAction"
 			method="execute">
 		
 				<result name="input">/Pages/Include/BankAccountPaging.jsp
@@ -24,9 +24,27 @@
 			<result name="end">/Pages/Include/BankAccountPaging.jsp
 			</result>
 		</action>
+		<action name="suspendreceive"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.receive.SuspendReceiveAction"
+			method="save">
+		
+				<result name="input">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="success">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			</result>
+			<result name="error">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			</result>
+			<result name="save">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			</result>
+			<result name="select">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			</result>
+
+			<result name="end">/Pages/Include/BankAccountPaging.jsp
+			</result>
+		</action>
 		<action name="suspendallocation"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendAllocationAction"
-			method="execute">
+			class="com.adibrata.smartdealer.action.accmnt.suspend.allocation.SuspendAllocationAction"
+			method="save">
 			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
@@ -42,8 +60,8 @@
 			</result>
 		</action>
 		<action name="suspendreverse"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendReverseAction"
-			method="execute">
+			class="com.adibrata.smartdealer.action.accmnt.suspend.correction.SuspendCorrectionAction"
+			method="save">
 			
 			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>

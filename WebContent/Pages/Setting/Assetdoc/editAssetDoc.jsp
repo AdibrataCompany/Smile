@@ -10,20 +10,21 @@
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 </head>
 <body>
+
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
 		<!-- Main component for a primary marketing message or call to action -->
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetdoc.action" theme="simple" validate="true">
+		<s:form action="assetdoc_saveedit.action" theme="css_xhtml"
+			validate="true" method="post">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<h2>Asset Document Master</h2>
-					<s:hidden name="mode" id="mode" value="" />
-					<s:hidden name="id" />
-					<s:label name="message" id="message" />
+					<s:hidden name="mode" id="mode" />
+					<s:textfield name="id" />
 					<div align="left" class="form-group">
 						<label>Code</label>
 						<div align="left" class="form-inline">
@@ -49,13 +50,10 @@
 					<br>
 					<table width="100%">
 						<tr>
-							<td>
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Back</button>
-							</td>
+							<td><a href="assetdoc.action"><button
+										class="btn btn-sm btn-primary" type="button">Back</button></a></td>
 							<td align="right">
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Save</button>
+								<button class="btn btn-sm btn-primary" type="submit" name="submit">Save</button>
 							</td>
 						</tr>
 					</table>
@@ -63,7 +61,7 @@
 			</center>
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 	<!-- 	</div> -->
 
 </body>

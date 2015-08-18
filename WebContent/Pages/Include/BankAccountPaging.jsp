@@ -20,9 +20,9 @@
 		<%@include file="/Pages/Header.jsp"%>
 
 
-		<s:form action="suspendreceive.action" theme="simple">
+		<s:form action="banktransaction.action" theme="simple">
 			<center>
-				<h2>Suspend Receive - Bank Account</h2>
+				<h2>Bank Account</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<div class="table-responsive">
 					<table width="100%">
@@ -36,13 +36,6 @@
 							</select> <input type="text" name="searchvalue" placeholder="Search Value" />
 								<button class="btn btn-sm btn-primary" type="submit"
 									onclick="search()">Search</button></td>
-							<td align="right"><button class="btn btn-sm btn-success"
-									type="submit" onclick="select()">
-									<span class="glyphicon glyphicon-plus-sign"></span><br>Receive
-								</button></td>
-							<td align="right"><%@include
-									file="/Pages/Include/ReceiveEntry.jsp"%>
-							</td>
 						</tr>
 					</table>
 				</div>

@@ -21,7 +21,7 @@ import com.opensymphony.xwork2.Action;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class SuspendReverseAction extends BaseAction implements Action
+public class SuspendCorrectionAction extends BaseAction implements Action
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -60,7 +60,7 @@ public class SuspendReverseAction extends BaseAction implements Action
 		private Long totalrecord;
 		private String notes;
 		
-		public SuspendReverseAction() throws Exception
+		public SuspendCorrectionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.office = new Office();

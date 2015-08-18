@@ -17,20 +17,32 @@
 	<button class="btn btn-sm btn-success" type="submit" onclick="otherreceive()">
 		<span class="glyphicon glyphicon-plus-sign"></span><br>Other Receive
 	</button>
+	<button class="btn btn-sm btn-success" type="submit" onclick="advancetransaction()">
+		<span class="glyphicon glyphicon-plus-sign"></span><br>Advance Transaction
+	</button>
+	<button class="btn btn-sm btn-success" type="submit" onclick="advancetransaction()">
+		<span class="glyphicon glyphicon-plus-sign"></span><br>Petty Cash
+	</button>
 </body>
 
 <script type="text/javascript">
 	function paymentreceive() {
 		document.getElementById("mode").value = "paymentreceive";
-
 	}
 	function suspendreceive() {
-
 		document.getElementById("mode").value = "suspendreceive";
-
 	}
 	function otherreceive() {
 		document.getElementById("mode").value = "otherreceive";
+	}
+	function otherdisburse() {
+		document.getElementById("mode").value = "otherdisburse";
+	}
+	function advancetransaction() {
+		document.getElementById("mode").value = "advancetransaction";
+	}
+	function pettycashtransaction() {
+		document.getElementById("mode").value = "pettycashtransaction";
 	}
 </script>
 

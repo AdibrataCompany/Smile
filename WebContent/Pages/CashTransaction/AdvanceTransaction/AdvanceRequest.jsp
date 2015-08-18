@@ -26,6 +26,7 @@
 					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
 					<s:label name="message" id="message" />
+					<s:hidden name="bankaccountid" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
