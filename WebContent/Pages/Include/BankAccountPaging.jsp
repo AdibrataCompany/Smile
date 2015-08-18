@@ -40,6 +40,9 @@
 									type="submit" onclick="select()">
 									<span class="glyphicon glyphicon-plus-sign"></span><br>Receive
 								</button></td>
+							<td align="right"><%@include
+									file="/Pages/Include/ReceiveEntry.jsp"%>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -47,6 +50,14 @@
 				<s:label name="message"></s:label>
 				<br>
 				<div class="table-responsive">
+					<table>
+						<tr>
+							<td></td>
+							<td align="right"><%@include
+									file="/Pages/Include/ReceiveEntry.jsp"%>
+							</td>
+						</tr>
+					</table>
 					<table class="table table-bordered">
 						<tr>
 							<th style="text-align: center;">Bank Name</th>

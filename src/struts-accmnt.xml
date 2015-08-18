@@ -5,6 +5,27 @@
 <struts>
 	<package name="accmnt" extends="smartdealer-package"
 		namespace="/">
+			<action name="receivetransaction"
+			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
+			method="execute">
+			<result name="start">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="success">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="error">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="first">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="prev">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="next">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="last">/Pages/Include/BankAccountPaging.jsp
+			</result>
+		</action>
+		
 		<action name="paymentrecieve"
 			class="com.adibrata.smartdealer.action.accmnt.PaymentReceiveAction"
 			method="execute">
@@ -15,12 +36,9 @@
 			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="input">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
+	
 			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
