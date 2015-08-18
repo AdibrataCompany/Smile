@@ -4,44 +4,41 @@ package com.adibrata.smartdealer.action.repair;
  * @author Henry
  *
  */
-import java.util.List;
-
-import com.adibrata.smartdealer.model.Office;
-import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.model.ServiceDtl;
-import com.adibrata.smartdealer.model.ServiceHdr;
-import com.adibrata.smartdealer.service.repair.RepairService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.support.common.*;
+
+import com.adibrata.smartdealer.model.*;
+import com.adibrata.smartdealer.service.purchase.PurchaseInvoiceService;
+import com.adibrata.smartdealer.service.repair.RepairService;
+
 public class RepairAction extends ActionSupport implements Preparable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private List<ServiceDtl> lstServicedDtl;
-	private List<ServiceHdr> lstServiceHdr;
 	private String mode;
-	private Office office;
-	private Partner partner;
 	private RepairService repairService;
-	private ServiceDtl serviceDtl;
+	private Partner partner;
+	private Office office;
 	private ServiceHdr serviceHdr;
+	private ServiceDtl serviceDtl;
+	private List<ServiceHdr> lstServiceHdr;
+	private List<ServiceDtl> lstServicedDtl;
 
-	public RepairAction() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
 	public String execute() {
 		String strMode;
-		strMode = this.mode;
+		strMode = mode;
 
-		if (this.mode != null) {
+		if (mode != null) {
 			switch (strMode) {
-				case "search" :
-				default :
-					return "failed";
+			case "search":
+			default:
+				return "failed";
 			}
 		} else {
 			strMode = "start";
@@ -50,81 +47,59 @@ public class RepairAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @return the lstServicedDtl
-	 */
-	public List<ServiceDtl> getLstServicedDtl() {
-		return this.lstServicedDtl;
-	}
-
-	/**
-	 * @return the lstServiceHdr
-	 */
-	public List<ServiceHdr> getLstServiceHdr() {
-		return this.lstServiceHdr;
-	}
-
-	/**
 	 * @return the mode
 	 */
 	public String getMode() {
-		return this.mode;
-	}
-
-	/**
-	 * @return the office
-	 */
-	public Office getOffice() {
-		return this.office;
-	}
-
-	/**
-	 * @return the partner
-	 */
-	public Partner getPartner() {
-		return this.partner;
+		return mode;
 	}
 
 	/**
 	 * @return the repairService
 	 */
 	public RepairService getRepairService() {
-		return this.repairService;
+		return repairService;
 	}
 
 	/**
-	 * @return the serviceDtl
+	 * @return the partner
 	 */
-	public ServiceDtl getServiceDtl() {
-		return this.serviceDtl;
+	public Partner getPartner() {
+		return partner;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
 	}
 
 	/**
 	 * @return the serviceHdr
 	 */
 	public ServiceHdr getServiceHdr() {
-		return this.serviceHdr;
-	}
-
-	@Override
-	public void prepare() throws Exception {
-		// TODO Auto-generated method stub
-
+		return serviceHdr;
 	}
 
 	/**
-	 * @param lstServicedDtl
-	 *            the lstServicedDtl to set
+	 * @return the serviceDtl
 	 */
-	public void setLstServicedDtl(List<ServiceDtl> lstServicedDtl) {
-		this.lstServicedDtl = lstServicedDtl;
+	public ServiceDtl getServiceDtl() {
+		return serviceDtl;
 	}
 
 	/**
-	 * @param lstServiceHdr
-	 *            the lstServiceHdr to set
+	 * @return the lstServiceHdr
 	 */
-	public void setLstServiceHdr(List<ServiceHdr> lstServiceHdr) {
-		this.lstServiceHdr = lstServiceHdr;
+	public List<ServiceHdr> getLstServiceHdr() {
+		return lstServiceHdr;
+	}
+
+	/**
+	 * @return the lstServicedDtl
+	 */
+	public List<ServiceDtl> getLstServicedDtl() {
+		return lstServicedDtl;
 	}
 
 	/**
@@ -136,11 +111,11 @@ public class RepairAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param office
-	 *            the office to set
+	 * @param repairService
+	 *            the repairService to set
 	 */
-	public void setOffice(Office office) {
-		this.office = office;
+	public void setRepairService(RepairService repairService) {
+		this.repairService = repairService;
 	}
 
 	/**
@@ -152,11 +127,19 @@ public class RepairAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param repairService
-	 *            the repairService to set
+	 * @param office
+	 *            the office to set
 	 */
-	public void setRepairService(RepairService repairService) {
-		this.repairService = repairService;
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/**
+	 * @param serviceHdr
+	 *            the serviceHdr to set
+	 */
+	public void setServiceHdr(ServiceHdr serviceHdr) {
+		this.serviceHdr = serviceHdr;
 	}
 
 	/**
@@ -168,11 +151,29 @@ public class RepairAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param serviceHdr
-	 *            the serviceHdr to set
+	 * @param lstServiceHdr
+	 *            the lstServiceHdr to set
 	 */
-	public void setServiceHdr(ServiceHdr serviceHdr) {
-		this.serviceHdr = serviceHdr;
+	public void setLstServiceHdr(List<ServiceHdr> lstServiceHdr) {
+		this.lstServiceHdr = lstServiceHdr;
+	}
+
+	/**
+	 * @param lstServicedDtl
+	 *            the lstServicedDtl to set
+	 */
+	public void setLstServicedDtl(List<ServiceDtl> lstServicedDtl) {
+		this.lstServicedDtl = lstServicedDtl;
+	}
+
+	public RepairAction() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+
 	}
 
 }

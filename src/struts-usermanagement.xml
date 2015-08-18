@@ -7,7 +7,7 @@
 	<package name="usermanagement" extends="smartdealer-package"
 		namespace="/setting">
 		<action name="employee"
-			class="com.adibrata.smartdealer.action.usermanagement.EmployeeAction"
+			class="com.adibrata.smartdealer.action.usermanagement.employee.EmployeeAction"
 			method="execute">
 			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
@@ -31,7 +31,7 @@
 		</action>
 
 		<action name="menu"
-			class="com.adibrata.smartdealer.action.usermanagement.MenuAction"
+			class="com.adibrata.smartdealer.action.usermanagement.menu.MenuAction"
 			method="execute">
 			<result name="start">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
@@ -50,7 +50,7 @@
 			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 		</action>
 		<action name="role"
-			class="com.adibrata.smartdealer.action.usermanagement.RoleAction"
+			class="com.adibrata.smartdealer.action.usermanagement.role.RoleAction"
 			method="execute">
 			<result name="start">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
@@ -84,7 +84,7 @@
 			</result>
 		</action>
 		<action name="userregister"
-			class="com.adibrata.smartdealer.action.usermanagement.UserRegistrationAction"
+			class="com.adibrata.smartdealer.action.usermanagement.userregistration.UserRegistrationAction"
 			method="execute">
 			<result name="start">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>

@@ -12,47 +12,43 @@ package com.adibrata.smartdealer.action.purchase;
  * @author Henry
  *
  */
-import java.util.List;
-
-import com.adibrata.smartdealer.model.Office;
-import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.model.PurchaseInvoice;
-import com.adibrata.smartdealer.model.PurchaseOrderHdr;
-import com.adibrata.smartdealer.service.purchase.PurchaseInvoiceService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+
+import util.adibrata.framework.exceptionhelper.ExceptionEntities;
+import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.support.common.*;
+
+import com.adibrata.smartdealer.model.*;
+import com.adibrata.smartdealer.service.purchase.*;
 
 public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private String mode;
+	private PurchaseInvoiceService purchaseInvoiceService;
+	private Partner partner;
+	private Office office;
 	private List<PurchaseInvoice> lstPurchaseInvoice;
 	private List<PurchaseOrderHdr> lstPurchaseOrderHdr;
-	/**
-	 * 
-	 */
-	private String mode;
-	private Office office;
-	private Partner partner;
 	private PurchaseInvoice purchaseInvoice;
-	private PurchaseInvoiceService purchaseInvoiceService;
 
-	public PurchaseInvoiceAction() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
 	public String execute() {
 		String strMode;
-		strMode = this.mode;
+		strMode = mode;
 
-		if (this.mode != null) {
+		if (mode != null) {
 			switch (strMode) {
-				case "search" :
-				default :
-					return "failed";
+			case "search":
+			default:
+				return "failed";
 			}
 		} else {
 			strMode = "start";
@@ -61,58 +57,85 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @return the lstPurchaseInvoice
-	 */
-	public List<PurchaseInvoice> getLstPurchaseInvoice() {
-		return this.lstPurchaseInvoice;
-	}
-
-	/**
-	 * @return the lstPurchaseOrderHdr
-	 */
-	public List<PurchaseOrderHdr> getLstPurchaseOrderHdr() {
-		return this.lstPurchaseOrderHdr;
-	}
-
-	/**
 	 * @return the mode
 	 */
 	public String getMode() {
-		return this.mode;
-	}
-
-	/**
-	 * @return the office
-	 */
-	public Office getOffice() {
-		return this.office;
-	}
-
-	/**
-	 * @return the partner
-	 */
-	public Partner getPartner() {
-		return this.partner;
-	}
-
-	/**
-	 * @return the purchaseInvoice
-	 */
-	public PurchaseInvoice getPurchaseInvoice() {
-		return this.purchaseInvoice;
+		return mode;
 	}
 
 	/**
 	 * @return the purchaseInvoiceService
 	 */
 	public PurchaseInvoiceService getPurchaseInvoiceService() {
-		return this.purchaseInvoiceService;
+		return purchaseInvoiceService;
 	}
 
-	@Override
-	public void prepare() throws Exception {
-		// TODO Auto-generated method stub
+	/**
+	 * @return the partner
+	 */
+	public Partner getPartner() {
+		return partner;
+	}
 
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
+	}
+
+	/**
+	 * @return the lstPurchaseInvoice
+	 */
+	public List<PurchaseInvoice> getLstPurchaseInvoice() {
+		return lstPurchaseInvoice;
+	}
+
+	/**
+	 * @return the lstPurchaseOrderHdr
+	 */
+	public List<PurchaseOrderHdr> getLstPurchaseOrderHdr() {
+		return lstPurchaseOrderHdr;
+	}
+
+	/**
+	 * @return the purchaseInvoice
+	 */
+	public PurchaseInvoice getPurchaseInvoice() {
+		return purchaseInvoice;
+	}
+
+	/**
+	 * @param mode
+	 *            the mode to set
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	/**
+	 * @param purchaseInvoiceService
+	 *            the purchaseInvoiceService to set
+	 */
+	public void setPurchaseInvoiceService(
+			PurchaseInvoiceService purchaseInvoiceService) {
+		this.purchaseInvoiceService = purchaseInvoiceService;
+	}
+
+	/**
+	 * @param partner
+	 *            the partner to set
+	 */
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	/**
+	 * @param office
+	 *            the office to set
+	 */
+	public void setOffice(Office office) {
+		this.office = office;
 	}
 
 	/**
@@ -133,30 +156,6 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @param mode
-	 *            the mode to set
-	 */
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
-
-	/**
-	 * @param office
-	 *            the office to set
-	 */
-	public void setOffice(Office office) {
-		this.office = office;
-	}
-
-	/**
-	 * @param partner
-	 *            the partner to set
-	 */
-	public void setPartner(Partner partner) {
-		this.partner = partner;
-	}
-
-	/**
 	 * @param purchaseInvoice
 	 *            the purchaseInvoice to set
 	 */
@@ -164,13 +163,14 @@ public class PurchaseInvoiceAction extends ActionSupport implements Preparable {
 		this.purchaseInvoice = purchaseInvoice;
 	}
 
-	/**
-	 * @param purchaseInvoiceService
-	 *            the purchaseInvoiceService to set
-	 */
-	public void setPurchaseInvoiceService(
-			PurchaseInvoiceService purchaseInvoiceService) {
-		this.purchaseInvoiceService = purchaseInvoiceService;
+	public PurchaseInvoiceAction() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+
 	}
 
 }
