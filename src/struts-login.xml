@@ -8,12 +8,12 @@
 	<package name="smartdealer-package" extends="json-default"
 		namespace="/">
 		<action name="login"
-			class="com.adibrata.smartdealer.action.usermanagement.LoginAction"
+			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="execute">
 			<result name="start">/index.jsp</result>
 		</action>
 		<action name="signin"										
-			class="com.adibrata.smartdealer.action.usermanagement.LoginAction"
+			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="signin">
 			<result name="success" type="redirectAction">
 				<param name="actionName">home</param>
@@ -21,7 +21,7 @@
 			<result name="input">/index.jsp</result>
 		</action>
 		<action name="home"
-			class="com.adibrata.smartdealer.action.usermanagement.LoginAction"
+			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="home">
 			<result name="start">/Pages/Home.jsp</result>
 		</action>
