@@ -6,11 +6,11 @@
 	<package name="assetdoc" extends="smartdealer-package"
 		namespace="/setting">
 		<action name="assetdoc"
-			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
+			class="com.adibrata.smartdealer.action.setting.assetdoc.AssetDocAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="search">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
+			<result name="add">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="edit">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="savedel">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="first">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
@@ -18,50 +18,34 @@
 			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 		</action>
-		<action name="assetdoc_saveadd"
-			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
-			method="SaveAdd">
-			<result name="input">/Pages/Setting/Assetdoc/addAssetDoc.jsp</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">assetdoc</param>
-			</result>
-		</action>
-		<action name="assetdoc_saveedit"
-			class="com.adibrata.smartdealer.action.setting.AssetDocAction"
-			method="SaveEdit">
+
+		<action name="assetdoc_save"
+			class="com.adibrata.smartdealer.action.setting.assetdoc.AssetDocAction"
+			method="save">
 			<result name="input">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
-			<result name="success" type="redirectAction">
+			<result name="error">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
+			<result name="saveadd" type="redirectAction">
 				<param name="actionName">assetdoc</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">assetdoc</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
-
-	</package>
-
-	<package name="Setting" extends="smartdealer-package"
-		namespace="/setting">
 
 		<action name="assetmaster"
-			class="com.adibrata.smartdealer.action.setting.AssetMasterAction"
+			class="com.adibrata.smartdealer.action.setting.assetmaster.AssetMasterAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
-			</result>
-			<result name="success">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
-			</result>
-			<result name="error">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 			<result name="search">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
 			<result name="edit">/Pages/Setting/Assetmaster/editAssetMaster.jsp
 			</result>
-			<result name="del">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			<result name="savedel">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
-			<result name="saveadd">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
-			</result>
-			<result name="end">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
-			</result>
-			<result name="add">/Pages/Setting/Assetmaster/addAssetMaster.jsp
-			</result>
-			<result name="saveedit">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
+			<result name="add">/Pages/Setting/Assetmaster/editAssetMaster.jsp
 			</result>
 			<result name="first">/Pages/Setting/Assetmaster/pageAssetMaster.jsp
 			</result>
@@ -73,28 +57,35 @@
 			</result>
 		</action>
 
+		<action name="assetmaster_save"
+			class="com.adibrata.smartdealer.action.setting.assetmaster.AssetMasterAction"
+			method="save">
+			<result name="input">/Pages/Setting/Assetmaster/editAssetMaster.jsp
+			</result>
+			<result name="error">/Pages/Setting/Assetmaster/editAssetMaster.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">assetmaster</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">assetmaster</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="bankaccount"
-			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
+			class="com.adibrata.smartdealer.action.setting.bankaccount.BankAccountAction"
 			method="execute">
 			<result name="start">/Pages/Setting/BankAccount/pageBankAccount.jsp
-			</result>
-			<result name="success">/Pages/Setting/BankAccount/pageBankAccount.jsp
-			</result>
-			<result name="error">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="search">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
 			<result name="edit">/Pages/Setting/BankAccount/editBankAccount.jsp
 			</result>
-			<result name="del">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="savedel">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
-			<result name="saveadd">/Pages/Setting/BankAccount/pageBankAccount.jsp
-			</result>
-			<result name="end">/Pages/Setting/BankAccount/pageBankAccount.jsp
-			</result>
-			<result name="add">/Pages/Setting/BankAccount/addBankAccount.jsp
-			</result>
-			<result name="saveedit">/Pages/Setting/BankAccount/pageBankAccount.jsp
+			<result name="add">/Pages/Setting/BankAccount/editBankAccount.jsp
 			</result>
 			<result name="first">/Pages/Setting/BankAccount/pageBankAccount.jsp
 			</result>
@@ -106,46 +97,64 @@
 			</result>
 		</action>
 
+		<action name="bankaccount_save"
+			class="com.adibrata.smartdealer.action.setting.bankaccount.BankAccountAction"
+			method="save">
+			<result name="input">/Pages/Setting/BankAccount/editBankAccount.jsp
+			</result>
+			<result name="error">/Pages/Setting/BankAccount/editBankAccount.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">bankaccount</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">bankaccount</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="dealer"
-			class="com.adibrata.smartdealer.action.setting.DealerAction" method="execute">
+			class="com.adibrata.smartdealer.action.setting.dealer.DealerAction"
+			method="execute">
 			<result name="start">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="success">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="error">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="edit">/Pages/Setting/Dealer/editDealer.jsp</result>
-			<result name="del">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="saveadd">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="end">/Pages/Setting/Dealer/pageDealer.jsp</result>
-			<result name="add">/Pages/Setting/Dealer/addDealer.jsp</result>
-			<result name="saveedit">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="savedel">/Pages/Setting/Dealer/pageDealer.jsp</result>
+			<result name="add">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="first">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="prev">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="next">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="last">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
 
+		<action name="dealer_save"
+			class="com.adibrata.smartdealer.action.setting.dealer.DealerAction"
+			method="save">
+			<result name="input">/Pages/Setting/Dealer/editDealer.jsp</result>
+			<result name="error">/Pages/Setting/Dealer/editDealer.jsp</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">dealer</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">dealer</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="journalscheme"
-			class="com.adibrata.smartdealer.action.setting.JournalSchemeAction"
+			class="com.adibrata.smartdealer.action.setting.journalscheme.JournalSchemeAction"
 			method="execute">
 			<result name="start">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
-			</result>
-			<result name="success">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
-			</result>
-			<result name="error">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 			<result name="search">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 			<result name="edit">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-			<result name="del">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			<result name="savedel">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
-			<result name="saveadd">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
-			</result>
-			<result name="end">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
-			</result>
-			<result name="add">/Pages/Setting/JournalScheme/addJournalSchHdr.jsp
-			</result>
-			<result name="saveedit">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
+			<result name="add">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
 			<result name="detail">/Pages/Setting/JournalScheme/pageJournalSchDtl.jsp
 			</result>
@@ -161,92 +170,176 @@
 			</result>
 		</action>
 
+		<action name="journalscheme_save"
+			class="com.adibrata.smartdealer.action.setting.journalscheme.JournalSchemeAction"
+			method="save">
+			<result name="input">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
+			</result>
+			<result name="error">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">journalscheme</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">journalscheme</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="master"
-			class="com.adibrata.smartdealer.action.setting.MasterAction" method="execute">
+			class="com.adibrata.smartdealer.action.setting.master.MasterAction"
+			method="execute">
 			<result name="start">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="success">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="error">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="search">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="edit">/Pages/Setting/Master/editMaster.jsp</result>
-			<result name="del">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="saveadd">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="end">/Pages/Setting/Master/pageMaster.jsp</result>
-			<result name="add">/Pages/Setting/Master/addMaster.jsp</result>
-			<result name="saveedit">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="savedel">/Pages/Setting/Master/pageMaster.jsp</result>
+			<result name="add">/Pages/Setting/Master/editMaster.jsp</result>
 			<result name="first">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="prev">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="next">/Pages/Setting/Master/pageMaster.jsp</result>
 			<result name="last">/Pages/Setting/Master/pageMaster.jsp</result>
 		</action>
+
+		<action name="master_save"
+			class="com.adibrata.smartdealer.action.setting.master.MasterAction"
+			method="save">
+			<result name="input">/Pages/Setting/Master/editMaster.jsp
+			</result>
+			<result name="error">/Pages/Setting/Master/editMaster.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">master</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">master</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="office"
-			class="com.adibrata.smartdealer.action.setting.OfficeAction" method="execute">
+			class="com.adibrata.smartdealer.action.setting.office.OfficeAction"
+			method="execute">
 			<result name="start">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="success">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="error">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="search">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="edit">/Pages/Setting/Office/editOffice.jsp</result>
-			<result name="del">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="saveadd">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="end">/Pages/Setting/Office/pageOffice.jsp</result>
-			<result name="add">/Pages/Setting/Office/addOffice.jsp</result>
-			<result name="saveedit">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="savedel">/Pages/Setting/Office/pageOffice.jsp</result>
+			<result name="add">/Pages/Setting/Office/editOffice.jsp</result>
 			<result name="first">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="prev">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="next">/Pages/Setting/Office/pageOffice.jsp</result>
 			<result name="last">/Pages/Setting/Office/pageOffice.jsp</result>
 		</action>
+
+		<action name="office_save"
+			class="com.adibrata.smartdealer.action.setting.office.OfficeAction"
+			method="save">
+			<result name="input">/Pages/Setting/Office/editOffice.jsp
+			</result>
+			<result name="error">/Pages/Setting/Office/editOffice.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">office</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">office</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
+		<action name="taksasi"
+			class="com.adibrata.smartdealer.action.setting.taksasi.TaksasiAction"
+			method="execute">
+			<result name="start">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
+			<result name="savedel">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="add">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
+			<result name="first">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="prev">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="next">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+			<result name="last">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+		</action>
+
+		<action name="taksasi_save"
+			class="com.adibrata.smartdealer.action.setting.taksasi.TaksasiAction"
+			method="save">
+			<result name="input">/Pages/Setting/Taksasi/editTaksasi.jsp
+			</result>
+			<result name="error">/Pages/Setting/Taksasi/editTaksasi.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">taksasi</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">taksasi</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="workshop"
-			class="com.adibrata.smartdealer.action.setting.WorkshopAction"
+			class="com.adibrata.smartdealer.action.setting.workshop.WorkshopAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="success">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="error">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="search">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="edit">/Pages/Setting/Workshop/editWorkshop.jsp</result>
-			<result name="del">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="saveadd">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="end">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
-			<result name="add">/Pages/Setting/Workshop/addWorkshop.jsp</result>
-			<result name="saveedit">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="savedel">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
+			<result name="add">/Pages/Setting/Workshop/editWorkshop.jsp</result>
 			<result name="first">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="prev">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="next">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 			<result name="last">/Pages/Setting/Workshop/pageWorkshop.jsp</result>
 		</action>
+
+		<action name="workshop_save"
+			class="com.adibrata.smartdealer.action.setting.workshop.WorkshopAction"
+			method="save">
+			<result name="input">/Pages/Setting/Workshop/editWorkshop.jsp
+			</result>
+			<result name="error">/Pages/Setting/Workshop/editWorkshop.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">workshop</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">workshop</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
 		<action name="zipcode"
-			class="com.adibrata.smartdealer.action.setting.ZipCodeAction" method="execute">
+			class="com.adibrata.smartdealer.action.setting.zipcode.ZipCodeAction"
+			method="execute">
 			<result name="start">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="success">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="error">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="search">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="edit">/Pages/Setting/ZipCode/editZipCode.jsp</result>
-			<result name="del">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="saveadd">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="end">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
-			<result name="add">/Pages/Setting/ZipCode/addZipCode.jsp</result>
-			<result name="saveedit">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="savedel">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
+			<result name="add">/Pages/Setting/ZipCode/editZipCode.jsp</result>
 			<result name="first">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="prev">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="next">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 			<result name="last">/Pages/Setting/ZipCode/pageZipCode.jsp</result>
 		</action>
 
-		<action name="taksasi"
-			class="com.adibrata.smartdealer.action.setting.TaksasiAction" method="execute">
-			<result name="start">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="success">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="error">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="search">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="edit">/Pages/Setting/Taksasi/editTaksasi.jsp</result>
-			<result name="del">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="saveadd">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="end">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="add">/Pages/Setting/Taksasi/addTaksasi.jsp</result>
-			<result name="saveedit">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="first">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="prev">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="next">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
-			<result name="last">/Pages/Setting/Taksasi/pageTaksasi.jsp</result>
+		<action name="zipcode_save"
+			class="com.adibrata.smartdealer.action.setting.zipcode.ZipCodeAction"
+			method="save">
+			<result name="input">/Pages/Setting/ZipCode/editZipCode.jsp
+			</result>
+			<result name="error">/Pages/Setting/ZipCode/editZipCode.jsp
+			</result>
+			<result name="saveadd" type="redirectAction">
+				<param name="actionName">zipcode</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="saveedit" type="redirectAction">
+				<param name="actionName">zipcode</param>
+				<param name="message">${message}</param>
+			</result>
 		</action>
 	</package>
 </struts>
