@@ -11,5 +11,6 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 public interface PDCReceiveService extends SeviceBase
 	{
-
-}
+		public void SavePDC(PdcHdr hdr, List<PdcDtl> dtl) throws Exception;
+		
+	}
