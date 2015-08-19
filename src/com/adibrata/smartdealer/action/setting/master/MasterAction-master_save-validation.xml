@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="mastertypecode">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="mastercode">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="mastervalue">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+</validators>

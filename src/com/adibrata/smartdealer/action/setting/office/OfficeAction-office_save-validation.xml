@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="handphone">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="type">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="address">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="rt">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="rw">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="kelurahan">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="kecamatan">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="city">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="zipcode">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="areaphone1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="phoneno1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="areaphone2">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="phone2">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="areafax">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+	<field name="faxno">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>This field is required</message>
+		</field-validator>
+	</field>
+</validators>
