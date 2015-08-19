@@ -7,9 +7,8 @@
 		<sql-type jdbc-type="NUMERIC" hibernate-type="Double" />
 		<sql-type jdbc-type="CHAR" hibernate-type="String" />
 		<sql-type jdbc-type="VARBINARY" hibernate-type="Byte[]" />
-		
 	</type-mapping>
- <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
+  <table-filter match-catalog="SmartDealer" match-name="AccountPayable"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCash"/>
   <table-filter match-catalog="SmartDealer" match-name="AdvanceCashReversal"/>
   <table-filter match-catalog="SmartDealer" match-name="AgmntAssetEmployeeInfo"/>
@@ -24,6 +23,7 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatInfoDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntBankStatementInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntColl"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntCrossDefault"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntEmployeeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntFund"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntGoLive"/>
@@ -37,6 +37,8 @@
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMailingInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntMnt"/>
   <table-filter match-catalog="SmartDealer" match-name="AgrmntReffInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntSuppEmplInfo"/>
+  <table-filter match-catalog="SmartDealer" match-name="AgrmntTc"/>
   <table-filter match-catalog="SmartDealer" match-name="Application"/>
   <table-filter match-catalog="SmartDealer" match-name="AssetAttribute"/>
   <table-filter match-catalog="SmartDealer" match-name="AssetCategory"/>
@@ -81,6 +83,7 @@
   <table-filter match-catalog="SmartDealer" match-name="JrnlDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="JrnlHdr"/>
   <table-filter match-catalog="SmartDealer" match-name="Leasing"/>
+  <table-filter match-catalog="SmartDealer" match-name="Marketing"/>
   <table-filter match-catalog="SmartDealer" match-name="MasterType"/>
   <table-filter match-catalog="SmartDealer" match-name="MsBigMenuList"/>
   <table-filter match-catalog="SmartDealer" match-name="MsMenu"/>
@@ -122,6 +125,8 @@
   <table-filter match-catalog="SmartDealer" match-name="PersCustTrusteeInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="PettyCashDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="PettyCashHdr"/>
+  <table-filter match-catalog="SmartDealer" match-name="Product"/>
+  <table-filter match-catalog="SmartDealer" match-name="ProductOffering"/>
   <table-filter match-catalog="SmartDealer" match-name="PurchaseInvoice"/>
   <table-filter match-catalog="SmartDealer" match-name="PurchaseOrderDtl"/>
   <table-filter match-catalog="SmartDealer" match-name="PurchaseOrderHdr"/>
@@ -140,11 +145,13 @@
   <table-filter match-catalog="SmartDealer" match-name="ServiceItem"/>
   <table-filter match-catalog="SmartDealer" match-name="Stock"/>
   <table-filter match-catalog="SmartDealer" match-name="StockDocument"/>
+  <table-filter match-catalog="SmartDealer" match-name="SuppEmplInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="Supplier"/>
   <table-filter match-catalog="SmartDealer" match-name="SupplierAccInfo"/>
   <table-filter match-catalog="SmartDealer" match-name="SuspendAllocation"/>
   <table-filter match-catalog="SmartDealer" match-name="SuspendReceive"/>
   <table-filter match-catalog="SmartDealer" match-name="SuspendReverse"/>
+  <table-filter match-catalog="SmartDealer" match-name="TCMaster"/>
   <table-filter match-catalog="SmartDealer" match-name="Taksasi"/>
   <table-filter match-catalog="SmartDealer" match-name="TransJob"/>
   <table-filter match-catalog="SmartDealer" match-name="TrxConfigDtl"/>
