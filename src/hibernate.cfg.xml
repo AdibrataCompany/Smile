@@ -33,6 +33,7 @@
         <mapping class="com.adibrata.smartdealer.model.MsMenu" />
         <mapping class="com.adibrata.smartdealer.model.PersCust" />
         <mapping class="com.adibrata.smartdealer.model.PdcHistory" />
+        <mapping class="com.adibrata.smartdealer.model.SuppEmplInfo" />
         <mapping class="com.adibrata.smartdealer.model.Taksasi" />
         <mapping class="com.adibrata.smartdealer.model.PettyCashHdr" />
         <mapping class="com.adibrata.smartdealer.model.BucketAgingReport" />
@@ -41,13 +42,16 @@
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOffice" />
+        <mapping class="com.adibrata.smartdealer.model.Marketing" />
         <mapping class="com.adibrata.smartdealer.model.DailyAraging" />
         <mapping class="com.adibrata.smartdealer.model.OtherRcvHdr" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsCust" />
         <mapping class="com.adibrata.smartdealer.model.Stock" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsInsco" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntSuppEmplInfo" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustContactInfo" />
         <mapping class="com.adibrata.smartdealer.model.PayReqHdr" />
+        <mapping class="com.adibrata.smartdealer.model.Tcmaster" />
         <mapping class="com.adibrata.smartdealer.model.InsCompanyOfficeFee" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustComptInfo" />
         <mapping class="com.adibrata.smartdealer.model.Sales" />
@@ -68,6 +72,7 @@
         <mapping class="com.adibrata.smartdealer.model.EntrustHdr" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustLegalInfo" />
         <mapping class="com.adibrata.smartdealer.model.PaymentVoucher" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntCrossDefault" />
         <mapping class="com.adibrata.smartdealer.model.AdvanceCash" />
         <mapping class="com.adibrata.smartdealer.model.Currency" />
         <mapping class="com.adibrata.smartdealer.model.PurchaseOrderHdr" />
@@ -107,6 +112,7 @@
         <mapping class="com.adibrata.smartdealer.model.CoyCust" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
+        <mapping class="com.adibrata.smartdealer.model.Product" />
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInvoice" />
         <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
@@ -115,6 +121,7 @@
         <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatementInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMailingInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetCategory" />
+        <mapping class="com.adibrata.smartdealer.model.ProductOffering" />
         <mapping class="com.adibrata.smartdealer.model.ServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.PayHistHdr" />
         <mapping class="com.adibrata.smartdealer.model.SalesInvoice" />
@@ -141,6 +148,7 @@
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseDtl" />
         <mapping class="com.adibrata.smartdealer.model.PayReqDtl" />
         <mapping class="com.adibrata.smartdealer.model.TrxConfigHdr" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntTc" />
         <mapping class="com.adibrata.smartdealer.model.PdcHdr" />
         <mapping class="com.adibrata.smartdealer.model.AgmntAssetEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.EarlyTermination" />

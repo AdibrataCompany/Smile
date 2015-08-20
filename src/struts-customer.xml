@@ -18,6 +18,8 @@
 			<result name="prev">/Pages/Customer/Paging.jsp</result>
 			<result name="next">/Pages/Customer/Paging.jsp</result>
 			<result name="last">/Pages/Customer/Paging.jsp</result>
+
+			<result name="app">/Pages/Credit/ApplicationData/Paging.jsp</result>
 		</action>
 
 		<action name="perscust"
