@@ -25,10 +25,8 @@
 				<div class="col-md-4">
 
 					<h2>Employee Master</h2>
-					<s:hidden name="mode" id="mode" value="" />
-					<s:hidden name="id" />
-					<s:label name="message" id="message" />
-
+					<input type="text" name="mode" id="mode"
+						style="visibility: hidden;"></input>
 					<table class="table table-striped">
 						<tr>
 							<td>Kode</td>

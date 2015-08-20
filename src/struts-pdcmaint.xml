@@ -81,24 +81,5 @@
 			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
-		<action name="pdcbounce"
-			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.bounce.PdcBounceAction"
-			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-		</action>
 	</package>
 </struts>
