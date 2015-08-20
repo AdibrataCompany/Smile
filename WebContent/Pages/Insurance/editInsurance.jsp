@@ -20,7 +20,7 @@
 			<center>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<h2>Office</h2>
+					<h2>INSURANCE</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
 					<s:hidden name="id" />
@@ -39,11 +39,63 @@
 								class="form-control" />
 						</div>
 					</div>
-					<div align="left" class="form-group">
-						<label>Office Type</label>
-						<div align="left" class="form-inline">
-							<s:textfield name="type" style="width:100px" class="form-control" />
-
+					<br>
+					<h4>CONTACT PERSON</h4>
+					<div>
+						<div align="left" class="form-group">
+							<label>Contact Person</label>
+							<div align="left" class="form-inline">
+								<s:textfield name="person" style="width:150px"
+									class="form-control" />
+							</div>
+						</div>
+						<div>
+						<div align="left" class="form-group">
+							<label>Contact Person Title</label>
+							<div align="left" class="form-inline">
+								<s:textfield name="persontitle" style="width:150px"
+									class="form-control" />
+							</div>
+						</div>
+						<div>
+						<div align="left" class="form-group">
+							<label>Mobile Phone</label>
+							<div align="left" class="form-inline">
+								<s:textfield name="mobilephone" style="width:150px"
+									class="form-control" />
+							</div>
+						</div>
+						<div>
+						<div align="left" class="form-group">
+							<label>Email</label>
+							<div align="left" class="form-inline">
+								<s:textfield name="email" style="width:150px"
+									class="form-control" />
+							</div>
+						</div>
+						<br>
+						<h4>JOINT DATE</h4>
+						<div>
+						<div align="left" class="form-group">
+							<div align="left" class="form-inline">
+								<%@include file="/Pages/Include/ValueDate.jsp"%>
+							</div>
+						</div>
+						<div>
+						<div align="left" class="form-group">
+							<label>PKS Number</label>
+							<div align="left" class="form-inline">
+								<s:textfield name="pksno" style="width:150px"
+									class="form-control" />
+							</div>
+						</div>
+						<div>
+						<div align="left" class="form-group">
+							<label>Is Active</label>
+							<div align="left" class="form-inline">
+								<s:checkbox name="active" style="align:left"
+								placeholder="Is Active" class="form-control" />
+							</div>
 						</div>
 					</div>
 					<br>
@@ -60,11 +112,9 @@
 								</s:else></td>
 						</tr>
 					</table>
-				</div>
 			</center>
 		</s:form>
 	</div>
-
 </body>
 <script type="text/javascript">
 	function Search() {
