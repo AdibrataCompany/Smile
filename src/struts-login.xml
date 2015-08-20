@@ -12,7 +12,7 @@
 			method="execute">
 			<result name="start">/index.jsp</result>
 		</action>
-		<action name="signin"										
+		<action name="signin"
 			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="signin">
 			<result name="success" type="redirectAction">
