@@ -18,13 +18,14 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="office_save.action" theme="simple">
+		<s:form action="office.action" theme="simple">
 			<center>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<h2>Office</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<s:hidden name="id" />
 					<br>
 					<div align="left" class="form-group">
@@ -51,29 +52,28 @@
 					<br>
 					<table width="100%">
 						<tr>
-							<td><a href="office.action"><button
-										class="btn btn-sm btn-default" type="button">BACK</button></a></td>
-							<td align="right"><s:if test="mode=='edit'">
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveedit()">SAVE</button>
-								</s:if> <s:else>
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveadd()">SAVE</button>
-								</s:else></td>
+							<td>
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="end()">Back</button>
+							</td>
+							<td align="right">
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="saveedit()">Save</button>
+							</td>
 						</tr>
 					</table>
 				</div>
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {
 		document.getElementById("mode").value = "saveedit";
 	}
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
+	function end() {
+		document.getElementById("mode").value = "end";
 	}
 </script>
 </html>

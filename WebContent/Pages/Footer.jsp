@@ -41,29 +41,4 @@
 <!-- <script type="text/javascript" language="javascript" src="/Smile/Pages/style/js/ie10-viewport-bug-workaround.js"></script> -->
 <script  type="text/javascript" language="javascript" src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
-
-<script type="text/javascript">
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-	function save(param) {
-		document.getElementById("mode").value = param;
-	}
-	function search() {
-		document.getElementById("mode").value = "search";
-	}
-	function first() {
-		document.getElementById("mode").value = "first";
-	}
-	function prev() {
-		document.getElementById("mode").value = "prev";
-	}
-	function next() {
-		document.getElementById("mode").value = "next";
-	}
-	function last() {
-		document.getElementById("mode").value = "last";
-	}
-</script>
-
 </html>

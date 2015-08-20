@@ -18,33 +18,34 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="bankaccount_save.action" theme="simple">
+		<s:form action="bankaccount.action" theme="simple">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 
 					<h2>Bank Account</h2>
 					<s:hidden name="id" />
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
+					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 					<div align="left" class="form-group">
 						<label>Bank Name</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankname" style="width:95%"
+							<s:textfield name="bankName" style="width:95%"
 								placeholder="Bank Name" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Bank Account Code</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankaccountcode" style="width:95%"
+							<s:textfield name="bankAccountCode" style="width:95%"
 								placeholder="Bank Account Code" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Bank Account Name</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="bankaccountname" style="width:95%"
+							<s:textfield name="bankAccountName" style="width:95%"
 								placeholder="Bank Account Name" class="form-control" />
 						</div>
 					</div>
@@ -75,29 +76,28 @@
 					<br>
 					<table width="100%">
 						<tr>
-							<td><a href="bankaccount.action"><button
-										class="btn btn-sm btn-default" type="button">BACK</button></a></td>
-							<td align="right"><s:if test="mode=='edit'">
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveedit()">SAVE</button>
-								</s:if> <s:else>
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveadd()">SAVE</button>
-								</s:else></td>
+							<td>
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="end()">Back</button>
+							</td>
+							<td align="right">
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="saveedit()">Save</button>
+							</td>
 						</tr>
 					</table>
 				</div>
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function saveedit() {
 		document.getElementById("mode").value = "saveedit";
 	}
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
+	function end() {
+		document.getElementById("mode").value = "end";
 	}
 </script>
 </html>

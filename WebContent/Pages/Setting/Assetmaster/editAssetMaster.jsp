@@ -18,35 +18,35 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetmaster_save.action" theme="simple">
+		<s:form action="assetmaster.action" theme="simple">
 			<center>
 
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 
 					<h2>Asset Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
+					<s:label name="message" id="message" />
 
 					<div align="left" class="form-group">
 						<label>Brand</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="assetbrand" style="width:95%"
+							<s:textfield name="assetBrand" style="width:95%"
 								placeholder="Asset Brand" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Type</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="assettype" style="width:95%"
+							<s:textfield name="assetType" style="width:95%"
 								placeholder="Asset Type" class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Model</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="assetmodel" style="width:95%"
+							<s:textfield name="assetModel" style="width:95%"
 								placeholder="Asset Model" class="form-control" />
 						</div>
 					</div>
@@ -54,19 +54,37 @@
 
 						<div align="left" class="form-inline">
 							<label>Active</label>
-							<s:checkbox name="isactive" style="align:left"
+							<s:checkbox name="isActive" style="align:left"
 								placeholder="Active" class="form-control" />
 						</div>
 					</div>
 
 					<br>
-						<%@include file="/Pages/Include/SubmitButton.jsp"%>
+					<table width="100%">
+						<tr>
+							<td>
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="end()">Back</button>
+							</td>
+							<td align="right">
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="saveedit()">Save</button>
+							</td>
+						</tr>
+					</table>
 
 				</div>
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
-
+<script type="text/javascript">
+	function saveedit() {
+		document.getElementById("mode").value = "saveedit";
+	}
+	function end() {
+		document.getElementById("mode").value = "end";
+	}
+</script>
 </html>
