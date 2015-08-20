@@ -18,7 +18,7 @@
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="prev()">
 					<span class="glyphicon glyphicon-backward"></span>
-				</button> <s:textfield style="text-align: center; width:50px" name="pageNumber" />
+				</button> <s:textfield style="text-align: center;" name="pageNumber" size="4" />
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="next()">
 					<span class="glyphicon glyphicon-forward"></span>
@@ -31,24 +31,11 @@
 		</tr>
 		<tr>
 			<td align="center">
-				<button class="btn btn-sm btn-primary" type="submit" 
+				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="search()">GO</button>
 			</td>
 		</tr>
 	</table>
 </body>
-<script type="text/javascript">
-	function first() {
-		document.getElementById("mode").value = "first";
-	}
-	function prev() {
-		document.getElementById("mode").value = "prev";
-	}
-	function next() {
-		document.getElementById("mode").value = "next";
-	}
-	function last() {
-		document.getElementById("mode").value = "last";
-	}
-</script>
+
 </html>
