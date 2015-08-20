@@ -23,58 +23,52 @@
 		<s:form action="zipcode.action" theme="simple">
 			<center>
 				<h2>Zip Code</h2>
-				<s:hidden name="mode" id="mode" value="" />
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<table width="100%">
+					<tr>
+						<td width="10%">Pencarian</td>
+						<td><select name="searchcriteria">
+								<option value="">Parameter</option>
+								<option value="kelurahan">Kelurahan</option>
+								<option value="kecamatan">Kecamatan</option>
+								<option value="city">City</option>
+								<option value="zipCode">Zip Code</option>
+						</select> <input name="searchvalue" placeholder="Masukan Nilai" />
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="search()">Cari</button></td>
 
-				<s:label name="message" id="message" />
-				<div class="table-responsive">
-					<table width="100%">
-						<tr>
-							<td width="10%">Pencarian</td>
-							<td><select name="searchcriteria">
-									<option value="">Parameter</option>
-									<option value="kelurahan">Kelurahan</option>
-									<option value="kecamatan">Kecamatan</option>
-									<option value="city">City</option>
-									<option value="zipCode">Zip Code</option>
-							</select> <input name="searchvalue" placeholder="Masukan Nilai" />
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="search()">Cari</button></td>
+						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 
-							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
-
-						</tr>
-					</table>
-				</div>
+					</tr>
+				</table>
 				<br>
 				<s:label name="message"></s:label>
 				<br>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<tr>
-							<th style="text-align: center;">Kelurahan</th>
-							<th style="text-align: center;">Kecamatan</th>
-							<th style="text-align: center;">City</th>
-							<th style="text-align: center;">Zip Code</th>
-							<th style="text-align: center;" width="5%">Pilih</th>
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;">Kelurahan</th>
+						<th style="text-align: center;">Kecamatan</th>
+						<th style="text-align: center;">City</th>
+						<th style="text-align: center;">Zip Code</th>
+						<th style="text-align: center;" width="5%">Pilih</th>
+					</tr>
+					<s:iterator value="lstZipCode">
+						<tr id="row_${id}">
+							<td>${kelurahan}</td>
+							<td>${kecamatan}</td>
+							<td>${city}</td>
+							<td>${zipCode}</td>
+							<td style="text-align: center;"><input type="radio"
+								id="${id}" checked /></td>
 						</tr>
-						<s:iterator value="lstZipCode">
-							<tr id="row_${id}">
-								<td>${kelurahan}</td>
-								<td>${kecamatan}</td>
-								<td>${city}</td>
-								<td>${zipCode}</td>
-								<td style="text-align: center;"><input type="radio"
-									id="${id}" checked /></td>
-							</tr>
-						</s:iterator>
-					</table>
-				</div>
+					</s:iterator>
+				</table>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>
 
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 </body>
 <script type="text/javascript">
 	function search() {
