@@ -12,61 +12,57 @@
 
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
+		<!-- Main component for a primary marketing message or call to action -->
+		<!-- 	<div class="jumbotron"> -->
+		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="inscoyregsave.action" theme="simple">
-			<h2>Insurance Company Master</h2>
-			<s:hidden name="mode" id="mode" value="" />
-			<s:label name="massage" id="massage" />
-			<s:hidden name="id"/>
-			<div class="table-responsive">
-				<table width="30%">
-					<tr>
-						<td>
-							<div align="left" class="form-group">
-								<label>Code</label>
-								<div align="left" class="form-inline">
-									<s:textfield name="documentcode" style="width:95%"
-										placeholder="Asset Document Code" class="form-control" />
-								</div>
-							</div>
-							<div align="left" class="form-group">
-								<label>Name </label>
-								<div align="left" class="form-inline">
-									<s:textfield name="documentname" style="width:95%"
-										placeholder="Asset Document Name" class="form-control" />
-								</div>
-							</div>
+			<center>
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h2>Office</h2>
+					<input type="text" name="mode" id="mode"
+						style="visibility: hidden;"></input>
+					<s:hidden name="id" />
+					<br>
+					<div align="left" class="form-group">
+						<label>Name</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="name" style="width:75%" class="form-control" />
+						</div>
+					</div>
+					<%@include file="/Pages/Include/Address.jsp"%>
+					<div align="left" class="form-group">
+						<label>Handphone</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="handphone" style="width:150px"
+								class="form-control" />
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Office Type</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="type" style="width:100px" class="form-control" />
 
-							<div align="left" class="form-group">
-								<label>Asset Type </label>
-								<div align="left" class="form-inline">
-									<s:select name="assettype" style="width:95%" headerKey=""
-										headerValue="Select One" list="#{'Others':'Others'}"
-										class="form-control" />
-								</div>
-							</div> <br>
-							<table width="100%">
-								<tr>
-									<td><a href="assetdoc.action"><button
-												class="btn btn-sm btn-default" type="button">BACK</button></a></td>
-									<td align="right">
-									<s:if test="mode=='edit'">
-											<button class="btn btn-sm btn-primary" type="submit"
-												onclick="save('saveedit')">SAVE</button>
-										</s:if> <s:else>
-											<button class="btn btn-sm btn-primary" type="submit"
-												onclick="save('saveadd')">SAVE</button>
-										</s:else></td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<%@include file="/Pages/Paging.jsp"%>
-
+						</div>
+					</div>
+					<br>
+					<table width="100%">
+						<tr>
+							<td><a href="inscoyreg.action"><button
+										class="btn btn-sm btn-default" type="button">BACK</button></a></td>
+							<td align="right"><s:if test="mode=='edit'">
+									<button class="btn btn-sm btn-primary" type="submit"
+										onclick="saveedit()">SAVE</button>
+								</s:if> <s:else>
+									<button class="btn btn-sm btn-primary" type="submit"
+										onclick="saveadd()">SAVE</button>
+								</s:else></td>
+						</tr>
+					</table>
+				</div>
+			</center>
 		</s:form>
-		<%@include file="/Pages/Footer.jsp"%>
 	</div>
 
 </body>
@@ -77,6 +73,5 @@
 	function Save(param) {
 		document.getElementById("mode").value = param;
 	}
-	
 </script>
 </html>

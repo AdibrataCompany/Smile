@@ -13,7 +13,7 @@
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="inscoy.action" theme="simple">
+		<s:form action="inscoyreg.action" theme="simple">
 			<h2>Insurance Company Master</h2>
 			<s:hidden name="mode" id="mode" value="" />
 			<s:label name="massage" id="massage" />
@@ -30,6 +30,14 @@
 									<option value="rw">RW</option>
 									<option value="kelurahan">Kelurahan</option>
 									<option value="kecamatan">Kecamatan</option>
+									<option value="city">City</option>
+									<option value="zipcode">Zipcode</option>
+									<option value="areaphone1">Area Phone 1</option>
+									<option value="phoneno1">Phone 1</option>
+									<option value="areaphone2">Area Phone 2</option>
+									<option value="phoneno2">Phone 2</option>
+									<option value="areafax">Area Fax</option>
+									<option value="faxno">No Fax</option>
 									<option value="handphone">Handphone</option>
 								</select>
 								<s:textfield name="searchvalue" style="width:200px"
@@ -54,6 +62,14 @@
 						<th style="text-align: center;">RW</th>
 						<th style="text-align: center;">Kelurahan</th>
 						<th style="text-align: center;">Kecamatan</th>
+						<th style="text-align: center;">City</th>
+						<th style="text-align: center;">Zipcode</th>
+						<th style="text-align: center;">Area Phone 1</th>
+						<th style="text-align: center;">Phone 1</th>
+						<th style="text-align: center;">Area Phone 2</th>
+						<th style="text-align: center;">Phone 2</th>
+						<th style="text-align: center;">Area Fax</th>
+						<th style="text-align: center;">No Fax</th>
 						<th style="text-align: center;">Handphone</th>
 					</tr>
 					<s:iterator value="">
@@ -64,9 +80,17 @@
 							<td>${rw}</td>
 							<td>${kelurahan}</td>
 							<td>${kecamatan}</td>
+							<td>${city}</td>
+							<td>${zipcode}</td>
+							<td>${areaphone1}</td>
+							<td>${phoneno1}</td>
+							<td>${areaphone2}</td>
+							<td>${phoneno2}</td>
+							<td>${areafax}</td>
+							<td>${faxno}</td>
 							<td>${handphone}</td>
 							<td colspan="2" style="text-align: center;"><input
-									type="radio" name="id" value="${id}" /></td>
+								type="radio" name="id" value="${id}" /></td>
 						</tr>
 					</s:iterator>
 				</table>
