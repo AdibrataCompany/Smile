@@ -9,7 +9,9 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface AgreementService extends SeviceBase
 	{
 		public List<AgreementList> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception;
-
+		
 		public List<AgreementList> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 		
+		public AgreementList AgreementInfo(Long id) throws Exception;
+
 	}

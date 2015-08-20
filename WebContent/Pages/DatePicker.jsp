@@ -14,7 +14,7 @@
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
-	<td width="20%">Tanggal Transaksi</td>
+	<td width="20%">Value Date</td>
 	<td width="30%">
 		<div class="input-append date">
 			<s:textfield name="valuedate" class="span2" />
