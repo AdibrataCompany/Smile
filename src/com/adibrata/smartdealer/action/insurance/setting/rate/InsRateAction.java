@@ -23,18 +23,18 @@ public class InsRateAction extends BaseAction implements Preparable
 		private String message;
 		Partner partner;
 		Office office;
-		
+
 		public InsRateAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
-
+				
 			}
-			
+
 		@Override
 		public String execute()
 			{
@@ -77,7 +77,7 @@ public class InsRateAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								case "first" :
 									this.pageNumber = 1;
 									try
@@ -129,10 +129,9 @@ public class InsRateAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									break;
-
 							}
 					}
 				else
@@ -151,11 +150,11 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 *
 		 */
-		
+
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -172,7 +171,7 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
@@ -181,34 +180,34 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						
+
 						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = this.assetDocMasterService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		public void ViewData() throws Exception
 			{
 				this.assetDocMaster = new AssetDocMaster();
@@ -236,7 +235,7 @@ public class InsRateAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -247,7 +246,7 @@ public class InsRateAction extends BaseAction implements Preparable
 						assetDocMaster.setDocumentName(this.getDocumentName());
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
-						
+
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
 						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -263,7 +262,7 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -290,7 +289,7 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
 				try
@@ -299,9 +298,9 @@ public class InsRateAction extends BaseAction implements Preparable
 						if (this.getId() == null)
 							{
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
-								
+
 								assetDocMaster.setId(this.getId());
-								
+
 								this.assetDocMasterService.SaveDel(assetDocMaster);
 								this.status = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
@@ -323,7 +322,7 @@ public class InsRateAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -331,7 +330,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -340,7 +339,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -348,7 +347,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -357,7 +356,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -365,7 +364,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -374,7 +373,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -382,7 +381,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -391,7 +390,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -399,7 +398,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -408,7 +407,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -416,7 +415,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -425,7 +424,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -433,7 +432,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -442,7 +441,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -450,7 +449,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -459,7 +458,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -467,7 +466,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -475,7 +474,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -484,7 +483,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -492,7 +491,7 @@ public class InsRateAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set

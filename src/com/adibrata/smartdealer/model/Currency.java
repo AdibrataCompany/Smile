@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+// Generated Aug 20, 2015 1:54:39 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -40,7 +40,7 @@ public class Currency implements java.io.Serializable
 		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 		private Set<Agrmnt> agrmnts_1 = new HashSet<Agrmnt>(0);
 		private Set<DailyAraging> dailyAragings = new HashSet<DailyAraging>(0);
-		private Set<InsCompanyOfficeFee> insCompanyOfficeFees = new HashSet<InsCompanyOfficeFee>(0);
+		private Set<InsCoOfficeFee> insCoOfficeFees = new HashSet<InsCoOfficeFee>(0);
 		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		
 		public Currency()
@@ -54,7 +54,7 @@ public class Currency implements java.io.Serializable
 			}
 			
 		public Currency(long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
-		        Set<CashBankHdr> cashBankHdrs, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCompanyOfficeFee> insCompanyOfficeFees, Set<CashierHistory> cashierHistories)
+		        Set<CashBankHdr> cashBankHdrs, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCoOfficeFee> insCoOfficeFees, Set<CashierHistory> cashierHistories)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -72,7 +72,7 @@ public class Currency implements java.io.Serializable
 				this.cashBankHdrs = cashBankHdrs;
 				this.agrmnts_1 = agrmnts_1;
 				this.dailyAragings = dailyAragings;
-				this.insCompanyOfficeFees = insCompanyOfficeFees;
+				this.insCoOfficeFees = insCoOfficeFees;
 				this.cashierHistories = cashierHistories;
 			}
 			
@@ -258,14 +258,14 @@ public class Currency implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
-		public Set<InsCompanyOfficeFee> getInsCompanyOfficeFees()
+		public Set<InsCoOfficeFee> getInsCoOfficeFees()
 			{
-				return this.insCompanyOfficeFees;
+				return this.insCoOfficeFees;
 			}
 			
-		public void setInsCompanyOfficeFees(Set<InsCompanyOfficeFee> insCompanyOfficeFees)
+		public void setInsCoOfficeFees(Set<InsCoOfficeFee> insCoOfficeFees)
 			{
-				this.insCompanyOfficeFees = insCompanyOfficeFees;
+				this.insCoOfficeFees = insCoOfficeFees;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
