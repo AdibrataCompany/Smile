@@ -11,4 +11,5 @@ import com.adibrata.smartdealer.service.SeviceBase;
  */
 public interface ApplicationDataService extends SeviceBase
 	{
+		
 	}
