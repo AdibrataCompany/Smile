@@ -117,6 +117,17 @@ public class CustomerAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
+								case "app" :
+									try
+										{
+											strMode = this.View();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "first" :
 									this.pageNumber = 1;
 									try
@@ -240,6 +251,35 @@ public class CustomerAction extends BaseAction implements Preparable
 
 			}
 
+		public String View() throws Exception
+			{
+				this.customer = new Customer();
+				try
+					{
+						if (this.getId() != null)
+							{
+								this.customer = this.customerMaintService.ViewCustomer(this.getId());
+								this.name = this.customer.getName();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.mode;
+
+			}
+
 		public Partner getPartner()
 			{
 				return this.partner;
@@ -348,16 +388,6 @@ public class CustomerAction extends BaseAction implements Preparable
 		public void setPageNumber(final int pageNumber)
 			{
 				this.pageNumber = pageNumber;
-			}
-
-		public Long getId()
-			{
-				return this.id;
-			}
-
-		public void setId(final Long id)
-			{
-				this.id = id;
 			}
 
 		public String getType()
@@ -568,6 +598,21 @@ public class CustomerAction extends BaseAction implements Preparable
 		public void setCusttag(final String custtag)
 			{
 				this.custtag = custtag;
+			}
+
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
 			}
 
 	}

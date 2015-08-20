@@ -1,59 +1,43 @@
 
 package com.adibrata.smartdealer.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import util.adibrata.support.file.ExcelUtility;
+import com.adibrata.smartdealer.dao.usermanagement.MenuDao;
 
 public class ClassTest
 	{
-		
+
 		public static void main(final String[] args) throws Exception
 			{
 				// TODO Auto-generated method stub
+				
+				// new JournalSchemeDao();
+				// new ListCoaSchmDtl();
+				// final CoaSchmHdr b = new CoaSchmHdr();
+				//
+				// final Partner p = new Partner();
+				// p.setPartnerCode("001");
+				// b.setPartner(p);
+				// b.setId(1);
+				//
+				// final SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+				// fmt.parse("20/12/2015");
+				//
+				// final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+				// df.parse(df.format(Calendar.getInstance().getTime()));
+				//
+				// final String dt = "2008-01-01"; // Start date
+				//
+				// final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				// final Date test = sdf.parse(dt);
+				//
+				// final Calendar c = Calendar.getInstance();
+				// c.setTime(test);
+				// c.add(Calendar.DATE, -1); // number of days to add
+				//
+				// System.out.print(c.getTime());
+				final MenuDao a = new MenuDao();
 
-				final ExcelUtility a = new ExcelUtility();
-				List<List<ExcelUtility>> lst = new ArrayList<List<ExcelUtility>>();
-
-				a.setExcelfile("D:\\Migrasi\\Book1.xls");
-
-				lst = a.ReadExcel();
-
-				for (final List<ExcelUtility> arec : lst)
-					{
-						for (final ExcelUtility arow : arec)
-							{
-								if (arow.getSeqno() > 0)
-									{
-										System.out.print(arow.getSeqno() + "\t\t");
-										System.out.print(arow.getColno() + "\t\t");
-										System.out.print(arow.getCellvalue() + "\t\t");
-									}
-							}
-						System.out.println("");
-					}
-
-				/*
-				 * new JournalSchemeDao();
-				 * new ListCoaSchmDtl();
-				 * final CoaSchmHdr b = new CoaSchmHdr();
-				 * final Partner p = new Partner();
-				 * p.setPartnerCode("001");
-				 * b.setPartner(p);
-				 * b.setId(1);
-				 * final SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-				 * fmt.parse("20/12/2015");
-				 * final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-				 * df.parse(df.format(Calendar.getInstance().getTime()));
-				 * final String dt = "2008-01-01"; // Start date
-				 * final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				 * final Date test = sdf.parse(dt);
-				 * final Calendar c = Calendar.getInstance();
-				 * c.setTime(test);
-				 * c.add(Calendar.DATE, -1); // number of days to add
-				 * System.out.print(c.getTime());
-				 */
+				System.out.println(a.MenuRender((long) 0, (long) 0, (long) 0));
 
 				/*
 				 * System.out.println(CoaInfo.GetDescription(p, "INSTALLMENT"));
@@ -102,7 +86,7 @@ public class ClassTest
 		 * System.out.println(dtmupd.getTime().toString());
 		 * }
 		 */
-		
+
 		public ClassTest()
 			{
 				// TODO Auto-generated constructor stub

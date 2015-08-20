@@ -1,12 +1,9 @@
-
 package com.adibrata.smartdealer.dao.eod;
 
-import com.adibrata.smartdealer.dao.DaoBase;
-
-public class CustomerExposureDao extends DaoBase
+public class CustomerExposureDao
 	{
 		
-		public CustomerExposureDao() throws Exception
+		public CustomerExposureDao()
 			{
 				// TODO Auto-generated constructor stub
 			}

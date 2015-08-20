@@ -23,23 +23,23 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-		private ZipCode zipcode;
+		private ZipCode zipCode;
 		private Partner partner;
 		private Office office;
-		private List<ZipCode> lstZipCode;
+		private List<ZipCode> lstzipcode;
 
-		private ZipCodeService zipCodeService;
+		private ZipCodeService zipcodeservice;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		private int pagenumber;
+		private String usrupd;
+		private String usrcrt;
 		private String message;
-		private long id;
+		private Long id;
 		private String kelurahan;
 		private String kecamatan;
 		private String city;
-		private String zipCode;
+		private String zipcode;
 
 		public ZipCodeAction() throws Exception
 			{
@@ -50,12 +50,12 @@ public class ZipCodeAction extends BaseAction implements Preparable
 				this.office = new Office();
 				this.setOffice(this.office);
 
-				this.zipCodeService = new ZipCodeDao();
-				this.zipcode = new ZipCode();
+				this.zipcodeservice = new ZipCodeDao();
+				this.zipCode = new ZipCode();
 
-				if (this.pageNumber == 0)
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 
 			}
@@ -92,7 +92,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 										case "edit" :
 											try
 												{
-													this.ViewData();
+													strMode = this.ViewData();
 												}
 											catch (final Exception e)
 												{
@@ -104,6 +104,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 											try
 												{
 													strMode = this.SaveDelete();
+													this.Paging();
 												}
 											catch (final Exception e)
 												{
@@ -112,7 +113,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 												}
 											break;
 										case "first" :
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 											try
 												{
 													this.Paging();
@@ -124,10 +125,10 @@ public class ZipCodeAction extends BaseAction implements Preparable
 												}
 											break;
 										case "prev" :
-											this.pageNumber -= 1;
-											if (this.pageNumber <= 1)
+											this.pagenumber -= 1;
+											if (this.pagenumber <= 1)
 												{
-													this.pageNumber = 1;
+													this.pagenumber = 1;
 												}
 											try
 												{
@@ -140,7 +141,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 												}
 											break;
 										case "next" :
-											this.pageNumber += 1;
+											this.pagenumber += 1;
 											try
 												{
 													this.Paging();
@@ -168,7 +169,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 							}
 						else
 							{
-								this.pageNumber = 1;
+								this.pagenumber = 1;
 								try
 									{
 										this.Paging();
@@ -262,7 +263,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstZipCode = this.zipCodeService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstzipcode = this.zipcodeservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -279,7 +280,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstZipCode = this.zipCodeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.lstzipcode = this.zipcodeservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 					}
 				catch (final Exception exp)
 					{
@@ -292,16 +293,25 @@ public class ZipCodeAction extends BaseAction implements Preparable
 
 			}
 
-		public void ViewData() throws Exception
+		public String ViewData() throws Exception
 			{
-				this.zipcode = new ZipCode();
+				this.zipCode = new ZipCode();
 				try
 					{
-						this.zipcode = this.zipCodeService.View(this.id);
-						this.kelurahan = this.zipcode.getKelurahan();
-						this.kecamatan = this.zipcode.getKecamatan();
-						this.city = this.zipcode.getCity();
-						this.zipCode = this.zipcode.getZipCode();
+						if (this.getId() != null)
+							{
+								this.zipCode = this.zipcodeservice.View(this.id);
+								this.kelurahan = this.zipCode.getKelurahan();
+								this.kecamatan = this.zipCode.getKecamatan();
+								this.city = this.zipCode.getCity();
+								this.zipcode = this.zipCode.getZipCode();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -310,6 +320,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
@@ -321,8 +332,8 @@ public class ZipCodeAction extends BaseAction implements Preparable
 						zipcode.setKelurahan(this.kelurahan);
 						zipcode.setKecamatan(this.kecamatan);
 						zipcode.setCity(this.city);
-						zipcode.setZipCode(this.zipCode);
-						this.zipCodeService.SaveDel(zipcode);
+						zipcode.setZipCode(this.getZipcode());
+						this.zipcodeservice.SaveDel(zipcode);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -340,14 +351,14 @@ public class ZipCodeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						final ZipCode zipcode = new ZipCode();
-						zipcode.setId(this.getId());
-						zipcode.setKelurahan(this.kelurahan);
-						zipcode.setKecamatan(this.kecamatan);
-						zipcode.setCity(this.city);
-						zipcode.setZipCode(this.zipCode);
-						zipcode.setUsrUpd(this.usrUpd);
-						this.zipCodeService.SaveDel(zipcode);
+						this.zipCode = new ZipCode();
+						this.zipCode.setId(this.getId());
+						this.zipCode.setKelurahan(this.kelurahan);
+						this.zipCode.setKecamatan(this.kecamatan);
+						this.zipCode.setCity(this.city);
+						this.zipCode.setZipCode(this.zipcode);
+						this.zipCode.setUsrUpd(this.usrupd);
+						this.zipcodeservice.SaveDel(this.zipCode);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -369,7 +380,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 						final ZipCode zipcode = new ZipCode();
 						zipcode.setId(this.getId());
 
-						this.zipCodeService.SaveDel(zipcode);
+						this.zipcodeservice.SaveDel(zipcode);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
@@ -412,30 +423,6 @@ public class ZipCodeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
 		 * @return the message
 		 */
 		public String getMessage()
@@ -462,56 +449,12 @@ public class ZipCodeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
-		/**
 		 * @param message
 		 *            the message to set
 		 */
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
 			}
 
 		public Partner getPartner()
@@ -532,36 +475,6 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		public void setOffice(final Office office)
 			{
 				this.office = office;
-			}
-
-		public List<ZipCode> getLstZipCode()
-			{
-				return this.lstZipCode;
-			}
-
-		public void setLstZipCode(final List<ZipCode> lstZipCode)
-			{
-				this.lstZipCode = lstZipCode;
-			}
-
-		public ZipCodeService getZipCodeService()
-			{
-				return this.zipCodeService;
-			}
-
-		public void setZipCodeService(final ZipCodeService zipCodeService)
-			{
-				this.zipCodeService = zipCodeService;
-			}
-
-		public ZipCode getZipcode()
-			{
-				return this.zipcode;
-			}
-
-		public void setZipcode(final ZipCode zipcode)
-			{
-				this.zipcode = zipcode;
 			}
 
 		public String getKelurahan()
@@ -594,14 +507,89 @@ public class ZipCodeAction extends BaseAction implements Preparable
 				this.city = city;
 			}
 
-		public String getZipCode()
+		public List<ZipCode> getLstzipcode()
+			{
+				return this.lstzipcode;
+			}
+
+		public void setLstzipcode(final List<ZipCode> lstzipcode)
+			{
+				this.lstzipcode = lstzipcode;
+			}
+
+		public ZipCodeService getZipcodeservice()
+			{
+				return this.zipcodeservice;
+			}
+
+		public void setZipcodeservice(final ZipCodeService zipcodeservice)
+			{
+				this.zipcodeservice = zipcodeservice;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
+			}
+
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+
+		public void setZipcode(final String zipcode)
+			{
+				this.zipcode = zipcode;
+			}
+
+		public ZipCode getZipCode()
 			{
 				return this.zipCode;
 			}
 
-		public void setZipCode(final String zipCode)
+		public void setZipCode(final ZipCode zipCode)
 			{
 				this.zipCode = zipCode;
+			}
+
+		public String getZipcode()
+			{
+				return this.zipcode;
 			}
 
 	}

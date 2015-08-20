@@ -33,8 +33,8 @@ public class CoyCustLegalInfoAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private Long id;
-		private Long customerid;
+		private long id;
+		private long customerid;
 		
 		private int seqno;
 		private String documenttype;
@@ -290,12 +290,12 @@ public class CoyCustLegalInfoAction extends BaseAction implements Preparable
 				this.usrCrt = usrCrt;
 			}
 			
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}
@@ -360,12 +360,12 @@ public class CoyCustLegalInfoAction extends BaseAction implements Preparable
 				this.seqno = seqno;
 			}
 			
-		public Long getCustomerid()
+		public long getCustomerid()
 			{
 				return this.customerid;
 			}
 			
-		public void setCustomerid(final Long customerid)
+		public void setCustomerid(final long customerid)
 			{
 				this.customerid = customerid;
 			}

@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.adibrata.smartdealer.model.MasterType;
 import com.adibrata.smartdealer.model.MsTable;
+import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.SeviceBase;
 
 /**
@@ -16,16 +17,19 @@ import com.adibrata.smartdealer.service.SeviceBase;
 public interface MasterService extends SeviceBase
 	{
 		public void SaveAdd(MsTable masterTable) throws Exception;
-
+		
 		public void SaveEdit(MsTable masterTable) throws Exception;
-
+		
 		public void SaveDel(MsTable masterTable) throws Exception;
-
+		
 		public List<MsTable> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception;
-
+		
 		public List<MsTable> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
-
+		
 		public List<MasterType> ListMasterType() throws Exception;
-
+		
 		public MsTable View(Long id) throws Exception;
+
+		public List<MsTable> ListMaster(Partner partner, String MasterType) throws Exception;
+
 	}

@@ -24,41 +24,38 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-		private JournalSchemeService jourSchemeService;
+		private JournalSchemeService jourschemeservice;
 		private CoaSchmDtl coaschmdtl;
 		private CoaSchmHdr coaschmhdr;
 		private Partner partner;
 		private Office office;
-		private List<CoaSchmDtl> lstCoaSchmDtl;
-		private List<CoaSchmHdr> lstcoaSchmHdr;
+		private List<CoaSchmDtl> lstcoaschmdtl;
+		private List<CoaSchmHdr> lstcoaschmhdr;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		private int pagenumber;
+		private String usrupd;
+		private String usrcrt;
 		private String message;
-		private long id;
-		private String coaSchmCode;
-		private String coaSchmDesc;
-		private Integer isActive;
+		private Long id;
+		private String coaschmcode;
+		private String coaschmdesc;
+		private Integer isactive;
 
 		public JournalSchemeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final JournalSchemeService jourschemeservice = new JournalSchemeDao();
+				this.jourschemeservice = new JournalSchemeDao();
+				this.coaschmhdr = new CoaSchmHdr();
 
-				this.jourSchemeService = jourschemeservice;
-				final Partner partner = new Partner();
+				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				final Office office = new Office();
-				final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
 
-				this.setPartner(partner);
-				this.setOffice(office);
-				this.setCoaschmhdr(coaSchmHdr);
-				if (this.pageNumber == 0)
+				this.office = new Office();
+				this.setOffice(this.office);
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -79,38 +76,110 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "edit" :
-									this.ViewData();
+									try
+										{
+											strMode = this.ViewData();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "savedel" :
-									strMode = this.SaveDelete();
+									try
+										{
+											strMode = this.SaveDelete();
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "detail" :
-									this.ViewDetail();
+									try
+										{
+											this.ViewDetail();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "savedetail" :
-
+									try
+										{
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
-									this.Paging();
+									this.pagenumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									try
 										{
-											this.pageNumber = 1;
+											if (this.pagenumber <= 1)
+												{
+													this.pagenumber = 1;
+												}
+											this.Paging();
 										}
-									this.Paging();
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.pagenumber += 1;
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								case "last" :
-									this.Paging(1);
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									break;
 								default :
 									break;
@@ -118,8 +187,16 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
-						this.Paging();
+						this.pagenumber = 1;
+						try
+							{
+								this.Paging();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						strMode = "start";
 					}
 				return strMode;
@@ -195,7 +272,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstcoaSchmHdr = this.jourSchemeService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstcoaschmhdr = this.jourschemeservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -212,7 +289,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstcoaSchmHdr = this.jourSchemeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.lstcoaschmhdr = this.jourschemeservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 					}
 				catch (final Exception exp)
 					{
@@ -225,15 +302,24 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 
 			}
 
-		public void ViewData() throws Exception
+		public String ViewData() throws Exception
 			{
 				this.coaschmhdr = new CoaSchmHdr();
 				try
 					{
-						this.coaschmhdr = this.jourSchemeService.ViewHeader(this.id);
-						this.coaSchmCode = this.coaschmhdr.getCoaSchmCode();
-						this.coaSchmDesc = this.coaschmhdr.getCoaSchmDesc();
-						this.isActive = this.coaschmhdr.getIsActive();
+						if (this.getId() != null)
+							{
+								this.coaschmhdr = this.jourschemeservice.ViewHeader(this.id);
+								this.coaschmcode = this.coaschmhdr.getCoaSchmCode();
+								this.coaschmdesc = this.coaschmhdr.getCoaSchmDesc();
+								this.isactive = this.coaschmhdr.getIsActive();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -243,6 +329,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return this.mode;
 			}
 
 		public void ViewDetail() throws Exception
@@ -250,10 +337,10 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 				this.coaschmhdr = new CoaSchmHdr();
 				try
 					{
-						this.coaschmhdr = this.jourSchemeService.ViewHeader(this.id);
-						this.coaSchmCode = this.coaschmhdr.getCoaSchmCode();
-						this.coaSchmDesc = this.coaschmhdr.getCoaSchmDesc();
-						this.isActive = this.coaschmhdr.getIsActive();
+						this.coaschmhdr = this.jourschemeservice.ViewHeader(this.id);
+						this.coaschmcode = this.coaschmhdr.getCoaSchmCode();
+						this.coaschmdesc = this.coaschmhdr.getCoaSchmDesc();
+						this.isactive = this.coaschmhdr.getIsActive();
 					}
 				catch (final Exception exp)
 					{
@@ -270,15 +357,16 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 				try
 					{
 						final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
-						coaSchmHdr.setCoaSchmCode(this.coaSchmCode);
-						coaSchmHdr.setCoaSchmDesc(this.coaSchmDesc);
-						coaSchmHdr.setIsActive(this.isActive);
+						coaSchmHdr.setCoaSchmCode(this.coaschmcode);
+						coaSchmHdr.setCoaSchmDesc(this.coaschmdesc);
+						coaSchmHdr.setIsActive(this.isactive);
 						coaSchmHdr.setPartner(this.partner);
-						this.jourSchemeService.SaveAddHeader(coaSchmHdr);
+						this.jourschemeservice.SaveAddHeader(coaSchmHdr);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -294,16 +382,17 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					{
 						final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
 						coaSchmHdr.setId(this.getId());
-						coaSchmHdr.setCoaSchmCode(this.coaSchmCode);
-						coaSchmHdr.setCoaSchmDesc(this.coaSchmDesc);
-						coaSchmHdr.setIsActive(this.isActive);
+						coaSchmHdr.setCoaSchmCode(this.coaschmcode);
+						coaSchmHdr.setCoaSchmDesc(this.coaschmdesc);
+						coaSchmHdr.setIsActive(this.isactive);
 						coaSchmHdr.setPartner(this.partner);
-						coaSchmHdr.setUsrUpd(this.usrUpd);
-						this.jourSchemeService.SaveAddHeader(coaSchmHdr);
+						coaSchmHdr.setUsrUpd(this.usrupd);
+						this.jourschemeservice.SaveAddHeader(coaSchmHdr);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -318,11 +407,18 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 				String status = "";
 				try
 					{
-						final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
-						coaSchmHdr.setId(this.getId());
-						this.jourSchemeService.SaveDelHeader(coaSchmHdr);
-						status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
+						if (this.getId() != null)
+							{
+								final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
+								coaSchmHdr.setId(this.getId());
+								this.jourschemeservice.SaveDelHeader(coaSchmHdr);
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -342,14 +438,6 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
-			}
-
-		/**
-		 * @return the jourSchemeService
-		 */
-		public JournalSchemeService getJourSchemeService()
-			{
-				return this.jourSchemeService;
 			}
 
 		/**
@@ -382,31 +470,6 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		public Office getOffice()
 			{
 				return this.office;
-			}
-
-		/**
-		 * @return the lstCoaSchmDtl
-		 */
-		public List<CoaSchmDtl> getLstCoaSchmDtl()
-			{
-				return this.lstCoaSchmDtl;
-			}
-
-		/**
-		 * @return the lstcoaSchmHdr
-		 */
-		public List<CoaSchmHdr> getLstcoaSchmHdr()
-			{
-				return this.lstcoaSchmHdr;
-			}
-
-		/**
-		 * @param jourSchemeService
-		 *            the jourSchemeService to set
-		 */
-		public void setJourSchemeService(final JournalSchemeService jourSchemeService)
-			{
-				this.jourSchemeService = jourSchemeService;
 			}
 
 		/**
@@ -445,24 +508,6 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 				this.office = office;
 			}
 
-		/**
-		 * @param lstCoaSchmDtl
-		 *            the lstCoaSchmDtl to set
-		 */
-		public void setLstCoaSchmDtl(final List<CoaSchmDtl> lstCoaSchmDtl)
-			{
-				this.lstCoaSchmDtl = lstCoaSchmDtl;
-			}
-
-		/**
-		 * @param lstcoaSchmHdr
-		 *            the lstcoaSchmHdr to set
-		 */
-		public void setLstcoaSchmHdr(final List<CoaSchmHdr> lstcoaSchmHdr)
-			{
-				this.lstcoaSchmHdr = lstcoaSchmHdr;
-			}
-
 		public String getMode()
 			{
 				return this.mode;
@@ -487,30 +532,6 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		public String getSearchvalue()
 			{
 				return this.searchvalue;
-			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
 			}
 
 		/**
@@ -540,33 +561,6 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
-		/**
 		 * @param message
 		 *            the message to set
 		 */
@@ -575,51 +569,104 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 
-		/**
-		 * @return the id
-		 */
-		public long getId()
+		public JournalSchemeService getJourschemeservice()
 			{
-				return this.id;
+				return this.jourschemeservice;
 			}
 
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
+		public void setJourschemeservice(final JournalSchemeService jourschemeservice)
+			{
+				this.jourschemeservice = jourschemeservice;
+			}
+
+		public List<CoaSchmDtl> getLstcoaschmdtl()
+			{
+				return this.lstcoaschmdtl;
+			}
+
+		public void setLstcoaschmdtl(final List<CoaSchmDtl> lstcoaschmdtl)
+			{
+				this.lstcoaschmdtl = lstcoaschmdtl;
+			}
+
+		public List<CoaSchmHdr> getLstcoaschmhdr()
+			{
+				return this.lstcoaschmhdr;
+			}
+
+		public void setLstcoaschmhdr(final List<CoaSchmHdr> lstcoaschmhdr)
+			{
+				this.lstcoaschmhdr = lstcoaschmhdr;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
+			}
+
+		public String getCoaschmcode()
+			{
+				return this.coaschmcode;
+			}
+
+		public void setCoaschmcode(final String coaschmcode)
+			{
+				this.coaschmcode = coaschmcode;
+			}
+
+		public String getCoaschmdesc()
+			{
+				return this.coaschmdesc;
+			}
+
+		public void setCoaschmdesc(final String coaschmdesc)
+			{
+				this.coaschmdesc = coaschmdesc;
+			}
+
+		public Integer getIsactive()
+			{
+				return this.isactive;
+			}
+
+		public void setIsactive(final Integer isactive)
+			{
+				this.isactive = isactive;
+			}
+
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
 
-		public String getCoaSchmCode()
+		public Long getId()
 			{
-				return this.coaSchmCode;
-			}
-
-		public void setCoaSchmCode(final String coaSchmCode)
-			{
-				this.coaSchmCode = coaSchmCode;
-			}
-
-		public String getCoaSchmDesc()
-			{
-				return this.coaSchmDesc;
-			}
-
-		public void setCoaSchmDesc(final String coaSchmDesc)
-			{
-				this.coaSchmDesc = coaSchmDesc;
-			}
-
-		public Integer getIsActive()
-			{
-				return this.isActive;
-			}
-
-		public void setIsActive(final Integer isActive)
-			{
-				this.isActive = isActive;
+				return this.id;
 			}
 
 	}

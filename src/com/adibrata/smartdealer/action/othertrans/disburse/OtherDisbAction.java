@@ -26,7 +26,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class OtherDisbAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
@@ -39,16 +39,16 @@ public class OtherDisbAction extends BaseAction implements Preparable
 		private OtherDsbHdr otherDsbHdr;
 		private List<OtherDsbDtl> lstOtherDisbDtl;
 		private OtherDisburseService otherDisburseService;
-		
+
 		private String mode;
 		private String message;
 		private Map<String, Object> session;
-		
+
 		private long id;
 		private int seqno;
 		private String bankpurpose;
 		private String Wop;
-		
+
 		private String otherdisbno;
 		private Double disbamount;
 		private String postingdate;
@@ -58,36 +58,36 @@ public class OtherDisbAction extends BaseAction implements Preparable
 		private String notes;
 		private String destination;
 		private Long jobid;
-		
+
 		private String coaname;
 		private String coacode;
 		private Double amount;
 		private String description;
 		private double totalAmount;
-		
+
 		private List<BankAccount> bankAccounts;
 		private BankAccount bankAccount;
 		private BankAccountService bankAccountService;
 		private Map<Long, String> lstBankAccount;
-		
+
 		public OtherDisbAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(sesPartnerCode());
-				
+
 				this.office = new Office();
 				this.office.setId(sesOfficeId());
-				
+
 				this.otherDisburseService = new OtherDisburseDao();
 				this.bankAccountService = new BankAccountDao();
-				
+
 				this.lstOtherDisbDtl = new ArrayList<OtherDsbDtl>();
 				this.otherDsbHdr = new OtherDsbHdr();
 				this.seqno = 1;
 				this.lstBankAccount = this.ListBankAccount(this.partner, this.office, "", "");
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -107,7 +107,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-			
+
 		@Override
 		public String execute()
 			{
@@ -117,7 +117,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					{
 						switch (strMode)
 							{
-								
+
 								case "savedel" :
 									try
 										{
@@ -133,7 +133,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 									try
 										{
 											this.SaveAdd();
-											
+
 										}
 									catch (final Exception e)
 										{
@@ -152,7 +152,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									break;
 							}
@@ -163,7 +163,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private void SaveAdd() throws Exception
 			{
 				try
@@ -178,16 +178,16 @@ public class OtherDisbAction extends BaseAction implements Preparable
 						this.otherDsbHdr.setNotes(this.getNotes());
 						this.otherDsbHdr.setDestination(this.getDestination());
 						this.otherDsbHdr.setJobId(this.getJobid());
-						
+
 						final OtherDsbDtl otherDsbDtl = new OtherDsbDtl();
-						
+
 						otherDsbDtl.setCoaCode(this.getCoacode());
 						otherDsbDtl.setCoaName(this.getCoaname());
 						otherDsbDtl.setAmount(this.getAmount());
 						otherDsbDtl.setDescription(this.getDescription());
-						
+
 						this.lstOtherDisbDtl.add(otherDsbDtl);
-						
+
 						this.session.put("lstOtherRcvDtlSession", this.lstOtherDisbDtl);
 						this.totalAmount = 0.00;
 						for (final OtherDsbDtl aRow : this.lstOtherDisbDtl)
@@ -197,14 +197,14 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private void SaveDel() throws Exception
 			{
@@ -213,27 +213,27 @@ public class OtherDisbAction extends BaseAction implements Preparable
 						this.lstOtherDisbDtl = (List<OtherDsbDtl>) this.session.get("lstOtherDisbDtlSession");
 						this.seqno = this.seqno - 1;
 						this.lstOtherDisbDtl.remove(this.seqno);
-						
+
 						this.session.put("lstOtherDisbDtlSession", this.lstOtherDisbDtl);
 						this.lstOtherDisbDtl = (List<OtherDsbDtl>) this.session.get("lstOtherDisbDtlSession");
 						this.totalAmount = 0.00;
 						for (final OtherDsbDtl aRow : this.lstOtherDisbDtl)
 							{
 								this.totalAmount += aRow.getAmount();
-								
+
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String Save() throws Exception
 			{
 				String status;
@@ -241,6 +241,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					{
 						status = "";
 						this.otherDsbHdr = new OtherDsbHdr();
+						this.otherDsbHdr.setPartner(this.getPartner());
 						this.otherDsbHdr.setOtherDisbNo(this.getOtherdisbno());
 						this.otherDsbHdr.setDisbAmount(this.getDisbamount());
 						this.otherDsbHdr.setPostingDate(this.dateformat.parse(this.getPostingdate()));
@@ -250,7 +251,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 						this.otherDsbHdr.setNotes(this.getNotes());
 						this.otherDsbHdr.setDestination(this.getDestination());
 						this.otherDsbHdr.setJobId(this.getJobid());
-						
+
 						for (final OtherDsbDtl aRow : this.lstOtherDisbDtl)
 							{
 								aRow.setCoaName(this.getCoaname());
@@ -258,7 +259,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 								aRow.setAmount(this.getAmount());
 								aRow.setDescription(this.getDescription());
 							}
-							
+
 						this.otherDisburseService.Save(sesLoginName(), this.otherDsbHdr, this.lstOtherDisbDtl);
 						status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -274,7 +275,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -282,7 +283,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -290,7 +291,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -298,7 +299,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @return the otherDsbHdr
 		 */
@@ -306,7 +307,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.otherDsbHdr;
 			}
-			
+
 		/**
 		 * @return the lstOtherDisbDtl
 		 */
@@ -314,7 +315,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.lstOtherDisbDtl;
 			}
-			
+
 		/**
 		 * @return the otherDisburseService
 		 */
@@ -322,7 +323,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				return this.otherDisburseService;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -331,7 +332,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -340,7 +341,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -349,7 +350,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @param otherDsbHdr
 		 *            the otherDsbHdr to set
@@ -358,7 +359,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.otherDsbHdr = otherDsbHdr;
 			}
-			
+
 		/**
 		 * @param lstOtherDisbDtl
 		 *            the lstOtherDisbDtl to set
@@ -367,7 +368,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.lstOtherDisbDtl = lstOtherDisbDtl;
 			}
-			
+
 		/**
 		 * @param otherDisburseService
 		 *            the otherDisburseService to set
@@ -376,245 +377,245 @@ public class OtherDisbAction extends BaseAction implements Preparable
 			{
 				this.otherDisburseService = otherDisburseService;
 			}
-			
+
 		public String getMessage()
 			{
 				return this.message;
 			}
-			
+
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-			
+
 		public Map<String, Object> getSession()
 			{
 				return this.session;
 			}
-			
+
 		public void setSession(final Map<String, Object> session)
 			{
 				this.session = session;
 			}
-			
+
 		public long getId()
 			{
 				return this.id;
 			}
-			
+
 		public void setId(final long id)
 			{
 				this.id = id;
 			}
-			
+
 		public int getSeqno()
 			{
 				return this.seqno;
 			}
-			
+
 		public void setSeqno(final int seqno)
 			{
 				this.seqno = seqno;
 			}
-			
+
 		public List<BankAccount> getBankAccounts()
 			{
 				return this.bankAccounts;
 			}
-			
+
 		public void setBankAccounts(final List<BankAccount> bankAccounts)
 			{
 				this.bankAccounts = bankAccounts;
 			}
-			
+
 		public BankAccount getBankAccount()
 			{
 				return this.bankAccount;
 			}
-			
+
 		public void setBankAccount(final BankAccount bankAccount)
 			{
 				this.bankAccount = bankAccount;
 			}
-			
+
 		public BankAccountService getBankAccountService()
 			{
 				return this.bankAccountService;
 			}
-			
+
 		public void setBankAccountService(final BankAccountService bankAccountService)
 			{
 				this.bankAccountService = bankAccountService;
 			}
-			
+
 		public String getOtherdisbno()
 			{
 				return this.otherdisbno;
 			}
-			
+
 		public void setOtherdisbno(final String otherdisbno)
 			{
 				this.otherdisbno = otherdisbno;
 			}
-			
+
 		public Double getDisbamount()
 			{
 				return this.disbamount;
 			}
-			
+
 		public void setDisbamount(final Double disbamount)
 			{
 				this.disbamount = disbamount;
 			}
-			
+
 		public String getPostingdate()
 			{
 				return this.postingdate;
 			}
-			
+
 		public void setPostingdate(final String postingdate)
 			{
 				this.postingdate = postingdate;
 			}
-			
+
 		public String getValuedate()
 			{
 				return this.valuedate;
 			}
-			
+
 		public void setValuedate(final String valuedate)
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		public Long getBankaccountid()
 			{
 				return this.bankaccountid;
 			}
-			
+
 		public void setBankaccountid(final Long bankaccountid)
 			{
 				this.bankaccountid = bankaccountid;
 			}
-			
+
 		public String getRefno()
 			{
 				return this.refno;
 			}
-			
+
 		public void setRefno(final String refno)
 			{
 				this.refno = refno;
 			}
-			
+
 		public String getNotes()
 			{
 				return this.notes;
 			}
-			
+
 		public void setNotes(final String notes)
 			{
 				this.notes = notes;
 			}
-			
+
 		public String getDestination()
 			{
 				return this.destination;
 			}
-			
+
 		public void setDestination(final String destination)
 			{
 				this.destination = destination;
 			}
-			
+
 		public Long getJobid()
 			{
 				return this.jobid;
 			}
-			
+
 		public void setJobid(final Long jobid)
 			{
 				this.jobid = jobid;
 			}
-			
+
 		public String getCoaname()
 			{
 				return this.coaname;
 			}
-			
+
 		public void setCoaname(final String coaname)
 			{
 				this.coaname = coaname;
 			}
-			
+
 		public String getCoacode()
 			{
 				return this.coacode;
 			}
-			
+
 		public void setCoacode(final String coacode)
 			{
 				this.coacode = coacode;
 			}
-			
+
 		public Double getAmount()
 			{
 				return this.amount;
 			}
-			
+
 		public void setAmount(final Double amount)
 			{
 				this.amount = amount;
 			}
-			
+
 		public String getDescription()
 			{
 				return this.description;
 			}
-			
+
 		public void setDescription(final String description)
 			{
 				this.description = description;
 			}
-			
+
 		public String getBankpurpose()
 			{
 				return this.bankpurpose;
 			}
-			
+
 		public void setBankpurpose(final String bankpurpose)
 			{
 				this.bankpurpose = bankpurpose;
 			}
-			
+
 		public String getWop()
 			{
 				return this.Wop;
 			}
-			
+
 		public void setWop(final String wop)
 			{
 				this.Wop = wop;
 			}
-			
+
 		public double getTotalAmount()
 			{
 				return this.totalAmount;
 			}
-			
+
 		public void setTotalAmount(final double totalAmount)
 			{
 				this.totalAmount = totalAmount;
 			}
-			
+
 		public Map<Long, String> getLstBankAccount()
 			{
 				return this.lstBankAccount;
 			}
-			
+
 		public void setLstBankAccount(final Map<Long, String> lstBankAccount)
 			{
 				this.lstBankAccount = lstBankAccount;
 			}
-			
+
 	}

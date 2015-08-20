@@ -86,7 +86,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 								hql.append(WhereCond);
 							}
 						final Query selectQuery = this.session.createQuery(hql.toString());
-						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
@@ -148,7 +148,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 			}
 
 		@Override
-		public ServiceHdr View(final Long id) throws Exception
+		public ServiceHdr View(final long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				ServiceHdr serviceHdr = null;

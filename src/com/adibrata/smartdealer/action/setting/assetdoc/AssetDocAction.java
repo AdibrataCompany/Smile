@@ -32,8 +32,8 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		private String usrUpd;
-		private String usrCrt;
+		private String usrupd;
+		private String usrcrt;
 		private int pageNumber;
 		private String message;
 
@@ -372,11 +372,11 @@ public class AssetDocAction extends BaseAction implements Preparable
 						assetDocMaster.setDocumentName(this.getDocumentname());
 						assetDocMaster.setAssetType(this.getAssettype());
 						assetDocMaster.setPartner(this.getPartner());
-						assetDocMaster.setUsrUpd(this.getUsrUpd());
+						assetDocMaster.setUsrUpd(this.getUsrupd());
 
 						this.assetdocmasterservice.SaveAdd(assetDocMaster);
 						this.setMessage(BaseAction.SuccessMessage());
-
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -400,10 +400,11 @@ public class AssetDocAction extends BaseAction implements Preparable
 						assetDocMaster.setDocumentName(this.getDocumentname());
 						assetDocMaster.setAssetType(this.getAssettype());
 						assetDocMaster.setPartner(this.getPartner());
-						assetDocMaster.setUsrUpd(this.getUsrUpd());
+						assetDocMaster.setUsrUpd(this.getUsrupd());
 
 						this.assetdocmasterservice.SaveEdit(assetDocMaster);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -525,37 +526,6 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
-			}
-
-		/**
-		 * @return the documentCode
-		 */
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
 			}
 
 		/**
@@ -694,6 +664,26 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public void setLstassetdocmasters(final List<AssetDocMaster> lstassetdocmasters)
 			{
 				this.lstassetdocmasters = lstassetdocmasters;
+			}
+			
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+			
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+			
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+			
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
 			}
 
 	}

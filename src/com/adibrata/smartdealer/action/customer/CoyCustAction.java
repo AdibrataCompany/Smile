@@ -6,8 +6,6 @@ import com.adibrata.smartdealer.dao.customer.CustomerDao;
 import com.adibrata.smartdealer.model.CoyCust;
 import com.adibrata.smartdealer.model.CoyCustContactInfo;
 import com.adibrata.smartdealer.model.Customer;
-import com.adibrata.smartdealer.model.Office;
-import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.customer.CustomerMaintService;
 import com.opensymphony.xwork2.Preparable;
 
@@ -31,8 +29,8 @@ public class CoyCustAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private Long id;
-		private Long customerid;
+		private long id;
+		private long customerid;
 		
 		private String type;
 		private String name;
@@ -83,17 +81,12 @@ public class CoyCustAction extends BaseAction implements Preparable
 		private String lastdatedocumentofestablished;
 		private String lastnotaryplace;
 		private String lastnotaryname;
-		Partner partner;
-		Office office;
 		
 		public CoyCustAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				this.partner = new Partner();
-				this.office = new Office();
+				RenderMenu();
 				
-				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.office.setId(BaseAction.sesOfficeId());
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
 				this.coycust = new CoyCust();
@@ -159,7 +152,6 @@ public class CoyCustAction extends BaseAction implements Preparable
 				try
 					{
 						this.customer = new Customer();
-						this.customer.setPartner(this.getPartner());
 						
 						this.customer.setType(this.getType());
 						this.customer.setName(this.getName());
@@ -181,8 +173,7 @@ public class CoyCustAction extends BaseAction implements Preparable
 						this.customer.setAramount(this.getAramount());
 						this.customer.setArpaid(this.getArpaid());
 						this.customer.setArwaived(this.getArwaived());
-						this.customer.setUsrCrt(BaseAction.sesLoginName());
-						this.customer.setUsrUpd(BaseAction.sesLoginName());
+						
 						this.customermaintservice.SaveCustomer(sesLoginName(), this.customer);
 						
 						this.customerid = this.customer.getId();
@@ -348,12 +339,12 @@ public class CoyCustAction extends BaseAction implements Preparable
 				this.usrCrt = usrCrt;
 			}
 			
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 			
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}
@@ -628,12 +619,12 @@ public class CoyCustAction extends BaseAction implements Preparable
 				this.iscorporatecreditline = iscorporatecreditline;
 			}
 			
-		public Long getCustomerid()
+		public long getCustomerid()
 			{
 				return this.customerid;
 			}
 			
-		public void setCustomerid(final Long customerid)
+		public void setCustomerid(final long customerid)
 			{
 				this.customerid = customerid;
 			}
@@ -846,65 +837,6 @@ public class CoyCustAction extends BaseAction implements Preparable
 		public void setNodocumentofestablished(final String nodocumentofestablished)
 			{
 				this.nodocumentofestablished = nodocumentofestablished;
-			}
-			
-		/**
-		 * @return the contactinfo
-		 */
-		public CoyCustContactInfo getContactinfo()
-			{
-				return this.contactinfo;
-			}
-			
-		/**
-		 * @param contactinfo
-		 *            the contactinfo to set
-		 */
-		public void setContactinfo(final CoyCustContactInfo contactinfo)
-			{
-				this.contactinfo = contactinfo;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @param partner
-		 *            the partner to set
-		 */
-		public void setPartner(final Partner partner)
-			{
-				this.partner = partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @param office
-		 *            the office to set
-		 */
-		public void setOffice(final Office office)
-			{
-				this.office = office;
-			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
-			{
-				return serialVersionUID;
 			}
 			
 	}

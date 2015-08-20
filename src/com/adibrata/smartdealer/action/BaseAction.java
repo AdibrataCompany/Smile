@@ -10,17 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 import com.adibrata.smartdealer.dao.setting.BankAccountDao;
-import com.adibrata.smartdealer.dao.setting.CurrencyDao;
+import com.adibrata.smartdealer.dao.setting.MasterDao;
 import com.adibrata.smartdealer.dao.usermanagement.EmployeeDao;
 import com.adibrata.smartdealer.dao.usermanagement.MenuDao;
 import com.adibrata.smartdealer.model.BankAccount;
-import com.adibrata.smartdealer.model.BankAccountInfo;
-import com.adibrata.smartdealer.model.Currency;
 import com.adibrata.smartdealer.model.Employee;
+import com.adibrata.smartdealer.model.MsTable;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
-import com.adibrata.smartdealer.service.setting.CurrencyService;
+import com.adibrata.smartdealer.service.setting.MasterService;
 import com.adibrata.smartdealer.service.usermanagement.EmployeeService;
 import com.adibrata.smartdealer.service.usermanagement.MenuService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,102 +30,86 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class BaseAction extends ActionSupport implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
+		private String menu;
 		private String messagedescription;
-
+		
 		public SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-
+		
 		public BaseAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				RenderMenu();
+				this.menu = RenderMenu();
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
-		private static String RenderMenu() throws Exception
+			
+		public static String RenderMenu() throws Exception
 			{
 				final MenuService service = new MenuDao();
 				return service.MenuRender((long) 0, (long) 0, (long) 0);
-				
 			}
-
+			
 		public static String ErrorMessage()
 			{
 				return "Failed on Save";
-
+				
 			}
-
+			
 		public static Long sesCashierHistoryId()
 			{
 				return (long) 1;
 			}
-
+			
 		public static String SuccessMessage()
 			{
 				return "Success On Save";
-
+				
 			}
 			
 		public static String SelectFirst()
 			{
 				return "Please Select a Data First";
-
+				
 			}
 			
 		public static String sesPartnerCode()
 			{
-
+				
 				return "001";
-			}
-			
-		public static Long sesEmployeeId()
-			{
-				return (long) 1;
-			}
-			
-		public static Long sesUserId()
-			{
-				return (long) 1;
 			}
 			
 		public static Date sesBussinessDate() throws ParseException
 			{
 				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 				return df.parse(df.format(Calendar.getInstance().getTime()));
-
+				
 			}
-
-		public BankAccountInfo BankInfo(final Long id) throws Exception
+			
+		public static long sesOfficeId()
 			{
-				final BankAccountService service = new BankAccountDao();
-				return service.BankAccountView(id);
+				return 1;
 			}
-
-		public static Long sesOfficeId()
-			{
-				return (long) 1;
-			}
-
+			
 		public static String sesLoginName()
 			{
 				return "Arga";
 			}
-
+			
 		public static int PageRecord()
 			{
 				return 10;
 			}
-
+			
 		/**
 		 * @return the messagedescription
 		 */
@@ -134,7 +117,7 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				return this.messagedescription;
 			}
-
+			
 		/**
 		 * @param messagedescription
 		 *            the messagedescription to set
@@ -151,7 +134,7 @@ public class BaseAction extends ActionSupport implements Preparable
 					{
 						final BankAccountService bankaccountservice = new BankAccountDao();
 						final List<BankAccount> lst = bankaccountservice.listBankAccount(partner, office, type, purpose);
-
+						
 						for (final BankAccount row : lst)
 							{
 								map.put(row.getId(), row.getBankAccountName().trim());
@@ -168,18 +151,18 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-
-		public Map<Long, String> ListCurrency(final Partner partner) throws Exception
+			
+		public Map<String, String> ListMaster(final Partner partner, final String mastertype) throws Exception
 			{
-				final Map<Long, String> map = new HashMap<Long, String>();
+				final Map<String, String> map = new HashMap<String, String>();
 				try
 					{
-						final CurrencyService service = new CurrencyDao();
-						final List<Currency> lst = service.CurrencyList(partner);
-
-						for (final Currency row : lst)
+						final MasterService masterservice = new MasterDao();
+						final List<MsTable> lst = masterservice.ListMaster(partner, mastertype);
+						
+						for (final MsTable row : lst)
 							{
-								map.put(row.getId(), row.getCode().trim());
+								map.put(row.getMasterCode().trim(), row.getMasterValue().trim());
 							}
 					}
 				catch (final Exception exp)
@@ -193,16 +176,16 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-
+			
 		public Map<Long, String> ListEmployee(final Partner partner, final Office office) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
 				try
 					{
-
+						
 						final EmployeeService service = new EmployeeDao();
 						final List<Employee> lst = service.ListEmployee(partner, office);
-
+						
 						for (final Employee row : lst)
 							{
 								map.put(row.getId(), row.getName().trim());
@@ -227,5 +210,25 @@ public class BaseAction extends ActionSupport implements Preparable
 				c.add(Calendar.DATE, add);
 				return c.getTime();
 			}
-
+			
+		public String getMenu()
+			{
+				return this.menu;
+			}
+			
+		public void setMenu(final String menu)
+			{
+				this.menu = menu;
+			}
+			
+		public SimpleDateFormat getDateformat()
+			{
+				return this.dateformat;
+			}
+			
+		public void setDateformat(final SimpleDateFormat dateformat)
+			{
+				this.dateformat = dateformat;
+			}
+			
 	}

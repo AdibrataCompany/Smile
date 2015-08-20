@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.MasterType;
 import com.adibrata.smartdealer.model.MsTable;
+import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.MasterService;
 
 import util.adibrata.framework.cachehelper.Caching;
@@ -25,14 +26,14 @@ public class MasterDao extends DaoBase implements MasterService
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
 		private Long totalrecord;
-		
+
 		public MasterDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
 						this.strStatement = "from MsTable ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -43,7 +44,7 @@ public class MasterDao extends DaoBase implements MasterService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -60,9 +61,9 @@ public class MasterDao extends DaoBase implements MasterService
 						MsTable.setDtmCrt(this.dtmupd);
 						MsTable.setDtmUpd(this.dtmupd);
 						this.getSession().save(MsTable);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -73,7 +74,7 @@ public class MasterDao extends DaoBase implements MasterService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -88,12 +89,12 @@ public class MasterDao extends DaoBase implements MasterService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						MsTable.setDtmUpd(this.dtmupd);
 						this.getSession().update(MsTable);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -104,7 +105,7 @@ public class MasterDao extends DaoBase implements MasterService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -118,11 +119,11 @@ public class MasterDao extends DaoBase implements MasterService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						this.getSession().delete(MsTable);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -133,7 +134,7 @@ public class MasterDao extends DaoBase implements MasterService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.setting.Master#Paging(int,
@@ -153,18 +154,18 @@ public class MasterDao extends DaoBase implements MasterService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-							
+
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("MsTable" + WhereCond);
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -172,7 +173,7 @@ public class MasterDao extends DaoBase implements MasterService
 					}
 				return list;
 			}
-			
+
 		@SuppressWarnings("null")
 		@Override
 		public List<MasterType> ListMasterType() throws Exception
@@ -181,18 +182,18 @@ public class MasterDao extends DaoBase implements MasterService
 				final StringBuilder hql = new StringBuilder();
 				List<MasterType> list = new ArrayList<MasterType>();
 				final Query selectQuery;
-				
+
 				try
 					{
 						hql.append("from MasterType");
-						
+
 						// selectQuery = this.getSession().createQuery(hql.toString());
 						// selectQuery.setCacheable(true);
 						// selectQuery.setCacheRegion("MasterType");
 						// list = selectQuery.list();
-						
+
 						// cache.put("MasterType", list);
-						
+
 						selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("MasterType");
@@ -206,7 +207,27 @@ public class MasterDao extends DaoBase implements MasterService
 							{
 								list = cache.get("MasterTypeCache");
 							}
-							
+
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
+		@Override
+		public MsTable View(final Long id) throws Exception
+			{
+				MsTable MsTable = null;
+				try
+					{
+						MsTable = (MsTable) this.getSession().get(MsTable.class, id);
+						
 					}
 				catch (final Exception exp)
 					{
@@ -216,36 +237,16 @@ public class MasterDao extends DaoBase implements MasterService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return list;
-			}
-			
-		@Override
-		public MsTable View(final Long id) throws Exception
-			{
-				MsTable MsTable = null;
-				try
-					{
-						MsTable = (MsTable) this.getSession().get(MsTable.class, id);
-
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
 				return MsTable;
 			}
-			
+
 		@Override
 		public List<MsTable> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<MsTable> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -262,11 +263,11 @@ public class MasterDao extends DaoBase implements MasterService
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -274,16 +275,45 @@ public class MasterDao extends DaoBase implements MasterService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public int getCurrentpage()
 			{
 				return this.currentpage;
 			}
-			
+
 		public void setCurrentpage(final int currentpage)
 			{
 				this.currentpage = currentpage;
 			}
 			
+		@Override
+		public List<MsTable> ListMaster(final Partner partner, final String MasterType) throws Exception
+			{
+				// TODO Auto-generated method stub
+				final StringBuilder hql = new StringBuilder();
+				List<MsTable> list = new ArrayList<MsTable>();
+				try
+					{
+						hql.append("from MsTable A, Partner B where A.partner = B.partnerCode and A.masterTypeCode =:mastertype and B.partnerCode = :partnercode and A.isActive =1");
+						
+						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						selectQuery.setParameter("mastertype", MasterType);
+						selectQuery.setParameter("partnercode", partner.getPartnerCode());
+
+						selectQuery.setCacheable(true);
+						selectQuery.setCacheRegion("MsTable" + MasterType);
+						list = selectQuery.list();
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return list;
+			}
+
 	}

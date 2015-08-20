@@ -30,11 +30,11 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private List<Workshop> lstWorkshop;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
+		private int pagenumber;
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
+		private Long id;
 
 		private String name;
 		private String address;
@@ -44,12 +44,12 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private String city;
 		private String zipcode;
 		private String type;
-		private String areaPhone1;
-		private String phoneNo1;
-		private String areaPhone2;
-		private String phoneNo2;
-		private String areaFax;
-		private String faxNo;
+		private String areaphone1;
+		private String phoneno1;
+		private String areaphone2;
+		private String phoneno2;
+		private String areafax;
+		private String faxno;
 		private String handphone;
 
 		public WorkshopAction() throws Exception
@@ -64,9 +64,9 @@ public class WorkshopAction extends BaseAction implements Preparable
 				this.workshopService = new WorkshopDao();
 				this.workshop = new Workshop();
 
-				if (this.pageNumber == 0)
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -100,7 +100,8 @@ public class WorkshopAction extends BaseAction implements Preparable
 								case "edit" :
 									try
 										{
-											this.ViewData();
+											strMode = this.ViewData();
+											this.Paging();
 										}
 									catch (final Exception e)
 										{
@@ -120,7 +121,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -132,10 +133,10 @@ public class WorkshopAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -148,7 +149,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -176,7 +177,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 						try
 							{
 								this.Paging();
@@ -261,7 +262,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstWorkshop = this.workshopService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstWorkshop = this.workshopService.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -278,8 +279,8 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstWorkshop = this.workshopService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.workshopService.getCurrentpage();
+						this.lstWorkshop = this.workshopService.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.workshopService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -292,27 +293,36 @@ public class WorkshopAction extends BaseAction implements Preparable
 
 			}
 
-		public void ViewData() throws Exception
+		public String ViewData() throws Exception
 			{
 				this.workshop = new Workshop();
 				try
 					{
-						this.workshop = this.workshopService.View(this.id);
-						this.partner = this.workshop.getPartner();
-						this.name = this.workshop.getName();
-						this.address = this.workshop.getAddress();
-						this.rt = this.workshop.getRt();
-						this.rw = this.workshop.getRw();
-						this.kelurahan = this.workshop.getKelurahan();
-						this.city = this.workshop.getCity();
-						this.zipcode = this.workshop.getZipCode();
-						this.areaPhone1 = this.workshop.getAreaPhone1();
-						this.areaPhone2 = this.workshop.getAreaPhone2();
-						this.phoneNo1 = this.workshop.getPhoneNo1();
-						this.phoneNo2 = this.workshop.getPhoneNo2();
-						this.areaFax = this.workshop.getAreaFax();
-						this.faxNo = this.workshop.getFaxNo();
-						this.handphone = this.workshop.getHandphone();
+						if (this.getId() != null)
+							{
+								this.workshop = this.workshopService.View(this.id);
+								this.partner = this.workshop.getPartner();
+								this.name = this.workshop.getName();
+								this.address = this.workshop.getAddress();
+								this.rt = this.workshop.getRt();
+								this.rw = this.workshop.getRw();
+								this.kelurahan = this.workshop.getKelurahan();
+								this.city = this.workshop.getCity();
+								this.zipcode = this.workshop.getZipCode();
+								this.areaphone1 = this.workshop.getAreaPhone1();
+								this.areaphone2 = this.workshop.getAreaPhone2();
+								this.phoneno1 = this.workshop.getPhoneNo1();
+								this.phoneno2 = this.workshop.getPhoneNo2();
+								this.areafax = this.workshop.getAreaFax();
+								this.faxno = this.workshop.getFaxNo();
+								this.handphone = this.workshop.getHandphone();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -321,6 +331,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
@@ -336,12 +347,12 @@ public class WorkshopAction extends BaseAction implements Preparable
 						workshop.setKelurahan(this.getKelurahan());
 						workshop.setCity(this.getCity());
 						workshop.setZipCode(this.getZipcode());
-						workshop.setAreaPhone1(this.getAreaPhone1());
-						workshop.setAreaPhone2(this.getAreaPhone2());
-						workshop.setPhoneNo1(this.getPhoneNo1());
-						workshop.setPhoneNo2(this.getPhoneNo2());
-						workshop.setAreaFax(this.getAreaFax());
-						workshop.setFaxNo(this.getFaxNo());
+						workshop.setAreaPhone1(this.getAreafax());
+						workshop.setAreaPhone2(this.getAreafax());
+						workshop.setPhoneNo1(this.getPhoneno1());
+						workshop.setPhoneNo2(this.getPhoneno2());
+						workshop.setAreaFax(this.getAreafax());
+						workshop.setFaxNo(this.getFaxno());
 						workshop.setHandphone(this.getHandphone());
 						workshop.setPartner(this.partner);
 						this.workshopService.SaveAdd(workshop);
@@ -349,6 +360,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -372,12 +384,12 @@ public class WorkshopAction extends BaseAction implements Preparable
 						workshop.setKelurahan(this.getKelurahan());
 						workshop.setCity(this.getCity());
 						workshop.setZipCode(this.getZipcode());
-						workshop.setAreaPhone1(this.getAreaPhone1());
-						workshop.setAreaPhone2(this.getAreaPhone2());
-						workshop.setPhoneNo1(this.getPhoneNo1());
-						workshop.setPhoneNo2(this.getPhoneNo2());
-						workshop.setAreaFax(this.getAreaFax());
-						workshop.setFaxNo(this.getFaxNo());
+						workshop.setAreaPhone1(this.getAreaphone1());
+						workshop.setAreaPhone2(this.getAreaphone2());
+						workshop.setPhoneNo1(this.getPhoneno1());
+						workshop.setPhoneNo2(this.getPhoneno2());
+						workshop.setAreaFax(this.getAreafax());
+						workshop.setFaxNo(this.getFaxno());
 						workshop.setHandphone(this.getHandphone());
 						workshop.setPartner(this.partner);
 						workshop.setUsrUpd(this.usrUpd);
@@ -386,6 +398,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -399,11 +412,19 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						final Workshop workshop = new Workshop();
+						if (this.getId() != null)
+							{
+								final Workshop workshop = new Workshop();
 
-						workshop.setId(this.getId());
-						this.workshopService.SaveDel(workshop);
-						this.setMessage(BaseAction.SuccessMessage());
+								workshop.setId(this.getId());
+								this.workshopService.SaveDel(workshop);
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -440,14 +461,6 @@ public class WorkshopAction extends BaseAction implements Preparable
 		public String getSearchvalue()
 			{
 				return this.searchvalue;
-			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
 			}
 
 		/**
@@ -493,15 +506,6 @@ public class WorkshopAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
 		 */
@@ -526,23 +530,6 @@ public class WorkshopAction extends BaseAction implements Preparable
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
 			}
 
 		/**
@@ -599,54 +586,6 @@ public class WorkshopAction extends BaseAction implements Preparable
 		public String getType()
 			{
 				return this.type;
-			}
-
-		/**
-		 * @return the areaPhone1
-		 */
-		public String getAreaPhone1()
-			{
-				return this.areaPhone1;
-			}
-
-		/**
-		 * @return the phoneNo1
-		 */
-		public String getPhoneNo1()
-			{
-				return this.phoneNo1;
-			}
-
-		/**
-		 * @return the areaPhone2
-		 */
-		public String getAreaPhone2()
-			{
-				return this.areaPhone2;
-			}
-
-		/**
-		 * @return the phoneNo2
-		 */
-		public String getPhoneNo2()
-			{
-				return this.phoneNo2;
-			}
-
-		/**
-		 * @return the areaFax
-		 */
-		public String getAreaFax()
-			{
-				return this.areaFax;
-			}
-
-		/**
-		 * @return the faxNo
-		 */
-		public String getFaxNo()
-			{
-				return this.faxNo;
 			}
 
 		/**
@@ -718,60 +657,6 @@ public class WorkshopAction extends BaseAction implements Preparable
 		public void setType(final String type)
 			{
 				this.type = type;
-			}
-
-		/**
-		 * @param areaPhone1
-		 *            the areaPhone1 to set
-		 */
-		public void setAreaPhone1(final String areaPhone1)
-			{
-				this.areaPhone1 = areaPhone1;
-			}
-
-		/**
-		 * @param phoneNo1
-		 *            the phoneNo1 to set
-		 */
-		public void setPhoneNo1(final String phoneNo1)
-			{
-				this.phoneNo1 = phoneNo1;
-			}
-
-		/**
-		 * @param areaPhone2
-		 *            the areaPhone2 to set
-		 */
-		public void setAreaPhone2(final String areaPhone2)
-			{
-				this.areaPhone2 = areaPhone2;
-			}
-
-		/**
-		 * @param phoneNo2
-		 *            the phoneNo2 to set
-		 */
-		public void setPhoneNo2(final String phoneNo2)
-			{
-				this.phoneNo2 = phoneNo2;
-			}
-
-		/**
-		 * @param areaFax
-		 *            the areaFax to set
-		 */
-		public void setAreaFax(final String areaFax)
-			{
-				this.areaFax = areaFax;
-			}
-
-		/**
-		 * @param faxNo
-		 *            the faxNo to set
-		 */
-		public void setFaxNo(final String faxNo)
-			{
-				this.faxNo = faxNo;
 			}
 
 		/**
@@ -884,6 +769,86 @@ public class WorkshopAction extends BaseAction implements Preparable
 		public void setZipcode(final String zipcode)
 			{
 				this.zipcode = zipcode;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getAreaphone1()
+			{
+				return this.areaphone1;
+			}
+
+		public void setAreaphone1(final String areaphone1)
+			{
+				this.areaphone1 = areaphone1;
+			}
+
+		public String getPhoneno1()
+			{
+				return this.phoneno1;
+			}
+
+		public void setPhoneno1(final String phoneno1)
+			{
+				this.phoneno1 = phoneno1;
+			}
+
+		public String getAreaphone2()
+			{
+				return this.areaphone2;
+			}
+
+		public void setAreaphone2(final String areaphone2)
+			{
+				this.areaphone2 = areaphone2;
+			}
+
+		public String getPhoneno2()
+			{
+				return this.phoneno2;
+			}
+
+		public void setPhoneno2(final String phoneno2)
+			{
+				this.phoneno2 = phoneno2;
+			}
+
+		public String getAreafax()
+			{
+				return this.areafax;
+			}
+
+		public void setAreafax(final String areafax)
+			{
+				this.areafax = areafax;
+			}
+
+		public String getFaxno()
+			{
+				return this.faxno;
+			}
+
+		public void setFaxno(final String faxno)
+			{
+				this.faxno = faxno;
+			}
+
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		public void setId(final Long id)
+			{
+				this.id = id;
 			}
 
 	}

@@ -26,7 +26,7 @@ public interface EmployeeService extends SeviceBase
 
 		public List<Employee> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
 
-		public Employee View(Long id) throws Exception;
+		public Employee View(long id) throws Exception;
 
 		public List<Employee> ListEmployee(final Partner partner, final Office office) throws Exception;
 	}

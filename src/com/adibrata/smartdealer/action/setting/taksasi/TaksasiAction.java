@@ -24,22 +24,22 @@ public class TaksasiAction extends BaseAction implements Preparable
 
 		private String mode;
 		private Taksasi taksasi;
-		private TaksasiService taksasiService;
+		private TaksasiService taksasiservice;
 		private Partner partner;
 		private Office office;
-		private List<Taksasi> lstTaksasi;
+		private List<Taksasi> lsttaksasi;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		private int pagenumber;
+		private String usrupd;
+		private String usrcrt;
 		private String message;
-		private long id;
+		private Long id;
 
-		private String assetMasterCode;
-		private String taksasiCode;
-		private String taksasiName;
-		private double taksasiPriceMin;
+		private String assetmastercode;
+		private String taksasicode;
+		private String taksasiname;
+		private double taksasipricemin;
 
 		public TaksasiAction() throws Exception
 			{
@@ -50,12 +50,12 @@ public class TaksasiAction extends BaseAction implements Preparable
 				this.office = new Office();
 				this.setOffice(this.office);
 
-				this.taksasiService = new TaksasiDao();
+				this.taksasiservice = new TaksasiDao();
 				this.taksasi = new Taksasi();
 
-				if (this.pageNumber == 0)
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -82,7 +82,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 								case "edit" :
 									try
 										{
-											this.ViewData();
+											strMode = this.ViewData();
 										}
 									catch (final Exception e)
 										{
@@ -102,7 +102,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -114,10 +114,10 @@ public class TaksasiAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -130,7 +130,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -158,7 +158,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 						try
 							{
 								this.Paging();
@@ -243,7 +243,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lsttaksasi = this.taksasiservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -260,8 +260,8 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstTaksasi = this.taksasiService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.taksasiService.getCurrentpage();
+						this.lsttaksasi = this.taksasiservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.taksasiservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -274,16 +274,25 @@ public class TaksasiAction extends BaseAction implements Preparable
 
 			}
 
-		public void ViewData() throws Exception
+		public String ViewData() throws Exception
 			{
 				this.taksasi = new Taksasi();
 				try
 					{
-						this.taksasi = this.taksasiService.View(this.id);
-						this.partner = this.office.getPartner();
-						this.taksasiCode = this.taksasi.getTaksasiCode();
-						this.taksasiName = this.taksasi.getTaksasiName();
-						this.taksasiPriceMin = this.taksasi.getTaksasiPriceMin();
+						if (this.getId() != null)
+							{
+								this.taksasi = this.taksasiservice.View(this.id);
+								this.partner = this.office.getPartner();
+								this.taksasicode = this.taksasi.getTaksasiCode();
+								this.taksasiname = this.taksasi.getTaksasiName();
+								this.taksasipricemin = this.taksasi.getTaksasiPriceMin();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -292,6 +301,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
@@ -299,15 +309,16 @@ public class TaksasiAction extends BaseAction implements Preparable
 				try
 					{
 						final Taksasi taksasi = new Taksasi();
-						taksasi.setTaksasiCode(this.getTaksasiCode());
-						taksasi.setTaksasiName(this.getTaksasiName());
-						taksasi.setTaksasiPriceMin(this.getTaksasiPriceMin());
+						taksasi.setTaksasiCode(this.getTaksasicode());
+						taksasi.setTaksasiName(this.getTaksasiname());
+						taksasi.setTaksasiPriceMin(this.getTaksasipricemin());
 						taksasi.setPartner(this.partner);
-						this.taksasiService.SaveAdd(taksasi);
+						this.taksasiservice.SaveAdd(taksasi);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -322,16 +333,17 @@ public class TaksasiAction extends BaseAction implements Preparable
 				try
 					{
 						final Taksasi taksasi = new Taksasi();
-						taksasi.setTaksasiCode(this.getTaksasiCode());
-						taksasi.setTaksasiName(this.getTaksasiName());
-						taksasi.setTaksasiPriceMin(this.getTaksasiPriceMin());
-						taksasi.setUsrUpd(this.usrUpd);
+						taksasi.setTaksasiCode(this.getTaksasicode());
+						taksasi.setTaksasiName(this.getTaksasiname());
+						taksasi.setTaksasiPriceMin(this.getTaksasipricemin());
+						taksasi.setUsrUpd(this.usrupd);
 						taksasi.setPartner(this.partner);
-						this.taksasiService.SaveEdit(taksasi);
+						this.taksasiservice.SaveEdit(taksasi);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -343,18 +355,24 @@ public class TaksasiAction extends BaseAction implements Preparable
 
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				final String status = "";
 				try
 					{
-						final Taksasi taksasi = new Taksasi();
-						this.office.setId(this.getId());
-						this.taksasiService.SaveDel(taksasi);
-						status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
+						if (this.getId() != null)
+							{
+								final Taksasi taksasi = new Taksasi();
+								this.office.setId(this.getId());
+								this.taksasiservice.SaveDel(taksasi);
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -381,14 +399,6 @@ public class TaksasiAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the taksasiService
-		 */
-		public TaksasiService getTaksasiService()
-			{
-				return this.taksasiService;
-			}
-
-		/**
 		 * @return the partner
 		 */
 		public Partner getPartner()
@@ -405,29 +415,12 @@ public class TaksasiAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the lstTaksasi
-		 */
-		public List<Taksasi> getLstTaksasi()
-			{
-				return this.lstTaksasi;
-			}
-
-		/**
 		 * @param taksasi
 		 *            the taksasi to set
 		 */
 		public void setTaksasi(final Taksasi taksasi)
 			{
 				this.taksasi = taksasi;
-			}
-
-		/**
-		 * @param taksasiService
-		 *            the taksasiService to set
-		 */
-		public void setTaksasiService(final TaksasiService taksasiService)
-			{
-				this.taksasiService = taksasiService;
 			}
 
 		/**
@@ -446,15 +439,6 @@ public class TaksasiAction extends BaseAction implements Preparable
 		public void setOffice(final Office office)
 			{
 				this.office = office;
-			}
-
-		/**
-		 * @param lstTaksasi
-		 *            the lstTaksasi to set
-		 */
-		public void setLstTaksasi(final List<Taksasi> lstTaksasi)
-			{
-				this.lstTaksasi = lstTaksasi;
 			}
 
 		@Override
@@ -491,30 +475,6 @@ public class TaksasiAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
 		 * @return the message
 		 */
 		public String getMessage()
@@ -541,33 +501,6 @@ public class TaksasiAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
-		/**
 		 * @param message
 		 *            the message to set
 		 */
@@ -576,89 +509,104 @@ public class TaksasiAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 
-		/**
-		 * @return the id
-		 */
-		public long getId()
+		public TaksasiService getTaksasiservice()
+			{
+				return this.taksasiservice;
+			}
+
+		public void setTaksasiservice(final TaksasiService taksasiservice)
+			{
+				this.taksasiservice = taksasiservice;
+			}
+
+		public List<Taksasi> getLsttaksasi()
+			{
+				return this.lsttaksasi;
+			}
+
+		public void setLsttaksasi(final List<Taksasi> lsttaksasi)
+			{
+				this.lsttaksasi = lsttaksasi;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
+			}
+
+		public Long getId()
 			{
 				return this.id;
 			}
 
-		/**
-		 * @return the assetMasterCode
-		 */
-		public String getAssetMasterCode()
-			{
-				return this.assetMasterCode;
-			}
-
-		/**
-		 * @return the taksasiCode
-		 */
-		public String getTaksasiCode()
-			{
-				return this.taksasiCode;
-			}
-
-		/**
-		 * @return the taksasiName
-		 */
-		public String getTaksasiName()
-			{
-				return this.taksasiName;
-			}
-
-		/**
-		 * @return the taksasiPriceMin
-		 */
-		public double getTaksasiPriceMin()
-			{
-				return this.taksasiPriceMin;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
+		public void setId(final Long id)
 			{
 				this.id = id;
 			}
 
-		/**
-		 * @param assetMasterCode
-		 *            the assetMasterCode to set
-		 */
-		public void setAssetMasterCode(final String assetMasterCode)
+		public String getAssetmastercode()
 			{
-				this.assetMasterCode = assetMasterCode;
+				return this.assetmastercode;
 			}
 
-		/**
-		 * @param taksasiCode
-		 *            the taksasiCode to set
-		 */
-		public void setTaksasiCode(final String taksasiCode)
+		public void setAssetmastercode(final String assetmastercode)
 			{
-				this.taksasiCode = taksasiCode;
+				this.assetmastercode = assetmastercode;
 			}
 
-		/**
-		 * @param taksasiName
-		 *            the taksasiName to set
-		 */
-		public void setTaksasiName(final String taksasiName)
+		public String getTaksasicode()
 			{
-				this.taksasiName = taksasiName;
+				return this.taksasicode;
 			}
 
-		/**
-		 * @param taksasiPriceMin
-		 *            the taksasiPriceMin to set
-		 */
-		public void setTaksasiPriceMin(final double taksasiPriceMin)
+		public void setTaksasicode(final String taksasicode)
 			{
-				this.taksasiPriceMin = taksasiPriceMin;
+				this.taksasicode = taksasicode;
+			}
+
+		public String getTaksasiname()
+			{
+				return this.taksasiname;
+			}
+
+		public void setTaksasiname(final String taksasiname)
+			{
+				this.taksasiname = taksasiname;
+			}
+
+		public double getTaksasipricemin()
+			{
+				return this.taksasipricemin;
+			}
+
+		public void setTaksasipricemin(final double taksasipricemin)
+			{
+				this.taksasipricemin = taksasipricemin;
 			}
 
 	}

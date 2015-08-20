@@ -8,7 +8,6 @@ import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.cashtransactions.AdvanceCashDao;
 import com.adibrata.smartdealer.model.AdvanceCash;
 import com.adibrata.smartdealer.model.BankAccount;
-import com.adibrata.smartdealer.model.BankAccountInfo;
 import com.adibrata.smartdealer.model.Employee;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
@@ -30,7 +29,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 		private Office office;
 		private AdvanceCash advanceCash;
 		private Map<Long, String> lstemployee;
-		
+		private Map<Long, String> lstbankaccount;
 		private Employee employee;
 		private Long employeeid;
 		private String employeename;
@@ -41,9 +40,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 		private Double amount;
 		private String message;
 		private String notes;
-
-		private String currency;
-
+		
 		public AdvanceRequestAction() throws Exception
 			{
 				try
@@ -55,13 +52,15 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 						this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 						this.service = new AdvanceCashDao();
 						this.advanceCash = new AdvanceCash();
-
+						this.lstbankaccount = new HashMap<Long, String>();
+						
+						this.lstbankaccount = this.ListBankAccount(this.getPartner(), this.getOffice(), "", "");
 						this.lstemployee = new HashMap<Long, String>();
 						this.lstemployee = this.ListEmployee(this.getPartner(), this.getOffice());
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -69,32 +68,32 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
-
+						
 						switch (strMode)
 							{
 								case "save" :
 									try
 										{
-
+											
 											strMode = this.SaveSuspend();
 										}
 									catch (final Exception e)
@@ -103,14 +102,14 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									return ERROR;
 							}
 					}
 				else
 					{
-						strMode = "input";
+						strMode = "start";
 						try
 							{
 								this.InitiallInput();
@@ -123,7 +122,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private void InitiallInput() throws Exception
 			{
 				try
@@ -131,16 +130,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 						this.setAmount(0.00);
 						this.setValuedate(this.dateformat.format(BaseAction.sesBussinessDate()));
 						this.setNotes("");
-						if (this.getBankaccountid() != null)
-							{
-								// this.bankaccount = this.bankaccountservice.View(this.getBankAccountId());
-								// this.bankaccountname = this.bankaccount.getBankAccountName();
-								BankAccountInfo info = new BankAccountInfo();
-								info = this.BankInfo(this.getBankaccountid());
-								this.bankaccountname = info.getName();
-								this.currency = info.getCurrency();
-							}
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -151,10 +141,10 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 			}
-
+			
 		private String SaveSuspend() throws Exception
 			{
 				String status = "";
@@ -163,9 +153,9 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					{
 						final BankAccount bank = new BankAccount();
 						bank.setId(this.getBankaccountid());
-
+						
 						this.advanceCash.setAdvanceAmount(this.getAmount());
-
+						
 						this.advanceCash.setBankAccount(bank);
 						this.advanceCash.setValueDate(this.dateformat.parse(this.getValuedate()));
 						this.advanceCash.setPostingDate(BaseAction.sesBussinessDate());
@@ -183,7 +173,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 				catch (final Exception exp)
 					{
 						status = ERROR;
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -192,11 +182,11 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -204,16 +194,16 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the advanceCashService
 		 */
 		public AdvanceCashService getAdvanceCashService()
 			{
 				return this.service;
-
+				
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -221,7 +211,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -229,7 +219,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @return the advanceCash
 		 */
@@ -237,7 +227,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.advanceCash;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -246,7 +236,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @param advanceCashService
 		 *            the advanceCashService to set
@@ -255,7 +245,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.service = advanceCashService;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -264,7 +254,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -273,7 +263,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @param advanceCash
 		 *            the advanceCash to set
@@ -282,7 +272,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.advanceCash = advanceCash;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -290,7 +280,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -299,7 +289,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the employee
 		 */
@@ -307,7 +297,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-
+			
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -316,7 +306,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-
+			
 		/**
 		 * @return the employeeid
 		 */
@@ -324,7 +314,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-
+			
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -333,7 +323,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-
+			
 		/**
 		 * @return the employeename
 		 */
@@ -341,7 +331,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employeename;
 			}
-
+			
 		/**
 		 * @param employeename
 		 *            the employeename to set
@@ -350,7 +340,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employeename = employeename;
 			}
-
+			
 		/**
 		 * @return the bankaccountid
 		 */
@@ -358,7 +348,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountid;
 			}
-
+			
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -367,7 +357,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.bankaccountid = bankaccountid;
 			}
-
+			
 		/**
 		 * @return the bankaccountname
 		 */
@@ -375,7 +365,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountname;
 			}
-
+			
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -384,7 +374,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.bankaccountname = bankaccountname;
 			}
-
+			
 		/**
 		 * @return the postingdate
 		 */
@@ -392,7 +382,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.postingdate;
 			}
-
+			
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -401,7 +391,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.postingdate = postingdate;
 			}
-
+			
 		/**
 		 * @return the valuedate
 		 */
@@ -409,7 +399,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-
+			
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -418,7 +408,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -426,7 +416,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-
+			
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -435,7 +425,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-
+			
 		/**
 		 * @return the lstemployee
 		 */
@@ -443,7 +433,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-
+			
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -454,13 +444,30 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			}
 			
 		/**
+		 * @return the lstbankaccount
+		 */
+		public Map<Long, String> getLstbankaccount()
+			{
+				return this.lstbankaccount;
+			}
+			
+		/**
+		 * @param lstbankaccount
+		 *            the lstbankaccount to set
+		 */
+		public void setLstbankaccount(final Map<Long, String> lstbankaccount)
+			{
+				this.lstbankaccount = lstbankaccount;
+			}
+			
+		/**
 		 * @return the serialversionuid
 		 */
 		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -468,7 +475,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -477,7 +484,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the notes
 		 */
@@ -485,7 +492,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-
+			
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -494,22 +501,5 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-
-		/**
-		 * @return the currency
-		 */
-		public String getCurrency()
-			{
-				return this.currency;
-			}
-
-		/**
-		 * @param currency
-		 *            the currency to set
-		 */
-		public void setCurrency(final String currency)
-			{
-				this.currency = currency;
-			}
-
+			
 	}

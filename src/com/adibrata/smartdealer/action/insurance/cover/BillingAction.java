@@ -2,13 +2,7 @@
 package com.adibrata.smartdealer.action.insurance.cover;
 
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.model.AssetDocMaster;
-import com.adibrata.smartdealer.model.Office;
-import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
-
-import util.adibrata.framework.exceptionhelper.ExceptionEntities;
-import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class BillingAction extends BaseAction implements Preparable
 	{
@@ -16,334 +10,69 @@ public class BillingAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private Long id;
+		private long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-		Partner partner;
-		Office office;
 		
-		public BillingAction() throws Exception
+		public BillingAction()
 			{
 				// TODO Auto-generated constructor stub
-				this.partner = new Partner();
-				this.office = new Office();
-
-				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.office.setId(BaseAction.sesOfficeId());
 			}
-
+			
 		@Override
-		public String execute()
+		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
+
 				if (this.mode != null)
 					{
+
 						switch (strMode)
 							{
 								case "search" :
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									this.Paging();
 								case "edit" :
-									try
-										{
-											this.ViewData();
-										}
-									catch (final Exception e1)
-										{
-											// TODO Auto-generated catch block
-											e1.printStackTrace();
-										}
-									break;
-								case "savedel" :
-									try
-										{
-											strMode = this.SaveDelete();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+
+								case "del" :
+									return this.SaveDelete();
+								case "add" :
+									strMode = this.SaveAdd();
 								case "saveadd" :
-									try
-										{
-											strMode = this.SaveAdd();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									strMode = this.SaveAdd();
 								case "saveedit" :
-									try
-										{
-											strMode = this.SaveEdit();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									strMode = this.SaveEdit();
+								case "back" :
+									;
+
 								case "first" :
-									this.pageNumber = 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									this.pageNumber -= 1;
+									this.Paging();
 								case "prev" :
 									this.pageNumber -= 1;
 									if (this.pageNumber <= 1)
 										{
 											this.pageNumber = 1;
 										}
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									this.Paging();
 								case "next" :
 									this.pageNumber += 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									this.Paging();
 								case "last" :
-									try
-										{
-											this.Paging(1);
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-
+									this.LastPage();
 								default :
-									break;
-									
+									return ERROR;
 							}
 					}
 				else
 					{
-						this.pageNumber = 1;
-						try
-							{
-								this.Paging();
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
 						strMode = "start";
 					}
 				return strMode;
 			}
-
-		/**
-		 *
-		 */
-
-		private String WhereCond()
-			{
-				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
-				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
-					{
-						if (this.getSearchcriteria().contains("%"))
-							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
-							}
-						else
-							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
-							}
-					}
-				return wherecond;
-			}
-
-		private void Paging() throws Exception
-			{
-				try
-					{
-						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
-		private void Paging(final int islast) throws Exception
-			{
-				try
-					{
-
-						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.assetDocMasterService.getCurrentpage();
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
-		public void ViewData() throws Exception
-			{
-				this.assetDocMaster = new AssetDocMaster();
-				try
-					{
-						if (this.getId() != null)
-							{
-								this.assetDocMaster = this.assetDocMasterService.View(this.id);
-								this.documentCode = this.assetDocMaster.getDocumentCode();
-								this.documentName = this.assetDocMaster.getDocumentName();
-								this.assetType = this.assetDocMaster.getAssetType();
-							}
-						else
-							{
-								this.status = "end";
-								this.setMessage(BaseAction.SelectFirst());
-							}
-					}
-				catch (final Exception exp)
-					{
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-			}
-
-		private String SaveAdd() throws Exception
-			{
-				try
-					{
-						this.status = "";
-						final AssetDocMaster assetDocMaster = new AssetDocMaster();
-						assetDocMaster.setDocumentCode(this.getDocumentCode());
-						assetDocMaster.setDocumentName(this.getDocumentName());
-						assetDocMaster.setPartner(this.getPartner());
-						assetDocMaster.setUsrUpd(this.getUsrUpd());
-
-						this.assetDocMasterService.SaveAdd(assetDocMaster);
-						this.status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
-					}
-				catch (final Exception exp)
-					{
-						this.status = ERROR;
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return this.status;
-			}
-
-		private String SaveEdit() throws Exception
-			{
-				try
-					{
-						this.status = "";
-						final AssetDocMaster assetDocMaster = new AssetDocMaster();
-						assetDocMaster.setId(this.getId());
-						assetDocMaster.setDocumentCode(this.getDocumentCode());
-						assetDocMaster.setDocumentName(this.getDocumentName());
-						assetDocMaster.setPartner(this.getPartner());
-						assetDocMaster.setUsrUpd(this.getUsrUpd());
-						this.assetDocMasterService.SaveEdit(assetDocMaster);
-						this.status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
-					}
-				catch (final Exception exp)
-					{
-						this.status = ERROR;
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return this.status;
-			}
-
-		private String SaveDelete() throws Exception
-			{
-				try
-					{
-						this.status = "";
-						if (this.getId() == null)
-							{
-								final AssetDocMaster assetDocMaster = new AssetDocMaster();
-
-								assetDocMaster.setId(this.getId());
-
-								this.assetDocMasterService.SaveDel(assetDocMaster);
-								this.status = SUCCESS;
-								this.setMessage(BaseAction.SuccessMessage());
-							}
-						else
-							{
-								this.status = "end";
-								this.setMessage(BaseAction.SelectFirst());
-							}
-					}
-				catch (final Exception exp)
-					{
-						this.status = ERROR;
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return this.status;
-			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -351,7 +80,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -360,7 +89,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -368,7 +97,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -377,7 +106,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -385,7 +114,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -394,24 +123,24 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
 		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -419,7 +148,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -428,7 +157,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -436,7 +165,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -445,7 +174,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -453,7 +182,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -462,7 +191,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -470,7 +199,7 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -479,11 +208,11 @@ public class BillingAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

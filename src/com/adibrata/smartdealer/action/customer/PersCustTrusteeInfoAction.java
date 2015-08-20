@@ -27,8 +27,8 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private Long id;
-		private Long customerid;
+		private long id;
+		private long customerid;
 
 		private String trusteename;
 		private String trusteeidnumber;
@@ -50,6 +50,7 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 		public PersCustTrusteeInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
+				RenderMenu();
 
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
@@ -204,12 +205,12 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 				this.usrCrt = usrCrt;
 			}
 
-		public Long getId()
+		public long getId()
 			{
 				return this.id;
 			}
 
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}
@@ -374,12 +375,12 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 				this.handphone = handphone;
 			}
 
-		public Long getCustomerid()
+		public long getCustomerid()
 			{
 				return this.customerid;
 			}
 
-		public void setCustomerid(final Long customerid)
+		public void setCustomerid(final long customerid)
 			{
 				this.customerid = customerid;
 			}

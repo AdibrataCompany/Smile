@@ -1,15 +1,10 @@
 
 package com.adibrata.smartdealer.action.insurance.setting.inscoy;
 
-import java.util.List;
-
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.inssurance.InsuranceCompanyRegisterDao;
 import com.adibrata.smartdealer.model.AssetDocMaster;
-import com.adibrata.smartdealer.model.InsCompany;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.insurance.InsuranceCompanyRegisterService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -18,45 +13,27 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class InsCoRegAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
-		// Mandatory
 		private String mode;
-		private String usrUpd;
-		private String usrCrt;
-		Partner partner;
-		Office office;
-		private Long id;
-		private int pagenumber;
-		String message;
-		// Mandatory
-
 		private String searchcriteria;
 		private String searchvalue;
-		List<InsCompany> lstinscoy;
-		private InsuranceCompanyRegisterService service;
-		private InsCompany inscompany;
-
-		public InsCoRegAction() throws Exception
+		private Long id;
+		private String usrUpd;
+		private String usrCrt;
+		private int pageNumber;
+		private String message;
+		Partner partner;
+		Office office;
+		
+		public InsCoRegAction()
 			{
-				try
-					{
-						// TODO Auto-generated constructor stub
-						this.partner = new Partner();
-						this.office = new Office();
-						
-						this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-						this.office.setId(BaseAction.sesOfficeId());
-						this.service = new InsuranceCompanyRegisterDao();
-						
-					}
-				catch (final Exception exp)
-					{
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
+				// TODO Auto-generated constructor stub
+				this.partner = new Partner();
+				this.office = new Office();
+				
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -122,7 +99,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pagenumber = 1;
+									this.pageNumber = 1;
 									try
 										{
 											this.Paging();
@@ -134,10 +111,10 @@ public class InsCoRegAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pagenumber -= 1;
-									if (this.pagenumber <= 1)
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
 										{
-											this.pagenumber = 1;
+											this.pageNumber = 1;
 										}
 									try
 										{
@@ -150,7 +127,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pagenumber += 1;
+									this.pageNumber += 1;
 									try
 										{
 											this.Paging();
@@ -172,15 +149,15 @@ public class InsCoRegAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
-									
+
 							}
 					}
 				else
 					{
-						this.pagenumber = 1;
+						this.pageNumber = 1;
 						try
 							{
 								this.Paging();
@@ -194,11 +171,11 @@ public class InsCoRegAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 *
 		 */
-
+		
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -215,55 +192,54 @@ public class InsCoRegAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstinscoy = this.service.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-
-						this.lstinscoy = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pagenumber = this.service.getCurrentpage();
+						
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetDocMasterService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public void ViewData() throws Exception
 			{
-				this.inscompany = new InsCompany();y
+				this.assetDocMaster = new AssetDocMaster();
+				try
 					{
 						if (this.getId() != null)
 							{
-
-								this.inscompany = this.service.View(this.id);
-//
-//								this.documentCode = this.inscompany.getDocumentCode();
-//								this.documentName = this.inscompany.getDocumentName();
-//								this.assetType = this.inscompany.getAssetType();
+								this.assetDocMaster = this.assetDocMasterService.View(this.id);
+								this.documentCode = this.assetDocMaster.getDocumentCode();
+								this.documentName = this.assetDocMaster.getDocumentName();
+								this.assetType = this.assetDocMaster.getAssetType();
 							}
 						else
 							{
@@ -280,27 +256,26 @@ public class InsCoRegAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-		
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
+						this.status = "";
+						final AssetDocMaster assetDocMaster = new AssetDocMaster();
+						assetDocMaster.setDocumentCode(this.getDocumentCode());
+						assetDocMaster.setDocumentName(this.getDocumentName());
+						assetDocMaster.setPartner(this.getPartner());
+						assetDocMaster.setUsrUpd(this.getUsrUpd());
 						
-						this.inscompany = new InsCompany();
-						this.inscompany.setDocumentCode(this.getDocumentCode());
-						this.inscompany.setDocumentName(this.getDocumentName());
-						this.inscompany.setPartner(this.getPartner());
-						this.inscompany.setUsrUpd(this.getUsrUpd());
-
-						this.service.SaveAdd(assetDocMaster);
-						this.mode = SUCCESS;
+						this.assetDocMasterService.SaveAdd(assetDocMaster);
+						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						this.mode = ERROR;
+						this.status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
-						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -308,7 +283,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -335,7 +310,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				try
@@ -344,9 +319,9 @@ public class InsCoRegAction extends BaseAction implements Preparable
 						if (this.getId() == null)
 							{
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
-
+								
 								assetDocMaster.setId(this.getId());
-
+								
 								this.assetDocMasterService.SaveDel(assetDocMaster);
 								this.status = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
@@ -368,7 +343,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -376,7 +351,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -385,7 +360,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -393,7 +368,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -402,7 +377,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -410,7 +385,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -419,7 +394,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -427,7 +402,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -436,7 +411,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -444,7 +419,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -453,7 +428,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -461,7 +436,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -470,24 +445,24 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
 		public int getPageNumber()
 			{
-				return this.pagenumber;
+				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
 		 */
 		public void setPageNumber(final int pageNumber)
 			{
-				this.pagenumber = pageNumber;
+				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -495,7 +470,7 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -504,72 +479,12 @@ public class InsCoRegAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
 		public static Long getSerialversionuid()
 			{
 				return serialVersionUID;
-			}
-			
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		public void setPartner(final Partner partner)
-			{
-				this.partner = partner;
-			}
-			
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		public void setOffice(final Office office)
-			{
-				this.office = office;
-			}
-			
-		public List<InsCompany> getLstinscoy()
-			{
-				return this.lstinscoy;
-			}
-			
-		public void setLstinscoy(final List<InsCompany> lstinscoy)
-			{
-				this.lstinscoy = lstinscoy;
-			}
-
-		public int getPagenumber()
-			{
-				return this.pagenumber;
-			}
-
-		public void setPagenumber(final int pagenumber)
-			{
-				this.pagenumber = pagenumber;
-			}
-
-		public InsuranceCompanyRegisterService getService()
-			{
-				return this.service;
-			}
-
-		public void setService(final InsuranceCompanyRegisterService service)
-			{
-				this.service = service;
-			}
-
-		public InsCompany getInscompany()
-			{
-				return this.inscompany;
-			}
-
-		public void setInscompany(final InsCompany inscompany)
-			{
-				this.inscompany = inscompany;
 			}
 	}

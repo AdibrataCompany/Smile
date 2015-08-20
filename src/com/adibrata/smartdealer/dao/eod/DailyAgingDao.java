@@ -1,35 +1,40 @@
 
 package com.adibrata.smartdealer.dao.eod;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
+import org.hibernate.StatelessSession;
 import org.hibernate.Transaction;
 
-import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Agrmnt;
 import com.adibrata.smartdealer.model.AgrmntMnt;
 import com.adibrata.smartdealer.model.DailyAraging;
 import com.adibrata.smartdealer.model.Office;
 
+import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.support.common.ArInfo;
 
-public class DailyAgingDao extends DaoBase
+public class DailyAgingDao
 	{
-
-		public DailyAgingDao() throws Exception
+		private final StatelessSession session;
+		Date dtmupd = Calendar.getInstance().getTime();
+		
+		public DailyAgingDao()
 			{
 				// TODO Auto-generated constructor stub
+				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
 				
 			}
 			
 		public DailyAgingDao(final Date valuedate) throws Exception
 			{
 				// TODO Auto-generated constructor stub
-
+				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
 				this.DailyAgingEOD(valuedate);
 				
 			}
@@ -37,16 +42,16 @@ public class DailyAgingDao extends DaoBase
 		public DailyAgingDao(final Date valuedate, final Office office) throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				
+				this.session = HibernateHelper.getSessionFactory().openStatelessSession();
 				this.DailyAgingEOD(valuedate);
 				this.DailyAgingEOM(valuedate);
 				
 			}
 			
-		// getSession() getSession() = getSession()Factory.opengetSession()();
-		// Transaction tx = getSession().beginTransaction();
+		// Session session = sessionFactory.openSession();
+		// Transaction tx = session.beginTransaction();
 		//
-		// ScrollableResults customers = getSession().getNamedQuery("GetCustomers")
+		// ScrollableResults customers = session.getNamedQuery("GetCustomers")
 		// .setCacheMode(CacheMode.IGNORE)
 		// .scroll(ScrollMode.FORWARD_ONLY);
 		// int count=0;
@@ -55,26 +60,26 @@ public class DailyAgingDao extends DaoBase
 		// customer.updateStuff(...);
 		// if ( ++count % 20 == 0 ) {
 		// //flush a batch of updates and release memory:
-		// getSession().flush();
-		// getSession().clear();
+		// session.flush();
+		// session.clear();
 		// }
 		// }
 		//
 		// tx.commit();
-		// getSession().close();
+		// session.close();
 		
 		private void DailyAgingEOD(final Date valuedate) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
 				hql.append("from Agrmnt where ContractStatus In ('LIV', 'ICP', 'ICL') ");
-				this.getSession().createQuery(hql.toString());
-				final Transaction tx = this.getSession().beginTransaction();
+				this.session.createQuery(hql.toString());
+				final Transaction tx = this.session.beginTransaction();
 				final ArInfo arInfo = new ArInfo();
 				ScrollableResults qry;
 				try
 					{
 						hql.append("from Agrmnt, AgrmntMnt where Agrmnt.id = AgrmntMnt.agrmnt and ContractStatus In ('LIV', 'ICP', 'ICL') ");
-						qry = this.getSession().createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
+						qry = this.session.createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
 						while (qry.next())
 							
 							{
@@ -118,16 +123,16 @@ public class DailyAgingDao extends DaoBase
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
 								
-								// AgrmntDaysOverdue(final Long agrmntid, final Date valuedate)
-								this.getSession().update(agrmnt);
+								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
+								this.session.update(agrmnt);
 							}
 						tx.commit();
-						this.getSession().close();
+						this.session.close();
 					}
 				catch (final Exception exp)
 					{
 						tx.rollback();
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -139,14 +144,14 @@ public class DailyAgingDao extends DaoBase
 			{
 				final StringBuilder hql = new StringBuilder();
 				hql.append("from Agrmnt where ContractStatus In ('LIV', 'ICP', 'ICL') ");
-				this.getSession().createQuery(hql.toString());
-				final Transaction tx = this.getSession().beginTransaction();
+				this.session.createQuery(hql.toString());
+				final Transaction tx = this.session.beginTransaction();
 				final ArInfo arInfo = new ArInfo();
 				ScrollableResults qry;
 				try
 					{
 						hql.append("from Agrmnt, AgrmntMnt where Agrmnt.id = AgrmntMnt.agrmnt and ContractStatus In ('LIV', 'ICP', 'ICL') ");
-						qry = this.getSession().createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
+						qry = this.session.createQuery(hql.toString()).scroll(ScrollMode.FORWARD_ONLY);
 						
 						while (qry.next())
 							{
@@ -190,16 +195,16 @@ public class DailyAgingDao extends DaoBase
 								araging.setDtmCrt(this.dtmupd);
 								araging.setDtmUpd(this.dtmupd);
 								
-								// AgrmntDaysOverdue(final Long agrmntid, final Date valuedate)
-								this.getSession().update(agrmnt);
+								// AgrmntDaysOverdue(final long agrmntid, final Date valuedate)
+								this.session.update(agrmnt);
 							}
 						tx.commit();
-						this.getSession().close();
+						this.session.close();
 					}
 				catch (final Exception exp)
 					{
 						tx.rollback();
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

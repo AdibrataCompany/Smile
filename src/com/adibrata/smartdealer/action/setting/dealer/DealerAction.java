@@ -23,12 +23,12 @@ public class DealerAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 		private Long id;
 		private String mode;
-		private DealerService dealerService;
+		private DealerService dealerservice;
 		private Supplier supplier;
 		private Partner partner;
 		private Office office;
-		private List<Supplier> lstDealer;
-		private int pageNumber;
+		private List<Supplier> lstdealer;
+		private int pagenumber;
 		private String name;
 		private String address;
 		private String rt;
@@ -62,12 +62,12 @@ public class DealerAction extends BaseAction implements Preparable
 				this.office = new Office();
 				this.setOffice(this.office);
 
-				this.dealerService = new DealerDao();
+				this.dealerservice = new DealerDao();
 				this.supplier = new Supplier();
 
-				if (this.pageNumber == 0)
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -113,6 +113,7 @@ public class DealerAction extends BaseAction implements Preparable
 									try
 										{
 											strMode = this.SaveDelete();
+											this.Paging();
 										}
 									catch (final Exception e)
 										{
@@ -121,7 +122,7 @@ public class DealerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -133,10 +134,10 @@ public class DealerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -149,7 +150,7 @@ public class DealerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -177,7 +178,7 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 						try
 							{
 								this.Paging();
@@ -262,7 +263,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstDealer = this.dealerService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstdealer = this.dealerservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -279,8 +280,8 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstDealer = this.dealerService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.dealerService.getCurrentpage();
+						this.lstdealer = this.dealerservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.dealerservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -300,7 +301,7 @@ public class DealerAction extends BaseAction implements Preparable
 					{
 						if (this.getId() != null)
 							{
-								this.supplier = this.dealerService.View(this.id);
+								this.supplier = this.dealerservice.View(this.id);
 								this.partner = this.supplier.getPartner();
 								this.name = this.supplier.getName();
 								this.address = this.supplier.getAddress();
@@ -358,11 +359,12 @@ public class DealerAction extends BaseAction implements Preparable
 						supplier.setFaxNo(this.faxno);
 						supplier.setHandphone(this.handphone);
 						supplier.setPartner(this.partner);
-						this.dealerService.SaveAdd(supplier);
+						this.dealerservice.SaveAdd(supplier);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -395,11 +397,12 @@ public class DealerAction extends BaseAction implements Preparable
 						supplier.setHandphone(this.getHandphone());
 						supplier.setPartner(this.partner);
 						supplier.setUsrUpd(this.usrUpd);
-						this.dealerService.SaveAdd(supplier);
+						this.dealerservice.SaveAdd(supplier);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -417,8 +420,7 @@ public class DealerAction extends BaseAction implements Preparable
 
 						final Supplier supplier = new Supplier();
 						supplier.setId(this.getId());
-						this.dealerService.SaveDel(supplier);
-						status = SUCCESS;
+						this.dealerservice.SaveDel(supplier);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -439,14 +441,6 @@ public class DealerAction extends BaseAction implements Preparable
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
-			}
-
-		/**
-		 * @return the dealerService
-		 */
-		public DealerService getDealerService()
-			{
-				return this.dealerService;
 			}
 
 		/**
@@ -471,23 +465,6 @@ public class DealerAction extends BaseAction implements Preparable
 		public Office getOffice()
 			{
 				return this.office;
-			}
-
-		/**
-		 * @return the lstDealer
-		 */
-		public List<Supplier> getLstDealer()
-			{
-				return this.lstDealer;
-			}
-
-		/**
-		 * @param dealerService
-		 *            the dealerService to set
-		 */
-		public void setDealerService(final DealerService dealerService)
-			{
-				this.dealerService = dealerService;
 			}
 
 		/**
@@ -517,15 +494,6 @@ public class DealerAction extends BaseAction implements Preparable
 				this.office = office;
 			}
 
-		/**
-		 * @param lstDealer
-		 *            the lstDealer to set
-		 */
-		public void setLstDealer(final List<Supplier> lstDealer)
-			{
-				this.lstDealer = lstDealer;
-			}
-
 		public String getMode()
 			{
 				return this.mode;
@@ -534,14 +502,6 @@ public class DealerAction extends BaseAction implements Preparable
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
-			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
 			}
 
 		/**
@@ -639,15 +599,6 @@ public class DealerAction extends BaseAction implements Preparable
 		public void setId(final long id)
 			{
 				this.id = id;
-			}
-
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
 			}
 
 		/**
@@ -861,6 +812,36 @@ public class DealerAction extends BaseAction implements Preparable
 		public void setFaxno(final String faxno)
 			{
 				this.faxno = faxno;
+			}
+
+		public DealerService getDealerservice()
+			{
+				return this.dealerservice;
+			}
+
+		public void setDealerservice(final DealerService dealerservice)
+			{
+				this.dealerservice = dealerservice;
+			}
+
+		public List<Supplier> getLstdealer()
+			{
+				return this.lstdealer;
+			}
+
+		public void setLstdealer(final List<Supplier> lstdealer)
+			{
+				this.lstdealer = lstdealer;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
 			}
 
 	}

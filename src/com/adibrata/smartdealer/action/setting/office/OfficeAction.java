@@ -24,19 +24,18 @@ public class OfficeAction extends BaseAction implements Preparable
 		private String mode;
 		private Partner partner;
 		private Office office;
+		private OfficeService officeservice;
 		private List<Office> lstoffice;
-		private OfficeService officeService;
-		private List<Office> lstOffice;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
-		private long id;
+		private int pagenumber;
+		private String usrupd;
+		private String usrcrt;
+		private Long id;
 
 		private String message;
 
-		private String officeCode;
+		private String officecode;
 		private String name;
 		private String address;
 		private String rt;
@@ -54,7 +53,7 @@ public class OfficeAction extends BaseAction implements Preparable
 		private String faxno;
 		private String handphone;
 		// private String fullAddress; save di dao office
-		private Character isActive;
+		private Character isactive;
 
 		public OfficeAction() throws Exception
 			{
@@ -65,12 +64,12 @@ public class OfficeAction extends BaseAction implements Preparable
 				this.office = new Office();
 				this.setOffice(this.office);
 
-				this.officeService = new OfficeDao();
+				this.officeservice = new OfficeDao();
 				this.office = new Office();
 
-				if (this.pageNumber == 0)
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -104,7 +103,7 @@ public class OfficeAction extends BaseAction implements Preparable
 								case "edit" :
 									try
 										{
-											this.ViewData();
+											strMode = this.ViewData();
 										}
 									catch (final Exception e)
 										{
@@ -116,6 +115,7 @@ public class OfficeAction extends BaseAction implements Preparable
 									try
 										{
 											strMode = this.SaveDelete();
+											this.Paging();
 										}
 									catch (final Exception e)
 										{
@@ -124,7 +124,7 @@ public class OfficeAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -136,10 +136,10 @@ public class OfficeAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -152,7 +152,7 @@ public class OfficeAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -180,7 +180,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 						try
 							{
 								this.Paging();
@@ -265,7 +265,7 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -282,8 +282,8 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstOffice = this.officeService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.officeService.getCurrentpage();
+						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.officeservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -296,29 +296,38 @@ public class OfficeAction extends BaseAction implements Preparable
 
 			}
 
-		public void ViewData() throws Exception
+		public String ViewData() throws Exception
 			{
 				this.office = new Office();
 				try
 					{
-						this.office = this.officeService.View(this.id);
-						this.partner = this.office.getPartner();
-						this.officeCode = this.office.getOfficeCode();
-						this.name = this.office.getName();
-						this.address = this.office.getAddress();
-						this.rt = this.office.getRt();
-						this.rw = this.office.getRw();
-						this.kelurahan = this.office.getKelurahan();
-						this.kecamatan = this.office.getKecamatan();
-						this.city = this.office.getCity();
-						this.zipcode = this.office.getZipcode();
-						this.areaphone1 = this.office.getAreaPhone1();
-						this.areaphone2 = this.office.getAreaPhone2();
-						this.phoneno1 = this.office.getPhoneNo1();
-						this.phoneno2 = this.office.getPhoneNo2();
-						this.areafax = this.office.getAreaFax();
-						this.faxno = this.office.getFaxNo();
-						this.handphone = this.office.getHandphone();
+						if (this.getId() != null)
+							{
+								this.office = this.officeservice.View(this.id);
+								this.partner = this.office.getPartner();
+								this.officecode = this.office.getOfficeCode();
+								this.name = this.office.getName();
+								this.address = this.office.getAddress();
+								this.rt = this.office.getRt();
+								this.rw = this.office.getRw();
+								this.kelurahan = this.office.getKelurahan();
+								this.kecamatan = this.office.getKecamatan();
+								this.city = this.office.getCity();
+								this.zipcode = this.office.getZipcode();
+								this.areaphone1 = this.office.getAreaPhone1();
+								this.areaphone2 = this.office.getAreaPhone2();
+								this.phoneno1 = this.office.getPhoneNo1();
+								this.phoneno2 = this.office.getPhoneNo2();
+								this.areafax = this.office.getAreaFax();
+								this.faxno = this.office.getFaxNo();
+								this.handphone = this.office.getHandphone();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -328,6 +337,7 @@ public class OfficeAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
@@ -335,7 +345,7 @@ public class OfficeAction extends BaseAction implements Preparable
 				try
 					{
 						final Office office = new Office();
-						office.setOfficeCode(this.getOfficeCode());
+						office.setOfficeCode(this.getOfficecode());
 						office.setName(this.getName());
 						office.setAddress(this.getAddress());
 						office.setRt(this.getRt());
@@ -353,11 +363,12 @@ public class OfficeAction extends BaseAction implements Preparable
 						office.setFaxNo(this.getFaxno());
 						office.setHandphone(this.handphone);
 						office.setPartner(this.partner);
-						this.officeService.SaveAdd(office);
+						this.officeservice.SaveAdd(office);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -373,7 +384,7 @@ public class OfficeAction extends BaseAction implements Preparable
 					{
 						final Office office = new Office();
 						office.setId(this.getId());
-						office.setOfficeCode(this.getOfficeCode());
+						office.setOfficeCode(this.getOfficecode());
 						office.setName(this.getName());
 						office.setAddress(this.getAddress());
 						office.setRt(this.getRt());
@@ -389,12 +400,13 @@ public class OfficeAction extends BaseAction implements Preparable
 						office.setAreaFax(this.getAreafax());
 						office.setFaxNo(this.getFaxno());
 						office.setPartner(this.partner);
-						office.setUsrUpd(this.usrUpd);
-						this.officeService.SaveEdit(office);
+						office.setUsrUpd(this.usrupd);
+						this.officeservice.SaveEdit(office);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -406,18 +418,24 @@ public class OfficeAction extends BaseAction implements Preparable
 
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				final String status = "";
 				try
 					{
-						final Office office = new Office();
-						office.setId(this.getId());
-						this.officeService.SaveDel(office);
-						status = SUCCESS;
-						this.setMessage(BaseAction.SuccessMessage());
+						if (this.getId() != null)
+							{
+								final Office office = new Office();
+								office.setId(this.getId());
+								this.officeservice.SaveDel(office);
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -460,22 +478,6 @@ public class OfficeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the officeService
-		 */
-		public OfficeService getOfficeService()
-			{
-				return this.officeService;
-			}
-
-		/**
-		 * @return the lstOffice
-		 */
-		public List<Office> getLstOffice()
-			{
-				return this.lstOffice;
-			}
-
-		/**
 		 * @param partner
 		 *            the partner to set
 		 */
@@ -500,24 +502,6 @@ public class OfficeAction extends BaseAction implements Preparable
 		public void setLstoffice(final List<Office> lstoffice)
 			{
 				this.lstoffice = lstoffice;
-			}
-
-		/**
-		 * @param officeService
-		 *            the officeService to set
-		 */
-		public void setOfficeService(final OfficeService officeService)
-			{
-				this.officeService = officeService;
-			}
-
-		/**
-		 * @param lstOffice
-		 *            the lstOffice to set
-		 */
-		public void setLstOffice(final List<Office> lstOffice)
-			{
-				this.lstOffice = lstOffice;
 			}
 
 		public String getMode()
@@ -547,30 +531,6 @@ public class OfficeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
 		 * @return the message
 		 */
 		public String getMessage()
@@ -597,47 +557,12 @@ public class OfficeAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
-		/**
 		 * @param message
 		 *            the message to set
 		 */
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-
-		/**
-		 * @return the officeCode
-		 */
-		public String getOfficeCode()
-			{
-				return this.officeCode;
 			}
 
 		/**
@@ -710,23 +635,6 @@ public class OfficeAction extends BaseAction implements Preparable
 		public String getHandphone()
 			{
 				return this.handphone;
-			}
-
-		/**
-		 * @return the isActive
-		 */
-		public Character getIsActive()
-			{
-				return this.isActive;
-			}
-
-		/**
-		 * @param officeCode
-		 *            the officeCode to set
-		 */
-		public void setOfficeCode(final String officeCode)
-			{
-				this.officeCode = officeCode;
 			}
 
 		/**
@@ -808,32 +716,6 @@ public class OfficeAction extends BaseAction implements Preparable
 		public void setHandphone(final String handphone)
 			{
 				this.handphone = handphone;
-			}
-
-		/**
-		 * @param isActive
-		 *            the isActive to set
-		 */
-		public void setIsActive(final Character isActive)
-			{
-				this.isActive = isActive;
-			}
-
-		/**
-		 * @return the id
-		 */
-		public long getId()
-			{
-				return this.id;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
 			}
 
 		/**
@@ -953,6 +835,76 @@ public class OfficeAction extends BaseAction implements Preparable
 		public void setKecamatan(final String kecamatan)
 			{
 				this.kecamatan = kecamatan;
+			}
+
+		public OfficeService getOfficeservice()
+			{
+				return this.officeservice;
+			}
+
+		public void setOfficeservice(final OfficeService officeservice)
+			{
+				this.officeservice = officeservice;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
+			}
+
+		public String getOfficecode()
+			{
+				return this.officecode;
+			}
+
+		public void setOfficecode(final String officecode)
+			{
+				this.officecode = officecode;
+			}
+
+		public Character getIsactive()
+			{
+				return this.isactive;
+			}
+
+		public void setIsactive(final Character isactive)
+			{
+				this.isactive = isactive;
+			}
+
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		public void setId(final Long id)
+			{
+				this.id = id;
 			}
 
 	}

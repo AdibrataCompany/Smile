@@ -33,7 +33,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
-		private Long totalrecord;
+		private long totalrecord;
 		private int currentpage;
 
 		public OtherReceiveDao() throws Exception

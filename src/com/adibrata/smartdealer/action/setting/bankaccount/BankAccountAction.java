@@ -25,14 +25,14 @@ public class BankAccountAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-		private BankAccountService bankAccountService;
+		private BankAccountService bankaccountservice;
 		private BankAccount bankaccount;
 		private Partner partner;
 		private Office office;
-		private List<BankAccount> lstBankAccount;
-		private Map<String, String> lstBankMaster;
+		private List<BankAccount> lstbankaccount;
+		private Map<String, String> lstbankmaster;
 
-		private int pageNumber;
+		private int pagenumber;
 		private Long id;
 		private String bankname;
 		private String bankaccountcode;
@@ -51,8 +51,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 		private String phoneno2;
 		private String areafax;
 		private String faxno;
-		private String usrUpd;
-		private String usrCrt;
+		private String usrupd;
+		private String usrcrt;
 
 		private String purpose;
 		private String searchcriteria;
@@ -69,21 +69,17 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public BankAccountAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final BankAccountService bankAccountService = new BankAccountDao();
+				this.bankaccountservice = new BankAccountDao();
+				this.bankaccount = new BankAccount();
 
-				this.bankAccountService = bankAccountService;
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				final BankAccount bankaccount = new BankAccount();
-
-				this.setPartner(partner);
+				this.partner = new Partner();
+				this.office = new Office();
+				this.setPartner(this.partner);
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setOffice(office);
-				this.setBankaccount(bankaccount);
-				// this.ListBankMaster();
-				if (this.pageNumber == 0)
+
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
 
@@ -130,7 +126,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -142,10 +138,10 @@ public class BankAccountAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -158,7 +154,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -186,7 +182,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 						try
 							{
 								this.Paging();
@@ -271,7 +267,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstBankAccount = this.bankAccountService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstbankaccount = this.bankaccountservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -288,8 +284,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstBankAccount = this.bankAccountService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.bankAccountService.getCurrentpage();
+						this.lstbankaccount = this.bankaccountservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.bankaccountservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -310,7 +306,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 					{
 						if (this.getId() != null)
 							{
-								this.bankaccount = this.bankAccountService.View(this.getId());
+								this.bankaccount = this.bankaccountservice.View(this.getId());
 								this.partner = this.bankaccount.getPartner();
 								this.bankname = this.bankaccount.getBankName();
 								this.bankaccountcode = this.bankaccount.getBankAccountCode();
@@ -375,8 +371,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 						bankAccount.setType(this.getType());
 						bankAccount.setPurpose(this.getPurpose());
 
-						bankAccount.setUsrUpd(this.getUsrUpd());
-						this.bankAccountService.SaveAdd(bankAccount);
+						bankAccount.setUsrUpd(this.getUsrupd());
+						this.bankaccountservice.SaveAdd(bankAccount);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -418,8 +414,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 						bankAccount.setType(this.getType());
 						bankAccount.setPurpose(this.getPurpose());
 
-						bankAccount.setUsrUpd(this.getUsrUpd());
-						this.bankAccountService.SaveEdit(bankAccount);
+						bankAccount.setUsrUpd(this.getUsrupd());
+						this.bankaccountservice.SaveEdit(bankAccount);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -444,7 +440,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 							{
 								bankAccount.setId(this.getId());
 
-								this.bankAccountService.SaveDel(bankAccount);
+								this.bankaccountservice.SaveDel(bankAccount);
 								status = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
 							}
@@ -475,14 +471,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the bankAccountService
-		 */
-		public BankAccountService getBankAccountService()
-			{
-				return this.bankAccountService;
-			}
-
-		/**
 		 * @return the bankaccount
 		 */
 		public BankAccount getBankaccount()
@@ -504,23 +492,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public Office getOffice()
 			{
 				return this.office;
-			}
-
-		/**
-		 * @return the lstBankAccount
-		 */
-		public List<BankAccount> getLstBankAccount()
-			{
-				return this.lstBankAccount;
-			}
-
-		/**
-		 * @param bankAccountService
-		 *            the bankAccountService to set
-		 */
-		public void setBankAccountService(final BankAccountService bankAccountService)
-			{
-				this.bankAccountService = bankAccountService;
 			}
 
 		/**
@@ -550,15 +521,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 				this.office = office;
 			}
 
-		/**
-		 * @param lstBankAccount
-		 *            the lstBankAccount to set
-		 */
-		public void setLstBankAccount(final List<BankAccount> lstBankAccount)
-			{
-				this.lstBankAccount = lstBankAccount;
-			}
-
 		public String getMode()
 			{
 				return this.mode;
@@ -567,40 +529,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
 			}
 
 		/**
@@ -635,23 +563,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
-			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
 			}
 
 		public String getMessage()
@@ -937,23 +848,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 			}
 
 		/**
-		 * @return the lstBankMaster
-		 */
-		public Map<String, String> getLstBankMaster()
-			{
-				return this.lstBankMaster;
-			}
-
-		/**
-		 * @param lstBankMaster
-		 *            the lstBankMaster to set
-		 */
-		public void setLstBankMaster(final Map<String, String> lstBankMaster)
-			{
-				this.lstBankMaster = lstBankMaster;
-			}
-
-		/**
 		 * @param bankmaster
 		 *            the bankmaster to set
 		 */
@@ -989,6 +883,66 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public void setBankaccountname(final String bankaccountname)
 			{
 				this.bankaccountname = bankaccountname;
+			}
+
+		public BankAccountService getBankaccountservice()
+			{
+				return this.bankaccountservice;
+			}
+
+		public void setBankaccountservice(final BankAccountService bankaccountservice)
+			{
+				this.bankaccountservice = bankaccountservice;
+			}
+
+		public List<BankAccount> getLstbankaccount()
+			{
+				return this.lstbankaccount;
+			}
+
+		public void setLstbankaccount(final List<BankAccount> lstbankaccount)
+			{
+				this.lstbankaccount = lstbankaccount;
+			}
+
+		public Map<String, String> getLstbankmaster()
+			{
+				return this.lstbankmaster;
+			}
+
+		public void setLstbankmaster(final Map<String, String> lstbankmaster)
+			{
+				this.lstbankmaster = lstbankmaster;
+			}
+
+		public int getPagenumber()
+			{
+				return this.pagenumber;
+			}
+
+		public void setPagenumber(final int pagenumber)
+			{
+				this.pagenumber = pagenumber;
+			}
+
+		public String getUsrupd()
+			{
+				return this.usrupd;
+			}
+
+		public void setUsrupd(final String usrupd)
+			{
+				this.usrupd = usrupd;
+			}
+
+		public String getUsrcrt()
+			{
+				return this.usrcrt;
+			}
+
+		public void setUsrcrt(final String usrcrt)
+			{
+				this.usrcrt = usrcrt;
 			}
 
 	}
