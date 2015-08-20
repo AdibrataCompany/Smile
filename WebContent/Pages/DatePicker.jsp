@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>DMS-Dealer Management System</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Bootstrap CSS and bootstrap datepicker CSS used for styling the demo pages-->
 <link rel="stylesheet" href="/Smile/Pages/style/css/datepicker.css">
@@ -14,11 +14,11 @@
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
+	<td width="20%">Tanggal Transaksi</td>
 	<td width="30%">
-	
 		<div class="input-append date">
-			<s:textfield name="valuedate" placeholder="Value Date" style="width:100px"
-				class="form-control" /><span class="add-on"><i class="icon-th"><img
+			<s:textfield name="valuedate" class="span2" />
+			<span class="add-on"><i class="icon-th"><img
 					src="Pages/style/calendar.png" /></i></span>
 		</div>
 

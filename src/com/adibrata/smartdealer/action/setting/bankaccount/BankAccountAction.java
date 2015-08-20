@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.setting.BankAccountDao;
 import com.adibrata.smartdealer.model.BankAccount;
 import com.adibrata.smartdealer.model.BankMaster;
 import com.adibrata.smartdealer.model.Office;
@@ -25,7 +24,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-		private BankAccountService bankAccountService;
+		private BankAccountService service;
 		private BankAccount bankaccount;
 		private Partner partner;
 		private Office office;
@@ -69,17 +68,12 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public BankAccountAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				final BankAccountService bankAccountService = new BankAccountDao();
-
-				this.bankAccountService = bankAccountService;
-				final Partner partner = new Partner();
-				final Office office = new Office();
-				final BankAccount bankaccount = new BankAccount();
-
-				this.setPartner(partner);
+				this.partner = new Partner();
+				this.office = new Office();
+				
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.setOffice(office);
-				this.setBankaccount(bankaccount);
+				this.office.setId(BaseAction.sesOfficeId());
+
 				// this.ListBankMaster();
 				if (this.pageNumber == 0)
 					{
@@ -271,7 +265,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstBankAccount = this.bankAccountService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstBankAccount = this.service.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
@@ -288,8 +282,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
-						this.lstBankAccount = this.bankAccountService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.bankAccountService.getCurrentpage();
+						this.lstBankAccount = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.service.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
@@ -305,12 +299,12 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public String ViewData() throws Exception
 			{
 				this.bankaccount = new BankAccount();
-				String status = "";
+				
 				try
 					{
 						if (this.getId() != null)
 							{
-								this.bankaccount = this.bankAccountService.View(this.getId());
+								this.bankaccount = this.service.View(this.getId());
 								this.partner = this.bankaccount.getPartner();
 								this.bankname = this.bankaccount.getBankName();
 								this.bankaccountcode = this.bankaccount.getBankAccountCode();
@@ -335,7 +329,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 						else
 							{
 								this.Paging();
-								status = "start";
+								this.mode = "start";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -347,37 +341,38 @@ public class BankAccountAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
-						final BankAccount bankAccount = new BankAccount();
-						bankAccount.setBankName(this.getBankname());
-						bankAccount.setBankAccountCode(this.getBankaccountcode());
-						bankAccount.setBankAccountName(this.getBankaccountname());
-						bankAccount.setPartner(this.getPartner());
-						bankAccount.setAddress(this.getAddress());
-						bankAccount.setRt(this.getRt());
-						bankAccount.setRw(this.getRw());
-						bankAccount.setKelurahan(this.getKelurahan());
-						bankAccount.setKecamatan(this.getKecamatan());
-						bankAccount.setCity(this.getCity());
-						bankAccount.setZipCode(this.getZipcode());
-						bankAccount.setAreaPhone1(this.getAreaphone1());
-						bankAccount.setAreaPhone2(this.getAreaphone1());
-						bankAccount.setPhoneNo1(this.getPhoneno2());
-						bankAccount.setPhoneNo2(this.getPhoneno2());
-						bankAccount.setAreaFax(this.getAreafax());
-						bankAccount.setFaxNo(this.getFaxno());
-						bankAccount.setType(this.getType());
-						bankAccount.setPurpose(this.getPurpose());
-
-						bankAccount.setUsrUpd(this.getUsrUpd());
-						this.bankAccountService.SaveAdd(bankAccount);
+						this.bankaccount = new BankAccount();
+						this.bankaccount.setBankName(this.getBankname());
+						this.bankaccount.setBankAccountCode(this.getBankaccountcode());
+						this.bankaccount.setBankAccountName(this.getBankaccountname());
+						this.bankaccount.setPartner(this.getPartner());
+						this.bankaccount.setAddress(this.getAddress());
+						this.bankaccount.setRt(this.getRt());
+						this.bankaccount.setRw(this.getRw());
+						this.bankaccount.setKelurahan(this.getKelurahan());
+						this.bankaccount.setKecamatan(this.getKecamatan());
+						this.bankaccount.setCity(this.getCity());
+						this.bankaccount.setZipCode(this.getZipcode());
+						this.bankaccount.setAreaPhone1(this.getAreaphone1());
+						this.bankaccount.setAreaPhone2(this.getAreaphone1());
+						this.bankaccount.setPhoneNo1(this.getPhoneno2());
+						this.bankaccount.setPhoneNo2(this.getPhoneno2());
+						this.bankaccount.setAreaFax(this.getAreafax());
+						this.bankaccount.setFaxNo(this.getFaxno());
+						this.bankaccount.setType(this.getType());
+						this.bankaccount.setPurpose(this.getPurpose());
+						
+						this.bankaccount.setUsrUpd(this.getUsrUpd());
+						this.service.SaveAdd(this.bankaccount);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -390,37 +385,38 @@ public class BankAccountAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						final BankAccount bankAccount = new BankAccount();
-						bankAccount.setId(this.getId());
-						bankAccount.setBankName(this.getBankname());
-						bankAccount.setBankAccountCode(this.getBankaccountcode());
-						bankAccount.setBankAccountName(this.getBankaccountname());
-						bankAccount.setPartner(this.getPartner());
-						bankAccount.setAddress(this.getAddress());
-						bankAccount.setRt(this.getRt());
-						bankAccount.setRw(this.getRw());
-						bankAccount.setKelurahan(this.getKelurahan());
-						bankAccount.setKecamatan(this.getKecamatan());
+						this.bankaccount = new BankAccount();
+						this.bankaccount.setId(this.getId());
+						this.bankaccount.setBankName(this.getBankname());
+						this.bankaccount.setBankAccountCode(this.getBankaccountcode());
+						this.bankaccount.setBankAccountName(this.getBankaccountname());
+						this.bankaccount.setPartner(this.getPartner());
+						this.bankaccount.setAddress(this.getAddress());
+						this.bankaccount.setRt(this.getRt());
+						this.bankaccount.setRw(this.getRw());
+						this.bankaccount.setKelurahan(this.getKelurahan());
+						this.bankaccount.setKecamatan(this.getKecamatan());
 
-						bankAccount.setCity(this.getCity());
-						bankAccount.setZipCode(this.getZipcode());
-						bankAccount.setAreaPhone1(this.getAreaphone1());
-						bankAccount.setAreaPhone2(this.getAreaphone1());
-						bankAccount.setPhoneNo1(this.getPhoneno2());
-						bankAccount.setPhoneNo2(this.getPhoneno2());
-						bankAccount.setAreaFax(this.getAreafax());
-						bankAccount.setFaxNo(this.getFaxno());
-						bankAccount.setType(this.getType());
-						bankAccount.setPurpose(this.getPurpose());
+						this.bankaccount.setCity(this.getCity());
+						this.bankaccount.setZipCode(this.getZipcode());
+						this.bankaccount.setAreaPhone1(this.getAreaphone1());
+						this.bankaccount.setAreaPhone2(this.getAreaphone1());
+						this.bankaccount.setPhoneNo1(this.getPhoneno2());
+						this.bankaccount.setPhoneNo2(this.getPhoneno2());
+						this.bankaccount.setAreaFax(this.getAreafax());
+						this.bankaccount.setFaxNo(this.getFaxno());
+						this.bankaccount.setType(this.getType());
+						this.bankaccount.setPurpose(this.getPurpose());
 
-						bankAccount.setUsrUpd(this.getUsrUpd());
-						this.bankAccountService.SaveEdit(bankAccount);
+						this.bankaccount.setUsrUpd(this.getUsrUpd());
+						this.service.SaveEdit(this.bankaccount);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -436,34 +432,34 @@ public class BankAccountAction extends BaseAction implements Preparable
 
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				
 				try
 					{
-						final BankAccount bankAccount = new BankAccount();
+						this.bankaccount = new BankAccount();
 						if (this.getId() != null)
 							{
-								bankAccount.setId(this.getId());
+								this.bankaccount.setId(this.getId());
 
-								this.bankAccountService.SaveDel(bankAccount);
-								status = SUCCESS;
+								this.service.SaveDel(this.bankaccount);
+								this.mode = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
 							}
 						else
 							{
-								status = "start";
+								this.mode = "input";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 
 		/**
@@ -472,14 +468,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
-			}
-
-		/**
-		 * @return the bankAccountService
-		 */
-		public BankAccountService getBankAccountService()
-			{
-				return this.bankAccountService;
 			}
 
 		/**
@@ -513,16 +501,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				return this.lstBankAccount;
 			}
-
-		/**
-		 * @param bankAccountService
-		 *            the bankAccountService to set
-		 */
-		public void setBankAccountService(final BankAccountService bankAccountService)
-			{
-				this.bankAccountService = bankAccountService;
-			}
-
+			
 		/**
 		 * @param bankaccount
 		 *            the bankaccount to set
@@ -989,6 +968,23 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public void setBankaccountname(final String bankaccountname)
 			{
 				this.bankaccountname = bankaccountname;
+			}
+
+		/**
+		 * @return the service
+		 */
+		public BankAccountService getService()
+			{
+				return this.service;
+			}
+
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final BankAccountService service)
+			{
+				this.service = service;
 			}
 
 	}

@@ -23,18 +23,15 @@
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
-					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
-					<s:label name="message" id="message" />
-					<s:hidden name="bankaccountid" />
-					<s:hidden name="bankaccountname" />
-					<s:hidden name="currency" />
+					<input type="text" name="mode" id="mode"
+						style="visibility: hidden;"></input>
+					<s:label name="message" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:label name="bankaccountname" />
-							-
-							<s:label name="currency" />
+							<s:select list="lstbankaccount" name="bankaccountid"
+								value="bankaccountname" label="Select Bank Account" headerKey="" headerValue="Select Bank Account" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -48,36 +45,35 @@
 					<div align="left" class="form-group">
 						<%@include file="/Pages/Include/ValueDate.jsp"%>
 					</div>
-
-					<div align="left" class="form-group">
-						<label>Amount Receive</label>
-						<div align="left" class="form-inline">
-							<s:textfield name="amount" style="width:95%"
-								placeholder="Advance Receive" class="form-control" />
-						</div>
+				
+				<div align="left" class="form-group">
+					<label>Amount Receive</label>
+					<div align="left" class="form-inline">
+						<s:textfield name="amount" style="width:95%"
+							placeholder="Advance Receive" class="form-control" />
 					</div>
-
-					<div align="left" class="form-group">
-						<label>Notes</label>
-						<div align="left" class="form-inline">
-							<s:textfield name="notes" style="width:95%" placeholder="Notes"
-								class="form-control" />
-						</div>
-					</div>
-					<br>
-					<table width="100%">
-						<tr>
-							<td>
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
-							</td>
-							<td align="right">
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="save()">Save</button>
-							</td>
-						</tr>
-					</table>
 				</div>
+
+				<div align="left" class="form-group">
+					<label>Notes</label>
+					<div align="left" class="form-inline">
+						<s:textfield name="notes" style="width:95%" placeholder="Notes"
+							class="form-control" />
+					</div>
+				</div>
+				<br>
+				<table width="100%">
+					<tr>
+						<td>
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="end()">Clear</button>
+						</td>
+						<td align="right">
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="save()">Save</button>
+						</td>
+					</tr>
+				</table>
 			</center>
 		</s:form>
 	</div>

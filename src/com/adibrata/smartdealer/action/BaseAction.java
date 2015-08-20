@@ -11,6 +11,7 @@ import java.util.Map;
 
 import com.adibrata.smartdealer.dao.setting.BankAccountDao;
 import com.adibrata.smartdealer.dao.setting.CurrencyDao;
+import com.adibrata.smartdealer.dao.setting.OfficeDao;
 import com.adibrata.smartdealer.dao.usermanagement.EmployeeDao;
 import com.adibrata.smartdealer.dao.usermanagement.MenuDao;
 import com.adibrata.smartdealer.model.BankAccount;
@@ -21,6 +22,7 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
 import com.adibrata.smartdealer.service.setting.CurrencyService;
+import com.adibrata.smartdealer.service.setting.OfficeService;
 import com.adibrata.smartdealer.service.usermanagement.EmployeeService;
 import com.adibrata.smartdealer.service.usermanagement.MenuService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -220,6 +222,32 @@ public class BaseAction extends ActionSupport implements Preparable
 				return map;
 			}
 			
+		public Map<Long, String> ListOffice(final Partner partner) throws Exception
+			{
+				final Map<Long, String> map = new HashMap<Long, String>();
+				try
+					{
+
+						final OfficeService service = new OfficeDao();
+						final List<Office> lst = service.ListOffice(partner);
+
+						for (final Office row : lst)
+							{
+								map.put(row.getId(), row.getName().trim());
+							}
+					}
+				catch (final Exception exp)
+					{
+						// TODO: handle exception
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+						exp.printStackTrace();
+					}
+				return map;
+			}
+
 		public Date DateAdd(final int add, final Date valuedate)
 			{
 				final Calendar c = Calendar.getInstance();

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>DMS-Dealer Management System</title>
 
 </head>
 <body>
@@ -23,16 +23,16 @@
 			<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 			<table class="table table-bordered">
 				<tr>
+					<th style="text-align: center;">Kode</th>
 					<th style="text-align: center;">Nama</th>
 					<th style="text-align: center;">Keterangan</th>
-					<th style="text-align: center;">Kode</th>
 					<th style="text-align: center;" width="5%">Pilih</th>
 				</tr>
 				<s:iterator value="lstBankAccount">
 					<tr id="row_${id}">
+						<td>${coacode}</td>
 						<td>${coaName}</td>
 						<td>${coaDescription}</td>
-						<td>${coacode}</td>
 						<td style="text-align: center;"><input type="radio" name="id"
 							value="${id}" checked /></td>
 					</tr>

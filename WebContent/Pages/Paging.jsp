@@ -18,7 +18,7 @@
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="prev()">
 					<span class="glyphicon glyphicon-backward"></span>
-				</button> <s:textfield style="text-align: center; width:50px" name="pageNumber" />
+				</button> <s:textfield style="text-align: center;" name="pagenumber" size="4" />
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="next()">
 					<span class="glyphicon glyphicon-forward"></span>
@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<td align="center">
-				<button class="btn btn-sm btn-primary" type="submit" 
+				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="search()">GO</button>
 			</td>
 		</tr>
