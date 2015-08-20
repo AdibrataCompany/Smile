@@ -8,41 +8,41 @@
 		<action name="otherdisburse"
 			class="com.adibrata.smartdealer.action.othertrans.disburse.OtherDisbAction"
 			method="execute">
-			<result name="input">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="saveadd">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="deldetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="savedel">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="end" type="redirectAction">
-				<param name="actionName">banktransaction</param>
-			</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">banktransaction</param>
-				<param name="message">${message}</param>
+			<result name="save">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 		</action>
 		<action name="otherreceive"
 			class="com.adibrata.smartdealer.action.othertrans.receive.OtherReceiveAction"
 			method="execute">
-			<result name="input">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			<result name="start">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-
+			<result name="success">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
 			<result name="error">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+
+			<result name="saveadd">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="deldetail">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			<result name="savedel">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="end" type="redirectAction">
-				<param name="actionName">banktransaction</param>
+			<result name="save">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">banktransaction</param>
-				<param name="message">${message}</param>
+
+			<result name="lookup">/Pages/LookUp/COAMaster.jsp</result>
+			<result name="savelookup">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
+			</result>
+			<result name="back">/Pages/OtherTransaction/OtherReceive/OtherReceive.jsp
 			</result>
 		</action>
 	</package>
