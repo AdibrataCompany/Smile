@@ -48,8 +48,8 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 	private String searchcriteria;
 	private String searchvalue;
 	private long id;
-	private String usrUpd;
-	private String usrCrt;
+	
+	
 	private int pageNumber;
 	private String message;
 	private Map<String, Object> session;
@@ -109,7 +109,7 @@ public class PurchaseOrderAction extends BaseAction implements Preparable {
 				return "failed";
 			}
 		} else {
-			strMode = "start";
+			strMode = INPUT;
 		}
 		return strMode;
 	}

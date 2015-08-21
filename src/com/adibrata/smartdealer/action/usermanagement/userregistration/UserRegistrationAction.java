@@ -31,8 +31,8 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		
+		
 		private String message;
 		private long id;
 
@@ -244,7 +244,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

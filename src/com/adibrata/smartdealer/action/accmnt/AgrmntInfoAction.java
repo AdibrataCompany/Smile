@@ -144,7 +144,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

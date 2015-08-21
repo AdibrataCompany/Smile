@@ -28,8 +28,8 @@ public class LoginAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		
+		
 		private String message;
 		
 		private String username;

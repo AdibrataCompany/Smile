@@ -28,8 +28,8 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private String usrUpd;
-		private String usrCrt;
+		
+		
 		
 		private Partner partner;
 		private Office office;
@@ -142,7 +142,7 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{

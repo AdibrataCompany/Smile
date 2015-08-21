@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -39,7 +39,7 @@ public class Partner implements java.io.Serializable
 		private String faxNo;
 		private String handphone;
 		private String fullAddress;
-		private Character isActive;
+		private String isActive;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -105,7 +105,7 @@ public class Partner implements java.io.Serializable
 			}
 			
 		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
-		        String faxNo, String handphone, String fullAddress, Character isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AssetMaster> assetMasters, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<MsUser> msUsers,
+		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AssetMaster> assetMasters, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<MsUser> msUsers,
 		        Set<PayReqHdr> payReqHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AccountPayable> accountPayables,
 		        Set<Agrmnt> agrmnts, Set<SalesOrderHdr> salesOrderHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<InsCompany> insCompanies, Set<CashBankHdr> cashBankHdrs, Set<CoaSchmHdr> coaSchmHdrs, Set<Invoice> invoices,
 		        Set<Coamaster> coamasters, Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices, Set<BankAccount> bankAccounts, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<Stock> stocks, Set<PettyCashHdr> pettyCashHdrs,
@@ -378,12 +378,12 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@Column(name = "IsActive", length = 1)
-		public Character getIsActive()
+		public String getIsActive()
 			{
 				return this.isActive;
 			}
 			
-		public void setIsActive(Character isActive)
+		public void setIsActive(String isActive)
 			{
 				this.isActive = isActive;
 			}

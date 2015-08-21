@@ -32,18 +32,16 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 		private Office office;
 		private Map<Long, String> lstBankAccount;
 		
-		private String usrUpd;
-		private String usrCrt;
 		private int pageNumber;
 		private String message;
 		private SuspendReceive receive;
 		private SuspendReverse reverse;
 		private SuspendReversalService service;
 		private List<SuspendList> lstSuspendReceive;
-
+		
 		private String amountstart;
 		private String amountend;
-		
+
 		private Double amount;
 		private Long currencyid;
 		private Double currencyrate;
@@ -59,7 +57,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 		private int currentpage;
 		private Long totalrecord;
 		private String notes;
-		
+
 		public SuspendCorrectionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -71,22 +69,22 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 				this.reverse = new SuspendReverse();
 				this.lstBankAccount = this.ListBankAccount(this.getPartner(), this.getOffice(), "BA", "");
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
 			}
-			
+
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
@@ -174,19 +172,19 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									return ERROR;
-
+									
 							}
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}
-			
+
 		private String SaveSuspendReverse() throws Exception
 			{
 				String status = "";
@@ -209,7 +207,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -218,32 +216,32 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-			
+
 		private String WhereCond()
 			{
 				final StringBuilder sql = new StringBuilder();
-				
-				sql.append(" P.partnerCode = '" + BaseAction.sesPartnerCode() + "' and O.id = " + BaseAction.sesOfficeId() + " and A.status = 'NE' ");
 
+				sql.append(" P.partnerCode = '" + BaseAction.sesPartnerCode() + "' and O.id = " + BaseAction.sesOfficeId() + " and A.status = 'NE' ");
+				
 				if (this.getBankaccountId() != null)
 					{
 						sql.append(" and  B.id = " + this.getBankaccountId());
-
+						
 					}
-
+					
 				if (!this.valuedate.equals(""))
 					{
 						sql.append(" and  A.valueDate  <= " + this.valuedate);
 					}
-
+					
 				if (!this.postingdate.equals(""))
 					{
 						sql.append(" and  A.postingDate  <= " + this.postingdate);
-
+						
 					}
 				if (!this.amountstart.equals(""))
 					{
@@ -253,7 +251,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					{
 						sql.append(" and A.amount <= " + this.amountend);
 					}
-
+					
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -267,26 +265,26 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				return sql.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "");
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -294,7 +292,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 						final SuspendEntryService entryService = new SuspendEntryDao();
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = entryService.getCurrentpage();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -304,11 +302,11 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String ViewData() throws Exception
 			{
 				String status = "";
-				
+
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
@@ -323,17 +321,17 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 								this.setCurrencyid(this.receive.getCurrencyId());
 								this.setCurrencyrate(this.receive.getCurrencyRate());
 								status = "entry";
-
+								
 							}
 						else
 							{
 								status = "search";
 							}
-
+							
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -341,7 +339,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -349,7 +347,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -358,7 +356,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -366,7 +364,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -375,7 +373,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -383,7 +381,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -392,7 +390,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -402,39 +400,13 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-			
-		/**
 		 * @return the pageNumber
 		 */
 		public int getPageNumber()
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -443,7 +415,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -451,7 +423,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -460,7 +432,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -468,7 +440,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -476,7 +448,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -485,7 +457,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -493,7 +465,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -502,7 +474,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the reverse
 		 */
@@ -510,7 +482,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.reverse;
 			}
-			
+
 		/**
 		 * @param reverse
 		 *            the reverse to set
@@ -519,7 +491,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.reverse = reverse;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -527,7 +499,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -536,7 +508,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the lstSuspendReceive
 		 */
@@ -544,7 +516,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.lstSuspendReceive;
 			}
-			
+
 		/**
 		 * @param lstSuspendReceive
 		 *            the lstSuspendReceive to set
@@ -553,7 +525,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.lstSuspendReceive = lstSuspendReceive;
 			}
-			
+
 		/**
 		 * @return the strStatement
 		 */
@@ -561,7 +533,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.strStatement;
 			}
-			
+
 		/**
 		 * @param strStatement
 		 *            the strStatement to set
@@ -570,7 +542,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.strStatement = strStatement;
 			}
-			
+
 		/**
 		 * @return the hql
 		 */
@@ -578,7 +550,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.hql;
 			}
-			
+
 		/**
 		 * @param hql
 		 *            the hql to set
@@ -587,7 +559,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.hql = hql;
 			}
-			
+
 		/**
 		 * @return the pagesize
 		 */
@@ -595,7 +567,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.pagesize;
 			}
-			
+
 		/**
 		 * @param pagesize
 		 *            the pagesize to set
@@ -604,7 +576,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.pagesize = pagesize;
 			}
-			
+
 		/**
 		 * @return the currentpage
 		 */
@@ -612,7 +584,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.currentpage;
 			}
-			
+
 		/**
 		 * @param currentpage
 		 *            the currentpage to set
@@ -621,7 +593,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.currentpage = currentpage;
 			}
-			
+
 		/**
 		 * @return the totalrecord
 		 */
@@ -629,7 +601,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.totalrecord;
 			}
-			
+
 		/**
 		 * @param totalrecord
 		 *            the totalrecord to set
@@ -638,7 +610,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.totalrecord = totalrecord;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -646,7 +618,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -655,7 +627,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -663,7 +635,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.amount;
 			}
-			
+
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -672,7 +644,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.amount = amount;
 			}
-
+			
 		/**
 		 * @return the status
 		 */
@@ -680,7 +652,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.status;
 			}
-			
+
 		/**
 		 * @param status
 		 *            the status to set
@@ -689,7 +661,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.status = status;
 			}
-			
+
 		/**
 		 * @return the valuedate
 		 */
@@ -697,7 +669,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.valuedate;
 			}
-			
+
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -706,7 +678,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the receive
 		 */
@@ -714,7 +686,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.receive;
 			}
-			
+
 		/**
 		 * @param receive
 		 *            the receive to set
@@ -723,7 +695,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.receive = receive;
 			}
-			
+
 		/**
 		 * @return the lstBankAccount
 		 */
@@ -731,7 +703,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.lstBankAccount;
 			}
-			
+
 		/**
 		 * @param lstBankAccount
 		 *            the lstBankAccount to set
@@ -740,7 +712,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.lstBankAccount = lstBankAccount;
 			}
-			
+
 		/**
 		 * @return the bankaccountId
 		 */
@@ -748,7 +720,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.bankaccountid;
 			}
-			
+
 		/**
 		 * @param bankaccountId
 		 *            the bankaccountId to set
@@ -757,7 +729,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.bankaccountid = bankaccountId;
 			}
-
+			
 		/**
 		 * @return the amountstart
 		 */
@@ -765,7 +737,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.amountstart;
 			}
-			
+
 		/**
 		 * @param amountstart
 		 *            the amountstart to set
@@ -774,7 +746,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.amountstart = amountstart;
 			}
-
+			
 		/**
 		 * @param amountend
 		 *            the amountend to set
@@ -783,7 +755,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.amountend = amountend;
 			}
-			
+
 		/**
 		 * @return the amountend
 		 */
@@ -791,7 +763,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.amountend;
 			}
-			
+
 		/**
 		 * @return the bankaccountname
 		 */
@@ -799,7 +771,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.bankaccountname;
 			}
-			
+
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -808,7 +780,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.bankaccountname = bankaccountname;
 			}
-			
+
 		/**
 		 * @return the notes
 		 */
@@ -816,7 +788,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.notes;
 			}
-			
+
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -825,7 +797,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.notes = notes;
 			}
-			
+
 		/**
 		 * @return the currencyid
 		 */
@@ -833,7 +805,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.currencyid;
 			}
-
+			
 		/**
 		 * @param currencyid
 		 *            the currencyid to set
@@ -842,7 +814,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.currencyid = currencyid;
 			}
-
+			
 		/**
 		 * @return the currencyrate
 		 */
@@ -850,7 +822,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.currencyrate;
 			}
-
+			
 		/**
 		 * @param currencyrate
 		 *            the currencyrate to set
@@ -859,7 +831,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.currencyrate = currencyrate;
 			}
-
+			
 		/**
 		 * @return the bankaccountid
 		 */
@@ -867,7 +839,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.bankaccountid;
 			}
-
+			
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -876,7 +848,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.bankaccountid = bankaccountid;
 			}
-			
+
 		/**
 		 * @return the postingdate
 		 */
@@ -884,7 +856,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.postingdate;
 			}
-			
+
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -893,7 +865,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				this.postingdate = postingdate;
 			}
-
+			
 		/**
 		 * @return the searchcode
 		 */
@@ -901,7 +873,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			{
 				return this.searchcode;
 			}
-
+			
 		/**
 		 * @param searchcode
 		 *            the searchcode to set

@@ -25,8 +25,7 @@ public class PersCustEmergencyInfoAction extends BaseAction implements Preparabl
 
 		private String mode;
 		private String message;
-		private String usrUpd;
-		private String usrCrt;
+		
 		private long customerid;
 		private long id;
 
@@ -52,7 +51,6 @@ public class PersCustEmergencyInfoAction extends BaseAction implements Preparabl
 				try
 					{
 						// TODO Auto-generated constructor stub
-						RenderMenu();
 
 						this.customermaintservice = new CustomerDao();
 						this.customer = new Customer();
@@ -113,7 +111,7 @@ public class PersCustEmergencyInfoAction extends BaseAction implements Preparabl
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -210,27 +208,7 @@ public class PersCustEmergencyInfoAction extends BaseAction implements Preparabl
 			{
 				this.message = message;
 			}
-
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
+			
 		public long getId()
 			{
 				return this.id;

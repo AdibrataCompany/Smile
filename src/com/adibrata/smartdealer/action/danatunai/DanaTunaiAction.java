@@ -35,7 +35,7 @@ public class DanaTunaiAction extends ActionSupport implements Preparable {
 				return "failed";
 			}
 		} else {
-			strMode = "start";
+			strMode = INPUT;
 		}
 		return strMode;
 	}

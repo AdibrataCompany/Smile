@@ -37,8 +37,7 @@ public class MasterAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-		private String usrupd;
-		private String usrcrt;
+
 		private String message;
 		private Long id;
 		
@@ -330,7 +329,8 @@ public class MasterAction extends BaseAction implements Preparable
 						this.mstable.setMasterCode(this.getMastercode());
 						this.mstable.setMasterValue(this.getMastervalue());
 						
-						this.mstable.setUsrUpd(this.getUsrupd());
+						this.mstable.setUsrUpd(BaseAction.sesLoginName());
+						this.mstable.setUsrCrt(BaseAction.sesLoginName());
 						this.mstable.setMasterTypeCode(this.getMastertypecode());
 						this.mstable.setPartner(this.getPartner());
 						
@@ -362,7 +362,8 @@ public class MasterAction extends BaseAction implements Preparable
 						this.mstable.setUsrUpd(BaseAction.sesLoginName());
 						this.mstable.setMasterTypeCode(this.getMastertypecode());
 						this.mstable.setPartner(this.getPartner());
-						
+						this.mstable.setUsrUpd(BaseAction.sesLoginName());
+						this.mstable.setUsrCrt(BaseAction.sesLoginName());
 						this.masterservice.SaveAdd(this.mstable);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -650,27 +651,7 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				this.pagenumber = pagenumber;
 			}
-			
-		public String getUsrupd()
-			{
-				return this.usrupd;
-			}
-			
-		public void setUsrupd(final String usrupd)
-			{
-				this.usrupd = usrupd;
-			}
-			
-		public String getUsrcrt()
-			{
-				return this.usrcrt;
-			}
-			
-		public void setUsrcrt(final String usrcrt)
-			{
-				this.usrcrt = usrcrt;
-			}
-			
+
 		public Integer getIsactive()
 			{
 				return this.isactive;

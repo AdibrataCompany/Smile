@@ -1,8 +1,7 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -68,7 +67,7 @@ public class AgrmntIns implements java.io.Serializable
 		private double endorsAdditionalPremium;
 		private String flagClaimProcess;
 		private Date lastClaimDate;
-		private char flagDocStatus;
+		private String flagDocStatus;
 		private double paidAmountByCust;
 		private Double waivedAmountByCust;
 		private Date paidDate;
@@ -85,21 +84,21 @@ public class AgrmntIns implements java.io.Serializable
 		private String coverPeriod;
 		private String renewalDocNo;
 		private Date renewalDocDate;
-		private BigDecimal premiumBaseForRefundSupp;
+		private Double premiumBaseForRefundSupp;
 		private String invoiceNo;
-		private BigDecimal invoiceAmount;
+		private Double invoiceAmount;
 		private Date invoiceDate;
 		private Date receivedInvoiceDate;
 		private Date flagInsStatusDate;
-		private Character sppaprintStatus;
+		private String sppaprintStatus;
 		private boolean isValidCustomerName;
 		private boolean isValidAddress;
 		private boolean isValidInsurancePeriode;
 		private boolean isValidInsLength;
 		private boolean isValidNumOfAsset;
 		private boolean isValid;
-		private BigDecimal insCapitalizedAmount;
-		private BigDecimal addCapitalizedAmount;
+		private Double insCapitalizedAmount;
+		private Double addCapitalizedAmount;
 		private short isNewCover;
 		private String batchId;
 		private Date batchDate;
@@ -121,9 +120,9 @@ public class AgrmntIns implements java.io.Serializable
 			
 		public AgrmntIns(long id, String policyNumber, String policyReceiveBy, String flagReNew, String flagInsStatus, String sppano, String insuranceRateType, double sumInsured, double sellingRate, double sellingAmount, double adminFee,
 		        double meteraiFee, double earnAmount, String insNotes, String accNotes, short insLength, String mainCoverage, String additionalCoverage, String endorsDocNo, String bdendorsDocNo, String bdendorsPolicyNo, double endorsToInsCoPremium,
-		        double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, char flagDocStatus, double paidAmountByCust, double lateCharges, long accPayId, double claimAmount, double paidClaimAmount, int yearNum,
-		        String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, BigDecimal premiumBaseForRefundSupp, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode,
-		        boolean isValidInsLength, boolean isValidNumOfAsset, boolean isValid, short isNewCover)
+		        double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, String flagDocStatus, double paidAmountByCust, double lateCharges, long accPayId, double claimAmount, double paidClaimAmount, int yearNum,
+		        String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Double premiumBaseForRefundSupp, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength,
+		        boolean isValidNumOfAsset, boolean isValid, short isNewCover)
 			{
 				this.id = id;
 				this.policyNumber = policyNumber;
@@ -175,11 +174,11 @@ public class AgrmntIns implements java.io.Serializable
 		        Date policyReceiveDate, String policyReceiveBy, String flagInsActivation, String flagReNew, String flagInsStatus, Date sppadate, String sppano, String insuranceRateType, double sumInsured, Date insCoSelectionDate, double sellingRate,
 		        double sellingAmount, double adminFee, double meteraiFee, double earnAmount, String insNotes, String accNotes, Date requestDate, Date insActivateDate, short insLength, String mainCoverage, String additionalCoverage,
 		        String endorsDocNo, String bdendorsDocNo, Date bdendorsDate, String bdendorsPolicyNo, Date bdendorsPolicyReceiveDate, double endorsToInsCoPremium, double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess,
-		        Date lastClaimDate, char flagDocStatus, double paidAmountByCust, Double waivedAmountByCust, Date paidDate, double lateCharges, long accPayId, String insuredBy, String insurancePaidBy, double claimAmount, double paidClaimAmount,
-		        int yearNum, Date terminationDate, String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Date renewalDocDate, BigDecimal premiumBaseForRefundSupp, String invoiceNo, BigDecimal invoiceAmount,
-		        Date invoiceDate, Date receivedInvoiceDate, Date flagInsStatusDate, Character sppaprintStatus, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength, boolean isValidNumOfAsset,
-		        boolean isValid, BigDecimal insCapitalizedAmount, BigDecimal addCapitalizedAmount, short isNewCover, String batchId, Date batchDate, String generate, String typeCorrectionCode, Date confirmDate, String usrCrt, Date dtmUpd,
-		        String usrUpd, Date dtmCrt, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntInsStandardInfo> agrmntInsStandardInfos, Set<AgrmntInsInsco> agrmntInsInscos, Set<AgrmntInsCust> agrmntInsCusts)
+		        Date lastClaimDate, String flagDocStatus, double paidAmountByCust, Double waivedAmountByCust, Date paidDate, double lateCharges, long accPayId, String insuredBy, String insurancePaidBy, double claimAmount, double paidClaimAmount,
+		        int yearNum, Date terminationDate, String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Date renewalDocDate, Double premiumBaseForRefundSupp, String invoiceNo, Double invoiceAmount,
+		        Date invoiceDate, Date receivedInvoiceDate, Date flagInsStatusDate, String sppaprintStatus, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength, boolean isValidNumOfAsset,
+		        boolean isValid, Double insCapitalizedAmount, Double addCapitalizedAmount, short isNewCover, String batchId, Date batchDate, String generate, String typeCorrectionCode, Date confirmDate, String usrCrt, Date dtmUpd, String usrUpd,
+		        Date dtmCrt, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntInsStandardInfo> agrmntInsStandardInfos, Set<AgrmntInsInsco> agrmntInsInscos, Set<AgrmntInsCust> agrmntInsCusts)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -760,12 +759,12 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "FlagDocStatus", nullable = false, length = 1)
-		public char getFlagDocStatus()
+		public String getFlagDocStatus()
 			{
 				return this.flagDocStatus;
 			}
 			
-		public void setFlagDocStatus(char flagDocStatus)
+		public void setFlagDocStatus(String flagDocStatus)
 			{
 				this.flagDocStatus = flagDocStatus;
 			}
@@ -950,12 +949,12 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "PremiumBaseForRefundSupp", nullable = false, precision = 17)
-		public BigDecimal getPremiumBaseForRefundSupp()
+		public Double getPremiumBaseForRefundSupp()
 			{
 				return this.premiumBaseForRefundSupp;
 			}
 			
-		public void setPremiumBaseForRefundSupp(BigDecimal premiumBaseForRefundSupp)
+		public void setPremiumBaseForRefundSupp(Double premiumBaseForRefundSupp)
 			{
 				this.premiumBaseForRefundSupp = premiumBaseForRefundSupp;
 			}
@@ -972,12 +971,12 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "InvoiceAmount", precision = 17)
-		public BigDecimal getInvoiceAmount()
+		public Double getInvoiceAmount()
 			{
 				return this.invoiceAmount;
 			}
 			
-		public void setInvoiceAmount(BigDecimal invoiceAmount)
+		public void setInvoiceAmount(Double invoiceAmount)
 			{
 				this.invoiceAmount = invoiceAmount;
 			}
@@ -1019,12 +1018,12 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "SPPAPrintStatus", length = 1)
-		public Character getSppaprintStatus()
+		public String getSppaprintStatus()
 			{
 				return this.sppaprintStatus;
 			}
 			
-		public void setSppaprintStatus(Character sppaprintStatus)
+		public void setSppaprintStatus(String sppaprintStatus)
 			{
 				this.sppaprintStatus = sppaprintStatus;
 			}
@@ -1096,23 +1095,23 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@Column(name = "InsCapitalizedAmount", precision = 17)
-		public BigDecimal getInsCapitalizedAmount()
+		public Double getInsCapitalizedAmount()
 			{
 				return this.insCapitalizedAmount;
 			}
 			
-		public void setInsCapitalizedAmount(BigDecimal insCapitalizedAmount)
+		public void setInsCapitalizedAmount(Double insCapitalizedAmount)
 			{
 				this.insCapitalizedAmount = insCapitalizedAmount;
 			}
 			
 		@Column(name = "AddCapitalizedAmount", precision = 17)
-		public BigDecimal getAddCapitalizedAmount()
+		public Double getAddCapitalizedAmount()
 			{
 				return this.addCapitalizedAmount;
 			}
 			
-		public void setAddCapitalizedAmount(BigDecimal addCapitalizedAmount)
+		public void setAddCapitalizedAmount(Double addCapitalizedAmount)
 			{
 				this.addCapitalizedAmount = addCapitalizedAmount;
 			}

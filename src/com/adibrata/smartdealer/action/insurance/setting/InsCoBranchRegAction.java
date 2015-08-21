@@ -1,10 +1,10 @@
 
-package com.adibrata.smartdealer.action.amendment;
+package com.adibrata.smartdealer.action.insurance.setting;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.opensymphony.xwork2.Preparable;
 
-public class RescheduleAction extends BaseAction implements Preparable
+public class InsCoBranchRegAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -16,33 +16,26 @@ public class RescheduleAction extends BaseAction implements Preparable
 		private int pageNumber;
 		private String message;
 		
-		public RescheduleAction()
+		public InsCoBranchRegAction()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
-		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
 									this.Paging();
 								case "edit" :
-								
+
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
@@ -53,7 +46,7 @@ public class RescheduleAction extends BaseAction implements Preparable
 									strMode = this.SaveEdit();
 								case "back" :
 									;
-									
+
 								case "first" :
 									this.pageNumber -= 1;
 									this.Paging();

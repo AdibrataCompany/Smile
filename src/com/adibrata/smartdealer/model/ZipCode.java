@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ public class ZipCode implements java.io.Serializable
 		private String kecamatan;
 		private String city;
 		private String zipCode;
-		private Character isActive;
+		private String isActive;
 		private String usrCrt;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -38,7 +38,7 @@ public class ZipCode implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public ZipCode(long id, String kelurahan, String kecamatan, String city, String zipCode, Character isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public ZipCode(long id, String kelurahan, String kecamatan, String city, String zipCode, String isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.kelurahan = kelurahan;
@@ -110,12 +110,12 @@ public class ZipCode implements java.io.Serializable
 			}
 			
 		@Column(name = "IsActive", length = 1)
-		public Character getIsActive()
+		public String getIsActive()
 			{
 				return this.isActive;
 			}
 			
-		public void setIsActive(Character isActive)
+		public void setIsActive(String isActive)
 			{
 				this.isActive = isActive;
 			}

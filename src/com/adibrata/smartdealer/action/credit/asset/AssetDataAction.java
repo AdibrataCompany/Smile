@@ -23,8 +23,8 @@ public class AssetDataAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		private String usrUpd;
-		private String usrCrt;
+		
+		
 		private int pageNumber;
 		private String message;
 		Partner partner;
@@ -185,7 +185,7 @@ public class AssetDataAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

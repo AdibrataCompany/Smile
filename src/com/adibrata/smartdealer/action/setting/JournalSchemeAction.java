@@ -34,8 +34,8 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
+		
+		
 		private String message;
 		private long id;
 		private String coaSchmCode;
@@ -126,7 +126,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					{
 						this.pageNumber = 1;
 						this.Paging();
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

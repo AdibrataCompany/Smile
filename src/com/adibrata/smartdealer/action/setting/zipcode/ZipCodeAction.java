@@ -32,8 +32,8 @@ public class ZipCodeAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-		private String usrupd;
-		private String usrcrt;
+		
+		
 		private String message;
 		private Long id;
 		private String kelurahan;
@@ -173,7 +173,7 @@ public class ZipCodeAction extends BaseAction implements Preparable
 								try
 									{
 										this.Paging();
-										strMode = "start";
+										strMode = INPUT;
 									}
 								catch (final Exception e)
 									{

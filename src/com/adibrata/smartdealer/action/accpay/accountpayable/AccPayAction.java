@@ -59,7 +59,7 @@ public class AccPayAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

@@ -1,8 +1,7 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
@@ -29,7 +28,7 @@ public class PersCustCcinfo implements java.io.Serializable
 		private String creditCardType;
 		private short creditCardPeriodYears;
 		private short creditCardPeriodMonths;
-		private BigDecimal creditCardCreditLimit;
+		private Double creditCardCreditLimit;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -39,7 +38,7 @@ public class PersCustCcinfo implements java.io.Serializable
 			{
 			}
 			
-		public PersCustCcinfo(long id, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, BigDecimal creditCardCreditLimit)
+		public PersCustCcinfo(long id, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit)
 			{
 				this.id = id;
 				this.creditCardNo = creditCardNo;
@@ -50,7 +49,7 @@ public class PersCustCcinfo implements java.io.Serializable
 				this.creditCardCreditLimit = creditCardCreditLimit;
 			}
 			
-		public PersCustCcinfo(long id, Customer customer, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, BigDecimal creditCardCreditLimit, Date dtmUpd, String usrUpd,
+		public PersCustCcinfo(long id, Customer customer, String creditCardNo, String creditCardName, String creditCardType, short creditCardPeriodYears, short creditCardPeriodMonths, Double creditCardCreditLimit, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
@@ -148,12 +147,12 @@ public class PersCustCcinfo implements java.io.Serializable
 			}
 			
 		@Column(name = "CreditCardCreditLimit", nullable = false, precision = 17)
-		public BigDecimal getCreditCardCreditLimit()
+		public Double getCreditCardCreditLimit()
 			{
 				return this.creditCardCreditLimit;
 			}
 			
-		public void setCreditCardCreditLimit(BigDecimal creditCardCreditLimit)
+		public void setCreditCardCreditLimit(Double creditCardCreditLimit)
 			{
 				this.creditCardCreditLimit = creditCardCreditLimit;
 			}

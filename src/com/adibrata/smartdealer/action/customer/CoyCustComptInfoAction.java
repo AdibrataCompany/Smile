@@ -9,6 +9,8 @@ import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.customer.CustomerDao;
 import com.adibrata.smartdealer.model.CoyCustComptInfo;
 import com.adibrata.smartdealer.model.Customer;
+import com.adibrata.smartdealer.model.Office;
+import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.customer.CustomerMaintService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.Preparable;
@@ -23,7 +25,8 @@ public class CoyCustComptInfoAction extends BaseAction implements Preparable
 		*
 		*/
 		private static final long serialVersionUID = 1L;
-
+		Partner partner;
+		Office office;
 		private CustomerMaintService customermaintservice;
 		private Customer customer;
 		private Map<String, Object> session;
@@ -31,8 +34,7 @@ public class CoyCustComptInfoAction extends BaseAction implements Preparable
 
 		private String mode;
 		private String message;
-		private String usrUpd;
-		private String usrCrt;
+		
 		private long id;
 		private long customerid;
 
@@ -45,7 +47,10 @@ public class CoyCustComptInfoAction extends BaseAction implements Preparable
 		public CoyCustComptInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				RenderMenu();
+				this.partner = new Partner();
+				this.office = new Office();
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
 
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
@@ -124,7 +129,7 @@ public class CoyCustComptInfoAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -269,27 +274,7 @@ public class CoyCustComptInfoAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
+			
 		public long getId()
 			{
 				return this.id;

@@ -85,7 +85,7 @@ public class DailyAgingDao extends DaoBase
 								araging.setDailyMonthly("D");
 								araging.setAgingDate(valuedate);
 								araging.setAgrmnt(agrmnt);
-								araging.setCustomer(agrmnt.getCustomer());
+								araging.setCustomer(agrmnt.getCustomerByCustomerId());
 								araging.setCurrency(agrmnt.getCurrency());
 								araging.setAmountOverDueGross(0.00);
 								araging.setAmountOverDuePrinciple(0.00);
@@ -157,7 +157,7 @@ public class DailyAgingDao extends DaoBase
 								araging.setDailyMonthly("M");
 								araging.setAgingDate(valuedate);
 								araging.setAgrmnt(agrmnt);
-								araging.setCustomer(agrmnt.getCustomer());
+								araging.setCustomer(agrmnt.getCustomerByCustomerId());
 								araging.setCurrency(agrmnt.getCurrency());
 								araging.setAmountOverDueGross(0.00);
 								araging.setAmountOverDuePrinciple(0.00);

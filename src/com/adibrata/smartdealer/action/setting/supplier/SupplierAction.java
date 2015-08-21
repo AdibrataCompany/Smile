@@ -180,7 +180,7 @@ public class SupplierAction extends BaseAction implements Preparable
 						try
 							{
 								this.Paging();
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{

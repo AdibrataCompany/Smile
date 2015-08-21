@@ -44,7 +44,7 @@ public class PaymentRequestAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}

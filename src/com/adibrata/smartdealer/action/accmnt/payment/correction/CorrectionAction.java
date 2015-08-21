@@ -6,21 +6,20 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
-public class PaymentReversalAction extends BaseAction implements Preparable
+public class CorrectionAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		private String usrUpd;
-		private String usrCrt;
+
 		private int pageNumber;
 		private String message;
 		Partner partner;
 		Office office;
 
-		public PaymentReversalAction() throws Exception
+		public CorrectionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
@@ -76,7 +75,7 @@ public class PaymentReversalAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
 					}
 				return strMode;
 			}
@@ -150,40 +149,6 @@ public class PaymentReversalAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-			
-		/**
 		 * @return the pageNumber
 		 */
 		public int getPageNumber()
@@ -215,14 +180,6 @@ public class PaymentReversalAction extends BaseAction implements Preparable
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
 			}
 			
 		/**
@@ -260,11 +217,11 @@ public class PaymentReversalAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @param id
-		 *            the id to set
+		 * @return the serialversionuid
 		 */
-		public void setId(final Long id)
+		public static long getSerialversionuid()
 			{
-				this.id = id;
+				return serialVersionUID;
 			}
+			
 	}

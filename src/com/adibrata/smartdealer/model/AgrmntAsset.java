@@ -1,8 +1,7 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -53,16 +52,16 @@ public class AgrmntAsset implements java.io.Serializable
 		private String notes;
 		private String notesBorrowDoc;
 		private String notesReleaseDoc;
-		private char assetDocStatus;
+		private String assetDocStatus;
 		private String assetStatus;
 		private boolean isAssetReplacementStatus;
 		private Date rrddate;
 		private Long crossAssetId;
 		private String custUseRelation;
 		private Long sumInsuredReplacement;
-		private Character discountOtrtype;
-		private BigDecimal discountOtrpercentage;
-		private BigDecimal discountOtramount;
+		private String discountOtrtype;
+		private Double discountOtrpercentage;
+		private Double discountOtramount;
 		private String usrCrt;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -80,7 +79,7 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		public AgrmntAsset(long id, AssetMaster assetMaster, double otrprice, double dpamount, long assetTypeId, double resaleValue, short isUsed, String assetUsage, short manufacturingYear, String notesBorrowDoc, String notesReleaseDoc,
-		        char assetDocStatus, boolean isAssetReplacementStatus)
+		        String assetDocStatus, boolean isAssetReplacementStatus)
 			{
 				this.id = id;
 				this.assetMaster = assetMaster;
@@ -99,8 +98,8 @@ public class AgrmntAsset implements java.io.Serializable
 			
 		public AgrmntAsset(long id, Agrmnt agrmnt, AssetMaster assetMaster, Customer customer, SupplierAccInfo supplierAccInfo, Long supplierId, double otrprice, double dpamount, long assetTypeId, double resaleValue, String serialNo1,
 		        String serialNo2, short isUsed, String assetUsage, Short manufacturingMonth, short manufacturingYear, String licPlateNo, Date taxDate, Date buyBackGuaranteeValidDate, String assetDocFilling, String assetDocRack,
-		        String branchIntransit, Date deliveryDate, Date repossesDate, Date inventoryDate, String notes, String notesBorrowDoc, String notesReleaseDoc, char assetDocStatus, String assetStatus, boolean isAssetReplacementStatus, Date rrddate,
-		        Long crossAssetId, String custUseRelation, Long sumInsuredReplacement, Character discountOtrtype, BigDecimal discountOtrpercentage, BigDecimal discountOtramount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
+		        String branchIntransit, Date deliveryDate, Date repossesDate, Date inventoryDate, String notes, String notesBorrowDoc, String notesReleaseDoc, String assetDocStatus, String assetStatus, boolean isAssetReplacementStatus, Date rrddate,
+		        Long crossAssetId, String custUseRelation, Long sumInsuredReplacement, String discountOtrtype, Double discountOtrpercentage, Double discountOtramount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        Set<AgrmntAssetLoctInfo> agrmntAssetLoctInfos, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<AgmntAssetEmployeeInfo> agmntAssetEmployeeInfos, Set<AgrmntAssetOwnerInfo> agrmntAssetOwnerInfos,
 		        Set<AgrmntAssetOldOwnerInfo> agrmntAssetOldOwnerInfos, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntAssetSpbkbinfo> agrmntAssetSpbkbinfos)
 			{
@@ -475,12 +474,12 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		@Column(name = "AssetDocStatus", nullable = false, length = 1)
-		public char getAssetDocStatus()
+		public String getAssetDocStatus()
 			{
 				return this.assetDocStatus;
 			}
 			
-		public void setAssetDocStatus(char assetDocStatus)
+		public void setAssetDocStatus(String assetDocStatus)
 			{
 				this.assetDocStatus = assetDocStatus;
 			}
@@ -553,34 +552,34 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		@Column(name = "DiscountOTRType", length = 1)
-		public Character getDiscountOtrtype()
+		public String getDiscountOtrtype()
 			{
 				return this.discountOtrtype;
 			}
 			
-		public void setDiscountOtrtype(Character discountOtrtype)
+		public void setDiscountOtrtype(String discountOtrtype)
 			{
 				this.discountOtrtype = discountOtrtype;
 			}
 			
 		@Column(name = "DiscountOTRPercentage", precision = 9, scale = 6)
-		public BigDecimal getDiscountOtrpercentage()
+		public Double getDiscountOtrpercentage()
 			{
 				return this.discountOtrpercentage;
 			}
 			
-		public void setDiscountOtrpercentage(BigDecimal discountOtrpercentage)
+		public void setDiscountOtrpercentage(Double discountOtrpercentage)
 			{
 				this.discountOtrpercentage = discountOtrpercentage;
 			}
 			
 		@Column(name = "DiscountOTRAmount", precision = 17)
-		public BigDecimal getDiscountOtramount()
+		public Double getDiscountOtramount()
 			{
 				return this.discountOtramount;
 			}
 			
-		public void setDiscountOtramount(BigDecimal discountOtramount)
+		public void setDiscountOtramount(Double discountOtramount)
 			{
 				this.discountOtramount = discountOtramount;
 			}
