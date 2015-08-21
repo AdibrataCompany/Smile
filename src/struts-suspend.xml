@@ -3,27 +3,48 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	
+
 	<package name="suspend" extends="smartdealer-package"
 		namespace="/">
-		<action name="suspendreceive"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendReceiveAction"
+		<action name="suspendlist"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.SuspendAction"
 			method="execute">
-			
-			<result name="start">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
-			<result name="success">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="input">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="first">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="prev">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="next">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="last">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="suspendcorrection" type="redirectAction">
+				<param name="actionName">suspendcorrection</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="suspendallocation" type="redirectAction">
+				<param name="actionName">suspendallocationlistagreement</param>
+				<param name="message">${message}</param>
+			</result>
+		</action>
+
+		<action name="suspendreceive"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.receive.SuspendReceiveAction"
+			method="execute">
+			<result name="input">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
 			<result name="error">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
 			</result>
-			<result name="save">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="success" type="redirectAction">
+				<param name="actionName">banktransaction</param>
+				<param name="message">${message}</param>
 			</result>
-			<result name="end">/Pages/Suspend/SuspendReceive/SuspendReceive.jsp
+			<result name="end" type="redirectAction">
+				<param name="actionName">banktransaction</param>
 			</result>
 		</action>
 		<action name="suspendallocation"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendAllocationAction"
-			method="execute">
+			class="com.adibrata.smartdealer.action.accmnt.suspend.allocation.SuspendAllocationAction"
+			method="save">
 			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
@@ -35,16 +56,48 @@
 			</result>
 			<result name="entry">/Pages/Suspend/SuspendReverse/entry.jsp
 			</result>
-			<result name="end">/Pages/Suspend/SuspendReverse/paging.jsp
+			<result name="success" type="redirectAction">
+				<param name="actionName">banktransaction</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">suspendallocationlistagreement</param>
 			</result>
 		</action>
-		<action name="suspendreverse"
-			class="com.adibrata.smartdealer.action.accmnt.SuspendReverseAction"
-			method="execute">
-			<result type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
+		<action name="suspendallocationlistagreement"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.allocation.SuspendAllocationAction"
+			method="save">
+			<result name="input">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
+			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
+			</result>
+			<result name="error">/Pages/Suspend/SuspendReverse/paging.jsp
+			</result>
+			<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
+			</result>
+			<result name="entry">/Pages/Suspend/SuspendReverse/entry.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">suspendallocation</param>
+				<param name="bankaccountid">${bankaccountid}</param>
+				<param name="agrmntid">${id}</param>
+			</result>
+
+			<result name="end" type="redirectAction">
+				<param name="actionName">banktransaction</param>
+			</result>
+				<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
+			</result>
+		
+			<result name="first">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="prev">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="next">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+			<result name="last">/Pages/Suspend/SuspendReverse/paging.jsp</result>
+		</action>
+		<action name="suspendcorrection"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.correction.SuspendCorrectionAction"
+			method="save">
+
 			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp

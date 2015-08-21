@@ -3,29 +3,68 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="accmnt" extends="smartdealer-package"
-		namespace="/">
-		<action name="paymentrecieve"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReceiveAction"
+	<package name="accmnt" extends="smartdealer-package" namespace="/">
+		<action name="banktransaction"
+			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="start">/Pages/Include/BankAccountPaging.jsp
 			</result>
+			<result name="success">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="error">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="first">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="prev">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="next">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="last">/Pages/Include/BankAccountPaging.jsp
+			</result>
+			<result name="paymentreceive" type="redirectAction">
+				<param name="actionName">paymentrecieve</param>
+				<param name="bankaccountid">${id}</param>
+			</result>
+			<result name="suspendreceive" type="redirectAction">
+				<param name="actionName">suspendreceive</param>
+				<param name="bankaccountid">${id}</param>
+			</result>
+			<result name="otherreceive" type="redirectAction">
+				<param name="actionName">otherreceive</param>
+				<param name="bankaccountid">${id}</param>
+			</result>
+
+			<result name="otherdisburse" type="redirectAction">
+				<param name="actionName">otherdisburse</param>
+				<param name="bankaccountid">${id}</param>
+			</result>
+			<result name="advancetransaction" type="redirectAction">
+				<param name="actionName">advancecashrequest</param>
+				<param name="bankaccountid">${id}</param>
+			</result>
+			<result name="pettycashtransaction" type="redirectAction">
+				/Pages/CashTransaction/PettyCash/PettyCash.jsp
+				<param name="bankaccountid">${id}</param>
+			</result>
+		</action>
+
+		<action name="paymentrecieve"
+			class="com.adibrata.smartdealer.action.accmnt.payment.receive.ReceiveAction"
+			method="save">
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="input">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end" type="redirectAction">/Pages/Include/BankAccountPaging.jsp
 			</result>
 		</action>
 		<action name="paymentreversal"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReversalAction"
+			class="com.adibrata.smartdealer.action.accmnt.payment.correction.CorrectionAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

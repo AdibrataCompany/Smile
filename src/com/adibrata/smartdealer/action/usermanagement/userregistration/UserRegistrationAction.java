@@ -9,6 +9,7 @@ import java.util.List;
 import com.adibrata.smartdealer.model.MsUser;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
+import com.adibrata.smartdealer.model.UserList;
 import com.adibrata.smartdealer.service.usermanagement.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -27,7 +28,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		private UserService userService;
 		private Partner partner;
 		private Office office;
-		private List<MsUser> lstUser;
+		private List<UserList> lstUser;
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
@@ -371,7 +372,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		/**
 		 * @return the lstUser
 		 */
-		public List<MsUser> getLstUser()
+		public List<UserList> getLstUser()
 			{
 				return this.lstUser;
 			}
@@ -380,7 +381,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		 * @param lstUser
 		 *            the lstUser to set
 		 */
-		public void setLstUser(final List<MsUser> lstUser)
+		public void setLstUser(final List<UserList> lstUser)
 			{
 				this.lstUser = lstUser;
 			}
