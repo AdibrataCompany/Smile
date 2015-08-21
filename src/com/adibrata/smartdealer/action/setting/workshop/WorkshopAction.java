@@ -31,8 +31,8 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		private String message;
 		private Long id;
 
@@ -181,7 +181,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 						try
 							{
 								this.Paging();
-								strMode = INPUT;
+								strMode = "start";
 							}
 						catch (final Exception e)
 							{

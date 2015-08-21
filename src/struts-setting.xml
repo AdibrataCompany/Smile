@@ -114,8 +114,8 @@
 			</result>
 		</action>
 
-		<action name="supplier"
-			class="com.adibrata.smartdealer.action.setting.supplier.SupplierAction"
+		<action name="dealer"
+			class="com.adibrata.smartdealer.action.setting.dealer.DealerAction"
 			method="execute">
 			<result name="start">/Pages/Setting/Dealer/pageDealer.jsp</result>
 			<result name="search">/Pages/Setting/Dealer/pageDealer.jsp</result>
@@ -128,8 +128,8 @@
 			<result name="last">/Pages/Setting/Dealer/pageDealer.jsp</result>
 		</action>
 
-		<action name="supplier_save"
-			class="com.adibrata.smartdealer.action.setting.supplier.SupplierAction"
+		<action name="dealer_save"
+			class="com.adibrata.smartdealer.action.setting.dealer.DealerAction"
 			method="save">
 			<result name="input">/Pages/Setting/Dealer/editDealer.jsp</result>
 			<result name="error">/Pages/Setting/Dealer/editDealer.jsp</result>

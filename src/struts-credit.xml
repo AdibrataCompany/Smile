@@ -2,30 +2,17 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
-<struts>			
+<struts>
 	<package name="Credit" extends="smartdealer-package" namespace="/">
 		<action name="applicationdata"
 			class="com.adibrata.smartdealer.action.credit.application.ApplicationDataAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
+			<result name="start">/Pages/Credit/ApplicationData/Paging.jsp</result>
+			<result name="start">/Pages/Credit/ApplicationData/Entry.jsp</result>
 		</action>
-		
-	<action name="assetdata"
-			class="com.adibrata.smartdealer.action.credit.asset.AssetDataAction"
+
+		<action name="assetdata"
+			class="com.adibrata.smartdealer.action.credit.AssetDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -44,7 +31,7 @@
 			</result>
 		</action>
 		<action name="insurancedata"
-			class="com.adibrata.smartdealer.action.credit.insurance.InsuranceDataAction"
+			class="com.adibrata.smartdealer.action.credit.InsuranceDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -63,7 +50,7 @@
 			</result>
 		</action>
 		<action name="financialdata"
-			class="com.adibrata.smartdealer.action.credit.financial.FinancialDataAction"
+			class="com.adibrata.smartdealer.action.credit.FinancialDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -82,7 +69,7 @@
 			</result>
 		</action>
 		<action name="commissiondata"
-			class="com.adibrata.smartdealer.action.credit.commission.CommissionDataAction"
+			class="com.adibrata.smartdealer.action.credit.CommissionDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -101,7 +88,7 @@
 			</result>
 		</action>
 		<action name="completedata"
-			class="com.adibrata.smartdealer.action.credit.complete.CompleteDataAction"
+			class="com.adibrata.smartdealer.action.credit.CompleteDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -120,7 +107,7 @@
 			</result>
 		</action>
 		<action name="purchaseorder"
-			class="com.adibrata.smartdealer.action.credit.purchaseorder.PurchaseOrderAction"
+			class="com.adibrata.smartdealer.action.credit.PurchaseOrderAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -139,8 +126,7 @@
 			</result>
 		</action>
 		<action name="invoice"
-			class="com.adibrata.smartdealer.action.credit.invoice.InvoiceAction"
-			method="execute">
+			class="com.adibrata.smartdealer.action.credit.InvoiceAction" method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -158,7 +144,7 @@
 			</result>
 		</action>
 		<action name="deliveryorder"
-			class="com.adibrata.smartdealer.action.credit.deliveryorder.DeliveryOrderAction"
+			class="com.adibrata.smartdealer.action.credit.DeliveryOrderAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -177,8 +163,7 @@
 			</result>
 		</action>
 		<action name="golive"
-			class="com.adibrata.smartdealer.action.credit.golive.GoLiveAction"
-			method="execute">
+			class="com.adibrata.smartdealer.action.credit.GoLiveAction" method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp

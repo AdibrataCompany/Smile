@@ -13,44 +13,43 @@ public class PdcDepositAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		Partner partner;
-		Office office;
-		
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
-		
+
 		public PdcDepositAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
-
+						
 						switch (strMode)
 							{
 								case "search" :
 									this.Paging();
 								case "edit" :
-
+								
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
@@ -61,7 +60,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 									strMode = this.SaveEdit();
 								case "back" :
 									;
-
+									
 								case "first" :
 									this.pageNumber -= 1;
 									this.Paging();
@@ -83,11 +82,11 @@ public class PdcDepositAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -95,7 +94,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -104,7 +103,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -112,7 +111,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -121,7 +120,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -129,7 +128,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -138,7 +137,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -146,7 +145,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -155,7 +154,41 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
+		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
+		/**
+		 * @param usrUpd
+		 *            the usrUpd to set
+		 */
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
+		/**
+		 * @param usrCrt
+		 *            the usrCrt to set
+		 */
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -163,7 +196,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -172,7 +205,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -180,7 +213,7 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -189,38 +222,20 @@ public class PdcDepositAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
-		 * @return the partner
+		 * @return the serialversionuid
 		 */
-		public Partner getPartner()
+		public static Long getSerialversionuid()
 			{
-				return this.partner;
+				return serialVersionUID;
 			}
-			
+
 		/**
-		 * @param partner
-		 *            the partner to set
+		 * @return the serialversionuid
 		 */
-		public void setPartner(final Partner partner)
+		public static Long getSerialversionuid()
 			{
-				this.partner = partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @param office
-		 *            the office to set
-		 */
-		public void setOffice(final Office office)
-			{
-				this.office = office;
+				return serialVersionUID;
 			}
 	}

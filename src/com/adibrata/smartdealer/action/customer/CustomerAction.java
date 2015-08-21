@@ -30,7 +30,8 @@ public class CustomerAction extends BaseAction implements Preparable
 		private String searchvalue;
 		private String mode;
 		private String message;
-		
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private Long id;
 		
@@ -116,7 +117,7 @@ public class CustomerAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-								case "app" :
+								case "appdata" :
 									try
 										{
 											strMode = this.View();
@@ -187,7 +188,7 @@ public class CustomerAction extends BaseAction implements Preparable
 						this.pageNumber = 1;
 						try
 							{
-								strMode = INPUT;
+								strMode = "start";
 							}
 						catch (final Exception e)
 							{
@@ -357,6 +358,26 @@ public class CustomerAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
+			}
+			
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+			
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+			
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+			
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
 			}
 			
 		public int getPageNumber()

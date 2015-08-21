@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -52,10 +56,21 @@ public class Customer implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		private Set<Agrmnt> agrmntsForSpouseId = new HashSet<Agrmnt>(0);
 		private Set<Agrmnt> agrmntsForGuarantorId = new HashSet<Agrmnt>(0);
 		private Set<PersCustOmsetInfo> persCustOmsetInfos = new HashSet<PersCustOmsetInfo>(0);
 		private Set<CoyCustContactInfo> coyCustContactInfos = new HashSet<CoyCustContactInfo>(0);
+=======
+		private Set<PersCustCcinfo> persCustCcinfos = new HashSet<PersCustCcinfo>(0);
+		private Set<CoyCustShareInfo> coyCustShareInfos = new HashSet<CoyCustShareInfo>(0);
+		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
+		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
+		private Set<CoyCustContactInfo> coyCustContactInfos = new HashSet<CoyCustContactInfo>(0);
+		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
+		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
+		private Set<PersCustTrusteeInfo> persCustTrusteeInfos_1 = new HashSet<PersCustTrusteeInfo>(0);
+>>>>>>> 5851c81 new Model
 		private Set<CoyCust> coyCusts = new HashSet<CoyCust>(0);
 		private Set<PersCustEntInfo> persCustEntInfos = new HashSet<PersCustEntInfo>(0);
 		private Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos = new HashSet<PersCustOtherBussinessInfo>(0);
@@ -90,6 +105,7 @@ public class Customer implements java.io.Serializable
 				this.id = id;
 			}
 			
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		public Customer(long id, Partner partner, String type, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
 		        Set<Agrmnt> agrmntsForSpouseId, Set<Agrmnt> agrmntsForGuarantorId, Set<PersCustOmsetInfo> persCustOmsetInfos, Set<CoyCustContactInfo> coyCustContactInfos, Set<CoyCust> coyCusts, Set<PersCustEntInfo> persCustEntInfos,
@@ -98,6 +114,14 @@ public class Customer implements java.io.Serializable
 		        Set<CoyCustFinancialInfo> coyCustFinancialInfos, Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<AgrmntAsset> agrmntAssets,
 		        Set<PersCustFinancialData> persCustFinancialDatas, Set<SalesInvoice> salesInvoices, Set<CustomerBankInfo> customerBankInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<PersCustLegalInfo> persCustLegalInfos,
 		        Set<SalesOrderHdr> salesOrderHdrs, Set<PersCustFamilyInfo> persCustFamilyInfos)
+=======
+		public Customer(long id, Partner partner, String customerNo, String type, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2,
+		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, Double prepaidAmount, Double aramount, Double arpaid, Double arwaived, String custTag, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+		        Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<AgrmntAsset> agrmntAssets, Set<CoyCustContactInfo> coyCustContactInfos,
+		        Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<SalesInvoice> salesInvoices, Set<PersCustTrusteeInfo> persCustTrusteeInfos_1, Set<CoyCust> coyCusts, Set<PersCustLegalInfo> persCustLegalInfos, Set<Agrmnt> agrmnts,
+		        Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos, Set<SalesOrderHdr> salesOrderHdrs, Set<CoyCustWhInfo> coyCustWhInfos, Set<PersCustFamilyInfo> persCustFamilyInfos,
+		        Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts, Set<CoyCustLegalInfo> coyCustLegalInfos_1, Set<PersCustEmergencyInfo> persCustEmergencyInfos)
+>>>>>>> 5851c81 new Model
 			{
 				this.id = id;
 				this.partner = partner;
@@ -127,10 +151,21 @@ public class Customer implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 				this.agrmntsForSpouseId = agrmntsForSpouseId;
 				this.agrmntsForGuarantorId = agrmntsForGuarantorId;
 				this.persCustOmsetInfos = persCustOmsetInfos;
 				this.coyCustContactInfos = coyCustContactInfos;
+=======
+				this.persCustCcinfos = persCustCcinfos;
+				this.coyCustShareInfos = coyCustShareInfos;
+				this.coyCustComptInfos = coyCustComptInfos;
+				this.agrmntAssets = agrmntAssets;
+				this.coyCustContactInfos = coyCustContactInfos;
+				this.persCustTrusteeInfos = persCustTrusteeInfos;
+				this.salesInvoices = salesInvoices;
+				this.persCustTrusteeInfos_1 = persCustTrusteeInfos_1;
+>>>>>>> 5851c81 new Model
 				this.coyCusts = coyCusts;
 				this.persCustEntInfos = persCustEntInfos;
 				this.persCustOtherBussinessInfos = persCustOtherBussinessInfos;
@@ -157,7 +192,7 @@ public class Customer implements java.io.Serializable
 				this.persCustFamilyInfos = persCustFamilyInfos;
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
@@ -702,7 +737,22 @@ public class Customer implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		public Set<PersCustFinancialData> getPersCustFinancialDatas()
+=======
+		public Set<CoyCustContactInfo> getCoyCustContactInfos()
+			{
+				return this.coyCustContactInfos;
+			}
+			
+		public void setCoyCustContactInfos(Set<CoyCustContactInfo> coyCustContactInfos)
+			{
+				this.coyCustContactInfos = coyCustContactInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<PersCustTrusteeInfo> getPersCustTrusteeInfos()
+>>>>>>> 5851c81 new Model
 			{
 				return this.persCustFinancialDatas;
 			}

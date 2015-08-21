@@ -21,12 +21,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class EmployeeDao extends DaoBase implements EmployeeService
 	{
 		String userupd;
-
+		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
 		private Long totalrecord;
-
+		
 		public EmployeeDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -43,7 +43,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -60,9 +60,9 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						employee.setDtmCrt(this.dtmupd);
 						employee.setDtmUpd(this.dtmupd);
 						this.getSession().save(employee);
-
+						
 						this.getSession().getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -73,7 +73,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -90,9 +90,9 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						employee.setDtmCrt(this.dtmupd);
 						employee.setDtmUpd(this.dtmupd);
 						this.getSession().update(employee);
-
+						
 						this.getSession().getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -103,7 +103,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -117,11 +117,11 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 				this.getSession().getTransaction().begin();
 				try
 					{
-
+						
 						this.getSession().delete(employee);
-
+						
 						this.getSession().getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -132,7 +132,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -153,16 +153,16 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-
+							
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -170,7 +170,7 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public Employee View(final Long id) throws Exception
 			{
@@ -179,11 +179,11 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 				try
 					{
 						employee = (Employee) this.getSession().get(Employee.class, id);
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -191,12 +191,12 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 					}
 				return employee;
 			}
-
+			
 		@Override
 		public List<Employee> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 				final StringBuilder hql = new StringBuilder();
 				List<Employee> list = null;
 				try
@@ -207,19 +207,19 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-
+							
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
-
+						
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -227,19 +227,19 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public List<Employee> ListEmployee(final Partner partner, final Office office) throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 				final StringBuilder hql = new StringBuilder();
 				final List<Employee> list = new ArrayList<Employee>();
 				try
 					{
-
+						
 						hql.append("from Employee E, Partner P, Office O where E.partner = P.partnerCode and E.office = O.id and P.partnerCode = :partnercode and O.id = :officeid and E.isActive = 1");
-
+						
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setParameter("partnercode", partner.getPartnerCode());
 						selectQuery.setParameter("officeid", office.getId());
@@ -250,19 +250,19 @@ public class EmployeeDao extends DaoBase implements EmployeeService
 							{
 								list.add((Employee) aRow[0]);
 							}
-
+							
 					}
 				catch (final Exception exp)
-
+					
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return list;
-
+				
 			}
-			
+
 	}

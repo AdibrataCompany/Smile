@@ -13,7 +13,8 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
 		Partner partner;
@@ -48,16 +49,42 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 						switch (strMode)
 							{
 								case "search" :
-								
-								default :
-									break;
+									this.Paging();
+								case "edit" :
+
+								case "del" :
+									return this.SaveDelete();
+								case "add" :
+									strMode = this.SaveAdd();
+								case "saveadd" :
+									strMode = this.SaveAdd();
+								case "saveedit" :
+									strMode = this.SaveEdit();
+								case "back" :
 									;
 
+								case "first" :
+									this.pageNumber -= 1;
+									this.Paging();
+								case "prev" :
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
+									this.Paging();
+								case "next" :
+									this.pageNumber += 1;
+									this.Paging();
+								case "last" :
+									this.LastPage();
+								default :
+									return ERROR;
 							}
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

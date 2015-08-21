@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -94,7 +98,7 @@ public class TrxConfigHdr implements java.io.Serializable
 				this.trxConfigDtls = trxConfigDtls;
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()

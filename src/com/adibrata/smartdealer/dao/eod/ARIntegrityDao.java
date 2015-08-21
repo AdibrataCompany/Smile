@@ -1,14 +1,11 @@
-
 package com.adibrata.smartdealer.dao.eod;
 
-import com.adibrata.smartdealer.dao.DaoBase;
-
-public class ARIntegrityDao extends DaoBase
+public class ARIntegrityDao
 	{
-
-		public ARIntegrityDao() throws Exception
+		
+		public ARIntegrityDao()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 	}

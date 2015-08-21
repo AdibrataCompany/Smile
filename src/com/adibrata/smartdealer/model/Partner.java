@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -44,56 +48,54 @@ public class Partner implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 		private Set<AssetMaster> assetMasters = new HashSet<AssetMaster>(0);
+		private Set<MsRole> msRoles = new HashSet<MsRole>(0);
+		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 		private Set<PdcHdr> pdcHdrs = new HashSet<PdcHdr>(0);
 		private Set<TransJob> transJobs = new HashSet<TransJob>(0);
+		private Set<Stock> stocks = new HashSet<Stock>(0);
 		private Set<MsUser> msUsers = new HashSet<MsUser>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
+		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<Supplier> suppliers = new HashSet<Supplier>(0);
 		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<Taksasi> taksasis = new HashSet<Taksasi>(0);
+		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		private Set<Customer> customers = new HashSet<Customer>(0);
-		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
-		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
-		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
-		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
-		private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
-		private Set<InsCompany> insCompanies = new HashSet<InsCompany>(0);
-		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
-		private Set<CoaSchmHdr> coaSchmHdrs = new HashSet<CoaSchmHdr>(0);
-		private Set<Invoice> invoices = new HashSet<Invoice>(0);
-		private Set<Coamaster> coamasters = new HashSet<Coamaster>(0);
-		private Set<ResetPasswordLog> resetPasswordLogs = new HashSet<ResetPasswordLog>(0);
-		private Set<Office> offices = new HashSet<Office>(0);
-		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
-		private Set<MsRole> msRoles = new HashSet<MsRole>(0);
-		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
-		private Set<Stock> stocks = new HashSet<Stock>(0);
-		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
-		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(0);
 		private Set<TrxSeqNo> trxSeqNos = new HashSet<TrxSeqNo>(0);
+		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<Pdcreceipt> pdcreceipts = new HashSet<Pdcreceipt>(0);
 		private Set<MsTable> msTables = new HashSet<MsTable>(0);
 		private Set<Workshop> workshops = new HashSet<Workshop>(0);
 		private Set<AssetServiceHdr> assetServiceHdrs = new HashSet<AssetServiceHdr>(0);
 		private Set<Currency> currencies = new HashSet<Currency>(0);
+		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<PaymentVoucher> paymentVouchers = new HashSet<PaymentVoucher>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 		private Set<ProductOffering> productOfferings = new HashSet<ProductOffering>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
+		private Set<SalesOrderHdr> salesOrderHdrs = new HashSet<SalesOrderHdr>(0);
 		private Set<JrnlHdr> jrnlHdrs = new HashSet<JrnlHdr>(0);
+		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 		private Set<OtherDsbHdr> otherDsbHdrs = new HashSet<OtherDsbHdr>(0);
-		private Set<InsRateToCust> insRateToCusts = new HashSet<InsRateToCust>(0);
+		private Set<OtherRcvHdr> otherRcvHdrs = new HashSet<OtherRcvHdr>(0);
 		private Set<SuspendReceive> suspendReceives = new HashSet<SuspendReceive>(0);
 		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
+		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 		private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(0);
+		private Set<CoaSchmHdr> coaSchmHdrs = new HashSet<CoaSchmHdr>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
+		private Set<Invoice> invoices = new HashSet<Invoice>(0);
+		private Set<Coamaster> coamasters = new HashSet<Coamaster>(0);
 		private Set<Product> products = new HashSet<Product>(0);
 		private Set<MsUserRole> msUserRoles = new HashSet<MsUserRole>(0);
+		private Set<ResetPasswordLog> resetPasswordLogs = new HashSet<ResetPasswordLog>(0);
+		private Set<Office> offices = new HashSet<Office>(0);
 		
 		public Partner()
 			{
@@ -105,14 +107,14 @@ public class Partner implements java.io.Serializable
 			}
 			
 		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
-		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AssetMaster> assetMasters, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<MsUser> msUsers,
-		        Set<PayReqHdr> payReqHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AccountPayable> accountPayables,
-		        Set<Agrmnt> agrmnts, Set<SalesOrderHdr> salesOrderHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<InsCompany> insCompanies, Set<CashBankHdr> cashBankHdrs, Set<CoaSchmHdr> coaSchmHdrs, Set<Invoice> invoices,
-		        Set<Coamaster> coamasters, Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices, Set<BankAccount> bankAccounts, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<Stock> stocks, Set<PettyCashHdr> pettyCashHdrs,
-		        Set<AdvanceCash> advanceCashes, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<DanaTunai> danaTunais, Set<Pdcreceipt> pdcreceipts, Set<MsTable> msTables, Set<Workshop> workshops,
-		        Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ProductOffering> productOfferings, Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<SalesInvoice> salesInvoices, Set<JrnlHdr> jrnlHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<InsRateToCust> insRateToCusts, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices,
-		        Set<AssetServiceMaster> assetServiceMasters, Set<Employee> employees, Set<Product> products, Set<MsUserRole> msUserRoles)
+		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<BankAccount> bankAccounts, Set<AssetMaster> assetMasters, Set<MsRole> msRoles,
+		        Set<ReturSalesHdr> returSalesHdrs, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<Stock> stocks, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<PettyCashHdr> pettyCashHdrs, Set<Supplier> suppliers,
+		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<AdvanceCash> advanceCashes, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos,
+		        Set<AccountPayable> accountPayables, Set<DanaTunai> danaTunais, Set<Pdcreceipt> pdcreceipts, Set<MsTable> msTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<Agrmnt> agrmnts,
+		        Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ProductOffering> productOfferings, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs,
+		        Set<JrnlHdr> jrnlHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices, Set<CashBankHdr> cashBankHdrs,
+		        Set<AssetServiceMaster> assetServiceMasters, Set<CoaSchmHdr> coaSchmHdrs, Set<Employee> employees, Set<Invoice> invoices, Set<Coamaster> coamasters, Set<Product> products, Set<MsUserRole> msUserRoles,
+		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -136,59 +138,57 @@ public class Partner implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.bankAccounts = bankAccounts;
 				this.assetMasters = assetMasters;
+				this.msRoles = msRoles;
+				this.returSalesHdrs = returSalesHdrs;
 				this.pdcHdrs = pdcHdrs;
 				this.transJobs = transJobs;
+				this.stocks = stocks;
 				this.msUsers = msUsers;
 				this.payReqHdrs = payReqHdrs;
+				this.pettyCashHdrs = pettyCashHdrs;
 				this.suppliers = suppliers;
 				this.purchaseOrderHdrs = purchaseOrderHdrs;
 				this.taksasis = taksasis;
+				this.advanceCashes = advanceCashes;
 				this.cashierHistories = cashierHistories;
 				this.customers = customers;
-				this.accountPayables = accountPayables;
-				this.agrmnts = agrmnts;
-				this.salesOrderHdrs = salesOrderHdrs;
-				this.entrustHdrs = entrustHdrs;
-				this.otherRcvHdrs = otherRcvHdrs;
-				this.insCompanies = insCompanies;
-				this.cashBankHdrs = cashBankHdrs;
-				this.coaSchmHdrs = coaSchmHdrs;
-				this.invoices = invoices;
-				this.coamasters = coamasters;
-				this.resetPasswordLogs = resetPasswordLogs;
-				this.offices = offices;
-				this.bankAccounts = bankAccounts;
-				this.msRoles = msRoles;
-				this.returSalesHdrs = returSalesHdrs;
-				this.stocks = stocks;
-				this.pettyCashHdrs = pettyCashHdrs;
-				this.advanceCashes = advanceCashes;
 				this.assetDocMasters = assetDocMasters;
 				this.trxSeqNos = trxSeqNos;
+				this.accountPayables = accountPayables;
 				this.danaTunais = danaTunais;
 				this.pdcreceipts = pdcreceipts;
 				this.msTables = msTables;
 				this.workshops = workshops;
 				this.assetServiceHdrs = assetServiceHdrs;
 				this.currencies = currencies;
+				this.agrmnts = agrmnts;
 				this.paymentVouchers = paymentVouchers;
 				this.serviceHdrs = serviceHdrs;
 				this.productOfferings = productOfferings;
 				this.returPurchaseHdrs = returPurchaseHdrs;
 				this.salesInvoices = salesInvoices;
+				this.salesOrderHdrs = salesOrderHdrs;
 				this.jrnlHdrs = jrnlHdrs;
+				this.entrustHdrs = entrustHdrs;
 				this.otherDsbHdrs = otherDsbHdrs;
-				this.insRateToCusts = insRateToCusts;
+				this.otherRcvHdrs = otherRcvHdrs;
 				this.suspendReceives = suspendReceives;
 				this.purchaseInvoices = purchaseInvoices;
+				this.cashBankHdrs = cashBankHdrs;
 				this.assetServiceMasters = assetServiceMasters;
+				this.coaSchmHdrs = coaSchmHdrs;
 				this.employees = employees;
+				this.invoices = invoices;
+				this.coamasters = coamasters;
 				this.products = products;
 				this.msUserRoles = msUserRoles;
+				this.resetPasswordLogs = resetPasswordLogs;
+				this.offices = offices;
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "PartnerCode", unique = true, nullable = false, length = 20)
 		public String getPartnerCode()
@@ -435,6 +435,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<BankAccount> getBankAccounts()
+			{
+				return this.bankAccounts;
+			}
+			
+		public void setBankAccounts(Set<BankAccount> bankAccounts)
+			{
+				this.bankAccounts = bankAccounts;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<AssetMaster> getAssetMasters()
 			{
 				return this.assetMasters;
@@ -443,6 +454,28 @@ public class Partner implements java.io.Serializable
 		public void setAssetMasters(Set<AssetMaster> assetMasters)
 			{
 				this.assetMasters = assetMasters;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<MsRole> getMsRoles()
+			{
+				return this.msRoles;
+			}
+			
+		public void setMsRoles(Set<MsRole> msRoles)
+			{
+				this.msRoles = msRoles;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<ReturSalesHdr> getReturSalesHdrs()
+			{
+				return this.returSalesHdrs;
+			}
+			
+		public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs)
+			{
+				this.returSalesHdrs = returSalesHdrs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -468,6 +501,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Stock> getStocks()
+			{
+				return this.stocks;
+			}
+			
+		public void setStocks(Set<Stock> stocks)
+			{
+				this.stocks = stocks;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<MsUser> getMsUsers()
 			{
 				return this.msUsers;
@@ -487,6 +531,17 @@ public class Partner implements java.io.Serializable
 		public void setPayReqHdrs(Set<PayReqHdr> payReqHdrs)
 			{
 				this.payReqHdrs = payReqHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<PettyCashHdr> getPettyCashHdrs()
+			{
+				return this.pettyCashHdrs;
+			}
+			
+		public void setPettyCashHdrs(Set<PettyCashHdr> pettyCashHdrs)
+			{
+				this.pettyCashHdrs = pettyCashHdrs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -523,6 +578,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<AdvanceCash> getAdvanceCashes()
+			{
+				return this.advanceCashes;
+			}
+			
+		public void setAdvanceCashes(Set<AdvanceCash> advanceCashes)
+			{
+				this.advanceCashes = advanceCashes;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<CashierHistory> getCashierHistories()
 			{
 				return this.cashierHistories;
@@ -545,204 +611,6 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<AccountPayable> getAccountPayables()
-			{
-				return this.accountPayables;
-			}
-			
-		public void setAccountPayables(Set<AccountPayable> accountPayables)
-			{
-				this.accountPayables = accountPayables;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Agrmnt> getAgrmnts()
-			{
-				return this.agrmnts;
-			}
-			
-		public void setAgrmnts(Set<Agrmnt> agrmnts)
-			{
-				this.agrmnts = agrmnts;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<SalesOrderHdr> getSalesOrderHdrs()
-			{
-				return this.salesOrderHdrs;
-			}
-			
-		public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs)
-			{
-				this.salesOrderHdrs = salesOrderHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<EntrustHdr> getEntrustHdrs()
-			{
-				return this.entrustHdrs;
-			}
-			
-		public void setEntrustHdrs(Set<EntrustHdr> entrustHdrs)
-			{
-				this.entrustHdrs = entrustHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<OtherRcvHdr> getOtherRcvHdrs()
-			{
-				return this.otherRcvHdrs;
-			}
-			
-		public void setOtherRcvHdrs(Set<OtherRcvHdr> otherRcvHdrs)
-			{
-				this.otherRcvHdrs = otherRcvHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<InsCompany> getInsCompanies()
-			{
-				return this.insCompanies;
-			}
-			
-		public void setInsCompanies(Set<InsCompany> insCompanies)
-			{
-				this.insCompanies = insCompanies;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<CashBankHdr> getCashBankHdrs()
-			{
-				return this.cashBankHdrs;
-			}
-			
-		public void setCashBankHdrs(Set<CashBankHdr> cashBankHdrs)
-			{
-				this.cashBankHdrs = cashBankHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<CoaSchmHdr> getCoaSchmHdrs()
-			{
-				return this.coaSchmHdrs;
-			}
-			
-		public void setCoaSchmHdrs(Set<CoaSchmHdr> coaSchmHdrs)
-			{
-				this.coaSchmHdrs = coaSchmHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Invoice> getInvoices()
-			{
-				return this.invoices;
-			}
-			
-		public void setInvoices(Set<Invoice> invoices)
-			{
-				this.invoices = invoices;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Coamaster> getCoamasters()
-			{
-				return this.coamasters;
-			}
-			
-		public void setCoamasters(Set<Coamaster> coamasters)
-			{
-				this.coamasters = coamasters;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<ResetPasswordLog> getResetPasswordLogs()
-			{
-				return this.resetPasswordLogs;
-			}
-			
-		public void setResetPasswordLogs(Set<ResetPasswordLog> resetPasswordLogs)
-			{
-				this.resetPasswordLogs = resetPasswordLogs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Office> getOffices()
-			{
-				return this.offices;
-			}
-			
-		public void setOffices(Set<Office> offices)
-			{
-				this.offices = offices;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<BankAccount> getBankAccounts()
-			{
-				return this.bankAccounts;
-			}
-			
-		public void setBankAccounts(Set<BankAccount> bankAccounts)
-			{
-				this.bankAccounts = bankAccounts;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<MsRole> getMsRoles()
-			{
-				return this.msRoles;
-			}
-			
-		public void setMsRoles(Set<MsRole> msRoles)
-			{
-				this.msRoles = msRoles;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<ReturSalesHdr> getReturSalesHdrs()
-			{
-				return this.returSalesHdrs;
-			}
-			
-		public void setReturSalesHdrs(Set<ReturSalesHdr> returSalesHdrs)
-			{
-				this.returSalesHdrs = returSalesHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<Stock> getStocks()
-			{
-				return this.stocks;
-			}
-			
-		public void setStocks(Set<Stock> stocks)
-			{
-				this.stocks = stocks;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<PettyCashHdr> getPettyCashHdrs()
-			{
-				return this.pettyCashHdrs;
-			}
-			
-		public void setPettyCashHdrs(Set<PettyCashHdr> pettyCashHdrs)
-			{
-				this.pettyCashHdrs = pettyCashHdrs;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<AdvanceCash> getAdvanceCashes()
-			{
-				return this.advanceCashes;
-			}
-			
-		public void setAdvanceCashes(Set<AdvanceCash> advanceCashes)
-			{
-				this.advanceCashes = advanceCashes;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<AssetDocMaster> getAssetDocMasters()
 			{
 				return this.assetDocMasters;
@@ -762,6 +630,17 @@ public class Partner implements java.io.Serializable
 		public void setTrxSeqNos(Set<TrxSeqNo> trxSeqNos)
 			{
 				this.trxSeqNos = trxSeqNos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<AccountPayable> getAccountPayables()
+			{
+				return this.accountPayables;
+			}
+			
+		public void setAccountPayables(Set<AccountPayable> accountPayables)
+			{
+				this.accountPayables = accountPayables;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -831,6 +710,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Agrmnt> getAgrmnts()
+			{
+				return this.agrmnts;
+			}
+			
+		public void setAgrmnts(Set<Agrmnt> agrmnts)
+			{
+				this.agrmnts = agrmnts;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<PaymentVoucher> getPaymentVouchers()
 			{
 				return this.paymentVouchers;
@@ -886,6 +776,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<SalesOrderHdr> getSalesOrderHdrs()
+			{
+				return this.salesOrderHdrs;
+			}
+			
+		public void setSalesOrderHdrs(Set<SalesOrderHdr> salesOrderHdrs)
+			{
+				this.salesOrderHdrs = salesOrderHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<JrnlHdr> getJrnlHdrs()
 			{
 				return this.jrnlHdrs;
@@ -894,6 +795,17 @@ public class Partner implements java.io.Serializable
 		public void setJrnlHdrs(Set<JrnlHdr> jrnlHdrs)
 			{
 				this.jrnlHdrs = jrnlHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<EntrustHdr> getEntrustHdrs()
+			{
+				return this.entrustHdrs;
+			}
+			
+		public void setEntrustHdrs(Set<EntrustHdr> entrustHdrs)
+			{
+				this.entrustHdrs = entrustHdrs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -908,14 +820,14 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
-		public Set<InsRateToCust> getInsRateToCusts()
+		public Set<OtherRcvHdr> getOtherRcvHdrs()
 			{
-				return this.insRateToCusts;
+				return this.otherRcvHdrs;
 			}
 			
-		public void setInsRateToCusts(Set<InsRateToCust> insRateToCusts)
+		public void setOtherRcvHdrs(Set<OtherRcvHdr> otherRcvHdrs)
 			{
-				this.insRateToCusts = insRateToCusts;
+				this.otherRcvHdrs = otherRcvHdrs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -941,6 +853,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<CashBankHdr> getCashBankHdrs()
+			{
+				return this.cashBankHdrs;
+			}
+			
+		public void setCashBankHdrs(Set<CashBankHdr> cashBankHdrs)
+			{
+				this.cashBankHdrs = cashBankHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<AssetServiceMaster> getAssetServiceMasters()
 			{
 				return this.assetServiceMasters;
@@ -952,6 +875,17 @@ public class Partner implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<CoaSchmHdr> getCoaSchmHdrs()
+			{
+				return this.coaSchmHdrs;
+			}
+			
+		public void setCoaSchmHdrs(Set<CoaSchmHdr> coaSchmHdrs)
+			{
+				this.coaSchmHdrs = coaSchmHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
 		public Set<Employee> getEmployees()
 			{
 				return this.employees;
@@ -960,6 +894,28 @@ public class Partner implements java.io.Serializable
 		public void setEmployees(Set<Employee> employees)
 			{
 				this.employees = employees;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Invoice> getInvoices()
+			{
+				return this.invoices;
+			}
+			
+		public void setInvoices(Set<Invoice> invoices)
+			{
+				this.invoices = invoices;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Coamaster> getCoamasters()
+			{
+				return this.coamasters;
+			}
+			
+		public void setCoamasters(Set<Coamaster> coamasters)
+			{
+				this.coamasters = coamasters;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
@@ -982,6 +938,28 @@ public class Partner implements java.io.Serializable
 		public void setMsUserRoles(Set<MsUserRole> msUserRoles)
 			{
 				this.msUserRoles = msUserRoles;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<ResetPasswordLog> getResetPasswordLogs()
+			{
+				return this.resetPasswordLogs;
+			}
+			
+		public void setResetPasswordLogs(Set<ResetPasswordLog> resetPasswordLogs)
+			{
+				this.resetPasswordLogs = resetPasswordLogs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<Office> getOffices()
+			{
+				return this.offices;
+			}
+			
+		public void setOffices(Set<Office> offices)
+			{
+				this.offices = offices;
 			}
 			
 	}

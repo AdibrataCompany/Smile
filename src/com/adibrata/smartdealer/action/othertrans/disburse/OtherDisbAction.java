@@ -159,7 +159,7 @@ public class OtherDisbAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

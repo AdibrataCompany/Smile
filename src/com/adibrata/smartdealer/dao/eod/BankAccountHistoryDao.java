@@ -1,14 +1,11 @@
-
 package com.adibrata.smartdealer.dao.eod;
 
-import com.adibrata.smartdealer.dao.DaoBase;
-
-public class BankAccountHistoryDao extends DaoBase
+public class BankAccountHistoryDao
 	{
-
-		public BankAccountHistoryDao() throws Exception
+		
+		public BankAccountHistoryDao()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 	}

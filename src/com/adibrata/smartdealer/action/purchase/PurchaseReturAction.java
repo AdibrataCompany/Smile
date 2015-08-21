@@ -42,7 +42,7 @@ public class PurchaseReturAction extends ActionSupport implements Preparable {
 				return "failed";
 			}
 		} else {
-			strMode = INPUT;
+			strMode = "start";
 		}
 		return strMode;
 	}

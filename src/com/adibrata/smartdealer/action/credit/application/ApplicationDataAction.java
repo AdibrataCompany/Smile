@@ -26,10 +26,8 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 		
 		private String message;
 		private String mode;
-		private String searchcriteria;
-		private String searchvalue;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		
 		private Partner partner;
 		private Office office;
@@ -142,7 +140,7 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = INPUT;
+								strMode = "start";
 							}
 						catch (final Exception e)
 							{
@@ -166,35 +164,36 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 						this.agrmnt.setCustomerByGuarantorId(this.getGuarantor());
 						this.agrmnt.setCustomerBySpouseId(this.getSpouse());
 						this.agrmnt.setMarketing(this.getMarketing());
-						final agrmnt agrmntcode;
-						final agrmnt coaschmcode;
-						final agrmnt prodid;
-						final agrmnt potid;
-						final agrmnt numofasset;
-						final agrmnt interesttypecode;
-						final agrmnt instschemecode;
-						private final String guarantorrelation;
-						private final String wopcode;
-						private final String sourceappcode;
-						private final String agreementdate;
-						private final String notes;
-						private final Double osp;
-						private final Double osi;
-						private final Double ospundue;
-						private final Double osiundue;
-						private final Short nextinstnumber;
-						private final String nextinstdate;
-						private final Short nextinstduenumber;
-						private final String nextinstduedate;
-						private final Double prepaidamt;
-						private final Short tenor;
-						private final Short cummulativetenor;
-						private final String effectivedate;
-						private final String golivedate;
-						private final String rrddate;
-						private final String contractstatus;
-						private final String defaultstatus;
-						private final Double percentagepenalty;
+						this.agrmnt.setAgrmntCode(this.getAgrmntcode());
+						this.agrmnt.setCoaSchmCode(this.getCoaschmcode());
+						this.agrmnt.setProdId(this.getProdid());
+						this.agrmnt.setPotId(this.getPotid());
+						this.agrmnt.setNumOfAsset(this.getNumofasset());
+						this.agrmnt.setInterestTypeCode(this.getInteresttypecode());
+						this.agrmnt.setInstSchemeCode(this.getInstschemecode());
+						this.agrmnt.setGuarantorRelation(this.getGuarantorrelation());
+						this.agrmnt.setWopCode(this.getWopcode());
+						this.agrmnt.setSourceAppCode(this.getSourceappcode());
+						this.agrmnt.setAgreementDate(this.dateformat.parse(this.getAgreementdate()));
+						this.agrmnt.setNotes(this.getNotes());
+						this.agrmnt.setOsP(this.getOsp());
+						this.agrmnt.setOsI(this.getOsi());
+						this.agrmnt.setOsPundue(this.getOspundue());
+						this.agrmnt.setOsIundue(this.getOsiundue());
+						this.agrmnt.setNextInstNumber(this.getNextinstnumber());
+						this.agrmnt.setNextInstDate(this.dateformat.parse(this.getNextinstdate()));
+						this.agrmnt.setNextInstDueNumber(this.getNextinstduenumber());
+						this.agrmnt.setNextInstDueDate(this.dateformat.parse(this.getNextinstduedate()));
+						this.agrmnt.setPrepaidAmt(this.getPrepaidamt());
+						this.agrmnt.setTenor(this.getTenor());
+						this.agrmnt.setCummulativeTenor(this.getCummulativetenor());
+						this.agrmnt.setEffectiveDate(this.dateformat.parse(this.getEffectivedate()));
+						this.agrmnt.setGoLiveDate(this.dateformat.parse(this.getGolivedate()));
+						this.agrmnt.setRrddate(this.dateformat.parse(this.getRrddate()));
+						this.agrmnt.setContractStatus(this.getContractstatus());
+						this.agrmnt.setDefaultStatus(this.getDefaultstatus());
+						this.agrmnt.setPercentagePenalty(this.getPercentagepenalty());
+						this.agrmnt.setUsrUpd(BaseAction.sesLoginName());
 						
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -228,40 +227,6 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
-			}
-			
-		/**
-		 * @return the searchcriteria
-		 */
-		public String getSearchcriteria()
-			{
-				return this.searchcriteria;
-			}
-			
-		/**
-		 * @param searchcriteria
-		 *            the searchcriteria to set
-		 */
-		public void setSearchcriteria(final String searchcriteria)
-			{
-				this.searchcriteria = searchcriteria;
-			}
-			
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
-			}
-			
-		/**
-		 * @param searchvalue
-		 *            the searchvalue to set
-		 */
-		public void setSearchvalue(final String searchvalue)
-			{
-				this.searchvalue = searchvalue;
 			}
 			
 		/**

@@ -137,7 +137,7 @@ public class PurchaseReturnDao extends DaoBase implements PurchaseReturnService
 			}
 
 		@Override
-		public PurchaseOrderHdr viewPurchaseOrderHdr(final Long id)
+		public PurchaseOrderHdr viewPurchaseOrderHdr(final long id)
 			{
 				// TODO Auto-generated method stub
 				return null;

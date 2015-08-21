@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -57,8 +61,6 @@ public class Office implements java.io.Serializable
 		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
-		private Set<InsRateToCust> insRateToCusts = new HashSet<InsRateToCust>(0);
-		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<PettyCashHdr> pettyCashHdrs = new HashSet<PettyCashHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
@@ -90,9 +92,9 @@ public class Office implements java.io.Serializable
 		public Office(long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<PurchaseOrderHdr> purchaseOrderHdrs,
 		        Set<PaymentVoucher> paymentVouchers, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<PdcHdr> pdcHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Agrmnt> agrmnts,
-		        Set<InsRateToCust> insRateToCusts, Set<BankAccount> bankAccounts, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
-		        Set<Invoice> invoices, Set<Pdcreceipt> pdcreceipts, Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<ProductOffering> productOfferings, Set<CashBankHdr> cashBankHdrs,
-		        Set<CashierHistory> cashierHistories, Set<Stock> stocks, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<ServiceHdr> serviceHdrs)
+		        Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs, Set<Invoice> invoices, Set<Pdcreceipt> pdcreceipts,
+		        Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<ProductOffering> productOfferings, Set<CashBankHdr> cashBankHdrs, Set<CashierHistory> cashierHistories, Set<Stock> stocks,
+		        Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -127,8 +129,6 @@ public class Office implements java.io.Serializable
 				this.returSalesHdrs = returSalesHdrs;
 				this.employees = employees;
 				this.agrmnts = agrmnts;
-				this.insRateToCusts = insRateToCusts;
-				this.bankAccounts = bankAccounts;
 				this.advanceCashes = advanceCashes;
 				this.pettyCashHdrs = pettyCashHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
@@ -149,7 +149,7 @@ public class Office implements java.io.Serializable
 				this.serviceHdrs = serviceHdrs;
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "ID", unique = true, nullable = false)
 		public long getId()
@@ -515,28 +515,6 @@ public class Office implements java.io.Serializable
 		public void setAgrmnts(Set<Agrmnt> agrmnts)
 			{
 				this.agrmnts = agrmnts;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
-		public Set<InsRateToCust> getInsRateToCusts()
-			{
-				return this.insRateToCusts;
-			}
-			
-		public void setInsRateToCusts(Set<InsRateToCust> insRateToCusts)
-			{
-				this.insRateToCusts = insRateToCusts;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
-		public Set<BankAccount> getBankAccounts()
-			{
-				return this.bankAccounts;
-			}
-			
-		public void setBankAccounts(Set<BankAccount> bankAccounts)
-			{
-				this.bankAccounts = bankAccounts;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

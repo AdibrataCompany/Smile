@@ -11,8 +11,8 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private long id;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
 
@@ -68,7 +68,7 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

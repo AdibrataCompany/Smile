@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -9,8 +13,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+=======
+>>>>>>> 5851c81 new Model
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,13 +42,17 @@ public class Currency implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
 		private Set<CashBankHdr> cashBankHdrs = new HashSet<CashBankHdr>(0);
 		private Set<Agrmnt> agrmnts_1 = new HashSet<Agrmnt>(0);
 		private Set<DailyAraging> dailyAragings = new HashSet<DailyAraging>(0);
-		private Set<InsCoOfficeFee> insCoOfficeFees = new HashSet<InsCoOfficeFee>(0);
+		private Set<InsCompanyOfficeFee> insCompanyOfficeFees = new HashSet<InsCompanyOfficeFee>(0);
 		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
+=======
+		private Set<InsCompanyOfficeFee> insCompanyOfficeFees = new HashSet<InsCompanyOfficeFee>(0);
+>>>>>>> 5851c81 new Model
 		
 		public Currency()
 			{
@@ -53,8 +64,12 @@ public class Currency implements java.io.Serializable
 				this.sandiBi = sandiBi;
 			}
 			
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		public Currency(long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
-		        Set<CashBankHdr> cashBankHdrs, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCoOfficeFee> insCoOfficeFees, Set<CashierHistory> cashierHistories)
+		        Set<CashBankHdr> cashBankHdrs, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCompanyOfficeFee> insCompanyOfficeFees, Set<CashierHistory> cashierHistories)
+=======
+		public Currency(long id, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCompanyOfficeFee> insCompanyOfficeFees)
+>>>>>>> 5851c81 new Model
 			{
 				this.id = id;
 				this.partner = partner;
@@ -67,16 +82,20 @@ public class Currency implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 				this.agrmnts = agrmnts;
 				this.bankAccounts = bankAccounts;
 				this.cashBankHdrs = cashBankHdrs;
 				this.agrmnts_1 = agrmnts_1;
 				this.dailyAragings = dailyAragings;
-				this.insCoOfficeFees = insCoOfficeFees;
+				this.insCompanyOfficeFees = insCompanyOfficeFees;
 				this.cashierHistories = cashierHistories;
+=======
+				this.insCompanyOfficeFees = insCompanyOfficeFees;
+>>>>>>> 5851c81 new Model
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
@@ -203,6 +222,7 @@ public class Currency implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 		public Set<Agrmnt> getAgrmnts()
 			{
 				return this.agrmnts;
@@ -258,14 +278,14 @@ public class Currency implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
-		public Set<InsCoOfficeFee> getInsCoOfficeFees()
+		public Set<InsCompanyOfficeFee> getInsCompanyOfficeFees()
 			{
-				return this.insCoOfficeFees;
+				return this.insCompanyOfficeFees;
 			}
 			
-		public void setInsCoOfficeFees(Set<InsCoOfficeFee> insCoOfficeFees)
+		public void setInsCompanyOfficeFees(Set<InsCompanyOfficeFee> insCompanyOfficeFees)
 			{
-				this.insCoOfficeFees = insCoOfficeFees;
+				this.insCompanyOfficeFees = insCompanyOfficeFees;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
@@ -277,6 +297,16 @@ public class Currency implements java.io.Serializable
 		public void setCashierHistories(Set<CashierHistory> cashierHistories)
 			{
 				this.cashierHistories = cashierHistories;
+=======
+		public Set<InsCompanyOfficeFee> getInsCompanyOfficeFees()
+			{
+				return this.insCompanyOfficeFees;
+			}
+			
+		public void setInsCompanyOfficeFees(Set<InsCompanyOfficeFee> insCompanyOfficeFees)
+			{
+				this.insCompanyOfficeFees = insCompanyOfficeFees;
+>>>>>>> 5851c81 new Model
 			}
 			
 	}

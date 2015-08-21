@@ -7,6 +7,7 @@ package com.adibrata.smartdealer.dao.cashtransactions;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.AdvanceCash;
@@ -19,26 +20,30 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.cashtransactions.AdvanceCashService;
 
+import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 	{
 		String userupd;
+		Session session;
 
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
+		int pagesize;
 
 		public AdvanceCashDao() throws Exception
 			{
 				try
 					{
-
+						this.session = HibernateHelper.getSessionFactory().openSession();
+						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = "from AdvanceCash A, BankAccount B, Partner P, Office O, Currency C, Employee E where A.bankAccount = B.id and A.partner = P.partnerCode and A.office = O.id and B.currency = C.id and A.employee = E.id";
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -56,21 +61,21 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 		public void Save(final String usrupd, final AdvanceCash advancecash) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				final Partner partner = advancecash.getPartner();
 				final Office office = advancecash.getOffice();
 				try
 					{
-						final String transno = TransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), TransactionType.advancerequest);
+						final String transno = TransactionNo(this.session, partner.getPartnerCode(), office.getId(), TransactionType.advancerequest);
 						advancecash.setAdvanceCode(transno);
 						advancecash.setDtmCrt(this.dtmupd);
 						advancecash.setDtmUpd(this.dtmupd);
-						this.getSession().save(advancecash);
-						this.getSession().getTransaction().commit();
+						this.session.save(advancecash);
+						this.session.getTransaction().commit();
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -86,13 +91,13 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 		 */
 
 		@Override
-		public AdvanceCash View(final Long id) throws Exception
+		public AdvanceCash View(final long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				AdvanceCash advanceCash = new AdvanceCash();
 				try
 					{
-						advanceCash = (AdvanceCash) this.getSession().get(AdvanceCash.class, id);
+						advanceCash = (AdvanceCash) this.session.get(AdvanceCash.class, id);
 
 					}
 				catch (final Exception exp)
@@ -124,12 +129,12 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
 						selectQuery.setCacheable(true);
 
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
-						selectQuery.setMaxResults(this.getPagesize());
+						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						selectQuery.setMaxResults(this.pagesize);
 						final List<Object[]> lst = selectQuery.list();
 
 						if (lst.size() != 0)
@@ -186,10 +191,10 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
-						selectQuery.setMaxResults(this.getPagesize());
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						selectQuery.setMaxResults(this.pagesize);
 						final List<Object[]> lst = selectQuery.list();
 
 						if (lst.size() != 0)
@@ -232,17 +237,17 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 		public void Save(final String usrupd, final AdvanceCashReversal advancecash) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						advancecash.setDtmCrt(this.dtmupd);
 						advancecash.setDtmUpd(this.dtmupd);
-						this.getSession().save(advancecash);
-						this.getSession().getTransaction().commit();
+						this.session.save(advancecash);
+						this.session.getTransaction().commit();
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

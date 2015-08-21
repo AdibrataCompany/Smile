@@ -32,8 +32,8 @@ public class MenuAction extends ActionSupport implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pageNumber;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		private String message;
 		private long Id;
 		
@@ -279,7 +279,7 @@ public class MenuAction extends ActionSupport implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

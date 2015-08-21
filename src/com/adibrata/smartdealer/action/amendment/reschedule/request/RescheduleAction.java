@@ -11,8 +11,8 @@ public class RescheduleAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
 		
@@ -75,7 +75,7 @@ public class RescheduleAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

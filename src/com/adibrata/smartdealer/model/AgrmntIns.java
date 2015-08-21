@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +30,7 @@ public class AgrmntIns implements java.io.Serializable
 		
 		private long id;
 		private Agrmnt agrmnt;
-		private InsCoOffice insCoOffice;
+		private InsCompanyOffice insCompanyOffice;
 		private Long currencyId;
 		private String applicationType;
 		private String insuredByCode;
@@ -170,7 +174,8 @@ public class AgrmntIns implements java.io.Serializable
 				this.isNewCover = isNewCover;
 			}
 			
-		public AgrmntIns(long id, Agrmnt agrmnt, InsCoOffice insCoOffice, Long currencyId, String applicationType, String insuredByCode, String insuredPaidByCode, String coveragePeriod, Date startDate, Date endDate, String policyNumber,
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
+		public AgrmntIns(long id, Agrmnt agrmnt, InsCompanyOffice insCompanyOffice, Long currencyId, String applicationType, String insuredByCode, String insuredPaidByCode, String coveragePeriod, Date startDate, Date endDate, String policyNumber,
 		        Date policyReceiveDate, String policyReceiveBy, String flagInsActivation, String flagReNew, String flagInsStatus, Date sppadate, String sppano, String insuranceRateType, double sumInsured, Date insCoSelectionDate, double sellingRate,
 		        double sellingAmount, double adminFee, double meteraiFee, double earnAmount, String insNotes, String accNotes, Date requestDate, Date insActivateDate, short insLength, String mainCoverage, String additionalCoverage,
 		        String endorsDocNo, String bdendorsDocNo, Date bdendorsDate, String bdendorsPolicyNo, Date bdendorsPolicyReceiveDate, double endorsToInsCoPremium, double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess,
@@ -179,10 +184,21 @@ public class AgrmntIns implements java.io.Serializable
 		        Date invoiceDate, Date receivedInvoiceDate, Date flagInsStatusDate, String sppaprintStatus, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength, boolean isValidNumOfAsset,
 		        boolean isValid, Double insCapitalizedAmount, Double addCapitalizedAmount, short isNewCover, String batchId, Date batchDate, String generate, String typeCorrectionCode, Date confirmDate, String usrCrt, Date dtmUpd, String usrUpd,
 		        Date dtmCrt, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntInsStandardInfo> agrmntInsStandardInfos, Set<AgrmntInsInsco> agrmntInsInscos, Set<AgrmntInsCust> agrmntInsCusts)
+=======
+		public AgrmntIns(long id, Agrmnt agrmnt, InsCompanyOffice insCompanyOffice, Long currencyId, String applicationType, Date startDate, Date endDate, String policyNumber, Date policyReceiveDate, String policyReceiveBy, String flagInsActivation,
+		        String flagReNew, String flagInsStatus, Date sppadate, String sppano, String insuranceRateType, double sumInsured, Date insCoSelectionDate, double sellingRate, double sellingAmount, double adminFee, double meteraiFee,
+		        double earnAmount, String insNotes, String accNotes, Date requestDate, Date insActivateDate, short insLength, String mainCoverage, String additionalCoverage, String endorsDocNo, String bdendorsDocNo, Date bdendorsDate,
+		        String bdendorsPolicyNo, Date bdendorsPolicyReceiveDate, double endorsToInsCoPremium, double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess, Date lastClaimDate, String flagDocStatus,
+		        double paidAmountByCust, Double waivedAmountByCust, Date paidDate, double lateCharges, long accPayId, String insuredBy, String insurancePaidBy, double claimAmount, double paidClaimAmount, int yearNum, Date terminationDate,
+		        String isChangeInsCo, String changeInsCoReason, String coverPeriod, String renewalDocNo, Date renewalDocDate, Double premiumBaseForRefundSupp, String invoiceNo, Double invoiceAmount, Date invoiceDate, Date receivedInvoiceDate,
+		        Date flagInsStatusDate, String sppaprintStatus, boolean isValidCustomerName, boolean isValidAddress, boolean isValidInsurancePeriode, boolean isValidInsLength, boolean isValidNumOfAsset, boolean isValid, Double insCapitalizedAmount,
+		        Double addCapitalizedAmount, short isNewCover, String batchId, Date batchDate, String generate, String typeCorrectionCode, Date confirmDate, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntInsAsset> agrmntInsAssets,
+		        Set<AgrmntInsStandardInfo> agrmntInsStandardInfos, Set<AgrmntInsInsco> agrmntInsInscos, Set<AgrmntInsCust> agrmntInsCusts)
+>>>>>>> 5851c81 new Model
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
-				this.insCoOffice = insCoOffice;
+				this.insCompanyOffice = insCompanyOffice;
 				this.currencyId = currencyId;
 				this.applicationType = applicationType;
 				this.insuredByCode = insuredByCode;
@@ -271,7 +287,7 @@ public class AgrmntIns implements java.io.Serializable
 				this.agrmntInsCusts = agrmntInsCusts;
 			}
 			
-		@Id @GeneratedValue(strategy=GenerationType.AUTO)
+		@Id
 		
 		@Column(name = "Id", unique = true, nullable = false)
 		public long getId()
@@ -298,14 +314,26 @@ public class AgrmntIns implements java.io.Serializable
 			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "InsCompanyOfficeId")
-		public InsCoOffice getInsCoOffice()
+		public InsCompanyOffice getInsCompanyOffice()
 			{
-				return this.insCoOffice;
+				return this.insCompanyOffice;
 			}
 			
-		public void setInsCoOffice(InsCoOffice insCoOffice)
+		public void setInsCompanyOffice(InsCompanyOffice insCompanyOffice)
 			{
-				this.insCoOffice = insCoOffice;
+				this.insCompanyOffice = insCompanyOffice;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "InsCompanyOfficeId")
+		public InsCompanyOffice getInsCompanyOffice()
+			{
+				return this.insCompanyOffice;
+			}
+			
+		public void setInsCompanyOffice(InsCompanyOffice insCompanyOffice)
+			{
+				this.insCompanyOffice = insCompanyOffice;
 			}
 			
 		@Column(name = "CurrencyId")

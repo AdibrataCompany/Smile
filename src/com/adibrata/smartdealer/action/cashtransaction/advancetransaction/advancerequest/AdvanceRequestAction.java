@@ -109,7 +109,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 						try
 							{
 								this.InitiallInput();

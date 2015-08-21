@@ -11,9 +11,15 @@
 	<constant name="struts.ognl.logMissingProperties" value="=false" />
 	<constant name="struts.el.throwExceptionOnFailure" value="false" />
 	<constant name="struts.ognl.enableExpressionCache" value="true" />
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 	<constant name="struts.serve.static" value="false"></constant>
 
 
+=======
+	<constant name="struts.serve.static" value="false" ></constant>
+	
+	
+>>>>>>> 5851c81 new Model
 	<include file="/struts-login.xml"></include>
 
 

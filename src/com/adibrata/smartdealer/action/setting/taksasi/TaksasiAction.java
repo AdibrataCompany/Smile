@@ -31,8 +31,8 @@ public class TaksasiAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-		
-		
+		private String usrupd;
+		private String usrcrt;
 		private String message;
 		private Long id;
 
@@ -168,7 +168,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

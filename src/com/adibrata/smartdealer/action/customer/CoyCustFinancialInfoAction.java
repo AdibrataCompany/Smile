@@ -25,7 +25,8 @@ public class CoyCustFinancialInfoAction extends BaseAction implements Preparable
 
 		private String mode;
 		private String message;
-		
+		private String usrUpd;
+		private String usrCrt;
 		private long id;
 		private long customerid;
 
@@ -50,7 +51,8 @@ public class CoyCustFinancialInfoAction extends BaseAction implements Preparable
 		public CoyCustFinancialInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				
+				RenderMenu();
+
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
 				this.financialinfo = new CoyCustFinancialInfo();
@@ -99,7 +101,7 @@ public class CoyCustFinancialInfoAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = INPUT;
+								strMode = "start";
 							}
 						catch (final Exception e)
 							{
@@ -194,7 +196,27 @@ public class CoyCustFinancialInfoAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+
 		public long getId()
 			{
 				return this.id;

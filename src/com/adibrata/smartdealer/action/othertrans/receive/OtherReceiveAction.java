@@ -178,7 +178,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					{
 
 						this.Initialisasi();
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}

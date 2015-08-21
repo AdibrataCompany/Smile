@@ -6,4 +6,4 @@
  *
  */
 
-package com.adibrata.smartdealer.service.eod;
+package com.adibrata.smartdealer.service.Eod;

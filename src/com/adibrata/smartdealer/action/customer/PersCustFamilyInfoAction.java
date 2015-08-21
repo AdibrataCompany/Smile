@@ -18,41 +18,43 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
 		private static final long serialVersionUID = 1L;
-		
+
 		private CustomerMaintService customermaintservice;
 		private Customer customer;
 		private Map<String, Object> session;
 		private List<PersCustFamilyInfo> lstfamilyinfo;
-		
+
 		private String mode;
 		private String message;
-		
-		private Long id;
-		private Long customerid;
-		
+		private String usrUpd;
+		private String usrCrt;
+		private long id;
+		private long customerid;
+
 		private int seqno;
 		private String name;
 		private String idnumber;
 		private String birthdate;
 		private String familyrelationcode;
-		
+
 		public PersCustFamilyInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				
+				RenderMenu();
+
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
 				this.lstfamilyinfo = new ArrayList<PersCustFamilyInfo>();
-				
+
 				this.customerid = this.customer.getId();
 				this.seqno = 1;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -72,7 +74,7 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -123,7 +125,7 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = INPUT;
+								strMode = "start";
 							}
 						catch (final Exception e)
 							{
@@ -133,24 +135,24 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		public void Add() throws Exception
 			{
 				try
 					{
 						final PersCustFamilyInfo familyinfo = new PersCustFamilyInfo();
-						
+
 						familyinfo.setName(this.getName());
 						familyinfo.setIdnumber(this.getIdnumber());
 						familyinfo.setBirthDate(this.dateformat.parse(this.getBirthdate()));
 						familyinfo.setFamilyRelationCode(this.getFamilyrelationcode());
-						
+
 						this.lstfamilyinfo.add(familyinfo);
 						this.session.put("lstFamilyInfoSession", this.lstfamilyinfo);
 					}
 				catch (final Exception exp)
 					{
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -158,7 +160,7 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		public void Del() throws Exception
 			{
@@ -167,13 +169,13 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 						this.lstfamilyinfo = (List<PersCustFamilyInfo>) this.session.get("lstFamilyInfoSession");
 						this.seqno = this.seqno - 1;
 						this.lstfamilyinfo.remove(this.seqno);
-						
+
 						this.session.put("lstCreditCardSession", this.lstfamilyinfo);
 						this.lstfamilyinfo = (List<PersCustFamilyInfo>) this.session.get("lstFamilyInfoSession");
 					}
 				catch (final Exception exp)
 					{
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -181,7 +183,7 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		public void Save() throws Exception
 			{
 				try
@@ -194,13 +196,13 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 								familyinfo.setBirthDate(this.dateformat.parse(this.getBirthdate()));
 								familyinfo.setFamilyRelationCode(this.getFamilyrelationcode());
 							}
-							
+
 						this.customermaintservice.SavePersonalCustomerFamily(sesLoginName(), this.lstfamilyinfo);
 						;
 					}
 				catch (final Exception exp)
 					{
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -209,233 +211,154 @@ public class PersCustFamilyInfoAction extends BaseAction implements Preparable
 					}
 			}
 
-		/**
-		 * @return the customermaintservice
-		 */
 		public CustomerMaintService getCustomermaintservice()
 			{
 				return this.customermaintservice;
 			}
 
-		/**
-		 * @param customermaintservice
-		 *            the customermaintservice to set
-		 */
 		public void setCustomermaintservice(final CustomerMaintService customermaintservice)
 			{
 				this.customermaintservice = customermaintservice;
 			}
 
-		/**
-		 * @return the customer
-		 */
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
 
-		/**
-		 * @param customer
-		 *            the customer to set
-		 */
 		public void setCustomer(final Customer customer)
 			{
 				this.customer = customer;
 			}
 
-		/**
-		 * @return the session
-		 */
 		public Map<String, Object> getSession()
 			{
 				return this.session;
 			}
 
-		/**
-		 * @param session
-		 *            the session to set
-		 */
 		public void setSession(final Map<String, Object> session)
 			{
 				this.session = session;
 			}
 
-		/**
-		 * @return the lstfamilyinfo
-		 */
 		public List<PersCustFamilyInfo> getLstfamilyinfo()
 			{
 				return this.lstfamilyinfo;
 			}
 
-		/**
-		 * @param lstfamilyinfo
-		 *            the lstfamilyinfo to set
-		 */
 		public void setLstfamilyinfo(final List<PersCustFamilyInfo> lstfamilyinfo)
 			{
 				this.lstfamilyinfo = lstfamilyinfo;
 			}
 
-		/**
-		 * @return the mode
-		 */
 		public String getMode()
 			{
 				return this.mode;
 			}
 
-		/**
-		 * @param mode
-		 *            the mode to set
-		 */
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
 
-		/**
-		 * @return the message
-		 */
 		public String getMessage()
 			{
 				return this.message;
 			}
 
-		/**
-		 * @param message
-		 *            the message to set
-		 */
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-			
-		/**
-		 * @return the id
-		 */
-		public Long getId()
+
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+
+		public long getId()
 			{
 				return this.id;
 			}
 
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final Long id)
+		public void setId(final long id)
 			{
 				this.id = id;
 			}
 
-		/**
-		 * @return the customerid
-		 */
-		public Long getCustomerid()
-			{
-				return this.customerid;
-			}
-
-		/**
-		 * @param customerid
-		 *            the customerid to set
-		 */
-		public void setCustomerid(final Long customerid)
-			{
-				this.customerid = customerid;
-			}
-
-		/**
-		 * @return the seqno
-		 */
-		public int getSeqno()
-			{
-				return this.seqno;
-			}
-
-		/**
-		 * @param seqno
-		 *            the seqno to set
-		 */
-		public void setSeqno(final int seqno)
-			{
-				this.seqno = seqno;
-			}
-
-		/**
-		 * @return the name
-		 */
 		public String getName()
 			{
 				return this.name;
 			}
 
-		/**
-		 * @param name
-		 *            the name to set
-		 */
 		public void setName(final String name)
 			{
 				this.name = name;
 			}
 
-		/**
-		 * @return the idnumber
-		 */
 		public String getIdnumber()
 			{
 				return this.idnumber;
 			}
 
-		/**
-		 * @param idnumber
-		 *            the idnumber to set
-		 */
 		public void setIdnumber(final String idnumber)
 			{
 				this.idnumber = idnumber;
 			}
 
-		/**
-		 * @return the birthdate
-		 */
-		public String getBirthdate()
-			{
-				return this.birthdate;
-			}
-
-		/**
-		 * @param birthdate
-		 *            the birthdate to set
-		 */
-		public void setBirthdate(final String birthdate)
-			{
-				this.birthdate = birthdate;
-			}
-
-		/**
-		 * @return the familyrelationcode
-		 */
 		public String getFamilyrelationcode()
 			{
 				return this.familyrelationcode;
 			}
 
-		/**
-		 * @param familyrelationcode
-		 *            the familyrelationcode to set
-		 */
 		public void setFamilyrelationcode(final String familyrelationcode)
 			{
 				this.familyrelationcode = familyrelationcode;
 			}
 
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
+		public String getBirthdate()
 			{
-				return serialVersionUID;
+				return this.birthdate;
+			}
+
+		public void setBirthdate(final String birthdate)
+			{
+				this.birthdate = birthdate;
+			}
+
+		public long getCustomerid()
+			{
+				return this.customerid;
+			}
+
+		public void setCustomerid(final long customerid)
+			{
+				this.customerid = customerid;
+			}
+
+		public int getSeqno()
+			{
+				return this.seqno;
+			}
+
+		public void setSeqno(final int seqno)
+			{
+				this.seqno = seqno;
 			}
 
 	}

@@ -1,6 +1,10 @@
 
 package com.adibrata.smartdealer.model;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/AdibrataCompany/Smile
 // Generated Jul 27, 2015 12:24:25 PM by Hibernate Tools 4.3.1
+=======
+// Generated Jul 22, 2015 4:44:54 PM by Hibernate Tools 4.3.1
+>>>>>>> 5851c81 new Model
 
 import java.util.Date;
 import javax.persistence.Column;

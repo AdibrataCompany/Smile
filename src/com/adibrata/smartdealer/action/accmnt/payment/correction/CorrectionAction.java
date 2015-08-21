@@ -6,20 +6,21 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
-public class CorrectionAction extends BaseAction implements Preparable
+public class PaymentReversalAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
 		Partner partner;
 		Office office;
 
-		public CorrectionAction() throws Exception
+		public PaymentReversalAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
@@ -75,7 +76,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}
@@ -149,6 +150,40 @@ public class CorrectionAction extends BaseAction implements Preparable
 			}
 			
 		/**
+		 * @return the usrUpd
+		 */
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+			
+		/**
+		 * @param usrUpd
+		 *            the usrUpd to set
+		 */
+		public void setUsrUpd(final String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+			
+		/**
+		 * @return the usrCrt
+		 */
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+			
+		/**
+		 * @param usrCrt
+		 *            the usrCrt to set
+		 */
+		public void setUsrCrt(final String usrCrt)
+			{
+				this.usrCrt = usrCrt;
+			}
+			
+		/**
 		 * @return the pageNumber
 		 */
 		public int getPageNumber()
@@ -180,6 +215,14 @@ public class CorrectionAction extends BaseAction implements Preparable
 		public void setMessage(final String message)
 			{
 				this.message = message;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static Long getSerialversionuid()
+			{
+				return serialVersionUID;
 			}
 			
 		/**
@@ -217,11 +260,11 @@ public class CorrectionAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the serialversionuid
+		 * @param id
+		 *            the id to set
 		 */
-		public static long getSerialversionuid()
+		public void setId(final Long id)
 			{
-				return serialVersionUID;
+				this.id = id;
 			}
-			
 	}

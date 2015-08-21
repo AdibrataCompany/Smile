@@ -1,14 +1,10 @@
 
 package com.adibrata.smartdealer.action.credit.insurance;
 
-import java.util.List;
-
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.AssetDocMaster;
-import com.adibrata.smartdealer.model.InsCompany;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.insurance.InsuranceCompanyRegisterService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -21,27 +17,23 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		
-		
+		private String usrUpd;
+		private String usrCrt;
 		private int pageNumber;
 		private String message;
 		Partner partner;
 		Office office;
 
-		private List<InsCompany> lstinsco;
-		private InsCompany inscompany;
-		private InsuranceCompanyRegisterService service;
-		
 		public InsuranceDataAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
-			
+
 		@Override
 		public String execute()
 			{
@@ -157,10 +149,10 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
-									
+
 							}
 					}
 				else
@@ -175,15 +167,15 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = INPUT;
+						strMode = "start";
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 *
 		 */
-
+		
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -200,51 +192,51 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstinsco = this.service.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-
-						this.lstinsco = this.service.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.service.getCurrentpage();
+						
+						this.lstAssetDocMasters = this.assetDocMasterService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetDocMasterService.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public void ViewData() throws Exception
 			{
-				this.inscompany = new AssetDocMaster();
+				this.assetDocMaster = new AssetDocMaster();
 				try
 					{
 						if (this.getId() != null)
 							{
-								this.inscompany = this.service.View(this.id);
+								this.assetDocMaster = this.assetDocMasterService.View(this.id);
 								this.documentCode = this.assetDocMaster.getDocumentCode();
 								this.documentName = this.assetDocMaster.getDocumentName();
 								this.assetType = this.assetDocMaster.getAssetType();
@@ -264,7 +256,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -275,7 +267,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 						assetDocMaster.setDocumentName(this.getDocumentName());
 						assetDocMaster.setPartner(this.getPartner());
 						assetDocMaster.setUsrUpd(this.getUsrUpd());
-
+						
 						this.assetDocMasterService.SaveAdd(assetDocMaster);
 						this.status = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
@@ -291,7 +283,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -318,7 +310,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				try
@@ -327,9 +319,9 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 						if (this.getId() == null)
 							{
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
-
+								
 								assetDocMaster.setId(this.getId());
-
+								
 								this.assetDocMasterService.SaveDel(assetDocMaster);
 								this.status = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
@@ -351,7 +343,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 					}
 				return this.status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -359,7 +351,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -368,7 +360,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -376,7 +368,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -385,7 +377,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -393,7 +385,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -402,7 +394,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -410,7 +402,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -419,7 +411,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -427,7 +419,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -436,7 +428,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -444,7 +436,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -453,7 +445,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -461,7 +453,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -470,7 +462,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -478,7 +470,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -487,7 +479,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -495,7 +487,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -503,7 +495,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -512,7 +504,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -520,7 +512,7 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -528,34 +520,5 @@ public class InsuranceDataAction extends BaseAction implements Preparable
 		public void setOffice(final Office office)
 			{
 				this.office = office;
-			}
-			
-		public List<InsCompany> getLstinsco()
-			{
-				return this.lstinsco;
-			}
-			
-		public void setLstinsco(final List<InsCompany> lstinsco)
-			{
-				this.lstinsco = lstinsco;
-			}
-
-		public InsCompany getInscompany()
-			{
-				return this.inscompany;
-			}
-			
-		public void setInscompany(final InsCompany inscompany)
-			{
-				this.inscompany = inscompany;
-			}
-
-		public InsuranceCompanyRegisterService getService()
-			{
-				return this.service}
-		
-		public void setService(final InsuranceCompanyRegisterService service)
-			{
-				this.service = service;
 			}
 	}

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.CoyCust;
@@ -29,35 +30,39 @@ import com.adibrata.smartdealer.model.PersCustResidenceInfo;
 import com.adibrata.smartdealer.model.PersCustTrusteeInfo;
 import com.adibrata.smartdealer.service.customer.CustomerMaintService;
 
+import util.adibrata.framework.dataaccess.HibernateHelper;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class CustomerDao extends DaoBase implements CustomerMaintService
 	{
 		StringBuilder hql = new StringBuilder();
-		
+		int pagesize;
+		Session session;
 		String strStatement;
 		String userupd;
-
+		
 		public CustomerDao() throws Exception
 			{
-
+				
 				// TODO Auto-generated constructor stub
 				try
 					{
+						this.session = HibernateHelper.getSessionFactory().openSession();
+						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Customer ";
-
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -79,17 +84,17 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
-						selectQuery.setMaxResults(this.getPagesize());
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
+						selectQuery.setMaxResults(this.pagesize);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("CustomerPaging");
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -97,7 +102,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<Customer> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
@@ -105,7 +110,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<Customer> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -114,16 +119,16 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
-						final Long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
-						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.getPagesize()));
-						selectQuery.setMaxResults(this.getPagesize());
+						final Query selectQuery = this.session.createQuery(hql.toString());
+						final long totalrecord = this.TotalRecord(this.strStatement, WhereCond);
+						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
+						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -131,7 +136,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -142,28 +147,27 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SaveCompanyCustomer(final String usrupd, final CoyCust customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -174,32 +178,32 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SaveCompanyCustomer(final String usrupd, final CoyCustWhInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SaveCompanyCustomerCompetitor(final String usrupd, final List<CoyCustComptInfo> customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						for (final CoyCustComptInfo row : customer)
@@ -208,27 +212,27 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								info = row;
 								info.setDtmCrt(this.dtmupd);
 								info.setDtmUpd(this.dtmupd);
-								this.getSession().save(info);
+								this.session.save(info);
 							}
-						this.getSession().getTransaction().commit();
-
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		@Override
 		public void SaveCompanyCustomerShare(final String usrupd, final List<CoyCustShareInfo> customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						for (final CoyCustShareInfo row : customer)
@@ -237,21 +241,21 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								info = row;
 								info.setDtmCrt(this.dtmupd);
 								info.setDtmUpd(this.dtmupd);
-								this.getSession().save(info);
+								this.session.save(info);
 							}
-						this.getSession().getTransaction().commit();
-
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -263,7 +267,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder fulladdress = new StringBuilder();
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						fulladdress.append(customer.getAddress());
@@ -277,19 +281,19 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								fulladdress.append(" / RW:");
 								fulladdress.append(customer.getRw());
 							}
-
+							
 						if ((customer.getKelurahan() != null) || (customer.getKelurahan() != ""))
 							{
 								fulladdress.append(" Kelurahan: ");
 								fulladdress.append(customer.getKelurahan());
 							}
-
+							
 						if ((customer.getKecamatan() != null) || (customer.getKecamatan() != ""))
 							{
 								fulladdress.append(" Kecamatan: ");
 								fulladdress.append(customer.getKecamatan());
 							}
-
+							
 						if ((customer.getCity() != null) || (customer.getCity() != ""))
 							{
 								fulladdress.append("'; ");
@@ -300,23 +304,23 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								fulladdress.append(customer.getZipcode());
 								fulladdress.append(" ");
 							}
-
+							
 						customer.setFullAddress(fulladdress.toString());
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-						this.getSession().getTransaction().commit();
+						this.session.save(customer);
+						this.session.getTransaction().commit();
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -327,27 +331,27 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCust customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -358,75 +362,75 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCustEmergencyInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomer(final String usrupd, final PersCustEntInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomer(final String usrupd, final PersCustFinancialData customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-						
-						this.getSession().getTransaction().commit();
-						
+						this.session.save(customer);
+
+						this.session.getTransaction().commit();
+
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -437,27 +441,27 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCustJobInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -468,51 +472,51 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCustLegalInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomer(final String usrupd, final PersCustOtherBussinessInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -523,27 +527,27 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCustResidenceInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
@@ -554,33 +558,33 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		public void SavePersonalCustomer(final String usrupd, final PersCustTrusteeInfo customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-
-				this.getSession().getTransaction().begin();
+				
+				this.session.getTransaction().begin();
 				try
 					{
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
-						this.getSession().save(customer);
-
-						this.getSession().getTransaction().commit();
-
+						this.session.save(customer);
+						
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomerCreditCard(final String usrupd, final List<PersCustCcinfo> customer) throws Exception
 			{
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						for (final PersCustCcinfo row : customer)
@@ -589,26 +593,26 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								info = row;
 								info.setDtmCrt(this.dtmupd);
 								info.setDtmUpd(this.dtmupd);
-								this.getSession().save(info);
+								this.session.save(info);
 							}
-						this.getSession().getTransaction().commit();
-
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomerFamily(final String usrupd, final List<PersCustFamilyInfo> customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						for (final PersCustFamilyInfo row : customer)
@@ -617,26 +621,26 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								info = row;
 								info.setDtmCrt(this.dtmupd);
 								info.setDtmUpd(this.dtmupd);
-								this.getSession().save(info);
+								this.session.save(info);
 							}
-						this.getSession().getTransaction().commit();
-
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public void SavePersonalCustomerOmset(final String usrupd, final List<PersCustOmsetInfo> customer) throws Exception
 			{
 				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
+				this.session.getTransaction().begin();
 				try
 					{
 						for (final PersCustOmsetInfo row : customer)
@@ -645,24 +649,24 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 								info = row;
 								info.setDtmCrt(this.dtmupd);
 								info.setDtmUpd(this.dtmupd);
-								this.getSession().save(info);
+								this.session.save(info);
 							}
-						this.getSession().getTransaction().commit();
-
+						this.session.getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
-						this.getSession().getTransaction().rollback();
+						this.session.getTransaction().rollback();
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public CoyCust ViewCompanyCustomer(final Long customerid) throws Exception
+		public CoyCust ViewCompanyCustomer(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
@@ -672,11 +676,11 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from CoyCust where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("CoyCust" + customerid);
-
+						
 						list = selectQuery.list();
 						for (final CoyCust row : list)
 							{
@@ -685,7 +689,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -693,28 +697,28 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(final Long customerid) throws Exception
+		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<CoyCustComptInfo> list = new ArrayList<CoyCustComptInfo>();
-
+				
 				try
 					{
 						hql.append(" from CoyCustComptInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("CoyCust" + customerid);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -722,10 +726,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public CoyCustWhInfo ViewCompanyCustomerWereHouse(final Long customerid) throws Exception
+		public CoyCustWhInfo ViewCompanyCustomerWereHouse(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -734,7 +738,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from CoyCustWhInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("CoyCustWhInfo" + customerid);
@@ -746,7 +750,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -754,28 +758,28 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<CoyCustShareInfo> ViewCompanyShareInfo(final Long customerid) throws Exception
+		public List<CoyCustShareInfo> ViewCompanyShareInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<CoyCustShareInfo> list = new ArrayList<CoyCustShareInfo>();
-
+				
 				try
 					{
 						hql.append(" from PersCustCcinfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("CoyCust" + customerid);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -783,10 +787,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public Customer ViewCustomer(final Long customerid) throws Exception
+		public Customer ViewCustomer(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -795,7 +799,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from Customer where Id = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("Customer" + customerid);
@@ -807,7 +811,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -815,12 +819,12 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCust ViewPersonalCustomer(final Long customerid) throws Exception
+		public PersCust ViewPersonalCustomer(final long customerid) throws Exception
 			{
-
+				
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PersCust> list = null;
@@ -828,7 +832,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCust where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCust" + customerid);
@@ -840,7 +844,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -848,10 +852,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(final Long customerid) throws Exception
+		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -860,7 +864,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustOtherBussinessInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustOtherBussinessInfo" + customerid);
@@ -872,7 +876,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -880,28 +884,28 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(final Long customerid) throws Exception
+		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PersCustCcinfo> list = new ArrayList<PersCustCcinfo>();
-
+				
 				try
 					{
 						hql.append(" from PersCustCcinfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustCcinfo" + customerid);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -909,10 +913,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(final Long customerid) throws Exception
+		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -921,7 +925,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustEmergencyInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustEmergencyInfo" + customerid);
@@ -933,7 +937,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -941,10 +945,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(final Long customerid) throws Exception
+		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -953,7 +957,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustEmergencyInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustEntInfo" + customerid);
@@ -965,7 +969,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -973,28 +977,28 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(final Long customerid) throws Exception
+		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PersCustFamilyInfo> list = new ArrayList<PersCustFamilyInfo>();
-
+				
 				try
 					{
 						hql.append(" from PersCustFamilyInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustFamilyInfo" + customerid);
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1002,10 +1006,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustFinancialData ViewPersonalCustomerFinancialData(final Long customerid) throws Exception
+		public PersCustFinancialData ViewPersonalCustomerFinancialData(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1014,7 +1018,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustFinancialData where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustFinancialData" + customerid);
@@ -1026,7 +1030,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1034,10 +1038,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustJobInfo ViewPersonalCustomerJobInfo(final Long customerid) throws Exception
+		public PersCustJobInfo ViewPersonalCustomerJobInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1046,7 +1050,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustJobInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustJobInfo" + customerid);
@@ -1058,7 +1062,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1066,10 +1070,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(final Long customerid) throws Exception
+		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1078,7 +1082,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustLegalInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustLegalInfo" + customerid);
@@ -1090,7 +1094,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1098,17 +1102,17 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@Override
-		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(final Long customerid) throws Exception
+		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(final Long customerid) throws Exception
+		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1117,7 +1121,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustOtherBussinessInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustOtherBussinessInfo" + customerid);
@@ -1129,7 +1133,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1137,10 +1141,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(final Long customerid) throws Exception
+		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1149,7 +1153,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCustResidenceInfo where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCustResidenceInfo" + customerid);
@@ -1161,7 +1165,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -1169,10 +1173,10 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return cust;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
-		public PersCust ViewPersonalCustomerTrusteeInfo(final Long customerid) throws Exception
+		public PersCust ViewPersonalCustomerTrusteeInfo(final long customerid) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
@@ -1181,7 +1185,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(" from PersCust where CustomerId = :customerid");
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setParameter("customerid", customerid);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("PersCust" + customerid);
@@ -1193,7 +1197,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

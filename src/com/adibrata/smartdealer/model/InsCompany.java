@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:46:23 PM by Hibernate Tools 4.3.1
+// Generated Aug 19, 2015 4:50:54 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +23,7 @@ public class InsCompany implements java.io.Serializable
 	{
 		
 		private long id;
-		private Partner partner;
+		private String partnerCode;
 		private String name;
 		private String address;
 		private String rt;
@@ -48,7 +46,7 @@ public class InsCompany implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<InsCoOffice> insCoOffices = new HashSet<InsCoOffice>(0);
+		private Set<InsCompanyOffice> insCompanyOffices = new HashSet<InsCompanyOffice>(0);
 		
 		public InsCompany()
 			{
@@ -59,11 +57,11 @@ public class InsCompany implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsCompany(long id, Partner partner, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
-		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCoOffice> insCoOffices)
+		public InsCompany(long id, String partnerCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
+		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCompanyOffice> insCompanyOffices)
 			{
 				this.id = id;
-				this.partner = partner;
+				this.partnerCode = partnerCode;
 				this.name = name;
 				this.address = address;
 				this.rt = rt;
@@ -86,7 +84,7 @@ public class InsCompany implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
-				this.insCoOffices = insCoOffices;
+				this.insCompanyOffices = insCompanyOffices;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -102,16 +100,15 @@ public class InsCompany implements java.io.Serializable
 				this.id = id;
 			}
 			
-		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "PartnerCode")
-		public Partner getPartner()
+		@Column(name = "PartnerCode", length = 20)
+		public String getPartnerCode()
 			{
-				return this.partner;
+				return this.partnerCode;
 			}
 			
-		public void setPartner(Partner partner)
+		public void setPartnerCode(String partnerCode)
 			{
-				this.partner = partner;
+				this.partnerCode = partnerCode;
 			}
 			
 		@Column(name = "Name", length = 50)
@@ -359,14 +356,14 @@ public class InsCompany implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insCompany")
-		public Set<InsCoOffice> getInsCoOffices()
+		public Set<InsCompanyOffice> getInsCompanyOffices()
 			{
-				return this.insCoOffices;
+				return this.insCompanyOffices;
 			}
 			
-		public void setInsCoOffices(Set<InsCoOffice> insCoOffices)
+		public void setInsCompanyOffices(Set<InsCompanyOffice> insCompanyOffices)
 			{
-				this.insCoOffices = insCoOffices;
+				this.insCompanyOffices = insCompanyOffices;
 			}
 			
 	}
