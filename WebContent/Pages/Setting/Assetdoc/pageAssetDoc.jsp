@@ -24,32 +24,30 @@
 			<center>
 				<h2>Asset Document Master</h2>
 				<s:hidden name="mode" id="mode" value="" />
-
 				<s:label name="message" id="message" />
+				<br>
 				<div class="table-responsive">
 					<table width="100%">
 						<tr>
-							<td width="10%">Searching</td>
-							<td><div align="left" class="form-inline">
-									<select name="searchcriteria">
-										<option value="0">Search Critera</option>
-										<option value="documentCode">Code</option>
-										<option value="documentName">Name</option>
-										<option value="assetType">Asset Type</option>
-									</select>
-									<s:textfield name="searchvalue" style="width:200px"
-										placeholder="Search value" class="form-control" />
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="search()">Search</button>
-								</div></td>
+							<td width="10%"><s:select name="searchcriteria"
+									class="btn btn-xs" headerKey="" headerValue="Search Criteria"
+									list="#{'documentcode':'Code','assettype':'AsseType'}" /></td>
+							<td width="20%">
+								<div class="input-group">
+									<s:textfield name="searchvalue" placeholder="Search value"
+										class="form-control" />
+									<span class="input-group-btn">
+										<button class="btn btn-xs btn-primary" type="submit"
+											onclick="search()">Search</button>
+									</span>
+								</div>
+							</td>
 
 							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 						</tr>
 
 					</table>
 				</div>
-				<br>
-				<s:label name="message"></s:label>
 				<br>
 				<div class="table-responsive">
 					<table class="table table-bordered">
@@ -60,7 +58,7 @@
 							<th style="text-align: center;" width="5%">Pilih</th>
 
 						</tr>
-						<s:iterator value="lstAssetDocMasters">
+						<s:iterator value="lstassetdocmasters">
 							<tr id="row_${id}">
 								<td>${documentCode}</td>
 								<td>${documentName}</td>
@@ -79,9 +77,5 @@
 	</div>
 
 </body>
-<script type="text/javascript">
-	function search() {
-		document.getElementById("mode").value = "search";
-	}
-</script>
+
 </html>

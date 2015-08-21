@@ -21,64 +21,81 @@
 
 		<s:form action="dealer.action" theme="simple">
 			<center>
-				<h2>Supplier</h2>
-				<div class="table-responsive">
-					<s:hidden name="mode" id="mode" value="" />
-					<s:hidden name="id" />
-					<s:label name="message" id="message" />
-					<table class="table table-striped">
-						<tr>
-							<td width="10%">Search</td>
-							<td><select name="searchcriteria">
-									<option value="0">Pilih</option>
-									<option value="name">Nama</option>
-									<option value="address">Alamat</option>
-									<option value="rt">RT</option>
-									<option value="rw">RW</option>
-									<option value="kelurahan">Kelurahan</option>
-									<option value="city">Kota</option>
-									<option value="zipcode">Kode Pos</option>
-									<option value="type">Tipe</option>
-									<option value="phoneNo1">No. Telepon</option>
-									<option value="phoneNo2">No. Telepon2</option>
-									<option value="faxNo">No. Fax</option>
-									<option value="handphone">Handphone</option>
-							</select> <input name="searchvalue" placeholder="Masukan Nilai" />
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="search()">Cari</button></td>
+				<h2>Dealer</h2>
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<table width="100%">
+					<tr>
+						<td width="10%">Pencarian</td>
+						<td><select name="searchcriteria">
+								<option value="0">Pilih</option>
+								<option value="name">Nama</option>
+								<option value="address">Alamat</option>
+								<option value="rt">RT</option>
+								<option value="rw">RW</option>
+								<option value="kelurahan">Kelurahan</option>
+								<option value="city">Kota</option>
+								<option value="zipcode">Kode Pos</option>
+								<option value="type">Tipe</option>
+								<option value="phoneNo1">No. Telepon</option>
+								<option value="phoneNo2">No. Telepon2</option>
+								<option value="faxNo">No. Fax</option>
+								<option value="handphone">Handphone</option>
+						</select> <input name="searchvalue" placeholder="Masukan Nilai" />
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="search()">Cari</button></td>
 
-							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
+						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 
-						</tr>
-					</table>
-				</div>
+					</tr>
+				</table>
 				<br>
 				<s:label name="message"></s:label>
 				<br>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<tr>
-							<th style="text-align: center;">Name</th>
-							<th style="text-align: center;">Address</th>
-							<th style="text-align: center;">Type.</th>
-							<th style="text-align: center;">Phone</th>
-							<th style="text-align: center;" width="5%">Pilih</th>
+				<table class="table table-bordered">
+					<tr>
+						<th style="text-align: center;">Nama</th>
+						<th style="text-align: center;">Alamat</th>
+						<th style="text-align: center;">RT</th>
+						<th style="text-align: center;">RW</th>
+						<th style="text-align: center;">Kelurahan</th>
+						<th style="text-align: center;">City</th>
+						<th style="text-align: center;">Zip Code</th>
+						<th style="text-align: center;">Type.</th>
+						<th style="text-align: center;">Phone1 Area</th>
+						<th style="text-align: center;">Phone1 No.</th>
+						<th style="text-align: center;">Phone2 Area</th>
+						<th style="text-align: center;">Phone2 No.</th>
+						<th style="text-align: center;">Fax Area</th>
+						<th style="text-align: center;">Fax No.</th>
+						<th style="text-align: center;">Handphone</th>
+						<th style="text-align: center;" width="5%">Pilih</th>
+					</tr>
+					<s:iterator value="lstdealer">
+						<tr id="row_${id}">
+							<td>${name}</td>
+							<td>${address}</td>
+							<td>${rt}</td>
+							<td>${rw}</td>
+							<td>${kelurahan}</td>
+							<td>${city}</td>
+							<td>${zipcode}</td>
+							<td>${type}</td>
+							<td>${areaphone1}</td>
+							<td>${phoneno1}</td>
+							<td>${areaphone2}</td>
+							<td>${phoneno2}</td>
+							<td>${areafax}</td>
+							<td>${faxno}</td>
+							<td>${handphone}</td>
+							<td><input type="radio" id="${id}" checked /></td>
 						</tr>
-						<s:iterator value="lstDealer">
-							<tr id="row_${id}">
-								<td>${name}</td>
-								<td>${fulladdress}</td>
-								<td>(${areaPhone1})-${phoneNo1}</td>
-								<td><input type="radio" id="${id}" checked /></td>
-							</tr>
-						</s:iterator>
-					</table>
-				</div>
+					</s:iterator>
+				</table>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 </body>
 <script type="text/javascript">
 	function search() {

@@ -114,7 +114,6 @@
         <mapping class="com.adibrata.smartdealer.model.Product" />
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInvoice" />
-        <mapping class="com.adibrata.smartdealer.model.Sysdiagrams" />
         <mapping class="com.adibrata.smartdealer.model.ServiceHdr" />
         <mapping class="com.adibrata.smartdealer.model.Holiday" />
         <mapping class="com.adibrata.smartdealer.model.PersCustOtherBussinessInfo" />

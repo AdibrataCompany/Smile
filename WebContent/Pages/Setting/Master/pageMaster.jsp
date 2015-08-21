@@ -23,15 +23,14 @@
 		<s:form action="master.action" theme="simple">
 			<center>
 				<h2>Master</h2>
-				<s:hidden name="mode" id="mode" value="" />
-				<s:label name="message" id="message" />
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
 						<td>Master Type</td>
-						<td><s:select list="lstMasterType" name="mastertypecode"
-								value="mastertypecode" label="Select Master Type" headerKey=""
+						<td><s:select list="lstMasterType" name="mastertypecode" value = "mastertypecode" label = "Select Master Type"
+								headerKey="" 
 								headerValue="Select Master Type" /></td>
-						<!-- key="mastertype.mastertypecode" -->
+								<!-- key="mastertype.mastertypecode" -->
 					</tr>
 					<tr>
 						<td width="10%">Search</td>
@@ -54,14 +53,16 @@
 					<tr>
 						<th style="text-align: center;">Code</th>
 						<th style="text-align: center;">Value</th>
+					<th style="text-align: center;">ID</th>
+				
 						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
 					<s:iterator value="lstMsTable">
 						<tr id="row_<s:property value="id"/>">
 							<td>${masterCode}</td>
 							<td>${masterValue}</td>
-							<td style="text-align: center;"><input type="radio"
-								name="id" value="${id}" /></td>
+							<td>${id}</td>
+							<td style="text-align: center;"><input type="radio" id="${id}"/></td>
 						</tr>
 					</s:iterator>
 				</table>
@@ -70,7 +71,7 @@
 
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 </body>
 <script type="text/javascript">
 	function search() {

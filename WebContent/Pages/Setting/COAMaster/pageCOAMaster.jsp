@@ -23,26 +23,22 @@
 		<s:form action="coamaster.action" theme="simple">
 			<center>
 				<h2>COA Master</h2>
-				<s:hidden name="mode" id="mode" value="" />
-				<s:label name="message" id="message" />
-				<div class="table-responsive">
-					<table width="100%">
-						<tr>
-							<td><select name="searchcriteria">
-									<option value="">Search Criteria</option>
-									<option value="coaName">Name</option>
-									<option value="coaDescription">Description</option>
-									<option value="coacode">Coa Code</option>
-							</select>
-							<s:textfield name="searchvalue" placeholder="Search"
-									class="form-control" />
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="search()">Cari</button></td>
-							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%>
-							</td>
-						</tr>
-					</table>
-				</div>
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<table width="100%">
+					<tr>
+						<td><select name="searchcriteria">
+								<option value="">Parameter</option>
+								<option value="coaName">Nama</option>
+								<option value="coaDescription">Keterangan</option>
+								<option value="coacode">Kode</option>
+						</select> <input type="text" name="searchvalue" placeholder="Pencarian" />
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="search()">Cari</button></td>
+						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%>
+						</td>
+					</tr>
+				</table>
+
 				<br>
 				<s:label name="message"></s:label>
 				<br>
@@ -67,7 +63,7 @@
 			</center>
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 </body>
 <script type="text/javascript">
 	function search() {

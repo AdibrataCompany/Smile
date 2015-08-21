@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 21, 2015 12:01:27 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:33:53 PM by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -22,8 +22,7 @@
 		<s:form action="workshop.action" theme="simple">
 			<center>
 				<h2>Workshop</h2>
-				<s:hidden name="mode" id="mode" value="" />
-				<s:label name="message" id="message" />
+				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>
@@ -96,7 +95,7 @@
 			</center>
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+
 </body>
 <script type="text/javascript">
 	function search() {

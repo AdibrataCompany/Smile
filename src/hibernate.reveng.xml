@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="AccountPayable"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AdvanceCash"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AdvanceCashReversal"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgmntAssetEmployeeInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Agrmnt" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="AgrmntAsset"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetDoc"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetLevelInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetLoctInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetOldOwnerInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetOwnerInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetSPBKBInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntBankStatInfoDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntBankStatementInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntColl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="AgrmntCrossDefault"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntEmployeeInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntFund" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="AgrmntGoLive"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntIns" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="AgrmntInsAsset"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntInsCust"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntInsEndorsInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntInsInsco"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntInsStandardInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntInvoice"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntMailingInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntMnt" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="AgrmntReffInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntSuppEmplInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntTc" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Application"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetAttribute"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetCategory"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetDocMaster"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetMaster"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetServiceHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetServiceMaster"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AssetType" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="BankAccount"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="BucketAgingReport"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="COAMaster" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="CashBankDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CashBankHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CashierHistory"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoaSchmDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="CoaSchmHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="CoyCust" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="CoyCustComptInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoyCustContactInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoyCustFinancialInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoyCustLegalInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoyCustShareInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="CoyCustWhInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Currency" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Customer" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="CustomerBankInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="DailyARAging"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="DanaTunai" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="DeliveryOrder"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="EarlyTermination"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Employee" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="EntrustDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="EntrustHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="FundingCoy" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="GoLive" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Holiday" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="InsCoOffice"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InsCoOfficeFee"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InsCompany" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="InsRateFromInsco"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InsRateToCust"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InstSchedule"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Invoice" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="JrnlDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="JrnlHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Leasing" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Marketing" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MasterType" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsBigMenuList"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="MsMenu" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsMenuRole" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsRole" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsTable" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsUser" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="MsUserRole" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Office" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="OtherDsbDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="OtherDsbHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="OtherRcvDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="OtherRcvHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PDCReceipt" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PVDetail" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Partner" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PayHistDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PayHistHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PayReqDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PayReqHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PaymentReceive"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PaymentReversal"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PaymentVoucher"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PdcClear" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PdcDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PdcHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PdcHistory" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PersCust" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="PersCustCCInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustEmergencyInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustEntInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustFamilyInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustFinancialData"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustJobInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustLegalInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustOmsetInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustOtherBussinessInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustResidenceInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PersCustTrusteeInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PettyCashDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PettyCashHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Product" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="ProductOffering"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PurchaseInvoice"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PurchaseOrderDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="PurchaseOrderHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Reschedule" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="ResetPasswordLog"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="ReturPurchaseDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="ReturPurchaseHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="ReturSalesDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="ReturSalesHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Sales" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="SalesInvoice"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SalesOrderDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SalesOrderHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="ServiceDtl" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="ServiceHdr" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="ServiceItem"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Stock" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="StockDocument"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SuppEmplInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="Supplier" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="SupplierAccInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SuspendAllocation"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SuspendReceive"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="SuspendReverse"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="TCMaster" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Taksasi" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="TransJob" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="TrxConfigDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="TrxConfigHdr"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="TrxSeqNo" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="Workshop" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="ZipCode" match-catalog="SmartDealer"></table-filter>
+</hibernate-reverse-engineering>

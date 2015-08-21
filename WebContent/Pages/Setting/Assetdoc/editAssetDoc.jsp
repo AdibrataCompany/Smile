@@ -17,60 +17,51 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetdoc_saveedit.action" theme="css_xhtml"
+		<s:form action="assetdoc_save.action" theme="css_xhtml"
 			validate="true" method="post">
 			<center>
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<h2>Asset Document Master</h2>
-					<s:hidden name="mode" id="mode" />
-					<s:textfield name="id" />
-					<div align="left" class="form-group">
-						<label>Code</label>
-						<div align="left" class="form-inline">
-							<s:textfield name="documentCode" style="width:95%"
-								placeholder="Asset Document Code" class="form-control" />
-						</div>
-					</div>
-					<div align="left" class="form-group">
-						<label>Name </label>
-						<div align="left" class="form-inline">
-							<s:textfield name="documentName" style="width:95%"
-								placeholder="Asset Document Name" class="form-control" />
-						</div>
-					</div>
+				<h2>Asset Document Master</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<br>
+				<table width="30%">
+					<tr>
+						<td>
+							<div align="left" class="form-group">
+								<label>Code</label>
+								<div align="left" class="form-inline">
+									<s:textfield name="documentcode" style="width:95%"
+										placeholder="Asset Document Code" class="form-control" />
+								</div>
+							</div>
+							<div align="left" class="form-group">
+								<label>Name </label>
+								<div align="left" class="form-inline">
+									<s:textfield name="documentname" style="width:95%"
+										placeholder="Asset Document Name" class="form-control" />
+								</div>
+							</div>
 
-					<div align="left" class="form-group">
-						<label>Asset Type </label>
-						<div align="left" class="form-inline">
-							<s:textfield name="assettype" style="width:95%"
-								placeholder="Asset Type" class="form-control" />
-						</div>
-					</div>
-					<br>
-					<table width="100%">
-						<tr>
-							<td><a href="assetdoc.action"><button
-										class="btn btn-sm btn-primary" type="button">Back</button></a></td>
-							<td align="right">
-								<button class="btn btn-sm btn-primary" type="submit" name="submit">Save</button>
-							</td>
-						</tr>
-					</table>
-				</div>
+							<div align="left" class="form-group">
+								<label>Asset Type </label>
+								<div align="left" class="form-inline">
+									<s:select name="assettype" style="width:95%" headerKey=""
+										headerValue="Select One" list="#{'Others':'Others'}"
+										class="form-control" />
+								</div>
+							</div> <br>
+								<%@include file="/Pages/Include/SubmitButton.jsp"%>
+						</td>
+					</tr>
+				</table>
 			</center>
 		</s:form>
+		<%@include file="/Pages/Footer.jsp"%>
 	</div>
 
 	<!-- 	</div> -->
 
 </body>
-<script type="text/javascript">
-	function saveedit() {
-		document.getElementById("mode").value = "saveedit";
-	}
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-</script>
+
 </html>
