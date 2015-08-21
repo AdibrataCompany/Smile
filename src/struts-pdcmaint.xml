@@ -6,7 +6,7 @@
 	<package name="pdcmaint" extends="smartdealer-package"
 		namespace="/">
 		<action name="pdcreceive"
-			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.PdcReceiveAction"
+			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.receive.PdcReceiveAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -25,7 +25,7 @@
 			</result>
 		</action>
 		<action name="pdcreturn"
-			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.PdcReturnAction"
+			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.pdcreturn.PdcReturnAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -44,7 +44,7 @@
 			</result>
 		</action>
 		<action name="pdcdeposit"
-			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.PdcDepositAction"
+			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.deposit.PdcDepositAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -63,7 +63,7 @@
 			</result>
 		</action>
 		<action name="pdcclearing"
-			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.PdcClearingAction"
+			class="com.adibrata.smartdealer.action.accmnt.pdcmaint.clearing.PdcClearingAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

@@ -5,7 +5,7 @@
 <struts>
 	<package name="accmnt" extends="smartdealer-package" namespace="/">
 		<action name="banktransaction"
-			class="com.adibrata.smartdealer.action.setting.BankAccountAction"
+			class="com.adibrata.smartdealer.action.setting.bankaccount.BankAccountAction"
 			method="execute">
 			<result name="start">/Pages/Include/BankAccountPaging.jsp
 			</result>

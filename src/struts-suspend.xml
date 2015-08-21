@@ -7,7 +7,7 @@
 	<package name="suspend" extends="smartdealer-package"
 		namespace="/">
 		<action name="suspendlist"
-			class="com.adibrata.smartdealer.action.accmnt.suspend.SuspendAction"
+			class="com.adibrata.smartdealer.action.accmnt.suspend.receive.SuspendReceiveAction"
 			method="execute">
 			<result name="search">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>

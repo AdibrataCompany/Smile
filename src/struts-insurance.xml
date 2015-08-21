@@ -5,43 +5,38 @@
 <struts>
 	<package name="insurance" extends="smartdealer-package"
 		namespace="/">
-		<action name="inscoreg"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReceiveAction"
+		<action name="inscoyreg"
+			class="com.adibrata.smartdealer.action.insurance.setting.inscoy.InsCoRegAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
+			<result name="input">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="search">/Pages/Insurance/pageInsurance.jsp</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
+
+
+			<result name="add">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="edit">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="savedel">/Pages/Insurance/pageInsurance.jsp</result>
+
+			<result name="first">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="prev">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="next">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="last">/Pages/Insurance/pageInsurance.jsp</result>
 		</action>
-		<action name="inscobranchreg"
-			class="com.adibrata.smartdealer.action.accmnt.PaymentReversalAction"
-			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+		<action name="inscoyregsave"
+			class="com.adibrata.smartdealer.action.insurance.setting.inscoy.InsCoRegAction"
+			method="save">
+			<result name="input">/Pages/Insurance/pageInsurance.jsp</result>
+			<result name="error">/Pages/Insurance/pageInsurance.jsp</result>
+
+			<result name="success" type="redirectAction">
+				<param name="actionName">inscoyreg</param>
+				<param name="message">${message}</param>
 			</result>
-			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="end" type="redirectAction">
+				<param name="actionName">inscoyreg</param>
+				<param name="message">${message}</param>
 			</result>
 
-			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
-			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
-			</result>
 		</action>
 	</package>
 </struts>
