@@ -33,102 +33,102 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class BaseAction extends ActionSupport implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String messagedescription;
-
+		
 		public SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-
+		
 		public BaseAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				RenderMenu();
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		private static String RenderMenu() throws Exception
 			{
 				final MenuService service = new MenuDao();
 				return service.MenuRender((long) 0, (long) 0, (long) 0);
-				
-			}
 
+			}
+			
 		public static String ErrorMessage()
 			{
 				return "Failed on Save";
-
+				
 			}
-
+			
 		public static Long sesCashierHistoryId()
 			{
 				return (long) 1;
 			}
-
+			
 		public static String SuccessMessage()
 			{
 				return "Success On Save";
-
+				
 			}
-			
+
 		public static String SelectFirst()
 			{
 				return "Please Select a Data First";
-
+				
 			}
-			
+
 		public static String sesPartnerCode()
 			{
-
+				
 				return "001";
 			}
-			
+
 		public static Long sesEmployeeId()
 			{
 				return (long) 1;
 			}
-			
+
 		public static Long sesUserId()
 			{
 				return (long) 1;
 			}
-			
+
 		public static Date sesBussinessDate() throws ParseException
 			{
 				final SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 				return df.parse(df.format(Calendar.getInstance().getTime()));
-
+				
 			}
-
+			
 		public BankAccountInfo BankInfo(final Long id) throws Exception
 			{
 				final BankAccountService service = new BankAccountDao();
 				return service.BankAccountView(id);
 			}
-
+			
 		public static Long sesOfficeId()
 			{
 				return (long) 1;
 			}
-
+			
 		public static String sesLoginName()
 			{
 				return "Arga";
 			}
-
+			
 		public static int PageRecord()
 			{
 				return 10;
 			}
-
+			
 		/**
 		 * @return the messagedescription
 		 */
@@ -136,7 +136,7 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				return this.messagedescription;
 			}
-
+			
 		/**
 		 * @param messagedescription
 		 *            the messagedescription to set
@@ -145,7 +145,7 @@ public class BaseAction extends ActionSupport implements Preparable
 			{
 				this.messagedescription = messagedescription;
 			}
-			
+
 		public Map<Long, String> ListBankAccount(final Partner partner, final Office office, final String type, final String purpose) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
@@ -153,7 +153,7 @@ public class BaseAction extends ActionSupport implements Preparable
 					{
 						final BankAccountService bankaccountservice = new BankAccountDao();
 						final List<BankAccount> lst = bankaccountservice.listBankAccount(partner, office, type, purpose);
-
+						
 						for (final BankAccount row : lst)
 							{
 								map.put(row.getId(), row.getBankAccountName().trim());
@@ -170,7 +170,7 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-
+			
 		public Map<Long, String> ListCurrency(final Partner partner) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
@@ -178,7 +178,7 @@ public class BaseAction extends ActionSupport implements Preparable
 					{
 						final CurrencyService service = new CurrencyDao();
 						final List<Currency> lst = service.CurrencyList(partner);
-
+						
 						for (final Currency row : lst)
 							{
 								map.put(row.getId(), row.getCode().trim());
@@ -195,16 +195,16 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-
+			
 		public Map<Long, String> ListEmployee(final Partner partner, final Office office) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
 				try
 					{
-
+						
 						final EmployeeService service = new EmployeeDao();
 						final List<Employee> lst = service.ListEmployee(partner, office);
-
+						
 						for (final Employee row : lst)
 							{
 								map.put(row.getId(), row.getName().trim());
@@ -221,16 +221,16 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-			
+
 		public Map<Long, String> ListOffice(final Partner partner) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
 				try
 					{
-
+						
 						final OfficeService service = new OfficeDao();
 						final List<Office> lst = service.ListOffice(partner);
-
+						
 						for (final Office row : lst)
 							{
 								map.put(row.getId(), row.getName().trim());
@@ -247,7 +247,7 @@ public class BaseAction extends ActionSupport implements Preparable
 					}
 				return map;
 			}
-
+			
 		public Date DateAdd(final int add, final Date valuedate)
 			{
 				final Calendar c = Calendar.getInstance();
@@ -255,5 +255,5 @@ public class BaseAction extends ActionSupport implements Preparable
 				c.add(Calendar.DATE, add);
 				return c.getTime();
 			}
-
+			
 	}
