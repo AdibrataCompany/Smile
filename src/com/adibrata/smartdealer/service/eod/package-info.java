@@ -3,7 +3,6 @@
  */
 /**
  * @author Henry
- *
  */
 
-package com.adibrata.smartdealer.service.Eod;
+package com.adibrata.smartdealer.service.eod;

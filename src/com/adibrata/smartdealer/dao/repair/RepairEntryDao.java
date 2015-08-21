@@ -30,7 +30,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class RepairEntryDao extends DaoBase implements RepairService
 	{
-
+		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date dtmupd = Calendar.getInstance().getTime();
 		StringBuilder hql = new StringBuilder();
@@ -41,7 +41,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 		 *
 		 */
 		String userupd;
-
+		
 		public RepairEntryDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -50,7 +50,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from ServiceHdr ";
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -61,7 +61,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<ServiceHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy)
@@ -69,14 +69,14 @@ public class RepairEntryDao extends DaoBase implements RepairService
 				// TODO Auto-generated method stub
 				return null;
 			}
-
+			
 		@Override
 		public List<Workshop> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// / TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<Workshop> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -90,11 +90,11 @@ public class RepairEntryDao extends DaoBase implements RepairService
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -102,7 +102,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public void Save(final String usrupd, final ServiceHdr serviceHdr, final List<ServiceDtl> lstserviceDtls, final List<ServiceItem> lstserviceItem) throws Exception
 			{
@@ -118,7 +118,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 						for (final ServiceDtl arow : lstserviceDtls)
 							{
 								ServiceDtl serviceDtl = new ServiceDtl();
-
+								
 								serviceDtl = arow;
 								serviceDtl.setServiceHdr(serviceHdr);
 								serviceDtl.setDtmCrt(this.dtmupd);
@@ -135,7 +135,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 									}
 							}
 						this.session.getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -146,20 +146,20 @@ public class RepairEntryDao extends DaoBase implements RepairService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
-		public ServiceHdr View(final long id) throws Exception
+		public ServiceHdr View(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				ServiceHdr serviceHdr = null;
 				try
 					{
 						serviceHdr = (ServiceHdr) this.session.get(ServiceHdr.class, id);
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -167,5 +167,5 @@ public class RepairEntryDao extends DaoBase implements RepairService
 					}
 				return serviceHdr;
 			}
-
+			
 	}

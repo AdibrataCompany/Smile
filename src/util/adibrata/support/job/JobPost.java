@@ -42,7 +42,7 @@ public class JobPost
 					
 			}
 			
-		private static Calendar dtmupd = Calendar.getInstance();
+		private static Date dtmupd = Calendar.getInstance().getTime();
 		
 		static Session session;
 		
@@ -66,8 +66,8 @@ public class JobPost
 				transjob.setUsrUpd(userCrt);
 				transjob.setUsrCrt(userCrt);
 				transjob.setTrxConfigCode(jobcode.getJobCode());
-				transjob.setDtmCrt(JobPost.dtmupd.getTime());
-				transjob.setDtmUpd(JobPost.dtmupd.getTime());
+				transjob.setDtmCrt(JobPost.dtmupd);
+				transjob.setDtmUpd(JobPost.dtmupd);
 				try
 					{
 						session.save(transjob);

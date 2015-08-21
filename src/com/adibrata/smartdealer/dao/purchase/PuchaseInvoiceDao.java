@@ -83,14 +83,14 @@ public class PuchaseInvoiceDao extends DaoBase implements PurchaseInvoiceService
 			}
 			
 		@Override
-		public PurchaseInvoice View(final long id)
+		public PurchaseInvoice View(final Long id)
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
 
 		@Override
-		public SalesOrderHdr viewSalesOrderHdr(final long id)
+		public SalesOrderHdr viewSalesOrderHdr(final Long id)
 			{
 				// TODO Auto-generated method stub
 				return null;

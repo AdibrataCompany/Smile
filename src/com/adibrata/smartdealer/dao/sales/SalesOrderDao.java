@@ -144,7 +144,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 			}
 			
 		@Override
-		public SalesOrderHdr viewSalesOrderHdr(final long id) throws Exception
+		public SalesOrderHdr viewSalesOrderHdr(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				SalesOrderHdr salesOrderHdr = null;
@@ -165,7 +165,7 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 			}
 			
 		@Override
-		public Customer viewCustomer(final long id) throws Exception
+		public Customer viewCustomer(final Long id) throws Exception
 			{
 				// TODO Auto-generated method stub
 				Customer customer = null;
@@ -245,11 +245,13 @@ public class SalesOrderDao extends DaoBase implements SalesOrderService
 				return list;
 			}
 			
+		@Override
 		public int getPagesize()
 			{
 				return this.pagesize;
 			}
 			
+		@Override
 		public void setPagesize(final int pagesize)
 			{
 				this.pagesize = pagesize;
