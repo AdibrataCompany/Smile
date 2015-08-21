@@ -7,12 +7,25 @@
 		<action name="applicationdata"
 			class="com.adibrata.smartdealer.action.credit.application.ApplicationDataAction"
 			method="execute">
-			<result name="start">/Pages/Credit/ApplicationData/Paging.jsp</result>
-			<result name="start">/Pages/Credit/ApplicationData/Entry.jsp</result>
+			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="error">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+
+			<result name="search">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="entry">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="adddetail">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
+			<result name="end">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			</result>
 		</action>
 
 		<action name="assetdata"
-			class="com.adibrata.smartdealer.action.credit.AssetDataAction"
+			class="com.adibrata.smartdealer.action.credit.asset.AssetDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -31,7 +44,7 @@
 			</result>
 		</action>
 		<action name="insurancedata"
-			class="com.adibrata.smartdealer.action.credit.InsuranceDataAction"
+			class="com.adibrata.smartdealer.action.credit.insurance.InsuranceDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -50,7 +63,7 @@
 			</result>
 		</action>
 		<action name="financialdata"
-			class="com.adibrata.smartdealer.action.credit.FinancialDataAction"
+			class="com.adibrata.smartdealer.action.credit.financial.FinancialDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -69,7 +82,7 @@
 			</result>
 		</action>
 		<action name="commissiondata"
-			class="com.adibrata.smartdealer.action.credit.CommissionDataAction"
+			class="com.adibrata.smartdealer.action.credit.commission.CommissionDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -88,7 +101,7 @@
 			</result>
 		</action>
 		<action name="completedata"
-			class="com.adibrata.smartdealer.action.credit.CompleteDataAction"
+			class="com.adibrata.smartdealer.action.credit.complete.CompleteDataAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -107,7 +120,7 @@
 			</result>
 		</action>
 		<action name="purchaseorder"
-			class="com.adibrata.smartdealer.action.credit.PurchaseOrderAction"
+			class="com.adibrata.smartdealer.action.credit.purchaseorder.PurchaseOrderAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -126,7 +139,7 @@
 			</result>
 		</action>
 		<action name="invoice"
-			class="com.adibrata.smartdealer.action.credit.InvoiceAction" method="execute">
+			class="com.adibrata.smartdealer.action.credit.invoice.InvoiceAction" method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
@@ -144,7 +157,7 @@
 			</result>
 		</action>
 		<action name="deliveryorder"
-			class="com.adibrata.smartdealer.action.credit.DeliveryOrderAction"
+			class="com.adibrata.smartdealer.action.credit.deliveryorder.DeliveryOrderAction"
 			method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
@@ -163,7 +176,7 @@
 			</result>
 		</action>
 		<action name="golive"
-			class="com.adibrata.smartdealer.action.credit.GoLiveAction" method="execute">
+			class="com.adibrata.smartdealer.action.credit.golive.GoLiveAction" method="execute">
 			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
