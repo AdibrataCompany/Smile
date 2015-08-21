@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 20, 2015 1:54:39 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:01:27 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -49,6 +49,7 @@ public class Agrmnt implements java.io.Serializable
 		private Double osI;
 		private Double osPundue;
 		private Double osIundue;
+		private Double instAmount;
 		private Short nextInstNumber;
 		private Date nextInstDate;
 		private Short nextInstDueNumber;
@@ -103,8 +104,8 @@ public class Agrmnt implements java.io.Serializable
 			
 		public Agrmnt(long id, Application application, Currency currency, Customer customerBySpouseId, Customer customerByGuarantorId, Customer customerByCustomerId, Marketing marketing, Office office, Partner partner, String agrmntCode,
 		        String coaSchmCode, Long prodId, Long potId, Short numOfAsset, String interestTypeCode, String instSchemeCode, String guarantorRelation, String wopCode, String sourceAppCode, Date agreementDate, String notes, Double osP, Double osI,
-		        Double osPundue, Double osIundue, Short nextInstNumber, Date nextInstDate, Short nextInstDueNumber, Date nextInstDueDate, Double prepaidAmt, Short tenor, Short cummulativeTenor, Date effectiveDate, Date goLiveDate, Date rrddate,
-		        String contractStatus, String defaultStatus, Double percentagePenalty, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<PdcHdr> pdcHdrs, Set<SuspendAllocation> suspendAllocations, Set<AgrmntMnt> agrmntMnts,
+		        Double osPundue, Double osIundue, Double instAmount, Short nextInstNumber, Date nextInstDate, Short nextInstDueNumber, Date nextInstDueDate, Double prepaidAmt, Short tenor, Short cummulativeTenor, Date effectiveDate, Date goLiveDate,
+		        Date rrddate, String contractStatus, String defaultStatus, Double percentagePenalty, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<PdcHdr> pdcHdrs, Set<SuspendAllocation> suspendAllocations, Set<AgrmntMnt> agrmntMnts,
 		        Set<AgrmntFund> agrmntFunds, Set<InstSchedule> instSchedules, Set<AgrmntBankStatementInfo> agrmntBankStatementInfos, Set<AgrmntReffInfo> agrmntReffInfos, Set<AgrmntCrossDefault> agrmntCrossDefaultsForAgrmntId,
 		        Set<PaymentReversal> paymentReversals, Set<AgrmntCrossDefault> agrmntCrossDefaultsForCrossAgrmntId, Set<DeliveryOrder> deliveryOrders, Set<EarlyTermination> earlyTerminations, Set<AgrmntGoLive> agrmntGoLives,
 		        Set<DailyAraging> dailyAragings, Set<AgrmntTc> agrmntTcs, Set<AgrmntMailingInfo> agrmntMailingInfos, Set<AgrmntSuppEmplInfo> agrmntSuppEmplInfos, Set<AgrmntColl> agrmntColls, Set<AgrmntAsset> agrmntAssets, Set<PayHistHdr> payHistHdrs,
@@ -135,6 +136,7 @@ public class Agrmnt implements java.io.Serializable
 				this.osI = osI;
 				this.osPundue = osPundue;
 				this.osIundue = osIundue;
+				this.instAmount = instAmount;
 				this.nextInstNumber = nextInstNumber;
 				this.nextInstDate = nextInstDate;
 				this.nextInstDueNumber = nextInstDueNumber;
@@ -463,6 +465,17 @@ public class Agrmnt implements java.io.Serializable
 		public void setOsIundue(Double osIundue)
 			{
 				this.osIundue = osIundue;
+			}
+			
+		@Column(name = "InstAmount", precision = 53, scale = 0)
+		public Double getInstAmount()
+			{
+				return this.instAmount;
+			}
+			
+		public void setInstAmount(Double instAmount)
+			{
+				this.instAmount = instAmount;
 			}
 			
 		@Column(name = "NextInstNumber")

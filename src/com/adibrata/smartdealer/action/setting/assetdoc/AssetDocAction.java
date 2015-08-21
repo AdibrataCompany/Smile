@@ -1,72 +1,80 @@
 
-package com.adibrata.smartdealer.action.setting.journalscheme;
+package com.adibrata.smartdealer.action.setting.assetdoc;
 
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.setting.JournalSchemeDao;
-import com.adibrata.smartdealer.model.CoaSchmDtl;
-import com.adibrata.smartdealer.model.CoaSchmHdr;
+import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
+import com.adibrata.smartdealer.model.AssetDocMaster;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.setting.JournalSchemeService;
+import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class JournalSchemeAction extends BaseAction implements Preparable
+public class AssetDocAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
-		private JournalSchemeService service;
-		private CoaSchmDtl coaschmdtl;
-		private CoaSchmHdr coaschmhdr;
+		
+		private AssetDocMasterService assetdocmasterservice;
+		private AssetDocMaster assetdocmaster;
 		private Partner partner;
 		private Office office;
-		private List<CoaSchmDtl> lstcoaschmdtl;
-		private List<CoaSchmHdr> lstcoaschmhdr;
+		private List<AssetDocMaster> lstassetdocmasters;
 		private String searchcriteria;
 		private String searchvalue;
-		private int pagenumber;
-
-		private String message;
 		private Long id;
-		private String coaschmcode;
-		private String coaschmdesc;
-		private Integer isactive;
 
-		public JournalSchemeAction() throws Exception
+		private int pageNumber;
+		private String message;
+		
+		private String documentcode;
+		private String documentname;
+		private String assettype;
+		private Short isactive;
+		private String status;
+		private String lbltest;
+		
+		/**
+		 * @throws Exception
+		 */
+		public AssetDocAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				this.service = new JournalSchemeDao();
-				this.coaschmhdr = new CoaSchmHdr();
-
 				this.partner = new Partner();
-				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
 				this.office = new Office();
-				this.setOffice(this.office);
-				if (this.pagenumber == 0)
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				this.office.setId(BaseAction.sesOfficeId());
+				
+				this.assetdocmasterservice = new AssetDocMasterDao();
+				this.assetdocmaster = new AssetDocMaster();
+				
+				if (this.pageNumber == 0)
 					{
-						this.pagenumber = 1;
+						this.pageNumber = 1;
 					}
+					
 			}
-
+			
+		/**
+		 * @throws Exception
+		 */
+		/*
+		 * public AssetDocAction(AssetDocMasterService assetDocMasterService) {
+		 * this.assetDocMasterService = assetDocMasterService; // TODO
+		 * Auto-generated constructor stub }
+		 */
+		
 		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-		@Override
-		public String execute() throws Exception
+		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
@@ -90,10 +98,10 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 										{
 											strMode = this.ViewData();
 										}
-									catch (final Exception e)
+									catch (final Exception e1)
 										{
 											// TODO Auto-generated catch block
-											e.printStackTrace();
+											e1.printStackTrace();
 										}
 									break;
 								case "savedel" :
@@ -108,29 +116,8 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-								case "detail" :
-									try
-										{
-											this.ViewDetail();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "savedetail" :
-									try
-										{
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
 								case "first" :
-									this.pagenumber = 1;
+									this.pageNumber = 1;
 									try
 										{
 											this.Paging();
@@ -142,13 +129,13 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pagenumber -= 1;
+									this.pageNumber -= 1;
+									if (this.pageNumber <= 1)
+										{
+											this.pageNumber = 1;
+										}
 									try
 										{
-											if (this.pagenumber <= 1)
-												{
-													this.pagenumber = 1;
-												}
 											this.Paging();
 										}
 									catch (final Exception e)
@@ -158,9 +145,9 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
+									this.pageNumber += 1;
 									try
 										{
-											this.pagenumber += 1;
 											this.Paging();
 										}
 									catch (final Exception e)
@@ -180,13 +167,15 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
+									
 								default :
 									break;
+									
 							}
 					}
 				else
 					{
-						this.pagenumber = 1;
+						this.pageNumber = 1;
 						try
 							{
 								this.Paging();
@@ -196,11 +185,131 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = "start";
+						strMode = "input";
 					}
 				return strMode;
 			}
-
+			
+		/**
+		 *
+		 */
+		
+		private String WhereCond()
+			{
+				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						if (this.getSearchcriteria().contains("%"))
+							{
+								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+							}
+						else
+							{
+								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+							}
+					}
+				return wherecond;
+			}
+			
+		private void Paging() throws Exception
+			{
+				try
+					{
+						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "");
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		private void Paging(final int islast) throws Exception
+			{
+				try
+					{
+						
+						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "", true);
+						this.pageNumber = this.assetdocmasterservice.getCurrentpage();
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		public String ViewData() throws Exception
+			{
+				this.assetdocmaster = new AssetDocMaster();
+				try
+					{
+						if (this.getId() != null)
+							{
+								this.assetdocmaster = this.assetdocmasterservice.View(this.id);
+								this.partner = this.assetdocmaster.getPartner();
+								this.documentcode = this.assetdocmaster.getDocumentCode();
+								this.documentname = this.assetdocmaster.getDocumentName();
+								this.assettype = this.assetdocmaster.getAssetType();
+							}
+						else
+							{
+								this.Paging();
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.mode;
+			}
+			
+		private String SaveDelete() throws Exception
+			{
+				try
+					{
+						
+						if (this.getId() != null)
+							{
+								final AssetDocMaster assetDocMaster = new AssetDocMaster();
+								
+								assetDocMaster.setId(this.getId());
+								
+								this.assetdocmasterservice.SaveDel(assetDocMaster);
+								this.setMessage(BaseAction.SuccessMessage());
+							}
+						else
+							{
+								this.mode = "start";
+								this.setMessage(BaseAction.SelectFirst());
+							}
+					}
+				catch (final Exception exp)
+					{
+						
+						this.setMessage(BaseAction.ErrorMessage());
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+				return this.mode;
+			}
+			
 		public String save()
 			{
 				String strMode;
@@ -217,6 +326,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e.printStackTrace();
 										}
 									break;
@@ -228,6 +338,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 									catch (final Exception e1)
 										{
 											// TODO Auto-generated catch block
+											strMode = ERROR;
 											e1.printStackTrace();
 										}
 									break;
@@ -244,128 +355,27 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						catch (final Exception e)
 							{
 								// TODO Auto-generated catch block
+								strMode = ERROR;
 								e.printStackTrace();
 							}
 					}
 				return strMode;
 			}
-
-		private String WhereCond()
-			{
-				String wherecond = "";
-				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
-					{
-						if (this.getSearchcriteria().contains("%"))
-							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
-							}
-						else
-							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
-							}
-					}
-				return wherecond;
-			}
-
-		private void Paging() throws Exception
-			{
-				try
-					{
-						this.lstcoaschmhdr = this.service.Paging(this.getPagenumber(), this.WhereCond(), "");
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
-		private void Paging(final int islast) throws Exception
-			{
-				try
-					{
-						this.lstcoaschmhdr = this.service.Paging(this.getPagenumber(), this.WhereCond(), "", true);
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
-		public String ViewData() throws Exception
-			{
-				this.coaschmhdr = new CoaSchmHdr();
-				try
-					{
-						if (this.getId() != null)
-							{
-								this.coaschmhdr = this.service.ViewHeader(this.id);
-								this.coaschmcode = this.coaschmhdr.getCoaSchmCode();
-								this.coaschmdesc = this.coaschmhdr.getCoaSchmDesc();
-								this.isactive = this.coaschmhdr.getIsActive();
-							}
-						else
-							{
-								this.Paging();
-								this.mode = "start";
-								this.setMessage(BaseAction.SelectFirst());
-							}
-					}
-				catch (final Exception exp)
-					{
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return this.mode;
-			}
-
-		public void ViewDetail() throws Exception
-			{
-				this.coaschmhdr = new CoaSchmHdr();
-				try
-					{
-						this.coaschmhdr = this.service.ViewHeader(this.id);
-						this.coaschmcode = this.coaschmhdr.getCoaSchmCode();
-						this.coaschmdesc = this.coaschmhdr.getCoaSchmDesc();
-						this.isactive = this.coaschmhdr.getIsActive();
-					}
-				catch (final Exception exp)
-					{
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
-						this.coaschmhdr = new CoaSchmHdr();
-						this.coaschmhdr.setPartner(this.getPartner());
-						this.coaschmhdr.setCoaSchmCode(this.coaschmcode);
-						this.coaschmhdr.setCoaSchmDesc(this.coaschmdesc);
-						this.coaschmhdr.setIsActive(this.isactive);
-						this.coaschmhdr.setPartner(this.partner);
-						this.coaschmhdr.setUsrCrt(BaseAction.sesLoginName());
-						this.coaschmhdr.setUsrUpd(BaseAction.sesLoginName());
-						this.service.SaveAddHeader(this.coaschmhdr);
+						this.assetdocmaster = new AssetDocMaster();
+						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
+						this.assetdocmaster.setDocumentName(this.getDocumentname());
+						this.assetdocmaster.setAssetType(this.getAssettype());
+						this.assetdocmaster.setPartner(this.getPartner());
+						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
 						
+						this.assetdocmasterservice.SaveAdd(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -378,23 +388,22 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						this.coaschmhdr = new CoaSchmHdr();
-						this.coaschmhdr.setId(this.getId());
-						this.coaschmhdr.setPartner(this.partner);
-						this.coaschmhdr.setCoaSchmCode(this.coaschmcode);
-						this.coaschmhdr.setCoaSchmDesc(this.coaschmdesc);
-						this.coaschmhdr.setIsActive(this.isactive);
-						this.coaschmhdr.setPartner(this.partner);
+						this.assetdocmaster = new AssetDocMaster();
+						this.assetdocmaster.setId(this.getId());
+						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
+						this.assetdocmaster.setDocumentName(this.getDocumentname());
+						this.assetdocmaster.setAssetType(this.getAssettype());
+						this.assetdocmaster.setPartner(this.getPartner());
+						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
 						
-						this.coaschmhdr.setUsrCrt(BaseAction.sesLoginName());
-						this.coaschmhdr.setUsrUpd(BaseAction.sesLoginName());
-						this.service.SaveAddHeader(this.coaschmhdr);
+						this.assetdocmasterservice.SaveEdit(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -407,37 +416,24 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
-		private String SaveDelete() throws Exception
-			{
-				String status = "";
-				try
-					{
-						if (this.getId() != null)
-							{
-								final CoaSchmHdr coaSchmHdr = new CoaSchmHdr();
-								coaSchmHdr.setId(this.getId());
-								this.service.SaveDelHeader(coaSchmHdr);
-								this.setMessage(BaseAction.SuccessMessage());
-							}
-						else
-							{
-								this.mode = "start";
-								this.setMessage(BaseAction.SelectFirst());
-							}
-					}
-				catch (final Exception exp)
-					{
-						status = ERROR;
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return status;
-			}
-
+			
+		// @Override
+		// public void validate()
+		// {
+		// if (this.getDocumentCode().length() == 0)
+		// {
+		// this.addFieldError("documentCode", "Document Code id Required");
+		// }
+		// if (this.getDocumentName().length() == 0)
+		// {
+		// this.addFieldError("documentName", "Document Name id Required");
+		// }
+		// if (this.getAssetType().length() == 0)
+		// {
+		// this.addFieldError("this.assetType", "Asset Type is required");
+		// }
+		// }
+		
 		/**
 		 * @return the serialversionuid
 		 */
@@ -445,23 +441,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
-		/**
-		 * @return the coaschmdtl
-		 */
-		public CoaSchmDtl getCoaschmdtl()
-			{
-				return this.coaschmdtl;
-			}
-
-		/**
-		 * @return the coaschmhdr
-		 */
-		public CoaSchmHdr getCoaschmhdr()
-			{
-				return this.coaschmhdr;
-			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -469,7 +449,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -477,25 +457,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
-		/**
-		 * @param coaschmdtl
-		 *            the coaschmdtl to set
-		 */
-		public void setCoaschmdtl(final CoaSchmDtl coaschmdtl)
-			{
-				this.coaschmdtl = coaschmdtl;
-			}
-
-		/**
-		 * @param coaschmhdr
-		 *            the coaschmhdr to set
-		 */
-		public void setCoaschmhdr(final CoaSchmHdr coaschmhdr)
-			{
-				this.coaschmhdr = coaschmhdr;
-			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -504,7 +466,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -513,17 +475,24 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -531,7 +500,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -539,15 +508,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -556,7 +517,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -565,7 +526,36 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+			
+		/**
+		 * @return the searchBy
+		 */
+		
+		/**
+		 * @param pageNumber
+		 *            the pageNumber to set
+		 */
+		public void setPageNumber(final int pageNumber)
+			{
+				this.pageNumber = pageNumber;
+			}
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -574,102 +564,105 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
-		public JournalSchemeService getJourschemeservice()
+			
+		public String getStatus()
 			{
-				return this.service;
-			}
-
-		public void setJourschemeservice(final JournalSchemeService jourschemeservice)
-			{
-				this.service = jourschemeservice;
-			}
-
-		public List<CoaSchmDtl> getLstcoaschmdtl()
-			{
-				return this.lstcoaschmdtl;
-			}
-
-		public void setLstcoaschmdtl(final List<CoaSchmDtl> lstcoaschmdtl)
-			{
-				this.lstcoaschmdtl = lstcoaschmdtl;
-			}
-
-		public List<CoaSchmHdr> getLstcoaschmhdr()
-			{
-				return this.lstcoaschmhdr;
-			}
-
-		public void setLstcoaschmhdr(final List<CoaSchmHdr> lstcoaschmhdr)
-			{
-				this.lstcoaschmhdr = lstcoaschmhdr;
-			}
-
-		public int getPagenumber()
-			{
-				return this.pagenumber;
-			}
-
-		public void setPagenumber(final int pagenumber)
-			{
-				this.pagenumber = pagenumber;
+				return this.status;
 			}
 			
-		public String getCoaschmcode()
+		public void setStatus(final String status)
 			{
-				return this.coaschmcode;
+				this.status = status;
 			}
-
-		public void setCoaschmcode(final String coaschmcode)
-			{
-				this.coaschmcode = coaschmcode;
-			}
-
-		public String getCoaschmdesc()
-			{
-				return this.coaschmdesc;
-			}
-
-		public void setCoaschmdesc(final String coaschmdesc)
-			{
-				this.coaschmdesc = coaschmdesc;
-			}
-
-		public Integer getIsactive()
-			{
-				return this.isactive;
-			}
-
-		public void setIsactive(final Integer isactive)
-			{
-				this.isactive = isactive;
-			}
-
-		public void setId(final Long id)
-			{
-				this.id = id;
-			}
-
+			
 		public Long getId()
 			{
 				return this.id;
 			}
-
-		/**
-		 * @return the service
-		 */
-		public JournalSchemeService getService()
+			
+		public void setId(final Long id)
 			{
-				return this.service;
+				this.id = id;
 			}
-
-		/**
-		 * @param service
-		 *            the service to set
-		 */
-		public void setService(final JournalSchemeService service)
+			
+		public String getLbltest()
 			{
-				this.service = service;
+				return this.lbltest;
 			}
-
+			
+		public void setLbltest(final String lbltest)
+			{
+				this.lbltest = lbltest;
+			}
+			
+		public String getDocumentcode()
+			{
+				return this.documentcode;
+			}
+			
+		public void setDocumentcode(final String documentcode)
+			{
+				this.documentcode = documentcode;
+			}
+			
+		public String getDocumentname()
+			{
+				return this.documentname;
+			}
+			
+		public void setDocumentname(final String documentname)
+			{
+				this.documentname = documentname;
+			}
+			
+		public String getAssettype()
+			{
+				return this.assettype;
+			}
+			
+		public void setAssettype(final String assettype)
+			{
+				this.assettype = assettype;
+			}
+			
+		public Short getIsactive()
+			{
+				return this.isactive;
+			}
+			
+		public void setIsactive(final Short isactive)
+			{
+				this.isactive = isactive;
+			}
+			
+		public AssetDocMasterService getAssetdocmasterservice()
+			{
+				return this.assetdocmasterservice;
+			}
+			
+		public void setAssetdocmasterservice(final AssetDocMasterService assetdocmasterservice)
+			{
+				this.assetdocmasterservice = assetdocmasterservice;
+			}
+			
+		public AssetDocMaster getAssetdocmaster()
+			{
+				return this.assetdocmaster;
+			}
+			
+		public void setAssetdocmaster(final AssetDocMaster assetdocmaster)
+			{
+				this.assetdocmaster = assetdocmaster;
+			}
+			
+		public List<AssetDocMaster> getLstassetdocmasters()
+			{
+				return this.lstassetdocmasters;
+			}
+			
+		public void setLstassetdocmasters(final List<AssetDocMaster> lstassetdocmasters)
+			{
+				this.lstassetdocmasters = lstassetdocmasters;
+			}
+			
 	}

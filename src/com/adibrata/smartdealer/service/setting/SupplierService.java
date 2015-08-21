@@ -12,7 +12,7 @@ import com.adibrata.smartdealer.service.SeviceBase;
  * @author Henry
  *
  */
-public interface DealerService extends SeviceBase {
+public interface SupplierService extends SeviceBase {
 
 	public List<Supplier> Paging(int CurrentPage, String WhereCond,
 			String SortBy) throws Exception;

@@ -1,39 +1,46 @@
 
-package com.adibrata.smartdealer.action.setting.dealer;
+package com.adibrata.smartdealer.action.setting.office;
 
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.setting.DealerDao;
+import com.adibrata.smartdealer.dao.setting.OfficeDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.model.Supplier;
-import com.adibrata.smartdealer.service.setting.DealerService;
+import com.adibrata.smartdealer.service.setting.OfficeService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class DealerAction extends BaseAction implements Preparable
+public class OfficeAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		private Long id;
+		
 		private String mode;
-		private DealerService dealerservice;
-		private Supplier supplier;
 		private Partner partner;
 		private Office office;
-		private List<Supplier> lstdealer;
+		private OfficeService officeservice;
+		private List<Office> lstoffice;
+		private String searchcriteria;
+		private String searchvalue;
 		private int pagenumber;
+
+		private Long id;
+		
+		private String message;
+		
+		private String officecode;
 		private String name;
 		private String address;
 		private String rt;
 		private String rw;
 		private String kelurahan;
+		private String kecamatan;
 		private String city;
 		private String zipcode;
 		private String type;
@@ -44,40 +51,34 @@ public class DealerAction extends BaseAction implements Preparable
 		private String areafax;
 		private String faxno;
 		private String handphone;
-		// private String fullAddress; pindahkan ke service dao untuk simpan full
-		// address
-		private String searchcriteria;
-		private String searchvalue;
-		private String usrUpd;
-		private String usrCrt;
-
-		private String message;
-
-		public DealerAction() throws Exception
+		// private String fullAddress; save di dao office
+		private Character isactive;
+		
+		public OfficeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.office = new Office();
 				this.setOffice(this.office);
-
-				this.dealerservice = new DealerDao();
-				this.supplier = new Supplier();
-
+				
+				this.officeservice = new OfficeDao();
+				this.office = new Office();
+				
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -182,17 +183,17 @@ public class DealerAction extends BaseAction implements Preparable
 						try
 							{
 								this.Paging();
-								strMode = "start";
 							}
 						catch (final Exception e)
 							{
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+						strMode = INPUT;
 					}
 				return strMode;
 			}
-
+			
 		public String save()
 			{
 				String strMode;
@@ -231,7 +232,7 @@ public class DealerAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "input";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -241,7 +242,7 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -258,66 +259,67 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstdealer = this.dealerservice.Paging(this.getPagenumber(), this.WhereCond(), "");
+						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						this.lstdealer = this.dealerservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
-						this.pagenumber = this.dealerservice.getCurrentpage();
+						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.officeservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
-				this.supplier = new Supplier();
+				this.office = new Office();
 				try
 					{
 						if (this.getId() != null)
 							{
-								this.supplier = this.dealerservice.View(this.id);
-								this.partner = this.supplier.getPartner();
-								this.name = this.supplier.getName();
-								this.address = this.supplier.getAddress();
-								this.rt = this.supplier.getRt();
-								this.rw = this.supplier.getRw();
-								this.kelurahan = this.supplier.getKelurahan();
-								this.city = this.supplier.getCity();
-								this.zipcode = this.supplier.getZipcode();
-								this.type = this.supplier.getType();
-								this.areaphone1 = this.supplier.getAreaPhone1();
-								this.phoneno1 = this.supplier.getPhoneNo1();
-								this.areaphone2 = this.supplier.getAreaPhone2();
-								this.phoneno2 = this.supplier.getPhoneNo2();
-								this.areafax = this.supplier.getAreaFax();
-								this.faxno = this.supplier.getFaxNo();
-								this.handphone = this.supplier.getHandphone();
+								this.office = this.officeservice.View(this.id);
+								this.partner = this.office.getPartner();
+								this.officecode = this.office.getOfficeCode();
+								this.name = this.office.getName();
+								this.address = this.office.getAddress();
+								this.rt = this.office.getRt();
+								this.rw = this.office.getRw();
+								this.kelurahan = this.office.getKelurahan();
+								this.kecamatan = this.office.getKecamatan();
+								this.city = this.office.getCity();
+								this.zipcode = this.office.getZipcode();
+								this.areaphone1 = this.office.getAreaPhone1();
+								this.areaphone2 = this.office.getAreaPhone2();
+								this.phoneno1 = this.office.getPhoneNo1();
+								this.phoneno2 = this.office.getPhoneNo2();
+								this.areafax = this.office.getAreaFax();
+								this.faxno = this.office.getFaxNo();
+								this.handphone = this.office.getHandphone();
 							}
 						else
 							{
@@ -336,31 +338,37 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
+						this.office = new Office();
+						
+						this.office.setPartner(this.partner);
 
-						final Supplier supplier = new Supplier();
-						supplier.setName(this.name);
-						supplier.setAddress(this.address);
-						supplier.setRt(this.rt);
-						supplier.setRw(this.rw);
-						supplier.setKelurahan(this.kelurahan);
-						supplier.setCity(this.city);
-						supplier.setZipcode(this.zipcode);
-						supplier.setType(this.type);
-						supplier.setAreaPhone1(this.areaphone1);
-						supplier.setAreaPhone2(this.areaphone2);
-						supplier.setPhoneNo1(this.phoneno1);
-						supplier.setPhoneNo2(this.areaphone2);
-						supplier.setAreaFax(this.areafax);
-						supplier.setFaxNo(this.faxno);
-						supplier.setHandphone(this.handphone);
-						supplier.setPartner(this.partner);
-						this.dealerservice.SaveAdd(supplier);
+						this.office.setOfficeCode(this.getOfficecode());
+						this.office.setName(this.getName());
+						this.office.setAddress(this.getAddress());
+						this.office.setRt(this.getRt());
+						this.office.setRw(this.getRw());
+						this.office.setKelurahan(this.getKelurahan());
+						this.office.setKecamatan(this.getKecamatan());
+
+						this.office.setCity(this.getCity());
+						this.office.setZipcode(this.getZipcode());
+						this.office.setAreaPhone1(this.getAreaphone1());
+						this.office.setAreaPhone2(this.getAreaphone1());
+						this.office.setPhoneNo1(this.getPhoneno2());
+						this.office.setPhoneNo2(this.getPhoneno2());
+						this.office.setAreaFax(this.getAreafax());
+						this.office.setFaxNo(this.getFaxno());
+						this.office.setHandphone(this.handphone);
+						this.office.setUsrCrt(BaseAction.sesLoginName());
+						this.office.setUsrUpd(BaseAction.sesLoginName());
+						this.officeservice.SaveAdd(this.office);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -378,27 +386,30 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				try
 					{
-
-						final Supplier supplier = new Supplier();
-						supplier.setId(this.getId());
-						supplier.setName(this.getName());
-						supplier.setAddress(this.getAddress());
-						supplier.setRt(this.getRt());
-						supplier.setRw(this.getRw());
-						supplier.setKelurahan(this.getKelurahan());
-						supplier.setCity(this.getCity());
-						supplier.setZipcode(this.getZipcode());
-						supplier.setAreaPhone1(this.getAreaphone1());
-						supplier.setAreaPhone2(this.getAreaphone2());
-						supplier.setPhoneNo1(this.getPhoneno1());
-						supplier.setPhoneNo2(this.getPhoneno2());
-						supplier.setAreaFax(this.getAreafax());
-						supplier.setFaxNo(this.getFaxno());
-						supplier.setHandphone(this.getHandphone());
-						supplier.setPartner(this.partner);
-						supplier.setUsrUpd(this.usrUpd);
-						this.dealerservice.SaveAdd(supplier);
+						this.office = new Office();
+						this.office.setId(this.getId());
+						this.office.setPartner(this.partner);
+						this.office.setOfficeCode(this.getOfficecode());
+						this.office.setName(this.getName());
+						this.office.setAddress(this.getAddress());
+						this.office.setRt(this.getRt());
+						this.office.setRw(this.getRw());
+						this.office.setKelurahan(this.getKelurahan());
+						this.office.setKecamatan(this.getKecamatan());
+						this.office.setCity(this.getCity());
+						this.office.setZipcode(this.getZipcode());
+						this.office.setAreaPhone1(this.getAreaphone1());
+						this.office.setAreaPhone2(this.getAreaphone1());
+						this.office.setPhoneNo1(this.getPhoneno2());
+						this.office.setPhoneNo2(this.getPhoneno2());
+						this.office.setAreaFax(this.getAreafax());
+						this.office.setFaxNo(this.getFaxno());
+						this.office.setPartner(this.partner);
+						this.office.setUsrUpd(BaseAction.sesLoginName());
+						this.office.setUsrCrt(BaseAction.sesLoginName());
+						this.officeservice.SaveEdit(this.office);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
@@ -411,21 +422,29 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				final String status = "";
 				try
 					{
-
-						final Supplier supplier = new Supplier();
-						supplier.setId(this.getId());
-						this.dealerservice.SaveDel(supplier);
-						this.setMessage(BaseAction.SuccessMessage());
+						if (this.getId() != null)
+							{
+								this.office = new Office();
+								this.office.setId(this.getId());
+								this.officeservice.SaveDel(this.office);
+								this.setMessage(BaseAction.SuccessMessage());
+								this.mode = SUCCESS;
+							}
+						else
+							{
+								this.mode = INPUT;
+								this.setMessage(BaseAction.SelectFirst());
+							}
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -434,7 +453,7 @@ public class DealerAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -442,15 +461,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
-		/**
-		 * @return the supplier
-		 */
-		public Supplier getSupplier()
-			{
-				return this.supplier;
-			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -458,7 +469,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -466,16 +477,15 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
-		 * @param supplier
-		 *            the supplier to set
+		 * @return the lstoffice
 		 */
-		public void setSupplier(final Supplier supplier)
+		public List<Office> getLstoffice()
 			{
-				this.supplier = supplier;
+				return this.lstoffice;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -484,7 +494,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -493,213 +503,26 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
+		/**
+		 * @param lstoffice
+		 *            the lstoffice to set
+		 */
+		public void setLstoffice(final List<Office> lstoffice)
+			{
+				this.lstoffice = lstoffice;
+			}
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
-		/**
-		 * @return the name
-		 */
-		public String getName()
-			{
-				return this.name;
-			}
-
-		/**
-		 * @return the address
-		 */
-		public String getAddress()
-			{
-				return this.address;
-			}
-
-		/**
-		 * @return the rt
-		 */
-		public String getRt()
-			{
-				return this.rt;
-			}
-
-		/**
-		 * @return the rw
-		 */
-		public String getRw()
-			{
-				return this.rw;
-			}
-
-		/**
-		 * @return the kelurahan
-		 */
-		public String getKelurahan()
-			{
-				return this.kelurahan;
-			}
-
-		/**
-		 * @return the city
-		 */
-		public String getCity()
-			{
-				return this.city;
-			}
-
-		/**
-		 * @return the zipcode
-		 */
-		public String getZipcode()
-			{
-				return this.zipcode;
-			}
-
-		/**
-		 * @return the type
-		 */
-		public String getType()
-			{
-				return this.type;
-			}
-
-		/**
-		 * @return the handphone
-		 */
-		public String getHandphone()
-			{
-				return this.handphone;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final long id)
-			{
-				this.id = id;
-			}
-
-		/**
-		 * @param name
-		 *            the name to set
-		 */
-		public void setName(final String name)
-			{
-				this.name = name;
-			}
-
-		/**
-		 * @param address
-		 *            the address to set
-		 */
-		public void setAddress(final String address)
-			{
-				this.address = address;
-			}
-
-		/**
-		 * @param rt
-		 *            the rt to set
-		 */
-		public void setRt(final String rt)
-			{
-				this.rt = rt;
-			}
-
-		/**
-		 * @param rw
-		 *            the rw to set
-		 */
-		public void setRw(final String rw)
-			{
-				this.rw = rw;
-			}
-
-		/**
-		 * @param kelurahan
-		 *            the kelurahan to set
-		 */
-		public void setKelurahan(final String kelurahan)
-			{
-				this.kelurahan = kelurahan;
-			}
-
-		/**
-		 * @param city
-		 *            the city to set
-		 */
-		public void setCity(final String city)
-			{
-				this.city = city;
-			}
-
-		/**
-		 * @param zipcode
-		 *            the zipcode to set
-		 */
-		public void setZipcode(final String zipcode)
-			{
-				this.zipcode = zipcode;
-			}
-
-		/**
-		 * @param type
-		 *            the type to set
-		 */
-		public void setType(final String type)
-			{
-				this.type = type;
-			}
-
-		/**
-		 * @param handphone
-		 *            the handphone to set
-		 */
-		public void setHandphone(final String handphone)
-			{
-				this.handphone = handphone;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -707,7 +530,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -715,7 +538,15 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -724,7 +555,7 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -733,115 +564,336 @@ public class DealerAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
-		public String getMessage()
-			{
-				return this.message;
-			}
-
+			
+		/**
+		 * @param message
+		 *            the message to set
+		 */
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
-		public void setId(final Long id)
+			
+		/**
+		 * @return the name
+		 */
+		public String getName()
 			{
-				this.id = id;
+				return this.name;
 			}
-
-		public Long getId()
+			
+		/**
+		 * @return the address
+		 */
+		public String getAddress()
 			{
-				return this.id;
+				return this.address;
 			}
-
+			
+		/**
+		 * @return the rt
+		 */
+		public String getRt()
+			{
+				return this.rt;
+			}
+			
+		/**
+		 * @return the rw
+		 */
+		public String getRw()
+			{
+				return this.rw;
+			}
+			
+		/**
+		 * @return the kelurahan
+		 */
+		public String getKelurahan()
+			{
+				return this.kelurahan;
+			}
+			
+		/**
+		 * @return the city
+		 */
+		public String getCity()
+			{
+				return this.city;
+			}
+			
+		/**
+		 * @return the zipcode
+		 */
+		public String getZipcode()
+			{
+				return this.zipcode;
+			}
+			
+		/**
+		 * @return the type
+		 */
+		public String getType()
+			{
+				return this.type;
+			}
+			
+		/**
+		 * @return the handphone
+		 */
+		public String getHandphone()
+			{
+				return this.handphone;
+			}
+			
+		/**
+		 * @param name
+		 *            the name to set
+		 */
+		public void setName(final String name)
+			{
+				this.name = name;
+			}
+			
+		/**
+		 * @param address
+		 *            the address to set
+		 */
+		public void setAddress(final String address)
+			{
+				this.address = address;
+			}
+			
+		/**
+		 * @param rt
+		 *            the rt to set
+		 */
+		public void setRt(final String rt)
+			{
+				this.rt = rt;
+			}
+			
+		/**
+		 * @param rw
+		 *            the rw to set
+		 */
+		public void setRw(final String rw)
+			{
+				this.rw = rw;
+			}
+			
+		/**
+		 * @param kelurahan
+		 *            the kelurahan to set
+		 */
+		public void setKelurahan(final String kelurahan)
+			{
+				this.kelurahan = kelurahan;
+			}
+			
+		/**
+		 * @param city
+		 *            the city to set
+		 */
+		public void setCity(final String city)
+			{
+				this.city = city;
+			}
+			
+		/**
+		 * @param zipcode
+		 *            the zipcode to set
+		 */
+		public void setZipcode(final String zipcode)
+			{
+				this.zipcode = zipcode;
+			}
+			
+		/**
+		 * @param type
+		 *            the type to set
+		 */
+		public void setType(final String type)
+			{
+				this.type = type;
+			}
+			
+		/**
+		 * @param handphone
+		 *            the handphone to set
+		 */
+		public void setHandphone(final String handphone)
+			{
+				this.handphone = handphone;
+			}
+			
+		/**
+		 * @return the areaphone1
+		 */
 		public String getAreaphone1()
 			{
 				return this.areaphone1;
 			}
-
+			
+		/**
+		 * @param areaphone1
+		 *            the areaphone1 to set
+		 */
 		public void setAreaphone1(final String areaphone1)
 			{
 				this.areaphone1 = areaphone1;
 			}
-
-		public String getPhoneno1()
-			{
-				return this.phoneno1;
-			}
-
-		public void setPhoneno1(final String phoneno1)
-			{
-				this.phoneno1 = phoneno1;
-			}
-
+			
+		/**
+		 * @return the areaphone2
+		 */
 		public String getAreaphone2()
 			{
 				return this.areaphone2;
 			}
-
+			
+		/**
+		 * @param areaphone2
+		 *            the areaphone2 to set
+		 */
 		public void setAreaphone2(final String areaphone2)
 			{
 				this.areaphone2 = areaphone2;
 			}
-
+			
+		/**
+		 * @return the phoneno2
+		 */
 		public String getPhoneno2()
 			{
 				return this.phoneno2;
 			}
-
+			
+		/**
+		 * @param phoneno2
+		 *            the phoneno2 to set
+		 */
 		public void setPhoneno2(final String phoneno2)
 			{
 				this.phoneno2 = phoneno2;
 			}
-
-		public String getAreafax()
-			{
-				return this.areafax;
-			}
-
-		public void setAreafax(final String areafax)
-			{
-				this.areafax = areafax;
-			}
-
+			
+		/**
+		 * @return the faxno
+		 */
 		public String getFaxno()
 			{
 				return this.faxno;
 			}
-
+			
+		/**
+		 * @param faxno
+		 *            the faxno to set
+		 */
 		public void setFaxno(final String faxno)
 			{
 				this.faxno = faxno;
 			}
-
-		public DealerService getDealerservice()
+			
+		/**
+		 * @return the areafax
+		 */
+		public String getAreafax()
 			{
-				return this.dealerservice;
+				return this.areafax;
 			}
-
-		public void setDealerservice(final DealerService dealerservice)
+			
+		/**
+		 * @param areafax
+		 *            the areafax to set
+		 */
+		public void setAreafax(final String areafax)
 			{
-				this.dealerservice = dealerservice;
+				this.areafax = areafax;
 			}
-
-		public List<Supplier> getLstdealer()
+			
+		/**
+		 * @return the phoneno1
+		 */
+		public String getPhoneno1()
 			{
-				return this.lstdealer;
+				return this.phoneno1;
 			}
-
-		public void setLstdealer(final List<Supplier> lstdealer)
+			
+		/**
+		 * @param phoneno1
+		 *            the phoneno1 to set
+		 */
+		public void setPhoneno1(final String phoneno1)
 			{
-				this.lstdealer = lstdealer;
+				this.phoneno1 = phoneno1;
 			}
-
+			
+		/**
+		 * @return the kecamatan
+		 */
+		public String getKecamatan()
+			{
+				return this.kecamatan;
+			}
+			
+		/**
+		 * @param kecamatan
+		 *            the kecamatan to set
+		 */
+		public void setKecamatan(final String kecamatan)
+			{
+				this.kecamatan = kecamatan;
+			}
+			
+		public OfficeService getOfficeservice()
+			{
+				return this.officeservice;
+			}
+			
+		public void setOfficeservice(final OfficeService officeservice)
+			{
+				this.officeservice = officeservice;
+			}
+			
 		public int getPagenumber()
 			{
 				return this.pagenumber;
 			}
-
+			
 		public void setPagenumber(final int pagenumber)
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
+		public String getOfficecode()
+			{
+				return this.officecode;
+			}
+			
+		public void setOfficecode(final String officecode)
+			{
+				this.officecode = officecode;
+			}
+			
+		public Character getIsactive()
+			{
+				return this.isactive;
+			}
+			
+		public void setIsactive(final Character isactive)
+			{
+				this.isactive = isactive;
+			}
+			
+		public Long getId()
+			{
+				return this.id;
+			}
+			
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+			
 	}

@@ -1,7 +1,8 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 20, 2015 1:54:39 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:01:27 PM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
@@ -26,10 +27,10 @@ public class AgrmntBankStatInfoDtl implements java.io.Serializable
 		private short seqNo;
 		private Byte bankMonth;
 		private Short bankYear;
-		private Double bankDebit;
-		private Double bankBalance;
-		private Double hiDebitCredit;
-		private Double loDebitCredit;
+		private BigDecimal bankDebit;
+		private BigDecimal bankBalance;
+		private BigDecimal hiDebitCredit;
+		private BigDecimal loDebitCredit;
 		private Short mutasiDebit;
 		private Short mutasiCredit;
 		private Short avgBalance;
@@ -48,8 +49,8 @@ public class AgrmntBankStatInfoDtl implements java.io.Serializable
 				this.seqNo = seqNo;
 			}
 			
-		public AgrmntBankStatInfoDtl(long id, AgrmntBankStatementInfo agrmntBankStatementInfo, short seqNo, Byte bankMonth, Short bankYear, Double bankDebit, Double bankBalance, Double hiDebitCredit, Double loDebitCredit, Short mutasiDebit,
-		        Short mutasiCredit, Short avgBalance, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AgrmntBankStatInfoDtl(long id, AgrmntBankStatementInfo agrmntBankStatementInfo, short seqNo, Byte bankMonth, Short bankYear, BigDecimal bankDebit, BigDecimal bankBalance, BigDecimal hiDebitCredit, BigDecimal loDebitCredit,
+		        Short mutasiDebit, Short mutasiCredit, Short avgBalance, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.agrmntBankStatementInfo = agrmntBankStatementInfo;
@@ -128,45 +129,45 @@ public class AgrmntBankStatInfoDtl implements java.io.Serializable
 			}
 			
 		@Column(name = "BankDebit", precision = 17)
-		public Double getBankDebit()
+		public BigDecimal getBankDebit()
 			{
 				return this.bankDebit;
 			}
 			
-		public void setBankDebit(Double bankDebit)
+		public void setBankDebit(BigDecimal bankDebit)
 			{
 				this.bankDebit = bankDebit;
 			}
 			
 		@Column(name = "BankBalance", precision = 17)
-		public Double getBankBalance()
+		public BigDecimal getBankBalance()
 			{
 				return this.bankBalance;
 			}
 			
-		public void setBankBalance(Double bankBalance)
+		public void setBankBalance(BigDecimal bankBalance)
 			{
 				this.bankBalance = bankBalance;
 			}
 			
 		@Column(name = "HiDebitCredit", precision = 17)
-		public Double getHiDebitCredit()
+		public BigDecimal getHiDebitCredit()
 			{
 				return this.hiDebitCredit;
 			}
 			
-		public void setHiDebitCredit(Double hiDebitCredit)
+		public void setHiDebitCredit(BigDecimal hiDebitCredit)
 			{
 				this.hiDebitCredit = hiDebitCredit;
 			}
 			
 		@Column(name = "LoDebitCredit", precision = 17)
-		public Double getLoDebitCredit()
+		public BigDecimal getLoDebitCredit()
 			{
 				return this.loDebitCredit;
 			}
 			
-		public void setLoDebitCredit(Double loDebitCredit)
+		public void setLoDebitCredit(BigDecimal loDebitCredit)
 			{
 				this.loDebitCredit = loDebitCredit;
 			}

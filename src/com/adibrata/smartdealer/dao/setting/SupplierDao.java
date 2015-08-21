@@ -10,7 +10,7 @@ import org.hibernate.Query;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.Supplier;
-import com.adibrata.smartdealer.service.setting.DealerService;
+import com.adibrata.smartdealer.service.setting.SupplierService;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
@@ -18,18 +18,18 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 /**
  * @author Henry
  */
-public class DealerDao extends DaoBase implements DealerService
+public class SupplierDao extends DaoBase implements SupplierService
 	{
 		String userupd;
 		String strStatement;
-		StringBuilder hql = new StringBuilder();
+		
 		private int currentpage;
 		private Long totalrecord;
 
 		/**
 		 *
 		 */
-		public DealerDao() throws Exception
+		public SupplierDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
@@ -179,6 +179,7 @@ public class DealerDao extends DaoBase implements DealerService
 		 * @see com.adibrata.smartdealer.service.setting.DealerService#Paging(int,
 		 * java.lang.String, java.lang.String)
 		 */
+		@SuppressWarnings("unchecked")
 		@Override
 		public List<Supplier> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{

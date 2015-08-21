@@ -1,7 +1,8 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 20, 2015 1:54:39 PM by Hibernate Tools 4.3.1
+// Generated Aug 21, 2015 12:01:27 PM by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
@@ -24,12 +25,12 @@ public class AgrmntInsAsset implements java.io.Serializable
 		private long id;
 		private AgrmntAsset agrmntAsset;
 		private AgrmntIns agrmntIns;
-		private String flagInsStatus;
+		private char flagInsStatus;
 		private Date flagInsStatusDate;
 		private Long assetTypeId;
 		private Short isUsed;
 		private String usageId;
-		private Double sumInsured;
+		private BigDecimal sumInsured;
 		private short isValid;
 		private short isValidAssetYear;
 		private short isValidSerialNo1;
@@ -56,7 +57,7 @@ public class AgrmntInsAsset implements java.io.Serializable
 			{
 			}
 			
-		public AgrmntInsAsset(long id, String flagInsStatus, short isValid, short isValidAssetYear, short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo,
+		public AgrmntInsAsset(long id, char flagInsStatus, short isValid, short isValidAssetYear, short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo,
 		        String insuranceType)
 			{
 				this.id = id;
@@ -72,7 +73,7 @@ public class AgrmntInsAsset implements java.io.Serializable
 				this.insuranceType = insuranceType;
 			}
 			
-		public AgrmntInsAsset(long id, AgrmntAsset agrmntAsset, AgrmntIns agrmntIns, String flagInsStatus, Date flagInsStatusDate, Long assetTypeId, Short isUsed, String usageId, Double sumInsured, short isValid, short isValidAssetYear,
+		public AgrmntInsAsset(long id, AgrmntAsset agrmntAsset, AgrmntIns agrmntIns, char flagInsStatus, Date flagInsStatusDate, Long assetTypeId, Short isUsed, String usageId, BigDecimal sumInsured, short isValid, short isValidAssetYear,
 		        short isValidSerialNo1, short isValidSerialNo2, short isValidAttribute, short isValidSumInsured, String flagReNew, String renewalDocNo, Date renewalDocDate, Double endorsAdditionalPremium, Double endorsToInscoPremium,
 		        String endorsDocNo, String bdendorsDocNo, Date bdendorsDate, Short isAssetReplacement, String sppano, String insuranceType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
@@ -146,12 +147,12 @@ public class AgrmntInsAsset implements java.io.Serializable
 			}
 			
 		@Column(name = "FlagInsStatus", nullable = false, length = 1)
-		public String getFlagInsStatus()
+		public char getFlagInsStatus()
 			{
 				return this.flagInsStatus;
 			}
 			
-		public void setFlagInsStatus(String flagInsStatus)
+		public void setFlagInsStatus(char flagInsStatus)
 			{
 				this.flagInsStatus = flagInsStatus;
 			}
@@ -202,12 +203,12 @@ public class AgrmntInsAsset implements java.io.Serializable
 			}
 			
 		@Column(name = "SumInsured", precision = 17)
-		public Double getSumInsured()
+		public BigDecimal getSumInsured()
 			{
 				return this.sumInsured;
 			}
 			
-		public void setSumInsured(Double sumInsured)
+		public void setSumInsured(BigDecimal sumInsured)
 			{
 				this.sumInsured = sumInsured;
 			}
