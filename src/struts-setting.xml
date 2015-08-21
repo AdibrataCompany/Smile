@@ -24,13 +24,12 @@
 			method="save">
 			<result name="input">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="error">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
-			<result name="saveadd" type="redirectAction">
+			<result name="success" type="redirectAction">
 				<param name="actionName">assetdoc</param>
 				<param name="message">${message}</param>
 			</result>
-			<result name="saveedit" type="redirectAction">
+			<result name="end" type="redirectAction">
 				<param name="actionName">assetdoc</param>
-				<param name="message">${message}</param>
 			</result>
 		</action>
 
