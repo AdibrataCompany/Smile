@@ -16,12 +16,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AssetMasterAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private AssetMasterService assetmasterservice;
 		private AssetMaster assetmaster;
@@ -31,24 +31,23 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-		private String usrupd;
-		private String usrcrt;
+		
 		private String message;
 		private String status;
 		private Long id;
-
+		
 		private boolean isactive;
 		private String assettype;
 		private String assetbrand;
 		private String assetmodel;
 		private String assetcode;
 		private Integer assetlevel;
-
+		
 		public AssetMasterAction() throws Exception
 			{
 				this.assetmasterservice = new AssetMasterDao();
 				this.assetmaster = new AssetMaster();
-
+				
 				final Partner partner = new Partner();
 				final Office office = new Office();
 				partner.setPartnerCode(BaseAction.sesPartnerCode());
@@ -57,9 +56,9 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					{
 						this.pagenumber = 1;
 					}
-
+					
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -169,11 +168,11 @@ public class AssetMasterAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = "start";
+						strMode = "input";
 					}
 				return strMode;
 			}
-
+			
 		public String save()
 			{
 				String strMode;
@@ -222,7 +221,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -239,7 +238,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -248,15 +247,15 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -266,15 +265,15 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.assetmaster = new AssetMaster();
@@ -306,19 +305,23 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
-						final AssetMaster assetMaster = new AssetMaster();
-						assetMaster.setAssetBrand(this.getAssetbrand());
-						assetMaster.setAssetType(this.getAssettype());
-						assetMaster.setAssetModel(this.getAssetmodel());
-						assetMaster.setPartner(this.getPartner());
-						assetMaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
-						this.assetmasterservice.SaveAdd(assetMaster);
+						this.assetmaster = new AssetMaster();
+						this.assetmaster.setPartner(this.getPartner());
+						this.assetmaster.setAssetBrand(this.getAssetbrand());
+						this.assetmaster.setAssetType(this.getAssettype());
+						this.assetmaster.setAssetModel(this.getAssetmodel());
+						this.assetmaster.setPartner(this.getPartner());
+						this.assetmaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
+						this.assetmaster.setUsrCrt(BaseAction.sesLoginName());
+						this.assetmaster.setUsrUpd(BaseAction.sesLoginName());
+						this.assetmasterservice.SaveAdd(this.assetmaster);
 						this.setMessage(BaseAction.SuccessMessage());
+						this.mode = "SUCCESS";
 					}
 				catch (final Exception exp)
 					{
@@ -331,20 +334,21 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						final AssetMaster assetMaster = new AssetMaster();
-						assetMaster.setId(this.getId());
-						assetMaster.setAssetBrand(this.getAssetbrand());
-						assetMaster.setAssetType(this.getAssettype());
-						assetMaster.setAssetModel(this.getAssetmodel());
-						assetMaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
-						assetMaster.setPartner(this.getPartner());
-						assetMaster.setUsrUpd(this.getUsrupd());
-						this.assetmasterservice.SaveEdit(assetMaster);
+						this.assetmaster = new AssetMaster();
+						this.assetmaster.setPartner(this.getPartner());
+						this.assetmaster.setId(this.getId());
+						this.assetmaster.setAssetBrand(this.getAssetbrand());
+						this.assetmaster.setAssetType(this.getAssettype());
+						this.assetmaster.setAssetModel(this.getAssetmodel());
+						this.assetmaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
+						
+						this.assetmaster.setUsrUpd(BaseAction.sesLoginName());
+						this.assetmasterservice.SaveEdit(this.assetmaster);
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -358,27 +362,29 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				try
 					{
 						if (this.getId() != null)
 							{
-								final AssetMaster assetMaster = new AssetMaster();
-
-								assetMaster.setId(this.getId());
-								this.assetmasterservice.SaveDel(assetMaster);
+								this.assetmaster = new AssetMaster();
+								
+								this.assetmaster.setId(this.getId());
+								this.assetmasterservice.SaveDel(this.assetmaster);
 								this.setMessage(BaseAction.SuccessMessage());
+								this.mode = SUCCESS;
 							}
 						else
 							{
-								this.mode = "start";
+								this.mode = "input";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
 				catch (final Exception exp)
 					{
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -387,7 +393,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -395,7 +401,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the assetmaster
 		 */
@@ -403,7 +409,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetmaster;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -411,7 +417,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -419,7 +425,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param assetmaster
 		 *            the assetmaster to set
@@ -428,7 +434,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetmaster = assetmaster;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -437,7 +443,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -446,24 +452,24 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -471,7 +477,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -479,7 +485,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -487,7 +493,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -496,7 +502,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -505,27 +511,27 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		public String getMessage()
 			{
 				return this.message;
 			}
-
+			
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public String getStatus()
 			{
 				return this.status;
 			}
-
+			
 		public void setStatus(final String status)
 			{
 				this.status = status;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -534,115 +540,95 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		public boolean isIsactive()
 			{
 				return this.isactive;
 			}
-
+			
 		public void setIsactive(final boolean isactive)
 			{
 				this.isactive = isactive;
 			}
-
+			
 		public String getAssettype()
 			{
 				return this.assettype;
 			}
-
+			
 		public void setAssettype(final String assettype)
 			{
 				this.assettype = assettype;
 			}
-
+			
 		public String getAssetbrand()
 			{
 				return this.assetbrand;
 			}
-
+			
 		public void setAssetbrand(final String assetbrand)
 			{
 				this.assetbrand = assetbrand;
 			}
-
+			
 		public String getAssetmodel()
 			{
 				return this.assetmodel;
 			}
-
+			
 		public void setAssetmodel(final String assetmodel)
 			{
 				this.assetmodel = assetmodel;
 			}
-
+			
 		public String getAssetcode()
 			{
 				return this.assetcode;
 			}
-
+			
 		public void setAssetcode(final String assetcode)
 			{
 				this.assetcode = assetcode;
 			}
-
+			
 		public Integer getAssetlevel()
 			{
 				return this.assetlevel;
 			}
-
+			
 		public void setAssetlevel(final Integer assetlevel)
 			{
 				this.assetlevel = assetlevel;
 			}
-
+			
 		public AssetMasterService getAssetmasterservice()
 			{
 				return this.assetmasterservice;
 			}
-
+			
 		public void setAssetmasterservice(final AssetMasterService assetmasterservice)
 			{
 				this.assetmasterservice = assetmasterservice;
 			}
-
+			
 		public List<AssetMaster> getLstassetmaster()
 			{
 				return this.lstassetmaster;
 			}
-
+			
 		public void setLstassetmaster(final List<AssetMaster> lstassetmaster)
 			{
 				this.lstassetmaster = lstassetmaster;
 			}
-
+			
 		public int getPagenumber()
 			{
 				return this.pagenumber;
 			}
-
+			
 		public void setPagenumber(final int pagenumber)
 			{
 				this.pagenumber = pagenumber;
 			}
-
-		public String getUsrupd()
-			{
-				return this.usrupd;
-			}
-
-		public void setUsrupd(final String usrupd)
-			{
-				this.usrupd = usrupd;
-			}
-
-		public String getUsrcrt()
-			{
-				return this.usrcrt;
-			}
-
-		public void setUsrcrt(final String usrcrt)
-			{
-				this.usrcrt = usrcrt;
-			}
-
+			
 	}
