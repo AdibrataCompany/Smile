@@ -6,7 +6,7 @@ import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
-public class AssetReplacementAction extends BaseAction implements Preparable
+public class AssetReplacementRequestAction extends BaseAction implements Preparable
 	{
 		
 		/**
@@ -24,7 +24,7 @@ public class AssetReplacementAction extends BaseAction implements Preparable
 		private int pageNumber;
 		private String message;
 		
-		public AssetReplacementAction() throws Exception
+		public AssetReplacementRequestAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
