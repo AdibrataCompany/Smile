@@ -16,12 +16,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class WorkshopAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private Workshop workshop;
 		private WorkshopService workshopService;
@@ -35,7 +35,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private String message;
 		private Long id;
-
+		
 		private String name;
 		private String address;
 		private String rt;
@@ -51,32 +51,32 @@ public class WorkshopAction extends BaseAction implements Preparable
 		private String areafax;
 		private String faxno;
 		private String handphone;
-
+		
 		public WorkshopAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.office = new Office();
 				this.setOffice(this.office);
-
+				
 				this.workshopService = new WorkshopDao();
 				this.workshop = new Workshop();
-
+				
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -191,7 +191,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		public String save()
 			{
 				String strMode;
@@ -240,7 +240,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -257,7 +257,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -266,15 +266,15 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -284,15 +284,15 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.workshop = new Workshop();
@@ -333,13 +333,13 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
 						final Workshop workshop = new Workshop();
-
+						
 						workshop.setName(this.getName());
 						workshop.setAddress(this.getAddress());
 						workshop.setRt(this.getRt());
@@ -369,13 +369,13 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
 						final Workshop workshop = new Workshop();
-
+						
 						workshop.setId(this.getId());
 						workshop.setName(this.getName());
 						workshop.setAddress(this.getAddress());
@@ -407,7 +407,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				try
@@ -415,7 +415,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 						if (this.getId() != null)
 							{
 								final Workshop workshop = new Workshop();
-
+								
 								workshop.setId(this.getId());
 								this.workshopService.SaveDel(workshop);
 								this.setMessage(BaseAction.SuccessMessage());
@@ -436,17 +436,17 @@ public class WorkshopAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -454,7 +454,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -462,7 +462,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -470,7 +470,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -478,7 +478,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -486,7 +486,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -495,7 +495,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -504,7 +504,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -513,7 +513,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -522,7 +522,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -531,7 +531,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the name
 		 */
@@ -539,7 +539,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.name;
 			}
-
+			
 		/**
 		 * @return the address
 		 */
@@ -547,7 +547,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.address;
 			}
-
+			
 		/**
 		 * @return the rt
 		 */
@@ -555,7 +555,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.rt;
 			}
-
+			
 		/**
 		 * @return the rw
 		 */
@@ -563,7 +563,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.rw;
 			}
-
+			
 		/**
 		 * @return the kelurahan
 		 */
@@ -571,7 +571,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.kelurahan;
 			}
-
+			
 		/**
 		 * @return the city
 		 */
@@ -579,7 +579,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.city;
 			}
-
+			
 		/**
 		 * @return the type
 		 */
@@ -587,7 +587,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.type;
 			}
-
+			
 		/**
 		 * @return the handphone
 		 */
@@ -595,7 +595,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.handphone;
 			}
-
+			
 		/**
 		 * @param name
 		 *            the name to set
@@ -604,7 +604,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.name = name;
 			}
-
+			
 		/**
 		 * @param address
 		 *            the address to set
@@ -613,7 +613,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.address = address;
 			}
-
+			
 		/**
 		 * @param rt
 		 *            the rt to set
@@ -622,7 +622,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.rt = rt;
 			}
-
+			
 		/**
 		 * @param rw
 		 *            the rw to set
@@ -631,7 +631,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.rw = rw;
 			}
-
+			
 		/**
 		 * @param kelurahan
 		 *            the kelurahan to set
@@ -640,7 +640,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.kelurahan = kelurahan;
 			}
-
+			
 		/**
 		 * @param city
 		 *            the city to set
@@ -649,7 +649,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.city = city;
 			}
-
+			
 		/**
 		 * @param type
 		 *            the type to set
@@ -658,7 +658,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.type = type;
 			}
-
+			
 		/**
 		 * @param handphone
 		 *            the handphone to set
@@ -667,7 +667,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.handphone = handphone;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -675,7 +675,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the workshop
 		 */
@@ -683,7 +683,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.workshop;
 			}
-
+			
 		/**
 		 * @return the workshopService
 		 */
@@ -691,7 +691,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.workshopService;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -699,7 +699,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -707,7 +707,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @return the lstWorkshop
 		 */
@@ -715,7 +715,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				return this.lstWorkshop;
 			}
-
+			
 		/**
 		 * @param workshop
 		 *            the workshop to set
@@ -724,7 +724,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.workshop = workshop;
 			}
-
+			
 		/**
 		 * @param workshopService
 		 *            the workshopService to set
@@ -733,7 +733,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.workshopService = workshopService;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -742,7 +742,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -751,7 +751,7 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @param lstWorkshop
 		 *            the lstWorkshop to set
@@ -760,95 +760,95 @@ public class WorkshopAction extends BaseAction implements Preparable
 			{
 				this.lstWorkshop = lstWorkshop;
 			}
-
+			
 		public String getZipcode()
 			{
 				return this.zipcode;
 			}
-
+			
 		public void setZipcode(final String zipcode)
 			{
 				this.zipcode = zipcode;
 			}
-
+			
 		public int getPagenumber()
 			{
 				return this.pagenumber;
 			}
-
+			
 		public void setPagenumber(final int pagenumber)
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		public String getAreaphone1()
 			{
 				return this.areaphone1;
 			}
-
+			
 		public void setAreaphone1(final String areaphone1)
 			{
 				this.areaphone1 = areaphone1;
 			}
-
+			
 		public String getPhoneno1()
 			{
 				return this.phoneno1;
 			}
-
+			
 		public void setPhoneno1(final String phoneno1)
 			{
 				this.phoneno1 = phoneno1;
 			}
-
+			
 		public String getAreaphone2()
 			{
 				return this.areaphone2;
 			}
-
+			
 		public void setAreaphone2(final String areaphone2)
 			{
 				this.areaphone2 = areaphone2;
 			}
-
+			
 		public String getPhoneno2()
 			{
 				return this.phoneno2;
 			}
-
+			
 		public void setPhoneno2(final String phoneno2)
 			{
 				this.phoneno2 = phoneno2;
 			}
-
+			
 		public String getAreafax()
 			{
 				return this.areafax;
 			}
-
+			
 		public void setAreafax(final String areafax)
 			{
 				this.areafax = areafax;
 			}
-
+			
 		public String getFaxno()
 			{
 				return this.faxno;
 			}
-
+			
 		public void setFaxno(final String faxno)
 			{
 				this.faxno = faxno;
 			}
-
+			
 		public Long getId()
 			{
 				return this.id;
 			}
-
+			
 		public void setId(final Long id)
 			{
 				this.id = id;
 			}
-
+			
 	}

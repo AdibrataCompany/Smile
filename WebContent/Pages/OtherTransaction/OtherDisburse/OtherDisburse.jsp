@@ -20,69 +20,51 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="otherdisburse.action" theme="simple">
 			<center>
-				<h1>Penerimaan Bukan Hutang</h1>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-				<s:label name="message" />
+				<h1>Other Disburse</h1>
+				<s:hidden name="id" />
+				<s:hidden name="bankaccountid" id="bankaccountid" />
+				<s:hidden name="bankaccountname" />
+				<s:hidden name="currencyid" />
+				<s:hidden name="currencycode" />
+				<s:hidden name="mode" id="mode" />
+				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
-						<td width="20%">Tujuan Pembayaran</td>
-						<td width="30%"><input name="destination" type="text"></td>
-						<td width="20%">Cara Bayar</td>
-						<td width="30%"><select name="payment">
-								<option value="cach">Cash</option>
-								<option value="bank">Bank</option>
-						</select></td>
+					<td width="20%">Bank Account</td>
+						<td width="30%"><s:label name="bankaccountname" /> - <s:label
+								name="currencycode" /></td>
+						<td width="20%">Payment Destination</td>
+						<td width="30%"><s:textfield name="destination" placeholder="Payment Destination" /></td>
+
+						
 					</tr>
 					<tr>
 						<td>Reference No</td>
-						<td><input name="refNo" type="text"></td>
-						<td>Rekening Bank</td>
-						<td><select name="bankAccountId">
-								<option value="">Pilih Bank</option>
-								<option>Citi Bank Escrow</option>
-								<option>BCA Escrow</option>
-						</select></td>
+						<td colspan="3"><s:textfield name="reffno"
+								placeholder="Refference Number" /></td>
 					</tr>
 					<tr>
-						<td>Tanggal Transaksi</td>
-						<%@include file="/Pages/DatePicker.jsp"%>
-						<td>Jumlah Pengeluaran</td>
-						<td>IDR <input name="disbAmount" type="text">
-						</td>
+						<td>Value Date</td>
+						<td><div class="input-append date">
+								<s:textfield name="valuedate" placeholder="Value Date"
+									style="width:150px;" class="form-control" />
+								<span class="add-on"><i class="icon-th"><img
+										src="Pages/style/calendar.png" /></i></span>
+							</div></td>
+						<td>Amount Receive</td>
+						<td><s:textfield name="disbamount"
+								placeholder="Amount Disburse" /></td>
 					</tr>
 					<tr>
-						<td valign="top">Catatan</td>
-						<td colspan="3"><textarea name="notes"></textarea></td>
+						<td valign="top">Notes</td>
+						<td colspan="3"><s:textarea name="notes" /></td>
 					</tr>
 				</table>
-				<br>
-				<s:label name="message" />
-				<table>
-					<tr>
-						<th colspan="4">TRANSACTION</th>
-					</tr>
-					<tr>
-						<td width="20%">Transaction</td>
-						<td width="30%"><input name="coaName" type="text">
-							<button type="submit" onclick="entry()">
-								<span class="glyphicon glyphicon-search"></span>
-							</button></td>
-						<td width="25%">Amount</td>
-						<td width="25%"><input name="amount" type="text"></td>
-					</tr>
-					<tr>
-						<td valign="top">Description</td>
-						<td colspan="4"><input name="description" type="text" /></td>
-					</tr>
-				</table>
-				<br>
+				<br> <br> <br>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td><button type="submit" class="btn btn-sm btn-primary"
-								onclick="savedel()">Hapus</button></td>
-						<th align="center">TRANSACTION DETAIL</th>
-						<td align="right"><button type="submit"
-								class="btn btn-sm btn-primary" onclick="saveadd()">Tambah</button>
+								onclick="deldetail()">Remove</button></td>
 					</tr>
 				</table>
 				<br>
@@ -90,49 +72,60 @@
 					class="tablegrid">
 					<tr>
 						<th width="5%" style="text-align: center;">Pilih</th>
-						<th style="text-align: center;">Transaksi</th>
-						<th style="text-align: center;">Keterangan</th>
-						<th style="text-align: center;">Jumlah</th>
+						<th style="text-align: center;">COA Name</th>
+						<th style="text-align: center;">COA Code</th>
+						<th style="text-align: center;">Description</th>
+						<th style="text-align: center;">Amount</th>
+					</tr>
+					<tr>
+						<td align="center"><button type="submit"
+								class="btn btn-sm btn-primary" onclick="adddetail()">Add</button>
+						</td>
+						<td align="center"><input name="coaname" type="text"
+							placeholder="Coa Name">
+							<button onclick="lookup()">
+								<span class="glyphicon glyphicon-search"></span>
+							</button> <s:hidden name="coacode" /></td>
+						<td></td>
+
+						<td align="center"><s:textfield cols="30" name="description"
+								placeholder="Description" /></td>
+						<td align="center"><s:textfield name="amount" type="text"
+								placeholder="Amount" /></td>
 					</tr>
 					<s:iterator value="lstOtherDisbDtl" status="stat">
 						<tr>
-							
+
 							<td style="text-align: center;"><input type="radio"
-								name="SeqNo" id="SeqNo" value="<s:property value="#stat.count" />" checked /></td>
+								name="seqno" id="seqno"
+								value="<s:property value="#stat.count"/>" checked /></td>
 							<td>${coaName}</td>
+							<td>${coaCode}</td>
 							<td>${description}</td>
 							<td style="text-align: right;">${amount}</td>
 						</tr>
 					</s:iterator>
 					<tr>
-						<th colspan="3" style="text-align: right;">Total :</th>
-						<td align="right">${disbAmount}</td>
+						<th colspan="4" style="text-align: right;">Total :</th>
+						<td align="right">${totalamount}</td>
 					</tr>
 				</table>
 				<br>
 				<table width="100%">
 					<tr>
-						<td align="right"><button type="submit"
-								onclick="save()" class="btn btn-sm btn-primary">Simpan</button></td>
+						<td>
+							<button class="btn btn-sm btn-primary" type="submit"
+								onclick="end()">Back</button>
+						</td>
+						<td align="right"><button type="submit" onclick="savetrans()"
+								class="btn btn-sm btn-primary">Save</button></td>
 					</tr>
 				</table>
 			</center>
 		</s:form>
 	</div>
 	<!-- /container -->
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
-<script type="text/javascript">
-	function entry() {
-		document.getElementById("mode").value = "entry";
-	}
-	function savedel() {
-		document.getElementById("mode").value = "savedel";
-	}
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
-	}
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
-</script>
+
 </html>

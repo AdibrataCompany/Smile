@@ -11,10 +11,7 @@ import java.util.Date;
  */
 public class AgreementList
 	{
-		
-		/**
-		 *
-		 */
+
 		private Long Id;
 		private String AgmntCode;
 		private String CustomerName;
@@ -24,12 +21,12 @@ public class AgreementList
 		private String Currency;
 		private String DefaultStatus;
 		private Date AgreementDate;
-		
+
 		public AgreementList()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 		/**
 		 * @return the agmntCode
 		 */
@@ -37,7 +34,7 @@ public class AgreementList
 			{
 				return this.AgmntCode;
 			}
-
+			
 		/**
 		 * @param agmntCode
 		 *            the agmntCode to set
@@ -46,7 +43,7 @@ public class AgreementList
 			{
 				this.AgmntCode = agmntCode;
 			}
-
+			
 		/**
 		 * @return the customerName
 		 */
@@ -54,7 +51,7 @@ public class AgreementList
 			{
 				return this.CustomerName;
 			}
-
+			
 		/**
 		 * @param customerName
 		 *            the customerName to set
@@ -63,7 +60,7 @@ public class AgreementList
 			{
 				this.CustomerName = customerName;
 			}
-
+			
 		/**
 		 * @return the customerAddress
 		 */
@@ -71,7 +68,7 @@ public class AgreementList
 			{
 				return this.CustomerAddress;
 			}
-
+			
 		/**
 		 * @param customerAddress
 		 *            the customerAddress to set
@@ -80,7 +77,7 @@ public class AgreementList
 			{
 				this.CustomerAddress = customerAddress;
 			}
-
+			
 		/**
 		 * @return the contractStatus
 		 */
@@ -88,7 +85,7 @@ public class AgreementList
 			{
 				return this.ContractStatus;
 			}
-
+			
 		/**
 		 * @param contractStatus
 		 *            the contractStatus to set
@@ -97,7 +94,7 @@ public class AgreementList
 			{
 				this.ContractStatus = contractStatus;
 			}
-
+			
 		/**
 		 * @return the installmentAmount
 		 */
@@ -105,7 +102,7 @@ public class AgreementList
 			{
 				return this.InstallmentAmount;
 			}
-
+			
 		/**
 		 * @param installmentAmount
 		 *            the installmentAmount to set
@@ -114,7 +111,7 @@ public class AgreementList
 			{
 				this.InstallmentAmount = installmentAmount;
 			}
-
+			
 		/**
 		 * @return the currency
 		 */
@@ -122,7 +119,7 @@ public class AgreementList
 			{
 				return this.Currency;
 			}
-
+			
 		/**
 		 * @param currency
 		 *            the currency to set
@@ -131,7 +128,7 @@ public class AgreementList
 			{
 				this.Currency = currency;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -139,7 +136,7 @@ public class AgreementList
 			{
 				return this.Id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -148,7 +145,7 @@ public class AgreementList
 			{
 				this.Id = id;
 			}
-			
+
 		/**
 		 * @return the defaultStatus
 		 */
@@ -156,7 +153,7 @@ public class AgreementList
 			{
 				return this.DefaultStatus;
 			}
-			
+
 		/**
 		 * @param defaultStatus
 		 *            the defaultStatus to set
@@ -165,7 +162,7 @@ public class AgreementList
 			{
 				this.DefaultStatus = defaultStatus;
 			}
-			
+
 		/**
 		 * @return the agreementDate
 		 */
@@ -173,7 +170,7 @@ public class AgreementList
 			{
 				return this.AgreementDate;
 			}
-			
+
 		/**
 		 * @param agreementDate
 		 *            the agreementDate to set
@@ -182,5 +179,5 @@ public class AgreementList
 			{
 				this.AgreementDate = agreementDate;
 			}
-			
+
 	}

@@ -73,7 +73,7 @@
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="save()">Save</button>
+									onclick="savetrans()">Save</button>
 							</td>
 						</tr>
 					</table>
@@ -83,13 +83,4 @@
 	</div>
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
-<script type="text/javascript">
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-</script>
-
 </html>

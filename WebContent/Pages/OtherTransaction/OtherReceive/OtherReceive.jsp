@@ -22,44 +22,48 @@
 			<center>
 				<h1>Other Receive Transactions</h1>
 				<s:hidden name="id" />
-				<s:hidden name="bankaccountid" />
+				<s:hidden name="bankaccountid" id="bankaccountid" />
 				<s:hidden name="bankaccountname" />
-				<s:hidden name="currency" />
+				<s:hidden name="currencyid" />
+				<s:hidden name="currencycode" />
 				<s:hidden name="mode" id="mode" />
 				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
 						<td width="20%">Receive From</td>
-						<td width="30%"><s:textfield name="rcvFrom"
+						<td width="30%"><s:textfield name="rcvfrom"
 								placeholder="Receive From" /></td>
 						<td width="20%">Bank Account</td>
 						<td width="30%"><s:label name="bankaccountname" /> - <s:label
-								name="currency" /></td>
+								name="currencycode" /></td>
 					</tr>
 					<tr>
 						<td>Reference No</td>
-						<td colspan="3"><s:textfield name="reffNo"
+						<td colspan="3"><s:textfield name="reffno"
 								placeholder="Refference Number" /></td>
 					</tr>
 					<tr>
-						<td width="20%">Value Date</td>
-						<%@include file="/Pages/DatePicker.jsp"%>
+						<td>Value Date</td>
+						<td><div class="input-append date">
+								<s:textfield name="valuedate" placeholder="Value Date" style="width:150px;"
+									class="form-control" />
+								<span class="add-on"><i class="icon-th"><img
+										src="Pages/style/calendar.png" /></i></span>
+							</div></td>
 						<td>Amount Receive</td>
 						<td><s:textfield name="rcvamount"
 								placeholder="Amount Receive" /></td>
 					</tr>
 					<tr>
 						<td valign="top">Notes</td>
-						<td colspan="3"><s:textarea name="notes" /></td>
+						<td colspan="3"><s:textarea name="notes" placeholder="Notes" /></td>
 					</tr>
 				</table>
-				<br>
-				<s:label name="message" />
-				<br>
+				<br> <br>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td><button type="submit" class="btn btn-sm btn-primary"
-								onclick="deldetail()">Hapus</button></td>
+								onclick="deldetail()">Remove</button></td>
 					</tr>
 				</table>
 				<br>
@@ -70,7 +74,7 @@
 						<th style="text-align: center;">COA Name</th>
 						<th style="text-align: center;">COA Code</th>
 						<th style="text-align: center;">Description</th>
-						<th style="text-align: center;">Jumlah</th>
+						<th style="text-align: center;">Amount</th>
 					</tr>
 					<tr>
 						<td align="center"><button type="submit"
@@ -112,30 +116,15 @@
 							<button class="btn btn-sm btn-primary" type="submit"
 								onclick="end()">Back</button>
 						</td>
-						<td align="right"><button type="submit" onclick="save()"
-								class="btn btn-sm btn-primary">Simpan</button></td>
+						<td align="right"><button type="submit" onclick="savetrans()"
+								class="btn btn-sm btn-primary">Save</button></td>
 					</tr>
 				</table>
 			</center>
+			<%@include file="/Pages/Footer.jsp"%>
 		</s:form>
 	</div>
 	<!-- /container -->
 </body>
-<script type="text/javascript">
-	function lookup() {
-		document.getElementById("mode").value = "lookup";
-	}
-	function deldetail() {
-		document.getElementById("mode").value = "deldetail";
-	}
-	function adddetail() {
-		document.getElementById("mode").value = "adddetail";
-	}
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-</script>
+
 </html>

@@ -16,14 +16,7 @@
 		</table>
 	</center>
 </body>
-<script type="text/javascript">
-	// When the document is ready
-	$(document).ready(function() {
-		$('.date').datepicker({
-			format : "dd/mm/yyyy"
-		});
-	});
-</script>
+
 
 <!-- <script type="text/javascript" language="javascript" src="/Smile/Pages/style/js/angular.min.js"></script> -->
 
@@ -51,10 +44,17 @@
 	src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" language="javascript"
 	src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
-
+<script type="text/javascript">
+	// When the document is ready
+	$(document).ready(function() {
+		$('.date').datepicker({
+			format : "dd/mm/yyyy"
+		});
+	});
+</script>
 <script type="text/javascript">
 	function end() {
-		alert("end");
+
 		document.getElementById("mode").value = "end";
 	}
 	function save(param) {
@@ -75,6 +75,27 @@
 	function last() {
 		document.getElementById("mode").value = "last";
 	}
-</script>
 
+	function lookup() {
+		document.getElementById("mode").value = "lookup";
+	}
+	function savetrans() {
+		alert ("save");
+		document.getElementById("mode").value = "save";
+	}
+	function adddetail() {
+		document.getElementById("mode").value = "adddetail";
+	}
+	function deldetail() {
+		document.getElementById("mode").value = "deldetail";
+	}
+</script>
+<script type="text/javascript">
+	// When the document is ready
+	$(document).ready(function() {
+		$('.date').datepicker({
+			format : "dd/mm/yyyy"
+		});
+	});
+</script>
 </html>

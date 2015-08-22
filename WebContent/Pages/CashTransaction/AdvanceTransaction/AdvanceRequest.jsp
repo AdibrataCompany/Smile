@@ -28,13 +28,14 @@
 					<s:label name="message" id="message" />
 					<s:hidden name="bankaccountid" />
 					<s:hidden name="bankaccountname" />
-					<s:hidden name="currency" />
+					<s:hidden name="currencycode" />
+					<s:hidden name="currencyid" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
 							<s:label name="bankaccountname" />
 							-
-							<s:label name="currency" />
+							<s:label name="currencycode" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -73,7 +74,7 @@
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="save()">Save</button>
+									onclick="savetrans()">Save</button>
 							</td>
 						</tr>
 					</table>
@@ -83,12 +84,5 @@
 	</div>
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
-<script type="text/javascript">
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-</script>
+
 </html>

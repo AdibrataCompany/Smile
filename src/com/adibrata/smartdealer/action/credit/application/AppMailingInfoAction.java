@@ -29,7 +29,7 @@ public class AppMailingInfoAction extends BaseAction implements Preparable
 
 		private ApplicationDataService service;
 
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private Long agrmntid;
 
 		private String address;

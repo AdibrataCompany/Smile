@@ -32,7 +32,7 @@ public class PersCustAddressDataAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private long customerid;
-		private long id;
+		private static final long serialVersionUID = 1L; private long id;
 		
 		private String legaladdress;
 		private String legalrt;

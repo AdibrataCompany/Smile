@@ -21,7 +21,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class CashierOpenAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		*
 		*/
@@ -49,13 +49,13 @@ public class CashierOpenAction extends BaseAction implements Preparable
 		Office office;
 		String isHeadCashier;
 		Employee employee = new Employee();
-
+		
 		public CashierOpenAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 				this.service = new OpenCashierDao();
@@ -63,34 +63,34 @@ public class CashierOpenAction extends BaseAction implements Preparable
 				this.lstcashier = this.ListCashier(this.partner, this.office);
 				this.lstheadstatus = this.service.ListCashierStatus(this.partner, this.office, BaseAction.sesBussinessDate());
 				this.history = new CashierHistory();
-
-				this.employee.setId(BaseAction.sesEmployeeId());
 				
+				this.employee.setId(BaseAction.sesEmployeeId());
+
 				if (this.service.CheckHeadCashier(this.employee))
 					{
 						this.isHeadCashier = "1";
-						
+
 					}
 				else
 					{
 						this.isHeadCashier = "0";
-						
+
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -105,16 +105,16 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		public Map<Long, String> ListCashier(final Partner partner, final Office office) throws Exception
 			{
 				final Map<Long, String> map = new HashMap<Long, String>();
 				try
 					{
 						this.service = new OpenCashierDao();
-
+						
 						final List<Employee> lst = this.service.ListCashier(partner, office);
-
+						
 						for (final Employee row : lst)
 							{
 								map.put(row.getId(), row.getName().trim());
@@ -131,12 +131,12 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return map;
 			}
-
+			
 		public String OpenCashier() throws Exception
 			{
 				try
 					{
-						
+
 						final Currency currency = new Currency();
 						this.employee.setId(this.getEmployeeid());
 						currency.setId(this.getCurrencyid());
@@ -151,14 +151,14 @@ public class CashierOpenAction extends BaseAction implements Preparable
 								history.setUsrCrt(BaseAction.sesLoginName());
 								history.setUsrUpd(BaseAction.sesLoginName());
 								history.setOpenDate(BaseAction.sesBussinessDate());
-
+								
 								this.service.CashierOpen(history);
 								this.mode = SUCCESS;
 							}
 						else
 							{
 								this.message = "Cashier Already Open";
-								
+
 							}
 					}
 				catch (final Exception exp)
@@ -171,15 +171,15 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		public String CloseCashier() throws Exception
 			{
 				try
 					{
-
+						
 						final Currency currency = new Currency();
 						this.employee.setId(this.getEmployeeid());
-						
+
 						currency.setId(this.getCurrencyid());
 						if (!this.service.CheckCashierClose(this.partner, this.office, currency, this.employee, BaseAction.sesBussinessDate()))
 							{
@@ -192,16 +192,16 @@ public class CashierOpenAction extends BaseAction implements Preparable
 								this.history.setUsrCrt(BaseAction.sesLoginName());
 								this.history.setUsrUpd(BaseAction.sesLoginName());
 								this.history.setOpenDate(BaseAction.sesBussinessDate());
-								
+
 								this.service.CashierOpen(this.history);
 								this.mode = SUCCESS;
 							}
 						else
 							{
 								this.message = "Cashier Already Close";
-								
+
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
@@ -213,7 +213,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -221,7 +221,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -230,7 +230,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -238,7 +238,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -247,7 +247,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -255,7 +255,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -264,7 +264,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -272,7 +272,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -281,7 +281,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -289,7 +289,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -298,7 +298,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -306,7 +306,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -315,7 +315,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -323,7 +323,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -332,7 +332,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -340,7 +340,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -348,7 +348,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -357,7 +357,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -365,7 +365,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -374,7 +374,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -382,7 +382,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -391,7 +391,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the openamount
 		 */
@@ -399,7 +399,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.openamount;
 			}
-
+			
 		/**
 		 * @param openamount
 		 *            the openamount to set
@@ -408,7 +408,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.openamount = openamount;
 			}
-
+			
 		/**
 		 * @return the closeamount
 		 */
@@ -416,7 +416,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.closeamount;
 			}
-
+			
 		/**
 		 * @param closeamount
 		 *            the closeamount to set
@@ -425,7 +425,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.closeamount = closeamount;
 			}
-
+			
 		/**
 		 * @return the currencyid
 		 */
@@ -433,7 +433,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.currencyid;
 			}
-
+			
 		/**
 		 * @param currencyid
 		 *            the currencyid to set
@@ -442,7 +442,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.currencyid = currencyid;
 			}
-
+			
 		/**
 		 * @return the cashiername
 		 */
@@ -450,7 +450,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.cashiername;
 			}
-
+			
 		/**
 		 * @param cashiername
 		 *            the cashiername to set
@@ -459,7 +459,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.cashiername = cashiername;
 			}
-
+			
 		/**
 		 * @return the employeeid
 		 */
@@ -467,7 +467,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-
+			
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -476,7 +476,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-
+			
 		/**
 		 * @return the employeename
 		 */
@@ -484,7 +484,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.employeename;
 			}
-
+			
 		/**
 		 * @param employeename
 		 *            the employeename to set
@@ -493,7 +493,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.employeename = employeename;
 			}
-
+			
 		/**
 		 * @param lstcashier
 		 *            the lstcashier to set
@@ -502,7 +502,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.lstcashier = lstcashier;
 			}
-
+			
 		/**
 		 * @param lstcurrency
 		 *            the lstcurrency to set
@@ -511,7 +511,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.lstcurrency = lstcurrency;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -519,7 +519,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -528,7 +528,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the lstcashier
 		 */
@@ -536,7 +536,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.lstcashier;
 			}
-
+			
 		/**
 		 * @return the lstcurrency
 		 */
@@ -544,7 +544,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.lstcurrency;
 			}
-			
+
 		/**
 		 * @return the isHeadCashier
 		 */
@@ -552,7 +552,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.isHeadCashier;
 			}
-			
+
 		/**
 		 * @param isHeadCashier
 		 *            the isHeadCashier to set
@@ -561,7 +561,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.isHeadCashier = isHeadCashier;
 			}
-			
+
 		/**
 		 * @return the employee
 		 */
@@ -569,7 +569,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-			
+
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -578,7 +578,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-			
+
 		/**
 		 * @return the lstheadstatus
 		 */
@@ -586,7 +586,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.lstheadstatus;
 			}
-			
+
 		/**
 		 * @return the history
 		 */
@@ -594,7 +594,7 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				return this.history;
 			}
-			
+
 		/**
 		 * @param history
 		 *            the history to set
@@ -603,5 +603,5 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			{
 				this.history = history;
 			}
-
+			
 	}

@@ -22,7 +22,7 @@ public class AssetDataAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;

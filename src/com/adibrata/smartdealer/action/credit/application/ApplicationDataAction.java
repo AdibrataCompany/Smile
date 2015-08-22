@@ -41,7 +41,7 @@ public class ApplicationDataAction extends BaseAction implements Preparable
 		
 		private ApplicationDataService service;
 		
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private Long spouseid;
 		private String spousename;
 		private Long guarantorid;

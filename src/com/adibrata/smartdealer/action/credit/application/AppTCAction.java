@@ -17,7 +17,7 @@ public class AppTCAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 
 		public AppTCAction() throws Exception
 			{

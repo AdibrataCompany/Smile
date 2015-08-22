@@ -21,9 +21,9 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class RoleAction extends ActionSupport implements Preparable
 	{
-		
+
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -38,11 +38,11 @@ public class RoleAction extends ActionSupport implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
-		
+		private Long id;
+
 		private String Paging() throws Exception
 			{
-				
+
 				String status = "";
 				try
 					{
@@ -55,9 +55,9 @@ public class RoleAction extends ActionSupport implements Preparable
 							{
 								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
 							}
-							
+
 						this.lstRole = this.roleService.Paging(this.getPageNumber(), wherecond, "");
-						
+
 						status = "Success";
 					}
 				catch (final Exception exp)
@@ -70,7 +70,7 @@ public class RoleAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
@@ -82,7 +82,7 @@ public class RoleAction extends ActionSupport implements Preparable
 						 * bankAccount.setBankAccountName(this.getBankAccountName());
 						 * bankAccount.setCoacode(this.getCoacode());
 						 */
-						
+
 						this.roleService.SaveAdd(msRole);
 						status = SUCCESS;
 					}
@@ -96,7 +96,7 @@ public class RoleAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -104,13 +104,13 @@ public class RoleAction extends ActionSupport implements Preparable
 					{
 						final MsRole msRole = new MsRole();
 						msRole.setId(this.getId());
-						
+
 						/*
 						 * bankAccount.setBankAccountCode(this.getBankAccountCode());
 						 * bankAccount.setBankAccountName(this.getBankAccountName());
 						 * bankAccount.setCoacode(this.getCoacode());
 						 */
-						
+
 						this.roleService.SaveEdit(msRole);
 						status = SUCCESS;
 					}
@@ -124,7 +124,7 @@ public class RoleAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -145,7 +145,7 @@ public class RoleAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -153,7 +153,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @return the roleService
 		 */
@@ -161,7 +161,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.roleService;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -169,7 +169,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -177,7 +177,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @return the msRole
 		 */
@@ -185,7 +185,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.msRole;
 			}
-			
+
 		/**
 		 * @return the lstRole
 		 */
@@ -193,7 +193,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.lstRole;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -202,7 +202,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @param roleService
 		 *            the roleService to set
@@ -211,7 +211,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.roleService = roleService;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -220,7 +220,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -229,7 +229,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @param msRole
 		 *            the msRole to set
@@ -238,7 +238,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.msRole = msRole;
 			}
-			
+
 		/**
 		 * @param lstRole
 		 *            the lstRole to set
@@ -247,28 +247,28 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.lstRole = lstRole;
 			}
-			
+
 		/**
-		 * 
+		 *
 		 */
 		public RoleAction()
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -276,18 +276,18 @@ public class RoleAction extends ActionSupport implements Preparable
 								case "search" :
 									strMode = this.Paging();
 								case "edit" :
-								
+
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
-									
+
 									strMode = this.SaveAdd();
 								case "saveadd" :
 									strMode = this.SaveAdd();
 								case "saveedit" :
 									strMode = this.SaveEdit();
 								case "back" :
-								
+
 								default :
 									return "failed";
 							}
@@ -298,7 +298,7 @@ public class RoleAction extends ActionSupport implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -306,7 +306,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -314,7 +314,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -322,7 +322,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -330,7 +330,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -338,7 +338,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -346,7 +346,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -355,7 +355,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -364,7 +364,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -373,7 +373,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -382,7 +382,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -391,7 +391,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -400,7 +400,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -408,7 +408,7 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -417,5 +417,5 @@ public class RoleAction extends ActionSupport implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 	}

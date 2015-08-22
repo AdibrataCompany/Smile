@@ -33,7 +33,7 @@ public class CustomerAction extends BaseAction implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		
 		private String type;
 		private String name;

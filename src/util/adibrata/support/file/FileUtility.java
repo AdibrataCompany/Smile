@@ -248,7 +248,7 @@ public class FileUtility
 // private String fdr_title;
 // private long fdr_id;
 // private long fdr_up_id;
-// private long id;
+// private static final long serialVersionUID = 1L; private long id;
 // private String mode;
 // private String warning;
 // private String path;

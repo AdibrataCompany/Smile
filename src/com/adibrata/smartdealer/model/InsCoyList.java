@@ -3,7 +3,7 @@ package com.adibrata.smartdealer.model;
 
 public class InsCoyList
 	{
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private Long inscoyid;
 		private Long inscoyofficeid;
 		private String insurancename;

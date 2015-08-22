@@ -37,15 +37,15 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 		private Employee employee;
 		private String searchcriteria;
 		private String searchvalue;
-		
+
 		private Map<String, Object> dtl;
 		private List<PettyCashDtl> lstdtl;
-		
+
 		private List<BankAccount> lstbankaccount;
 		private Map<Long, String> lstemployee;
-		
+
 		private int pageNumber;
-		
+
 		private String message;
 		private Long bankaccountid;
 		private String notes;
@@ -62,10 +62,10 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 		private Double totalamount;
 		private int seqno;
 		private String bankaccountname;
-		
+
 		private List<BankAccount> lstBankAccount;
 		private BankAccountService bankaccountservice;
-		
+
 		public PettyCashTransactionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -75,15 +75,15 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.lstemployee = new HashMap<Long, String>();
 				this.lstemployee = this.ListEmployee(this.partner, this.office);
-				
+
 				this.lstdtl = new ArrayList<PettyCashDtl>();
 				this.service = new PettyCashDao();
-				
+
 				this.employee = new Employee();
 				this.bankaccount = new BankAccount();
-				
+
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -96,7 +96,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 							{
 								this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
@@ -107,13 +107,13 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -124,7 +124,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 								case "adddetail" :
 									strMode = this.AddDetail();
 									break;
-									
+
 								case "deldetail" :
 									strMode = this.DeleteDetail();
 									break;
@@ -181,7 +181,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 									break;
 								default :
 									return "failed";
-									
+
 							}
 					}
 				else
@@ -190,7 +190,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String AddDetail() throws Exception
 			{
 				final String status = this.mode;
@@ -207,7 +207,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 								pettycashdtl.setCoaName(this.coaname);
 								pettycashdtl.setDescription(this.descdetail);
 								this.lstdtl.add(pettycashdtl);
-								
+
 								this.dtl.put("dtl", pettycashdtl);
 								this.totalamount = 0.00;
 								for (final PettyCashDtl aRow : this.lstdtl)
@@ -215,11 +215,11 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 										this.totalamount += aRow.getAmount();
 									}
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -227,7 +227,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private String DeleteDetail() throws Exception
 			{
@@ -237,7 +237,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
 						this.seqno = this.seqno - 1;
 						this.lstdtl.remove(this.seqno);
-						
+
 						this.dtl.put("dtl", this.lstdtl);
 						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
 						this.totalamount = 0.00;
@@ -245,11 +245,11 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 							{
 								this.totalamount += aRow.getAmount();
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -257,25 +257,25 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String SavePettyCash() throws Exception
 			{
 				String status = this.mode;
-				
+
 				final PettyCashHdr pettycashhdr = new PettyCashHdr();
 				try
 					{
-						
+
 						pettycashhdr.setPcamount(this.getAmount());
 						pettycashhdr.setValueDate(this.dateformat.parse(this.getValuedate()));
 						this.bankaccount.setId(this.getBankaccountid());
 						this.employee.setId(this.getEmployeeid());
-						
+
 						pettycashhdr.setBankAccount(this.getBankaccount());
 						pettycashhdr.setEmployee(this.getEmployee());
-
-						pettycashhdr.setPostingDate(BaseAction.sesBussinessDate());
 						
+						pettycashhdr.setPostingDate(BaseAction.sesBussinessDate());
+
 						pettycashhdr.setPartner(this.getPartner());
 						pettycashhdr.setOffice(this.getOffice());
 						pettycashhdr.setCurrencyRate(this.getCurrencyrate());
@@ -284,13 +284,13 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 						pettycashhdr.setUsrCrt(BaseAction.sesLoginName());
 						this.service.SavePettyCash(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), pettycashhdr, this.lstdtl);
 						status = SUCCESS;
-						
+
 						this.setMessage(SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -299,11 +299,11 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-			
+
 		public String ViewData() throws Exception
 			{
 				this.bankaccount = new BankAccount();
@@ -332,7 +332,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		private String WhereCond()
 			{
 				String wherecond = "";
@@ -349,7 +349,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
@@ -358,15 +358,15 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -375,15 +375,15 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -391,7 +391,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -400,7 +400,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -408,7 +408,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -417,7 +417,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -425,7 +425,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -434,7 +434,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -442,7 +442,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -451,7 +451,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the pettCashService
 		 */
@@ -459,7 +459,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.pettCashService;
 			}
-			
+
 		/**
 		 * @param pettCashService
 		 *            the pettCashService to set
@@ -468,7 +468,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.pettCashService = pettCashService;
 			}
-			
+
 		/**
 		 * @return the bankaccount
 		 */
@@ -476,7 +476,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccount;
 			}
-			
+
 		/**
 		 * @param bankaccount
 		 *            the bankaccount to set
@@ -485,7 +485,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccount = bankaccount;
 			}
-			
+
 		/**
 		 * @return the employee
 		 */
@@ -493,7 +493,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-			
+
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -502,7 +502,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -510,7 +510,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -519,7 +519,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -527,7 +527,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -536,7 +536,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the dtl
 		 */
@@ -544,7 +544,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.dtl;
 			}
-			
+
 		/**
 		 * @param dtl
 		 *            the dtl to set
@@ -553,7 +553,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.dtl = dtl;
 			}
-			
+
 		/**
 		 * @return the lstdtl
 		 */
@@ -561,7 +561,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstdtl;
 			}
-			
+
 		/**
 		 * @param lstdtl
 		 *            the lstdtl to set
@@ -570,7 +570,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstdtl = lstdtl;
 			}
-			
+
 		/**
 		 * @return the lstbankaccount
 		 */
@@ -578,7 +578,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstbankaccount;
 			}
-			
+
 		/**
 		 * @param lstbankaccount
 		 *            the lstbankaccount to set
@@ -587,7 +587,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstbankaccount = lstbankaccount;
 			}
-			
+
 		/**
 		 * @return the lstemployee
 		 */
@@ -595,7 +595,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-			
+
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -604,7 +604,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstemployee = lstemployee;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -612,7 +612,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -621,7 +621,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -629,7 +629,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -638,7 +638,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the bankaccountid
 		 */
@@ -646,7 +646,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountid;
 			}
-			
+
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -655,7 +655,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccountid = bankaccountid;
 			}
-			
+
 		/**
 		 * @return the notes
 		 */
@@ -663,7 +663,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-			
+
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -672,7 +672,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-			
+
 		/**
 		 * @return the amount
 		 */
@@ -680,7 +680,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-			
+
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -689,7 +689,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-			
+
 		/**
 		 * @return the valuedate
 		 */
@@ -697,7 +697,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-			
+
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -706,7 +706,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the employeeid
 		 */
@@ -714,7 +714,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-			
+
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -723,7 +723,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-			
+
 		/**
 		 * @return the currencyrate
 		 */
@@ -731,7 +731,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.currencyrate;
 			}
-			
+
 		/**
 		 * @param currencyrate
 		 *            the currencyrate to set
@@ -740,7 +740,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.currencyrate = currencyrate;
 			}
-			
+
 		/**
 		 * @return the currencyid
 		 */
@@ -748,7 +748,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.currencyid;
 			}
-			
+
 		/**
 		 * @param currencyid
 		 *            the currencyid to set
@@ -757,7 +757,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.currencyid = currencyid;
 			}
-			
+
 		/**
 		 * @return the amountdetail
 		 */
@@ -765,7 +765,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.amountdetail;
 			}
-			
+
 		/**
 		 * @param amountdetail
 		 *            the amountdetail to set
@@ -774,7 +774,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.amountdetail = amountdetail;
 			}
-			
+
 		/**
 		 * @return the descdetail
 		 */
@@ -782,7 +782,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.descdetail;
 			}
-			
+
 		/**
 		 * @param descdetail
 		 *            the descdetail to set
@@ -791,7 +791,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.descdetail = descdetail;
 			}
-			
+
 		/**
 		 * @return the coacode
 		 */
@@ -799,7 +799,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.coacode;
 			}
-			
+
 		/**
 		 * @param coacode
 		 *            the coacode to set
@@ -808,7 +808,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.coacode = coacode;
 			}
-			
+
 		/**
 		 * @return the coaname
 		 */
@@ -816,7 +816,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.coaname;
 			}
-			
+
 		/**
 		 * @param coaname
 		 *            the coaname to set
@@ -825,7 +825,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.coaname = coaname;
 			}
-			
+
 		/**
 		 * @return the totalamount
 		 */
@@ -833,7 +833,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.totalamount;
 			}
-			
+
 		/**
 		 * @param totalamount
 		 *            the totalamount to set
@@ -842,7 +842,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.totalamount = totalamount;
 			}
-			
+
 		/**
 		 * @return the seqno
 		 */
@@ -850,7 +850,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.seqno;
 			}
-			
+
 		/**
 		 * @param seqno
 		 *            the seqno to set
@@ -859,7 +859,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.seqno = seqno;
 			}
-			
+
 		/**
 		 * @return the bankaccountname
 		 */
@@ -867,7 +867,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountname;
 			}
-			
+
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -876,7 +876,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccountname = bankaccountname;
 			}
-			
+
 		/**
 		 * @return the lstBankAccount
 		 */
@@ -884,7 +884,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstBankAccount;
 			}
-			
+
 		/**
 		 * @param lstBankAccount
 		 *            the lstBankAccount to set
@@ -893,7 +893,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstBankAccount = lstBankAccount;
 			}
-			
+
 		/**
 		 * @return the bankaccountservice
 		 */
@@ -901,7 +901,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountservice;
 			}
-			
+
 		/**
 		 * @param bankaccountservice
 		 *            the bankaccountservice to set
@@ -910,7 +910,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccountservice = bankaccountservice;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -918,7 +918,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -926,5 +926,5 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-			
+
 	}

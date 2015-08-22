@@ -6,13 +6,16 @@ import com.opensymphony.xwork2.Preparable;
 
 public class RescheduleAction extends BaseAction implements Preparable
 	{
+
+		/**
+		* 
+		*/
 		private static final long serialVersionUID = 1L;
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		
-		
+
 		private int pageNumber;
 		private String message;
 		

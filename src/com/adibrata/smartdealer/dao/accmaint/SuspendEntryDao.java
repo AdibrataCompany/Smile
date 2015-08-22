@@ -24,15 +24,15 @@ import util.adibrata.support.job.JobPost;
 
 public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 	{
-
+		
 		String userupd;
-
+		
 		String strStatement;
 		String strStatementCount;
 		StringBuilder hql = new StringBuilder();
 		int currentpage;
 		private Long totalrecord;
-
+		
 		public SuspendEntryDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -42,9 +42,9 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				 * this.strStatementCount = "select Count(1) From SuspendReceive A Inner Join BankAccount B on A.BankAccountId = B.ID inner join Currency C on A.CurrencyId = C.ID";
 				 */
 				this.strStatement = "From SuspendReceive A, BankAccount B, Currency C, Partner P, Office O where  A.partner = P.partnerCode and A.bankAccountId = B.id and A.currencyId = C.id  and A.office = O.id";
-				
-			}
 
+			}
+			
 		@Override
 		public void SuspendEntrySave(final String usrupd, final Partner partner, final Office office, final SuspendReceive suspend) throws Exception
 			{
@@ -63,9 +63,9 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						suspend.setDtmCrt(this.dtmupd);
 						suspend.setStatus("NE");
 						this.getSession().save(suspend);
-						
-						this.getSession().getTransaction().commit();
 
+						this.getSession().getTransaction().commit();
+						
 					}
 				catch (final Exception exp)
 					{
@@ -75,12 +75,12 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-			
+
 		@SuppressWarnings(
 			{
-			        "unchecked", "unused", "rawtypes"
+			        "unchecked"
 			})
 		@Override
 		public List<SuspendList> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
@@ -91,7 +91,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				SuspendReceive receive = new SuspendReceive();
 				BankAccount bankaccount = new BankAccount();
 				Currency currency = new Currency();
-				
+
 				final List<SuspendList> suspendlist = new ArrayList<SuspendList>();
 				try
 					{
@@ -106,7 +106,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						selectQuery.setMaxResults(this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
-						
+
 						/*
 						 * selectQuery.addScalar("Id", new LongType());
 						 * selectQuery.addScalar("SuspendCode", new StringType());
@@ -119,7 +119,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						 * selectQuery.addScalar("Notes", new StringType());
 						 */
 						final List<Object[]> lst = selectQuery.list();
-						
+
 						if (lst.size() != 0)
 							{
 								for (final Object[] aRow : lst)
@@ -127,7 +127,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 										receive = (SuspendReceive) aRow[0];
 										bankaccount = (BankAccount) aRow[1];
 										currency = (Currency) aRow[2];
-										
+
 										final SuspendList suspend = new SuspendList();
 										suspend.setId(receive.getId());
 										suspend.setSuspendCode(receive.getSuspendCode());
@@ -140,11 +140,11 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 										suspendlist.add(suspend);
 									}
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -156,7 +156,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 					}
 				return suspendlist;
 			}
-			
+
 		@SuppressWarnings(
 			{
 			        "unchecked", "null"
@@ -181,7 +181,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						final SQLQuery selectQuery = this.getSession().createSQLQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("SuspendList" + WhereCond);
@@ -196,7 +196,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						// selectQuery.addScalar("CurrencyRate", new DoubleType());
 						// selectQuery.addScalar("Notes", new StringType());
 						final List<Object[]> lst = selectQuery.list();
-
+						
 						if (lst.size() != 0)
 							{
 								for (final Object[] aRow : lst)
@@ -204,7 +204,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 										receive = (SuspendReceive) aRow[0];
 										bankaccount = (BankAccount) aRow[1];
 										currency = (Currency) aRow[2];
-
+										
 										final SuspendList suspend = new SuspendList();
 										suspend.setId(receive.getId());
 										suspend.setSuspendCode(receive.getSuspendCode());
@@ -237,11 +237,11 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 						 * }
 						 * }
 						 */
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -253,7 +253,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 					}
 				return suspendlist;
 			}
-
+			
 		@Override
 		public SuspendReceive View(final Long id) throws Exception
 			{
@@ -261,11 +261,11 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				try
 					{
 						receive = (SuspendReceive) this.getSession().get(SuspendReceive.class, id);
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());

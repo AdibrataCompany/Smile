@@ -27,7 +27,7 @@ public class PersCustProDataAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private long customerid;
 
 		private Double monthlyfixedincome;

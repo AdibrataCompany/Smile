@@ -30,7 +30,7 @@ public class AppCrossDefaultAction extends BaseAction implements Preparable
 
 		private Map<String, Object> dtl;
 
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private int seqno;
 
 		public AppCrossDefaultAction() throws Exception

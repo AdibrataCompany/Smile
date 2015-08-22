@@ -28,7 +28,7 @@ public class PersCustEmergencyInfoAction extends BaseAction implements Preparabl
 		private String usrUpd;
 		private String usrCrt;
 		private long customerid;
-		private long id;
+		private static final long serialVersionUID = 1L; private long id;
 
 		private String contactname;
 		private String relationship;

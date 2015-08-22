@@ -16,7 +16,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AgrmntInfoAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		*
 		*/
@@ -25,16 +25,17 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 		private Office office;
 		private Long officeid;
 		private String officename;
+		private static final long serialVersionUID = 1L;
 		private Long id;
 		private int pagenumber;
-		private static final long serialVersionUID = 1L;
+
 		private AgreementService service;
-		
+
 		private List<AgreementList> lstagrmnt;
 		private Map<Long, String> lstoffice;
 		private String searchcriteria;
 		private String searchvalue;
-		
+
 		public AgrmntInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -48,14 +49,14 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -76,7 +77,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								case "first" :
 									this.pagenumber = 1;
 									try
@@ -148,7 +149,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -165,7 +166,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -174,15 +175,15 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -192,15 +193,15 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -208,7 +209,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -217,7 +218,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -225,7 +226,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -234,7 +235,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -242,7 +243,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -251,7 +252,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the officeid
 		 */
@@ -259,7 +260,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.officeid;
 			}
-			
+
 		/**
 		 * @param officeid
 		 *            the officeid to set
@@ -268,7 +269,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.officeid = officeid;
 			}
-			
+
 		/**
 		 * @return the officename
 		 */
@@ -276,7 +277,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.officename;
 			}
-			
+
 		/**
 		 * @param officename
 		 *            the officename to set
@@ -285,7 +286,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.officename = officename;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -293,7 +294,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -302,7 +303,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -310,7 +311,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -319,7 +320,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -327,7 +328,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the pagenumber
 		 */
@@ -335,7 +336,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.pagenumber;
 			}
-			
+
 		/**
 		 * @param pagenumber
 		 *            the pagenumber to set
@@ -344,7 +345,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		/**
 		 * @return the lstagrmnt
 		 */
@@ -352,7 +353,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.lstagrmnt;
 			}
-
+			
 		/**
 		 * @param lstagrmnt
 		 *            the lstagrmnt to set
@@ -361,7 +362,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.lstagrmnt = lstagrmnt;
 			}
-
+			
 		/**
 		 * @return the lstoffice
 		 */
@@ -369,7 +370,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.lstoffice;
 			}
-
+			
 		/**
 		 * @param lstoffice
 		 *            the lstoffice to set
@@ -378,7 +379,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.lstoffice = lstoffice;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -386,7 +387,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -395,7 +396,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -403,7 +404,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AdvanceTransaction
 	{
-		private Long id;
+		private static final long serialVersionUID = 1L; private long id;
 
 		private String AdvanceCode;
 		private String EmployeeName;

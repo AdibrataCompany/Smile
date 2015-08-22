@@ -16,12 +16,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class TaksasiAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private Taksasi taksasi;
 		private TaksasiService taksasiservice;
@@ -35,30 +35,30 @@ public class TaksasiAction extends BaseAction implements Preparable
 		private String usrcrt;
 		private String message;
 		private Long id;
-
+		
 		private String assetmastercode;
 		private String taksasicode;
 		private String taksasiname;
 		private double taksasipricemin;
-
+		
 		public TaksasiAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.office = new Office();
 				this.setOffice(this.office);
-
+				
 				this.taksasiservice = new TaksasiDao();
 				this.taksasi = new Taksasi();
-
+				
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -172,7 +172,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		public String save()
 			{
 				String strMode;
@@ -221,7 +221,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -238,7 +238,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -247,15 +247,15 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -265,15 +265,15 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.taksasi = new Taksasi();
@@ -303,7 +303,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -327,7 +327,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -352,7 +352,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				final String status = "";
@@ -381,7 +381,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -389,7 +389,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the taksasi
 		 */
@@ -397,7 +397,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.taksasi;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -405,7 +405,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -413,7 +413,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param taksasi
 		 *            the taksasi to set
@@ -422,7 +422,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.taksasi = taksasi;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -431,7 +431,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -440,24 +440,24 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -465,7 +465,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -473,7 +473,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -481,7 +481,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -490,7 +490,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -499,7 +499,7 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -508,105 +508,105 @@ public class TaksasiAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		public TaksasiService getTaksasiservice()
 			{
 				return this.taksasiservice;
 			}
-
+			
 		public void setTaksasiservice(final TaksasiService taksasiservice)
 			{
 				this.taksasiservice = taksasiservice;
 			}
-
+			
 		public List<Taksasi> getLsttaksasi()
 			{
 				return this.lsttaksasi;
 			}
-
+			
 		public void setLsttaksasi(final List<Taksasi> lsttaksasi)
 			{
 				this.lsttaksasi = lsttaksasi;
 			}
-
+			
 		public int getPagenumber()
 			{
 				return this.pagenumber;
 			}
-
+			
 		public void setPagenumber(final int pagenumber)
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		public String getUsrupd()
 			{
 				return this.usrupd;
 			}
-
+			
 		public void setUsrupd(final String usrupd)
 			{
 				this.usrupd = usrupd;
 			}
-
+			
 		public String getUsrcrt()
 			{
 				return this.usrcrt;
 			}
-
+			
 		public void setUsrcrt(final String usrcrt)
 			{
 				this.usrcrt = usrcrt;
 			}
-
+			
 		public Long getId()
 			{
 				return this.id;
 			}
-
+			
 		public void setId(final Long id)
 			{
 				this.id = id;
 			}
-
+			
 		public String getAssetmastercode()
 			{
 				return this.assetmastercode;
 			}
-
+			
 		public void setAssetmastercode(final String assetmastercode)
 			{
 				this.assetmastercode = assetmastercode;
 			}
-
+			
 		public String getTaksasicode()
 			{
 				return this.taksasicode;
 			}
-
+			
 		public void setTaksasicode(final String taksasicode)
 			{
 				this.taksasicode = taksasicode;
 			}
-
+			
 		public String getTaksasiname()
 			{
 				return this.taksasiname;
 			}
-
+			
 		public void setTaksasiname(final String taksasiname)
 			{
 				this.taksasiname = taksasiname;
 			}
-
+			
 		public double getTaksasipricemin()
 			{
 				return this.taksasipricemin;
 			}
-
+			
 		public void setTaksasipricemin(final double taksasipricemin)
 			{
 				this.taksasipricemin = taksasipricemin;
 			}
-
+			
 	}

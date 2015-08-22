@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 public class CoyCustFinancialInfoId implements java.io.Serializable
 	{
 		
-		private long id;
+		private static final long serialVersionUID = 1L; private long id;
 		private Long customerId;
 		private Date rentFinishDate;
 		private Double currentRatio;

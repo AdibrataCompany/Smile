@@ -16,7 +16,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class SupplierAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		 *
 		 */
@@ -48,34 +48,34 @@ public class SupplierAction extends BaseAction implements Preparable
 		// address
 		private String searchcriteria;
 		private String searchvalue;
-		
+
 		private String message;
-		
+
 		public SupplierAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				
+
 				this.office = new Office();
 				this.setOffice(this.office);
-				
+
 				this.service = new SupplierDao();
 				this.supplier = new Supplier();
-				
+
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -178,11 +178,11 @@ public class SupplierAction extends BaseAction implements Preparable
 					{
 						this.pagenumber = 1;
 						strMode = INPUT;
-
+						
 					}
 				return strMode;
 			}
-			
+
 		public String save()
 			{
 				String strMode;
@@ -231,7 +231,7 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private String WhereCond()
 			{
 				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
@@ -248,7 +248,7 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-			
+
 		private void Paging() throws Exception
 			{
 				try
@@ -257,15 +257,15 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -275,15 +275,15 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		public String ViewData() throws Exception
 			{
 				this.supplier = new Supplier();
@@ -326,12 +326,12 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-			
+
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
-						
+
 						this.supplier = new Supplier();
 						this.supplier.setName(this.name);
 						this.supplier.setAddress(this.address);
@@ -350,7 +350,7 @@ public class SupplierAction extends BaseAction implements Preparable
 						this.supplier.setHandphone(this.handphone);
 						this.supplier.setPartner(this.partner);
 						this.service.SaveAdd(this.supplier);
-						
+
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
 					}
@@ -365,12 +365,12 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						
+
 						this.supplier = new Supplier();
 						this.supplier.setId(this.getId());
 						this.supplier.setName(this.getName());
@@ -404,13 +404,13 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-			
+
 		private String SaveDelete() throws Exception
 			{
-
+				
 				try
 					{
-						
+
 						this.supplier = new Supplier();
 						this.supplier.setId(this.getId());
 						this.service.SaveDel(this.supplier);
@@ -428,7 +428,7 @@ public class SupplierAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -436,7 +436,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -445,7 +445,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -453,7 +453,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -462,7 +462,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -470,7 +470,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -479,7 +479,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the supplier
 		 */
@@ -487,7 +487,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.supplier;
 			}
-
+			
 		/**
 		 * @param supplier
 		 *            the supplier to set
@@ -496,7 +496,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.supplier = supplier;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -504,7 +504,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -513,7 +513,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -521,7 +521,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -530,7 +530,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the lstdealer
 		 */
@@ -538,7 +538,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.lstdealer;
 			}
-
+			
 		/**
 		 * @param lstdealer
 		 *            the lstdealer to set
@@ -547,7 +547,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.lstdealer = lstdealer;
 			}
-
+			
 		/**
 		 * @return the pagenumber
 		 */
@@ -555,7 +555,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.pagenumber;
 			}
-
+			
 		/**
 		 * @param pagenumber
 		 *            the pagenumber to set
@@ -564,7 +564,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		/**
 		 * @return the name
 		 */
@@ -572,7 +572,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.name;
 			}
-
+			
 		/**
 		 * @param name
 		 *            the name to set
@@ -581,7 +581,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.name = name;
 			}
-
+			
 		/**
 		 * @return the address
 		 */
@@ -589,7 +589,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.address;
 			}
-
+			
 		/**
 		 * @param address
 		 *            the address to set
@@ -598,7 +598,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.address = address;
 			}
-
+			
 		/**
 		 * @return the rt
 		 */
@@ -606,7 +606,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.rt;
 			}
-
+			
 		/**
 		 * @param rt
 		 *            the rt to set
@@ -615,7 +615,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.rt = rt;
 			}
-
+			
 		/**
 		 * @return the rw
 		 */
@@ -623,7 +623,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.rw;
 			}
-
+			
 		/**
 		 * @param rw
 		 *            the rw to set
@@ -632,7 +632,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.rw = rw;
 			}
-
+			
 		/**
 		 * @return the kelurahan
 		 */
@@ -640,7 +640,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.kelurahan;
 			}
-
+			
 		/**
 		 * @param kelurahan
 		 *            the kelurahan to set
@@ -649,7 +649,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.kelurahan = kelurahan;
 			}
-
+			
 		/**
 		 * @return the city
 		 */
@@ -657,7 +657,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.city;
 			}
-
+			
 		/**
 		 * @param city
 		 *            the city to set
@@ -666,7 +666,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.city = city;
 			}
-
+			
 		/**
 		 * @return the zipcode
 		 */
@@ -674,7 +674,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.zipcode;
 			}
-
+			
 		/**
 		 * @param zipcode
 		 *            the zipcode to set
@@ -683,7 +683,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.zipcode = zipcode;
 			}
-
+			
 		/**
 		 * @return the type
 		 */
@@ -691,7 +691,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.type;
 			}
-
+			
 		/**
 		 * @param type
 		 *            the type to set
@@ -700,7 +700,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.type = type;
 			}
-
+			
 		/**
 		 * @return the areaphone1
 		 */
@@ -708,7 +708,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.areaphone1;
 			}
-
+			
 		/**
 		 * @param areaphone1
 		 *            the areaphone1 to set
@@ -717,7 +717,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.areaphone1 = areaphone1;
 			}
-
+			
 		/**
 		 * @return the phoneno1
 		 */
@@ -725,7 +725,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.phoneno1;
 			}
-
+			
 		/**
 		 * @param phoneno1
 		 *            the phoneno1 to set
@@ -734,7 +734,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.phoneno1 = phoneno1;
 			}
-
+			
 		/**
 		 * @return the areaphone2
 		 */
@@ -742,7 +742,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.areaphone2;
 			}
-
+			
 		/**
 		 * @param areaphone2
 		 *            the areaphone2 to set
@@ -751,7 +751,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.areaphone2 = areaphone2;
 			}
-
+			
 		/**
 		 * @return the phoneno2
 		 */
@@ -759,7 +759,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.phoneno2;
 			}
-
+			
 		/**
 		 * @param phoneno2
 		 *            the phoneno2 to set
@@ -768,7 +768,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.phoneno2 = phoneno2;
 			}
-
+			
 		/**
 		 * @return the areafax
 		 */
@@ -776,7 +776,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.areafax;
 			}
-
+			
 		/**
 		 * @param areafax
 		 *            the areafax to set
@@ -785,7 +785,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.areafax = areafax;
 			}
-
+			
 		/**
 		 * @return the faxno
 		 */
@@ -793,7 +793,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.faxno;
 			}
-
+			
 		/**
 		 * @param faxno
 		 *            the faxno to set
@@ -802,7 +802,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.faxno = faxno;
 			}
-
+			
 		/**
 		 * @return the handphone
 		 */
@@ -810,7 +810,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.handphone;
 			}
-
+			
 		/**
 		 * @param handphone
 		 *            the handphone to set
@@ -819,7 +819,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.handphone = handphone;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -827,7 +827,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -836,7 +836,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -844,7 +844,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -853,7 +853,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -861,7 +861,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -870,7 +870,7 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -878,5 +878,5 @@ public class SupplierAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 	}

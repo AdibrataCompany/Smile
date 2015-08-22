@@ -8,12 +8,13 @@ public class BankAccountInfo
 		String currency;
 		String purpose;
 		String type;
-		
+		Long currencyid;
+
 		public BankAccountInfo()
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -21,7 +22,7 @@ public class BankAccountInfo
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -30,7 +31,7 @@ public class BankAccountInfo
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the name
 		 */
@@ -38,7 +39,7 @@ public class BankAccountInfo
 			{
 				return this.name;
 			}
-
+			
 		/**
 		 * @param name
 		 *            the name to set
@@ -47,7 +48,7 @@ public class BankAccountInfo
 			{
 				this.name = name;
 			}
-
+			
 		/**
 		 * @return the currency
 		 */
@@ -55,7 +56,7 @@ public class BankAccountInfo
 			{
 				return this.currency;
 			}
-
+			
 		/**
 		 * @param currency
 		 *            the currency to set
@@ -64,7 +65,7 @@ public class BankAccountInfo
 			{
 				this.currency = currency;
 			}
-
+			
 		/**
 		 * @return the purpose
 		 */
@@ -72,7 +73,7 @@ public class BankAccountInfo
 			{
 				return this.purpose;
 			}
-
+			
 		/**
 		 * @param purpose
 		 *            the purpose to set
@@ -81,7 +82,7 @@ public class BankAccountInfo
 			{
 				this.purpose = purpose;
 			}
-
+			
 		/**
 		 * @return the type
 		 */
@@ -89,7 +90,7 @@ public class BankAccountInfo
 			{
 				return this.type;
 			}
-
+			
 		/**
 		 * @param type
 		 *            the type to set
@@ -99,4 +100,21 @@ public class BankAccountInfo
 				this.type = type;
 			}
 			
+		/**
+		 * @return the currencyid
+		 */
+		public Long getCurrencyid()
+			{
+				return this.currencyid;
+			}
+			
+		/**
+		 * @param currencyid
+		 *            the currencyid to set
+		 */
+		public void setCurrencyid(final Long currencyid)
+			{
+				this.currencyid = currencyid;
+			}
+
 	}

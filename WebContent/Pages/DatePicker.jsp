@@ -14,14 +14,15 @@
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
+<div class="input-group">
 	<td width="20%">Value Date</td>
 	<td width="30%">
 		<div class="input-append date">
-			<s:textfield name="valuedate" class="span2" />
+			<s:textfield name="valuedate" class="span2" placeholder="Value Date" />
 			<span class="add-on"><i class="icon-th"><img
 					src="Pages/style/calendar.png" /></i></span>
 		</div>
-
+</div>
 	</td>
 </body>
 <script type="text/javascript">

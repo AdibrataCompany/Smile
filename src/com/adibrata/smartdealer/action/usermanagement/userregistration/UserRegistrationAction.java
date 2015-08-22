@@ -19,7 +19,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class UserRegistrationAction extends ActionSupport implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
@@ -35,11 +35,11 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 		private String usrUpd;
 		private String usrCrt;
 		private String message;
-		private long id;
-
+		private Long id;
+		
 		private String Paging() throws Exception
 			{
-
+				
 				String status = "";
 				try
 					{
@@ -52,9 +52,9 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 							{
 								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
 							}
-
+							
 						this.lstUser = this.userService.Paging(this.getPageNumber(), wherecond, "");
-
+						
 						status = "Success";
 					}
 				catch (final Exception exp)
@@ -67,7 +67,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				String status = "";
@@ -75,7 +75,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					{
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
-
+						
 						this.userService.SaveAdd(msUser);
 						status = SUCCESS;
 					}
@@ -89,7 +89,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				String status = "";
@@ -97,7 +97,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					{
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
-
+						
 						this.userService.SaveEdit(msUser);
 						status = SUCCESS;
 					}
@@ -111,7 +111,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -119,7 +119,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					{
 						final MsUser msUser = new MsUser();
 						msUser.setId(this.getId());
-
+						
 						this.userService.SaveDel(msUser);
 						status = SUCCESS;
 					}
@@ -133,7 +133,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -141,7 +141,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the userService
 		 */
@@ -149,7 +149,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.userService;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -157,7 +157,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -165,7 +165,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -174,7 +174,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @param userService
 		 *            the userService to set
@@ -183,7 +183,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.userService = userService;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -192,7 +192,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -201,25 +201,25 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		public UserRegistrationAction()
 			{
 				// TODO Auto-generated constructor stub
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -227,18 +227,18 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 								case "search" :
 									strMode = this.Paging();
 								case "edit" :
-
+								
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
-
+									
 									strMode = this.SaveAdd();
 								case "saveadd" :
 									strMode = this.SaveAdd();
 								case "saveedit" :
 									strMode = this.SaveEdit();
 								case "back" :
-
+								
 								default :
 									return "failed";
 							}
@@ -249,7 +249,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -257,7 +257,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -265,7 +265,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -273,7 +273,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @return the usrUpd
 		 */
@@ -281,7 +281,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.usrUpd;
 			}
-
+			
 		/**
 		 * @return the usrCrt
 		 */
@@ -289,7 +289,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.usrCrt;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -297,7 +297,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -306,7 +306,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -315,7 +315,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -324,7 +324,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -333,7 +333,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -342,7 +342,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -351,7 +351,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -359,7 +359,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -368,7 +368,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the lstUser
 		 */
@@ -376,7 +376,7 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				return this.lstUser;
 			}
-
+			
 		/**
 		 * @param lstUser
 		 *            the lstUser to set
@@ -385,5 +385,5 @@ public class UserRegistrationAction extends ActionSupport implements Preparable
 			{
 				this.lstUser = lstUser;
 			}
-
+			
 	}
