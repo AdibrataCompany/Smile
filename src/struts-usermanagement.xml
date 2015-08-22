@@ -9,25 +9,30 @@
 		<action name="employee"
 			class="com.adibrata.smartdealer.action.usermanagement.employee.EmployeeAction"
 			method="execute">
-			<result name="start">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="search">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="input">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="search">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
 
-			<result name="edit">/pages/setting/assetdoc/editAssetDoc.jsp</result>
-			<result name="del">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="add">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="end">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
+			<result name="add">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
+			<result name="edit">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
+			<result name="deldetail">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
 
-			<result name="saveadd">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="saveedit">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-
-			<result name="success">/pages/setting/assetdoc/pageAssetDoc.jsp</result>
-			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
-			<result name="end">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="first">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
-
+			<result name="first">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="prev">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="next">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="last">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+		</action>
+		<action name="employeec_save"
+			class="com.adibrata.smartdealer.action.usermanagement.employee.EmployeeAction"
+			method="save">
+			<result name="input">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
+			<result name="error">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">employee</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">employeec</param>
+			</result>
 		</action>
 
 		<action name="menu"

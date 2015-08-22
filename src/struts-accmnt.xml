@@ -7,7 +7,7 @@
 		<action name="banktransaction"
 			class="com.adibrata.smartdealer.action.setting.bankaccount.BankAccountAction"
 			method="execute">
-			<result name="start">/Pages/Include/BankAccountPaging.jsp
+			<result name="input">/Pages/Include/BankAccountPaging.jsp
 			</result>
 			<result name="success">/Pages/Include/BankAccountPaging.jsp
 			</result>
@@ -66,7 +66,7 @@
 		<action name="paymentreversal"
 			class="com.adibrata.smartdealer.action.accmnt.payment.correction.CorrectionAction"
 			method="execute">
-			<result name="start">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
+			<result name="input">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>
 			<result name="success">/Pages/OtherTransaction/OtherDisburse/OtherDisburse.jsp
 			</result>

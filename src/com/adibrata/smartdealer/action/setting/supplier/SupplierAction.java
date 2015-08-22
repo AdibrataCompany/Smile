@@ -177,16 +177,8 @@ public class SupplierAction extends BaseAction implements Preparable
 				else
 					{
 						this.pagenumber = 1;
-						try
-							{
-								this.Paging();
-								strMode = "start";
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						strMode = INPUT;
+
 					}
 				return strMode;
 			}

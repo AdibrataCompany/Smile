@@ -20,19 +20,20 @@
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="suspendreceive.action" theme="simple">
 			<center>
-
 				<div class="col-md-4">
 					<h2>Suspend Receive</h2>
 					<s:hidden name="id" />
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="bankaccountid" id="bankaccountid" />
+					<s:hidden name="mode" id="mode" />
 					<s:label name="message" />
+					<s:hidden name="bankaccountname" />
+					<s:hidden name="currency" />
 					<div align="left" class="form-group">
 						<label>Bank Account</label>
 						<div align="left" class="form-inline">
-							<s:select list="lstBankAccount" name="bankAccountid"
-								value="bankaccountname" label="Select Bank Account" headerKey=""
-								headerValue="Select Bank Account" />
+							<s:label name="bankaccountname" />
+							-
+							<s:label name="currency" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
@@ -68,7 +69,7 @@
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
@@ -89,8 +90,6 @@
 	function end() {
 		document.getElementById("mode").value = "end";
 	}
-	
-	
 </script>
 
 </html>

@@ -54,6 +54,7 @@
 
 <script type="text/javascript">
 	function end() {
+		alert("end");
 		document.getElementById("mode").value = "end";
 	}
 	function save(param) {

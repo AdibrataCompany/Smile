@@ -28,11 +28,11 @@
 					<tr>
 						<td width="10%">Pencarian</td>
 						<td><select name="searchcriteria">
-								<option value="0">Pilih Kriteria</option>
-								<option value="employeecode">Code</option>
-								<option value="employeename">Name</option>
+								<option value="0">Search Criteria</option>
+								<option value="nik">Nik</option>
+								<option value="name">Name</option>
 								<option value="position">Position</option>
-						</select> <input name="searchvalue" placeholder="Masukan Nilai" />
+						</select> <input name="searchvalue" placeholder="Search Value" />
 							<button class="btn btn-sm btn-primary" type="submit"
 								onclick="search()">Search</button></td>
 
@@ -45,12 +45,13 @@
 				<br>
 				<table class="table table-bordered">
 					<tr>
+						
 						<th style="text-align: center;">Name</th>
 						<th style="text-align: center;">Position</th>
-						<th style="text-align: center;" width="5%">Pilih</th>
+						<th style="text-align: center;" width="5%">Select</th>
 
 					</tr>
-					<s:iterator value="lstAssetDocMasters">
+					<s:iterator value="lstemployee">
 						<tr id="row_${id}">
 							<td>${name}</td>
 							<td>${position}</td>

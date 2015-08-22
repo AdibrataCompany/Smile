@@ -17,12 +17,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class JournalSchemeAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private JournalSchemeService service;
 		private CoaSchmDtl coaschmdtl;
@@ -34,22 +34,22 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-
+		
 		private String message;
 		private Long id;
 		private String coaschmcode;
 		private String coaschmdesc;
 		private Integer isactive;
-
+		
 		public JournalSchemeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.service = new JournalSchemeDao();
 				this.coaschmhdr = new CoaSchmHdr();
-
+				
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
+				
 				this.office = new Office();
 				this.setOffice(this.office);
 				if (this.pagenumber == 0)
@@ -57,14 +57,14 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						this.pagenumber = 1;
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -196,7 +196,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-						strMode = "start";
+						strMode = "INPUT";
 					}
 				return strMode;
 			}
@@ -239,7 +239,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "input";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -249,7 +249,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				String wherecond = "";
@@ -266,7 +266,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return wherecond;
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -275,15 +275,15 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -292,15 +292,15 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.coaschmhdr = new CoaSchmHdr();
@@ -330,7 +330,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		public void ViewDetail() throws Exception
 			{
 				this.coaschmhdr = new CoaSchmHdr();
@@ -350,7 +350,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -364,7 +364,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						this.coaschmhdr.setUsrCrt(BaseAction.sesLoginName());
 						this.coaschmhdr.setUsrUpd(BaseAction.sesLoginName());
 						this.service.SaveAddHeader(this.coaschmhdr);
-						
+
 						this.setMessage(BaseAction.SuccessMessage());
 					}
 				catch (final Exception exp)
@@ -378,7 +378,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -390,7 +390,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 						this.coaschmhdr.setCoaSchmDesc(this.coaschmdesc);
 						this.coaschmhdr.setIsActive(this.isactive);
 						this.coaschmhdr.setPartner(this.partner);
-						
+
 						this.coaschmhdr.setUsrCrt(BaseAction.sesLoginName());
 						this.coaschmhdr.setUsrUpd(BaseAction.sesLoginName());
 						this.service.SaveAddHeader(this.coaschmhdr);
@@ -407,7 +407,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				String status = "";
@@ -437,7 +437,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -445,7 +445,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the coaschmdtl
 		 */
@@ -453,7 +453,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.coaschmdtl;
 			}
-
+			
 		/**
 		 * @return the coaschmhdr
 		 */
@@ -461,7 +461,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.coaschmhdr;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -469,7 +469,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -477,7 +477,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param coaschmdtl
 		 *            the coaschmdtl to set
@@ -486,7 +486,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.coaschmdtl = coaschmdtl;
 			}
-
+			
 		/**
 		 * @param coaschmhdr
 		 *            the coaschmhdr to set
@@ -495,7 +495,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.coaschmhdr = coaschmhdr;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -504,7 +504,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -513,17 +513,17 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -531,7 +531,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -539,7 +539,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -547,7 +547,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -556,7 +556,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -565,7 +565,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -574,87 +574,87 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		public JournalSchemeService getJourschemeservice()
 			{
 				return this.service;
 			}
-
+			
 		public void setJourschemeservice(final JournalSchemeService jourschemeservice)
 			{
 				this.service = jourschemeservice;
 			}
-
+			
 		public List<CoaSchmDtl> getLstcoaschmdtl()
 			{
 				return this.lstcoaschmdtl;
 			}
-
+			
 		public void setLstcoaschmdtl(final List<CoaSchmDtl> lstcoaschmdtl)
 			{
 				this.lstcoaschmdtl = lstcoaschmdtl;
 			}
-
+			
 		public List<CoaSchmHdr> getLstcoaschmhdr()
 			{
 				return this.lstcoaschmhdr;
 			}
-
+			
 		public void setLstcoaschmhdr(final List<CoaSchmHdr> lstcoaschmhdr)
 			{
 				this.lstcoaschmhdr = lstcoaschmhdr;
 			}
-
+			
 		public int getPagenumber()
 			{
 				return this.pagenumber;
 			}
-
+			
 		public void setPagenumber(final int pagenumber)
 			{
 				this.pagenumber = pagenumber;
 			}
-			
+
 		public String getCoaschmcode()
 			{
 				return this.coaschmcode;
 			}
-
+			
 		public void setCoaschmcode(final String coaschmcode)
 			{
 				this.coaschmcode = coaschmcode;
 			}
-
+			
 		public String getCoaschmdesc()
 			{
 				return this.coaschmdesc;
 			}
-
+			
 		public void setCoaschmdesc(final String coaschmdesc)
 			{
 				this.coaschmdesc = coaschmdesc;
 			}
-
+			
 		public Integer getIsactive()
 			{
 				return this.isactive;
 			}
-
+			
 		public void setIsactive(final Integer isactive)
 			{
 				this.isactive = isactive;
 			}
-
+			
 		public void setId(final Long id)
 			{
 				this.id = id;
 			}
-
+			
 		public Long getId()
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -662,7 +662,7 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -671,5 +671,5 @@ public class JournalSchemeAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 	}

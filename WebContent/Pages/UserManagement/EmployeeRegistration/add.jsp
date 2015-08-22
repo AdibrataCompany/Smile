@@ -6,65 +6,62 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
-
-
 </head>
 <body>
-
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
 		<!-- Main component for a primary marketing message or call to action -->
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="assetdoc.action" theme="simple">
+		<s:form action="employee_save.action" theme="simple">
 			<center>
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-
-					<h2>Employee Master</h2>
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h2>Employee</h2>
 					<input type="text" name="mode" id="mode"
 						style="visibility: hidden;"></input>
-					<table class="table table-striped">
-						<tr>
-							<td>Kode</td>
-							<td><input type="text" name="documentCode" /></td>
-						</tr>
-						<tr>
-							<td>Nama</td>
-							<td><input type="text" name="documentName" /></td>
-						</tr>
-						<tr>
-							<td>Tipe</td>
-							<td><input type="text" name="assetType" /></td>
-						</tr>
-					</table>
+					<s:hidden name="id" />
+					<br>
+					<div align="left" class="form-group">
+						<label>Name</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="name" style="width:75%" class="form-control" />
+						</div>
+					</div>
+					<div align="left" class="form-group">
+						<label>Position</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="position" style="width:75%" class="form-control" />
+						</div>
+					</div>
+					<%@include file="/Pages/Include/Address.jsp"%>
+					<div align="left" class="form-group">
+						<label>Handphone</label>
+						<div align="left" class="form-inline">
+							<s:textfield name="handphone" style="width:150px"
+								class="form-control" />
+						</div>
+					</div>
 					<br>
 					<table width="100%">
 						<tr>
 							<td><button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Kembali</button></td>
-							<td colspan="2" align="right">
-								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveadd()">Simpan</button>
-							</td>
+										onclick="end()">BACK</button></td>
+							<td align="right"><s:if test="mode=='edit'">
+									<button class="btn btn-sm btn-primary" type="submit"
+										onclick="saveedit()">SAVE</button>
+								</s:if> <s:else>
+									<button class="btn btn-sm btn-primary" type="submit"
+										onclick="saveadd()">SAVE</button>
+								</s:else></td>
 						</tr>
 					</table>
-
 				</div>
 			</center>
+			<%@include file="/Pages/Footer.jsp"%>
 		</s:form>
 	</div>
-	<%@include file="/Pages/Footer.jsp"%>
 </body>
-<script type="text/javascript">
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
-	}
-	function end() {
-		document.getElementById("mode").value = "end";
-	}
-</script>
 </html>

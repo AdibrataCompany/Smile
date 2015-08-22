@@ -45,7 +45,7 @@
 		<action name="suspendallocation"
 			class="com.adibrata.smartdealer.action.accmnt.suspend.allocation.SuspendAllocationAction"
 			method="save">
-			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
+			<result name="input">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
@@ -98,7 +98,7 @@
 			class="com.adibrata.smartdealer.action.accmnt.suspend.correction.SuspendCorrectionAction"
 			method="save">
 
-			<result name="start">/Pages/Suspend/SuspendReverse/paging.jsp
+			<result name="input">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
 			<result name="success">/Pages/Suspend/SuspendReverse/paging.jsp
 			</result>
