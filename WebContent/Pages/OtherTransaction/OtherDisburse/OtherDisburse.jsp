@@ -51,9 +51,9 @@
 								<span class="add-on"><i class="icon-th"><img
 										src="Pages/style/calendar.png" /></i></span>
 							</div></td>
-						<td>Amount Receive</td>
+						<td>Disburse Amount</td>
 						<td><s:textfield name="disbamount"
-								placeholder="Amount Disburse" /></td>
+								placeholder="Disburse Amount" /></td>
 					</tr>
 					<tr>
 						<td valign="top">Notes</td>

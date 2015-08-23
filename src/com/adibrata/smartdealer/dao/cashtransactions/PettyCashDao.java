@@ -18,6 +18,7 @@ import com.adibrata.smartdealer.service.cashtransactions.PettyCashService;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.support.job.JobPost;
 
 public class PettyCashDao extends DaoBase implements PettyCashService
 	{
@@ -32,7 +33,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.strStatement = " from PettyCashHdr ";
+						this.strStatement = "from PettyCashHdr ";
 						
 					}
 				catch (final Exception exp)
@@ -57,11 +58,15 @@ public class PettyCashDao extends DaoBase implements PettyCashService
 				// TODO Auto-generated method stub
 				this.getSession().getTransaction().begin();
 				int counter = 1;
+				final Long jobid;
+				PettyCashDtl pettyCashDtl;
 				try
 					{
 						
 						final String transno = TransactionNo(this.getSession(), partner.getPartnerCode(), office.getId(), TransactionType.pettycashtransaction);
+						jobid = JobPost.JobSave(this.getSession(), partner.getPartnerCode(), office.getId(), JobPost.JobCode.pettycashtransaction, "", pettycashhdr.getValueDate(), pettycashhdr.getPostingDate(), usrupd).getId();
 						pettycashhdr.setPettyCashCode(transno);
+						pettycashhdr.setJobId(jobid);
 						pettycashhdr.setPartner(partner);
 						pettycashhdr.setOffice(office);
 						pettycashhdr.setUsrCrt(usrupd);
@@ -71,7 +76,7 @@ public class PettyCashDao extends DaoBase implements PettyCashService
 						this.getSession().save(pettycashhdr);
 						for (final PettyCashDtl arow : lstpettycashdtl)
 							{
-								PettyCashDtl pettyCashDtl = new PettyCashDtl();
+								pettyCashDtl = new PettyCashDtl();
 								pettyCashDtl = arow;
 								pettyCashDtl.setSeqNo(counter);
 								pettyCashDtl.setPettyCashHdr(pettycashhdr);

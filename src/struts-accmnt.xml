@@ -45,7 +45,7 @@
 				<param name="bankaccountid">${id}</param>
 			</result>
 			<result name="pettycashtransaction" type="redirectAction">
-				/Pages/CashTransaction/PettyCash/PettyCash.jsp
+				<param name="actionName">pettycashtransaction</param>
 				<param name="bankaccountid">${id}</param>
 			</result>
 		</action>

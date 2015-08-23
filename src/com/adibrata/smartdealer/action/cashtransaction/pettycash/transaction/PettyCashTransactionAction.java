@@ -9,18 +9,19 @@ import java.util.Map;
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.cashtransactions.PettyCashDao;
 import com.adibrata.smartdealer.model.BankAccount;
+import com.adibrata.smartdealer.model.BankAccountInfo;
 import com.adibrata.smartdealer.model.Employee;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.model.PettyCashDtl;
 import com.adibrata.smartdealer.model.PettyCashHdr;
 import com.adibrata.smartdealer.service.cashtransactions.PettyCashService;
-import com.adibrata.smartdealer.service.setting.BankAccountService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
+import util.adibrata.utility.date.DateConvertion;
 
 public class PettyCashTransactionAction extends BaseAction implements Preparable
 	{
@@ -32,40 +33,41 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 		private String mode;
 		private Office office;
 		private Partner partner;
-		private PettyCashService pettCashService;
+
 		private BankAccount bankaccount;
 		private Employee employee;
-		private String searchcriteria;
-		private String searchvalue;
-
+		
+		private PettyCashDtl pettyCashDtl;
+		private PettyCashHdr pettyCashHdr;
 		private Map<String, Object> dtl;
 		private List<PettyCashDtl> lstdtl;
-
-		private List<BankAccount> lstbankaccount;
+		
 		private Map<Long, String> lstemployee;
-
-		private int pageNumber;
-
+		private Map<String, Object> emplses;
 		private String message;
-		private Long bankaccountid;
+
 		private String notes;
 		private Double amount;
 		private String valuedate;
+		private Double pcamount;
 		private Long employeeid;
+		private String employeename;
 		private Double currencyrate;
-		private Long currencyid;
-		private final PettyCashService service;
-		private Double amountdetail;
-		private String descdetail;
+
+		private PettyCashService service;
+
+		private String description;
 		private String coacode;
 		private String coaname;
 		private Double totalamount;
 		private int seqno;
+		private String refno;
+		private BankAccount bankAccount;
+		private Long bankaccountid;
 		private String bankaccountname;
-
-		private List<BankAccount> lstBankAccount;
-		private BankAccountService bankaccountservice;
-
+		private Long currencyid;
+		private String currencycode;
+		
 		public PettyCashTransactionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -73,18 +75,9 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				this.lstemployee = new HashMap<Long, String>();
-				this.lstemployee = this.ListEmployee(this.partner, this.office);
-
-				this.lstdtl = new ArrayList<PettyCashDtl>();
-				this.service = new PettyCashDao();
-
-				this.employee = new Employee();
-				this.bankaccount = new BankAccount();
 
 			}
-
-		@SuppressWarnings("unchecked")
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -92,11 +85,14 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 				try
 					{
 						this.dtl = ActionContext.getContext().getSession();
-						if (this.dtl.get("dtl") != null)
+						this.emplses = ActionContext.getContext().getSession();
+						this.lstemployee = (Map<Long, String>) this.emplses.get("Employee");
+						if (this.lstemployee == null)
 							{
-								this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
+								this.lstemployee = new HashMap<Long, String>();
+								this.lstemployee = this.ListEmployee(this.partner, this.office);
+								this.emplses.put("Employee", this.lstemployee);
 							}
-
 					}
 				catch (final Exception exp)
 					{
@@ -113,7 +109,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -122,175 +118,175 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 									strMode = this.SavePettyCash();
 									break;
 								case "adddetail" :
-									strMode = this.AddDetail();
+									this.AddDetail();
 									break;
-
+									
 								case "deldetail" :
-									strMode = this.DeleteDetail();
+									this.DeleteDetail();
 									break;
-								case "first" :
-									this.pageNumber = 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
-										{
-											this.pageNumber = 1;
-										}
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "next" :
-									this.pageNumber += 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "last" :
-									try
-										{
-											this.Paging(1);
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
+									
 								default :
-									return "failed";
-
+									break;
+									
 							}
 					}
 				else
 					{
-						strMode = "start";
+						strMode = INPUT;
+						try
+							{
+								this.Initialisasi();
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 					}
 				return strMode;
 			}
-
-		private String AddDetail() throws Exception
-			{
-				final String status = this.mode;
-				try
-					{
-						if ((this.totalamount + this.amountdetail) > this.amount)
-							{
-								this.message = "Amount Detail > Petty Cash Amount";
-							}
-						else
-							{
-								final PettyCashDtl pettycashdtl = new PettyCashDtl();
-								pettycashdtl.setAmount(this.amountdetail);
-								pettycashdtl.setCoaName(this.coaname);
-								pettycashdtl.setDescription(this.descdetail);
-								this.lstdtl.add(pettycashdtl);
-
-								this.dtl.put("dtl", pettycashdtl);
-								this.totalamount = 0.00;
-								for (final PettyCashDtl aRow : this.lstdtl)
-									{
-										this.totalamount += aRow.getAmount();
-									}
-							}
-
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return status;
-			}
-
+			
 		@SuppressWarnings("unchecked")
-		private String DeleteDetail() throws Exception
+		private void Initialisasi() throws Exception
 			{
-				final String status = this.getMode();
+				this.lstdtl = new ArrayList<PettyCashDtl>();
+				this.dtl.clear();
+				this.dtl.put("PettyCash", this.lstdtl);
+				this.lstemployee = (Map<Long, String>) this.emplses.get("Employee");
+				if (this.lstemployee == null)
+					{
+						this.lstemployee = new HashMap<Long, String>();
+						this.lstemployee = this.ListEmployee(this.partner, this.office);
+						this.emplses.put("Employee", this.lstemployee);
+					}
+				this.seqno = 1;
+
+				this.setAmount(0.00);
+				this.setValuedate(this.dateformat.format(BaseAction.sesBussinessDate()));
+				this.setNotes("");
+				if (this.getBankaccountid() != null)
+					{
+						BankAccountInfo info = new BankAccountInfo();
+						info = this.BankInfo(this.getBankaccountid());
+						this.bankaccountname = info.getName();
+						this.currencycode = info.getCurrency();
+						this.currencyid = info.getCurrencyid();
+					}
+
+			}
+			
+		@SuppressWarnings("unchecked")
+		private void AddDetail() throws Exception
+			{
 				try
 					{
-						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
-						this.seqno = this.seqno - 1;
-						this.lstdtl.remove(this.seqno);
-
-						this.dtl.put("dtl", this.lstdtl);
-						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("dtl");
+						// if (this.totalamount != null && this.amountdetail)
+						// if ((this.totalamount + this.amountdetail) > this.amount)
+						// {
+						// this.message = "Amount Detail > Petty Cash Amount";
+						// }
+						// else
+						// {
+						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("PettyCash");
+						if (this.lstdtl == null)
+							{
+								this.lstdtl = new ArrayList<PettyCashDtl>();
+							}
+						final PettyCashDtl pettycashdtl = new PettyCashDtl();
+						pettycashdtl.setAmount(this.amount);
+						pettycashdtl.setCoaName(this.coaname);
+						pettycashdtl.setDescription(this.description);
+						this.lstdtl.add(pettycashdtl);
+						
+						this.dtl.put("PettyCash", this.lstdtl);
 						this.totalamount = 0.00;
 						for (final PettyCashDtl aRow : this.lstdtl)
 							{
 								this.totalamount += aRow.getAmount();
 							}
 
+						// }
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+					
 			}
-
-		private String SavePettyCash() throws Exception
+			
+		@SuppressWarnings("unchecked")
+		private void DeleteDetail() throws Exception
 			{
-				String status = this.mode;
-
-				final PettyCashHdr pettycashhdr = new PettyCashHdr();
+				this.getMode();
 				try
 					{
-
-						pettycashhdr.setPcamount(this.getAmount());
-						pettycashhdr.setValueDate(this.dateformat.parse(this.getValuedate()));
+						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("PettyCash");
+						this.seqno = this.seqno - 1;
+						this.lstdtl.remove(this.seqno);
+						
+						this.dtl.put("PettyCash", this.lstdtl);
+						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("PettyCash");
+						this.totalamount = 0.00;
+						for (final PettyCashDtl aRow : this.lstdtl)
+							{
+								this.totalamount += aRow.getAmount();
+							}
+							
+					}
+				catch (final Exception exp)
+					{
+						
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+					
+			}
+			
+		@SuppressWarnings("unchecked")
+		private String SavePettyCash() throws Exception
+			{
+				
+				this.service = new PettyCashDao();
+				try
+					{
+						this.lstdtl = (List<PettyCashDtl>) this.dtl.get("PettyCash");
+						this.pettyCashHdr = new PettyCashHdr();
+						this.bankaccount = new BankAccount();
+						this.employee = new Employee();
+						this.pettyCashHdr.setPcamount(this.getAmount());
+						this.pettyCashHdr.setValueDate(this.dateformat.parse(this.getValuedate()));
+						this.pettyCashHdr.setPartner(this.partner);
+						this.pettyCashHdr.setOffice(this.office);
+						
 						this.bankaccount.setId(this.getBankaccountid());
 						this.employee.setId(this.getEmployeeid());
-
-						pettycashhdr.setBankAccount(this.getBankaccount());
-						pettycashhdr.setEmployee(this.getEmployee());
 						
-						pettycashhdr.setPostingDate(BaseAction.sesBussinessDate());
-
-						pettycashhdr.setPartner(this.getPartner());
-						pettycashhdr.setOffice(this.getOffice());
-						pettycashhdr.setCurrencyRate(this.getCurrencyrate());
-						pettycashhdr.setNotes(this.getNotes());
-						pettycashhdr.setUsrUpd(BaseAction.sesLoginName());
-						pettycashhdr.setUsrCrt(BaseAction.sesLoginName());
-						this.service.SavePettyCash(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), pettycashhdr, this.lstdtl);
-						status = SUCCESS;
-
+						this.pettyCashHdr.setBankAccount(this.getBankaccount());
+						this.pettyCashHdr.setEmployee(this.getEmployee());
+						this.pettyCashHdr.setValueDate(DateConvertion.convertStringToDate(this.valuedate));
+						this.pettyCashHdr.setPostingDate(BaseAction.sesBussinessDate());
+						
+						this.pettyCashHdr.setCurrencyRate((double) 1);
+						this.pettyCashHdr.setNotes(this.getNotes());
+						this.pettyCashHdr.setUsrUpd(BaseAction.sesLoginName());
+						this.pettyCashHdr.setUsrCrt(BaseAction.sesLoginName());
+						
+						this.service.SavePettyCash(BaseAction.sesLoginName(), this.getPartner(), this.getOffice(), this.pettyCashHdr, this.lstdtl);
+						this.mode = SUCCESS;
+						
 						this.setMessage(SuccessMessage());
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
-
+						this.mode = ERROR;
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -299,91 +295,12 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
-				return status;
+				return this.mode;
 			}
-
-		public String ViewData() throws Exception
-			{
-				this.bankaccount = new BankAccount();
-				String status = this.mode;
-				try
-					{
-						if (this.getId() != null)
-							{
-								this.bankaccount = this.bankaccountservice.View(this.getId());
-								this.bankaccountname = this.bankaccount.getBankAccountName();
-								this.bankaccountid = this.getId();
-							}
-						else
-							{
-								status = "end";
-								this.setMessage(BaseAction.SelectFirst());
-							}
-					}
-				catch (final Exception exp)
-					{
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				return status;
-			}
-
-		private String WhereCond()
-			{
-				String wherecond = "";
-				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
-					{
-						if (this.getSearchcriteria().contains("%"))
-							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
-							}
-						else
-							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
-							}
-					}
-				return wherecond;
-			}
-
-		private void Paging() throws Exception
-			{
-				try
-					{
-						this.lstBankAccount = this.bankaccountservice.Paging(this.getPageNumber(), this.WhereCond(), "");
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
-		private void Paging(final int islast) throws Exception
-			{
-				try
-					{
-						this.lstBankAccount = this.bankaccountservice.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-					}
-				catch (final Exception exp)
-					{
-
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-
-			}
-
+		// Getter Setter
+		
 		/**
 		 * @return the id
 		 */
@@ -391,7 +308,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -400,7 +317,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -408,7 +325,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -417,7 +334,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -425,7 +342,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -434,7 +351,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -442,7 +359,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -451,24 +368,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
-		/**
-		 * @return the pettCashService
-		 */
-		public PettyCashService getPettCashService()
-			{
-				return this.pettCashService;
-			}
-
-		/**
-		 * @param pettCashService
-		 *            the pettCashService to set
-		 */
-		public void setPettCashService(final PettyCashService pettCashService)
-			{
-				this.pettCashService = pettCashService;
-			}
-
+			
 		/**
 		 * @return the bankaccount
 		 */
@@ -476,7 +376,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccount;
 			}
-
+			
 		/**
 		 * @param bankaccount
 		 *            the bankaccount to set
@@ -485,7 +385,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccount = bankaccount;
 			}
-
+			
 		/**
 		 * @return the employee
 		 */
@@ -493,7 +393,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-
+			
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -502,41 +402,41 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-
+			
 		/**
-		 * @return the searchcriteria
+		 * @return the pettyCashDtl
 		 */
-		public String getSearchcriteria()
+		public PettyCashDtl getPettyCashDtl()
 			{
-				return this.searchcriteria;
+				return this.pettyCashDtl;
 			}
-
+			
 		/**
-		 * @param searchcriteria
-		 *            the searchcriteria to set
+		 * @param pettyCashDtl
+		 *            the pettyCashDtl to set
 		 */
-		public void setSearchcriteria(final String searchcriteria)
+		public void setPettyCashDtl(final PettyCashDtl pettyCashDtl)
 			{
-				this.searchcriteria = searchcriteria;
+				this.pettyCashDtl = pettyCashDtl;
 			}
-
+			
 		/**
-		 * @return the searchvalue
+		 * @return the pettyCashHdr
 		 */
-		public String getSearchvalue()
+		public PettyCashHdr getPettyCashHdr()
 			{
-				return this.searchvalue;
+				return this.pettyCashHdr;
 			}
-
+			
 		/**
-		 * @param searchvalue
-		 *            the searchvalue to set
+		 * @param pettyCashHdr
+		 *            the pettyCashHdr to set
 		 */
-		public void setSearchvalue(final String searchvalue)
+		public void setPettyCashHdr(final PettyCashHdr pettyCashHdr)
 			{
-				this.searchvalue = searchvalue;
+				this.pettyCashHdr = pettyCashHdr;
 			}
-
+			
 		/**
 		 * @return the dtl
 		 */
@@ -544,7 +444,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.dtl;
 			}
-
+			
 		/**
 		 * @param dtl
 		 *            the dtl to set
@@ -553,7 +453,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.dtl = dtl;
 			}
-
+			
 		/**
 		 * @return the lstdtl
 		 */
@@ -561,7 +461,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstdtl;
 			}
-
+			
 		/**
 		 * @param lstdtl
 		 *            the lstdtl to set
@@ -570,24 +470,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstdtl = lstdtl;
 			}
-
-		/**
-		 * @return the lstbankaccount
-		 */
-		public List<BankAccount> getLstbankaccount()
-			{
-				return this.lstbankaccount;
-			}
-
-		/**
-		 * @param lstbankaccount
-		 *            the lstbankaccount to set
-		 */
-		public void setLstbankaccount(final List<BankAccount> lstbankaccount)
-			{
-				this.lstbankaccount = lstbankaccount;
-			}
-
+			
 		/**
 		 * @return the lstemployee
 		 */
@@ -595,7 +478,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-
+			
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -604,24 +487,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.lstemployee = lstemployee;
 			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -629,7 +495,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -638,24 +504,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
-		/**
-		 * @return the bankaccountid
-		 */
-		public Long getBankaccountid()
-			{
-				return this.bankaccountid;
-			}
-
-		/**
-		 * @param bankaccountid
-		 *            the bankaccountid to set
-		 */
-		public void setBankaccountid(final Long bankaccountid)
-			{
-				this.bankaccountid = bankaccountid;
-			}
-
+			
 		/**
 		 * @return the notes
 		 */
@@ -663,7 +512,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-
+			
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -672,7 +521,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -680,7 +529,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-
+			
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -689,7 +538,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-
+			
 		/**
 		 * @return the valuedate
 		 */
@@ -697,7 +546,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-
+			
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -706,7 +555,24 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-
+			
+		/**
+		 * @return the pcamount
+		 */
+		public Double getPcamount()
+			{
+				return this.pcamount;
+			}
+			
+		/**
+		 * @param pcamount
+		 *            the pcamount to set
+		 */
+		public void setPcamount(final Double pcamount)
+			{
+				this.pcamount = pcamount;
+			}
+			
 		/**
 		 * @return the employeeid
 		 */
@@ -714,7 +580,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-
+			
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -723,7 +589,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-
+			
 		/**
 		 * @return the currencyrate
 		 */
@@ -731,7 +597,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.currencyrate;
 			}
-
+			
 		/**
 		 * @param currencyrate
 		 *            the currencyrate to set
@@ -740,58 +606,41 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.currencyrate = currencyrate;
 			}
-
+			
 		/**
-		 * @return the currencyid
+		 * @return the service
 		 */
-		public Long getCurrencyid()
+		public PettyCashService getService()
 			{
-				return this.currencyid;
+				return this.service;
 			}
-
+			
 		/**
-		 * @param currencyid
-		 *            the currencyid to set
+		 * @param service
+		 *            the service to set
 		 */
-		public void setCurrencyid(final Long currencyid)
+		public void setService(final PettyCashService service)
 			{
-				this.currencyid = currencyid;
+				this.service = service;
 			}
-
+			
 		/**
-		 * @return the amountdetail
+		 * @return the description
 		 */
-		public Double getAmountdetail()
+		public String getDescription()
 			{
-				return this.amountdetail;
+				return this.description;
 			}
-
+			
 		/**
-		 * @param amountdetail
-		 *            the amountdetail to set
+		 * @param description
+		 *            the description to set
 		 */
-		public void setAmountdetail(final Double amountdetail)
+		public void setDescription(final String description)
 			{
-				this.amountdetail = amountdetail;
+				this.description = description;
 			}
-
-		/**
-		 * @return the descdetail
-		 */
-		public String getDescdetail()
-			{
-				return this.descdetail;
-			}
-
-		/**
-		 * @param descdetail
-		 *            the descdetail to set
-		 */
-		public void setDescdetail(final String descdetail)
-			{
-				this.descdetail = descdetail;
-			}
-
+			
 		/**
 		 * @return the coacode
 		 */
@@ -799,7 +648,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.coacode;
 			}
-
+			
 		/**
 		 * @param coacode
 		 *            the coacode to set
@@ -808,7 +657,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.coacode = coacode;
 			}
-
+			
 		/**
 		 * @return the coaname
 		 */
@@ -816,7 +665,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.coaname;
 			}
-
+			
 		/**
 		 * @param coaname
 		 *            the coaname to set
@@ -825,7 +674,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.coaname = coaname;
 			}
-
+			
 		/**
 		 * @return the totalamount
 		 */
@@ -833,7 +682,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.totalamount;
 			}
-
+			
 		/**
 		 * @param totalamount
 		 *            the totalamount to set
@@ -842,7 +691,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.totalamount = totalamount;
 			}
-
+			
 		/**
 		 * @return the seqno
 		 */
@@ -850,7 +699,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.seqno;
 			}
-
+			
 		/**
 		 * @param seqno
 		 *            the seqno to set
@@ -859,7 +708,41 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.seqno = seqno;
 			}
-
+			
+		/**
+		 * @return the bankAccount
+		 */
+		public BankAccount getBankAccount()
+			{
+				return this.bankAccount;
+			}
+			
+		/**
+		 * @param bankAccount
+		 *            the bankAccount to set
+		 */
+		public void setBankAccount(final BankAccount bankAccount)
+			{
+				this.bankAccount = bankAccount;
+			}
+			
+		/**
+		 * @return the bankaccountid
+		 */
+		public Long getBankaccountid()
+			{
+				return this.bankaccountid;
+			}
+			
+		/**
+		 * @param bankaccountid
+		 *            the bankaccountid to set
+		 */
+		public void setBankaccountid(final Long bankaccountid)
+			{
+				this.bankaccountid = bankaccountid;
+			}
+			
 		/**
 		 * @return the bankaccountname
 		 */
@@ -867,7 +750,7 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountname;
 			}
-
+			
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -876,41 +759,41 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				this.bankaccountname = bankaccountname;
 			}
-
+			
 		/**
-		 * @return the lstBankAccount
+		 * @return the currencyid
 		 */
-		public List<BankAccount> getLstBankAccount()
+		public Long getCurrencyid()
 			{
-				return this.lstBankAccount;
+				return this.currencyid;
 			}
-
+			
 		/**
-		 * @param lstBankAccount
-		 *            the lstBankAccount to set
+		 * @param currencyid
+		 *            the currencyid to set
 		 */
-		public void setLstBankAccount(final List<BankAccount> lstBankAccount)
+		public void setCurrencyid(final Long currencyid)
 			{
-				this.lstBankAccount = lstBankAccount;
+				this.currencyid = currencyid;
 			}
-
+			
 		/**
-		 * @return the bankaccountservice
+		 * @return the currencycode
 		 */
-		public BankAccountService getBankaccountservice()
+		public String getCurrencycode()
 			{
-				return this.bankaccountservice;
+				return this.currencycode;
 			}
-
+			
 		/**
-		 * @param bankaccountservice
-		 *            the bankaccountservice to set
+		 * @param currencycode
+		 *            the currencycode to set
 		 */
-		public void setBankaccountservice(final BankAccountService bankaccountservice)
+		public void setCurrencycode(final String currencycode)
 			{
-				this.bankaccountservice = bankaccountservice;
+				this.currencycode = currencycode;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -918,13 +801,56 @@ public class PettyCashTransactionAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
-		 * @return the service
+		 * @return the employeename
 		 */
-		public PettyCashService getService()
+		public String getEmployeename()
 			{
-				return this.service;
+				return this.employeename;
+			}
+			
+		/**
+		 * @param employeename
+		 *            the employeename to set
+		 */
+		public void setEmployeename(final String employeename)
+			{
+				this.employeename = employeename;
 			}
 
+		/**
+		 * @return the refno
+		 */
+		public String getRefno()
+			{
+				return this.refno;
+			}
+
+		/**
+		 * @param refno
+		 *            the refno to set
+		 */
+		public void setRefno(final String refno)
+			{
+				this.refno = refno;
+			}
+			
+		/**
+		 * @return the emplses
+		 */
+		public Map<String, Object> getEmplses()
+			{
+				return this.emplses;
+			}
+			
+		/**
+		 * @param emplses
+		 *            the emplses to set
+		 */
+		public void setEmplses(final Map<String, Object> emplses)
+			{
+				this.emplses = emplses;
+			}
+			
 	}

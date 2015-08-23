@@ -22,7 +22,7 @@
 	<button class="btn btn-sm btn-success" type="submit" onclick="advancetransaction()">
 		<span class="glyphicon glyphicon-plus-sign"></span><br>Advance Transaction
 	</button>
-	<button class="btn btn-sm btn-success" type="submit" onclick="advancetransaction()">
+	<button class="btn btn-sm btn-success" type="submit" onclick="pettycashtransaction()">
 		<span class="glyphicon glyphicon-plus-sign"></span><br>Petty Cash
 	</button>
 </body>

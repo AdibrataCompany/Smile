@@ -54,7 +54,7 @@
 </script>
 <script type="text/javascript">
 	function end() {
-
+		alert("end");
 		document.getElementById("mode").value = "end";
 	}
 	function save(param) {
@@ -80,7 +80,7 @@
 		document.getElementById("mode").value = "lookup";
 	}
 	function savetrans() {
-		alert ("save");
+		alert("save");
 		document.getElementById("mode").value = "save";
 	}
 	function adddetail() {

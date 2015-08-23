@@ -9,21 +9,23 @@ package com.adibrata.smartdealer.model;
  */
 public class PettyCashList
 	{
-
+		
 		/**
 		 *
 		 */
+		Long id;
+		String pettycashcode;
 		String employeename;
 		String valuedate;
 		String postingdate;
 		String bankaccountname;
 		Double amount;
-
+		
 		public PettyCashList()
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		/**
 		 * @return the employeename
 		 */
@@ -31,7 +33,7 @@ public class PettyCashList
 			{
 				return this.employeename;
 			}
-			
+
 		/**
 		 * @param employeename
 		 *            the employeename to set
@@ -40,7 +42,7 @@ public class PettyCashList
 			{
 				this.employeename = employeename;
 			}
-			
+
 		/**
 		 * @return the valuedate
 		 */
@@ -48,7 +50,7 @@ public class PettyCashList
 			{
 				return this.valuedate;
 			}
-			
+
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -57,7 +59,7 @@ public class PettyCashList
 			{
 				this.valuedate = valuedate;
 			}
-			
+
 		/**
 		 * @return the postingdate
 		 */
@@ -65,7 +67,7 @@ public class PettyCashList
 			{
 				return this.postingdate;
 			}
-			
+
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -74,7 +76,7 @@ public class PettyCashList
 			{
 				this.postingdate = postingdate;
 			}
-			
+
 		/**
 		 * @return the bankaccountname
 		 */
@@ -82,7 +84,7 @@ public class PettyCashList
 			{
 				return this.bankaccountname;
 			}
-			
+
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -91,7 +93,7 @@ public class PettyCashList
 			{
 				this.bankaccountname = bankaccountname;
 			}
-			
+
 		/**
 		 * @return the amount
 		 */
@@ -99,7 +101,7 @@ public class PettyCashList
 			{
 				return this.amount;
 			}
-			
+
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -108,5 +110,39 @@ public class PettyCashList
 			{
 				this.amount = amount;
 			}
-
+			
+		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+			
+		/**
+		 * @return the pettycashcode
+		 */
+		public String getPettycashcode()
+			{
+				return this.pettycashcode;
+			}
+			
+		/**
+		 * @param pettycashcode
+		 *            the pettycashcode to set
+		 */
+		public void setPettycashcode(final String pettycashcode)
+			{
+				this.pettycashcode = pettycashcode;
+			}
+			
 	}

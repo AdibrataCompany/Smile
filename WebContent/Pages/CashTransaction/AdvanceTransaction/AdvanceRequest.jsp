@@ -22,7 +22,7 @@
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
-					<h2>Suspend Receive</h2>
+					<h2>Advance Request</h2>
 					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
 					<s:label name="message" id="message" />
@@ -70,7 +70,7 @@
 						<tr>
 							<td>
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="end()">Clear</button>
+									onclick="end()">Back</button>
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"

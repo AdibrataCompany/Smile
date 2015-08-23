@@ -45,7 +45,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 		private String notes;
 		private Long currencyid;
 		private String currencycode;
-
+		
 		public AdvanceRequestAction() throws Exception
 			{
 				try
@@ -55,13 +55,13 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 						this.office.setId(BaseAction.sesOfficeId());
 						this.partner = new Partner();
 						this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-						
+
 						this.lstemployee = new HashMap<Long, String>();
 						this.lstemployee = this.ListEmployee(this.getPartner(), this.getOffice());
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -69,32 +69,32 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-
+				
 				if (this.mode != null)
 					{
-
+						
 						switch (strMode)
 							{
 								case "save" :
 									try
 										{
-
+											
 											strMode = this.SaveSuspend();
 										}
 									catch (final Exception e)
@@ -103,9 +103,10 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
-									return ERROR;
+									break;
+
 							}
 					}
 				else
@@ -123,7 +124,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private void InitiallInput() throws Exception
 			{
 				try
@@ -141,7 +142,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 								this.currencycode = info.getCurrency();
 								this.currencyid = info.getCurrencyid();
 							}
-							
+
 					}
 				catch (final Exception exp)
 					{
@@ -152,30 +153,30 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-					
+
 					}
 			}
-			
+
 		private String SaveSuspend() throws Exception
 			{
-				
+
 				this.advanceCash = new AdvanceCash();
 				try
 					{
 						this.bankaccount = new BankAccount();
 						this.currency = new Currency();
 						this.employee = new Employee();
-						
+
 						this.bankaccount.setId(this.getBankaccountid());
 						this.currency.setId(this.getCurrencyid());
 						this.employee.setId(this.getEmployeeid());
-
-						this.advanceCash.setAdvanceAmount(this.getAmount());
 						
+						this.advanceCash.setAdvanceAmount(this.getAmount());
+
 						this.advanceCash.setBankAccount(this.bankaccount);
 						this.advanceCash.setEmployee(this.employee);
 						this.advanceCash.setCurrency(this.currency);
-						
+
 						this.advanceCash.setValueDate(this.dateformat.parse(this.getValuedate()));
 						this.advanceCash.setPostingDate(BaseAction.sesBussinessDate());
 						this.advanceCash.setPartner(this.getPartner());
@@ -193,7 +194,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 				catch (final Exception exp)
 					{
 						this.mode = ERROR;
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -202,11 +203,11 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 					}
 				finally
 					{
-
+					
 					}
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -214,7 +215,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -223,7 +224,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -231,7 +232,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -240,7 +241,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -248,7 +249,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -257,7 +258,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -265,7 +266,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -274,7 +275,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the advanceCash
 		 */
@@ -282,7 +283,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.advanceCash;
 			}
-
+			
 		/**
 		 * @param advanceCash
 		 *            the advanceCash to set
@@ -291,7 +292,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.advanceCash = advanceCash;
 			}
-
+			
 		/**
 		 * @return the lstemployee
 		 */
@@ -299,7 +300,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-
+			
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -308,7 +309,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.lstemployee = lstemployee;
 			}
-
+			
 		/**
 		 * @return the currency
 		 */
@@ -316,7 +317,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.currency;
 			}
-
+			
 		/**
 		 * @param currency
 		 *            the currency to set
@@ -325,7 +326,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.currency = currency;
 			}
-
+			
 		/**
 		 * @return the employee
 		 */
@@ -333,7 +334,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-
+			
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -342,7 +343,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-
+			
 		/**
 		 * @return the employeeid
 		 */
@@ -350,7 +351,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employeeid;
 			}
-
+			
 		/**
 		 * @param employeeid
 		 *            the employeeid to set
@@ -359,7 +360,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employeeid = employeeid;
 			}
-
+			
 		/**
 		 * @return the employeename
 		 */
@@ -367,7 +368,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.employeename;
 			}
-
+			
 		/**
 		 * @param employeename
 		 *            the employeename to set
@@ -376,7 +377,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.employeename = employeename;
 			}
-
+			
 		/**
 		 * @return the bankaccountid
 		 */
@@ -384,7 +385,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountid;
 			}
-
+			
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
@@ -393,7 +394,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.bankaccountid = bankaccountid;
 			}
-
+			
 		/**
 		 * @return the bankaccountname
 		 */
@@ -401,7 +402,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.bankaccountname;
 			}
-
+			
 		/**
 		 * @param bankaccountname
 		 *            the bankaccountname to set
@@ -410,7 +411,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.bankaccountname = bankaccountname;
 			}
-
+			
 		/**
 		 * @return the postingdate
 		 */
@@ -418,7 +419,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.postingdate;
 			}
-
+			
 		/**
 		 * @param postingdate
 		 *            the postingdate to set
@@ -427,7 +428,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.postingdate = postingdate;
 			}
-
+			
 		/**
 		 * @return the valuedate
 		 */
@@ -435,7 +436,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.valuedate;
 			}
-
+			
 		/**
 		 * @param valuedate
 		 *            the valuedate to set
@@ -444,7 +445,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.valuedate = valuedate;
 			}
-
+			
 		/**
 		 * @return the amount
 		 */
@@ -452,7 +453,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.amount;
 			}
-
+			
 		/**
 		 * @param amount
 		 *            the amount to set
@@ -461,7 +462,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.amount = amount;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -469,7 +470,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -478,7 +479,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the notes
 		 */
@@ -486,7 +487,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.notes;
 			}
-
+			
 		/**
 		 * @param notes
 		 *            the notes to set
@@ -495,7 +496,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.notes = notes;
 			}
-
+			
 		/**
 		 * @return the currencycode
 		 */
@@ -503,7 +504,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.currencycode;
 			}
-
+			
 		/**
 		 * @param currencycode
 		 *            the currencycode to set
@@ -512,7 +513,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.currencycode = currencycode;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -520,7 +521,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the currencyid
 		 */
@@ -528,7 +529,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.currencyid;
 			}
-
+			
 		/**
 		 * @param currencyid
 		 *            the currencyid to set
@@ -537,7 +538,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.currencyid = currencyid;
 			}
-
+			
 		/**
 		 * @return the bankaccount
 		 */
@@ -545,7 +546,7 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				return this.bankaccount;
 			}
-
+			
 		/**
 		 * @param bankaccount
 		 *            the bankaccount to set
@@ -554,5 +555,5 @@ public class AdvanceRequestAction extends BaseAction implements Preparable
 			{
 				this.bankaccount = bankaccount;
 			}
-
+			
 	}

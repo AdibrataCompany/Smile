@@ -12,22 +12,19 @@
 			</result>
 			<result name="error">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
 			</result>
-			<result name="end">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-			</result>
-			<result name="save">/Pages/CashTransaction/AdvanceTransaction/AdvanceRequest.jsp
-			</result>
-			<result name="end" type="redirectAction">
-				<param name="actionName">banktransaction</param>
-			</result>
+
 			<result name="success" type="redirectAction">
 				<param name="actionName">banktransaction</param>
 				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">banktransaction</param>
 			</result>
 		</action>
 		<action name="advancecashreturn"
 			class="com.adibrata.smartdealer.action.cashtransaction.advancetransaction.advancereturn.AdvanceReturnAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
+			<result name="input">/Pages/CashTransaction/AdvanceTransaction/AdvancePaging.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/AdvanceTransaction/AdvanceReturn.jsp
 			</result>
@@ -51,7 +48,7 @@
 		<action name="paymentrequest"
 			class="com.adibrata.smartdealer.action.cashtransaction.payment.request.PaymentRequestAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="input">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -69,7 +66,7 @@
 		<action name="paymentrequesttransfer"
 			class="com.adibrata.smartdealer.action.cashtransaction.payment.transfer.PayReqTransferAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="input">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -87,7 +84,7 @@
 		<action name="paymentrequestreconcile"
 			class="com.adibrata.smartdealer.action.cashtransaction.payment.reconcile.PayReqReconcileAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
+			<result name="input">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
@@ -102,39 +99,30 @@
 			<result name="adddetail">/Pages/CashTransaction/PaymentRequest/PaymentRequest.jsp
 			</result>
 		</action>
-		<action name="pettycash"
+		<action name="pettycashtransaction"
 			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.transaction.PettyCashTransactionAction"
 			method="execute">
-			<result name="start">/Pages/Include/BankAccountPaging.jsp
+			<result name="input">/Pages/CashTransaction/PettyCash/Transaction/PettyCash.jsp
 			</result>
-			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="error">/Pages/CashTransaction/PettyCash/Transaction/PettyCash.jsp
 			</result>
-			<result name="end">/Pages/Include/BankAccountPaging.jsp
+			<result name="adddetail">/Pages/CashTransaction/PettyCash/Transaction/PettyCash.jsp
 			</result>
-			<result name="error">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="deldetail">/Pages/CashTransaction/PettyCash/Transaction/PettyCash.jsp
 			</result>
-			<result name="select">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="end" type="redirectAction">
+				<param name="actionName">banktransaction</param>
 			</result>
-			<result name="adddetail">/Pages/CashTransaction/PettyCash/PettyCash.jsp
-			</result>
-			<result name="search">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="first">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="prev">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="next">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="last">/Pages/Include/BankAccountPaging.jsp
-			</result>
-			<result name="search">/Pages/Include/BankAccountPaging.jsp
+			<result name="success" type="redirectAction">
+				<param name="actionName">banktransaction</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 
 		<action name="pettycashcorrection"
 			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.correction.PettyCashCorrectionAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="input">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
@@ -154,7 +142,7 @@
 		<action name="pettycashreimbursement"
 			class="com.adibrata.smartdealer.action.cashtransaction.pettycash.reimburse.PettyCashReimburseAction"
 			method="execute">
-			<result name="start">/Pages/CashTransaction/PettyCash/PettyCash.jsp
+			<result name="input">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>
 			<result name="success">/Pages/CashTransaction/PettyCash/PettyCash.jsp
 			</result>

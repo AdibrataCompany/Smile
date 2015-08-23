@@ -50,9 +50,9 @@
 								<span class="add-on"><i class="icon-th"><img
 										src="Pages/style/calendar.png" /></i></span>
 							</div></td>
-						<td>Amount Receive</td>
+						<td>Receive Amount</td>
 						<td><s:textfield name="rcvamount"
-								placeholder="Amount Receive" /></td>
+								placeholder="Receive Amount" /></td>
 					</tr>
 					<tr>
 						<td valign="top">Notes</td>
