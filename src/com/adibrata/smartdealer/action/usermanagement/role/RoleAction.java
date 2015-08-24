@@ -9,6 +9,7 @@ package com.adibrata.smartdealer.action.usermanagement.role;
  */
 import java.util.List;
 
+import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.MsRole;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
@@ -46,17 +47,8 @@ public class RoleAction extends ActionSupport implements Preparable
 				String status = "";
 				try
 					{
-						String wherecond = "";
-						if (this.getSearchcriteria().contains("%"))
-							{
-								wherecond = this.getSearchvalue() + " like " + this.getSearchcriteria();
-							}
-						else
-							{
-								wherecond = this.getSearchvalue() + " = " + this.getSearchcriteria();
-							}
-
-						this.lstRole = this.roleService.Paging(this.getPageNumber(), wherecond, "");
+						
+						this.lstRole = this.roleService.Paging(this.getPageNumber(), this.WhereCond(), "");
 
 						status = "Success";
 					}
@@ -69,6 +61,27 @@ public class RoleAction extends ActionSupport implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return status;
+			}
+			
+		private String WhereCond()
+			{
+				final StringBuilder wherecond = new StringBuilder();
+				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
+				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
+					{
+						wherecond.append(" and ");
+						
+						if (this.getSearchvalue().contains("%"))
+							{
+								
+								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
+							}
+						else
+							{
+								wherecond.append(this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
+							}
+					}
+				return wherecond.toString();
 			}
 
 		private String SaveAdd() throws Exception

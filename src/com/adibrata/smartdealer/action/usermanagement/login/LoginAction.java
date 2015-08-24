@@ -1,16 +1,12 @@
 
 package com.adibrata.smartdealer.action.usermanagement.login;
 
-/**
- * @author Henry
- */
-import java.util.List;
-
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.model.MsUser;
+import com.adibrata.smartdealer.dao.usermanagement.LoginDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
-import com.adibrata.smartdealer.service.usermanagement.UserService;
+import com.adibrata.smartdealer.service.usermanagement.LoginService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.Preparable;
 
 public class LoginAction extends BaseAction implements Preparable
@@ -19,47 +15,59 @@ public class LoginAction extends BaseAction implements Preparable
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
-		private String mode;
-		private UserService userService;
-		private Partner partner;
-		private Office office;
-		private List<MsUser> lstMsUser;
-		private String searchcriteria;
-		private String searchvalue;
-		private int pageNumber;
-		private String usrUpd;
-		private String usrCrt;
-		private String message;
-		
-		private String username;
-		private String password;
-		
+		Partner partner;
+		Office office;
+		LoginService service;
+		String username;
+		String password;
+		String mode;
+		String message;
+
 		public LoginAction() throws Exception
 			{
-				super();
-				// TODO Auto-generated constructor stub
-			}
-			
-		@Override
-		public String execute() throws Exception
-			{
-				return "start";
 				
+				// TODO Auto-generated constructor stub
 			}
 			
 		public String signin() throws Exception
 			{
-				return SUCCESS;
 				
+				this.service = new LoginDao();
+
+				if (((this.username != null) & !this.username.equals("")) && ((this.password != null) & !this.password.equals("")))
+					{
+						if (this.service.PasswordVerification(this.username, this.password))
+							{
+								this.mode = SUCCESS;
+								this.partner = this.service.getPartner();
+								BaseAction.setObjpartner(ActionContext.getContext().getSession());
+								BaseAction.getObjpartner().put("Partner", this.partner);
+
+								BaseAction.setObjloginname(ActionContext.getContext().getSession());
+								BaseAction.getObjloginname().put("LoginName", this.username);
+
+							}
+						else
+							{
+								this.mode = INPUT;
+								this.message = "Login Failed";
+							}
+					}
+
+				return this.mode;
+
 			}
-			
+
 		public String home() throws Exception
 			{
-				return "start";
+				return INPUT;
 				
 			}
 			
+		public String dashboard() throws Exception
+			{
+				return INPUT;
+			}
 		// @Override
 		// public void validate()
 		// {
@@ -78,52 +86,11 @@ public class LoginAction extends BaseAction implements Preparable
 		// }
 		
 		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
-			{
-				return serialVersionUID;
-			}
-			
-		/**
-		 * @return the userService
-		 */
-		public UserService getUserService()
-			{
-				return this.userService;
-			}
-			
-		/**
 		 * @return the partner
 		 */
 		public Partner getPartner()
 			{
 				return this.partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the lstMsUser
-		 */
-		public List<MsUser> getLstMsUser()
-			{
-				return this.lstMsUser;
-			}
-			
-		/**
-		 * @param userService
-		 *            the userService to set
-		 */
-		public void setUserService(final UserService userService)
-			{
-				this.userService = userService;
 			}
 			
 		/**
@@ -136,6 +103,14 @@ public class LoginAction extends BaseAction implements Preparable
 			}
 			
 		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
 		 * @param office
 		 *            the office to set
 		 */
@@ -145,71 +120,71 @@ public class LoginAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @param lstMsUser
-		 *            the lstMsUser to set
+		 * @return the service
 		 */
-		public void setLstMsUser(final List<MsUser> lstMsUser)
+		public LoginService getService()
 			{
-				this.lstMsUser = lstMsUser;
+				return this.service;
 			}
 			
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final LoginService service)
+			{
+				this.service = service;
+			}
+			
+		/**
+		 * @return the username
+		 */
+		public String getUsername()
+			{
+				return this.username;
+			}
+			
+		/**
+		 * @param username
+		 *            the username to set
+		 */
+		public void setUsername(final String username)
+			{
+				this.username = username;
+			}
+			
+		/**
+		 * @return the password
+		 */
+		public String getPassword()
+			{
+				return this.password;
+			}
+			
+		/**
+		 * @param password
+		 *            the password to set
+		 */
+		public void setPassword(final String password)
+			{
+				this.password = password;
+			}
+			
+		/**
+		 * @return the mode
+		 */
 		public String getMode()
 			{
 				return this.mode;
 			}
 			
+		/**
+		 * @param mode
+		 *            the mode to set
+		 */
 		public void setMode(final String mode)
 			{
-				
 				this.mode = mode;
-			}
-			
-		@Override
-		public void prepare() throws Exception
-			{
-				
-				// TODO Auto-generated method stub
-				
-			}
-			
-		/**
-		 * @return the searchcriteria
-		 */
-		public String getSearchcriteria()
-			{
-				return this.searchcriteria;
-			}
-			
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
-			}
-			
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
 			}
 			
 		/**
@@ -221,51 +196,6 @@ public class LoginAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @param searchcriteria
-		 *            the searchcriteria to set
-		 */
-		public void setSearchcriteria(final String searchcriteria)
-			{
-				this.searchcriteria = searchcriteria;
-			}
-			
-		/**
-		 * @param searchvalue
-		 *            the searchvalue to set
-		 */
-		public void setSearchvalue(final String searchvalue)
-			{
-				this.searchvalue = searchvalue;
-			}
-			
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-			
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
-			}
-			
-		/**
 		 * @param message
 		 *            the message to set
 		 */
@@ -274,24 +204,12 @@ public class LoginAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 			
-		public String getPassword()
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
 			{
-				return this.password;
-			}
-			
-		public void setPassword(final String password)
-			{
-				this.password = password;
-			}
-			
-		public String getUsername()
-			{
-				return this.username;
-			}
-			
-		public void setUsername(final String username)
-			{
-				this.username = username;
+				return serialVersionUID;
 			}
 			
 	}

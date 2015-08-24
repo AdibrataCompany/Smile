@@ -5,46 +5,72 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SMILE - Smart Lesing And Consumer Finance Leasing</title>
-
-
+<title>DMS - Dealer Management System</title>
 </head>
-<body>
 
-	<!-----start-main---->
-	<div class="login-form">
-		<center>
+<body>
+	<div class="container">
+
+		<s:form action="signin.action" theme="css_xhtml" validate="true"
+			method="post">
+
 			<h1>SMILE - Smart Lesing And Consumer Finance Leasing</h1>
-		</center>
-		<s:label name="message"/>
-		<s:form action="login.action">
-			<s:textfield name="nama" style="width:95%" value=""
-					placeholder="User Name" />
-			<s:password name="password" style="width:95%"
-				 />
-		
-				<button class="btn btn-warning" type="submit" onclick="login()">Login</button>
+			<s:hidden name="mode" id="mode" />
+			<s:label name="message"/>
+			<center>
+				<div class="col-md-8"><img alt="" src=""></div>
+				<div class="col-md-4">
+					<table width="100%">
+						<tr>
+							<td>
+								<div style="margin-bottom: 25px" class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span>
+									<s:textfield name="username" id="username" class="form-control"
+										placeholder="Username" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><div style="margin-bottom: 25px" class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-lock"></i></span>
+									<s:password name="password" id="password" class="form-control"
+										placeholder="Password" />
+								</div></td>
+						</tr>
+						<tr>
+							<td><button class="btn btn-lg btn-primary btn-block"
+									type="submit" name="submit">Sign In</button></td>
+						</tr>
+					</table>
+				</div>
+			</center>
 		</s:form>
 	</div>
-
-	<%@include file="/Pages/Footer.jsp"%>
-
+	
+	<!-- /container -->
 </body>
-<link href="style/css/style.css" rel='stylesheet' type='text/css' />
-<script type="application/x-javascript">
-	
-function login() {
-	alert ("henry");
-	document.getElementById("mode").value = "login";
-}
-	
-/* 		addEventListener("load", function() {
-			setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1);
-		}
- */
-	
-	
-
+<script type="text/javascript">
+	function login() {
+		document.getElementById("mode").value = "input";
+	}
 </script>
-
+<link href="/Smile/Pages/style/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="/Smile/Pages/style/css/bootstrap-theme.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="/Smile/Pages/style/css/jquery.smartmenus.bootstrap.css"
+	rel="stylesheet" type="text/css" />
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<script type="text/javascript" language="javascript"
+	src="/Smile/Pages/style/js/bootstrap.min.js"></script>
+<!-- /container -->
+<script type="text/javascript" language="javascript"
+	src="/Smile/Pages/style/js/jquery.min.js"></script>
+<script type="text/javascript" language="javascript"
+	src="/Smile/Pages/style/js/jquery.smartmenus.min.js">
+	
+</script>
 </html>

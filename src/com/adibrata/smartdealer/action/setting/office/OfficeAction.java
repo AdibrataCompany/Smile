@@ -237,19 +237,23 @@ public class OfficeAction extends BaseAction implements Preparable
 			
 		private String WhereCond()
 			{
-				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "'";
+				final StringBuilder wherecond = new StringBuilder();
+				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						if (this.getSearchcriteria().contains("%"))
+						wherecond.append(" and ");
+						
+						if (this.getSearchvalue().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+								
+								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
 							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+								wherecond.append(this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
 							}
 					}
-				return wherecond;
+				return wherecond.toString();
 			}
 			
 		private void Paging() throws Exception

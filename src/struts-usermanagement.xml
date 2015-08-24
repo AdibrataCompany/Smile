@@ -9,23 +9,34 @@
 		<action name="employee"
 			class="com.adibrata.smartdealer.action.usermanagement.employee.EmployeeAction"
 			method="execute">
-			<result name="input">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
-			<result name="search">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="input">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
+			<result name="search">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
 
-			<result name="add">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
-			<result name="edit">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
-			<result name="deldetail">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="add">/Pages/UserManagement/EmployeeRegistration/add.jsp
+			</result>
+			<result name="edit">/Pages/UserManagement/EmployeeRegistration/add.jsp
+			</result>
+			<result name="deldetail">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
 
-			<result name="first">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
-			<result name="prev">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
-			<result name="next">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
-			<result name="last">/Pages/UserManagement/EmployeeRegistration/paging.jsp</result>
+			<result name="first">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
+			<result name="prev">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
+			<result name="next">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
+			<result name="last">/Pages/UserManagement/EmployeeRegistration/paging.jsp
+			</result>
 		</action>
 		<action name="employeec_save"
 			class="com.adibrata.smartdealer.action.usermanagement.employee.EmployeeAction"
 			method="save">
-			<result name="input">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
-			<result name="error">/Pages/UserManagement/EmployeeRegistration/add.jsp</result>
+			<result name="input">/Pages/UserManagement/EmployeeRegistration/add.jsp
+			</result>
+			<result name="error">/Pages/UserManagement/EmployeeRegistration/add.jsp
+			</result>
 			<result name="success" type="redirectAction">
 				<param name="actionName">employee</param>
 				<param name="message">${message}</param>
@@ -38,7 +49,7 @@
 		<action name="menu"
 			class="com.adibrata.smartdealer.action.usermanagement.menu.MenuAction"
 			method="execute">
-			<result name="start">/pages/setting/assetdoc/pageAssetMaster.jsp
+			<result name="input">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
 			<result name="search">/pages/setting/assetdoc/pageAssetMaster.jsp
 			</result>
@@ -54,28 +65,17 @@
 			</result>
 			<result name="failed">/pages/setting/assetdoc/addAssetDoc.jsp</result>
 		</action>
+
 		<action name="role"
 			class="com.adibrata.smartdealer.action.usermanagement.role.RoleAction"
 			method="execute">
-			<result name="start">/Pages/UserManagement/RoleRegistration/paging.jsp
-			</result>
-			<result name="success">/Pages/UserManagement/RoleRegistration/paging.jsp
-			</result>
-			<result name="error">/Pages/UserManagement/RoleRegistration/paging.jsp
-			</result>
-			<result name="search">/Pages/UserManagement/RoleRegistration/paging.jsp
+			<result name="input">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
 			<result name="edit">/Pages/UserManagement/RoleRegistration/editrole.jsp
 			</result>
 			<result name="del">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
-			<result name="saveadd">/Pages/UserManagement/RoleRegistration/addrole.jsp
-			</result>
-			<result name="end">/Pages/UserManagement/RoleRegistration/paging.jsp
-			</result>
 			<result name="add">/Pages/UserManagement/RoleRegistration/addrole.jsp
-			</result>
-			<result name="saveedit">/Pages/UserManagement/RoleRegistration/editrole.jsp
 			</result>
 			<result name="search">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
@@ -88,12 +88,26 @@
 			<result name="last">/Pages/UserManagement/RoleRegistration/paging.jsp
 			</result>
 		</action>
+		<action name="role_save"
+			class="com.adibrata.smartdealer.action.usermanagement.role.RoleAction"
+			method="save">
+			<result name="input">/Pages/UserManagement/RoleRegistration/edit.jsp
+			</result>
+			<result name="error">/Pages/UserManagement/RoleRegistration/edit.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">role</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">role</param>
+			</result>
+		</action>
+
 		<action name="userregister"
 			class="com.adibrata.smartdealer.action.usermanagement.userregistration.UserRegistrationAction"
 			method="execute">
-			<result name="start">/Pages/UserManagement/UserRegistration/paging.jsp
-			</result>
-			<result name="success">/Pages/UserManagement/UserRegistration/paging.jsp
+			<result name="input">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
 			<result name="error">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
@@ -103,13 +117,7 @@
 			</result>
 			<result name="del">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
-			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
-			</result>
 			<result name="add">/Pages/UserManagement/UserRegistration/adduser.jsp
-			</result>
-			<result name="saveedit">/Pages/UserManagement/UserRegistration/edituser.jsp
-			</result>
-			<result name="saveadd">/Pages/UserManagement/UserRegistration/adduser.jsp
 			</result>
 			<result name="end">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
@@ -121,7 +129,21 @@
 			</result>
 			<result name="last">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
-
+		</action>
+		<action name="userregister_save"
+			class="com.adibrata.smartdealer.action.usermanagement.userregistration.UserRegistrationAction"
+			method="save">
+			<result name="input">/Pages/UserManagement/UserRegistration/edituser.jsp
+			</result>
+			<result name="error">/Pages/UserManagement/UserRegistration/edituser.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">userregister</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">userregister</param>
+			</result>
 		</action>
 	</package>
 </struts>

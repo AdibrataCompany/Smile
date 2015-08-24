@@ -20,36 +20,39 @@ import util.adibrata.framework.encryption.EncryptionHelper;
  */
 public class LoginDao extends DaoBase implements LoginService
 	{
-
+		
 		/**
 		 *
 		 */
-		
+
 		Partner partner;
-		
+		Long userid;
+
 		public LoginDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		@Override
 		public Boolean PasswordVerification(final String username, final String password) throws Exception
 			{
 				Boolean isValid = false;
-
+				
 				final String encrypt = EncryptionHelper.EncryptSHA(password);
 				final StringBuilder hqluser = new StringBuilder();
-				hqluser.append(" from MsUser  Where userName = :username and isActive = 1 ");
+				hqluser.append(" from MsUser A, Partner B  Where A.partner = B.partnerCode and A.userName = :username and A.isActive = 1 ");
 				final Query qryuser = this.getSession().createQuery(hqluser.toString());
-
+				
 				qryuser.setParameter("username", username);
-				final List<MsUser> lstuser = qryuser.list();
-
-				for (final MsUser userrow : lstuser)
+				final List<Object[]> lstuser = qryuser.list();
+				MsUser user;
+				
+				for (final Object[] userrow : lstuser)
 					{
-						this.setPartner(userrow.getPartner());
-
-						if (userrow.getPassword().equals(encrypt))
+						user = (MsUser) userrow[0];
+						this.partner = (Partner) userrow[1];
+						
+						if (user.getPassword().equals(encrypt))
 							{
 								isValid = true;
 							}
@@ -57,11 +60,11 @@ public class LoginDao extends DaoBase implements LoginService
 							{
 								isValid = false;
 							}
-
+							
 					}
 				return isValid;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -70,7 +73,7 @@ public class LoginDao extends DaoBase implements LoginService
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -80,4 +83,22 @@ public class LoginDao extends DaoBase implements LoginService
 				this.partner = partner;
 			}
 			
+		/**
+		 * @return the userid
+		 */
+		@Override
+		public Long getUserid()
+			{
+				return this.userid;
+			}
+			
+		/**
+		 * @param userid
+		 *            the userid to set
+		 */
+		public void setUserid(final Long userid)
+			{
+				this.userid = userid;
+			}
+
 	}

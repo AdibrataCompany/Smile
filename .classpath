@@ -13,5 +13,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/JavaProject/Smile/WebContent/WEB-INF/lib/struts2-jfreechart-plugin-2.1.8.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

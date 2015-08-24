@@ -15,4 +15,5 @@ public interface LoginService
 
 		public Partner getPartner();
 		
+		public Long getUserid();
 	}

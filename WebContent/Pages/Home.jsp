@@ -21,10 +21,11 @@
 <body>
 
 	<div class="container">
+		<s:form action="home.action" theme="css_xhtml">
+			<iframe src="/Smile/Include/dashboard.action"
+				style="border: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%"></iframe>
+		</s:form>
 
-		<iframe src="/Smile/setting/assetdoc.action" style="border: 0; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%"></iframe>
-
-		
 		<!-- 	</div> -->
 
 	</div>

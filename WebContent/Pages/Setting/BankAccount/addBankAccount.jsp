@@ -24,10 +24,10 @@
 				<div class="col-md-4">
 
 					<h2>Bank Account</h2>
-					<s:hidden name="id" />
 					<s:hidden name="mode" id="mode" value="" />
 					<s:hidden name="id" />
 					<s:label name="message" id="message" />
+
 					<div align="left" class="form-group">
 						<label>Bank Name</label>
 						<div align="left" class="form-inline">
@@ -57,22 +57,24 @@
 								<option value="">Type</option>
 								<option value="BA">BANK</option>
 								<option value="CA">CASH</option>
+
 							</select>
+
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Purpose</label>
 						<div align="left" class="form-inline">
-							<select name="purpose" class="form-control">
+							<select name="purpose">
 								<option value="">Purpose</option>
 								<option value="EC">ESCROW</option>
 								<option value="PC">PETTY CASH</option>
 								<option value="FD">FUNDING</option>
-
 							</select>
 						</div>
 					</div>
 					<%@include file="/Pages/Include/Address.jsp"%>
+
 					<br>
 					<table width="100%">
 						<tr>
@@ -82,10 +84,12 @@
 							</td>
 							<td align="right">
 								<button class="btn btn-sm btn-primary" type="submit"
-									onclick="saveedit()">Save</button>
+									onclick="saveadd()">Save</button>
+
 							</td>
 						</tr>
 					</table>
+
 				</div>
 			</center>
 		</s:form>
@@ -93,8 +97,8 @@
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function saveedit() {
-		document.getElementById("mode").value = "saveedit";
+	function saveadd() {
+		document.getElementById("mode").value = "saveadd";
 	}
 	function end() {
 		document.getElementById("mode").value = "end";

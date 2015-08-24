@@ -19,7 +19,7 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class EmployeeAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		 *
 		 */
@@ -37,7 +37,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 		private String usrCrt;
 		private String message;
 		Long id;
-		
+
 		private List<Employee> lstemployee;
 		private int pagenumber;
 		private String nik;
@@ -58,32 +58,32 @@ public class EmployeeAction extends BaseAction implements Preparable
 		private String areafax;
 		private String faxno;
 		private String handphone;
-
+		
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
-			}
 
+			}
+			
 		public EmployeeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-				
+
 				this.office = new Office();
 				this.setOffice(this.office);
-				
+
 				this.service = new EmployeeDao();
 				this.office = new Office();
-				
+
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -185,12 +185,12 @@ public class EmployeeAction extends BaseAction implements Preparable
 				else
 					{
 						this.pagenumber = 1;
-
+						
 						strMode = INPUT;
 					}
 				return strMode;
 			}
-
+			
 		public String save()
 			{
 				String strMode;
@@ -239,24 +239,28 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
-				String wherecond = " partnerCode = '" + BaseAction.sesPartnerCode() + "'";
+				final StringBuilder wherecond = new StringBuilder();
+				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						if (this.getSearchcriteria().contains("%"))
+						wherecond.append(" and ");
+
+						if (this.getSearchvalue().contains("%"))
 							{
-								wherecond = this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+
+								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
 							{
-								wherecond = this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+								wherecond.append(this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
 							}
 					}
-				return wherecond;
+				return wherecond.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -265,15 +269,15 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -283,15 +287,15 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.employee = new Employee();
@@ -303,7 +307,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 								this.partner = this.employee.getPartner();
 								this.nik = this.employee.getNik();
 								this.name = this.employee.getName();
-								
+
 								this.address = this.employee.getAddress();
 								this.rt = this.employee.getRt();
 								this.rw = this.employee.getRw();
@@ -315,7 +319,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 								this.areaphone2 = this.employee.getAreaPhone2();
 								this.phoneno1 = this.employee.getPhoneNo1();
 								this.phoneno2 = this.employee.getPhoneNo2();
-								
+
 								this.handphone = this.employee.getHandphone();
 							}
 						else
@@ -335,15 +339,15 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
 					{
 						this.employee = new Employee();
-
-						this.employee.setPartner(this.partner);
 						
+						this.employee.setPartner(this.partner);
+
 						this.employee.setNik(this.getNik());
 						this.employee.setName(this.getName());
 						this.employee.setAddress(this.getAddress());
@@ -351,7 +355,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 						this.employee.setRw(this.getRw());
 						this.employee.setKelurahan(this.getKelurahan());
 						this.employee.setKecamatan(this.getKecamatan());
-						
+
 						this.employee.setCity(this.getCity());
 						this.employee.setZipcode(this.getZipcode());
 						this.employee.setAreaPhone1(this.getAreaphone1());
@@ -359,7 +363,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 						this.employee.setPhoneNo1(this.getPhoneno2());
 						this.employee.setPhoneNo2(this.getPhoneno2());
 						this.employee.setHandphone(this.getHandphone());
-
+						
 						this.employee.setHandphone(this.handphone);
 						this.employee.setUsrCrt(BaseAction.sesLoginName());
 						this.employee.setUsrUpd(BaseAction.sesLoginName());
@@ -378,7 +382,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-			
+
 		private String SaveEdit() throws Exception
 			{
 				try
@@ -400,7 +404,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 						this.employee.setPhoneNo1(this.getPhoneno2());
 						this.employee.setPhoneNo2(this.getPhoneno2());
 						this.employee.setPhoneNo2(this.getPhoneno2());
-
+						
 						this.employee.setUsrUpd(BaseAction.sesLoginName());
 						this.employee.setUsrCrt(BaseAction.sesLoginName());
 						this.service.SaveEdit(this.employee);
@@ -418,7 +422,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				final String status = "";
@@ -449,7 +453,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 					}
 				return status;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -457,7 +461,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -466,7 +470,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -474,7 +478,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -483,7 +487,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -491,7 +495,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -500,7 +504,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the employee
 		 */
@@ -508,7 +512,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.employee;
 			}
-			
+
 		/**
 		 * @param employee
 		 *            the employee to set
@@ -517,7 +521,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.employee = employee;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -525,7 +529,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -534,7 +538,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the lstEmployee
 		 */
@@ -542,7 +546,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.lstEmployee;
 			}
-			
+
 		/**
 		 * @param lstEmployee
 		 *            the lstEmployee to set
@@ -551,7 +555,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.lstEmployee = lstEmployee;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -559,7 +563,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -568,7 +572,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -576,7 +580,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -585,7 +589,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -593,7 +597,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -602,7 +606,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -610,7 +614,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -619,7 +623,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -627,7 +631,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -636,7 +640,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -644,7 +648,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -653,7 +657,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -661,7 +665,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -670,7 +674,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the lstemployee
 		 */
@@ -678,7 +682,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.lstemployee;
 			}
-			
+
 		/**
 		 * @param lstemployee
 		 *            the lstemployee to set
@@ -687,7 +691,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.lstemployee = lstemployee;
 			}
-			
+
 		/**
 		 * @return the pagenumber
 		 */
@@ -695,7 +699,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.pagenumber;
 			}
-			
+
 		/**
 		 * @param pagenumber
 		 *            the pagenumber to set
@@ -704,7 +708,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		/**
 		 * @return the name
 		 */
@@ -712,7 +716,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.name;
 			}
-			
+
 		/**
 		 * @param name
 		 *            the name to set
@@ -721,7 +725,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.name = name;
 			}
-			
+
 		/**
 		 * @return the address
 		 */
@@ -729,7 +733,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.address;
 			}
-			
+
 		/**
 		 * @param address
 		 *            the address to set
@@ -738,7 +742,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.address = address;
 			}
-			
+
 		/**
 		 * @return the rt
 		 */
@@ -746,7 +750,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.rt;
 			}
-			
+
 		/**
 		 * @param rt
 		 *            the rt to set
@@ -755,7 +759,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.rt = rt;
 			}
-			
+
 		/**
 		 * @return the rw
 		 */
@@ -763,7 +767,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.rw;
 			}
-			
+
 		/**
 		 * @param rw
 		 *            the rw to set
@@ -772,7 +776,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.rw = rw;
 			}
-			
+
 		/**
 		 * @return the kelurahan
 		 */
@@ -780,7 +784,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.kelurahan;
 			}
-			
+
 		/**
 		 * @param kelurahan
 		 *            the kelurahan to set
@@ -789,7 +793,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.kelurahan = kelurahan;
 			}
-			
+
 		/**
 		 * @return the kecamatan
 		 */
@@ -797,7 +801,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.kecamatan;
 			}
-			
+
 		/**
 		 * @param kecamatan
 		 *            the kecamatan to set
@@ -806,7 +810,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.kecamatan = kecamatan;
 			}
-			
+
 		/**
 		 * @return the city
 		 */
@@ -814,7 +818,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.city;
 			}
-			
+
 		/**
 		 * @param city
 		 *            the city to set
@@ -823,7 +827,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.city = city;
 			}
-			
+
 		/**
 		 * @return the zipcode
 		 */
@@ -831,7 +835,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.zipcode;
 			}
-			
+
 		/**
 		 * @param zipcode
 		 *            the zipcode to set
@@ -840,7 +844,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.zipcode = zipcode;
 			}
-			
+
 		/**
 		 * @return the type
 		 */
@@ -848,7 +852,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.type;
 			}
-			
+
 		/**
 		 * @param type
 		 *            the type to set
@@ -857,7 +861,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.type = type;
 			}
-			
+
 		/**
 		 * @return the areaphone1
 		 */
@@ -865,7 +869,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.areaphone1;
 			}
-			
+
 		/**
 		 * @param areaphone1
 		 *            the areaphone1 to set
@@ -874,7 +878,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.areaphone1 = areaphone1;
 			}
-			
+
 		/**
 		 * @return the phoneno1
 		 */
@@ -882,7 +886,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.phoneno1;
 			}
-			
+
 		/**
 		 * @param phoneno1
 		 *            the phoneno1 to set
@@ -891,7 +895,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.phoneno1 = phoneno1;
 			}
-			
+
 		/**
 		 * @return the areaphone2
 		 */
@@ -899,7 +903,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.areaphone2;
 			}
-			
+
 		/**
 		 * @param areaphone2
 		 *            the areaphone2 to set
@@ -908,7 +912,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.areaphone2 = areaphone2;
 			}
-			
+
 		/**
 		 * @return the phoneno2
 		 */
@@ -916,7 +920,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.phoneno2;
 			}
-			
+
 		/**
 		 * @param phoneno2
 		 *            the phoneno2 to set
@@ -925,7 +929,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.phoneno2 = phoneno2;
 			}
-			
+
 		/**
 		 * @return the areafax
 		 */
@@ -933,7 +937,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.areafax;
 			}
-			
+
 		/**
 		 * @param areafax
 		 *            the areafax to set
@@ -942,7 +946,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.areafax = areafax;
 			}
-			
+
 		/**
 		 * @return the faxno
 		 */
@@ -950,7 +954,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.faxno;
 			}
-			
+
 		/**
 		 * @param faxno
 		 *            the faxno to set
@@ -959,7 +963,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.faxno = faxno;
 			}
-			
+
 		/**
 		 * @return the handphone
 		 */
@@ -967,7 +971,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.handphone;
 			}
-			
+
 		/**
 		 * @param handphone
 		 *            the handphone to set
@@ -976,7 +980,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.handphone = handphone;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -984,7 +988,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-
+			
 		/**
 		 * @return the nik
 		 */
@@ -992,7 +996,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.nik;
 			}
-
+			
 		/**
 		 * @param nik
 		 *            the nik to set
@@ -1001,7 +1005,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.nik = nik;
 			}
-
+			
 		/**
 		 * @return the position
 		 */
@@ -1009,7 +1013,7 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				return this.position;
 			}
-
+			
 		/**
 		 * @param position
 		 *            the position to set
@@ -1018,5 +1022,5 @@ public class EmployeeAction extends BaseAction implements Preparable
 			{
 				this.position = position;
 			}
-			
+
 	}

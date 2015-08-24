@@ -44,14 +44,7 @@
 	src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" language="javascript"
 	src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript">
-	// When the document is ready
-	$(document).ready(function() {
-		$('.date').datepicker({
-			format : "dd/mm/yyyy"
-		});
-	});
-</script>
+
 <script type="text/javascript">
 	function end() {
 		alert("end");

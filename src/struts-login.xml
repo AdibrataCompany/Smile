@@ -7,11 +7,7 @@
 		<constant name="struts.enable.DynamicMethodInvocation" value="false" /> -->
 	<package name="smartdealer-package" extends="json-default"
 		namespace="/">
-		<action name="login"
-			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
-			method="execute">
-			<result name="start">/index.jsp</result>
-		</action>
+		
 		<action name="signin"
 			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="signin">
@@ -20,10 +16,17 @@
 			</result>
 			<result name="input">/index.jsp</result>
 		</action>
+		
 		<action name="home"
 			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
 			method="home">
-			<result name="start">/Pages/Home.jsp</result>
+			<result name="input">/Pages/Home.jsp</result>
+		</action>
+		
+		<action name="dashboard"
+			class="com.adibrata.smartdealer.action.usermanagement.login.LoginAction"
+			method="dashboard">
+			<result name="input">/Pages/Include/Dashboard.jsp</result>
 		</action>
 	</package>
 </struts>
