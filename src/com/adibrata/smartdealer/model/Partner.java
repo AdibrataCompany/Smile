@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -39,7 +39,16 @@ public class Partner implements java.io.Serializable
 		private String faxNo;
 		private String handphone;
 		private String fullAddress;
-		private String isActive;
+		private Date businessDate;
+		private Date boddate;
+		private Date eoddate;
+		private Date bdprevious;
+		private Date nextBusinessDate;
+		private Date eomprevious;
+		private Date eomnext;
+		private Short isBranchClosed;
+		private Short isCashierClosed;
+		private Short isActive;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -105,14 +114,14 @@ public class Partner implements java.io.Serializable
 			}
 			
 		public Partner(String partnerCode, String name, String address, String rt, String rw, String kelurahan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2, String areaFax,
-		        String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AssetMaster> assetMasters, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<MsUser> msUsers,
-		        Set<PayReqHdr> payReqHdrs, Set<Supplier> suppliers, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AccountPayable> accountPayables,
-		        Set<Agrmnt> agrmnts, Set<SalesOrderHdr> salesOrderHdrs, Set<EntrustHdr> entrustHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<InsCompany> insCompanies, Set<CashBankHdr> cashBankHdrs, Set<CoaSchmHdr> coaSchmHdrs, Set<Invoice> invoices,
-		        Set<Coamaster> coamasters, Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices, Set<BankAccount> bankAccounts, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<Stock> stocks, Set<PettyCashHdr> pettyCashHdrs,
-		        Set<AdvanceCash> advanceCashes, Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<DanaTunai> danaTunais, Set<Pdcreceipt> pdcreceipts, Set<MsTable> msTables, Set<Workshop> workshops,
-		        Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies, Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ProductOffering> productOfferings, Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<SalesInvoice> salesInvoices, Set<JrnlHdr> jrnlHdrs, Set<OtherDsbHdr> otherDsbHdrs, Set<InsRateToCust> insRateToCusts, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices,
-		        Set<AssetServiceMaster> assetServiceMasters, Set<Employee> employees, Set<Product> products, Set<MsUserRole> msUserRoles)
+		        String faxNo, String handphone, String fullAddress, Date businessDate, Date boddate, Date eoddate, Date bdprevious, Date nextBusinessDate, Date eomprevious, Date eomnext, Short isBranchClosed, Short isCashierClosed, Short isActive,
+		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AssetMaster> assetMasters, Set<PdcHdr> pdcHdrs, Set<TransJob> transJobs, Set<MsUser> msUsers, Set<PayReqHdr> payReqHdrs, Set<Supplier> suppliers,
+		        Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<Taksasi> taksasis, Set<CashierHistory> cashierHistories, Set<Customer> customers, Set<AccountPayable> accountPayables, Set<Agrmnt> agrmnts, Set<SalesOrderHdr> salesOrderHdrs,
+		        Set<EntrustHdr> entrustHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<InsCompany> insCompanies, Set<CashBankHdr> cashBankHdrs, Set<CoaSchmHdr> coaSchmHdrs, Set<Invoice> invoices, Set<Coamaster> coamasters,
+		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices, Set<BankAccount> bankAccounts, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<Stock> stocks, Set<PettyCashHdr> pettyCashHdrs, Set<AdvanceCash> advanceCashes,
+		        Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<DanaTunai> danaTunais, Set<Pdcreceipt> pdcreceipts, Set<MsTable> msTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies,
+		        Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ProductOffering> productOfferings, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices, Set<JrnlHdr> jrnlHdrs, Set<OtherDsbHdr> otherDsbHdrs,
+		        Set<InsRateToCust> insRateToCusts, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices, Set<AssetServiceMaster> assetServiceMasters, Set<Employee> employees, Set<Product> products, Set<MsUserRole> msUserRoles)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -131,6 +140,15 @@ public class Partner implements java.io.Serializable
 				this.faxNo = faxNo;
 				this.handphone = handphone;
 				this.fullAddress = fullAddress;
+				this.businessDate = businessDate;
+				this.boddate = boddate;
+				this.eoddate = eoddate;
+				this.bdprevious = bdprevious;
+				this.nextBusinessDate = nextBusinessDate;
+				this.eomprevious = eomprevious;
+				this.eomnext = eomnext;
+				this.isBranchClosed = isBranchClosed;
+				this.isCashierClosed = isCashierClosed;
 				this.isActive = isActive;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
@@ -377,13 +395,119 @@ public class Partner implements java.io.Serializable
 				this.fullAddress = fullAddress;
 			}
 			
-		@Column(name = "IsActive", length = 1)
-		public String getIsActive()
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "BusinessDate", length = 23)
+		public Date getBusinessDate()
+			{
+				return this.businessDate;
+			}
+			
+		public void setBusinessDate(Date businessDate)
+			{
+				this.businessDate = businessDate;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "BODDate", length = 23)
+		public Date getBoddate()
+			{
+				return this.boddate;
+			}
+			
+		public void setBoddate(Date boddate)
+			{
+				this.boddate = boddate;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "EODDate", length = 23)
+		public Date getEoddate()
+			{
+				return this.eoddate;
+			}
+			
+		public void setEoddate(Date eoddate)
+			{
+				this.eoddate = eoddate;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "BDPrevious", length = 23)
+		public Date getBdprevious()
+			{
+				return this.bdprevious;
+			}
+			
+		public void setBdprevious(Date bdprevious)
+			{
+				this.bdprevious = bdprevious;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "NextBusinessDate", length = 23)
+		public Date getNextBusinessDate()
+			{
+				return this.nextBusinessDate;
+			}
+			
+		public void setNextBusinessDate(Date nextBusinessDate)
+			{
+				this.nextBusinessDate = nextBusinessDate;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "EOMPrevious", length = 23)
+		public Date getEomprevious()
+			{
+				return this.eomprevious;
+			}
+			
+		public void setEomprevious(Date eomprevious)
+			{
+				this.eomprevious = eomprevious;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "EOMNext", length = 23)
+		public Date getEomnext()
+			{
+				return this.eomnext;
+			}
+			
+		public void setEomnext(Date eomnext)
+			{
+				this.eomnext = eomnext;
+			}
+			
+		@Column(name = "IsBranchClosed")
+		public Short getIsBranchClosed()
+			{
+				return this.isBranchClosed;
+			}
+			
+		public void setIsBranchClosed(Short isBranchClosed)
+			{
+				this.isBranchClosed = isBranchClosed;
+			}
+			
+		@Column(name = "IsCashierClosed")
+		public Short getIsCashierClosed()
+			{
+				return this.isCashierClosed;
+			}
+			
+		public void setIsCashierClosed(Short isCashierClosed)
+			{
+				this.isCashierClosed = isCashierClosed;
+			}
+			
+		@Column(name = "IsActive")
+		public Short getIsActive()
 			{
 				return this.isActive;
 			}
 			
-		public void setIsActive(String isActive)
+		public void setIsActive(Short isActive)
 			{
 				this.isActive = isActive;
 			}

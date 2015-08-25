@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Currency implements java.io.Serializable
 	{
 		
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private Partner partner;
 		private String code;
 		private String description;
@@ -41,7 +41,7 @@ public class Currency implements java.io.Serializable
 		private Set<AdvanceCash> advanceCashes = new HashSet<AdvanceCash>(0);
 		private Set<Agrmnt> agrmnts_1 = new HashSet<Agrmnt>(0);
 		private Set<DailyAraging> dailyAragings = new HashSet<DailyAraging>(0);
-		private Set<InsCoOfficeFee> insCoOfficeFees = new HashSet<InsCoOfficeFee>(0);
+		private Set<InsCoBranchFee> insCoBranchFees = new HashSet<InsCoBranchFee>(0);
 		private Set<CashierHistory> cashierHistories = new HashSet<CashierHistory>(0);
 		
 		public Currency()
@@ -55,7 +55,7 @@ public class Currency implements java.io.Serializable
 			}
 			
 		public Currency(long id, Partner partner, String code, String description, Double rounded, String isActive, String sandiBi, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Agrmnt> agrmnts, Set<BankAccount> bankAccounts,
-		        Set<CashBankHdr> cashBankHdrs, Set<AdvanceCash> advanceCashes, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCoOfficeFee> insCoOfficeFees, Set<CashierHistory> cashierHistories)
+		        Set<CashBankHdr> cashBankHdrs, Set<AdvanceCash> advanceCashes, Set<Agrmnt> agrmnts_1, Set<DailyAraging> dailyAragings, Set<InsCoBranchFee> insCoBranchFees, Set<CashierHistory> cashierHistories)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -74,7 +74,7 @@ public class Currency implements java.io.Serializable
 				this.advanceCashes = advanceCashes;
 				this.agrmnts_1 = agrmnts_1;
 				this.dailyAragings = dailyAragings;
-				this.insCoOfficeFees = insCoOfficeFees;
+				this.insCoBranchFees = insCoBranchFees;
 				this.cashierHistories = cashierHistories;
 			}
 			
@@ -271,14 +271,14 @@ public class Currency implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")
-		public Set<InsCoOfficeFee> getInsCoOfficeFees()
+		public Set<InsCoBranchFee> getInsCoBranchFees()
 			{
-				return this.insCoOfficeFees;
+				return this.insCoBranchFees;
 			}
 			
-		public void setInsCoOfficeFees(Set<InsCoOfficeFee> insCoOfficeFees)
+		public void setInsCoBranchFees(Set<InsCoBranchFee> insCoBranchFees)
 			{
-				this.insCoOfficeFees = insCoOfficeFees;
+				this.insCoBranchFees = insCoBranchFees;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "currency")

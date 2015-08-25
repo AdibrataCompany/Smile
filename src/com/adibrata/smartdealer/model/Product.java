@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Product implements java.io.Serializable
 	{
 		
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private Partner partner;
 		private String code;
 		private String name;

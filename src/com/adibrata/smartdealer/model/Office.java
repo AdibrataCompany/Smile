@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Office implements java.io.Serializable
 	{
 		
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private Partner partner;
 		private String officeCode;
 		private String name;
@@ -56,6 +56,7 @@ public class Office implements java.io.Serializable
 		private Set<PdcHdr> pdcHdrs = new HashSet<PdcHdr>(0);
 		private Set<ReturSalesHdr> returSalesHdrs = new HashSet<ReturSalesHdr>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
+		private Set<IncoBranchOffice> incoBranchOffices = new HashSet<IncoBranchOffice>(0);
 		private Set<Agrmnt> agrmnts = new HashSet<Agrmnt>(0);
 		private Set<InsRateToCust> insRateToCusts = new HashSet<InsRateToCust>(0);
 		private Set<BankAccount> bankAccounts = new HashSet<BankAccount>(0);
@@ -89,10 +90,10 @@ public class Office implements java.io.Serializable
 			
 		public Office(long id, Partner partner, String officeCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
 		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<PurchaseOrderHdr> purchaseOrderHdrs,
-		        Set<PaymentVoucher> paymentVouchers, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<PdcHdr> pdcHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<Agrmnt> agrmnts,
-		        Set<InsRateToCust> insRateToCusts, Set<BankAccount> bankAccounts, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<OtherRcvHdr> otherRcvHdrs, Set<EntrustHdr> entrustHdrs,
-		        Set<Invoice> invoices, Set<Pdcreceipt> pdcreceipts, Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<ProductOffering> productOfferings, Set<CashBankHdr> cashBankHdrs,
-		        Set<CashierHistory> cashierHistories, Set<Stock> stocks, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<ServiceHdr> serviceHdrs)
+		        Set<PaymentVoucher> paymentVouchers, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<PdcHdr> pdcHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<IncoBranchOffice> incoBranchOffices,
+		        Set<Agrmnt> agrmnts, Set<InsRateToCust> insRateToCusts, Set<BankAccount> bankAccounts, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<OtherRcvHdr> otherRcvHdrs,
+		        Set<EntrustHdr> entrustHdrs, Set<Invoice> invoices, Set<Pdcreceipt> pdcreceipts, Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<ProductOffering> productOfferings,
+		        Set<CashBankHdr> cashBankHdrs, Set<CashierHistory> cashierHistories, Set<Stock> stocks, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -126,6 +127,7 @@ public class Office implements java.io.Serializable
 				this.pdcHdrs = pdcHdrs;
 				this.returSalesHdrs = returSalesHdrs;
 				this.employees = employees;
+				this.incoBranchOffices = incoBranchOffices;
 				this.agrmnts = agrmnts;
 				this.insRateToCusts = insRateToCusts;
 				this.bankAccounts = bankAccounts;
@@ -504,6 +506,17 @@ public class Office implements java.io.Serializable
 		public void setEmployees(Set<Employee> employees)
 			{
 				this.employees = employees;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+		public Set<IncoBranchOffice> getIncoBranchOffices()
+			{
+				return this.incoBranchOffices;
+			}
+			
+		public void setIncoBranchOffices(Set<IncoBranchOffice> incoBranchOffices)
+			{
+				this.incoBranchOffices = incoBranchOffices;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")

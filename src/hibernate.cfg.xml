@@ -42,6 +42,7 @@
         <mapping class="com.adibrata.smartdealer.model.MasterType" />
         <mapping class="com.adibrata.smartdealer.model.MsRole" />
         <mapping class="com.adibrata.smartdealer.model.Marketing" />
+        <mapping class="com.adibrata.smartdealer.model.InsCoBranch" />
         <mapping class="com.adibrata.smartdealer.model.DailyAraging" />
         <mapping class="com.adibrata.smartdealer.model.OtherRcvHdr" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsCust" />
@@ -68,6 +69,7 @@
         <mapping class="com.adibrata.smartdealer.model.PersCustOmsetInfo" />
         <mapping class="com.adibrata.smartdealer.model.PersCustResidenceInfo" />
         <mapping class="com.adibrata.smartdealer.model.EntrustHdr" />
+        <mapping class="com.adibrata.smartdealer.model.IncoBranchOffice" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustLegalInfo" />
         <mapping class="com.adibrata.smartdealer.model.PaymentVoucher" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntCrossDefault" />
@@ -120,8 +122,6 @@
         <mapping class="com.adibrata.smartdealer.model.AgrmntBankStatementInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntMailingInfo" />
         <mapping class="com.adibrata.smartdealer.model.AssetCategory" />
-        <mapping class="com.adibrata.smartdealer.model.InsCoOffice" />
-        <mapping class="com.adibrata.smartdealer.model.InsCoOfficeFee" />
         <mapping class="com.adibrata.smartdealer.model.ProductOffering" />
         <mapping class="com.adibrata.smartdealer.model.ServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.PayHistHdr" />
@@ -133,6 +133,7 @@
         <mapping class="com.adibrata.smartdealer.model.ZipCode" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseHdr" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustFinancialInfo" />
+        <mapping class="com.adibrata.smartdealer.model.InsCoBranchFee" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />
         <mapping class="com.adibrata.smartdealer.model.DeliveryOrder" />

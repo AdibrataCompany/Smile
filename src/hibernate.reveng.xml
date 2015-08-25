@@ -167,10 +167,13 @@
 	<table-filter match-name="FundingCoy" match-catalog="SmartDealer"></table-filter>
 	<table-filter match-name="GoLive" match-catalog="SmartDealer"></table-filter>
 	<table-filter match-name="Holiday" match-catalog="SmartDealer"></table-filter>
-	<table-filter match-name="InsCoOffice"
+	<table-filter match-name="IncoBranchOffice"
 		match-catalog="SmartDealer">
 	</table-filter>
-	<table-filter match-name="InsCoOfficeFee"
+	<table-filter match-name="InsCoBranch"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InsCoBranchFee"
 		match-catalog="SmartDealer">
 	</table-filter>
 	<table-filter match-name="InsCompany" match-catalog="SmartDealer"></table-filter>

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class InsCompany implements java.io.Serializable
 	{
 		
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private Partner partner;
 		private String name;
 		private String address;
@@ -48,7 +48,7 @@ public class InsCompany implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<InsCoOffice> insCoOffices = new HashSet<InsCoOffice>(0);
+		private Set<InsCoBranch> insCoBranches = new HashSet<InsCoBranch>(0);
 		
 		public InsCompany()
 			{
@@ -60,7 +60,7 @@ public class InsCompany implements java.io.Serializable
 			}
 			
 		public InsCompany(long id, Partner partner, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2,
-		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCoOffice> insCoOffices)
+		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsCoBranch> insCoBranches)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -86,7 +86,7 @@ public class InsCompany implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
-				this.insCoOffices = insCoOffices;
+				this.insCoBranches = insCoBranches;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -359,14 +359,14 @@ public class InsCompany implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insCompany")
-		public Set<InsCoOffice> getInsCoOffices()
+		public Set<InsCoBranch> getInsCoBranches()
 			{
-				return this.insCoOffices;
+				return this.insCoBranches;
 			}
 			
-		public void setInsCoOffices(Set<InsCoOffice> insCoOffices)
+		public void setInsCoBranches(Set<InsCoBranch> insCoBranches)
 			{
-				this.insCoOffices = insCoOffices;
+				this.insCoBranches = insCoBranches;
 			}
 			
 	}

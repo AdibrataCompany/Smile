@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 23, 2015 12:40:11 AM by Hibernate Tools 4.3.1
+// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,8 +21,8 @@ import javax.persistence.TemporalType;
 public class InsRateFromInsco implements java.io.Serializable
 	{
 		
-		private static final long serialVersionUID = 1L; private long id;
-		private InsCoOffice insCoOffice;
+		private long id;
+		private InsCoBranch insCoBranch;
 		private String insTypeCode;
 		private String coverTypeCode;
 		private String usageCode;
@@ -47,11 +47,11 @@ public class InsRateFromInsco implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsRateFromInsco(long id, InsCoOffice insCoOffice, String insTypeCode, String coverTypeCode, String usageCode, Short newUsed, Long currencyId, Integer yearNum, Double premiumAmt, Double srccRate, Double floodRate, Double sumInsured,
+		public InsRateFromInsco(long id, InsCoBranch insCoBranch, String insTypeCode, String coverTypeCode, String usageCode, Short newUsed, Long currencyId, Integer yearNum, Double premiumAmt, Double srccRate, Double floodRate, Double sumInsured,
 		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
-				this.insCoOffice = insCoOffice;
+				this.insCoBranch = insCoBranch;
 				this.insTypeCode = insTypeCode;
 				this.coverTypeCode = coverTypeCode;
 				this.usageCode = usageCode;
@@ -83,14 +83,14 @@ public class InsRateFromInsco implements java.io.Serializable
 			
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "InsCompanyOfficeId")
-		public InsCoOffice getInsCoOffice()
+		public InsCoBranch getInsCoBranch()
 			{
-				return this.insCoOffice;
+				return this.insCoBranch;
 			}
 			
-		public void setInsCoOffice(InsCoOffice insCoOffice)
+		public void setInsCoBranch(InsCoBranch insCoBranch)
 			{
-				this.insCoOffice = insCoOffice;
+				this.insCoBranch = insCoBranch;
 			}
 			
 		@Column(name = "InsTypeCode", length = 20)
