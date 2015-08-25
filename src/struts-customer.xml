@@ -9,7 +9,7 @@
 		<action name="customer"
 			class="com.adibrata.smartdealer.action.customer.CustomerAction"
 			method="execute">
-			<result name="start">/Pages/Customer/Paging.jsp</result>
+			<result name="input">/Pages/Customer/Paging.jsp</result>
 			<result name="success">/Pages/Customer/Paging.jsp</result>
 			<result name="error">/Pages/Customer/Paging.jsp</result>
 
@@ -25,7 +25,7 @@
 		<action name="perscust"
 			class="com.adibrata.smartdealer.action.customer.PersCustAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/Paging.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/Paging.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/Entry.jsp</result>
 
 			<result name="check">/Pages/Customer/PersCust/Check.jsp</result>
@@ -40,7 +40,7 @@
 		<action name="perscustaddressdata"
 			class="com.adibrata.smartdealer.action.customer.PersCustAddressDataAction"
 			method="execute">
-			<result name="start">Pages/Customer/PersCust/AddressData.jsp</result>
+			<result name="input">Pages/Customer/PersCust/AddressData.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/AddressData.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/AddressData.jsp</result>
 
@@ -53,7 +53,7 @@
 		<action name="perscustemergencyinfo"
 			class="com.adibrata.smartdealer.action.customer.PersCustEmergencyInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/EmergencyInfo.jsp
+			<result name="input">/Pages/Customer/PersCust/EmergencyInfo.jsp
 			</result>
 			<result name="success">/Pages/Customer/PersCust/EmergencyInfo.jsp
 			</result>
@@ -69,7 +69,7 @@
 		<action name="perscustjobdata"
 			class="com.adibrata.smartdealer.action.customer.PersCustJobDataAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/JobData.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/JobData.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/JobData.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/JobData.jsp</result>
 
@@ -85,7 +85,7 @@
 		<action name="perscustprodata"
 			class="com.adibrata.smartdealer.action.customer.PersCustProDataAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/ProData.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/ProData.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/ProData.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/ProData.jsp</result>
 
@@ -98,7 +98,7 @@
 		<action name="perscustentdata"
 			class="com.adibrata.smartdealer.action.customer.PersCustEntDataAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/EntData.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/EntData.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/EntData.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/EntData.jsp</result>
 
@@ -114,7 +114,7 @@
 		<action name="perscustfinancialdata"
 			class="com.adibrata.smartdealer.action.customer.PersCustFinancialDataAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/FinancialData.jsp
+			<result name="input">/Pages/Customer/PersCust/FinancialData.jsp
 			</result>
 			<result name="success">/Pages/Customer/PersCust/FinancialData.jsp
 			</result>
@@ -130,7 +130,7 @@
 		<action name="perscustccinfo"
 			class="com.adibrata.smartdealer.action.customer.PersCustCcinfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/CCInfo.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/CCInfo.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/CCInfo.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/CCInfo.jsp</result>
 
@@ -146,7 +146,7 @@
 		<action name="perscustfamilyinfo"
 			class="com.adibrata.smartdealer.action.customer.PersCustFamilyInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/FamilyInfo.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/FamilyInfo.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/FamilyInfo.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/FamilyInfo.jsp</result>
 
@@ -161,7 +161,7 @@
 		<action name="perscusttrusteeinfo"
 			class="com.adibrata.smartdealer.action.customer.PersCustTrusteeInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/PersCust/TrusteeInfo.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/TrusteeInfo.jsp</result>
 			<result name="success">/Pages/Customer/PersCust/TrusteeInfo.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/TrusteeInfo.jsp</result>
 		</action>
@@ -169,7 +169,7 @@
 		<action name="coycust"
 			class="com.adibrata.smartdealer.action.customer.CoyCustAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/Paging.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/Paging.jsp</result>
 			<result name="success">/Pages/Customer/CoyCust/Paging.jsp</result>
 			<result name="error">/Pages/Customer/CoyCust/Paging.jsp</result>
 
@@ -185,7 +185,7 @@
 		<action name="coycustfinancialinfo"
 			class="com.adibrata.smartdealer.action.customer.CoyCustFinancialInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/FinancialInfo.jsp
+			<result name="input">/Pages/Customer/CoyCust/FinancialInfo.jsp
 			</result>
 			<result name="success">/Pages/Customer/CoyCust/FinancialInfo.jsp
 			</result>
@@ -201,7 +201,7 @@
 		<action name="coycustwhinfo"
 			class="com.adibrata.smartdealer.action.customer.CoyCustWhInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/WhInfo.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/WhInfo.jsp</result>
 			<result name="success">/Pages/Customer/CoyCust/WhInfo.jsp</result>
 			<result name="error">/Pages/Customer/CoyCust/WhInfo.jsp</result>
 
@@ -214,7 +214,7 @@
 		<action name="coycustcomptinfo"
 			class="com.adibrata.smartdealer.action.customer.CoyCustComptInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/ComptInfo.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/ComptInfo.jsp</result>
 			<result name="success">/Pages/Customer/CoyCust/ComptInfo.jsp</result>
 			<result name="error">/Pages/Customer/CoyCust/ComptInfo.jsp</result>
 
@@ -230,7 +230,7 @@
 		<action name="coycustshareinfo"
 			class="com.adibrata.smartdealer.action.customer.CoyCustShareInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/ShareInfo.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/ShareInfo.jsp</result>
 			<result name="success">/Pages/Customer/CoyCust/ShareInfo.jsp</result>
 			<result name="error">/Pages/Customer/CoyCust/ShareInfo.jsp</result>
 
@@ -246,7 +246,7 @@
 		<action name="coycustlegalinfo"
 			class="com.adibrata.smartdealer.action.customer.CoyCustLegalInfoAction"
 			method="execute">
-			<result name="start">/Pages/Customer/CoyCust/LegalInfo.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/LegalInfo.jsp</result>
 			<result name="success">/Pages/Customer/CoyCust/LegalInfo.jsp</result>
 			<result name="error">/Pages/Customer/CoyCust/LegalInfo.jsp</result>
 

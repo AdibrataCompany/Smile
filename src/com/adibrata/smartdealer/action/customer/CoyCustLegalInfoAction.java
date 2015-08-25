@@ -33,7 +33,7 @@ public class CoyCustLegalInfoAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private long customerid;
 		
 		private int seqno;
@@ -124,7 +124,7 @@ public class CoyCustLegalInfoAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{

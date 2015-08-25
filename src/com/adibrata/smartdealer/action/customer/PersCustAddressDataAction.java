@@ -31,8 +31,8 @@ public class PersCustAddressDataAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private long customerid;
-		private static final long serialVersionUID = 1L; private long id;
+		private Long customerid;
+		private long id;
 		
 		private String legaladdress;
 		private String legalrt;
@@ -62,8 +62,7 @@ public class PersCustAddressDataAction extends BaseAction implements Preparable
 				try
 					{
 						// TODO Auto-generated constructor stub
-						RenderMenu();
-						
+
 						this.customermaintservice = new CustomerDao();
 						this.customer = new Customer();
 						this.legalinfo = new PersCustLegalInfo();
@@ -123,7 +122,7 @@ public class PersCustAddressDataAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{

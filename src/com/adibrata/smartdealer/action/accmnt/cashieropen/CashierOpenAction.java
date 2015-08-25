@@ -334,14 +334,6 @@ public class CashierOpenAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
-			}
-			
-		/**
 		 * @return the partner
 		 */
 		public Partner getPartner()

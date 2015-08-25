@@ -27,7 +27,7 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 		private String message;
 		private String usrUpd;
 		private String usrCrt;
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private long customerid;
 
 		private String trusteename;
@@ -50,7 +50,6 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 		public PersCustTrusteeInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				RenderMenu();
 
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
@@ -90,7 +89,7 @@ public class PersCustTrusteeInfoAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "start";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{

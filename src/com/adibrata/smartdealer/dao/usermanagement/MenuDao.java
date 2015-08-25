@@ -23,7 +23,7 @@ public class MenuDao extends DaoBase implements MenuService
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
 		final StringBuilder menu = new StringBuilder();
-		
+
 		public MenuDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -31,7 +31,7 @@ public class MenuDao extends DaoBase implements MenuService
 					{
 
 						this.strStatement = " from MsMenu ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -41,9 +41,9 @@ public class MenuDao extends DaoBase implements MenuService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -60,9 +60,9 @@ public class MenuDao extends DaoBase implements MenuService
 						msMenu.setDtmCrt(this.dtmupd);
 						msMenu.setDtmUpd(this.dtmupd);
 						this.getSession().save(msMenu);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -73,7 +73,7 @@ public class MenuDao extends DaoBase implements MenuService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -90,9 +90,9 @@ public class MenuDao extends DaoBase implements MenuService
 						msMenu.setDtmCrt(this.dtmupd);
 						msMenu.setDtmUpd(this.dtmupd);
 						this.getSession().update(msMenu);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -103,7 +103,7 @@ public class MenuDao extends DaoBase implements MenuService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -118,9 +118,9 @@ public class MenuDao extends DaoBase implements MenuService
 				try
 					{
 						this.getSession().delete(msMenu);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -131,14 +131,14 @@ public class MenuDao extends DaoBase implements MenuService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.usermanagement.MenuService#Paging(int,
 		 * java.lang.String, java.lang.String)
 		 */
-		
+
 		// function getMenus($parent, &$menu, $conn){
 		// //I'm using the reference to get the menu, otherwise maybe you can use the global static variable in JAVA..
 		// // &$menu << reference variable
@@ -169,32 +169,32 @@ public class MenuDao extends DaoBase implements MenuService
 		// }
 		//
 		// $conn->close();
-		
+
 		@Override
 		public List<MsMenu> Paging(final int CurrentPage, final String WhereCond, final String SortBy)
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 		public List<MsMenu> ListMenu(final Long parentid)
 			{
 				final Query qry;
-				
+
 				final StringBuilder hql = new StringBuilder();
-				hql.append("from MsMenu where parentMenuId = :parentid and isActive = 1 order by  menuCode ");
+				hql.append("from MsMenu where parentMenuId = :parentid and isActive = 1 order by id,  menuCode ");
 				qry = this.getSession().createQuery(hql.toString());
 				qry.setParameter("parentid", parentid);
 				qry.setCacheable(true);
-				qry.setCacheRegion("MenuRender");
+				qry.setCacheRegion("MenuRender" + parentid);
 				final List<MsMenu> lst = qry.list();
 				return lst;
 			}
-			
+
 		@Override
 		public String MenuRender(final Long parentid, final Long menuid, final Long roleid)
 			{
-				
+
 				// <ul class="nav navbar-nav">
 				// <li><a href="/Smile/home.action">Depan</a></li>
 				// <li class="dropdown"><a href="" class="dropdown-toggle"
@@ -215,14 +215,14 @@ public class MenuDao extends DaoBase implements MenuService
 				// </ul></li>
 				// </ul>
 				// TODO Auto-generated method stub
-				
+
 				final List<MsMenu> lst = this.ListMenu(parentid);
 				if (lst.size() > 0)
 					{
-						
+
 						for (final MsMenu arow : lst)
 							{
-								if (arow.getParentMenuId() == 0)
+								if ((arow.getParentMenuId() == 0) || (arow.getUrlString() == null))
 									{
 										this.menu.append("<li class=\"dropdown\"> \n <a href=\"");
 										this.menu.append(arow.getUrlString());
@@ -236,25 +236,29 @@ public class MenuDao extends DaoBase implements MenuService
 												this.menu.append(" </ul>\n ");
 											}
 										this.menu.append("</li>\n ");
-										
+
 									}
 								else
 									{
 										// this.menu.append(" <ul class=\"dropdown-menu\">\n");
-										this.menu.append("	<li><a href=\"");
-										this.menu.append(arow.getUrlString());
-										this.menu.append("\">");
-										this.menu.append(arow.getMenuCode());
-										this.menu.append("</a></li>\n");
-										// this.menu.append(" </ul>\n ");
+										if (arow.getUrlString() != null)
+											{
+												
+												this.menu.append("	<li><a href=\"");
+												this.menu.append(arow.getUrlString());
+												this.menu.append("\">");
+												this.menu.append(arow.getMenuCode());
+												this.menu.append("</a></li>\n");
+											}
+										this.menu.append(" </ul>\n ");
 										
 										// this.MenuRender(arow.getId(), (Long) 0, (Long) 0);
-										
+
 									}
 							}
 					}
-					
+
 				return this.menu.toString();
 			}
-			
+
 	}

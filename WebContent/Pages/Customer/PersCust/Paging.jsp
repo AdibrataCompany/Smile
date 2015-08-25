@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/Smile/Pages/style/css/alert.css">
 <script src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
 <script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 
@@ -30,10 +30,10 @@
 				<br>
 				<s:label name="message" />
 				<br>
-				<table border="1" width="100%">
+				<table border="0" width="100%">
 					<tr>
-						<td width="50%">Legal Name</td>
-						<td width="50%"><s:textfield name="legalname"
+						<td width="25%">Legal Name</td>
+						<td><s:textfield name="legalname"
 								placeholder="Legal Name" /></td>
 					</tr>
 					<tr>
@@ -85,12 +85,13 @@
 				<table width="100%">
 					<tr>
 						<td><a href="customer.action"><button type="button">CANCEL</button></a></td>
-						<td align="right"><button type="submit" onclick="check()">NEXT</button></td>
+						<td align="right"><button type="submit" onclick="check()" class="btn btn-sm btn-primary">NEXT</button></td>
 					</tr>
 				</table>
 			</center>
 		</s:form>
 	</div>
+		<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	// When the document is ready

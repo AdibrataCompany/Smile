@@ -39,45 +39,110 @@ public class CorrectionAction extends BaseAction implements Preparable
 			}
 
 		@Override
-		public String execute() throws Exception
+		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
 				if (this.mode != null)
 					{
-						
 						switch (strMode)
 							{
 								case "search" :
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "edit" :
-								
-								case "back" :
-									;
-									
+									try
+										{
+											strMode = this.ViewData();
+										}
+									catch (final Exception e1)
+										{
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										}
+									break;
+								case "savedel" :
+									try
+										{
+											strMode = this.SaveDelete();
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "first" :
-									this.pageNumber -= 1;
-									this.Paging();
+									this.pageNumber = 1;
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "prev" :
 									this.pageNumber -= 1;
 									if (this.pageNumber <= 1)
 										{
 											this.pageNumber = 1;
 										}
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "next" :
 									this.pageNumber += 1;
-									this.Paging();
+									try
+										{
+											this.Paging();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
 								case "last" :
-									this.LastPage();
+									try
+										{
+											this.Paging(1);
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+									
 								default :
-									return ERROR;
+									break;
+									
 							}
 					}
 				else
 					{
-						strMode = "start";
+						this.pageNumber = 1;
+						
+						strMode = INPUT;
 					}
 				return strMode;
 			}
@@ -217,15 +282,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
-			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -259,13 +316,5 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final Long id)
-			{
-				this.id = id;
-			}
+
 	}

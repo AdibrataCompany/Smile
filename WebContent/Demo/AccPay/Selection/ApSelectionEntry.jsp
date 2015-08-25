@@ -16,7 +16,7 @@
 <meta name="author" content="">
 <link rel="icon" href="">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 </head>
 
 <body>

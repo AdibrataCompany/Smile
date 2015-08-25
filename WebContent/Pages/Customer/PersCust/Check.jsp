@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 
@@ -21,7 +21,7 @@
 
 		<s:form action="perscust.action" theme="simple">
 			<center>
-				<h2>Personal Customer Data</h2>
+				<h2>Check Customer Data</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
 				<table width="100%">
 					<tr>
@@ -43,7 +43,7 @@
 					</tr>
 				</table>
 				<br>
-				<h3>Match/Similar Costumer Data</h3>
+				<h3>Duplicate Costumer Data</h3>
 				<div class="table-responsive">
 					<table border="1" width="100%">
 						<tr>
@@ -99,6 +99,7 @@
 			</center>
 		</s:form>
 	</div>
+			<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function start() {

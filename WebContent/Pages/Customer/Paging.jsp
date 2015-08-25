@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>DMS-Dealer Management System</title>
+<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 
@@ -22,7 +22,7 @@
 
 		<s:form action="customer.action" theme="simple">
 			<center>
-				<h2>COSTUMER</h2>
+				<h2>CUSTUMER</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<br>
 				<s:label name="message"></s:label>
@@ -31,8 +31,8 @@
 					<tr>
 						<td><s:select name="searchcriteria" headerKey=""
 								headerValue="Select Criteria"
-								list="#{'name':'Name','time': 'Time','fulladdress':'Full Address' }" />
-							<s:textfield name="searchvalue" placeholder="Keyword" />
+								list="#{'name':'Name','fulladdress':'Address' }" /> <s:textfield
+								name="searchvalue" placeholder="Keyword" />
 							<button class="btn btn-sm btn-primary" type="submit"
 								onclick="search()">Cari</button></td>
 						<td align="right"><a href="perscust.action">
@@ -54,16 +54,16 @@
 				<div class="table-responsive">
 					<table class="table table-bordered">
 						<tr>
-							<th style="text-align: center;">No.</th>
-							<th style="text-align: center;">Nama</th>
-							<th style="text-align: center;">Alamat</th>
+							<th style="text-align: center; width=40%;">Name</th>
+							<th style="text-align: center; width=50%;">Address</th>
+							<th style="text-align: center; width=10%;">Personal / Company</th>
 							<th style="text-align: center;" width="5%">Pilih</th>
 						</tr>
 						<s:iterator value="lstcustomer">
 							<tr id="row_${id}">
 								<td>${name}</td>
-								<td>${type}</td>
 								<td>${fulladdress}</td>
+								<td>${type}</td>
 								<td style="text-align: center;"><input type="radio"
 									value="${id}" name="id" /></td>
 							</tr>
@@ -72,7 +72,7 @@
 				</div>
 				<%@include file="/Pages/Paging.jsp"%>
 			</center>
-
+			<%@include file="/Pages/Footer.jsp"%>
 		</s:form>
 	</div>
 
