@@ -38,7 +38,7 @@
 				<s:hidden name="gender" />
 				<s:hidden name="idtype" />
 
-				<table width="100%">
+				<table width="100%" class="table-hover table-responsive" >
 					<tr>
 						<td width="20%">Full Name</td>
 						<td width="30%"><s:label name="name" /></td>

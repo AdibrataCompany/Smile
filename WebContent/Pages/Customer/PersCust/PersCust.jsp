@@ -29,7 +29,7 @@
 				<s:hidden name="mode" id="mode" />
 				<s:hidden name="id" />
 				<s:label name="message" id="message" />
-				<table border="0" width="100%">
+				<table border="0" width="100%" class="table-hover table-responsive" >
 					<tr>
 						<td width="25%">Legal Name</td>
 						<td><s:textfield name="legalname" placeholder="Legal Name" /></td>
@@ -53,7 +53,6 @@
 						<td>ID Number</td>
 						<td><s:textfield name="idnumber" placeholder="ID Number" /></td>
 					</tr>
-
 					<tr>
 						<td>Birth Place/Date</td>
 						<td><s:textfield  name="birthplace"  placeholder="Birth Place" /> / <s:textfield 

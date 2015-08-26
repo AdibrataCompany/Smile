@@ -250,60 +250,99 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
-		 * @see
-		 * com.adibrata.smartdealer.service.customer.CustomerMaintenance#Save(com
-		 * .adibrata.smartdealer.model.Customer)
+		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
+		 * SavePersonalCustomer(java.lang.String,
+		 * com.adibrata.smartdealer.model.PersCust)
 		 */
+		
+		private String FullAddressCustomer(final Customer customer)
+			{
+				final StringBuilder fulladdress = new StringBuilder();
+				if ((customer.getRt() != null) || (customer.getRt() != ""))
+					{
+						fulladdress.append(" RT: ");
+						fulladdress.append(customer.getRt());
+					}
+				if ((customer.getRw() != null) || (customer.getRw() != ""))
+					{
+						fulladdress.append(" / RW:");
+						fulladdress.append(customer.getRw());
+					}
+
+				if ((customer.getKelurahan() != null) || (customer.getKelurahan() != ""))
+					{
+						fulladdress.append(" Kelurahan: ");
+						fulladdress.append(customer.getKelurahan());
+					}
+
+				if ((customer.getKecamatan() != null) || (customer.getKecamatan() != ""))
+					{
+						fulladdress.append(" Kecamatan: ");
+						fulladdress.append(customer.getKecamatan());
+					}
+
+				if ((customer.getCity() != null) || (customer.getCity() != ""))
+					{
+						fulladdress.append("'; ");
+						fulladdress.append(customer.getCity());
+					}
+				if ((customer.getZipcode() != null) || (customer.getZipcode() != ""))
+					{
+						fulladdress.append(customer.getZipcode());
+						fulladdress.append(" ");
+					}
+				return fulladdress.toString();
+
+			}
+
 		@Override
-		public Long SaveCustomer(final String usrupd, final Customer customer) throws Exception
+		public Long SaveCustomer(final String usrupd, final Customer customer, final PersCust perscust, final PersCustLegalInfo perscustlegainfo, final PersCustResidenceInfo persCustResidenceInfo) throws Exception
 			{
 				// TODO Auto-generated method stub
-				final StringBuilder fulladdress = new StringBuilder();
+
 				this.getSession().getTransaction().begin();
 				try
 					{
-						fulladdress.append(customer.getAddress());
-						if ((customer.getRt() != null) || (customer.getRt() != ""))
-							{
-								fulladdress.append(" RT: ");
-								fulladdress.append(customer.getRt());
-							}
-						if ((customer.getRw() != null) || (customer.getRw() != ""))
-							{
-								fulladdress.append(" / RW:");
-								fulladdress.append(customer.getRw());
-							}
-							
-						if ((customer.getKelurahan() != null) || (customer.getKelurahan() != ""))
-							{
-								fulladdress.append(" Kelurahan: ");
-								fulladdress.append(customer.getKelurahan());
-							}
-							
-						if ((customer.getKecamatan() != null) || (customer.getKecamatan() != ""))
-							{
-								fulladdress.append(" Kecamatan: ");
-								fulladdress.append(customer.getKecamatan());
-							}
-							
-						if ((customer.getCity() != null) || (customer.getCity() != ""))
-							{
-								fulladdress.append("'; ");
-								fulladdress.append(customer.getCity());
-							}
-						if ((customer.getZipcode() != null) || (customer.getZipcode() != ""))
-							{
-								fulladdress.append(customer.getZipcode());
-								fulladdress.append(" ");
-							}
-							
-						customer.setFullAddress(fulladdress.toString());
+						
+						customer.setAddress(perscustlegainfo.getAddress());
+						customer.setRt(perscustlegainfo.getRt());
+						customer.setRw(perscustlegainfo.getRw());
+						customer.setKelurahan(perscustlegainfo.getKelurahan());
+						customer.setKecamatan(perscustlegainfo.getKecamatan());
+						customer.setCity(perscustlegainfo.getCity());
+						customer.setZipcode(perscustlegainfo.getZipcode());
+						customer.setAreaPhone1(persCustResidenceInfo.getAreaPhone1());
+						customer.setAreaPhone2(persCustResidenceInfo.getAreaPhone2());
+						customer.setPhoneNo1(persCustResidenceInfo.getPhoneNo1());
+						customer.setPhoneNo2(persCustResidenceInfo.getPhoneNo2());
+						customer.setAreaFax(persCustResidenceInfo.getAreaFax());
+						customer.setFaxNo(persCustResidenceInfo.getFaxNo());
+						customer.setUsrCrt(usrupd);
+						customer.setUsrUpd(usrupd);
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
+						customer.setFullAddress(this.FullAddressCustomer(customer));
+
 						this.getSession().save(customer);
+
+						perscust.setId(customer.getId());
+						perscust.setDtmCrt(this.dtmupd);
+						perscust.setDtmUpd(this.dtmupd);
+						this.getSession().save(perscust);
+
+						perscustlegainfo.setId(customer.getId());
+						perscustlegainfo.setDtmCrt(this.dtmupd);
+						perscustlegainfo.setDtmUpd(this.dtmupd);
+						this.getSession().save(perscustlegainfo);
+
+						persCustResidenceInfo.setId(customer.getId());
+						persCustResidenceInfo.setDtmCrt(this.dtmupd);
+						persCustResidenceInfo.setDtmUpd(this.dtmupd);
+						this.getSession().save(perscustlegainfo);
+
 						this.getSession().getTransaction().commit();
 
 					}
@@ -317,24 +356,26 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 					}
 				return customer.getId();
 			}
-			
-		/*
-		 * (non-Javadoc)
-		 * @see com.adibrata.smartdealer.service.customer.CustomerMaintService#
-		 * SavePersonalCustomer(java.lang.String,
-		 * com.adibrata.smartdealer.model.PersCust)
-		 */
+
 		@Override
-		public void SavePersonalCustomer(final String usrupd, final PersCust customer) throws Exception
+		public Long SaveCustomer(final String usrupd, final Customer customer, final CoyCust coycust) throws Exception
 			{
 				// TODO Auto-generated method stub
 				
 				this.getSession().getTransaction().begin();
 				try
 					{
+						customer.setFullAddress(this.FullAddressCustomer(customer));
 						customer.setDtmCrt(this.dtmupd);
 						customer.setDtmUpd(this.dtmupd);
+						customer.setUsrCrt(usrupd);
+						customer.setUsrUpd(usrupd);
 						this.getSession().save(customer);
+
+						coycust.setId(customer.getId());
+						coycust.setDtmCrt(this.dtmupd);
+						coycust.setDtmUpd(this.dtmupd);
+						this.getSession().save(coycust);
 						
 						this.getSession().getTransaction().commit();
 						
@@ -347,6 +388,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return customer.getId();
 			}
 			
 		/*

@@ -43,7 +43,7 @@
 								</button></a>
 							<button class="btn btn-sm btn-warning" type="submit"
 								onclick="edit()">
-								<span class="glyphicon glyphicon-edit"></span><br>Edut
+								<span class="glyphicon glyphicon-edit"></span><br>Edit
 							</button></td>
 					</tr>
 				</table>

@@ -12,98 +12,110 @@
 </head>
 
 <body>
-	<%@include file="/Pages/Menu.jsp"%>
-	<div class="container">
-		<!-- Main component for a primary marketing message or call to action -->
-		<!-- 	<div class="jumbotron"> -->
-		<br> <br>
-		<%@include file="/Pages/Header.jsp"%>
 
-		<s:form action="perscustaddressdata.action" theme="simple">
-			<center>
-				<h2>Personal Customer - Address</h2>
-				<s:hidden name="mode" id="mode" />
-				<s:hidden name="id" />
-				<s:label name="message" id="message" />
-				<s:hidden name="customerid" />
-				<table width="100%" border="1">
-					<tr>
-						<th colspan="2">LEGAL ADDRESS</th>
-						<th colspan="2">RESIDENCE ADDRESS
-							<button type="button" onclick="copy()">=Legal Address</button>
-						</th>
-					</tr>
-					<tr>
-						<td width="20%">Address</td>
-						<td width="30%"><s:textarea name="legaladdress"
-								id="legaladdress" /></td>
-						<td width="20%">Address</td>
-						<td width="30%"><s:textarea name="address" id="address" /></td>
-					</tr>
-					<tr>
-						<td>RT / RW</td>
-						<td><s:textfield name="legalrt" id="legalrt" /> / <s:textfield
-								name="legalrw" id="legalrw" /></td>
-						<td>RT / RW</td>
-						<td><s:textfield name="rt" id="rt" /> / <s:textfield
-								name="rw" id="rw" /></td>
-					</tr>
-					<tr>
-						<td>Kelurahan</td>
-						<td><s:textfield name="legalkelurahan" id="legalkelurahan" /></td>
-						<td>Kelurahan</td>
-						<td><s:textfield name="kelurahan" id="kelurahan" /></td>
-					</tr>
-					<tr>
-						<td>Kecamatan</td>
-						<td><s:textfield name="legalkecamatan" id="legalkecamatan" /></td>
-						<td>Kecamatan</td>
-						<td><s:textfield name="kecamatan" id="kecamatan" /></td>
-					</tr>
-					<tr>
-						<td>City</td>
-						<td><s:textfield name="legalcity" id="legalcity" /></td>
-						<td>City</td>
-						<td><s:textfield name="city" id="city" /></td>
-					</tr>
-					<tr>
-						<td>Zip Code</td>
-						<td><s:textfield name="legalzipcode" id="legalzipcode" /></td>
-						<td>Zip Code</td>
-						<td><s:textfield name="zipcode" id="zipcode" /></td>
-					</tr>
-					<tr>
-						<td>Phone 1</td>
-						<td colspan="3"><s:textfield name="areaphone1" /> - <s:textfield
-								name="phoneno1" /></td>
-					</tr>
-					<tr>
-						<td>Phone 2</td>
-						<td colspan="3"><s:textfield name="areaphone2" /> - <s:textfield
-								name="phoneno2" /></td>
-					</tr>
-					<tr>
-						<td>Fax</td>
-						<td colspan="3"><s:textfield name="areafax" /> - <s:textfield
-								name="faxno" /></td>
-					</tr>
-				</table>
-				<br>
-				<table width="100%">
-					<tr>
-						<td><a href="customer.action"><button type="button">CANCEL</button></a></td>
-						<td align="right"><button type="submit" onclick="save()">SAVE</button></td>
-					</tr>
-				</table>
-			</center>
-		</s:form>
-	</div>
-	<%@include file="/Pages/Footer.jsp"%>
+	<table width="100%" border="0" class="table-hover table-responsive">
+		<tr>
+			<th colspan="2">LEGAL ADDRESS</th>
+
+		</tr>
+		<tr>
+			<td width="20%">Address</td>
+			<td width="30%"><s:textarea style="width:95%"  placeholder="Legal Address" 
+					class="form-control" name="legaladdress" id="legaladdress" /></td>
+		</tr>
+		<tr>
+			<td>RT / RW</td>
+			<td>
+				<div align="left" class="form-inline">
+					<s:textfield style="width:60px" class="form-control" name="legalrt"
+						id="legalrt" placeholder="RT" />
+					/
+					<s:textfield style="width:60px" class="form-control" name="legalrw"
+						id="legalrw" placeholder="RW" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Kelurahan</td>
+			<td><s:textfield style="width:100px" class="form-control"
+					name="legalkelurahan" id="legalkelurahan" placeholder="Kelurahan"/></td>
+		</tr>
+		<tr>
+			<td>Kecamatan</td>
+			<td><s:textfield style="width:100px" class="form-control"
+					name="legalkecamatan" id="legalkecamatan" placeholder="Kecamatan" /></td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td><s:textfield style="width:100px" class="form-control"
+					name="legalcity" id="legalcity" placeholder="City" /></td>
+		</tr>
+		<tr>
+			<td>Zip Code</td>
+			<td><s:textfield style="width:100px" class="form-control"
+					name="legalzipcode" id="legalzipcode" placeholder="Zip Code" /></td>
+		</tr>
+		<!-- - Residence Area ---- -->
+		<tr>
+
+			<th colspan="2">RESIDENCE ADDRESS
+				<button type="button" onclick="copy()">=Legal Address</button>
+			</th>
+		</tr>
+		<tr>
+			<td width="20%">Address</td>
+			<td width="30%"><s:textarea style="width:95%" 
+					class="form-control" name="address" id="address" placeholder="Residence Address" /></td>
+		</tr>
+		<tr>
+			<td>RT / RW</td>
+			<td><div align="left" class="form-inline"><s:textfield style="width:60px" class="form-control"
+					name="rt" id="rt" placeholder="RT"  /> / <s:textfield style="width:60px"
+					class="form-control" name="rw" id="rw" placeholder="RW" /></div></td>
+		</tr>
+		<tr>
+			<td>Kelurahan</td>
+			<td><s:textfield style="width:100px" class="form-control" placeholder="Kelurahan" 
+					name="kelurahan" id="kelurahan" /></td>
+		</tr>
+		<tr>
+			<td>Kecamatan</td>
+			<td><s:textfield style="width:100px" class="form-control" placeholder="Kecamatan" 
+					name="kecamatan" id="kecamatan" /></td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td><s:textfield style="width:100px" class="form-control" placeholder="City" 
+					name="city" id="city" /></td>
+		</tr>
+		<tr>
+			<td>Zip Code</td>
+			<td><s:textfield style="width:100px" class="form-control" placeholder="Zip Code" 
+					name="zipcode" id="zipcode" /></td>
+		</tr>
+		<tr>
+			<td>Phone 1</td>
+			<td><div align="left" class="form-inline"><s:textfield style="width:60px" class="form-control"
+					name="areaphone1" /> - <s:textfield style="width:100px"
+					class="form-control" name="phoneno1" /></div></td>
+			<td>Phone 2</td>
+			<td><div align="left" class="form-inline"><s:textfield style="width:60px" class="form-control"
+					name="areaphone2" /> - <s:textfield style="width:100px"
+					class="form-control" name="phoneno2" /></div></td>
+		</tr>
+
+		<tr>
+			<td>Fax</td>
+			<td><div align="left" class="form-inline"><s:textfield style="width:60px" class="form-control"
+					name="areafax" /> - <s:textfield style="width:100px"
+					class="form-control" name="faxno" /></div></td>
+		</tr>
+	</table>
+	<br>
+
+
 </body>
 <script type="text/javascript">
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
 	function copy() {
 		document.getElementById("address").value = document
 				.getElementById("legaladdress").value;

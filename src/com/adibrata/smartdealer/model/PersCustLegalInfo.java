@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 9:54:19 AM by Hibernate Tools 4.3.1
+// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,6 +23,7 @@ public class PersCustLegalInfo implements java.io.Serializable
 		
 		private long id;
 		private Customer customer;
+		private String legalName;
 		private String address;
 		private String rt;
 		private String rw;
@@ -52,11 +53,12 @@ public class PersCustLegalInfo implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public PersCustLegalInfo(long id, Customer customer, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
-		        String areaFax, String faxNo, String handphone, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public PersCustLegalInfo(long id, Customer customer, String legalName, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2,
+		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
+				this.legalName = legalName;
 				this.address = address;
 				this.rt = rt;
 				this.rw = rw;
@@ -101,6 +103,17 @@ public class PersCustLegalInfo implements java.io.Serializable
 		public void setCustomer(Customer customer)
 			{
 				this.customer = customer;
+			}
+			
+		@Column(name = "LegalName", length = 50)
+		public String getLegalName()
+			{
+				return this.legalName;
+			}
+			
+		public void setLegalName(String legalName)
+			{
+				this.legalName = legalName;
 			}
 			
 		@Column(name = "Address")

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 9:54:19 AM by Hibernate Tools 4.3.1
+// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -46,12 +46,12 @@ public class PersCust implements java.io.Serializable
 		private String homeStatus;
 		private Date rentFinishDate;
 		private String homeLocation;
-		private double homePrice;
+		private Double homePrice;
 		private Short staySinceYear;
 		private Short staySinceMonth;
-		private short numOfAssetOwned;
+		private Short numOfAssetOwned;
 		private String reference;
-		private short isApplyCarLoanBefore;
+		private Short isApplyCarLoanBefore;
 		private String applyCarLoanCompanyName;
 		private String activeCustomer;
 		private String notes;
@@ -69,33 +69,14 @@ public class PersCust implements java.io.Serializable
 			{
 			}
 			
-		public PersCust(long id, String personalCustomerType, String idtype, String idnumber, String idnumberChecking, String gender, String birthPlace, String religion, String maritalStatus, String education, String professionId, String nationality,
-		        String homeStatus, String homeLocation, double homePrice, short numOfAssetOwned, short isApplyCarLoanBefore, String activeCustomer, String customerGroup)
+		public PersCust(long id)
 			{
 				this.id = id;
-				this.personalCustomerType = personalCustomerType;
-				this.idtype = idtype;
-				this.idnumber = idnumber;
-				this.idnumberChecking = idnumberChecking;
-				this.gender = gender;
-				this.birthPlace = birthPlace;
-				this.religion = religion;
-				this.maritalStatus = maritalStatus;
-				this.education = education;
-				this.professionId = professionId;
-				this.nationality = nationality;
-				this.homeStatus = homeStatus;
-				this.homeLocation = homeLocation;
-				this.homePrice = homePrice;
-				this.numOfAssetOwned = numOfAssetOwned;
-				this.isApplyCarLoanBefore = isApplyCarLoanBefore;
-				this.activeCustomer = activeCustomer;
-				this.customerGroup = customerGroup;
 			}
 			
 		public PersCust(long id, Customer customer, String personalCustomerType, String idtype, Date idexpDate, String idnumber, String idnumberChecking, Date idtypeIssuedDate, String gender, String birthPlace, Date birthDate, String mobilePhone,
 		        String email, String religion, String maritalStatus, Short numOfDependence, String personalNpwp, String noKk, String education, String professionId, String nationality, String wnacountry, String homeStatus, Date rentFinishDate,
-		        String homeLocation, double homePrice, Short staySinceYear, Short staySinceMonth, short numOfAssetOwned, String reference, short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes,
+		        String homeLocation, Double homePrice, Short staySinceYear, Short staySinceMonth, Short numOfAssetOwned, String reference, Short isApplyCarLoanBefore, String applyCarLoanCompanyName, String activeCustomer, String notes,
 		        Short isCorporateCreditLine, Double plafondAmount, String biologicalMothersName, String customerGroup, Short mainBusinessSinceYear, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
@@ -168,7 +149,7 @@ public class PersCust implements java.io.Serializable
 				this.customer = customer;
 			}
 			
-		@Column(name = "PersonalCustomerType", nullable = false, length = 10)
+		@Column(name = "PersonalCustomerType", length = 10)
 		public String getPersonalCustomerType()
 			{
 				return this.personalCustomerType;
@@ -179,7 +160,7 @@ public class PersCust implements java.io.Serializable
 				this.personalCustomerType = personalCustomerType;
 			}
 			
-		@Column(name = "IDType", nullable = false, length = 10)
+		@Column(name = "IDType", length = 10)
 		public String getIdtype()
 			{
 				return this.idtype;
@@ -202,7 +183,7 @@ public class PersCust implements java.io.Serializable
 				this.idexpDate = idexpDate;
 			}
 			
-		@Column(name = "IDNumber", nullable = false, length = 40)
+		@Column(name = "IDNumber", length = 40)
 		public String getIdnumber()
 			{
 				return this.idnumber;
@@ -213,7 +194,7 @@ public class PersCust implements java.io.Serializable
 				this.idnumber = idnumber;
 			}
 			
-		@Column(name = "IDNumberChecking", nullable = false, length = 40)
+		@Column(name = "IDNumberChecking", length = 40)
 		public String getIdnumberChecking()
 			{
 				return this.idnumberChecking;
@@ -236,7 +217,7 @@ public class PersCust implements java.io.Serializable
 				this.idtypeIssuedDate = idtypeIssuedDate;
 			}
 			
-		@Column(name = "Gender", nullable = false, length = 10)
+		@Column(name = "Gender", length = 10)
 		public String getGender()
 			{
 				return this.gender;
@@ -247,7 +228,7 @@ public class PersCust implements java.io.Serializable
 				this.gender = gender;
 			}
 			
-		@Column(name = "BirthPlace", nullable = false, length = 20)
+		@Column(name = "BirthPlace", length = 20)
 		public String getBirthPlace()
 			{
 				return this.birthPlace;
@@ -292,7 +273,7 @@ public class PersCust implements java.io.Serializable
 				this.email = email;
 			}
 			
-		@Column(name = "Religion", nullable = false, length = 10)
+		@Column(name = "Religion", length = 10)
 		public String getReligion()
 			{
 				return this.religion;
@@ -303,7 +284,7 @@ public class PersCust implements java.io.Serializable
 				this.religion = religion;
 			}
 			
-		@Column(name = "MaritalStatus", nullable = false, length = 10)
+		@Column(name = "MaritalStatus", length = 10)
 		public String getMaritalStatus()
 			{
 				return this.maritalStatus;
@@ -347,7 +328,7 @@ public class PersCust implements java.io.Serializable
 				this.noKk = noKk;
 			}
 			
-		@Column(name = "Education", nullable = false, length = 10)
+		@Column(name = "Education", length = 10)
 		public String getEducation()
 			{
 				return this.education;
@@ -358,7 +339,7 @@ public class PersCust implements java.io.Serializable
 				this.education = education;
 			}
 			
-		@Column(name = "ProfessionID", nullable = false, length = 10)
+		@Column(name = "ProfessionID", length = 10)
 		public String getProfessionId()
 			{
 				return this.professionId;
@@ -369,7 +350,7 @@ public class PersCust implements java.io.Serializable
 				this.professionId = professionId;
 			}
 			
-		@Column(name = "Nationality", nullable = false, length = 3)
+		@Column(name = "Nationality", length = 3)
 		public String getNationality()
 			{
 				return this.nationality;
@@ -391,7 +372,7 @@ public class PersCust implements java.io.Serializable
 				this.wnacountry = wnacountry;
 			}
 			
-		@Column(name = "HomeStatus", nullable = false, length = 10)
+		@Column(name = "HomeStatus", length = 10)
 		public String getHomeStatus()
 			{
 				return this.homeStatus;
@@ -414,7 +395,7 @@ public class PersCust implements java.io.Serializable
 				this.rentFinishDate = rentFinishDate;
 			}
 			
-		@Column(name = "HomeLocation", nullable = false, length = 10)
+		@Column(name = "HomeLocation", length = 10)
 		public String getHomeLocation()
 			{
 				return this.homeLocation;
@@ -425,13 +406,13 @@ public class PersCust implements java.io.Serializable
 				this.homeLocation = homeLocation;
 			}
 			
-		@Column(name = "HomePrice", nullable = false, precision = 53, scale = 0)
-		public double getHomePrice()
+		@Column(name = "HomePrice", precision = 53, scale = 0)
+		public Double getHomePrice()
 			{
 				return this.homePrice;
 			}
 			
-		public void setHomePrice(double homePrice)
+		public void setHomePrice(Double homePrice)
 			{
 				this.homePrice = homePrice;
 			}
@@ -458,13 +439,13 @@ public class PersCust implements java.io.Serializable
 				this.staySinceMonth = staySinceMonth;
 			}
 			
-		@Column(name = "NumOfAssetOwned", nullable = false)
-		public short getNumOfAssetOwned()
+		@Column(name = "NumOfAssetOwned")
+		public Short getNumOfAssetOwned()
 			{
 				return this.numOfAssetOwned;
 			}
 			
-		public void setNumOfAssetOwned(short numOfAssetOwned)
+		public void setNumOfAssetOwned(Short numOfAssetOwned)
 			{
 				this.numOfAssetOwned = numOfAssetOwned;
 			}
@@ -480,13 +461,13 @@ public class PersCust implements java.io.Serializable
 				this.reference = reference;
 			}
 			
-		@Column(name = "IsApplyCarLoanBefore", nullable = false)
-		public short getIsApplyCarLoanBefore()
+		@Column(name = "IsApplyCarLoanBefore")
+		public Short getIsApplyCarLoanBefore()
 			{
 				return this.isApplyCarLoanBefore;
 			}
 			
-		public void setIsApplyCarLoanBefore(short isApplyCarLoanBefore)
+		public void setIsApplyCarLoanBefore(Short isApplyCarLoanBefore)
 			{
 				this.isApplyCarLoanBefore = isApplyCarLoanBefore;
 			}
@@ -502,7 +483,7 @@ public class PersCust implements java.io.Serializable
 				this.applyCarLoanCompanyName = applyCarLoanCompanyName;
 			}
 			
-		@Column(name = "ActiveCustomer", nullable = false, length = 1)
+		@Column(name = "ActiveCustomer", length = 1)
 		public String getActiveCustomer()
 			{
 				return this.activeCustomer;
@@ -557,7 +538,7 @@ public class PersCust implements java.io.Serializable
 				this.biologicalMothersName = biologicalMothersName;
 			}
 			
-		@Column(name = "CustomerGroup", nullable = false, length = 10)
+		@Column(name = "CustomerGroup", length = 10)
 		public String getCustomerGroup()
 			{
 				return this.customerGroup;

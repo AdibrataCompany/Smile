@@ -37,7 +37,7 @@
 				<s:hidden name="legalname" />
 				<s:hidden name="biologicalmothersname" />
 				<s:hidden name="gender" />
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">PERSONAL COMPANY DATA</th>
 					</tr>
@@ -68,9 +68,14 @@
 					</tr>
 					<tr>
 						<td>Expired Date</td>
-						<td><s:textfield name="idexpdate" id="idexpdate" /></td>
+						<td>
+							<div align="left" class="form-inline">
+								<s:textfield style="width:100px" class="form-control"
+									placeholder="Expired Date" name="idexpdate" id="idexpdate" />
+							</div>
+						</td>
 						<td>Personal NPWP</td>
-						<td><s:textfield name="personalnpwp" /></td>
+						<td><s:label name="personalnpwp" /></td>
 					</tr>
 					<tr>
 						<td>Education</td>
@@ -83,7 +88,8 @@
 					</tr>
 					<tr>
 						<td>Mobile Phone</td>
-						<td colspan=3><s:textfield name="mobilephone"
+						<td colspan=3><s:textfield style="width:150px"
+								class="form-control" name="mobilephone"
 								placeholder="Mobile Phone" /></td>
 					</tr>
 
@@ -95,10 +101,11 @@
 					</tr>
 					<tr>
 						<td>E-Mail</td>
-						<td><s:textfield name="email" placeholder="E-mail" /></td>
+						<td><s:textfield style="width:250px" class="form-control"
+								name="email" placeholder="E-mail" /></td>
 						<td>Rent Finish Date</td>
-						<td><s:textfield name="rentfinishdate"
-								placeholder="Rent Finish Date" /></td>
+						<td><s:textfield style="width:100px" class="form-control"
+								name="rentfinishdate" id ="rentfinishdate" placeholder="Rent Finish Date" /></td>
 					</tr>
 					<tr>
 						<td>Religion</td>
@@ -115,30 +122,39 @@
 								headerValue="Select One"
 								list="#{'Single':'Single','Married':'Married'}" /></td>
 						<td>Home Price</td>
-						<td><s:textfield name="homeprice" placeholder="Home Price" /></td>
+						<td><s:textfield style="width:100px" class="form-control"
+								name="homeprice" placeholder="Home Price" /></td>
 					</tr>
 					<tr>
 						<td>Dependent Number</td>
-						<td><s:textfield name="numofdependence"
-								placeholder="Dependent Number" /></td>
+						<td><s:textfield style="width:95%" class="form-control"
+								name="numofdependence" placeholder="Dependent Number" /></td>
 						<td>Stay Since</td>
-						<td><s:select name="staysincemonth" headerKey=""
-								headerValue="Select One"
-								list="#{'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'August','9':'September','10':'October','11':'Novemver','12':'December'}" />
-							- <s:textfield name="staysinceyear" placeholder="YEAR" /></td>
+						<td>
+							<div align="left" class="form-inline">
+								<s:select name="staysincemonth" headerKey=""
+									headerValue="Select One"
+									list="#{'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'August','9':'September','10':'October','11':'Novemver','12':'December'}" />
+								-
+								<s:textfield style="width:95%" class="form-control"
+									name="staysinceyear" placeholder="YEAR" />
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<td>Number of Own Cars</td>
-						<td><s:textfield name="numofassetowned"
-								placeholder="Number of Own Car" /></td>
+						<td><s:textfield style="width:100px" class="form-control"
+								name="numofassetowned" placeholder="Own Car" /></td>
 					</tr>
 					<tr>
 						<td>KK No.</td>
-						<td><s:textfield name="nokk" placeholder="KK Number" /></td>
+						<td><s:textfield style="width:95%" class="form-control"
+								name="nokk" placeholder="KK Number" /></td>
 					</tr>
 				</table>
+				<%@include file="/Pages/Customer/PersCust/AddressData.jsp"%>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">OTHER DATA</th>
 					</tr>
@@ -155,19 +171,21 @@
 						<td><s:radio name="activecustomer"
 								list="#{'Active':'Active','Hold':'Hold'}" /></td>
 						<td>Other Finance Company Name</td>
-						<td><s:textfield name="applycarloancompanyname"
+						<td><s:textfield style="width:95%" class="form-control"
+								name="applycarloancompanyname"
 								placeholder="Other Finance Company Name" /></td>
 					</tr>
 					<tr>
 						<td>Notes</td>
-						<td colspan="3"><s:textfield name="notes" placeholder="Notes" /></td>
+						<td colspan="3"><s:textfield style="width:95%"
+								class="form-control" name="notes" placeholder="Notes" /></td>
 					</tr>
 				</table>
 				<br>
 				<table width="100%">
 					<tr>
 						<td><a href="customer.action"><button type="button">CANCEL</button></a></td>
-						<td align="right"><button type="submit" onclick="save()">SAVE</button></td>
+						<td align="right"><button type="submit" onclick="savetrans()">SAVE</button></td>
 					</tr>
 				</table>
 			</center>
@@ -176,13 +194,17 @@
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function save() {
-		document.getElementById("mode").value = "save";
-	}
 	$(document).ready(function() {
 		$('#idexpdate').datepicker({
 			format : "dd/mm/yyyy"
 		});
 	});
+	$(document).ready(function() {
+		$('#rentfinishdate').datepicker({
+			format : "dd/mm/yyyy"
+		});
+	});
+	
+	
 </script>
 </html>

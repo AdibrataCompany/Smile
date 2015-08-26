@@ -28,25 +28,12 @@
 			<result name="check">/Pages/Customer/PersCust/Check.jsp</result>
 			<result name="entry">/Pages/Customer/PersCust/Entry.jsp</result>
 
-			<result name="save" type="redirectAction">
+			<result name="success" type="redirectAction">
 				<param name="actionName">perscustaddressdata</param>
 				<param name="customerid">${customerid}</param>
 			</result>
+			
 		</action>
-
-		<action name="perscustaddressdata"
-			class="com.adibrata.smartdealer.action.customer.PersCustAddressDataAction"
-			method="execute">
-			<result name="input">Pages/Customer/PersCust/AddressData.jsp</result>
-			<result name="success">/Pages/Customer/PersCust/AddressData.jsp</result>
-			<result name="error">/Pages/Customer/PersCust/AddressData.jsp</result>
-
-			<result name="save" type="redirectAction">
-				<param name="actionName">perscustemergencyinfo</param>
-				<param name="customerid">${customerid}</param>
-			</result>
-		</action>
-
 		<action name="perscustemergencyinfo"
 			class="com.adibrata.smartdealer.action.customer.PersCustEmergencyInfoAction"
 			method="execute">
