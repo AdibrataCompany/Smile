@@ -258,7 +258,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 		 * .adibrata.smartdealer.model.Customer)
 		 */
 		@Override
-		public void SaveCustomer(final String usrupd, final Customer customer) throws Exception
+		public Long SaveCustomer(final String usrupd, final Customer customer) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder fulladdress = new StringBuilder();
@@ -305,6 +305,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 						customer.setDtmUpd(this.dtmupd);
 						this.getSession().save(customer);
 						this.getSession().getTransaction().commit();
+
 					}
 				catch (final Exception exp)
 					{
@@ -314,6 +315,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				return customer.getId();
 			}
 			
 		/*

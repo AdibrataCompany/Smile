@@ -22,11 +22,10 @@
 		<s:form action="coycustshareinfo.action" theme="simple">
 			<center>
 				<h2>Company Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table width="100%" border="1">
 					<tr>
 						<th colspan="7">LEGAL DOCUMENT</th>
@@ -69,6 +68,7 @@
 			</center>
 		</s:form>
 	</div>
+		<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

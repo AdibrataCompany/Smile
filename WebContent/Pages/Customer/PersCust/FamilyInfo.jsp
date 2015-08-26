@@ -21,12 +21,11 @@
 
 		<s:form action="perscustfamilyinfo.action" theme="simple">
 			<center>
-				<h2>Personal Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<h2>Personal Customer - Family Info</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table width="100%" border="1">
 					<tr>
 						<th colspan="5">FAMILY DATA</th>
@@ -68,7 +67,7 @@
 			</center>
 		</s:form>
 	</div>
-			<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

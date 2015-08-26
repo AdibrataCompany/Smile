@@ -22,10 +22,10 @@
 		<s:form action="coycust.action" theme="simple">
 			<center>
 				<h2>Company Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table border="1" width="100%">
 					<tr>
 						<td width="20%">Name</td>
@@ -80,6 +80,7 @@
 			</center>
 		</s:form>
 	</div>
+			<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function check() {

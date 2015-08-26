@@ -21,12 +21,11 @@
 
 		<s:form action="perscust.action" theme="simple">
 			<center>
-				<h2>Personal Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<h2>Personal Customer - New</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<s:hidden name="personalcustomertype" />
 				<table width="100%" border="1">
 					<tr>
@@ -172,7 +171,7 @@
 			</center>
 		</s:form>
 	</div>
-			<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

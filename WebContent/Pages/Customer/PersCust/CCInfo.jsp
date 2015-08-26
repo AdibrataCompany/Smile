@@ -21,12 +21,11 @@
 
 		<s:form action="perscustccinfo.action" theme="simple">
 			<center>
-				<h2>Personal Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<h2>Personal Customer - Credit Card Info</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table width="100%" border="1">
 					<tr>
 						<th colspan="6">CREDIT CARD DATA</th>
@@ -46,7 +45,8 @@
 							<td>${creditcardno}</td>
 							<td>${creditcardperiodyears}-years_${creditcardperiodmonths}-months</td>
 							<td>${creditcardcreditlimit}</td>
-							<td><input type="radio" name="seqno" value="<s:property value="#stat.count"/>" checked /></td>
+							<td><input type="radio" name="seqno"
+								value="<s:property value="#stat.count"/>" checked /></td>
 						</tr>
 					</s:iterator>
 					<tr>
@@ -79,7 +79,7 @@
 			</center>
 		</s:form>
 	</div>
-			<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

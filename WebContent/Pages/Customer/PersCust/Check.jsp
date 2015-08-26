@@ -22,7 +22,10 @@
 		<s:form action="perscust.action" theme="simple">
 			<center>
 				<h2>Check Customer Data</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table width="100%">
 					<tr>
 						<td width="20%">Full Name</td>
@@ -99,7 +102,7 @@
 			</center>
 		</s:form>
 	</div>
-			<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function start() {

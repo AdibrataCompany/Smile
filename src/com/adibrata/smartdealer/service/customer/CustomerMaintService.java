@@ -30,79 +30,79 @@ import com.adibrata.smartdealer.service.SeviceBase;
 
 public interface CustomerMaintService extends SeviceBase
 	{
-
+		
 		public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy) throws Exception;
-		
+
 		public List<Customer> Paging(int CurrentPage, String WhereCond, String SortBy, boolean islast) throws Exception;
-		
+
 		public void SaveCompanyCustomer(String usrupd, CoyCust customer) throws Exception;
-		
+
 		public void SaveCompanyCustomer(String usrupd, CoyCustWhInfo customer) throws Exception;
-		
+
 		public void SaveCompanyCustomerCompetitor(String usrupd, List<CoyCustComptInfo> customer) throws Exception;
-		
+
 		public void SaveCompanyCustomerShare(String usrupd, List<CoyCustShareInfo> customer) throws Exception;
-		
-		public void SaveCustomer(String usrupd, Customer customer) throws Exception;
 
+		public Long SaveCustomer(String usrupd, Customer customer) throws Exception;
+		
 		public void SavePersonalCustomer(String usrupd, PersCust customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustEmergencyInfo customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustEntInfo customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustFinancialData customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustJobInfo customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustLegalInfo customer) throws Exception;
-
+		
 		public void SavePersonalCustomer(String usrupd, PersCustOtherBussinessInfo customer) throws Exception;
-		
+
 		public void SavePersonalCustomer(String usrupd, PersCustResidenceInfo customer) throws Exception;
-
+		
 		public void SavePersonalCustomer(String usrupd, PersCustTrusteeInfo customer) throws Exception;
-		
+
 		public void SavePersonalCustomerCreditCard(String usrupd, List<PersCustCcinfo> customer) throws Exception;
-		
+
 		public void SavePersonalCustomerFamily(String usrupd, List<PersCustFamilyInfo> customer) throws Exception;
-		
+
 		public void SavePersonalCustomerOmset(String usrupd, List<PersCustOmsetInfo> customer) throws Exception;
-		
+
 		public CoyCust ViewCompanyCustomer(Long customerid) throws Exception;
-
+		
 		public List<CoyCustComptInfo> ViewCompanyCustomerCompetitorInfo(Long customerid) throws Exception;
-		
+
 		public CoyCustWhInfo ViewCompanyCustomerWereHouse(Long customerid) throws Exception;
-		
+
 		public List<CoyCustShareInfo> ViewCompanyShareInfo(Long customerid) throws Exception;
-		
+
 		public Customer ViewCustomer(Long customerid) throws Exception;
-		
+
 		public PersCust ViewPersonalCustomer(Long customerid) throws Exception;
-
+		
 		public PersCustEmergencyInfo ViewPersonalCustomerEmeregencyInfo(Long customerid) throws Exception;
-		
+
 		public PersCustJobInfo ViewPersonalCustomerJobInfo(Long customerid) throws Exception;
-
+		
 		public PersCustLegalInfo ViewPersonalCustomerLegalInfo(Long customerid) throws Exception;
-		
+
 		public PersCustOtherBussinessInfo ViewPersonalCustomerOtherBussinessInfo(Long customerid) throws Exception;
-
+		
 		public PersCustResidenceInfo ViewPersonalCustomerResidenceInfo(Long customerid) throws Exception;
-		
+
 		public PersCust ViewPersonalCustomerTrusteeInfo(Long customerid) throws Exception;
-
+		
 		public List<PersCustFamilyInfo> ViewPersonalCustomerFamilyInfo(Long customerid) throws Exception;
-		
+
 		public List<PersCustCcinfo> ViewPersonalCustomerCcInfo(Long customerid) throws Exception;
-
+		
 		public PersCustEntInfo ViewPersonalCustomerEnterpreneurInfo(Long customerid) throws Exception;
-
+		
 		public PersCustFinancialData ViewPersonalCustomerFinancialData(Long customerid) throws Exception;
-		
-		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(Long customerid) throws Exception;
 
-		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(Long customerid) throws Exception;
+		public List<PersCustOmsetInfo> ViewPersonalCustomerOmset(Long customerid) throws Exception;
 		
+		public PersCustOtherBussinessInfo ViewPersonalCustomerBussinessInfo(Long customerid) throws Exception;
+
 	}

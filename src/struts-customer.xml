@@ -10,22 +10,19 @@
 			class="com.adibrata.smartdealer.action.customer.CustomerAction"
 			method="execute">
 			<result name="input">/Pages/Customer/Paging.jsp</result>
-			<result name="success">/Pages/Customer/Paging.jsp</result>
-			<result name="error">/Pages/Customer/Paging.jsp</result>
 
 			<result name="search">/Pages/Customer/Paging.jsp</result>
 			<result name="first">/Pages/Customer/Paging.jsp</result>
 			<result name="prev">/Pages/Customer/Paging.jsp</result>
 			<result name="next">/Pages/Customer/Paging.jsp</result>
 			<result name="last">/Pages/Customer/Paging.jsp</result>
-
 			<result name="appdata">/Pages/Credit/ApplicationData/Paging.jsp</result>
 		</action>
-
+		
 		<action name="perscust"
 			class="com.adibrata.smartdealer.action.customer.PersCustAction"
 			method="execute">
-			<result name="input">/Pages/Customer/PersCust/Paging.jsp</result>
+			<result name="input">/Pages/Customer/PersCust/PersCust.jsp</result>
 			<result name="error">/Pages/Customer/PersCust/Entry.jsp</result>
 
 			<result name="check">/Pages/Customer/PersCust/Check.jsp</result>

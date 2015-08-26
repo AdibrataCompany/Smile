@@ -17,19 +17,19 @@ public class PersCustAction extends BaseAction implements Preparable
 		*
 		*/
 		private static final long serialVersionUID = 1L;
-		
+
 		private CustomerMaintService service;
 		private Customer customer;
 		private PersCust perscust;
-		
+
 		private String mode;
 		private String message;
-		
+
 		private Long id;
 		private long customerid;
-		
+
 		private String name;
-		
+
 		private String personalcustomertype;
 		private String idtype;
 		private String idexpdate;
@@ -67,21 +67,21 @@ public class PersCustAction extends BaseAction implements Preparable
 		private String biologicalmothersname;
 		private String customergroup;
 		private Short mainbusinesssinceyear;
-		
+
 		public PersCustAction() throws Exception
 			{
 				try
 					{
 						// TODO Auto-generated constructor stub
-
+						
 						this.customer = new Customer();
 						this.perscust = new PersCust();
-						
+
 						this.customer.setId(this.getCustomerid());
 					}
 				catch (final Exception exp)
 					{
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -89,7 +89,7 @@ public class PersCustAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
@@ -103,7 +103,7 @@ public class PersCustAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -117,6 +117,17 @@ public class PersCustAction extends BaseAction implements Preparable
 									try
 										{
 											this.SaveCustomer();
+										}
+									catch (final Exception e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									break;
+								case "check" :
+									try
+										{
+											this.CheckCustomer();
 										}
 									catch (final Exception e)
 										{
@@ -142,19 +153,19 @@ public class PersCustAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		public void SaveCustomer() throws Exception
 			{
 				try
 					{
 						this.customer = new Customer();
-						
-						this.customer.setName(this.getName());
 
+						this.customer.setName(this.getName());
+						
 						this.customer.setHandphone(this.getMobilephone());
-						
+
 						this.service.SaveCustomer(sesLoginName(), this.customer);
-						
+
 						this.customerid = this.customer.getId();
 					}
 				catch (final Exception exp)
@@ -166,13 +177,13 @@ public class PersCustAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		public void SavePersCust() throws Exception
 			{
 				try
 					{
 						this.perscust = new PersCust();
-						
+
 						this.perscust.setCustomer(this.getCustomer());
 						this.perscust.setPersonalCustomerType(this.getPersonalcustomertype());
 						this.perscust.setIdtype(this.getIdtype());
@@ -223,457 +234,462 @@ public class PersCustAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
+
+		private void CheckCustomer()
+			{
+			
+			}
 			
 		public PersCust getPerscust()
 			{
 				return this.perscust;
 			}
-			
+
 		public void setPerscust(final PersCust perscust)
 			{
 				this.perscust = perscust;
 			}
-			
+
 		public Customer getCustomer()
 			{
 				return this.customer;
 			}
-			
+
 		public void setCustomer(final Customer customer)
 			{
 				this.customer = customer;
 			}
-			
+
 		public CustomerMaintService getCustomermaintservice()
 			{
 				return this.service;
 			}
-			
+
 		public void setCustomermaintservice(final CustomerMaintService customermaintservice)
 			{
 				this.service = customermaintservice;
 			}
-			
+
 		public String getMode()
 			{
 				return this.mode;
 			}
-			
+
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-			
+
 		public String getMessage()
 			{
 				return this.message;
 			}
-			
+
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public long getId()
 			{
 				return this.id;
 			}
-			
+
 		public void setId(final long id)
 			{
 				this.id = id;
 			}
-			
+
 		public String getPersonalcustomertype()
 			{
 				return this.personalcustomertype;
 			}
-			
+
 		public void setPersonalcustomertype(final String personalcustomertype)
 			{
 				this.personalcustomertype = personalcustomertype;
 			}
-			
+
 		public String getIdtype()
 			{
 				return this.idtype;
 			}
-			
+
 		public void setIdtype(final String idtype)
 			{
 				this.idtype = idtype;
 			}
-			
+
 		public String getIdnumber()
 			{
 				return this.idnumber;
 			}
-			
+
 		public void setIdnumber(final String idnumber)
 			{
 				this.idnumber = idnumber;
 			}
-			
+
 		public String getIdnumberchecking()
 			{
 				return this.idnumberchecking;
 			}
-			
+
 		public void setIdnumberchecking(final String idnumberchecking)
 			{
 				this.idnumberchecking = idnumberchecking;
 			}
-			
+
 		public String getGender()
 			{
 				return this.gender;
 			}
-			
+
 		public void setGender(final String gender)
 			{
 				this.gender = gender;
 			}
-			
+
 		public String getBirthplace()
 			{
 				return this.birthplace;
 			}
-			
+
 		public void setBirthplace(final String birthplace)
 			{
 				this.birthplace = birthplace;
 			}
-			
+
 		public String getMobilephone()
 			{
 				return this.mobilephone;
 			}
-			
+
 		public void setMobilephone(final String mobilephone)
 			{
 				this.mobilephone = mobilephone;
 			}
-			
+
 		public String getEmail()
 			{
 				return this.email;
 			}
-			
+
 		public void setEmail(final String email)
 			{
 				this.email = email;
 			}
-			
+
 		public String getReligion()
 			{
 				return this.religion;
 			}
-			
+
 		public void setReligion(final String religion)
 			{
 				this.religion = religion;
 			}
-			
+
 		public String getMaritalstatus()
 			{
 				return this.maritalstatus;
 			}
-			
+
 		public void setMaritalstatus(final String maritalstatus)
 			{
 				this.maritalstatus = maritalstatus;
 			}
-			
+
 		public Short getNumofdependence()
 			{
 				return this.numofdependence;
 			}
-			
+
 		public void setNumofdependence(final Short numofdependence)
 			{
 				this.numofdependence = numofdependence;
 			}
-			
+
 		public String getPersonalnpwp()
 			{
 				return this.personalnpwp;
 			}
-			
+
 		public void setPersonalnpwp(final String personalnpwp)
 			{
 				this.personalnpwp = personalnpwp;
 			}
-			
+
 		public String getNokk()
 			{
 				return this.nokk;
 			}
-			
+
 		public void setNokk(final String nokk)
 			{
 				this.nokk = nokk;
 			}
-			
+
 		public String getEducation()
 			{
 				return this.education;
 			}
-			
+
 		public void setEducation(final String education)
 			{
 				this.education = education;
 			}
-			
+
 		public String getProfessionid()
 			{
 				return this.professionid;
 			}
-			
+
 		public void setProfessionid(final String professionid)
 			{
 				this.professionid = professionid;
 			}
-			
+
 		public String getNationality()
 			{
 				return this.nationality;
 			}
-			
+
 		public void setNationality(final String nationality)
 			{
 				this.nationality = nationality;
 			}
-			
+
 		public String getWnacountry()
 			{
 				return this.wnacountry;
 			}
-			
+
 		public void setWnacountry(final String wnacountry)
 			{
 				this.wnacountry = wnacountry;
 			}
-			
+
 		public String getHomestatus()
 			{
 				return this.homestatus;
 			}
-			
+
 		public void setHomestatus(final String homestatus)
 			{
 				this.homestatus = homestatus;
 			}
-			
+
 		public String getHomelocation()
 			{
 				return this.homelocation;
 			}
-			
+
 		public void setHomelocation(final String homelocation)
 			{
 				this.homelocation = homelocation;
 			}
-			
+
 		public double getHomeprice()
 			{
 				return this.homeprice;
 			}
-			
+
 		public void setHomeprice(final double homeprice)
 			{
 				this.homeprice = homeprice;
 			}
-			
+
 		public Short getStaysinceyear()
 			{
 				return this.staysinceyear;
 			}
-			
+
 		public void setStaysinceyear(final Short staysinceyear)
 			{
 				this.staysinceyear = staysinceyear;
 			}
-			
+
 		public Short getStaysincemonth()
 			{
 				return this.staysincemonth;
 			}
-			
+
 		public void setStaysincemonth(final Short staysincemonth)
 			{
 				this.staysincemonth = staysincemonth;
 			}
-			
+
 		public short getNumofassetowned()
 			{
 				return this.numofassetowned;
 			}
-			
+
 		public void setNumofassetowned(final short numofassetowned)
 			{
 				this.numofassetowned = numofassetowned;
 			}
-			
+
 		public String getReference()
 			{
 				return this.reference;
 			}
-			
+
 		public void setReference(final String reference)
 			{
 				this.reference = reference;
 			}
-			
+
 		public short getIsapplycarloanbefore()
 			{
 				return this.isapplycarloanbefore;
 			}
-			
+
 		public void setIsapplycarloanbefore(final short isapplycarloanbefore)
 			{
 				this.isapplycarloanbefore = isapplycarloanbefore;
 			}
-			
+
 		public String getApplycarloancompanyname()
 			{
 				return this.applycarloancompanyname;
 			}
-			
+
 		public void setApplycarloancompanyname(final String applycarloancompanyname)
 			{
 				this.applycarloancompanyname = applycarloancompanyname;
 			}
-			
+
 		public String getActivecustomer()
 			{
 				return this.activecustomer;
 			}
-			
+
 		public void setActivecustomer(final String activecustomer)
 			{
 				this.activecustomer = activecustomer;
 			}
-			
+
 		public String getNotes()
 			{
 				return this.notes;
 			}
-			
+
 		public void setNotes(final String notes)
 			{
 				this.notes = notes;
 			}
-			
+
 		public Double getPlafondamount()
 			{
 				return this.plafondamount;
 			}
-			
+
 		public void setPlafondamount(final Double plafondamount)
 			{
 				this.plafondamount = plafondamount;
 			}
-			
+
 		public String getBiologicalmothersname()
 			{
 				return this.biologicalmothersname;
 			}
-			
+
 		public void setBiologicalmothersname(final String biologicalmothersname)
 			{
 				this.biologicalmothersname = biologicalmothersname;
 			}
-			
+
 		public String getCustomergroup()
 			{
 				return this.customergroup;
 			}
-			
+
 		public void setCustomergroup(final String customergroup)
 			{
 				this.customergroup = customergroup;
 			}
-			
+
 		public Short getMainbusinesssinceyear()
 			{
 				return this.mainbusinesssinceyear;
 			}
-			
+
 		public void setMainbusinesssinceyear(final Short mainbusinesssinceyear)
 			{
 				this.mainbusinesssinceyear = mainbusinesssinceyear;
 			}
-			
+
 		public String getIdexpdate()
 			{
 				return this.idexpdate;
 			}
-			
+
 		public void setIdexpdate(final String idexpdate)
 			{
 				this.idexpdate = idexpdate;
 			}
-			
+
 		public String getIdtypeissueddate()
 			{
 				return this.idtypeissueddate;
 			}
-			
+
 		public void setIdtypeissueddate(final String idtypeissueddate)
 			{
 				this.idtypeissueddate = idtypeissueddate;
 			}
-			
+
 		public String getBirthdate()
 			{
 				return this.birthdate;
 			}
-			
+
 		public void setBirthdate(final String birthdate)
 			{
 				this.birthdate = birthdate;
 			}
-			
+
 		public String getRentfinishdate()
 			{
 				return this.rentfinishdate;
 			}
-			
+
 		public void setRentfinishdate(final String rentfinishdate)
 			{
 				this.rentfinishdate = rentfinishdate;
 			}
-			
+
 		public Short getIscorporatecreditline()
 			{
 				return this.iscorporatecreditline;
 			}
-			
+
 		public void setIscorporatecreditline(final Short iscorporatecreditline)
 			{
 				this.iscorporatecreditline = iscorporatecreditline;
 			}
-			
+
 		public String getName()
 			{
 				return this.name;
 			}
-			
+
 		public void setName(final String name)
 			{
 				this.name = name;
 			}
-			
+
 		public long getCustomerid()
 			{
 				return this.customerid;
 			}
-			
+
 		public void setCustomerid(final long customerid)
 			{
 				this.customerid = customerid;
 			}
-
+			
 		/**
 		 * @return the service
 		 */
@@ -681,7 +697,7 @@ public class PersCustAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-
+			
 		/**
 		 * @param service
 		 *            the service to set
@@ -690,7 +706,7 @@ public class PersCustAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -698,5 +714,5 @@ public class PersCustAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 	}

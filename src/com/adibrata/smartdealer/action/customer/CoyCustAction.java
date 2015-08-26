@@ -6,6 +6,7 @@ import com.adibrata.smartdealer.dao.customer.CustomerDao;
 import com.adibrata.smartdealer.model.CoyCust;
 import com.adibrata.smartdealer.model.CoyCustContactInfo;
 import com.adibrata.smartdealer.model.Customer;
+import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.customer.CustomerMaintService;
 import com.opensymphony.xwork2.Preparable;
 
@@ -24,6 +25,7 @@ public class CoyCustAction extends BaseAction implements Preparable
 		private Customer customer;
 		private CoyCust coycust;
 		private CoyCustContactInfo contactinfo;
+		private Partner partner;
 
 		private String mode;
 		private String message;
@@ -84,7 +86,8 @@ public class CoyCustAction extends BaseAction implements Preparable
 
 		public CoyCustAction() throws Exception
 			{
-
+				this.partner = new Partner();
+				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.customermaintservice = new CustomerDao();
 				this.customer = new Customer();
 				this.coycust = new CoyCust();
@@ -150,7 +153,7 @@ public class CoyCustAction extends BaseAction implements Preparable
 				try
 					{
 						this.customer = new Customer();
-
+						this.customer.setPartner(this.partner);
 						this.customer.setType(this.getType());
 						this.customer.setName(this.getName());
 						this.customer.setAddress(this.getAddress());
@@ -171,10 +174,11 @@ public class CoyCustAction extends BaseAction implements Preparable
 						this.customer.setAramount(this.getAramount());
 						this.customer.setArpaid(this.getArpaid());
 						this.customer.setArwaived(this.getArwaived());
+						this.customer.setUsrCrt(BaseAction.sesLoginName());
+						this.customer.setUsrUpd(BaseAction.sesLoginName());
 
-						this.customermaintservice.SaveCustomer(sesLoginName(), this.customer);
-
-						this.customerid = this.customer.getId();
+						this.customerid = this.customermaintservice.SaveCustomer(sesLoginName(), this.customer);
+						
 					}
 				catch (final Exception exp)
 					{
@@ -835,6 +839,48 @@ public class CoyCustAction extends BaseAction implements Preparable
 		public void setNodocumentofestablished(final String nodocumentofestablished)
 			{
 				this.nodocumentofestablished = nodocumentofestablished;
+			}
+
+		/**
+		 * @return the contactinfo
+		 */
+		public CoyCustContactInfo getContactinfo()
+			{
+				return this.contactinfo;
+			}
+
+		/**
+		 * @param contactinfo
+		 *            the contactinfo to set
+		 */
+		public void setContactinfo(final CoyCustContactInfo contactinfo)
+			{
+				this.contactinfo = contactinfo;
+			}
+
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
 			}
 
 	}

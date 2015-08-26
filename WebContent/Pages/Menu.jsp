@@ -27,33 +27,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<s:form theme="simple">
 				<ul class="nav navbar-nav">${menu}</ul>
-			<!-- 	<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="null" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"> Home</a>
-						<ul class="dropdown-menu">
-							<li><a href="/Smile/home.action">Home</a></li>
-						</ul></li>
-					<li class="dropdown"><a href="null" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Setting</a>
-						<ul class="dropdown-menu">
-							<li><a href="/Smile/setting/assetdoc.action">Asset
-									Document</a></li>
-							<li><a href="/Smile/setting/assetmaster.action">Asset
-									Master</a></li>
-							<li><a href="/Smile/setting/bankaccount.action">Bank
-									Account</a></li>
-							<li><a href="/Smile/setting/supplier.action">Supplier</a></li>
-							<li><a href="/Smile/setting/journalscheme.action">Journal
-									Scheme</a></li>
-							<li><a href="/Smile/setting/master.action">Master</a></li>
-							<li><a href="/Smile/setting/office.action">Office</a></li>
-							<li><a href="/Smile/setting/zipcode.action">Zip Code</a></li>
-							<li><a href="/Smile/setting/employee.action">Employee</a></li>
-							<li><a href="/Smile/setting/role.action">Role</a></li>
-							<li><a href="/Smile/setting/userreg.action">User</a></li>
-						</ul></li> -->
+			
 			</s:form>
 		</div>
 

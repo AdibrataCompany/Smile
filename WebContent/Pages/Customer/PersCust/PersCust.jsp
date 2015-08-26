@@ -26,10 +26,9 @@
 		<s:form action="perscust.action" theme="simple">
 			<center>
 				<h2>Personal Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
 				<table border="0" width="100%">
 					<tr>
 						<td width="25%">Legal Name</td>

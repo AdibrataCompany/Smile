@@ -22,11 +22,10 @@
 		<s:form action="coycust.action" theme="simple">
 			<center>
 				<h2>Company Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<s:hidden name="personalcustomertype" />
 				<table width="100%" border="1">
 					<tr>
@@ -155,13 +154,16 @@
 						<td width="20%">Notary Name</td>
 						<td width="30%"><s:textfield name="notaryname" placeholder="" /></td>
 						<td width="20%">Last Changes of Notary Name</td>
-						<td width="30%"><s:textfield name="lastnotaryname" placeholder="" /></td>
+						<td width="30%"><s:textfield name="lastnotaryname"
+								placeholder="" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Notary Location</td>
-						<td width="30%"><s:textfield name="notaryplace" placeholder="" /></td>
+						<td width="30%"><s:textfield name="notaryplace"
+								placeholder="" /></td>
 						<td width="20%">Last Changes of Notary Location</td>
-						<td width="30%"><s:textfield name="lastnotaryplace" placeholder="" /></td>
+						<td width="30%"><s:textfield name="lastnotaryplace"
+								placeholder="" /></td>
 					</tr>
 				</table>
 				<br>
@@ -200,6 +202,7 @@
 			</center>
 		</s:form>
 	</div>
+<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

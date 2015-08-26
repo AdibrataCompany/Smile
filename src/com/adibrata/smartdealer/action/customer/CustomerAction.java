@@ -1,7 +1,6 @@
 
 package com.adibrata.smartdealer.action.customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
@@ -21,59 +20,34 @@ public class CustomerAction extends BaseAction implements Preparable
 		 */
 		private static final long serialVersionUID = 1L;
 		private Partner partner;
-		private Customer customer;
-
-		private CustomerMaintService customerMaintService;
+		
+		private CustomerMaintService service;
 		private List<Customer> lstcustomer;
-
+		private Customer customer;
+		
 		private String searchcriteria;
 		private String searchvalue;
 		private String mode;
 		private String message;
-		private String usrUpd;
-		private String usrCrt;
-		private int pageNumber;
-		private long id;
-
-		private String type;
-		private String name;
-		private String address;
-		private String rt;
-		private String rw;
-		private String kelurahan;
-		private String kecamatan;
-		private String city;
-		private String zipcode;
-		private String areaphone1;
-		private String phoneno1;
-		private String areaphone2;
-		private String phoneno2;
-		private String areafax;
-		private String faxno;
-		private String handphone;
-		private Double prepaidamount;
-		private Double aramount;
-		private Double arpaid;
-		private Double arwaived;
-		private String custtag;
+		
+		private int pagenumber;
+		private Long customerid;
+		private Long id;
 
 		public CustomerAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
-				this.customerMaintService = new CustomerDao();
-				this.customer = new Customer();
-
+				
 				this.Initialisasi();
-
-				if (this.pageNumber == 0)
+				
+				if (this.pagenumber == 0)
 					{
-						this.pageNumber = 1;
+						this.pagenumber = 1;
 					}
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
@@ -87,16 +61,12 @@ public class CustomerAction extends BaseAction implements Preparable
 						e.printStackTrace();
 					}
 			}
-
+			
 		private void Initialisasi()
 			{
 
-				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
-
-				this.lstcustomer = new ArrayList<Customer>();
-				this.customer = new Customer();
 			}
-
+			
 		@Override
 		public String execute() throws Exception
 			{
@@ -129,7 +99,7 @@ public class CustomerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "first" :
-									this.pageNumber = 1;
+									this.pagenumber = 1;
 									try
 										{
 											this.Paging();
@@ -141,10 +111,10 @@ public class CustomerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
+									this.pagenumber -= 1;
+									if (this.pagenumber <= 1)
 										{
-											this.pageNumber = 1;
+											this.pagenumber = 1;
 										}
 									try
 										{
@@ -157,7 +127,7 @@ public class CustomerAction extends BaseAction implements Preparable
 										}
 									break;
 								case "next" :
-									this.pageNumber += 1;
+									this.pagenumber += 1;
 									try
 										{
 											this.Paging();
@@ -185,20 +155,13 @@ public class CustomerAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						this.pageNumber = 1;
-						try
-							{
-								strMode = INPUT;
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						this.pagenumber = 1;
+						strMode = INPUT;
+
 					}
 				return strMode;
 			}
-
+			
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
@@ -206,10 +169,10 @@ public class CustomerAction extends BaseAction implements Preparable
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						wherecond.append(" and ");
-
+						
 						if (this.getSearchvalue().contains("%"))
 							{
-
+								
 								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
@@ -219,51 +182,52 @@ public class CustomerAction extends BaseAction implements Preparable
 					}
 				return wherecond.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
-						this.lstcustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "");
+						this.service = new CustomerDao();
+						this.lstcustomer = this.service.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
-						this.lstcustomer = this.customerMaintService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
-						this.pageNumber = this.customerMaintService.getCurrentpage();
+						this.service = new CustomerDao();
+						this.lstcustomer = this.service.Paging(this.getPagenumber(), this.WhereCond(), "", true);
+						this.pagenumber = this.service.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String View() throws Exception
 			{
-				this.customer = new Customer();
 				try
 					{
 						if (this.getId() != null)
 							{
-								this.customer = this.customerMaintService.ViewCustomer(this.getId());
-								this.name = this.customer.getName();
+								this.customer = new Customer();
+								this.customer = this.service.ViewCustomer(this.getId());
 							}
 						else
 							{
@@ -281,342 +245,200 @@ public class CustomerAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 				return this.mode;
-
+				
 			}
-
+			
+		/**
+		 * @return the partner
+		 */
 		public Partner getPartner()
 			{
 				return this.partner;
 			}
-
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
 		public void setPartner(final Partner partner)
 			{
 				this.partner = partner;
 			}
-
-		public Customer getCustomer()
+			
+		/**
+		 * @return the service
+		 */
+		public CustomerMaintService getService()
 			{
-				return this.customer;
+				return this.service;
 			}
-
-		public void setCustomer(final Customer customer)
+			
+		/**
+		 * @param service
+		 *            the service to set
+		 */
+		public void setService(final CustomerMaintService service)
 			{
-				this.customer = customer;
+				this.service = service;
 			}
-
-		public CustomerMaintService getCustomerMaintService()
-			{
-				return this.customerMaintService;
-			}
-
-		public void setCustomerMaintService(final CustomerMaintService customerMaintService)
-			{
-				this.customerMaintService = customerMaintService;
-			}
-
+			
+		/**
+		 * @return the lstcustomer
+		 */
 		public List<Customer> getLstcustomer()
 			{
 				return this.lstcustomer;
 			}
-
+			
+		/**
+		 * @param lstcustomer
+		 *            the lstcustomer to set
+		 */
 		public void setLstcustomer(final List<Customer> lstcustomer)
 			{
 				this.lstcustomer = lstcustomer;
 			}
-
-		public String getMode()
+			
+		/**
+		 * @return the customer
+		 */
+		public Customer getCustomer()
 			{
-				return this.mode;
+				return this.customer;
 			}
-
-		public void setMode(final String mode)
+			
+		/**
+		 * @param customer
+		 *            the customer to set
+		 */
+		public void setCustomer(final Customer customer)
 			{
-				this.mode = mode;
+				this.customer = customer;
 			}
-
-		public String getMessage()
-			{
-				return this.message;
-			}
-
-		public void setMessage(final String message)
-			{
-				this.message = message;
-			}
-
+			
+		/**
+		 * @return the searchcriteria
+		 */
 		public String getSearchcriteria()
 			{
 				return this.searchcriteria;
 			}
-
+			
+		/**
+		 * @param searchcriteria
+		 *            the searchcriteria to set
+		 */
 		public void setSearchcriteria(final String searchcriteria)
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
+		/**
+		 * @return the searchvalue
+		 */
 		public String getSearchvalue()
 			{
 				return this.searchvalue;
 			}
-
+			
+		/**
+		 * @param searchvalue
+		 *            the searchvalue to set
+		 */
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
 			}
-
-		public String getUsrUpd()
+			
+		/**
+		 * @return the mode
+		 */
+		public String getMode()
 			{
-				return this.usrUpd;
+				return this.mode;
 			}
-
-		public void setUsrUpd(final String usrUpd)
+			
+		/**
+		 * @param mode
+		 *            the mode to set
+		 */
+		public void setMode(final String mode)
 			{
-				this.usrUpd = usrUpd;
+				this.mode = mode;
 			}
-
-		public String getUsrCrt()
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
 			{
-				return this.usrCrt;
+				return this.message;
 			}
-
-		public void setUsrCrt(final String usrCrt)
+			
+		/**
+		 * @param message
+		 *            the message to set
+		 */
+		public void setMessage(final String message)
 			{
-				this.usrCrt = usrCrt;
+				this.message = message;
 			}
-
-		public int getPageNumber()
+			
+		/**
+		 * @return the pagenumber
+		 */
+		public int getPagenumber()
 			{
-				return this.pageNumber;
+				return this.pagenumber;
 			}
-
-		public void setPageNumber(final int pageNumber)
+			
+		/**
+		 * @param pagenumber
+		 *            the pagenumber to set
+		 */
+		public void setPagenumber(final int pagenumber)
 			{
-				this.pageNumber = pageNumber;
+				this.pagenumber = pagenumber;
 			}
-
-		public String getType()
-			{
-				return this.type;
-			}
-
-		public void setType(final String type)
-			{
-				this.type = type;
-			}
-
-		public String getName()
-			{
-				return this.name;
-			}
-
-		public void setName(final String name)
-			{
-				this.name = name;
-			}
-
-		public String getAddress()
-			{
-				return this.address;
-			}
-
-		public void setAddress(final String address)
-			{
-				this.address = address;
-			}
-
-		public String getRt()
-			{
-				return this.rt;
-			}
-
-		public void setRt(final String rt)
-			{
-				this.rt = rt;
-			}
-
-		public String getRw()
-			{
-				return this.rw;
-			}
-
-		public void setRw(final String rw)
-			{
-				this.rw = rw;
-			}
-
-		public String getKelurahan()
-			{
-				return this.kelurahan;
-			}
-
-		public void setKelurahan(final String kelurahan)
-			{
-				this.kelurahan = kelurahan;
-			}
-
-		public String getKecamatan()
-			{
-				return this.kecamatan;
-			}
-
-		public void setKecamatan(final String kecamatan)
-			{
-				this.kecamatan = kecamatan;
-			}
-
-		public String getCity()
-			{
-				return this.city;
-			}
-
-		public void setCity(final String city)
-			{
-				this.city = city;
-			}
-
-		public String getZipcode()
-			{
-				return this.zipcode;
-			}
-
-		public void setZipcode(final String zipcode)
-			{
-				this.zipcode = zipcode;
-			}
-
-		public String getAreaphone1()
-			{
-				return this.areaphone1;
-			}
-
-		public void setAreaphone1(final String areaphone1)
-			{
-				this.areaphone1 = areaphone1;
-			}
-
-		public String getPhoneno1()
-			{
-				return this.phoneno1;
-			}
-
-		public void setPhoneno1(final String phoneno1)
-			{
-				this.phoneno1 = phoneno1;
-			}
-
-		public String getAreaphone2()
-			{
-				return this.areaphone2;
-			}
-
-		public void setAreaphone2(final String areaphone2)
-			{
-				this.areaphone2 = areaphone2;
-			}
-
-		public String getPhoneno2()
-			{
-				return this.phoneno2;
-			}
-
-		public void setPhoneno2(final String phoneno2)
-			{
-				this.phoneno2 = phoneno2;
-			}
-
-		public String getAreafax()
-			{
-				return this.areafax;
-			}
-
-		public void setAreafax(final String areafax)
-			{
-				this.areafax = areafax;
-			}
-
-		public String getFaxno()
-			{
-				return this.faxno;
-			}
-
-		public void setFaxno(final String faxno)
-			{
-				this.faxno = faxno;
-			}
-
-		public String getHandphone()
-			{
-				return this.handphone;
-			}
-
-		public void setHandphone(final String handphone)
-			{
-				this.handphone = handphone;
-			}
-
-		public Double getPrepaidamount()
-			{
-				return this.prepaidamount;
-			}
-
-		public void setPrepaidamount(final Double prepaidamount)
-			{
-				this.prepaidamount = prepaidamount;
-			}
-
-		public Double getAramount()
-			{
-				return this.aramount;
-			}
-
-		public void setAramount(final Double aramount)
-			{
-				this.aramount = aramount;
-			}
-
-		public Double getArpaid()
-			{
-				return this.arpaid;
-			}
-
-		public void setArpaid(final Double arpaid)
-			{
-				this.arpaid = arpaid;
-			}
-
-		public Double getArwaived()
-			{
-				return this.arwaived;
-			}
-
-		public void setArwaived(final Double arwaived)
-			{
-				this.arwaived = arwaived;
-			}
-
-		public String getCusttag()
-			{
-				return this.custtag;
-			}
-
-		public void setCusttag(final String custtag)
-			{
-				this.custtag = custtag;
-			}
-
+			
+		/**
+		 * @return the id
+		 */
 		public Long getId()
 			{
 				return this.id;
 			}
-
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
 		public void setId(final Long id)
 			{
-				this.id = id;
 			}
-
+			
+		/**
+		 * @return the customerid
+		 */
+		public Long getCustomerid()
+			{
+				return this.customerid;
+			}
+			
+		/**
+		 * @param customerid
+		 *            the customerid to set
+		 */
+		public void setCustomerid(final Long customerid)
+			{
+				this.customerid = customerid;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
-
 	}

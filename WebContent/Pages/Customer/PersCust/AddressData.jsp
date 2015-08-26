@@ -21,12 +21,11 @@
 
 		<s:form action="perscustaddressdata.action" theme="simple">
 			<center>
-				<h2>Personal Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
-				<br>
-				<s:label name="message" />
-				<br>
-				<s:textfield name="customerid" />
+				<h2>Personal Customer - Address</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:hidden name="id" />
+				<s:label name="message" id="message" />
+				<s:hidden name="customerid" />
 				<table width="100%" border="1">
 					<tr>
 						<th colspan="2">LEGAL ADDRESS</th>

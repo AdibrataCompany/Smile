@@ -22,11 +22,9 @@
 
 		<s:form action="customer.action" theme="simple">
 			<center>
-				<h2>CUSTUMER</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
-				<br>
-				<s:label name="message"></s:label>
-				<br>
+				<h2>CUSTOMER</h2>
+				<s:hidden name="mode" id="mode" />
+				<s:label name="message" id="message" />
 				<table width="100%">
 					<tr>
 						<td><s:select name="searchcriteria" headerKey=""
@@ -40,13 +38,12 @@
 									<span class="glyphicon glyphicon-plus-sign"></span><br>Personal
 								</button>
 						</a> <a href="coycust.action"><button
-									class="btn btn-sm btn-success" type="submit"
-									onclick="addcompany()">
+									class="btn btn-sm btn-success" type="submit">
 									<span class="glyphicon glyphicon-plus-sign"></span><br>Company
 								</button></a>
 							<button class="btn btn-sm btn-warning" type="submit"
 								onclick="edit()">
-								<span class="glyphicon glyphicon-edit"></span><br>Ubah
+								<span class="glyphicon glyphicon-edit"></span><br>Edut
 							</button></td>
 					</tr>
 				</table>
@@ -54,9 +51,9 @@
 				<div class="table-responsive">
 					<table class="table table-bordered">
 						<tr>
-							<th style="text-align: center; width=40%;">Name</th>
-							<th style="text-align: center; width=50%;">Address</th>
-							<th style="text-align: center; width=10%;">Personal / Company</th>
+							<th style="text-align: center;">Name</th>
+							<th style="text-align: center;">Address</th>
+							<th style="text-align: center;">Personal / Company</th>
 							<th style="text-align: center;" width="5%">Pilih</th>
 						</tr>
 						<s:iterator value="lstcustomer">
