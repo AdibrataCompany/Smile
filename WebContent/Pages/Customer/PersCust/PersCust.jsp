@@ -6,12 +6,12 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="/Smile/Pages/style/css/datepicker.css">
+<%-- <link rel="stylesheet" href="/Smile/Pages/style/css/datepicker.css">
 <link rel="stylesheet" href="/Smile/Pages/style/css/bootstrap.css">
 <link rel="stylesheet" href="/Smile/Pages/style/css/alert.css">
 <script src="/Smile/Pages/style/js/jquery-1.9.1.min.js"></script>
-<script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script>
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<script src="/Smile/Pages/style/js/bootstrap-datepicker.js"></script> --%>
+<title>SMILE - Smart Leasing And Consumer Finance</title>
 
 </head>
 

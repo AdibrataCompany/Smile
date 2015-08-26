@@ -7,10 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
-
+<title>SMILE - Smart Leasing And Consumer Finance</title>
 </head>
-
 <body>
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
@@ -27,147 +25,197 @@
 				<s:label name="message" id="message" />
 				<s:hidden name="customerid" />
 				<s:hidden name="personalcustomertype" />
-				<table width="100%" border="1">
+				<s:hidden name="name" />
+				<s:hidden name="npwp" />
+				
+				
+				<s:hidden name="customerid" />
+
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">COMPANY DATA</th>
 					</tr>
 					<tr>
 						<td width="20%">Name</td>
-						<td width="30%"><s:textfield name="name" /></td>
+						<td width="30%"><s:label name="name" /></td>
+					</tr>
+					<tr>
+						<td width="20%">NPWP</td>
+						<td width="30%"><s:label name="npwp" /></td>
+					</tr>
+					<tr>
 						<td width="20%">Company Type</td>
 						<td width="30%"><s:select name="companytype" headerKey=""
 								headerValue="Select One" list="#{'xxx':'xxx'}" /></td>
 					</tr>
 					<tr>
-						<td width="20%">NPWP</td>
-						<td width="30%"><s:textfield name="npwp" /></td>
+
 						<td width="20%">Industry Type</td>
 						<td width="30%"><s:select name="industrytypeid" headerKey=""
 								headerValue="Select One" list="#{'xxx':'xxx'}" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Number of Employees</td>
-						<td width="30%"><s:textfield name="numberofemployees" /></td>
-						<td width="20%">Group</td>
-						<td width="30%"><s:textfield name="" /></td>
+						<td width="30%"><s:textfield name="numberofemployees"
+								class="form-control" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Year Of Established</td>
-						<td width="30%"><s:textfield name="yearofestablished" /></td>
-						<td width="20%">Customer Group</td>
-						<td width="30%"><s:select name="customergroup" headerKey=""
-								headerValue="Select One" list="#{'xxx':'xxx'}" /></td>
+						<td width="30%" colspan=3><s:textfield name="yearofestablished"
+								class="form-control" /></td>
+						
 					</tr>
 					<tr>
-						<td width="20%">No Telp Pengelola Gedung</td>
-						<td width="30%"><s:textfield name="pengelolagedungareaphone" />
-							- <s:textfield name="pengelolagedungphone" /></td>
+						<td width="20%">Building Management Phone</td>
+						<td width="30%"><div align="left" class="form-inline"><s:textfield name="pengelolagedungareaphone"
+								class="form-control" style="width:60px" /> - <s:textfield
+								name="pengelolagedungphone" class="form-control" style="width:100px" /></div></td>
 					</tr>
 				</table>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">COMPANY ADDRESS</th>
 					</tr>
 					<tr>
 						<td width="20%">Address</td>
 						<td colspan="3"><s:textarea name="address"
-								placeholder="Address" /></td>
+								class="form-control" placeholder="Address" /></td>
 					</tr>
 					<tr>
 						<td width="20%">RT/RW</td>
-						<td width="30%"><s:textfield name="rt" placeholder="RT" /> /
-							<s:textfield name="rw" placeholder="RW" /></td>
-						<td width="20%">Zip Code</td>
-						<td width="30%"><s:textfield name="zipcode"
-								placeholder="Zip Code" /></td>
+						<td width="30%"><div align="left" class="form-inline">
+								<s:textfield name="rt" placeholder="RT" class="form-control"
+									style="width:60px" />
+								/
+								<s:textfield name="rw" placeholder="RW" class="form-control"
+									style="width:60px" />
+							</div></td>
+
 					</tr>
 					<tr>
 						<td>Kelurahan</td>
-						<td><s:textfield name="kelurahan" placeholder="Kelurahan" /></td>
-						<td>Phone 1</td>
-						<td><s:textfield name="areaphone1" placeholder="Area" /> - <s:textfield
-								name="phoneno1" placeholder="Phone 1" /></td>
+						<td><s:textfield name="kelurahan" placeholder="Kelurahan"
+								style="width:100px" class="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Kecamatan</td>
-						<td><s:textfield name="kecamatan" placeholder="Kecamatan" /></td>
-						<td>Phone 2</td>
-						<td><s:textfield name="areaphone2" placeholder="Area" /> - <s:textfield
-								name="phoneno2" placeholder="Phone 2" /></td>
+						<td><s:textfield name="kecamatan" placeholder="Kecamatan"
+								class="form-control" /></td>
 					</tr>
+
 					<tr>
 						<td>City</td>
-						<td><s:textfield name="city" placeholder="City" /></td>
+						<td><s:textfield name="city" placeholder="City"
+								class="form-control" /></td>
+					</tr>
+					<tr>
+						<td width="20%">Zip Code</td>
+						<td width="30%"><s:textfield name="zipcode"
+								class="form-control" placeholder="Zip Code" style="width:100px" /></td>
+					</tr>
+					<tr>
+						<td>Phone 1</td>
+						<td><div align="left" class="form-inline">
+								<s:textfield name="areaphone1" placeholder="Area"
+									style="width:60px" class="form-control" />
+								-
+								<s:textfield name="phoneno1" style="width:100px"
+									placeholder="Phone 1" class="form-control" />
+							</div></td>
+					</tr>
+					<tr>
+
+						<td>Phone 2</td>
+						<td><div align="left" class="form-inline">
+								<s:textfield name="areaphone2" placeholder="Area"
+									style="width:60px" class="form-control" />
+								-
+								<s:textfield name="phoneno2" placeholder="Phone 2"
+									class="form-control" style="width:100px" />
+							</div></td>
+					</tr>
+					<tr>
+
 						<td>Fax</td>
-						<td><s:textfield name="areafax" placeholder="Area" /> - <s:textfield
-								name="faxno" placeholder="Fax" /></td>
+						<td><div align="left" class="form-inline">
+								<s:textfield name="areafax" placeholder="Area"
+									style="width:60px" class="form-control" />
+								-
+								<s:textfield name="faxno" style="width:100x" placeholder="Fax" />
+							</div></td>
 					</tr>
 				</table>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">BANK ACCOUNT</th>
 					</tr>
 					<tr>
 						<td width="20%">Bank Name</td>
-						<td width="30%"><s:textfield name="bankcode" placeholder="" /></td>
+						<td width="30%"><s:textfield name="bankcode" placeholder=""
+								class="form-control" /></td>
 						<td width="20%">Account No.</td>
-						<td width="30%"><s:textfield name="accountno" placeholder="" /></td>
+						<td width="30%"><s:textfield name="accountno" placeholder=""
+								class="form-control" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Bank Branch</td>
-						<td width="30%"><s:textfield name="bankbranch" placeholder="" /></td>
+						<td width="30%"><s:textfield name="bankbranch" placeholder=""
+								class="form-control" /></td>
 						<td width="20%">Account Name</td>
 						<td width="30%"><s:textfield name="accountname"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 					</tr>
 				</table>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">LEGAL DOCUMENT OF ESTABLISHED DATA</th>
 					</tr>
 					<tr>
 						<td width="20%">Legal Document No.</td>
 						<td width="30%"><s:textfield name="nodocumentofestablished"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 						<td width="20%">Last Changes of Legal Doc No.</td>
 						<td width="30%"><s:textfield
-								name="lastnodocumentofestablished" placeholder="" /></td>
+								name="lastnodocumentofestablished" placeholder=""
+								class="form-control" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Legal Document Date</td>
 						<td width="30%"><s:textfield name="dateDocumentofestablished"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 						<td width="20%">Last Changes of Legal Doc Date</td>
 						<td width="30%"><s:textfield
-								name="lastdatedocumentofestablished" placeholder="" /></td>
+								name="lastdatedocumentofestablished" placeholder=""
+								class="form-control" /></td>
 					</tr>
 				</table>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">NOTARY DATA</th>
 					</tr>
 					<tr>
 						<td width="20%">Notary Name</td>
-						<td width="30%"><s:textfield name="notaryname" placeholder="" /></td>
+						<td width="30%"><s:textfield name="notaryname" placeholder=""
+								class="form-control" /></td>
 						<td width="20%">Last Changes of Notary Name</td>
 						<td width="30%"><s:textfield name="lastnotaryname"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 					</tr>
 					<tr>
 						<td width="20%">Notary Location</td>
 						<td width="30%"><s:textfield name="notaryplace"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 						<td width="20%">Last Changes of Notary Location</td>
 						<td width="30%"><s:textfield name="lastnotaryplace"
-								placeholder="" /></td>
+								class="form-control" placeholder="" /></td>
 					</tr>
 				</table>
 				<br>
-				<table width="100%" border="1">
+				<table width="100%" border="0" class="table-hover table-responsive">
 					<tr>
 						<th colspan="4">OTHER DATA</th>
 					</tr>
@@ -185,11 +233,12 @@
 								list="#{'Active':'Active','Hold':'Hold'}" /></td>
 						<td>Other Finance Company Name</td>
 						<td><s:textfield name="applycarloancompanyname"
-								placeholder="Other Finance Company Name" /></td>
+								class="form-control" placeholder="Other Finance Company Name" /></td>
 					</tr>
 					<tr>
 						<td>Notes</td>
-						<td colspan="3"><s:textfield name="notes" placeholder="Notes" /></td>
+						<td colspan="3"><s:textfield name="notes" placeholder="Notes"
+								class="form-control" /></td>
 					</tr>
 				</table>
 				<br>
@@ -201,8 +250,9 @@
 				</table>
 			</center>
 		</s:form>
+		
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function save() {

@@ -38,7 +38,7 @@
 									<span class="glyphicon glyphicon-plus-sign"></span><br>Personal
 								</button>
 						</a> <a href="coycust.action"><button
-									class="btn btn-sm btn-success" type="submit">
+									class="btn btn-sm btn-success" type="button">
 									<span class="glyphicon glyphicon-plus-sign"></span><br>Company
 								</button></a>
 							<button class="btn btn-sm btn-warning" type="submit"
@@ -78,12 +78,7 @@
 	function search() {
 		document.getElementById("mode").value = "search";
 	}
-	function addpersonal() {
-		document.getElementById("mode").value = "addpersonal";
-	}
-	function addcompany() {
-		document.getElementById("mode").value = "addcompany";
-	}
+
 	function edit() {
 		document.getElementById("mode").value = "edit";
 	}

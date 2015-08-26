@@ -22,7 +22,10 @@
 		<s:form action="coycust.action" theme="simple">
 			<center>
 				<h2>Company Customer - Add</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;" />
+				<s:hidden name="name" />
+				<s:hidden name="npwp" />
+				<s:hidden name="mode" id="mode"/>
+				
 				<table width="100%">
 					<tr>
 						<td width="20%">Name</td>

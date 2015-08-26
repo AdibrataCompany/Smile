@@ -6,11 +6,8 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
-
+<title>SMILE - Smart Leasing And Consumer Finance</title>
 </head>
-
 <body>
 	<%@include file="/Pages/Menu.jsp"%>
 	<div class="container">
@@ -105,7 +102,8 @@
 								name="email" placeholder="E-mail" /></td>
 						<td>Rent Finish Date</td>
 						<td><s:textfield style="width:100px" class="form-control"
-								name="rentfinishdate" id ="rentfinishdate" placeholder="Rent Finish Date" /></td>
+								name="rentfinishdate" id="rentfinishdate"
+								placeholder="Rent Finish Date" /></td>
 					</tr>
 					<tr>
 						<td>Religion</td>
@@ -204,7 +202,5 @@
 			format : "dd/mm/yyyy"
 		});
 	});
-	
-	
 </script>
 </html>

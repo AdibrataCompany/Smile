@@ -153,14 +153,14 @@
 		<action name="coycust"
 			class="com.adibrata.smartdealer.action.customer.CoyCustAction"
 			method="execute">
-			<result name="input">/Pages/Customer/CoyCust/Paging.jsp</result>
-			<result name="success">/Pages/Customer/CoyCust/Paging.jsp</result>
-			<result name="error">/Pages/Customer/CoyCust/Paging.jsp</result>
+			<result name="input">/Pages/Customer/CoyCust/CoyCust.jsp</result>
+			
+			<result name="error">/Pages/Customer/CoyCust/CoyCust.jsp</result>
 
 			<result name="check">/Pages/Customer/CoyCust/Check.jsp</result>
 			<result name="entry">/Pages/Customer/CoyCust/Entry.jsp</result>
 
-			<result name="save" type="redirectAction">
+			<result name="success" type="redirectAction">
 				<param name="actionName">coycustfinancialinfo</param>
 				<param name="customerid">${customerid}</param>
 			</result>

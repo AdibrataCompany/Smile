@@ -122,6 +122,7 @@ public class CoyCustAction extends BaseAction implements Preparable
 								case "save" :
 									try
 										{
+											this.SaveCustomer();
 										}
 									catch (final Exception e)
 										{
@@ -135,15 +136,7 @@ public class CoyCustAction extends BaseAction implements Preparable
 					}
 				else
 					{
-						try
-							{
-								strMode = INPUT;
-							}
-						catch (final Exception e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+						strMode = INPUT;
 					}
 				return strMode;
 			}
@@ -153,8 +146,9 @@ public class CoyCustAction extends BaseAction implements Preparable
 				try
 					{
 						this.coycust = new CoyCust();
+						this.customer = new Customer();
+						this.customer.setName(this.getName());
 
-						this.coycust.setCustomer(this.getCustomer());
 						this.coycust.setNpwp(this.getNpwp());
 						this.coycust.setNpwpchecking(this.getNpwpchecking());
 						this.coycust.setCompanyType(this.getCompanytype());
@@ -183,12 +177,13 @@ public class CoyCustAction extends BaseAction implements Preparable
 						this.coycust.setLastDateDocumentOfEstablished(this.dateformat.parse(this.getLastdatedocumentofestablished()));
 						this.coycust.setLastNotaryPlace(this.getLastnotaryplace());
 						this.coycust.setLastNotaryName(this.getLastnotaryname());
-
+						
 						this.customermaintservice.SaveCustomer(BaseAction.sesLoginName(), this.customer, this.coycust);
-
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -219,9 +214,11 @@ public class CoyCustAction extends BaseAction implements Preparable
 						this.contactinfo.setAreaFax(this.getAreafax());
 						this.contactinfo.setFaxNo(this.getFaxno());
 						this.contactinfo.setHandphone(this.getHandphone());
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
