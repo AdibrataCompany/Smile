@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
+// Generated Aug 26, 2015 9:54:19 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class AgrmntIns implements java.io.Serializable
 		
 		private long id;
 		private Agrmnt agrmnt;
-		private InsCoBranch insCoBranch;
+		private IncoBranchOffice incoBranchOffice;
 		private Long currencyId;
 		private String applicationType;
 		private String insuredByCode;
@@ -170,7 +170,7 @@ public class AgrmntIns implements java.io.Serializable
 				this.isNewCover = isNewCover;
 			}
 			
-		public AgrmntIns(long id, Agrmnt agrmnt, InsCoBranch insCoBranch, Long currencyId, String applicationType, String insuredByCode, String insuredPaidByCode, String coveragePeriod, Date startDate, Date endDate, String policyNumber,
+		public AgrmntIns(long id, Agrmnt agrmnt, IncoBranchOffice incoBranchOffice, Long currencyId, String applicationType, String insuredByCode, String insuredPaidByCode, String coveragePeriod, Date startDate, Date endDate, String policyNumber,
 		        Date policyReceiveDate, String policyReceiveBy, String flagInsActivation, String flagReNew, String flagInsStatus, Date sppadate, String sppano, String insuranceRateType, double sumInsured, Date insCoSelectionDate, double sellingRate,
 		        double sellingAmount, double adminFee, double meteraiFee, double earnAmount, String insNotes, String accNotes, Date requestDate, Date insActivateDate, short insLength, String mainCoverage, String additionalCoverage,
 		        String endorsDocNo, String bdendorsDocNo, Date bdendorsDate, String bdendorsPolicyNo, Date bdendorsPolicyReceiveDate, double endorsToInsCoPremium, double endorsPaidToInsCo, double endorsAdditionalPremium, String flagClaimProcess,
@@ -182,7 +182,7 @@ public class AgrmntIns implements java.io.Serializable
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
-				this.insCoBranch = insCoBranch;
+				this.incoBranchOffice = incoBranchOffice;
 				this.currencyId = currencyId;
 				this.applicationType = applicationType;
 				this.insuredByCode = insuredByCode;
@@ -297,15 +297,15 @@ public class AgrmntIns implements java.io.Serializable
 			}
 			
 		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "InsCompanyOfficeId")
-		public InsCoBranch getInsCoBranch()
+		@JoinColumn(name = "InscoBranchOfficeId")
+		public IncoBranchOffice getIncoBranchOffice()
 			{
-				return this.insCoBranch;
+				return this.incoBranchOffice;
 			}
 			
-		public void setInsCoBranch(InsCoBranch insCoBranch)
+		public void setIncoBranchOffice(IncoBranchOffice incoBranchOffice)
 			{
-				this.insCoBranch = insCoBranch;
+				this.incoBranchOffice = incoBranchOffice;
 			}
 			
 		@Column(name = "CurrencyId")

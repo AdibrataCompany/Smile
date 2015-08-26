@@ -1,14 +1,17 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
+// Generated Aug 26, 2015 9:54:19 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +32,7 @@ public class IncoBranchOffice implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<AgrmntIns> agrmntInses = new HashSet<AgrmntIns>(0);
 		
 		public IncoBranchOffice()
 			{
@@ -39,7 +43,7 @@ public class IncoBranchOffice implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public IncoBranchOffice(long id, InsCoBranch insCoBranch, Office office, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public IncoBranchOffice(long id, InsCoBranch insCoBranch, Office office, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntIns> agrmntInses)
 			{
 				this.id = id;
 				this.insCoBranch = insCoBranch;
@@ -49,6 +53,7 @@ public class IncoBranchOffice implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.agrmntInses = agrmntInses;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -143,6 +148,17 @@ public class IncoBranchOffice implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "incoBranchOffice")
+		public Set<AgrmntIns> getAgrmntInses()
+			{
+				return this.agrmntInses;
+			}
+			
+		public void setAgrmntInses(Set<AgrmntIns> agrmntInses)
+			{
+				this.agrmntInses = agrmntInses;
 			}
 			
 	}

@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 25, 2015 4:12:04 PM by Hibernate Tools 4.3.1
+// Generated Aug 26, 2015 9:54:19 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -55,7 +55,6 @@ public class InsCoBranch implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
-		private Set<AgrmntIns> agrmntInses = new HashSet<AgrmntIns>(0);
 		private Set<InsRateFromInsco> insRateFromInscos = new HashSet<InsRateFromInsco>(0);
 		private Set<InsCoBranchFee> insCoBranchFees = new HashSet<InsCoBranchFee>(0);
 		private Set<IncoBranchOffice> incoBranchOffices = new HashSet<IncoBranchOffice>(0);
@@ -71,8 +70,7 @@ public class InsCoBranch implements java.io.Serializable
 			
 		public InsCoBranch(long id, InsCompany insCompany, String insCoBranchCode, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1,
 		        String areaPhone2, String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, Short isActive, Integer allocationNumber, String contactPersonName, String contactPersonTitle, String contactPersonEmail,
-		        String contactPersonPhone, String bankAccountNumber, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntIns> agrmntInses, Set<InsRateFromInsco> insRateFromInscos, Set<InsCoBranchFee> insCoBranchFees,
-		        Set<IncoBranchOffice> incoBranchOffices)
+		        String contactPersonPhone, String bankAccountNumber, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsRateFromInsco> insRateFromInscos, Set<InsCoBranchFee> insCoBranchFees, Set<IncoBranchOffice> incoBranchOffices)
 			{
 				this.id = id;
 				this.insCompany = insCompany;
@@ -105,7 +103,6 @@ public class InsCoBranch implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
-				this.agrmntInses = agrmntInses;
 				this.insRateFromInscos = insRateFromInscos;
 				this.insCoBranchFees = insCoBranchFees;
 				this.incoBranchOffices = incoBranchOffices;
@@ -455,17 +452,6 @@ public class InsCoBranch implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
-			}
-			
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insCoBranch")
-		public Set<AgrmntIns> getAgrmntInses()
-			{
-				return this.agrmntInses;
-			}
-			
-		public void setAgrmntInses(Set<AgrmntIns> agrmntInses)
-			{
-				this.agrmntInses = agrmntInses;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insCoBranch")
