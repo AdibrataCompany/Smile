@@ -32,8 +32,7 @@
 				<table border="0" width="100%">
 					<tr>
 						<td width="25%">Legal Name</td>
-						<td><s:textfield name="legalname"
-								placeholder="Legal Name" /></td>
+						<td><s:textfield name="legalname" placeholder="Legal Name" /></td>
 					</tr>
 					<tr>
 						<td>Full Name</td>
@@ -54,21 +53,18 @@
 						<td>ID Number</td>
 						<td><s:textfield name="idnumber" placeholder="ID Number" /></td>
 					</tr>
+
 					<tr>
-						<td>Expired Date</td>
-						<td><%@include
-								file="/Pages/Customer/DatePicker/IDExpDate.jsp"%></td>
+						<td>Birth Place/Date</td>
+						<td><s:textfield  name="birthplace"  placeholder="Birth Place" /> / <s:textfield 
+								name="birthdate" id="birthdate" placeholder="dd/MM/yyyy" /></td>
 					</tr>
 					<tr>
 						<td>Gender</td>
 						<td><s:radio name="gender"
-								list="#{'Pria':'Pria','Wanita':'Wanita'}" /></td>
+								list="#{'F':'Female','M':'Male'}" /></td>
 					</tr>
-					<tr>
-						<td>Birth Place/Date</td>
-						<td><s:textfield id="birth" name="birth" class="input-sm"
-								placeholder="DD/MM/YYYY" /></td>
-					</tr>
+
 					<tr>
 						<td>Personal NPWP</td>
 						<td><s:textfield name="personalnpwp"
@@ -76,7 +72,7 @@
 					</tr>
 					<tr>
 						<td>Biological Mother's Name</td>
-						<td><s:textfield name="biologicalmothersname"
+						<td><s:textfield  name="biologicalmothersname"
 								placeholder="Biological Mother's Name" /></td>
 					</tr>
 				</table>
@@ -84,18 +80,19 @@
 				<table width="100%">
 					<tr>
 						<td><a href="customer.action"><button type="button">CANCEL</button></a></td>
-						<td align="right"><button type="submit" onclick="check()" class="btn btn-sm btn-primary">NEXT</button></td>
+						<td align="right"><button type="submit" onclick="check()"
+								class="btn btn-sm btn-primary">NEXT</button></td>
 					</tr>
 				</table>
 			</center>
 		</s:form>
 	</div>
-		<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	// When the document is ready
 	$(document).ready(function() {
-		$('#birth').datepicker({
+		$('#birthdate').datepicker({
 			format : "dd/mm/yyyy"
 		});
 	});
@@ -107,5 +104,10 @@
 	function check() {
 		document.getElementById("mode").value = "check";
 	}
+	$(document).ready(function() {
+		$('#idexpdate').datepicker({
+			format : "dd/mm/yyyy"
+		});
+	});
 </script>
 </html>

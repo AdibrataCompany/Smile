@@ -25,60 +25,72 @@
 				<s:hidden name="mode" id="mode" />
 				<s:hidden name="id" />
 				<s:label name="message" id="message" />
-				<s:hidden name="customerid" />
+
 				<s:hidden name="personalcustomertype" />
+				<s:hidden name="customerid" />
+				<s:hidden name="name" />
+				<s:hidden name="birthplace" />
+				<s:hidden name="birthdate" />
+				<s:hidden name="idtype" />
+				<s:hidden name="idnumber" />
+				<s:hidden name="personalnpwp" />
+				<s:hidden name="legalname" />
+				<s:hidden name="biologicalmothersname" />
+				<s:hidden name="gender" />
 				<table width="100%" border="1">
 					<tr>
-						<th colspan="4">PERSONAL DATA</th>
+						<th colspan="4">PERSONAL COMPANY DATA</th>
 					</tr>
 					<tr>
 						<td width="20%">Full Name</td>
-						<td width="30%"><s:textfield name="name" /></td>
+						<td width="30%"><s:label name="name" /></td>
 						<td width="20%">Legal Name</td>
 						<td width="30%"><s:label name="legalname"
 								placeholder="Legal Name" /></td>
 					</tr>
 					<tr>
+						<td>Birth Place/Date</td>
+						<td><s:label name="birthplace" /> / <s:label
+								name="birthdate" /></td>
+						<td>Gender</td>
+						<td><s:label name="gender" /></td>
+					</tr>
+					<tr>
+						<td>Biological Mothers Name</td>
+						<td colspan=3><s:label name="biologicalmothersname" /></td>
+					</tr>
+
+					<tr>
 						<td>ID Type</td>
-						<td><s:textfield name="idtype" /></td>
+						<td><s:label name="idtype" /></td>
+						<td>ID Number</td>
+						<td><s:label name="idnumber" /></td>
+					</tr>
+					<tr>
+						<td>Expired Date</td>
+						<td><s:textfield name="idexpdate" id="idexpdate" /></td>
+						<td>Personal NPWP</td>
+						<td><s:textfield name="personalnpwp" /></td>
+					</tr>
+					<tr>
 						<td>Education</td>
 						<td><s:select name="education" headerKey=""
 								headerValue="Select One"
 								list="#{'SMA':'SMA','D3':'D3','S1':'S1'}" /></td>
-					</tr>
-					<tr>
-						<td>ID Number</td>
-						<td><s:textfield name="idnumber" /></td>
 						<td>Profession</td>
 						<td><s:select name="professionid" headerKey=""
 								headerValue="Select One" list="#{'xxx':'xxx'}" /></td>
 					</tr>
 					<tr>
-						<td>Expired Date</td>
-						<td><s:textfield name="idexpdate" /></td>
-						<td>Nationality</td>
-						<td><s:select name="nationality"
-								list="#{'WNI':'WNI','WNA':'WNA'}" />
-					</tr>
-					<tr>
-						<td>Gender</td>
-						<td><s:textfield name="gender" /></td>
-						<td>WNA Country</td>
-						<td><s:textfield name="wnacountry" placeholder="Country" /></td>
-					</tr>
-					<tr>
-						<td>Birth Place/Date</td>
-						<td><s:textfield name="birthplace" /> / <s:textfield
-								name="birthdate" /></td>
-						<td>Group</td>
-						<td><s:textfield name="" placeholder="Group" /></td>
-					</tr>
-					<tr>
 						<td>Mobile Phone</td>
-						<td><s:textfield name="mobilephone"
+						<td colspan=3><s:textfield name="mobilephone"
 								placeholder="Mobile Phone" /></td>
+					</tr>
+
+					<tr>
+					<tr>
 						<td>Home Status</td>
-						<td><s:select name="homestatus" headerKey=""
+						<td colspan=3><s:select name="homestatus" headerKey=""
 								headerValue="Select One" list="#{'xxx':'xxx'}" /></td>
 					</tr>
 					<tr>
@@ -116,23 +128,13 @@
 							- <s:textfield name="staysinceyear" placeholder="YEAR" /></td>
 					</tr>
 					<tr>
-						<td>Personal NPWP</td>
-						<td><s:textfield name="personalnpwp" /></td>
 						<td>Number of Own Cars</td>
 						<td><s:textfield name="numofassetowned"
 								placeholder="Number of Own Car" /></td>
 					</tr>
 					<tr>
-						<td>Mother Maiden Name</td>
-						<td><s:textfield name="biologicalmothersname" /></td>
 						<td>KK No.</td>
 						<td><s:textfield name="nokk" placeholder="KK Number" /></td>
-					</tr>
-					<tr>
-						<td>Costumer Group</td>
-						<td><s:select name="customergroup" headerKey=""
-								headerValue="Select One"
-								list="#{'Group':'Group','Non Group':'Non-Group'}" /></td>
 					</tr>
 				</table>
 				<br>
@@ -177,5 +179,10 @@
 	function save() {
 		document.getElementById("mode").value = "save";
 	}
+	$(document).ready(function() {
+		$('#idexpdate').datepicker({
+			format : "dd/mm/yyyy"
+		});
+	});
 </script>
 </html>

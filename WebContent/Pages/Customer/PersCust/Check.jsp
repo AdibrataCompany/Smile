@@ -26,23 +26,39 @@
 				<s:hidden name="id" />
 				<s:label name="message" id="message" />
 				<s:hidden name="customerid" />
+				<s:hidden name="name" />
+				<s:hidden name="birthplace" />
+				<s:hidden name="birthdate" />
+				<s:hidden name="idtype" />
+				<s:hidden name="idnumber" />
+				<s:hidden name="personalnpwp" />
+				<s:hidden name="legalname" />
+				<s:hidden name="biologicalmothersname" />
+				<s:hidden name="idexpdate" />
+				<s:hidden name="gender" />
+				<s:hidden name="idtype" />
+
 				<table width="100%">
 					<tr>
 						<td width="20%">Full Name</td>
-						<td width="30%"><s:textfield name="name" /></td>
-						<td width="20%">Birth Date</td>
-						<td width="30%"><s:textfield name="birthdate" /></td>
+						<td width="30%"><s:label name="name" /></td>
+						<td width="20%">Birth Place/ Date</td>
+						<td width="30%"><s:label name="birthplace" /> / <s:label
+								name="birthdate" /></td>
 					</tr>
 					<tr>
 						<td>ID Type</td>
-						<td><s:textfield name="idtype" /></td>
+						<td><s:label name="idtype" /></td>
 					</tr>
 					<tr>
 						<td>ID Number</td>
-						<td><s:textfield name="idnumber" placeholder="ID Number" /></td>
+						<td><s:label name="idnumber" /></td>
 						<td>Personal NPWP</td>
-						<td><s:textfield name="personalnpwp"
-								placeholder="Personal NPWP" /></td>
+						<td><s:label name="personalnpwp" /></td>
+					</tr>
+					<tr>
+						<td>Biological Mother's Name</td>
+						<td><s:label name="biologicalmothersname" /></td>
 					</tr>
 				</table>
 				<br>
@@ -78,7 +94,7 @@
 							<th>ID Type</th>
 							<th>ID Number</th>
 							<th>Birth Date</th>
-							<th>Type</th>
+
 						</tr>
 						<s:iterator>
 							<tr>
@@ -86,7 +102,7 @@
 								<td>${idtype}</td>
 								<td>${idnumber}</td>
 								<td>${birthdate}</td>
-								<td>${type}</td>
+
 							</tr>
 						</s:iterator>
 					</table>

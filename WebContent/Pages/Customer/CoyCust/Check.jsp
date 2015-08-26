@@ -26,9 +26,10 @@
 				<table width="100%">
 					<tr>
 						<td width="20%">Name</td>
-						<td width="30%"><s:textfield name="name" /></td>
+						<td width="30%"><s:label name="name" /></td>
 						<td width="20%">NPWP</td>
-						<td width="30%"><s:textfield name="npwp" /></td>
+						<td width="30%"><s:label name="npwp" /></td>
+					
 					</tr>
 				</table>
 				<br>
