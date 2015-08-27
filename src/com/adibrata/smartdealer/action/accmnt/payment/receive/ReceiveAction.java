@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
-import com.adibrata.smartdealer.dao.accmaint.PaymentReceiveDao;
 import com.adibrata.smartdealer.model.AgreementList;
 import com.adibrata.smartdealer.model.Agrmnt;
 import com.adibrata.smartdealer.model.AgrmntMnt;
@@ -41,8 +40,7 @@ public class ReceiveAction extends BaseAction implements Preparable
 		private final Office office;
 		private static final long serialVersionUID = 1L;
 		private Long id;
-		private String usrUpd;
-		private String usrCrt;
+
 		private int pageNumber;
 		private String message;
 		private List<AgreementList> lstAgreement;
@@ -65,15 +63,13 @@ public class ReceiveAction extends BaseAction implements Preparable
 		private Double maximuminsurance;
 		private Double maximumlcinsurance;
 		private Double maximumlcinstallment;
-
-		private final PaymentReceiveService receiveService;
+		
+		private PaymentReceiveService receiveService;
 
 		public ReceiveAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 
-				this.receiveService = new PaymentReceiveDao();
-				this.paymentReceive = new PaymentReceive();
 				this.partner = new Partner();
 				this.office = new Office();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
@@ -206,7 +202,6 @@ public class ReceiveAction extends BaseAction implements Preparable
 
 		private String ReceiveAllocation() throws Exception
 			{
-				String status = "";
 				try
 					{
 						final ArInfo arinfo = new ArInfo();
@@ -227,27 +222,26 @@ public class ReceiveAction extends BaseAction implements Preparable
 						this.maximumlcinstallment = paymentinfo.getMaximumlcinstall();
 						this.maximumlcinsurance = paymentinfo.getMaximumlcinsurance();
 
-						status = "allocation";
+						this.mode = "allocation";
 					}
 				catch (final Exception exp)
 					{
-						status = "ErrorAllocation";
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 
 		private String PaymentReceiveSave() throws Exception
 			{
-				String status = "";
+				
 				try
 					{
-						new ArInfo();
-						new PaymentInfo();
+
 						this.paymentReceive = new PaymentReceive();
 						this.paymentReceive.setAgrmnt(this.getAgrmnt());
 						this.paymentReceive.setPostingDate(this.getPostingdate());
@@ -263,37 +257,39 @@ public class ReceiveAction extends BaseAction implements Preparable
 						this.paymentReceive.setNotes(this.getNotes());
 						this.paymentReceive.setWop(this.getWop());
 						this.receiveService.PaymentReceiveSave(BaseAction.sesLoginName(), this.getPaymentReceive());
-						status = SUCCESS;
-
+						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 
 		private String WhereCond()
 			{
-				String wherecond = " partnercode = '" + BaseAction.sesPartnerCode() + "' and officeid = '" + BaseAction.sesOfficeId() + "' and ContractStatus in ('LIV', 'ICP', 'ICL')";
-
+				final StringBuilder wherecond = new StringBuilder();
+				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
-						if (this.getSearchcriteria().contains("%"))
+						wherecond.append(" and ");
+						
+						if (this.getSearchvalue().contains("%"))
 							{
-								wherecond = " and " + this.getSearchvalue() + " like '" + this.getSearchcriteria() + "' ";
+								
+								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
 							{
-								wherecond = " and " + this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ";
+								wherecond.append(this.getSearchcriteria() + " = '" + this.getSearchvalue() + "' ");
 							}
 					}
-				return wherecond;
+				return wherecond.toString();
 			}
 			
 		private void Paging() throws Exception
@@ -398,40 +394,6 @@ public class ReceiveAction extends BaseAction implements Preparable
 		public void setId(final Long id)
 			{
 				this.id = id;
-			}
-
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
 			}
 
 		/**
