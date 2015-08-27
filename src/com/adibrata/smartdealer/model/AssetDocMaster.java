@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,6 +34,7 @@ public class AssetDocMaster implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<AgrmntAssetDoc> agrmntAssetDocs = new HashSet<AgrmntAssetDoc>(0);
 		private Set<StockDocument> stockDocuments = new HashSet<StockDocument>(0);
 		
 		public AssetDocMaster()
@@ -45,7 +46,8 @@ public class AssetDocMaster implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<StockDocument> stockDocuments)
+		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetDoc> agrmntAssetDocs,
+		        Set<StockDocument> stockDocuments)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -57,6 +59,7 @@ public class AssetDocMaster implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.agrmntAssetDocs = agrmntAssetDocs;
 				this.stockDocuments = stockDocuments;
 			}
 			
@@ -173,6 +176,17 @@ public class AssetDocMaster implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetDocMaster")
+		public Set<AgrmntAssetDoc> getAgrmntAssetDocs()
+			{
+				return this.agrmntAssetDocs;
+			}
+			
+		public void setAgrmntAssetDocs(Set<AgrmntAssetDoc> agrmntAssetDocs)
+			{
+				this.agrmntAssetDocs = agrmntAssetDocs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetDocMaster")

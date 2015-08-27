@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -47,6 +47,8 @@ public class Supplier implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls = new HashSet<AgrmntAssetSupEmpl>(0);
+		private Set<AgrmntAssetSupplier> agrmntAssetSuppliers = new HashSet<AgrmntAssetSupplier>(0);
 		private Set<Invoice> invoices = new HashSet<Invoice>(0);
 		private Set<EntrustHdr> entrustHdrs = new HashSet<EntrustHdr>(0);
 		private Set<SupplierAccInfo> supplierAccInfos = new HashSet<SupplierAccInfo>(0);
@@ -66,8 +68,9 @@ public class Supplier implements java.io.Serializable
 			}
 			
 		public Supplier(long id, Partner partner, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
-		        String areaFax, String faxNo, String handphone, String fullAddress, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<Invoice> invoices, Set<EntrustHdr> entrustHdrs, Set<SupplierAccInfo> supplierAccInfos, Set<Stock> stocks,
-		        Set<SuppEmplInfo> suppEmplInfos, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<PurchaseInvoice> purchaseInvoices)
+		        String areaFax, String faxNo, String handphone, String fullAddress, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls, Set<AgrmntAssetSupplier> agrmntAssetSuppliers,
+		        Set<Invoice> invoices, Set<EntrustHdr> entrustHdrs, Set<SupplierAccInfo> supplierAccInfos, Set<Stock> stocks, Set<SuppEmplInfo> suppEmplInfos, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs,
+		        Set<PurchaseInvoice> purchaseInvoices)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -92,6 +95,8 @@ public class Supplier implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
+				this.agrmntAssetSuppliers = agrmntAssetSuppliers;
 				this.invoices = invoices;
 				this.entrustHdrs = entrustHdrs;
 				this.supplierAccInfos = supplierAccInfos;
@@ -358,6 +363,28 @@ public class Supplier implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+		public Set<AgrmntAssetSupEmpl> getAgrmntAssetSupEmpls()
+			{
+				return this.agrmntAssetSupEmpls;
+			}
+			
+		public void setAgrmntAssetSupEmpls(Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls)
+			{
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+		public Set<AgrmntAssetSupplier> getAgrmntAssetSuppliers()
+			{
+				return this.agrmntAssetSuppliers;
+			}
+			
+		public void setAgrmntAssetSuppliers(Set<AgrmntAssetSupplier> agrmntAssetSuppliers)
+			{
+				this.agrmntAssetSuppliers = agrmntAssetSuppliers;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")

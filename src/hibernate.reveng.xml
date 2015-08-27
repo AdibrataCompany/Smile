@@ -40,6 +40,12 @@
 	<table-filter match-name="AgrmntAssetSPBKBInfo"
 		match-catalog="SmartDealer">
 	</table-filter>
+	<table-filter match-name="AgrmntAssetSupEmpl"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntAssetSupplier"
+		match-catalog="SmartDealer">
+	</table-filter>
 	<table-filter match-name="AgrmntBankStatInfoDtl"
 		match-catalog="SmartDealer">
 	</table-filter>
@@ -84,6 +90,9 @@
 		match-catalog="SmartDealer">
 	</table-filter>
 	<table-filter match-name="AgrmntSuppEmplInfo"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="AgrmntSupplier"
 		match-catalog="SmartDealer">
 	</table-filter>
 	<table-filter match-name="AgrmntTc" match-catalog="SmartDealer"></table-filter>

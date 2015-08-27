@@ -32,6 +32,7 @@
         <mapping class="com.adibrata.smartdealer.model.CoyCustWhInfo" />
         <mapping class="com.adibrata.smartdealer.model.MsMenu" />
         <mapping class="com.adibrata.smartdealer.model.PersCust" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntSupplier" />
         <mapping class="com.adibrata.smartdealer.model.PdcHistory" />
         <mapping class="com.adibrata.smartdealer.model.SuppEmplInfo" />
         <mapping class="com.adibrata.smartdealer.model.Taksasi" />
@@ -106,6 +107,7 @@
         <mapping class="com.adibrata.smartdealer.model.AgrmntEmployeeInfo" />
         <mapping class="com.adibrata.smartdealer.model.TransJob" />
         <mapping class="com.adibrata.smartdealer.model.PayHistDtl" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetSupplier" />
         <mapping class="com.adibrata.smartdealer.model.Customer" />
         <mapping class="com.adibrata.smartdealer.model.MsUser" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetLevelInfo" />
@@ -113,6 +115,7 @@
         <mapping class="com.adibrata.smartdealer.model.CoyCust" />
         <mapping class="com.adibrata.smartdealer.model.SalesOrderDtl" />
         <mapping class="com.adibrata.smartdealer.model.Agrmnt" />
+        <mapping class="com.adibrata.smartdealer.model.AgrmntAssetSupEmpl" />
         <mapping class="com.adibrata.smartdealer.model.Product" />
         <mapping class="com.adibrata.smartdealer.model.CashierHistory" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInvoice" />

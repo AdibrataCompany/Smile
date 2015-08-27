@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,14 +22,18 @@ public class AgrmntAssetDoc implements java.io.Serializable
 	{
 		
 		private long id;
-		private Long agrmntAssetId;
-		private Long assetDocMasterId;
+		private AgrmntAsset agrmntAsset;
+		private AssetDocMaster assetDocMaster;
 		private String documentNo;
 		private Short isMainDoc;
 		private Date receivedDate;
 		private String receivedFrom;
 		private String fileName;
 		private byte[] fileBinary;
+		private Date dtmUpd;
+		private String usrUpd;
+		private Date dtmCrt;
+		private String usrCrt;
 		
 		public AgrmntAssetDoc()
 			{
@@ -37,17 +44,22 @@ public class AgrmntAssetDoc implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AgrmntAssetDoc(long id, Long agrmntAssetId, Long assetDocMasterId, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary)
+		public AgrmntAssetDoc(long id, AgrmntAsset agrmntAsset, AssetDocMaster assetDocMaster, String documentNo, Short isMainDoc, Date receivedDate, String receivedFrom, String fileName, byte[] fileBinary, Date dtmUpd, String usrUpd, Date dtmCrt,
+		        String usrCrt)
 			{
 				this.id = id;
-				this.agrmntAssetId = agrmntAssetId;
-				this.assetDocMasterId = assetDocMasterId;
+				this.agrmntAsset = agrmntAsset;
+				this.assetDocMaster = assetDocMaster;
 				this.documentNo = documentNo;
 				this.isMainDoc = isMainDoc;
 				this.receivedDate = receivedDate;
 				this.receivedFrom = receivedFrom;
 				this.fileName = fileName;
 				this.fileBinary = fileBinary;
+				this.dtmUpd = dtmUpd;
+				this.usrUpd = usrUpd;
+				this.dtmCrt = dtmCrt;
+				this.usrCrt = usrCrt;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -63,26 +75,28 @@ public class AgrmntAssetDoc implements java.io.Serializable
 				this.id = id;
 			}
 			
-		@Column(name = "AgrmntAssetId")
-		public Long getAgrmntAssetId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AgrmntAssetId")
+		public AgrmntAsset getAgrmntAsset()
 			{
-				return this.agrmntAssetId;
+				return this.agrmntAsset;
 			}
 			
-		public void setAgrmntAssetId(Long agrmntAssetId)
+		public void setAgrmntAsset(AgrmntAsset agrmntAsset)
 			{
-				this.agrmntAssetId = agrmntAssetId;
+				this.agrmntAsset = agrmntAsset;
 			}
 			
-		@Column(name = "AssetDocMasterId")
-		public Long getAssetDocMasterId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AssetDocMasterId")
+		public AssetDocMaster getAssetDocMaster()
 			{
-				return this.assetDocMasterId;
+				return this.assetDocMaster;
 			}
 			
-		public void setAssetDocMasterId(Long assetDocMasterId)
+		public void setAssetDocMaster(AssetDocMaster assetDocMaster)
 			{
-				this.assetDocMasterId = assetDocMasterId;
+				this.assetDocMaster = assetDocMaster;
 			}
 			
 		@Column(name = "DocumentNo", length = 50)
@@ -150,6 +164,52 @@ public class AgrmntAssetDoc implements java.io.Serializable
 		public void setFileBinary(byte[] fileBinary)
 			{
 				this.fileBinary = fileBinary;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "DtmUpd", length = 16)
+		public Date getDtmUpd()
+			{
+				return this.dtmUpd;
+			}
+			
+		public void setDtmUpd(Date dtmUpd)
+			{
+				this.dtmUpd = dtmUpd;
+			}
+			
+		@Column(name = "UsrUpd", length = 50)
+		public String getUsrUpd()
+			{
+				return this.usrUpd;
+			}
+			
+		public void setUsrUpd(String usrUpd)
+			{
+				this.usrUpd = usrUpd;
+			}
+			
+		@Temporal(TemporalType.TIMESTAMP)
+		@Column(name = "DtmCrt", length = 16)
+		public Date getDtmCrt()
+			{
+				return this.dtmCrt;
+			}
+			
+		public void setDtmCrt(Date dtmCrt)
+			{
+				this.dtmCrt = dtmCrt;
+			}
+			
+		@Column(name = "UsrCrt", length = 50)
+		public String getUsrCrt()
+			{
+				return this.usrCrt;
+			}
+			
+		public void setUsrCrt(String usrCrt)
+			{
+				this.usrCrt = usrCrt;
 			}
 			
 	}

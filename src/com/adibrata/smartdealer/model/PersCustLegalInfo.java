@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -31,13 +31,6 @@ public class PersCustLegalInfo implements java.io.Serializable
 		private String kecamatan;
 		private String city;
 		private String zipcode;
-		private String areaPhone1;
-		private String phoneNo1;
-		private String areaPhone2;
-		private String phoneNo2;
-		private String areaFax;
-		private String faxNo;
-		private String handphone;
 		private String fullAddress;
 		private String usrCrt;
 		private Date dtmUpd;
@@ -53,8 +46,8 @@ public class PersCustLegalInfo implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public PersCustLegalInfo(long id, Customer customer, String legalName, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String areaPhone1, String phoneNo1, String areaPhone2,
-		        String phoneNo2, String areaFax, String faxNo, String handphone, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public PersCustLegalInfo(long id, Customer customer, String legalName, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String fullAddress, String usrCrt, Date dtmUpd, String usrUpd,
+		        Date dtmCrt)
 			{
 				this.id = id;
 				this.customer = customer;
@@ -66,13 +59,6 @@ public class PersCustLegalInfo implements java.io.Serializable
 				this.kecamatan = kecamatan;
 				this.city = city;
 				this.zipcode = zipcode;
-				this.areaPhone1 = areaPhone1;
-				this.phoneNo1 = phoneNo1;
-				this.areaPhone2 = areaPhone2;
-				this.phoneNo2 = phoneNo2;
-				this.areaFax = areaFax;
-				this.faxNo = faxNo;
-				this.handphone = handphone;
 				this.fullAddress = fullAddress;
 				this.usrCrt = usrCrt;
 				this.dtmUpd = dtmUpd;
@@ -191,83 +177,6 @@ public class PersCustLegalInfo implements java.io.Serializable
 		public void setZipcode(String zipcode)
 			{
 				this.zipcode = zipcode;
-			}
-			
-		@Column(name = "AreaPhone1", length = 4)
-		public String getAreaPhone1()
-			{
-				return this.areaPhone1;
-			}
-			
-		public void setAreaPhone1(String areaPhone1)
-			{
-				this.areaPhone1 = areaPhone1;
-			}
-			
-		@Column(name = "PhoneNo1", length = 20)
-		public String getPhoneNo1()
-			{
-				return this.phoneNo1;
-			}
-			
-		public void setPhoneNo1(String phoneNo1)
-			{
-				this.phoneNo1 = phoneNo1;
-			}
-			
-		@Column(name = "AreaPhone2", length = 4)
-		public String getAreaPhone2()
-			{
-				return this.areaPhone2;
-			}
-			
-		public void setAreaPhone2(String areaPhone2)
-			{
-				this.areaPhone2 = areaPhone2;
-			}
-			
-		@Column(name = "PhoneNo2", length = 20)
-		public String getPhoneNo2()
-			{
-				return this.phoneNo2;
-			}
-			
-		public void setPhoneNo2(String phoneNo2)
-			{
-				this.phoneNo2 = phoneNo2;
-			}
-			
-		@Column(name = "AreaFax", length = 4)
-		public String getAreaFax()
-			{
-				return this.areaFax;
-			}
-			
-		public void setAreaFax(String areaFax)
-			{
-				this.areaFax = areaFax;
-			}
-			
-		@Column(name = "FaxNo", length = 20)
-		public String getFaxNo()
-			{
-				return this.faxNo;
-			}
-			
-		public void setFaxNo(String faxNo)
-			{
-				this.faxNo = faxNo;
-			}
-			
-		@Column(name = "Handphone", length = 20)
-		public String getHandphone()
-			{
-				return this.handphone;
-			}
-			
-		public void setHandphone(String handphone)
-			{
-				this.handphone = handphone;
 			}
 			
 		@Column(name = "FullAddress", length = 500)

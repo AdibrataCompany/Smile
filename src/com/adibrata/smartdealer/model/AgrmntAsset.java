@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -58,7 +58,7 @@ public class AgrmntAsset implements java.io.Serializable
 		private Date rrddate;
 		private Long crossAssetId;
 		private String custUseRelation;
-		private Long sumInsuredReplacement;
+		private Double sumInsuredReplacement;
 		private String discountOtrtype;
 		private Double discountOtrpercentage;
 		private Double discountOtramount;
@@ -67,11 +67,15 @@ public class AgrmntAsset implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private Set<AgrmntAssetLoctInfo> agrmntAssetLoctInfos = new HashSet<AgrmntAssetLoctInfo>(0);
+		private Set<AgrmntSupplier> agrmntSuppliers = new HashSet<AgrmntSupplier>(0);
 		private Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos = new HashSet<AgrmntAssetLevelInfo>(0);
+		private Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls = new HashSet<AgrmntAssetSupEmpl>(0);
 		private Set<AgmntAssetEmployeeInfo> agmntAssetEmployeeInfos = new HashSet<AgmntAssetEmployeeInfo>(0);
 		private Set<AgrmntAssetOwnerInfo> agrmntAssetOwnerInfos = new HashSet<AgrmntAssetOwnerInfo>(0);
 		private Set<AgrmntAssetOldOwnerInfo> agrmntAssetOldOwnerInfos = new HashSet<AgrmntAssetOldOwnerInfo>(0);
+		private Set<AgrmntAssetSupplier> agrmntAssetSuppliers = new HashSet<AgrmntAssetSupplier>(0);
 		private Set<AgrmntInsAsset> agrmntInsAssets = new HashSet<AgrmntInsAsset>(0);
+		private Set<AgrmntAssetDoc> agrmntAssetDocs = new HashSet<AgrmntAssetDoc>(0);
 		private Set<AgrmntAssetSpbkbinfo> agrmntAssetSpbkbinfos = new HashSet<AgrmntAssetSpbkbinfo>(0);
 		
 		public AgrmntAsset()
@@ -99,9 +103,10 @@ public class AgrmntAsset implements java.io.Serializable
 		public AgrmntAsset(long id, Agrmnt agrmnt, AssetMaster assetMaster, Customer customer, SupplierAccInfo supplierAccInfo, Long supplierId, double otrprice, double dpamount, long assetTypeId, double resaleValue, String serialNo1,
 		        String serialNo2, short isUsed, String assetUsage, Short manufacturingMonth, short manufacturingYear, String licPlateNo, Date taxDate, Date buyBackGuaranteeValidDate, String assetDocFilling, String assetDocRack,
 		        String branchIntransit, Date deliveryDate, Date repossesDate, Date inventoryDate, String notes, String notesBorrowDoc, String notesReleaseDoc, String assetDocStatus, String assetStatus, boolean isAssetReplacementStatus, Date rrddate,
-		        Long crossAssetId, String custUseRelation, Long sumInsuredReplacement, String discountOtrtype, Double discountOtrpercentage, Double discountOtramount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        Set<AgrmntAssetLoctInfo> agrmntAssetLoctInfos, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<AgmntAssetEmployeeInfo> agmntAssetEmployeeInfos, Set<AgrmntAssetOwnerInfo> agrmntAssetOwnerInfos,
-		        Set<AgrmntAssetOldOwnerInfo> agrmntAssetOldOwnerInfos, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntAssetSpbkbinfo> agrmntAssetSpbkbinfos)
+		        Long crossAssetId, String custUseRelation, Double sumInsuredReplacement, String discountOtrtype, Double discountOtrpercentage, Double discountOtramount, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
+		        Set<AgrmntAssetLoctInfo> agrmntAssetLoctInfos, Set<AgrmntSupplier> agrmntSuppliers, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls, Set<AgmntAssetEmployeeInfo> agmntAssetEmployeeInfos,
+		        Set<AgrmntAssetOwnerInfo> agrmntAssetOwnerInfos, Set<AgrmntAssetOldOwnerInfo> agrmntAssetOldOwnerInfos, Set<AgrmntAssetSupplier> agrmntAssetSuppliers, Set<AgrmntInsAsset> agrmntInsAssets, Set<AgrmntAssetDoc> agrmntAssetDocs,
+		        Set<AgrmntAssetSpbkbinfo> agrmntAssetSpbkbinfos)
 			{
 				this.id = id;
 				this.agrmnt = agrmnt;
@@ -146,11 +151,15 @@ public class AgrmntAsset implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.agrmntAssetLoctInfos = agrmntAssetLoctInfos;
+				this.agrmntSuppliers = agrmntSuppliers;
 				this.agrmntAssetLevelInfos = agrmntAssetLevelInfos;
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
 				this.agmntAssetEmployeeInfos = agmntAssetEmployeeInfos;
 				this.agrmntAssetOwnerInfos = agrmntAssetOwnerInfos;
 				this.agrmntAssetOldOwnerInfos = agrmntAssetOldOwnerInfos;
+				this.agrmntAssetSuppliers = agrmntAssetSuppliers;
 				this.agrmntInsAssets = agrmntInsAssets;
+				this.agrmntAssetDocs = agrmntAssetDocs;
 				this.agrmntAssetSpbkbinfos = agrmntAssetSpbkbinfos;
 			}
 			
@@ -371,7 +380,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.buyBackGuaranteeValidDate = buyBackGuaranteeValidDate;
 			}
 			
-		@Column(name = "AssetDocFilling", length = 10)
+		@Column(name = "AssetDocFilling", length = 50)
 		public String getAssetDocFilling()
 			{
 				return this.assetDocFilling;
@@ -382,7 +391,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.assetDocFilling = assetDocFilling;
 			}
 			
-		@Column(name = "AssetDocRack", length = 10)
+		@Column(name = "AssetDocRack", length = 50)
 		public String getAssetDocRack()
 			{
 				return this.assetDocRack;
@@ -393,7 +402,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.assetDocRack = assetDocRack;
 			}
 			
-		@Column(name = "BranchIntransit", length = 3)
+		@Column(name = "BranchIntransit", length = 50)
 		public String getBranchIntransit()
 			{
 				return this.branchIntransit;
@@ -440,7 +449,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.inventoryDate = inventoryDate;
 			}
 			
-		@Column(name = "Notes")
+		@Column(name = "Notes", length = 8000)
 		public String getNotes()
 			{
 				return this.notes;
@@ -451,7 +460,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.notes = notes;
 			}
 			
-		@Column(name = "NotesBorrowDoc", nullable = false)
+		@Column(name = "NotesBorrowDoc", nullable = false, length = 8000)
 		public String getNotesBorrowDoc()
 			{
 				return this.notesBorrowDoc;
@@ -462,7 +471,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.notesBorrowDoc = notesBorrowDoc;
 			}
 			
-		@Column(name = "NotesReleaseDoc", nullable = false)
+		@Column(name = "NotesReleaseDoc", nullable = false, length = 8000)
 		public String getNotesReleaseDoc()
 			{
 				return this.notesReleaseDoc;
@@ -473,7 +482,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.notesReleaseDoc = notesReleaseDoc;
 			}
 			
-		@Column(name = "AssetDocStatus", nullable = false, length = 1)
+		@Column(name = "AssetDocStatus", nullable = false, length = 50)
 		public String getAssetDocStatus()
 			{
 				return this.assetDocStatus;
@@ -484,7 +493,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.assetDocStatus = assetDocStatus;
 			}
 			
-		@Column(name = "AssetStatus", length = 3)
+		@Column(name = "AssetStatus", length = 50)
 		public String getAssetStatus()
 			{
 				return this.assetStatus;
@@ -540,13 +549,13 @@ public class AgrmntAsset implements java.io.Serializable
 				this.custUseRelation = custUseRelation;
 			}
 			
-		@Column(name = "SumInsuredReplacement", precision = 18, scale = 0)
-		public Long getSumInsuredReplacement()
+		@Column(name = "SumInsuredReplacement", precision = 53, scale = 0)
+		public Double getSumInsuredReplacement()
 			{
 				return this.sumInsuredReplacement;
 			}
 			
-		public void setSumInsuredReplacement(Long sumInsuredReplacement)
+		public void setSumInsuredReplacement(Double sumInsuredReplacement)
 			{
 				this.sumInsuredReplacement = sumInsuredReplacement;
 			}
@@ -562,7 +571,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.discountOtrtype = discountOtrtype;
 			}
 			
-		@Column(name = "DiscountOTRPercentage", precision = 9, scale = 6)
+		@Column(name = "DiscountOTRPercentage", precision = 53, scale = 0)
 		public Double getDiscountOtrpercentage()
 			{
 				return this.discountOtrpercentage;
@@ -573,7 +582,7 @@ public class AgrmntAsset implements java.io.Serializable
 				this.discountOtrpercentage = discountOtrpercentage;
 			}
 			
-		@Column(name = "DiscountOTRAmount", precision = 17)
+		@Column(name = "DiscountOTRAmount", precision = 53, scale = 0)
 		public Double getDiscountOtramount()
 			{
 				return this.discountOtramount;
@@ -642,6 +651,17 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
+		public Set<AgrmntSupplier> getAgrmntSuppliers()
+			{
+				return this.agrmntSuppliers;
+			}
+			
+		public void setAgrmntSuppliers(Set<AgrmntSupplier> agrmntSuppliers)
+			{
+				this.agrmntSuppliers = agrmntSuppliers;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
 		public Set<AgrmntAssetLevelInfo> getAgrmntAssetLevelInfos()
 			{
 				return this.agrmntAssetLevelInfos;
@@ -650,6 +670,17 @@ public class AgrmntAsset implements java.io.Serializable
 		public void setAgrmntAssetLevelInfos(Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos)
 			{
 				this.agrmntAssetLevelInfos = agrmntAssetLevelInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
+		public Set<AgrmntAssetSupEmpl> getAgrmntAssetSupEmpls()
+			{
+				return this.agrmntAssetSupEmpls;
+			}
+			
+		public void setAgrmntAssetSupEmpls(Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls)
+			{
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
@@ -686,6 +717,17 @@ public class AgrmntAsset implements java.io.Serializable
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
+		public Set<AgrmntAssetSupplier> getAgrmntAssetSuppliers()
+			{
+				return this.agrmntAssetSuppliers;
+			}
+			
+		public void setAgrmntAssetSuppliers(Set<AgrmntAssetSupplier> agrmntAssetSuppliers)
+			{
+				this.agrmntAssetSuppliers = agrmntAssetSuppliers;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
 		public Set<AgrmntInsAsset> getAgrmntInsAssets()
 			{
 				return this.agrmntInsAssets;
@@ -694,6 +736,17 @@ public class AgrmntAsset implements java.io.Serializable
 		public void setAgrmntInsAssets(Set<AgrmntInsAsset> agrmntInsAssets)
 			{
 				this.agrmntInsAssets = agrmntInsAssets;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")
+		public Set<AgrmntAssetDoc> getAgrmntAssetDocs()
+			{
+				return this.agrmntAssetDocs;
+			}
+			
+		public void setAgrmntAssetDocs(Set<AgrmntAssetDoc> agrmntAssetDocs)
+			{
+				this.agrmntAssetDocs = agrmntAssetDocs;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "agrmntAsset")

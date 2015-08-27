@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 26, 2015 2:55:57 PM by Hibernate Tools 4.3.1
+// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,6 +33,7 @@ public class SuppEmplInfo implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private Set<AgrmntSuppEmplInfo> agrmntSuppEmplInfos = new HashSet<AgrmntSuppEmplInfo>(0);
+		private Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls = new HashSet<AgrmntAssetSupEmpl>(0);
 		
 		public SuppEmplInfo()
 			{
@@ -43,7 +44,7 @@ public class SuppEmplInfo implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public SuppEmplInfo(long id, Supplier supplier, String name, String position, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntSuppEmplInfo> agrmntSuppEmplInfos)
+		public SuppEmplInfo(long id, Supplier supplier, String name, String position, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt, Set<AgrmntSuppEmplInfo> agrmntSuppEmplInfos, Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls)
 			{
 				this.id = id;
 				this.supplier = supplier;
@@ -54,6 +55,7 @@ public class SuppEmplInfo implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.agrmntSuppEmplInfos = agrmntSuppEmplInfos;
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -158,6 +160,17 @@ public class SuppEmplInfo implements java.io.Serializable
 		public void setAgrmntSuppEmplInfos(Set<AgrmntSuppEmplInfo> agrmntSuppEmplInfos)
 			{
 				this.agrmntSuppEmplInfos = agrmntSuppEmplInfos;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "suppEmplInfo")
+		public Set<AgrmntAssetSupEmpl> getAgrmntAssetSupEmpls()
+			{
+				return this.agrmntAssetSupEmpls;
+			}
+			
+		public void setAgrmntAssetSupEmpls(Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls)
+			{
+				this.agrmntAssetSupEmpls = agrmntAssetSupEmpls;
 			}
 			
 	}
