@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.othertrans.OtherReceiveDao;
 import com.adibrata.smartdealer.model.BankAccount;
@@ -15,16 +17,14 @@ import com.adibrata.smartdealer.model.OtherRcvDtl;
 import com.adibrata.smartdealer.model.OtherRcvHdr;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.othertransactions.OtherReceiveService;
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 import util.adibrata.utility.date.DateConvertion;
 
-public class OtherReceiveAction extends BaseAction implements Preparable
+public class OtherReceiveAction extends BaseAction implements SessionAware
 	{
-		
+
 		/**
 		 *
 		 */
@@ -35,12 +35,12 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 		private Office office;
 		private Partner partner;
 		private OtherReceiveService service;
-		
+
 		private List<OtherRcvDtl> lstOtherRcvDtl;
 		private OtherRcvHdr otherRcvHdr;
 		private OtherRcvDtl otherRcvDtl;
 		private Long id;
-		
+
 		private String message;
 		private String mode;
 
@@ -71,16 +71,16 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 				// TODO Auto-generated constructor stub
 				try
 					{
-						
+
 						this.partner = new Partner();
 						this.office = new Office();
 						this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 						this.office.setId(BaseAction.sesOfficeId());
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -88,26 +88,15 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
-		public void prepare() throws Exception
+		public void setSession(final Map<String, Object> session)
 			{
 				// TODO Auto-generated method stub
-				try
-					{
-						this.dtl = ActionContext.getContext().getSession();
-					}
-				catch (final Exception exp)
-					{
-						
-						this.setMessage(BaseAction.ErrorMessage());
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
+				this.dtl = session;
+
 			}
-			
+
 		@Override
 		public String execute()
 			{
@@ -117,7 +106,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					{
 						switch (strMode)
 							{
-								
+
 								case "deldetail" :
 									try
 										{
@@ -153,14 +142,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									break;
 							}
 					}
 				else
 					{
-						
+
 						try
 							{
 								this.Initialisasi();
@@ -174,12 +163,15 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		private void Initialisasi() throws Exception
 			{
 				this.lstOtherRcvDtl = new ArrayList<OtherRcvDtl>();
-				this.dtl.clear();
-				this.dtl.put("OtherDsbDtl", this.lstOtherRcvDtl);
+				if (this.dtl.containsKey("OtherReceive"))
+					{
+						this.dtl.remove("OtherReceive");
+					}
+				this.dtl.put("OtherReceive", this.lstOtherRcvDtl);
 				this.seqno = 1;
 				this.setRcvamount(0.00);
 				this.setAmount(0.00);
@@ -196,7 +188,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						this.currencyid = info.getCurrencyid();
 					}
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private void AddDetail() throws Exception
 			{
@@ -208,7 +200,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 								this.lstOtherRcvDtl = new ArrayList<OtherRcvDtl>();
 							}
 						this.otherRcvDtl = new OtherRcvDtl();
-						
+
 						this.otherRcvDtl.setCoaName(this.coaname);
 						this.otherRcvDtl.setCoaCode(this.coacode);
 						this.otherRcvDtl.setAmount(this.amount);
@@ -217,7 +209,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						this.otherRcvDtl.setUsrUpd(BaseAction.sesLoginName());
 
 						this.lstOtherRcvDtl.add(this.otherRcvDtl);
-						
+
 						this.dtl.put("OtherReceive", this.lstOtherRcvDtl);
 						this.totalamount = 0.00;
 						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
@@ -231,14 +223,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private void DeleteDetail() throws Exception
 			{
@@ -247,10 +239,10 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						this.lstOtherRcvDtl = (List<OtherRcvDtl>) this.dtl.get("OtherReceive");
 						this.seqno = this.seqno - 1;
 						this.lstOtherRcvDtl.remove(this.seqno);
-						
+
 						this.dtl.put("OtherReceive", this.lstOtherRcvDtl);
 						this.lstOtherRcvDtl = (List<OtherRcvDtl>) this.dtl.get("OtherReceive");
-						
+
 						this.totalamount = 0.00;
 						for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
 							{
@@ -259,14 +251,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private String Save() throws Exception
 			{
@@ -286,7 +278,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						this.otherRcvHdr.setNotes(this.notes);
 						this.otherRcvHdr.setUsrCrt(BaseAction.sesLoginName());
 						this.otherRcvHdr.setUsrUpd(BaseAction.sesLoginName());
-						
+
 						//
 						// for (final OtherRcvDtl aRow : this.lstOtherRcvDtl)
 						// {
@@ -295,10 +287,14 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 						// aRow.setAmount(this.amount);
 						// aRow.setDescription(this.description);
 						// }
-						
+
 						this.service.Save(sesLoginName(), this.otherRcvHdr, this.lstOtherRcvDtl);
 						this.mode = SUCCESS;
 						this.setMessage(BaseAction.SuccessMessage());
+						if (this.dtl.containsKey("OtherReceive"))
+							{
+								this.dtl.remove("OtherReceive");
+							}
 					}
 				catch (final Exception exp)
 					{
@@ -745,7 +741,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 		/**
 		 * @return the reffno
 		 */
@@ -753,7 +749,7 @@ public class OtherReceiveAction extends BaseAction implements Preparable
 			{
 				return this.reffno;
 			}
-			
+
 		/**
 		 * @param reffno
 		 *            the reffno to set

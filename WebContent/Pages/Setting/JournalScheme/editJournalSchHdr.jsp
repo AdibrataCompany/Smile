@@ -5,11 +5,8 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
-
+<title>SMILE - Smart Lesing And Consumer Finance Leasing</title>
 </head>
-
 <body>
 
 	<%@include file="/Pages/Menu.jsp"%>
@@ -18,41 +15,57 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="journalscheme_save.action" theme="simple">
+		<s:form action="journalscheme_save.action" theme="css_xhtml">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 
 					<h2>Journal Scheme</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
+					<s:hidden name="mode" id="mode" />
 					<s:hidden name="id" />
-					<table class="table table-striped">
+					<s:label name="message" id="message" />
+
+					<s:hidden name="lstcoaschmdtl" />
+					<table class="table table-striped table-hover">
 						<tr>
 							<td>COA Scheme Code</td>
-							<td><s:textfield name="coaSchmCode" /></td>
+							<td><s:textfield name="coschmcode" /></td>
 						</tr>
 						<tr>
 							<td>COA Scheme Description</td>
-							<td><s:textfield name="coaSchmDesc" /></td>
+							<td><s:textfield name="coschmdesc" /></td>
 						</tr>
 						<tr>
 							<td>Active</td>
-							<td><s:textfield name="isActive" /></td>
+							<td><s:checkbox name="isactive" /></td>
 						</tr>
 					</table>
 					<br>
+					<table class="table table-bordered table table-striped table-hover">
+						<tr>
+							<th style="text-align: center;">Coa Name</th>
+							<th style="text-align: center;">Description</th>
+							<th style="text-align: center;">Coa Code</th>
+						</tr>
+						<s:iterator value="lstcoaschmdtl" id="lstcoaschmdtl">
+							<tr id="row_${coamasterid}">
+
+								<td><s:label name="coaname" id="coaname" /> <s:hidden
+										name="coaname" id="coaname" /></td>
+								<td><s:label name="coadesc" /> <s:hidden name="coadesc"
+										id="coadesc" /></td>
+								<td><s:textfield name="coacode" id="coacode" /></td>
+							</tr>
+						</s:iterator>
+					</table>
 					<table width="100%">
 						<tr>
-							<td><a href="journalscheme.action"><button
-										class="btn btn-sm btn-default" type="button">BACK</button></a></td>
-							<td align="right"><s:if test="mode=='edit'">
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveedit()">SAVE</button>
-								</s:if> <s:else>
-									<button class="btn btn-sm btn-primary" type="submit"
-										onclick="saveadd()">SAVE</button>
-								</s:else></td>
+							<td><button class="btn btn-sm btn-default" type="submit"
+									onclick="end()">BACK</button></td>
+							<td align="right">
+								<button class="btn btn-sm btn-primary" type="submit"
+									onclick="save()">SAVE</button>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -62,11 +75,15 @@
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function saveedit() {
-		document.getElementById("mode").value = "saveedit";
+	function end() {
+
+		document.getElementById("mode").value = "end";
+
 	}
-	function saveadd() {
-		document.getElementById("mode").value = "saveadd";
+	function save() {
+alert ('save');
+		document.getElementById("mode").value = "save";
+
 	}
 </script>
 </html>

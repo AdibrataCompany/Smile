@@ -1,15 +1,16 @@
 
 package com.adibrata.smartdealer.action.usermanagement.login;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.usermanagement.LoginDao;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.usermanagement.LoginService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.Preparable;
 
-public class LoginAction extends BaseAction implements Preparable
+public class LoginAction extends BaseAction implements SessionAware
 	{
 		/**
 		 *
@@ -22,18 +23,18 @@ public class LoginAction extends BaseAction implements Preparable
 		String password;
 		String mode;
 		String message;
-
+		
 		public LoginAction() throws Exception
 			{
-				
+
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		public String signin() throws Exception
 			{
-				
-				this.service = new LoginDao();
 
+				this.service = new LoginDao();
+				
 				if (((this.username != null) & !this.username.equals("")) && ((this.password != null) & !this.password.equals("")))
 					{
 						if (this.service.PasswordVerification(this.username, this.password))
@@ -42,10 +43,10 @@ public class LoginAction extends BaseAction implements Preparable
 								this.partner = this.service.getPartner();
 								BaseAction.setObjpartner(ActionContext.getContext().getSession());
 								BaseAction.getObjpartner().put("Partner", this.partner);
-
+								
 								BaseAction.setObjloginname(ActionContext.getContext().getSession());
 								BaseAction.getObjloginname().put("LoginName", this.username);
-
+								
 							}
 						else
 							{
@@ -53,17 +54,17 @@ public class LoginAction extends BaseAction implements Preparable
 								this.message = "Login Failed";
 							}
 					}
-
+					
 				return this.mode;
-
-			}
-
-		public String home() throws Exception
-			{
-				return INPUT;
 				
 			}
 			
+		public String home() throws Exception
+			{
+				return INPUT;
+
+			}
+
 		public String dashboard() throws Exception
 			{
 				return INPUT;
@@ -84,7 +85,7 @@ public class LoginAction extends BaseAction implements Preparable
 		// this.addFieldError("password", this.getText("password.required"));
 		// }
 		// }
-		
+
 		/**
 		 * @return the partner
 		 */
@@ -92,7 +93,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -101,7 +102,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -109,7 +110,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -118,7 +119,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -126,7 +127,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -135,7 +136,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the username
 		 */
@@ -143,7 +144,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.username;
 			}
-			
+
 		/**
 		 * @param username
 		 *            the username to set
@@ -152,7 +153,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.username = username;
 			}
-			
+
 		/**
 		 * @return the password
 		 */
@@ -160,7 +161,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.password;
 			}
-			
+
 		/**
 		 * @param password
 		 *            the password to set
@@ -169,7 +170,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.password = password;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -177,7 +178,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -186,7 +187,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -194,7 +195,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -203,7 +204,7 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -211,5 +212,5 @@ public class LoginAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 	}

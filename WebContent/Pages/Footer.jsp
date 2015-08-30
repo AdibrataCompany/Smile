@@ -47,10 +47,12 @@
 
 <script type="text/javascript">
 	function end() {
-		alert("end");
+		
 		document.getElementById("mode").value = "end";
+		
 	}
 	function save(param) {
+		alert(param);
 		document.getElementById("mode").value = param;
 	}
 	function search() {

@@ -21,14 +21,14 @@
 
 		<s:form action="dealer.action" theme="simple">
 			<center>
-				<h2>Dealer</h2>
+				<h2>Supplier</h2>
 				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>
 						<td><select name="searchcriteria">
 								<option value="0">Pilih</option>
-								<option value="name">Nama</option>
+								<option value="name">Name</option>
 								<option value="address">Alamat</option>
 								<option value="rt">RT</option>
 								<option value="rw">RW</option>

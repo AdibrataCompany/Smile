@@ -155,10 +155,7 @@
 			</result>
 			<result name="add">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-			<result name="detail">/Pages/Setting/JournalScheme/pageJournalSchDtl.jsp
-			</result>
-			<result name="saveDetail">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
-			</result>
+		
 			<result name="first">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 			<result name="prev">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
@@ -176,11 +173,12 @@
 			</result>
 			<result name="error">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-			<result name="saveadd" type="redirectAction">
+			
+			<result name="success" type="redirectAction">
 				<param name="actionName">journalscheme</param>
 				<param name="message">${message}</param>
 			</result>
-			<result name="saveedit" type="redirectAction">
+			<result name="end" type="redirectAction">
 				<param name="actionName">journalscheme</param>
 				<param name="message">${message}</param>
 			</result>

@@ -57,7 +57,7 @@
 						<th style="text-align: center;" width="5%"><button
 								class="btn btn-xs btn-default" type="submit" onclick="detail()">Detail</button></th>
 					</tr>
-					<s:iterator value="lstcoaSchmHdr">
+					<s:iterator value="lstcoaschmhdr">
 						<tr id="row_${id}">
 							<td>${coaSchmCode}</td>
 							<td>${coaSchmDesc}</td>
@@ -75,9 +75,6 @@
 	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
-	function search() {
-		document.getElementById("mode").value = "search";
-	}
 	function detail() {
 		document.getElementById("mode").value = "detail";
 	}

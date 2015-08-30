@@ -14,10 +14,4 @@
 			<message>This field is required</message>
 		</field-validator>
 	</field>
-	<field name="isactive">
-		<field-validator type="requiredstring">
-			<param name="trim">true</param>
-			<message>This field is required</message>
-		</field-validator>
-	</field>
 </validators>
