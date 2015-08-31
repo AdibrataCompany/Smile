@@ -32,7 +32,35 @@
 				<param name="actionName">assetdoc</param>
 			</result>
 		</action>
+		
+		<action name="assettype"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="execute">
+			<result name="input">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="search">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="add">/Pages/Setting/AssetType/editAssetType.jsp</result>
+			<result name="edit">/Pages/Setting/AssetType/editAssetType.jsp</result>
+			<result name="savedel">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="first">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="prev">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="next">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="last">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+		</action>
 
+		<action name="assettype_save"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="entry">
+			<result name="input">/Pages/Setting/AssetType/editAssetType.jsp</result>
+			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">assettype</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">assettype</param>
+			</result>
+		</action>
+		
 		<action name="assetmaster"
 			class="com.adibrata.smartdealer.action.setting.assetmaster.AssetMasterAction"
 			method="execute">
@@ -155,7 +183,7 @@
 			</result>
 			<result name="add">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-		
+
 			<result name="first">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
 			</result>
 			<result name="prev">/Pages/Setting/JournalScheme/pageJournalSchHdr.jsp
@@ -173,7 +201,7 @@
 			</result>
 			<result name="error">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
-			
+
 			<result name="success" type="redirectAction">
 				<param name="actionName">journalscheme</param>
 				<param name="message">${message}</param>

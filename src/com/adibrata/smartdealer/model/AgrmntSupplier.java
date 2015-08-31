@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;

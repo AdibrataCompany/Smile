@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Lesing And Consumer Finance</title>
 
 </head>
 <body>
@@ -95,7 +95,7 @@
 			</center>
 		</s:form>
 	</div>
-
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 <script type="text/javascript">
 	function search() {

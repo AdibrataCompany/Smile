@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,12 +22,14 @@ public class AssetType implements java.io.Serializable
 	{
 		
 		private long id;
+		private Partner partner;
 		private String assetTypeCode;
 		private String description;
 		private String labelNo1;
 		private String labelNo2;
-		private String sandiBils;
-		private String sandiBicf;
+		private String biLsCode;
+		private String biCfCode;
+		private Short isActive;
 		private String usrCrt;
 		private Date dtmUpd;
 		private String usrUpd;
@@ -39,15 +44,17 @@ public class AssetType implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetType(long id, String assetTypeCode, String description, String labelNo1, String labelNo2, String sandiBils, String sandiBicf, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AssetType(long id, Partner partner, String assetTypeCode, String description, String labelNo1, String labelNo2, String biLsCode, String biCfCode, Short isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
 			{
 				this.id = id;
+				this.partner = partner;
 				this.assetTypeCode = assetTypeCode;
 				this.description = description;
 				this.labelNo1 = labelNo1;
 				this.labelNo2 = labelNo2;
-				this.sandiBils = sandiBils;
-				this.sandiBicf = sandiBicf;
+				this.biLsCode = biLsCode;
+				this.biCfCode = biCfCode;
+				this.isActive = isActive;
 				this.usrCrt = usrCrt;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
@@ -65,6 +72,18 @@ public class AssetType implements java.io.Serializable
 		public void setId(long id)
 			{
 				this.id = id;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "PartnerCode")
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		public void setPartner(Partner partner)
+			{
+				this.partner = partner;
 			}
 			
 		@Column(name = "AssetTypeCode", length = 50)
@@ -111,26 +130,37 @@ public class AssetType implements java.io.Serializable
 				this.labelNo2 = labelNo2;
 			}
 			
-		@Column(name = "SandiBILS", length = 50)
-		public String getSandiBils()
+		@Column(name = "BI_LS_Code", length = 50)
+		public String getBiLsCode()
 			{
-				return this.sandiBils;
+				return this.biLsCode;
 			}
 			
-		public void setSandiBils(String sandiBils)
+		public void setBiLsCode(String biLsCode)
 			{
-				this.sandiBils = sandiBils;
+				this.biLsCode = biLsCode;
 			}
 			
-		@Column(name = "SandiBICF", length = 50)
-		public String getSandiBicf()
+		@Column(name = "BI_CF_Code", length = 50)
+		public String getBiCfCode()
 			{
-				return this.sandiBicf;
+				return this.biCfCode;
 			}
 			
-		public void setSandiBicf(String sandiBicf)
+		public void setBiCfCode(String biCfCode)
 			{
-				this.sandiBicf = sandiBicf;
+				this.biCfCode = biCfCode;
+			}
+			
+		@Column(name = "IsActive")
+		public Short getIsActive()
+			{
+				return this.isActive;
+			}
+			
+		public void setIsActive(Short isActive)
+			{
+				this.isActive = isActive;
 			}
 			
 		@Column(name = "UsrCrt", length = 50)

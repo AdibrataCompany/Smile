@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -56,6 +56,7 @@ public class Supplier implements java.io.Serializable
 		private Set<SuppEmplInfo> suppEmplInfos = new HashSet<SuppEmplInfo>(0);
 		private Set<PurchaseOrderHdr> purchaseOrderHdrs = new HashSet<PurchaseOrderHdr>(0);
 		private Set<ReturPurchaseHdr> returPurchaseHdrs = new HashSet<ReturPurchaseHdr>(0);
+		private Set<SuppOfficeInfo> suppOfficeInfos = new HashSet<SuppOfficeInfo>(0);
 		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
 		
 		public Supplier()
@@ -70,7 +71,7 @@ public class Supplier implements java.io.Serializable
 		public Supplier(long id, Partner partner, String name, String address, String rt, String rw, String kelurahan, String kecamatan, String city, String zipcode, String type, String areaPhone1, String phoneNo1, String areaPhone2, String phoneNo2,
 		        String areaFax, String faxNo, String handphone, String fullAddress, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetSupEmpl> agrmntAssetSupEmpls, Set<AgrmntAssetSupplier> agrmntAssetSuppliers,
 		        Set<Invoice> invoices, Set<EntrustHdr> entrustHdrs, Set<SupplierAccInfo> supplierAccInfos, Set<Stock> stocks, Set<SuppEmplInfo> suppEmplInfos, Set<PurchaseOrderHdr> purchaseOrderHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs,
-		        Set<PurchaseInvoice> purchaseInvoices)
+		        Set<SuppOfficeInfo> suppOfficeInfos, Set<PurchaseInvoice> purchaseInvoices)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -104,6 +105,7 @@ public class Supplier implements java.io.Serializable
 				this.suppEmplInfos = suppEmplInfos;
 				this.purchaseOrderHdrs = purchaseOrderHdrs;
 				this.returPurchaseHdrs = returPurchaseHdrs;
+				this.suppOfficeInfos = suppOfficeInfos;
 				this.purchaseInvoices = purchaseInvoices;
 			}
 			
@@ -462,6 +464,17 @@ public class Supplier implements java.io.Serializable
 		public void setReturPurchaseHdrs(Set<ReturPurchaseHdr> returPurchaseHdrs)
 			{
 				this.returPurchaseHdrs = returPurchaseHdrs;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+		public Set<SuppOfficeInfo> getSuppOfficeInfos()
+			{
+				return this.suppOfficeInfos;
+			}
+			
+		public void setSuppOfficeInfos(Set<SuppOfficeInfo> suppOfficeInfos)
+			{
+				this.suppOfficeInfos = suppOfficeInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")

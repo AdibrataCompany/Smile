@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +30,11 @@ public class AssetDocMaster implements java.io.Serializable
 		private String documentName;
 		private String assetType;
 		private Short isActive;
+		private Short isMandatory;
+		private Short newAssetMandatory;
+		private Short usedAssetMandatory;
+		private Short mainDoc;
+		private Short exCbumandatory;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -46,8 +51,8 @@ public class AssetDocMaster implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetDoc> agrmntAssetDocs,
-		        Set<StockDocument> stockDocuments)
+		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Short isMandatory, Short newAssetMandatory, Short usedAssetMandatory, Short mainDoc, Short exCbumandatory,
+		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetDoc> agrmntAssetDocs, Set<StockDocument> stockDocuments)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -55,6 +60,11 @@ public class AssetDocMaster implements java.io.Serializable
 				this.documentName = documentName;
 				this.assetType = assetType;
 				this.isActive = isActive;
+				this.isMandatory = isMandatory;
+				this.newAssetMandatory = newAssetMandatory;
+				this.usedAssetMandatory = usedAssetMandatory;
+				this.mainDoc = mainDoc;
+				this.exCbumandatory = exCbumandatory;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
@@ -130,6 +140,61 @@ public class AssetDocMaster implements java.io.Serializable
 		public void setIsActive(Short isActive)
 			{
 				this.isActive = isActive;
+			}
+			
+		@Column(name = "IsMandatory")
+		public Short getIsMandatory()
+			{
+				return this.isMandatory;
+			}
+			
+		public void setIsMandatory(Short isMandatory)
+			{
+				this.isMandatory = isMandatory;
+			}
+			
+		@Column(name = "NewAssetMandatory")
+		public Short getNewAssetMandatory()
+			{
+				return this.newAssetMandatory;
+			}
+			
+		public void setNewAssetMandatory(Short newAssetMandatory)
+			{
+				this.newAssetMandatory = newAssetMandatory;
+			}
+			
+		@Column(name = "UsedAssetMandatory")
+		public Short getUsedAssetMandatory()
+			{
+				return this.usedAssetMandatory;
+			}
+			
+		public void setUsedAssetMandatory(Short usedAssetMandatory)
+			{
+				this.usedAssetMandatory = usedAssetMandatory;
+			}
+			
+		@Column(name = "MainDoc")
+		public Short getMainDoc()
+			{
+				return this.mainDoc;
+			}
+			
+		public void setMainDoc(Short mainDoc)
+			{
+				this.mainDoc = mainDoc;
+			}
+			
+		@Column(name = "ExCBUMandatory")
+		public Short getExCbumandatory()
+			{
+				return this.exCbumandatory;
+			}
+			
+		public void setExCbumandatory(Short exCbumandatory)
+			{
+				this.exCbumandatory = exCbumandatory;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)

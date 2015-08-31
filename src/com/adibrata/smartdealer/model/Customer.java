@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -74,6 +74,7 @@ public class Customer implements java.io.Serializable
 		private Set<CoyCustComptInfo> coyCustComptInfos = new HashSet<CoyCustComptInfo>(0);
 		private Set<AgrmntAsset> agrmntAssets = new HashSet<AgrmntAsset>(0);
 		private Set<PersCustFinancialData> persCustFinancialDatas = new HashSet<PersCustFinancialData>(0);
+		private Set<NegCust> negCusts = new HashSet<NegCust>(0);
 		private Set<SalesInvoice> salesInvoices = new HashSet<SalesInvoice>(0);
 		private Set<CustomerBankInfo> customerBankInfos = new HashSet<CustomerBankInfo>(0);
 		private Set<PersCustTrusteeInfo> persCustTrusteeInfos = new HashSet<PersCustTrusteeInfo>(0);
@@ -96,8 +97,8 @@ public class Customer implements java.io.Serializable
 		        Set<PersCustOtherBussinessInfo> persCustOtherBussinessInfos, Set<Agrmnt> agrmntsForCustomerId, Set<PersCustJobInfo> persCustJobInfos, Set<PersCustResidenceInfo> persCustResidenceInfos, Set<DailyAraging> dailyAragings,
 		        Set<CoyCustWhInfo> coyCustWhInfos, Set<CoyCustLegalInfo> coyCustLegalInfos, Set<PersCust> persCusts, Set<CoyCustLegalInfo> coyCustLegalInfos_1, Set<PersCustEmergencyInfo> persCustEmergencyInfos,
 		        Set<CoyCustFinancialInfo> coyCustFinancialInfos, Set<PersCustCcinfo> persCustCcinfos, Set<CoyCustShareInfo> coyCustShareInfos, Set<CoyCustComptInfo> coyCustComptInfos, Set<AgrmntAsset> agrmntAssets,
-		        Set<PersCustFinancialData> persCustFinancialDatas, Set<SalesInvoice> salesInvoices, Set<CustomerBankInfo> customerBankInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos, Set<PersCustLegalInfo> persCustLegalInfos,
-		        Set<SalesOrderHdr> salesOrderHdrs, Set<PersCustFamilyInfo> persCustFamilyInfos)
+		        Set<PersCustFinancialData> persCustFinancialDatas, Set<NegCust> negCusts, Set<SalesInvoice> salesInvoices, Set<CustomerBankInfo> customerBankInfos, Set<PersCustTrusteeInfo> persCustTrusteeInfos,
+		        Set<PersCustLegalInfo> persCustLegalInfos, Set<SalesOrderHdr> salesOrderHdrs, Set<PersCustFamilyInfo> persCustFamilyInfos)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -149,6 +150,7 @@ public class Customer implements java.io.Serializable
 				this.coyCustComptInfos = coyCustComptInfos;
 				this.agrmntAssets = agrmntAssets;
 				this.persCustFinancialDatas = persCustFinancialDatas;
+				this.negCusts = negCusts;
 				this.salesInvoices = salesInvoices;
 				this.customerBankInfos = customerBankInfos;
 				this.persCustTrusteeInfos = persCustTrusteeInfos;
@@ -710,6 +712,17 @@ public class Customer implements java.io.Serializable
 		public void setPersCustFinancialDatas(Set<PersCustFinancialData> persCustFinancialDatas)
 			{
 				this.persCustFinancialDatas = persCustFinancialDatas;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+		public Set<NegCust> getNegCusts()
+			{
+				return this.negCusts;
+			}
+			
+		public void setNegCusts(Set<NegCust> negCusts)
+			{
+				this.negCusts = negCusts;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")

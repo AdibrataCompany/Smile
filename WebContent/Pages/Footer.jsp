@@ -52,7 +52,7 @@
 		
 	}
 	function save(param) {
-		alert(param);
+		
 		document.getElementById("mode").value = param;
 	}
 	function search() {

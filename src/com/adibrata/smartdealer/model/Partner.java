@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -100,6 +100,7 @@ public class Partner implements java.io.Serializable
 		private Set<SuspendReceive> suspendReceives = new HashSet<SuspendReceive>(0);
 		private Set<PurchaseInvoice> purchaseInvoices = new HashSet<PurchaseInvoice>(0);
 		private Set<AssetServiceMaster> assetServiceMasters = new HashSet<AssetServiceMaster>(0);
+		private Set<AssetType> assetTypes = new HashSet<AssetType>(0);
 		private Set<Employee> employees = new HashSet<Employee>(0);
 		private Set<Product> products = new HashSet<Product>(0);
 		private Set<MsUserRole> msUserRoles = new HashSet<MsUserRole>(0);
@@ -121,7 +122,8 @@ public class Partner implements java.io.Serializable
 		        Set<ResetPasswordLog> resetPasswordLogs, Set<Office> offices, Set<BankAccount> bankAccounts, Set<MsRole> msRoles, Set<ReturSalesHdr> returSalesHdrs, Set<Stock> stocks, Set<PettyCashHdr> pettyCashHdrs, Set<AdvanceCash> advanceCashes,
 		        Set<AssetDocMaster> assetDocMasters, Set<TrxSeqNo> trxSeqNos, Set<DanaTunai> danaTunais, Set<Pdcreceipt> pdcreceipts, Set<MsTable> msTables, Set<Workshop> workshops, Set<AssetServiceHdr> assetServiceHdrs, Set<Currency> currencies,
 		        Set<PaymentVoucher> paymentVouchers, Set<ServiceHdr> serviceHdrs, Set<ProductOffering> productOfferings, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<SalesInvoice> salesInvoices, Set<JrnlHdr> jrnlHdrs, Set<OtherDsbHdr> otherDsbHdrs,
-		        Set<InsRateToCust> insRateToCusts, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices, Set<AssetServiceMaster> assetServiceMasters, Set<Employee> employees, Set<Product> products, Set<MsUserRole> msUserRoles)
+		        Set<InsRateToCust> insRateToCusts, Set<SuspendReceive> suspendReceives, Set<PurchaseInvoice> purchaseInvoices, Set<AssetServiceMaster> assetServiceMasters, Set<AssetType> assetTypes, Set<Employee> employees, Set<Product> products,
+		        Set<MsUserRole> msUserRoles)
 			{
 				this.partnerCode = partnerCode;
 				this.name = name;
@@ -201,6 +203,7 @@ public class Partner implements java.io.Serializable
 				this.suspendReceives = suspendReceives;
 				this.purchaseInvoices = purchaseInvoices;
 				this.assetServiceMasters = assetServiceMasters;
+				this.assetTypes = assetTypes;
 				this.employees = employees;
 				this.products = products;
 				this.msUserRoles = msUserRoles;
@@ -1073,6 +1076,17 @@ public class Partner implements java.io.Serializable
 		public void setAssetServiceMasters(Set<AssetServiceMaster> assetServiceMasters)
 			{
 				this.assetServiceMasters = assetServiceMasters;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+		public Set<AssetType> getAssetTypes()
+			{
+				return this.assetTypes;
+			}
+			
+		public void setAssetTypes(Set<AssetType> assetTypes)
+			{
+				this.assetTypes = assetTypes;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")

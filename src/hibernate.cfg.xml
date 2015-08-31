@@ -88,6 +88,7 @@
         <mapping class="com.adibrata.smartdealer.model.AdvanceCashReversal" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEmergencyInfo" />
         <mapping class="com.adibrata.smartdealer.model.GoLive" />
+        <mapping class="com.adibrata.smartdealer.model.NegCust" />
         <mapping class="com.adibrata.smartdealer.model.Office" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsEndorsInfo" />
         <mapping class="com.adibrata.smartdealer.model.InstSchedule" />
@@ -148,6 +149,7 @@
         <mapping class="com.adibrata.smartdealer.model.ReturSalesDtl" />
         <mapping class="com.adibrata.smartdealer.model.PaymentReversal" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEntInfo" />
+        <mapping class="com.adibrata.smartdealer.model.SuppOfficeInfo" />
         <mapping class="com.adibrata.smartdealer.model.Partner" />
         <mapping class="com.adibrata.smartdealer.model.TrxSeqNo" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseDtl" />

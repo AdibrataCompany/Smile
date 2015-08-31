@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 27, 2015 4:44:07 PM by Hibernate Tools 4.3.1
+// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -77,6 +77,7 @@ public class Office implements java.io.Serializable
 		private Set<DanaTunai> danaTunais = new HashSet<DanaTunai>(0);
 		private Set<PayReqHdr> payReqHdrs = new HashSet<PayReqHdr>(0);
 		private Set<AccountPayable> accountPayables = new HashSet<AccountPayable>(0);
+		private Set<SuppOfficeInfo> suppOfficeInfos = new HashSet<SuppOfficeInfo>(0);
 		private Set<ServiceHdr> serviceHdrs = new HashSet<ServiceHdr>(0);
 		
 		public Office()
@@ -93,7 +94,8 @@ public class Office implements java.io.Serializable
 		        Set<PaymentVoucher> paymentVouchers, Set<SalesInvoice> salesInvoices, Set<SalesOrderHdr> salesOrderHdrs, Set<PdcHdr> pdcHdrs, Set<ReturSalesHdr> returSalesHdrs, Set<Employee> employees, Set<IncoBranchOffice> incoBranchOffices,
 		        Set<Agrmnt> agrmnts, Set<InsRateToCust> insRateToCusts, Set<BankAccount> bankAccounts, Set<AdvanceCash> advanceCashes, Set<PettyCashHdr> pettyCashHdrs, Set<ReturPurchaseHdr> returPurchaseHdrs, Set<OtherRcvHdr> otherRcvHdrs,
 		        Set<EntrustHdr> entrustHdrs, Set<Invoice> invoices, Set<Pdcreceipt> pdcreceipts, Set<SuspendReceive> suspendReceives, Set<OtherDsbHdr> otherDsbHdrs, Set<PurchaseInvoice> purchaseInvoices, Set<ProductOffering> productOfferings,
-		        Set<CashBankHdr> cashBankHdrs, Set<CashierHistory> cashierHistories, Set<Stock> stocks, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<ServiceHdr> serviceHdrs)
+		        Set<CashBankHdr> cashBankHdrs, Set<CashierHistory> cashierHistories, Set<Stock> stocks, Set<DanaTunai> danaTunais, Set<PayReqHdr> payReqHdrs, Set<AccountPayable> accountPayables, Set<SuppOfficeInfo> suppOfficeInfos,
+		        Set<ServiceHdr> serviceHdrs)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -148,6 +150,7 @@ public class Office implements java.io.Serializable
 				this.danaTunais = danaTunais;
 				this.payReqHdrs = payReqHdrs;
 				this.accountPayables = accountPayables;
+				this.suppOfficeInfos = suppOfficeInfos;
 				this.serviceHdrs = serviceHdrs;
 			}
 			
@@ -737,6 +740,17 @@ public class Office implements java.io.Serializable
 		public void setAccountPayables(Set<AccountPayable> accountPayables)
 			{
 				this.accountPayables = accountPayables;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
+		public Set<SuppOfficeInfo> getSuppOfficeInfos()
+			{
+				return this.suppOfficeInfos;
+			}
+			
+		public void setSuppOfficeInfos(Set<SuppOfficeInfo> suppOfficeInfos)
+			{
+				this.suppOfficeInfos = suppOfficeInfos;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "office")
