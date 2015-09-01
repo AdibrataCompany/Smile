@@ -23,13 +23,13 @@
 		<s:form action="journalscheme.action" theme="simple">
 			<center>
 				<h2>Journal Scheme</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+				<s:hidden name="mode" id="mode"/>
 				<br>
 				<div class="col-lg-6">
 					<div class="input-group">
 						<span class="input-group-addon"> <select
 							name="searchcriteria">
-								<option value="">Pilih Parameter</option>
+								<option value="">Search Criteria</option>
 								<option value="coaSchmCode">COA Scheme Code</option>
 								<option value="coaSchmDesc">COA Scheme Description</option>
 								<option value="isActive">Active</option>

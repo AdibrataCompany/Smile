@@ -337,7 +337,7 @@
 
 		<action name="journalscheme_save"
 			class="com.adibrata.smartdealer.action.setting.journalscheme.JournalSchemeAction"
-			method="save">
+			method="entry">
 			<result name="input">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp
 			</result>
 			<result name="error">/Pages/Setting/JournalScheme/editJournalSchHdr.jsp

@@ -18,7 +18,7 @@
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
 		<s:form action="assettype_save.action" theme="css_xhtml"
-			validate="true" method="post">
+			 method="post">
 			<center>
 				<h2>Asset Type Master</h2>
 				<s:hidden name="mode" id="mode" />

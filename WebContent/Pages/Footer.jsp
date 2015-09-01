@@ -15,6 +15,11 @@
 			</tr>
 		</table>
 	</center>
+	<div class="body-block">
+		<div class="image-loading">
+			<img src="images/circle-loading-animation.gif" alt="loading images" />
+		</div>
+	</div>
 </body>
 
 
@@ -47,12 +52,12 @@
 
 <script type="text/javascript">
 	function end() {
-		
+
 		document.getElementById("mode").value = "end";
-		
+
 	}
 	function save(param) {
-		
+
 		document.getElementById("mode").value = param;
 	}
 	function search() {
@@ -93,4 +98,24 @@
 		});
 	});
 </script>
+
+<style>
+/*body-block style*/
+.body-block {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 9999;
+	display: none; /*hide the block*/
+}
+
+.image-loading {
+	margin: auto;
+	text-align: center;
+	margin-top: 20%;
+}
+</style>
 </html>

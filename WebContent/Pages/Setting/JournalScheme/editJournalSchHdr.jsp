@@ -25,15 +25,15 @@
 					<s:hidden name="id" />
 					<s:label name="message" id="message" />
 
-					<s:hidden name="lstcoaschmdtl" />
+
 					<table class="table table-striped table-hover">
 						<tr>
 							<td>COA Scheme Code</td>
-							<td><s:textfield name="coschmcode" /></td>
+							<td><s:textfield name="coaschmcode" /></td>
 						</tr>
 						<tr>
 							<td>COA Scheme Description</td>
-							<td><s:textfield name="coschmdesc" /></td>
+							<td><s:textfield name="coaschmdesc" /></td>
 						</tr>
 						<tr>
 							<td>Active</td>
@@ -47,16 +47,17 @@
 							<th style="text-align: center;">Description</th>
 							<th style="text-align: center;">Coa Code</th>
 						</tr>
-						<s:iterator value="lstcoaschmdtl" id="lstcoaschmdtl">
+						<s:iterator value="lstcoaschmdtl" id="lstcoaschmdtl" status="ctr">
 							<tr id="row_${coamasterid}">
-
-								<td><s:label name="coaname" id="coaname" /> <s:hidden
-										name="coaname" id="coaname" /></td>
-								<td><s:label name="coadesc" /> <s:hidden name="coadesc"
-										id="coadesc" /></td>
-								<td><s:textfield name="coacode" id="coacode" /></td>
+								<td>${coaname}<s:hidden name="lstcoaschmdtl[%{#ctr.index}].coaname"/>
+								<s:hidden name="lstcoaschmdtl[%{#ctr.index}].coamasterid"/>
+								</td>
+								<td>${coadesc}<s:hidden name="lstcoaschmdtl[%{#ctr.index}].coadesc"/> </td>
+								<td><s:textfield
+										name="lstcoaschmdtl[%{#ctr.index}].coacode" id="coacode" /></td>
 							</tr>
 						</s:iterator>
+						
 					</table>
 					<table width="100%">
 						<tr>
@@ -76,14 +77,10 @@
 </body>
 <script type="text/javascript">
 	function end() {
-
 		document.getElementById("mode").value = "end";
-
 	}
 	function save() {
-alert ('save');
 		document.getElementById("mode").value = "save";
-
 	}
 </script>
 </html>

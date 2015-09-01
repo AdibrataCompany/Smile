@@ -330,13 +330,26 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						final CoaSchmDtl dtl = new CoaSchmDtl();
-						dtl.setCoaSchmHdr(coaSchmHdr);
-						this.getSession().delete(dtl);
 
+						final Query q = this.getSession().createQuery("delete from CoaSchmDtl where coaschmhdrid = :hdr ");
+						q.setParameter("hdr", coaSchmHdr.getId());
+						q.executeUpdate();
+						
+						// final CoaSchmHdr hdr = (CoaSchmHdr) q.list().get(0);
+						//
+						// for (final CoaSchmDtl sdr : hdr.getCoaSchmDtls())
+						// {
+						// this.getSession().delete(sdr);
+						// }
+						// this.getSession().addEventListeners(listeners);
+						// final Query qryUpd = this.session.createQuery("update BankAccount a set seqno = seqno + 1 " + " Where Id = :id" + " ").setParameter("id", bankaccountid);
+						//
+						//
+						//
+						// this.getSession().flush();
 						this.getSession().delete(coaSchmHdr);
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -346,9 +359,9 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		/**
 		 * @param currentpage
 		 *            the currentpage to set

@@ -23,50 +23,50 @@
 		<s:form action="assettype.action" theme="simple">
 			<center>
 				<h2>Asset Type Master</h2>
-				<s:hidden name="mode" id="mode" value="" />
+				<s:hidden name="mode" id="mode" />
 				<s:label name="message" id="message" />
 				<br>
 				<div class="table-responsive">
-					<table width="100%">
-						<tr>
-							<td width="10%"><s:select name="searchcriteria"
-									class="btn btn-xs" headerKey="" headerValue="Search Criteria"
-									list="#{'assetTypeCode':'Code','description':'Description'}" /></td>
-							<td width="20%">
-								<div class="input-group">
-									<s:textfield name="searchvalue" placeholder="Search value"
-										class="form-control" />
-									<span class="input-group-btn">
-										<button class="btn btn-xs btn-primary" type="submit"
-											onclick="search()">Search</button>
-									</span>
-								</div>
-							</td>
+					<div class="col-lg-6">
+						<div class="input-group">
+							<span class="input-group-addon"> <s:select
+									name="searchcriteria" class="btn btn-xs" headerKey=""
+									headerValue="Search Criteria"
+									list="#{'coaSchmCode':'COA Scheme Code','coaSchmDesc':'COA Scheme Description'}" />
 
-							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
-						</tr>
-						<tr>
-							<td colspan="3" align="right">
-								<button class="btn btn-sm btn-danger" type="submit"
-									onclick="assetattribute()">
-									<span class="glyphicon glyphicon-remove-sign"></span><br>Attribute
+
+							</span> <input type="text" class="form-control" placeholder="Pencarian"
+								name="searchvalue"> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit" onclick="search()">
+									<span class="glyphicon glyphicon-search"></span>
 								</button>
-								<button class="btn btn-sm btn-danger" type="submit"
-									onclick="assetcategory()">
-									<span class="glyphicon glyphicon-remove-sign"></span><br>Category
-								</button>
-								<button class="btn btn-sm btn-danger" type="submit"
-									onclick="assetdocument()">
-									<span class="glyphicon glyphicon-remove-sign"></span><br>Document
-								</button>
-								<button class="btn btn-sm btn-danger" type="submit"
-									onclick="assetmaster()">
-									<span class="glyphicon glyphicon-remove-sign"></span><br>Asset
-									Master
-								</button>
-							</td>
-						</tr>
-					</table>
+							</span>
+						</div>
+						<!-- /input-group -->
+					</div>
+					<div class="col-lg-6" align="right">
+						<%@include file="/Pages/EntryMaster.jsp"%>
+
+
+
+						<button class="btn btn-sm btn-default" type="submit"
+							onclick="assetattribute()">
+							<span class="glyphicon glyphicon-barcode"></span><br>Attribute
+						</button>
+						<button class="btn btn-sm btn-default" type="submit"
+							onclick="assetcategory()">
+							<span class="glyphicon glyphicon-certificate"></span><br>Category
+						</button>
+						<button class="btn btn-sm btn-default" type="submit"
+							onclick="assetdocument()">
+							<span class="glyphicon glyphicon-cloud"></span><br>Document
+						</button>
+						<button class="btn btn-sm btn-default" type="submit"
+							onclick="assetmaster()">
+							<span class="glyphicon glyphicon-fullscreen"></span><br>Asset
+							Master
+						</button>
+					</div>
 				</div>
 				<br>
 				<div class="table-responsive">

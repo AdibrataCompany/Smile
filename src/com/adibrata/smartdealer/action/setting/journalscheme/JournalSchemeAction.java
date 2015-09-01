@@ -15,11 +15,12 @@ import com.adibrata.smartdealer.model.ListCoaSchmDtl;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.JournalSchemeService;
+import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class JournalSchemeAction extends BaseAction implements SessionAware
+public class JournalSchemeAction extends BaseAction implements SessionAware, Preparable
 	{
 
 		/**
@@ -60,26 +61,25 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 						this.pagenumber = 1;
 					}
 			}
-
-		@Override
-		public void setSession(final Map<String, Object> session)
-			{
-				// TODO Auto-generated method stub
-				// this.dtl = ActionContext.getContext().getSession();
-				try
-					{
-						this.sescoaschmdtl = session;
-					}
-				catch (final Exception exp)
-					{
-
-					}
-			}
 			
+		// @Override
+		// public void setSession(final Map<String, Object> session)
+		// {
+		// // TODO Auto-generated method stub
+		// // this.dtl = ActionContext.getContext().getSession();
+		// try
+		// {
+		// this.sescoaschmdtl = session;
+		// }
+		// catch (final Exception exp)
+		// {
+		//
+		// }
+		// }
+		
 		@Override
 		public String execute() throws Exception
 			{
-
 				if (this.mode != null)
 					{
 						switch (this.mode)
@@ -109,21 +109,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 								case "add" :
 									try
 										{
-											final CoaSchmHdr hdr = new CoaSchmHdr();
-											hdr.setPartner(this.partner);
-											hdr.setId(0);
-											
-											this.lstcoaschmdtl = new ArrayList<ListCoaSchmDtl>();
-											this.service = new JournalSchemeDao();
-											
-											this.lstcoaschmdtl = this.service.ListCoaSchmDtl(hdr);
-
-											if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
-												{
-													this.sescoaschmdtl.remove("JournalSchemeSetting");
-												}
-											this.sescoaschmdtl.put("JournalSchemeSetting", this.lstcoaschmdtl);
-											
+											this.InitialAdd();
 										}
 									catch (final Exception e)
 										{
@@ -143,7 +129,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 											e.printStackTrace();
 										}
 									break;
-
+									
 								case "first" :
 									this.pagenumber = 1;
 									try
@@ -207,7 +193,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 				return this.mode;
 			}
 			
-		public String save()
+		public String entry()
 			{
 				if (this.mode != null)
 					{
@@ -243,7 +229,36 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 					}
 				return this.mode;
 			}
+			
+		private void InitialAdd() throws Exception
+			{
+				try
+					{
+						this.coaschmhdr = new CoaSchmHdr();
+						this.coaschmhdr.setPartner(this.partner);
+						this.coaschmhdr.setId(0);
 
+						this.lstcoaschmdtl = new ArrayList<ListCoaSchmDtl>();
+						this.service = new JournalSchemeDao();
+
+						this.lstcoaschmdtl = this.service.ListCoaSchmDtl(this.coaschmhdr);
+						
+						// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
+						// {
+						// this.sescoaschmdtl.remove("JournalSchemeSetting");
+						// }
+						// this.sescoaschmdtl.put("JournalSchemeSetting", this.lstcoaschmdtl);
+					}
+				catch (final Exception exp)
+					{
+
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+			
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
@@ -324,11 +339,11 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 									}
 									
 								this.lstcoaschmdtl = this.service.ListCoaSchmDtl(this.coaschmhdr);
-								if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
-									{
-										this.sescoaschmdtl.remove("JournalSchemeSetting");
-									}
-								this.sescoaschmdtl.put("JournalSchemeSetting", this.lstcoaschmdtl);
+								// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
+								// {
+								// this.sescoaschmdtl.remove("JournalSchemeSetting");
+								// }
+								// this.sescoaschmdtl.put("JournalSchemeSetting", this.lstcoaschmdtl);
 							}
 						else
 							{
@@ -356,7 +371,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 						this.service = new JournalSchemeDao();
 						this.coaschmhdr = new CoaSchmHdr();
 						
-						this.lstcoaschmdtl = (List<ListCoaSchmDtl>) this.sescoaschmdtl.get("JournalSchemeSetting");
+						// this.lstcoaschmdtl = (List<ListCoaSchmDtl>) this.sescoaschmdtl.get("JournalSchemeSetting");
 						this.coaschmhdr.setPartner(this.getPartner());
 						this.coaschmhdr.setCoaSchmCode(this.coaschmcode);
 						this.coaschmhdr.setCoaSchmDesc(this.coaschmdesc);
@@ -378,10 +393,10 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 						this.mode = SUCCESS;
 
 						this.setMessage(BaseAction.SuccessMessage());
-						if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
-							{
-								this.sescoaschmdtl.remove("JournalSchemeSetting");
-							}
+						// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
+						// {
+						// this.sescoaschmdtl.remove("JournalSchemeSetting");
+						// }
 					}
 				catch (final Exception exp)
 					{
@@ -397,7 +412,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 
 		private String SaveDelete() throws Exception
 			{
-				String status = "";
+				
 				try
 					{
 						if (this.getId() != null)
@@ -416,14 +431,14 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 					}
 				catch (final Exception exp)
 					{
-						status = ERROR;
+						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 			
 		/**
@@ -721,5 +736,12 @@ public class JournalSchemeAction extends BaseAction implements SessionAware
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
 			}
 	}
