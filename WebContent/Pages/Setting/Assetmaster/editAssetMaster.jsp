@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Lesing And Consumer Finance Leasing</title>
 
 </head>
 <body>
@@ -25,10 +25,11 @@
 				<div class="col-md-4">
 
 					<h2>Asset Master</h2>
-					<input type="text" name="mode" id="mode"
-						style="visibility: hidden;"></input>
-					<s:hidden name="id" />
-
+					<s:hidden name="mode" id="mode" />
+					<s:hidden name="assettypeid" id="assettypeid" />
+					<s:hidden name="assettypedescription" id="assettypedescription" />
+					<s:hidden name="assettypecode" id="assettypecode" />
+					<s:label name="message" />
 					<div align="left" class="form-group">
 						<label>Brand</label>
 						<div align="left" class="form-inline">
@@ -58,15 +59,13 @@
 								placeholder="Active" class="form-control" />
 						</div>
 					</div>
-
 					<br>
-						<%@include file="/Pages/Include/SubmitButton.jsp"%>
-
+					<%@include file="/Pages/Include/SubmitButton.jsp"%>
 				</div>
 			</center>
 		</s:form>
 	</div>
-<%@include file="/Pages/Footer.jsp"%>
+	<%@include file="/Pages/Footer.jsp"%>
 </body>
 
 </html>
