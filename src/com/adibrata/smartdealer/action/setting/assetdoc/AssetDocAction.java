@@ -5,10 +5,13 @@ import java.util.List;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
+import com.adibrata.smartdealer.dao.setting.AssetTypeMasterDao;
 import com.adibrata.smartdealer.model.AssetDocMaster;
+import com.adibrata.smartdealer.model.AssetType;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.adibrata.smartdealer.service.setting.AssetDocMasterService;
+import com.adibrata.smartdealer.service.setting.AssetTypeService;
 import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
@@ -32,17 +35,19 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private String searchcriteria;
 		private String searchvalue;
 		private Long id;
-		
+		private AssetType assettype;
 		private int pageNumber;
 		private String message;
 
 		private String documentcode;
 		private String documentname;
-		private String assettype;
+		private Long assettypeid;
+		private String assettypecode;
 		private Short isactive;
 		private String status;
 		private String lbltest;
-
+		private String assettypedescription;
+		
 		/**
 		 * @throws Exception
 		 */
@@ -53,10 +58,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 				this.office = new Office();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
-
-				this.assetdocmasterservice = new AssetDocMasterDao();
-				this.assetdocmaster = new AssetDocMaster();
-
+				
 				if (this.pageNumber == 0)
 					{
 						this.pageNumber = 1;
@@ -176,6 +178,29 @@ public class AssetDocAction extends BaseAction implements Preparable
 				else
 					{
 						this.pageNumber = 1;
+						
+						try
+							{
+								if (this.assettypeid != null)
+									{
+										this.assettype = new AssetType();
+										this.assettype.setId(this.assettypeid);
+										AssetTypeService assetservice;
+										assetservice = new AssetTypeMasterDao();
+										this.assettype = assetservice.View(this.assettypeid);
+										this.assettypecode = this.assettype.getAssetTypeCode();
+										this.assettypedescription = this.assettype.getDescription();
+									}
+								else
+									{
+										strMode = "end";
+									}
+							}
+						catch (final Exception e)
+							{
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 
 						strMode = INPUT;
 					}
@@ -211,6 +236,8 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.assetdocmasterservice = new AssetDocMasterDao();
+
 						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
@@ -228,6 +255,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.assetdocmasterservice = new AssetDocMasterDao();
 
 						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = this.assetdocmasterservice.getCurrentpage();
@@ -250,6 +278,8 @@ public class AssetDocAction extends BaseAction implements Preparable
 					{
 						if (this.getId() != null)
 							{
+								this.assetdocmasterservice = new AssetDocMasterDao();
+
 								this.assetdocmaster = this.assetdocmasterservice.View(this.id);
 								this.partner = this.assetdocmaster.getPartner();
 								this.documentcode = this.assetdocmaster.getDocumentCode();
@@ -284,6 +314,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 								final AssetDocMaster assetDocMaster = new AssetDocMaster();
 
 								assetDocMaster.setId(this.getId());
+								this.assetdocmasterservice = new AssetDocMasterDao();
 
 								this.assetdocmasterservice.SaveDel(assetDocMaster);
 								this.setMessage(BaseAction.SuccessMessage());
@@ -363,11 +394,13 @@ public class AssetDocAction extends BaseAction implements Preparable
 				try
 					{
 						this.assetdocmaster = new AssetDocMaster();
+						
 						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
 						this.assetdocmaster.setDocumentName(this.getDocumentname());
 						this.assetdocmaster.setAssetType(this.getAssettype());
 						this.assetdocmaster.setPartner(this.getPartner());
 						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
+						this.assetdocmasterservice = new AssetDocMasterDao();
 
 						this.assetdocmasterservice.SaveAdd(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
@@ -396,6 +429,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 						this.assetdocmaster.setAssetType(this.getAssettype());
 						this.assetdocmaster.setPartner(this.getPartner());
 						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
+						this.assetdocmasterservice = new AssetDocMasterDao();
 
 						this.assetdocmasterservice.SaveEdit(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
@@ -413,29 +447,55 @@ public class AssetDocAction extends BaseAction implements Preparable
 				return this.mode;
 			}
 
-		// @Override
-		// public void validate()
-		// {
-		// if (this.getDocumentCode().length() == 0)
-		// {
-		// this.addFieldError("documentCode", "Document Code id Required");
-		// }
-		// if (this.getDocumentName().length() == 0)
-		// {
-		// this.addFieldError("documentName", "Document Name id Required");
-		// }
-		// if (this.getAssetType().length() == 0)
-		// {
-		// this.addFieldError("this.assetType", "Asset Type is required");
-		// }
-		// }
+		/**
+		 * @return the mode
+		 */
+		public String getMode()
+			{
+				return this.mode;
+			}
 
 		/**
-		 * @return the serialversionuid
+		 * @param mode
+		 *            the mode to set
 		 */
-		public static long getSerialversionuid()
+		public void setMode(final String mode)
 			{
-				return serialVersionUID;
+				this.mode = mode;
+			}
+
+		/**
+		 * @return the assetdocmasterservice
+		 */
+		public AssetDocMasterService getAssetdocmasterservice()
+			{
+				return this.assetdocmasterservice;
+			}
+
+		/**
+		 * @param assetdocmasterservice
+		 *            the assetdocmasterservice to set
+		 */
+		public void setAssetdocmasterservice(final AssetDocMasterService assetdocmasterservice)
+			{
+				this.assetdocmasterservice = assetdocmasterservice;
+			}
+
+		/**
+		 * @return the assetdocmaster
+		 */
+		public AssetDocMaster getAssetdocmaster()
+			{
+				return this.assetdocmaster;
+			}
+
+		/**
+		 * @param assetdocmaster
+		 *            the assetdocmaster to set
+		 */
+		public void setAssetdocmaster(final AssetDocMaster assetdocmaster)
+			{
+				this.assetdocmaster = assetdocmaster;
 			}
 
 		/**
@@ -444,14 +504,6 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public Partner getPartner()
 			{
 				return this.partner;
-			}
-
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
 			}
 
 		/**
@@ -464,6 +516,14 @@ public class AssetDocAction extends BaseAction implements Preparable
 			}
 
 		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
+		/**
 		 * @param office
 		 *            the office to set
 		 */
@@ -472,21 +532,21 @@ public class AssetDocAction extends BaseAction implements Preparable
 				this.office = office;
 			}
 
-		@Override
-		public void prepare() throws Exception
+		/**
+		 * @return the lstassetdocmasters
+		 */
+		public List<AssetDocMaster> getLstassetdocmasters()
 			{
-				// TODO Auto-generated method stub
-
+				return this.lstassetdocmasters;
 			}
 
-		public String getMode()
+		/**
+		 * @param lstassetdocmasters
+		 *            the lstassetdocmasters to set
+		 */
+		public void setLstassetdocmasters(final List<AssetDocMaster> lstassetdocmasters)
 			{
-				return this.mode;
-			}
-
-		public void setMode(final String mode)
-			{
-				this.mode = mode;
+				this.lstassetdocmasters = lstassetdocmasters;
 			}
 
 		/**
@@ -495,14 +555,6 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public String getSearchcriteria()
 			{
 				return this.searchcriteria;
-			}
-
-		/**
-		 * @return the searchvalue
-		 */
-		public String getSearchvalue()
-			{
-				return this.searchvalue;
 			}
 
 		/**
@@ -515,6 +567,14 @@ public class AssetDocAction extends BaseAction implements Preparable
 			}
 
 		/**
+		 * @return the searchvalue
+		 */
+		public String getSearchvalue()
+			{
+				return this.searchvalue;
+			}
+
+		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
 		 */
@@ -524,16 +584,46 @@ public class AssetDocAction extends BaseAction implements Preparable
 			}
 
 		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+
+		/**
+		 * @return the assettype
+		 */
+		public AssetType getAssettype()
+			{
+				return this.assettype;
+			}
+
+		/**
+		 * @param assettype
+		 *            the assettype to set
+		 */
+		public void setAssettype(final AssetType assettype)
+			{
+				this.assettype = assettype;
+			}
+
+		/**
 		 * @return the pageNumber
 		 */
 		public int getPageNumber()
 			{
 				return this.pageNumber;
 			}
-
-		/**
-		 * @return the searchBy
-		 */
 
 		/**
 		 * @param pageNumber
@@ -561,104 +651,172 @@ public class AssetDocAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 
-		public String getStatus()
-			{
-				return this.status;
-			}
-
-		public void setStatus(final String status)
-			{
-				this.status = status;
-			}
-
-		public Long getId()
-			{
-				return this.id;
-			}
-
-		public void setId(final Long id)
-			{
-				this.id = id;
-			}
-
-		public String getLbltest()
-			{
-				return this.lbltest;
-			}
-
-		public void setLbltest(final String lbltest)
-			{
-				this.lbltest = lbltest;
-			}
-
+		/**
+		 * @return the documentcode
+		 */
 		public String getDocumentcode()
 			{
 				return this.documentcode;
 			}
 
+		/**
+		 * @param documentcode
+		 *            the documentcode to set
+		 */
 		public void setDocumentcode(final String documentcode)
 			{
 				this.documentcode = documentcode;
 			}
 
+		/**
+		 * @return the documentname
+		 */
 		public String getDocumentname()
 			{
 				return this.documentname;
 			}
 
+		/**
+		 * @param documentname
+		 *            the documentname to set
+		 */
 		public void setDocumentname(final String documentname)
 			{
 				this.documentname = documentname;
 			}
 
-		public String getAssettype()
+		/**
+		 * @return the assettypeid
+		 */
+		public Long getAssettypeid()
 			{
-				return this.assettype;
+				return this.assettypeid;
 			}
 
-		public void setAssettype(final String assettype)
+		/**
+		 * @param assettypeid
+		 *            the assettypeid to set
+		 */
+		public void setAssettypeid(final Long assettypeid)
 			{
-				this.assettype = assettype;
+				this.assettypeid = assettypeid;
 			}
 
+		/**
+		 * @return the assettypecode
+		 */
+		public String getAssettypecode()
+			{
+				return this.assettypecode;
+			}
+
+		/**
+		 * @param assettypecode
+		 *            the assettypecode to set
+		 */
+		public void setAssettypecode(final String assettypecode)
+			{
+				this.assettypecode = assettypecode;
+			}
+
+		/**
+		 * @return the isactive
+		 */
 		public Short getIsactive()
 			{
 				return this.isactive;
 			}
 
+		/**
+		 * @param isactive
+		 *            the isactive to set
+		 */
 		public void setIsactive(final Short isactive)
 			{
 				this.isactive = isactive;
 			}
 
-		public AssetDocMasterService getAssetdocmasterservice()
+		/**
+		 * @return the status
+		 */
+		public String getStatus()
 			{
-				return this.assetdocmasterservice;
+				return this.status;
 			}
 
-		public void setAssetdocmasterservice(final AssetDocMasterService assetdocmasterservice)
+		/**
+		 * @param status
+		 *            the status to set
+		 */
+		public void setStatus(final String status)
 			{
-				this.assetdocmasterservice = assetdocmasterservice;
+				this.status = status;
 			}
 
-		public AssetDocMaster getAssetdocmaster()
+		/**
+		 * @return the lbltest
+		 */
+		public String getLbltest()
 			{
-				return this.assetdocmaster;
+				return this.lbltest;
 			}
 
-		public void setAssetdocmaster(final AssetDocMaster assetdocmaster)
+		/**
+		 * @param lbltest
+		 *            the lbltest to set
+		 */
+		public void setLbltest(final String lbltest)
 			{
-				this.assetdocmaster = assetdocmaster;
+				this.lbltest = lbltest;
 			}
 
-		public List<AssetDocMaster> getLstassetdocmasters()
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
 			{
-				return this.lstassetdocmasters;
+				return serialVersionUID;
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
+			}
+			
+		/**
+		 * @return the assettypedescription
+		 */
+		public String getAssettypedescription()
+			{
+				return this.assettypedescription;
+			}
+			
+		/**
+		 * @param assettypedescription
+		 *            the assettypedescription to set
+		 */
+		public void setAssettypedescription(final String assettypedescription)
+			{
+				this.assettypedescription = assettypedescription;
 			}
 
-		public void setLstassetdocmasters(final List<AssetDocMaster> lstassetdocmasters)
-			{
-				this.lstassetdocmasters = lstassetdocmasters;
-			}
+		// @Override
+		// public void validate()
+		// {
+		// if (this.getDocumentCode().length() == 0)
+		// {
+		// this.addFieldError("documentCode", "Document Code id Required");
+		// }
+		// if (this.getDocumentName().length() == 0)
+		// {
+		// this.addFieldError("documentName", "Document Name id Required");
+		// }
+		// if (this.getAssetType().length() == 0)
+		// {
+		// this.addFieldError("this.assetType", "Asset Type is required");
+		// }
+		// }
 
 	}

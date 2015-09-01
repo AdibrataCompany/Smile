@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
+// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,9 +22,9 @@ public class AssetAttribute implements java.io.Serializable
 	{
 		
 		private long id;
+		private AssetType assetType;
 		private String partnerCode;
 		private Long officeId;
-		private Long assetTypeId;
 		private String attributeCode;
 		private String attributeDescription;
 		private String attributeType;
@@ -39,12 +42,12 @@ public class AssetAttribute implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetAttribute(long id, String partnerCode, Long officeId, Long assetTypeId, String attributeCode, String attributeDescription, String attributeType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AssetAttribute(long id, AssetType assetType, String partnerCode, Long officeId, String attributeCode, String attributeDescription, String attributeType, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
+				this.assetType = assetType;
 				this.partnerCode = partnerCode;
 				this.officeId = officeId;
-				this.assetTypeId = assetTypeId;
 				this.attributeCode = attributeCode;
 				this.attributeDescription = attributeDescription;
 				this.attributeType = attributeType;
@@ -67,6 +70,18 @@ public class AssetAttribute implements java.io.Serializable
 				this.id = id;
 			}
 			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AssetTypeId")
+		public AssetType getAssetType()
+			{
+				return this.assetType;
+			}
+			
+		public void setAssetType(AssetType assetType)
+			{
+				this.assetType = assetType;
+			}
+			
 		@Column(name = "PartnerCode", length = 20)
 		public String getPartnerCode()
 			{
@@ -87,17 +102,6 @@ public class AssetAttribute implements java.io.Serializable
 		public void setOfficeId(Long officeId)
 			{
 				this.officeId = officeId;
-			}
-			
-		@Column(name = "AssetTypeId")
-		public Long getAssetTypeId()
-			{
-				return this.assetTypeId;
-			}
-			
-		public void setAssetTypeId(Long assetTypeId)
-			{
-				this.assetTypeId = assetTypeId;
 			}
 			
 		@Column(name = "AttributeCode", length = 20)

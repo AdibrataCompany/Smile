@@ -86,6 +86,7 @@
         <mapping class="com.adibrata.smartdealer.model.AssetDocMaster" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntIns" />
         <mapping class="com.adibrata.smartdealer.model.AdvanceCashReversal" />
+        <mapping class="com.adibrata.smartdealer.model.InsDocMaster" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEmergencyInfo" />
         <mapping class="com.adibrata.smartdealer.model.GoLive" />
         <mapping class="com.adibrata.smartdealer.model.NegCust" />
@@ -165,6 +166,7 @@
         <mapping class="com.adibrata.smartdealer.model.Employee" />
         <mapping class="com.adibrata.smartdealer.model.PersCustFamilyInfo" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntAssetOwnerInfo" />
+        <mapping class="com.adibrata.smartdealer.model.InsAsset" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntColl" />
         <mapping class="com.adibrata.smartdealer.model.AgrmntInsAsset" />
         <mapping class="com.adibrata.smartdealer.model.PersCustTrusteeInfo" />

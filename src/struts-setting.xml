@@ -17,6 +17,10 @@
 			<result name="prev">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="next">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
 			<result name="last">/Pages/Setting/Assetdoc/pageAssetDoc.jsp</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">assettype</param>
+				<param name="assettypeid">${assettypeid}</param>
+			</result>
 		</action>
 
 		<action name="assetdoc_save"
@@ -30,28 +34,56 @@
 			</result>
 			<result name="end" type="redirectAction">
 				<param name="actionName">assetdoc</param>
+				<param name="assettypeid">${assettypeid}</param>
 			</result>
 		</action>
-		
+
 		<action name="assettype"
 			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
 			method="execute">
-			<result name="input">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="search">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="add">/Pages/Setting/AssetType/editAssetType.jsp</result>
-			<result name="edit">/Pages/Setting/AssetType/editAssetType.jsp</result>
-			<result name="savedel">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="first">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="prev">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="next">/Pages/Setting/AssetType/pageAssetType.jsp</result>
-			<result name="last">/Pages/Setting/AssetType/pageAssetType.jsp</result>
+			<result name="input">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="search">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="add">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="edit">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="savedel">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="first">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="prev">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="next">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="last">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="assetattribute" type="redirectAction">
+				<param name="actionName">assetattribute</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetcategory" type="redirectAction">
+				<param name="actionName">assetcategory</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetdocument" type="redirectAction">
+				<param name="actionName">assetdoc</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetmaster" type="redirectAction">
+				<param name="actionName">assetmaster</param>
+				<param name="assettypeid">${id}</param>
+			</result>
 		</action>
 
 		<action name="assettype_save"
 			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
 			method="entry">
-			<result name="input">/Pages/Setting/AssetType/editAssetType.jsp</result>
-			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp</result>
+			<result name="input">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
 			<result name="success" type="redirectAction">
 				<param name="actionName">assettype</param>
 				<param name="message">${message}</param>
@@ -60,7 +92,116 @@
 				<param name="actionName">assettype</param>
 			</result>
 		</action>
-		
+
+		<action name="assetattribute"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="execute">
+			<result name="input">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="search">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="add">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="edit">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="savedel">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="first">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="prev">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="next">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="last">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="assetattribute" type="redirectAction">
+				<param name="actionName">assetattribute</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetcategory" type="redirectAction">
+				<param name="actionName">assetcategory</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetdocument" type="redirectAction">
+				<param name="actionName">assetdocument</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetmaster" type="redirectAction">
+				<param name="actionName">assetmaster</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+		</action>
+
+		<action name="assetattribute_save"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="entry">
+			<result name="input">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">assettype</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">assettype</param>
+			</result>
+		</action>
+
+		<action name="assetcategory"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="execute">
+			<result name="input">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="search">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="add">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="edit">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="savedel">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="first">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="prev">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="next">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="last">/Pages/Setting/AssetType/pageAssetType.jsp
+			</result>
+			<result name="assetattribute" type="redirectAction">
+				<param name="actionName">assetattribute</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetcategory" type="redirectAction">
+				<param name="actionName">assetcategory</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetdocument" type="redirectAction">
+				<param name="actionName">assetdocument</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+			<result name="assetmaster" type="redirectAction">
+				<param name="actionName">assetmaster</param>
+				<param name="assettypeid">${id}</param>
+			</result>
+		</action>
+
+		<action name="assetcategory_save"
+			class="com.adibrata.smartdealer.action.setting.assettype.AssetTypeAction"
+			method="entry">
+			<result name="input">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">assettype</param>
+				<param name="message">${message}</param>
+			</result>
+			<result name="end" type="redirectAction">
+				<param name="actionName">assettype</param>
+			</result>
+		</action>
 		<action name="assetmaster"
 			class="com.adibrata.smartdealer.action.setting.assetmaster.AssetMasterAction"
 			method="execute">

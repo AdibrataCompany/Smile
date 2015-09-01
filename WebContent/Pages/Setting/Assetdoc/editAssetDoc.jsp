@@ -24,10 +24,23 @@
 				<s:hidden name="mode" id="mode" />
 				<s:hidden name="id" />
 				<s:label name="message" id="message" />
+				<s:hidden name="assettypeid" id="assettypeid" />
+				<s:hidden name="assettypecode" id="assettypecode" />
+				<s:hidden name="assettypedescription" id="assettypeid" />
 				<br>
-				<table width="30%">
+				<table width="100%" class="table table-bordered table-hover table-striped">
 					<tr>
-						<td>
+						<td width="20%">Asset Type Code</td>
+						<td ><s:label name="assettypecode"></s:label></td>
+
+					</tr>
+					<tr>
+						<td width="20%">Asset Type Description</td>
+						<td ><s:label name="assettypedescription"></s:label></td>
+
+					</tr>
+					<tr>
+						<td colspan="2">
 							<div align="left" class="form-group">
 								<label>Code</label>
 								<div align="left" class="form-inline">
@@ -42,23 +55,14 @@
 										placeholder="Asset Document Name" class="form-control" />
 								</div>
 							</div>
-
-							<div align="left" class="form-group">
-								<label>Asset Type </label>
-								<div align="left" class="form-inline">
-									<s:select name="assettype" style="width:95%" headerKey=""
-										headerValue="Select One" list="#{'Others':'Others'}"
-										class="form-control" />
-								</div>
-							</div> <br>
-								<%@include file="/Pages/Include/SubmitButton.jsp"%>
+							</div> <br> <%@include file="/Pages/Include/SubmitButton.jsp"%>
 						</td>
 					</tr>
 				</table>
 			</center>
 		</s:form>
 		<%@include file="/Pages/Footer.jsp"%>
-		
+
 	</div>
 
 	<!-- 	</div> -->

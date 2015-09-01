@@ -10,7 +10,7 @@
 	<table width="100%">
 		<tr>
 			<td><button class="btn btn-sm btn-default" type="submit"
-					onclick="end()">BACK</button></td>
+					onclick="end()" formnovalidate>BACK</button></td>
 			<td align="right"><s:if test="mode=='edit'">
 					<button class="btn btn-sm btn-primary" type="submit"
 						onclick="save('saveedit')">SAVE</button>

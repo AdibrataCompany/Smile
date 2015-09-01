@@ -179,6 +179,7 @@
 	<table-filter match-name="IncoBranchOffice"
 		match-catalog="SmartDealer">
 	</table-filter>
+	<table-filter match-name="InsAsset" match-catalog="SmartDealer"></table-filter>
 	<table-filter match-name="InsCoBranch"
 		match-catalog="SmartDealer">
 	</table-filter>
@@ -186,6 +187,9 @@
 		match-catalog="SmartDealer">
 	</table-filter>
 	<table-filter match-name="InsCompany" match-catalog="SmartDealer"></table-filter>
+	<table-filter match-name="InsDocMaster"
+		match-catalog="SmartDealer">
+	</table-filter>
 	<table-filter match-name="InsRateFromInsco"
 		match-catalog="SmartDealer">
 	</table-filter>

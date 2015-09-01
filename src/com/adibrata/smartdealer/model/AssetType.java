@@ -1,14 +1,17 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
+// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +37,10 @@ public class AssetType implements java.io.Serializable
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
+		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(0);
+		private Set<AssetAttribute> assetAttributes = new HashSet<AssetAttribute>(0);
+		private Set<AssetCategory> assetCategories = new HashSet<AssetCategory>(0);
+		private Set<InsAsset> insAssets = new HashSet<InsAsset>(0);
 		
 		public AssetType()
 			{
@@ -44,7 +51,8 @@ public class AssetType implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetType(long id, Partner partner, String assetTypeCode, String description, String labelNo1, String labelNo2, String biLsCode, String biCfCode, Short isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt)
+		public AssetType(long id, Partner partner, String assetTypeCode, String description, String labelNo1, String labelNo2, String biLsCode, String biCfCode, Short isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
+		        Set<AssetDocMaster> assetDocMasters, Set<AssetAttribute> assetAttributes, Set<AssetCategory> assetCategories, Set<InsAsset> insAssets)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -59,6 +67,10 @@ public class AssetType implements java.io.Serializable
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
+				this.assetDocMasters = assetDocMasters;
+				this.assetAttributes = assetAttributes;
+				this.assetCategories = assetCategories;
+				this.insAssets = insAssets;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -207,6 +219,50 @@ public class AssetType implements java.io.Serializable
 		public void setDtmCrt(Date dtmCrt)
 			{
 				this.dtmCrt = dtmCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")
+		public Set<AssetDocMaster> getAssetDocMasters()
+			{
+				return this.assetDocMasters;
+			}
+			
+		public void setAssetDocMasters(Set<AssetDocMaster> assetDocMasters)
+			{
+				this.assetDocMasters = assetDocMasters;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")
+		public Set<AssetAttribute> getAssetAttributes()
+			{
+				return this.assetAttributes;
+			}
+			
+		public void setAssetAttributes(Set<AssetAttribute> assetAttributes)
+			{
+				this.assetAttributes = assetAttributes;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")
+		public Set<AssetCategory> getAssetCategories()
+			{
+				return this.assetCategories;
+			}
+			
+		public void setAssetCategories(Set<AssetCategory> assetCategories)
+			{
+				this.assetCategories = assetCategories;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")
+		public Set<InsAsset> getInsAssets()
+			{
+				return this.insAssets;
+			}
+			
+		public void setInsAssets(Set<InsAsset> insAssets)
+			{
+				this.insAssets = insAssets;
 			}
 			
 	}

@@ -1,11 +1,14 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
+// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
+import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +22,7 @@ public class AssetCategory implements java.io.Serializable
 	{
 		
 		private long id;
-		private Long assetTypeId;
+		private AssetType assetType;
 		private String insAssetCategoryCode;
 		private String description;
 		private Date dtmUpd;
@@ -36,10 +39,10 @@ public class AssetCategory implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetCategory(long id, Long assetTypeId, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public AssetCategory(long id, AssetType assetType, String insAssetCategoryCode, String description, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
-				this.assetTypeId = assetTypeId;
+				this.assetType = assetType;
 				this.insAssetCategoryCode = insAssetCategoryCode;
 				this.description = description;
 				this.dtmUpd = dtmUpd;
@@ -61,15 +64,16 @@ public class AssetCategory implements java.io.Serializable
 				this.id = id;
 			}
 			
-		@Column(name = "AssetTypeId")
-		public Long getAssetTypeId()
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AssetTypeId")
+		public AssetType getAssetType()
 			{
-				return this.assetTypeId;
+				return this.assetType;
 			}
 			
-		public void setAssetTypeId(Long assetTypeId)
+		public void setAssetType(AssetType assetType)
 			{
-				this.assetTypeId = assetTypeId;
+				this.assetType = assetType;
 			}
 			
 		@Column(name = "InsAssetCategoryCode", length = 20)

@@ -45,7 +45,27 @@
 
 							<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
 						</tr>
-
+						<tr>
+							<td colspan="3" align="right">
+								<button class="btn btn-sm btn-danger" type="submit"
+									onclick="assetattribute()">
+									<span class="glyphicon glyphicon-remove-sign"></span><br>Attribute
+								</button>
+								<button class="btn btn-sm btn-danger" type="submit"
+									onclick="assetcategory()">
+									<span class="glyphicon glyphicon-remove-sign"></span><br>Category
+								</button>
+								<button class="btn btn-sm btn-danger" type="submit"
+									onclick="assetdocument()">
+									<span class="glyphicon glyphicon-remove-sign"></span><br>Document
+								</button>
+								<button class="btn btn-sm btn-danger" type="submit"
+									onclick="assetmaster()">
+									<span class="glyphicon glyphicon-remove-sign"></span><br>Asset
+									Master
+								</button>
+							</td>
+						</tr>
 					</table>
 				</div>
 				<br>
@@ -54,7 +74,7 @@
 						<tr>
 							<th style="text-align: center;">Code</th>
 							<th style="text-align: center;">Description</th>
-							
+
 							<th style="text-align: center;" width="5%">Pilih</th>
 
 						</tr>
@@ -62,7 +82,7 @@
 							<tr id="row_${id}">
 								<td>${assetTypeCode}</td>
 								<td>${description}</td>
-								
+
 								<td colspan="2" style="text-align: center;"><input
 									type="radio" name="id" value="${id}" /></td>
 							</tr>
@@ -78,4 +98,18 @@
 
 </body>
 
+<script type="text/javascript">
+	function assetattribute() {
+		document.getElementById("mode").value = "assetattribute";
+	}
+	function assetcategory() {
+		document.getElementById("mode").value = "assetcategory";
+	}
+	function assetdocument() {
+		document.getElementById("mode").value = "assetdocument";
+	}
+	function assetmaster() {
+		document.getElementById("mode").value = "assetmaster";
+	}
+</script>
 </html>

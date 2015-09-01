@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Aug 31, 2015 2:44:17 PM by Hibernate Tools 4.3.1
+// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,10 +25,10 @@ public class AssetDocMaster implements java.io.Serializable
 	{
 		
 		private long id;
+		private AssetType assetType;
 		private Partner partner;
 		private String documentCode;
 		private String documentName;
-		private String assetType;
 		private Short isActive;
 		private Short isMandatory;
 		private Short newAssetMandatory;
@@ -51,14 +51,14 @@ public class AssetDocMaster implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetDocMaster(long id, Partner partner, String documentCode, String documentName, String assetType, Short isActive, Short isMandatory, Short newAssetMandatory, Short usedAssetMandatory, Short mainDoc, Short exCbumandatory,
+		public AssetDocMaster(long id, AssetType assetType, Partner partner, String documentCode, String documentName, Short isActive, Short isMandatory, Short newAssetMandatory, Short usedAssetMandatory, Short mainDoc, Short exCbumandatory,
 		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<AgrmntAssetDoc> agrmntAssetDocs, Set<StockDocument> stockDocuments)
 			{
 				this.id = id;
+				this.assetType = assetType;
 				this.partner = partner;
 				this.documentCode = documentCode;
 				this.documentName = documentName;
-				this.assetType = assetType;
 				this.isActive = isActive;
 				this.isMandatory = isMandatory;
 				this.newAssetMandatory = newAssetMandatory;
@@ -84,6 +84,18 @@ public class AssetDocMaster implements java.io.Serializable
 		public void setId(long id)
 			{
 				this.id = id;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AssetTypeId")
+		public AssetType getAssetType()
+			{
+				return this.assetType;
+			}
+			
+		public void setAssetType(AssetType assetType)
+			{
+				this.assetType = assetType;
 			}
 			
 		@ManyToOne(fetch = FetchType.LAZY)
@@ -118,17 +130,6 @@ public class AssetDocMaster implements java.io.Serializable
 		public void setDocumentName(String documentName)
 			{
 				this.documentName = documentName;
-			}
-			
-		@Column(name = "AssetType", length = 20)
-		public String getAssetType()
-			{
-				return this.assetType;
-			}
-			
-		public void setAssetType(String assetType)
-			{
-				this.assetType = assetType;
 			}
 			
 		@Column(name = "IsActive")
