@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -24,15 +24,9 @@ public class InsRateFromInsco implements java.io.Serializable
 		private long id;
 		private InsCoBranch insCoBranch;
 		private String insTypeCode;
-		private String coverTypeCode;
 		private String usageCode;
 		private Short newUsed;
 		private Long currencyId;
-		private Integer yearNum;
-		private Double premiumAmt;
-		private Double srccRate;
-		private Double floodRate;
-		private Double sumInsured;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -47,21 +41,14 @@ public class InsRateFromInsco implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsRateFromInsco(long id, InsCoBranch insCoBranch, String insTypeCode, String coverTypeCode, String usageCode, Short newUsed, Long currencyId, Integer yearNum, Double premiumAmt, Double srccRate, Double floodRate, Double sumInsured,
-		        Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public InsRateFromInsco(long id, InsCoBranch insCoBranch, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.insCoBranch = insCoBranch;
 				this.insTypeCode = insTypeCode;
-				this.coverTypeCode = coverTypeCode;
 				this.usageCode = usageCode;
 				this.newUsed = newUsed;
 				this.currencyId = currencyId;
-				this.yearNum = yearNum;
-				this.premiumAmt = premiumAmt;
-				this.srccRate = srccRate;
-				this.floodRate = floodRate;
-				this.sumInsured = sumInsured;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
@@ -104,17 +91,6 @@ public class InsRateFromInsco implements java.io.Serializable
 				this.insTypeCode = insTypeCode;
 			}
 			
-		@Column(name = "CoverTypeCode", length = 20)
-		public String getCoverTypeCode()
-			{
-				return this.coverTypeCode;
-			}
-			
-		public void setCoverTypeCode(String coverTypeCode)
-			{
-				this.coverTypeCode = coverTypeCode;
-			}
-			
 		@Column(name = "UsageCode", length = 20)
 		public String getUsageCode()
 			{
@@ -146,61 +122,6 @@ public class InsRateFromInsco implements java.io.Serializable
 		public void setCurrencyId(Long currencyId)
 			{
 				this.currencyId = currencyId;
-			}
-			
-		@Column(name = "YearNum")
-		public Integer getYearNum()
-			{
-				return this.yearNum;
-			}
-			
-		public void setYearNum(Integer yearNum)
-			{
-				this.yearNum = yearNum;
-			}
-			
-		@Column(name = "PremiumAmt", precision = 53, scale = 0)
-		public Double getPremiumAmt()
-			{
-				return this.premiumAmt;
-			}
-			
-		public void setPremiumAmt(Double premiumAmt)
-			{
-				this.premiumAmt = premiumAmt;
-			}
-			
-		@Column(name = "SrccRate", precision = 53, scale = 0)
-		public Double getSrccRate()
-			{
-				return this.srccRate;
-			}
-			
-		public void setSrccRate(Double srccRate)
-			{
-				this.srccRate = srccRate;
-			}
-			
-		@Column(name = "FloodRate", precision = 53, scale = 0)
-		public Double getFloodRate()
-			{
-				return this.floodRate;
-			}
-			
-		public void setFloodRate(Double floodRate)
-			{
-				this.floodRate = floodRate;
-			}
-			
-		@Column(name = "SumInsured", precision = 53, scale = 0)
-		public Double getSumInsured()
-			{
-				return this.sumInsured;
-			}
-			
-		public void setSumInsured(Double sumInsured)
-			{
-				this.sumInsured = sumInsured;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)

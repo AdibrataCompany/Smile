@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 1, 2015 12:07:43 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,11 +25,9 @@ public class InsRateToCust implements java.io.Serializable
 		private Office office;
 		private Partner partner;
 		private String insTypeCode;
-		private String coverTypeCode;
 		private String usageCode;
 		private Short newUsed;
 		private Long currencyId;
-		private Integer yearNum;
 		private Date dtmUpd;
 		private String usrUpd;
 		private Date dtmCrt;
@@ -44,17 +42,15 @@ public class InsRateToCust implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsRateToCust(long id, Office office, Partner partner, String insTypeCode, String coverTypeCode, String usageCode, Short newUsed, Long currencyId, Integer yearNum, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public InsRateToCust(long id, Office office, Partner partner, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
 			{
 				this.id = id;
 				this.office = office;
 				this.partner = partner;
 				this.insTypeCode = insTypeCode;
-				this.coverTypeCode = coverTypeCode;
 				this.usageCode = usageCode;
 				this.newUsed = newUsed;
 				this.currencyId = currencyId;
-				this.yearNum = yearNum;
 				this.dtmUpd = dtmUpd;
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
@@ -109,17 +105,6 @@ public class InsRateToCust implements java.io.Serializable
 				this.insTypeCode = insTypeCode;
 			}
 			
-		@Column(name = "CoverTypeCode", length = 20)
-		public String getCoverTypeCode()
-			{
-				return this.coverTypeCode;
-			}
-			
-		public void setCoverTypeCode(String coverTypeCode)
-			{
-				this.coverTypeCode = coverTypeCode;
-			}
-			
 		@Column(name = "UsageCode", length = 20)
 		public String getUsageCode()
 			{
@@ -151,17 +136,6 @@ public class InsRateToCust implements java.io.Serializable
 		public void setCurrencyId(Long currencyId)
 			{
 				this.currencyId = currencyId;
-			}
-			
-		@Column(name = "YearNum")
-		public Integer getYearNum()
-			{
-				return this.yearNum;
-			}
-			
-		public void setYearNum(Integer yearNum)
-			{
-				this.yearNum = yearNum;
 			}
 			
 		@Temporal(TemporalType.TIMESTAMP)
