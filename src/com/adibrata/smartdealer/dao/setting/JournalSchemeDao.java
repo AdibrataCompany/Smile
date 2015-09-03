@@ -31,14 +31,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 		StringBuilder hql = new StringBuilder();
 		private Long totalrecord;
 		private int currentpage;
-		
+
 		public JournalSchemeDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
 						this.strStatement = " from CoaSchmHdr ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -49,14 +49,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.setting.JournalScheme#SaveEdit(com.adibrata
 		 * .smartdealer.service.setting.JournalScheme)
 		 */
-
+		
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.setting.JournalScheme#Paging(int,
@@ -77,16 +77,16 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-							
+
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -94,7 +94,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public CoaSchmHdr ViewHeader(final Long id) throws Exception
 			{
@@ -103,11 +103,11 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 				try
 					{
 						coaSchmHdr = (CoaSchmHdr) this.getSession().get(CoaSchmHdr.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -115,7 +115,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 					}
 				return coaSchmHdr;
 			}
-
+			
 		public void SaveDetail(final CoaSchmHdr coaSchmHdr, final List<ListCoaSchmDtl> lstCoaSchmDtl, final String usrUpd) throws Exception
 			{
 				// TODO Auto-generated method stub
@@ -124,30 +124,30 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 				SQLQuery selectQuery;
 				try
 					{
-						
+
 						hql.append("Delete From CoaSchmDtl Where CoaSchmHdrId = :coaschmhdrid ");
 						selectQuery = this.getSession().createSQLQuery(hql.toString());
 						selectQuery.setParameter("coaschmhdrid", coaSchmHdr.getId());
 						selectQuery.executeUpdate();
-						
+
 						if (lstCoaSchmDtl.size() != 0)
 							{
 								for (final ListCoaSchmDtl arow : lstCoaSchmDtl)
 									{
-										
+
 										hql.delete(0, hql.length());
-										
+
 										hql.append("Insert Into CoaSchmDtl (CoaSchmHdrID, CoaMasterID, CoaCode)" + " Values (:coaschmhdrid, :coamasterid, :coacode) ");
 										selectQuery = this.getSession().createSQLQuery(hql.toString());
 										selectQuery.setParameter("coaschmhdrid", coaSchmHdr.getId());
 										selectQuery.setParameter("coamasterid", arow.getCoamasterid());
 										selectQuery.setParameter("coacode", arow.getCoacode());
 										selectQuery.executeUpdate();
-										
+
 									}
 							}
 						this.getSession().getTransaction().rollback();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -158,7 +158,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@SuppressWarnings(
 			{
 			        "rawtypes"
@@ -169,14 +169,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 				// TODO Auto-generated method stub
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
-				
+
 				final List<ListCoaSchmDtl> lstCoaSchmDtl = new ArrayList<ListCoaSchmDtl>();
 				SQLQuery selectQuery;
 				try
 					{
 						if (coaSchmHdr.getId() != 0)
 							{
-								hql.append("Select Id, CoaName, CoaDescription, IsNull((Select CoaSchmDtl.CoaCode From CoaSchmDtl Inner Join CoaSchmHdr on CoaSchmDtl.CoaSchmHdrID = CoaSchmHdr.ID "
+								hql.append("Select Id, CoaName, CoaDescription, IsNull((Select top 1  CoaSchmDtl.CoaCode From CoaSchmDtl Inner Join CoaSchmHdr on CoaSchmDtl.CoaSchmHdrID = CoaSchmHdr.ID "
 								        + "where CoaSchmDtl.CoaMasterID = CoaMaster.ID and CoaSchmHdr.Id = :coaschmhdrid and CoaSchmHdr.PartnerCode = :partnercode),'0') as CoaCode " + "from Coamaster "
 								        + "where CoaMaster.PartnerCode = :partnercode and IsScheme = 1 and IsActive = 1 ");
 								selectQuery = this.getSession().createSQLQuery(hql.toString());
@@ -188,14 +188,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 								hql.append("Select Id, CoaName, CoaDescription, '' as CoaCode from Coamaster where CoaMaster.PartnerCode = :partnercode and IsScheme = 1 and IsActive = 1 ");
 								selectQuery = this.getSession().createSQLQuery(hql.toString());
 								selectQuery.setParameter("partnercode", coaSchmHdr.getPartner().getPartnerCode());
-
+								
 							}
 						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
 						selectQuery.addScalar("Id", new LongType());
 						selectQuery.addScalar("CoaName", new StringType());
 						selectQuery.addScalar("CoaDescription", new StringType());
 						selectQuery.addScalar("CoaCode", new StringType());
-
+						
 						@SuppressWarnings("unchecked")
 						final List list = selectQuery.list();
 						if (list.size() != 0)
@@ -205,7 +205,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 										final Map row = (Map) object;
 										final ListCoaSchmDtl listCoaSchmDtl = new ListCoaSchmDtl();
 										listCoaSchmDtl.setCoamasterid((Long) row.get("Id"));
-
+										
 										listCoaSchmDtl.setCoaname(row.get("CoaName").toString());
 										listCoaSchmDtl.setCoadesc(row.get("CoaDescription").toString());
 										listCoaSchmDtl.setCoacode(row.get("CoaCode").toString());
@@ -213,10 +213,10 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 									}
 							}
 					}
-					
+
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -224,14 +224,14 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 					}
 				return lstCoaSchmDtl;
 			}
-			
+
 		@Override
 		public List<CoaSchmDtl> ViewDetail(final CoaSchmHdr coaSchmHdr) throws Exception
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<CoaSchmHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
@@ -247,19 +247,19 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-							
+
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -267,7 +267,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 					}
 				return list;
 			}
-			
+
 		/**
 		 * @return the currentpage
 		 */
@@ -276,7 +276,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 			{
 				return this.currentpage;
 			}
-			
+
 		@Override
 		public void Save(final String usrupd, final CoaSchmHdr coaSchmHdr, final List<ListCoaSchmDtl> lstcoaschmdtl) throws Exception
 			{
@@ -288,11 +288,16 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						coaSchmHdr.setDtmUpd(this.dtmupd);
 						coaSchmHdr.setUsrCrt(usrupd);
 						coaSchmHdr.setUsrUpd(usrupd);
-
+						
 						this.getSession().saveOrUpdate(coaSchmHdr);
 						CoaSchmDtl dtl;
 						Coamaster master;
-						
+						if (coaSchmHdr.getId() != 0)
+							{
+								final Query q = this.getSession().createQuery("delete from CoaSchmDtl where coaschmhdrid = :hdr ");
+								q.setParameter("hdr", coaSchmHdr.getId());
+								q.executeUpdate();
+							}
 						for (final ListCoaSchmDtl row : lstcoaschmdtl)
 							{
 								dtl = new CoaSchmDtl();
@@ -305,11 +310,11 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 								dtl.setDtmUpd(this.dtmupd);
 								dtl.setUsrCrt(usrupd);
 								dtl.setUsrUpd(usrupd);
-								
-								this.getSession().saveOrUpdate(dtl);
+
+								this.getSession().save(dtl);
 							}
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -319,9 +324,9 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		@Override
 		public void Delete(final CoaSchmHdr coaSchmHdr) throws Exception
 			{
@@ -330,11 +335,11 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 				this.getSession().getTransaction().begin();
 				try
 					{
-
+						
 						final Query q = this.getSession().createQuery("delete from CoaSchmDtl where coaschmhdrid = :hdr ");
 						q.setParameter("hdr", coaSchmHdr.getId());
 						q.executeUpdate();
-						
+
 						// final CoaSchmHdr hdr = (CoaSchmHdr) q.list().get(0);
 						//
 						// for (final CoaSchmDtl sdr : hdr.getCoaSchmDtls())
@@ -349,7 +354,7 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						// this.getSession().flush();
 						this.getSession().delete(coaSchmHdr);
 						this.getSession().getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -359,12 +364,12 @@ public class JournalSchemeDao extends DaoBase implements JournalSchemeService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		/**
 		 * @param currentpage
 		 *            the currentpage to set
 		 */
-
+		
 	}

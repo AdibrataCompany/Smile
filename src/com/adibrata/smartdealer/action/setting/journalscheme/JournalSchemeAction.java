@@ -22,12 +22,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class JournalSchemeAction extends BaseAction implements SessionAware, Preparable
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		private JournalSchemeService service;
 		private CoaSchmDtl coaschmdtl;
@@ -40,28 +40,28 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 		private String searchcriteria;
 		private String searchvalue;
 		private int pagenumber;
-
+		
 		private String message;
 		private Long id;
 		private String coaschmcode;
 		private String coaschmdesc;
 		private Boolean isactive;
-
+		
 		public JournalSchemeAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				
+
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office = new Office();
 				this.setOffice(this.office);
-
+				
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
 					}
 			}
-			
+
 		// @Override
 		// public void setSession(final Map<String, Object> session)
 		// {
@@ -76,7 +76,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 		//
 		// }
 		// }
-		
+
 		@Override
 		public String execute() throws Exception
 			{
@@ -129,7 +129,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 											e.printStackTrace();
 										}
 									break;
-									
+
 								case "first" :
 									this.pagenumber = 1;
 									try
@@ -192,7 +192,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return this.mode;
 			}
-			
+
 		public String entry()
 			{
 				if (this.mode != null)
@@ -219,7 +219,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 						try
 							{
 								this.mode = INPUT;
-
+								
 							}
 						catch (final Exception e)
 							{
@@ -229,7 +229,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return this.mode;
 			}
-			
+
 		private void InitialAdd() throws Exception
 			{
 				try
@@ -237,12 +237,12 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 						this.coaschmhdr = new CoaSchmHdr();
 						this.coaschmhdr.setPartner(this.partner);
 						this.coaschmhdr.setId(0);
-
+						
 						this.lstcoaschmdtl = new ArrayList<ListCoaSchmDtl>();
 						this.service = new JournalSchemeDao();
-
-						this.lstcoaschmdtl = this.service.ListCoaSchmDtl(this.coaschmhdr);
 						
+						this.lstcoaschmdtl = this.service.ListCoaSchmDtl(this.coaschmhdr);
+
 						// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
 						// {
 						// this.sescoaschmdtl.remove("JournalSchemeSetting");
@@ -251,14 +251,14 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
@@ -266,10 +266,10 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						wherecond.append(" and ");
-
+						
 						if (this.getSearchvalue().contains("%"))
 							{
-
+								
 								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
@@ -279,7 +279,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return wherecond.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
@@ -289,15 +289,15 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -305,19 +305,19 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 						this.service = new JournalSchemeDao();
 						this.lstcoaschmhdr = this.service.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 						this.pagenumber = this.service.getCurrentpage();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.coaschmhdr = new CoaSchmHdr();
@@ -337,7 +337,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 									{
 										this.isactive = false;
 									}
-									
+
 								this.lstcoaschmdtl = this.service.ListCoaSchmDtl(this.coaschmhdr);
 								// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
 								// {
@@ -362,7 +362,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return this.mode;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		private String SaveJrnlSchm() throws Exception
 			{
@@ -370,9 +370,13 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					{
 						this.service = new JournalSchemeDao();
 						this.coaschmhdr = new CoaSchmHdr();
-						
+
 						// this.lstcoaschmdtl = (List<ListCoaSchmDtl>) this.sescoaschmdtl.get("JournalSchemeSetting");
 						this.coaschmhdr.setPartner(this.getPartner());
+						if (this.getId() != null)
+							{
+								this.coaschmhdr.setId(this.getId());
+							}
 						this.coaschmhdr.setCoaSchmCode(this.coaschmcode);
 						this.coaschmhdr.setCoaSchmDesc(this.coaschmdesc);
 						if (this.isactive)
@@ -383,15 +387,15 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 							{
 								this.coaschmhdr.setIsActive(0);
 							}
-
+							
 						this.coaschmhdr.setPartner(this.partner);
 						this.coaschmhdr.setUsrCrt(BaseAction.sesLoginName());
 						this.coaschmhdr.setUsrUpd(BaseAction.sesLoginName());
-						
+
 						this.service = new JournalSchemeDao();
 						this.service.Save(BaseAction.sesLoginName(), this.coaschmhdr, this.lstcoaschmdtl);
 						this.mode = SUCCESS;
-
+						
 						this.setMessage(BaseAction.SuccessMessage());
 						// if (this.sescoaschmdtl.containsKey("JournalSchemeSetting"))
 						// {
@@ -409,10 +413,10 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
-				
+
 				try
 					{
 						if (this.getId() != null)
@@ -440,7 +444,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 					}
 				return this.mode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -448,7 +452,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -457,7 +461,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the service
 		 */
@@ -465,7 +469,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.service;
 			}
-			
+
 		/**
 		 * @param service
 		 *            the service to set
@@ -474,7 +478,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.service = service;
 			}
-			
+
 		/**
 		 * @return the coaschmdtl
 		 */
@@ -482,7 +486,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.coaschmdtl;
 			}
-			
+
 		/**
 		 * @param coaschmdtl
 		 *            the coaschmdtl to set
@@ -491,7 +495,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.coaschmdtl = coaschmdtl;
 			}
-			
+
 		/**
 		 * @return the coaschmhdr
 		 */
@@ -499,7 +503,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.coaschmhdr;
 			}
-			
+
 		/**
 		 * @param coaschmhdr
 		 *            the coaschmhdr to set
@@ -508,7 +512,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.coaschmhdr = coaschmhdr;
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -516,7 +520,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -525,7 +529,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -533,7 +537,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -542,7 +546,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.office = office;
 			}
-			
+
 		/**
 		 * @return the lstcoaschmdtl
 		 */
@@ -550,7 +554,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.lstcoaschmdtl;
 			}
-			
+
 		/**
 		 * @param lstcoaschmdtl
 		 *            the lstcoaschmdtl to set
@@ -559,7 +563,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.lstcoaschmdtl = lstcoaschmdtl;
 			}
-			
+
 		/**
 		 * @return the lstcoaschmhdr
 		 */
@@ -567,7 +571,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.lstcoaschmhdr;
 			}
-			
+
 		/**
 		 * @param lstcoaschmhdr
 		 *            the lstcoaschmhdr to set
@@ -576,7 +580,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.lstcoaschmhdr = lstcoaschmhdr;
 			}
-			
+
 		/**
 		 * @return the sescoaschmdtl
 		 */
@@ -584,7 +588,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.sescoaschmdtl;
 			}
-			
+
 		/**
 		 * @param sescoaschmdtl
 		 *            the sescoaschmdtl to set
@@ -593,7 +597,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.sescoaschmdtl = sescoaschmdtl;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -601,7 +605,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -610,7 +614,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -618,7 +622,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -627,7 +631,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the pagenumber
 		 */
@@ -635,7 +639,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.pagenumber;
 			}
-			
+
 		/**
 		 * @param pagenumber
 		 *            the pagenumber to set
@@ -644,7 +648,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.pagenumber = pagenumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -652,7 +656,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -661,7 +665,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.message = message;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -669,7 +673,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -678,7 +682,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the coaschmcode
 		 */
@@ -686,7 +690,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.coaschmcode;
 			}
-			
+
 		/**
 		 * @param coaschmcode
 		 *            the coaschmcode to set
@@ -695,7 +699,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.coaschmcode = coaschmcode;
 			}
-			
+
 		/**
 		 * @return the coaschmdesc
 		 */
@@ -703,7 +707,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.coaschmdesc;
 			}
-			
+
 		/**
 		 * @param coaschmdesc
 		 *            the coaschmdesc to set
@@ -712,7 +716,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.coaschmdesc = coaschmdesc;
 			}
-			
+
 		/**
 		 * @return the isactive
 		 */
@@ -720,7 +724,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return this.isactive;
 			}
-			
+
 		/**
 		 * @param isactive
 		 *            the isactive to set
@@ -729,7 +733,7 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				this.isactive = isactive;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
@@ -737,11 +741,11 @@ public class JournalSchemeAction extends BaseAction implements SessionAware, Pre
 			{
 				return serialVersionUID;
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
 	}
