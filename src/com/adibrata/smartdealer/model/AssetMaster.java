@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,10 +25,10 @@ public class AssetMaster implements java.io.Serializable
 	{
 		
 		private long id;
+		private AssetType assetType;
 		private Partner partner;
-		private Long assetTypeId;
 		private String assetBrand;
-		private String assetType;
+		private String assetType_1;
 		private String assetModel;
 		private String assetCode;
 		private Integer assetLevel;
@@ -53,14 +53,14 @@ public class AssetMaster implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetMaster(long id, Partner partner, Long assetTypeId, String assetBrand, String assetType, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
+		public AssetMaster(long id, AssetType assetType, Partner partner, String assetBrand, String assetType_1, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
 		        String usrCrt, Set<AgrmntAsset> agrmntAssets, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
 				this.id = id;
-				this.partner = partner;
-				this.assetTypeId = assetTypeId;
-				this.assetBrand = assetBrand;
 				this.assetType = assetType;
+				this.partner = partner;
+				this.assetBrand = assetBrand;
+				this.assetType_1 = assetType_1;
 				this.assetModel = assetModel;
 				this.assetCode = assetCode;
 				this.assetLevel = assetLevel;
@@ -91,6 +91,18 @@ public class AssetMaster implements java.io.Serializable
 			}
 			
 		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "AssetTypeId")
+		public AssetType getAssetType()
+			{
+				return this.assetType;
+			}
+			
+		public void setAssetType(AssetType assetType)
+			{
+				this.assetType = assetType;
+			}
+			
+		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "PartnerCode")
 		public Partner getPartner()
 			{
@@ -100,17 +112,6 @@ public class AssetMaster implements java.io.Serializable
 		public void setPartner(Partner partner)
 			{
 				this.partner = partner;
-			}
-			
-		@Column(name = "AssetTypeId")
-		public Long getAssetTypeId()
-			{
-				return this.assetTypeId;
-			}
-			
-		public void setAssetTypeId(Long assetTypeId)
-			{
-				this.assetTypeId = assetTypeId;
 			}
 			
 		@Column(name = "AssetBrand", length = 20)
@@ -125,14 +126,14 @@ public class AssetMaster implements java.io.Serializable
 			}
 			
 		@Column(name = "AssetType", length = 50)
-		public String getAssetType()
+		public String getAssetType_1()
 			{
-				return this.assetType;
+				return this.assetType_1;
 			}
 			
-		public void setAssetType(String assetType)
+		public void setAssetType_1(String assetType_1)
 			{
-				this.assetType = assetType;
+				this.assetType_1 = assetType_1;
 			}
 			
 		@Column(name = "AssetModel", length = 20)

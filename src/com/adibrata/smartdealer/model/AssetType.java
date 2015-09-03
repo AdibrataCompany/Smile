@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -39,6 +39,7 @@ public class AssetType implements java.io.Serializable
 		private Date dtmCrt;
 		private Set<AssetDocMaster> assetDocMasters = new HashSet<AssetDocMaster>(0);
 		private Set<AssetAttribute> assetAttributes = new HashSet<AssetAttribute>(0);
+		private Set<AssetMaster> assetMasters = new HashSet<AssetMaster>(0);
 		private Set<AssetCategory> assetCategories = new HashSet<AssetCategory>(0);
 		private Set<InsAsset> insAssets = new HashSet<InsAsset>(0);
 		
@@ -52,7 +53,7 @@ public class AssetType implements java.io.Serializable
 			}
 			
 		public AssetType(long id, Partner partner, String assetTypeCode, String description, String labelNo1, String labelNo2, String biLsCode, String biCfCode, Short isActive, String usrCrt, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        Set<AssetDocMaster> assetDocMasters, Set<AssetAttribute> assetAttributes, Set<AssetCategory> assetCategories, Set<InsAsset> insAssets)
+		        Set<AssetDocMaster> assetDocMasters, Set<AssetAttribute> assetAttributes, Set<AssetMaster> assetMasters, Set<AssetCategory> assetCategories, Set<InsAsset> insAssets)
 			{
 				this.id = id;
 				this.partner = partner;
@@ -69,6 +70,7 @@ public class AssetType implements java.io.Serializable
 				this.dtmCrt = dtmCrt;
 				this.assetDocMasters = assetDocMasters;
 				this.assetAttributes = assetAttributes;
+				this.assetMasters = assetMasters;
 				this.assetCategories = assetCategories;
 				this.insAssets = insAssets;
 			}
@@ -241,6 +243,17 @@ public class AssetType implements java.io.Serializable
 		public void setAssetAttributes(Set<AssetAttribute> assetAttributes)
 			{
 				this.assetAttributes = assetAttributes;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")
+		public Set<AssetMaster> getAssetMasters()
+			{
+				return this.assetMasters;
+			}
+			
+		public void setAssetMasters(Set<AssetMaster> assetMasters)
+			{
+				this.assetMasters = assetMasters;
 			}
 			
 		@OneToMany(fetch = FetchType.LAZY, mappedBy = "assetType")

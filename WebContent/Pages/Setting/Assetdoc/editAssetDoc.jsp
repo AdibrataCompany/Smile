@@ -26,17 +26,18 @@
 				<s:label name="message" id="message" />
 				<s:hidden name="assettypeid" id="assettypeid" />
 				<s:hidden name="assettypecode" id="assettypecode" />
-				<s:hidden name="assettypedescription" id="assettypeid" />
+				<s:hidden name="assettypedescription" id="assettypedescription" />
 				<br>
-				<table width="100%" class="table table-bordered table-hover table-striped">
+				<table width="100%"
+					class="table table-bordered table-hover table-striped">
 					<tr>
 						<td width="20%">Asset Type Code</td>
-						<td ><s:label name="assettypecode"></s:label></td>
+						<td><s:label name="assettypecode"></s:label></td>
 
 					</tr>
 					<tr>
 						<td width="20%">Asset Type Description</td>
-						<td ><s:label name="assettypedescription"></s:label></td>
+						<td><s:label name="assettypedescription"></s:label></td>
 
 					</tr>
 					<tr>
@@ -53,6 +54,12 @@
 								<div align="left" class="form-inline">
 									<s:textfield name="documentname" style="width:95%"
 										placeholder="Asset Document Name" class="form-control" />
+								</div>
+							</div>
+							<div align="left" class="form-group">
+								<label>Is Active </label>
+								<div align="left" class="form-inline">
+									<s:checkbox name="isactive" value="isactive" />
 								</div>
 							</div>
 							</div> <br> <%@include file="/Pages/Include/SubmitButton.jsp"%>

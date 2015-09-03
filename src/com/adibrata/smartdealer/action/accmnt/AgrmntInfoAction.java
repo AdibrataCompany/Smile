@@ -58,7 +58,7 @@ public class AgrmntInfoAction extends BaseAction implements Preparable
 			}
 
 		@Override
-		public String execute() throws Exception
+		public String execute() throws Error
 			{
 				String strMode;
 				strMode = this.mode;

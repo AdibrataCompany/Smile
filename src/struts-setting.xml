@@ -20,6 +20,7 @@
 			<result name="end" type="redirectAction">
 				<param name="actionName">assettype</param>
 				<param name="assettypeid">${assettypeid}</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 
@@ -35,6 +36,7 @@
 			<result name="end" type="redirectAction">
 				<param name="actionName">assetdoc</param>
 				<param name="assettypeid">${assettypeid}</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 

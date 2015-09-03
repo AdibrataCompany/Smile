@@ -2,6 +2,9 @@
 package com.adibrata.smartdealer.action.setting.assetdoc;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.setting.AssetDocMasterDao;
@@ -17,7 +20,7 @@ import com.opensymphony.xwork2.Preparable;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class AssetDocAction extends BaseAction implements Preparable
+public class AssetDocAction extends BaseAction implements Preparable, SessionAware
 	{
 
 		/**
@@ -26,7 +29,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private static final long serialVersionUID = 1L;
 
 		private String mode;
-
+		
 		private AssetDocMasterService assetdocmasterservice;
 		private AssetDocMaster assetdocmaster;
 		private Partner partner;
@@ -38,15 +41,16 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private AssetType assettype;
 		private int pageNumber;
 		private String message;
-
+		
 		private String documentcode;
 		private String documentname;
 		private Long assettypeid;
 		private String assettypecode;
-		private Short isactive;
+		private Boolean isactive;
 		private String status;
 		private String lbltest;
 		private String assettypedescription;
+		private Map<String, Object> sesassettype;
 		
 		/**
 		 * @throws Exception
@@ -65,7 +69,15 @@ public class AssetDocAction extends BaseAction implements Preparable
 					}
 
 			}
-
+			
+		@Override
+		public void setSession(final Map<String, Object> session)
+			{
+				// TODO Auto-generated method stub
+				this.sesassettype = session;
+				
+			}
+			
 		/**
 		 * @throws Exception
 		 */
@@ -74,15 +86,14 @@ public class AssetDocAction extends BaseAction implements Preparable
 		 * this.assetDocMasterService = assetDocMasterService; // TODO
 		 * Auto-generated constructor stub }
 		 */
-
+		
 		@Override
 		public String execute()
 			{
-				String strMode;
-				strMode = this.mode;
+				
 				if (this.mode != null)
 					{
-						switch (strMode)
+						switch (this.mode)
 							{
 								case "search" :
 									try
@@ -98,7 +109,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 								case "edit" :
 									try
 										{
-											strMode = this.ViewData();
+											this.mode = this.ViewData();
 										}
 									catch (final Exception e1)
 										{
@@ -109,7 +120,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 								case "savedel" :
 									try
 										{
-											strMode = this.SaveDelete();
+											this.mode = this.SaveDelete();
 											this.Paging();
 										}
 									catch (final Exception e)
@@ -190,10 +201,37 @@ public class AssetDocAction extends BaseAction implements Preparable
 										this.assettype = assetservice.View(this.assettypeid);
 										this.assettypecode = this.assettype.getAssetTypeCode();
 										this.assettypedescription = this.assettype.getDescription();
+										this.mode = INPUT;
+										
+										if (this.sesassettype.containsKey("AssetDocSetting"))
+											{
+												this.sesassettype.remove("AssetDocSetting");
+											}
+										this.sesassettype.put("AssetDocSetting", this.assettype);
 									}
 								else
 									{
-										strMode = "end";
+										if (this.sesassettype.containsKey("AssetDocSetting"))
+											{
+												this.assettype = (AssetType) this.sesassettype.get("AssetDocSetting");
+												this.assettypeid = this.assettype.getId();
+												this.assettype = new AssetType();
+												this.assettype.setId(this.assettypeid);
+												AssetTypeService assetservice;
+												assetservice = new AssetTypeMasterDao();
+												this.assettype = assetservice.View(this.assettypeid);
+												this.assettypecode = this.assettype.getAssetTypeCode();
+												this.assettypedescription = this.assettype.getDescription();
+												this.mode = INPUT;
+												
+												if (this.sesassettype.containsKey("AssetDocSetting"))
+													{
+														this.sesassettype.remove("AssetDocSetting");
+													}
+												this.sesassettype.put("AssetDocSetting", this.assettype);
+												this.mode = INPUT;
+											}
+											
 									}
 							}
 						catch (final Exception e)
@@ -201,10 +239,9 @@ public class AssetDocAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-
-						strMode = INPUT;
+							
 					}
-				return strMode;
+				return this.mode;
 			}
 
 		/**
@@ -214,7 +251,13 @@ public class AssetDocAction extends BaseAction implements Preparable
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
-				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
+				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "' ");
+				if (this.assettypeid != null)
+					{
+						wherecond.append("and assettypeid = ");
+						wherecond.append(this.assettypeid);
+						wherecond.append(" and isactive = 1 ");
+					}
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						wherecond.append(" and ");
@@ -285,11 +328,26 @@ public class AssetDocAction extends BaseAction implements Preparable
 								this.documentcode = this.assetdocmaster.getDocumentCode();
 								this.documentname = this.assetdocmaster.getDocumentName();
 								this.assettype = this.assetdocmaster.getAssetType();
+								if (this.assetdocmaster.getIsActive() == null)
+									{
+										this.isactive = false;
+									}
+								else
+									{
+										if (this.assetdocmaster.getIsActive() == 1)
+											{
+												this.isactive = true;
+											}
+										else
+											{
+												this.isactive = false;
+											}
+									}
 							}
 						else
 							{
-								this.Paging();
-								this.mode = "start";
+								
+								this.mode = "end";
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -321,7 +379,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 							}
 						else
 							{
-								this.mode = "start";
+								this.mode = INPUT;
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -377,7 +435,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "input";
+								strMode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -394,17 +452,31 @@ public class AssetDocAction extends BaseAction implements Preparable
 				try
 					{
 						this.assetdocmaster = new AssetDocMaster();
-						
+						this.assettype = new AssetType();
+						this.assettype.setId(this.assettypeid);
+
 						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
 						this.assetdocmaster.setDocumentName(this.getDocumentname());
+
 						this.assetdocmaster.setAssetType(this.getAssettype());
+						this.assetdocmaster.setIsActive((short) 1);
+
 						this.assetdocmaster.setPartner(this.getPartner());
 						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
+						if (this.isactive)
+							{
+								this.assetdocmaster.setIsActive((short) 1);
+							}
+						else
+							{
+								this.assetdocmaster.setIsActive((short) 0);
+							}
 						this.assetdocmasterservice = new AssetDocMasterDao();
 
 						this.assetdocmasterservice.SaveAdd(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
+						this.assettypeid = this.getAssettypeid();
 					}
 				catch (final Exception exp)
 					{
@@ -423,17 +495,29 @@ public class AssetDocAction extends BaseAction implements Preparable
 				try
 					{
 						this.assetdocmaster = new AssetDocMaster();
+						this.assettype = new AssetType();
+						this.assettype.setId(this.assettypeid);
+						
 						this.assetdocmaster.setId(this.getId());
 						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
 						this.assetdocmaster.setDocumentName(this.getDocumentname());
 						this.assetdocmaster.setAssetType(this.getAssettype());
 						this.assetdocmaster.setPartner(this.getPartner());
 						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
+						if (this.isactive)
+							{
+								this.assetdocmaster.setIsActive((short) 1);
+							}
+						else
+							{
+								this.assetdocmaster.setIsActive((short) 0);
+							}
 						this.assetdocmasterservice = new AssetDocMasterDao();
 
 						this.assetdocmasterservice.SaveEdit(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
+						this.assettypeid = this.getAssettypeid();
 					}
 				catch (final Exception exp)
 					{
@@ -718,24 +802,7 @@ public class AssetDocAction extends BaseAction implements Preparable
 			{
 				this.assettypecode = assettypecode;
 			}
-
-		/**
-		 * @return the isactive
-		 */
-		public Short getIsactive()
-			{
-				return this.isactive;
-			}
-
-		/**
-		 * @param isactive
-		 *            the isactive to set
-		 */
-		public void setIsactive(final Short isactive)
-			{
-				this.isactive = isactive;
-			}
-
+			
 		/**
 		 * @return the status
 		 */
@@ -800,6 +867,40 @@ public class AssetDocAction extends BaseAction implements Preparable
 		public void setAssettypedescription(final String assettypedescription)
 			{
 				this.assettypedescription = assettypedescription;
+			}
+			
+		/**
+		 * @return the isactive
+		 */
+		public Boolean getIsactive()
+			{
+				return this.isactive;
+			}
+			
+		/**
+		 * @param isactive
+		 *            the isactive to set
+		 */
+		public void setIsactive(final Boolean isactive)
+			{
+				this.isactive = isactive;
+			}
+
+		/**
+		 * @return the sesassettype
+		 */
+		public Map<String, Object> getSesassettype()
+			{
+				return this.sesassettype;
+			}
+
+		/**
+		 * @param sesassettype
+		 *            the sesassettype to set
+		 */
+		public void setSesassettype(final Map<String, Object> sesassettype)
+			{
+				this.sesassettype = sesassettype;
 			}
 
 		// @Override

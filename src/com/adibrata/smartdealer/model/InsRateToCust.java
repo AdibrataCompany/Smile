@@ -1,14 +1,17 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +35,7 @@ public class InsRateToCust implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<InsRateToCustDtl> insRateToCustDtls = new HashSet<InsRateToCustDtl>(0);
 		
 		public InsRateToCust()
 			{
@@ -42,7 +46,7 @@ public class InsRateToCust implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsRateToCust(long id, Office office, Partner partner, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public InsRateToCust(long id, Office office, Partner partner, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsRateToCustDtl> insRateToCustDtls)
 			{
 				this.id = id;
 				this.office = office;
@@ -55,6 +59,7 @@ public class InsRateToCust implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.insRateToCustDtls = insRateToCustDtls;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -182,6 +187,17 @@ public class InsRateToCust implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insRateToCust")
+		public Set<InsRateToCustDtl> getInsRateToCustDtls()
+			{
+				return this.insRateToCustDtls;
+			}
+			
+		public void setInsRateToCustDtls(Set<InsRateToCustDtl> insRateToCustDtls)
+			{
+				this.insRateToCustDtls = insRateToCustDtls;
 			}
 			
 	}

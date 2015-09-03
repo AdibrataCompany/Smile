@@ -1,14 +1,17 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 12:59:25 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity; import org.hibernate.annotations.Cache; import org.hibernate.annotations.CacheConcurrencyStrategy; import javax.persistence.Cacheable;
 import javax.persistence.FetchType;
 import javax.persistence.Id; import javax.persistence.GeneratedValue; import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,6 +34,7 @@ public class InsRateFromInsco implements java.io.Serializable
 		private String usrUpd;
 		private Date dtmCrt;
 		private String usrCrt;
+		private Set<InsRateFromInscoDtl> insRateFromInscoDtls = new HashSet<InsRateFromInscoDtl>(0);
 		
 		public InsRateFromInsco()
 			{
@@ -41,7 +45,7 @@ public class InsRateFromInsco implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public InsRateFromInsco(long id, InsCoBranch insCoBranch, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt)
+		public InsRateFromInsco(long id, InsCoBranch insCoBranch, String insTypeCode, String usageCode, Short newUsed, Long currencyId, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt, Set<InsRateFromInscoDtl> insRateFromInscoDtls)
 			{
 				this.id = id;
 				this.insCoBranch = insCoBranch;
@@ -53,6 +57,7 @@ public class InsRateFromInsco implements java.io.Serializable
 				this.usrUpd = usrUpd;
 				this.dtmCrt = dtmCrt;
 				this.usrCrt = usrCrt;
+				this.insRateFromInscoDtls = insRateFromInscoDtls;
 			}
 			
 		@Id @GeneratedValue(strategy=GenerationType.AUTO)
@@ -168,6 +173,17 @@ public class InsRateFromInsco implements java.io.Serializable
 		public void setUsrCrt(String usrCrt)
 			{
 				this.usrCrt = usrCrt;
+			}
+			
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "insRateFromInsco")
+		public Set<InsRateFromInscoDtl> getInsRateFromInscoDtls()
+			{
+				return this.insRateFromInscoDtls;
+			}
+			
+		public void setInsRateFromInscoDtls(Set<InsRateFromInscoDtl> insRateFromInscoDtls)
+			{
+				this.insRateFromInscoDtls = insRateFromInscoDtls;
 			}
 			
 	}

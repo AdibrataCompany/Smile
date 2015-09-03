@@ -130,6 +130,7 @@
         <mapping class="com.adibrata.smartdealer.model.ProductOffering" />
         <mapping class="com.adibrata.smartdealer.model.ServiceDtl" />
         <mapping class="com.adibrata.smartdealer.model.PayHistHdr" />
+        <mapping class="com.adibrata.smartdealer.model.InsRateFromInscoDtl" />
         <mapping class="com.adibrata.smartdealer.model.SalesInvoice" />
         <mapping class="com.adibrata.smartdealer.model.PersCustLegalInfo" />
         <mapping class="com.adibrata.smartdealer.model.AccountPayable" />
@@ -151,6 +152,7 @@
         <mapping class="com.adibrata.smartdealer.model.PaymentReversal" />
         <mapping class="com.adibrata.smartdealer.model.PersCustEntInfo" />
         <mapping class="com.adibrata.smartdealer.model.SuppOfficeInfo" />
+        <mapping class="com.adibrata.smartdealer.model.InsRateToCustDtl" />
         <mapping class="com.adibrata.smartdealer.model.Partner" />
         <mapping class="com.adibrata.smartdealer.model.TrxSeqNo" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseDtl" />

@@ -2,6 +2,9 @@
 package com.adibrata.smartdealer.action.setting.assetmaster;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.dao.setting.AssetMasterDao;
@@ -17,14 +20,14 @@ import com.opensymphony.xwork2.Preparable;
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class AssetMasterAction extends BaseAction implements Preparable
+public class AssetMasterAction extends BaseAction implements Preparable, SessionAware
 	{
 		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+		private Map<String, Object> sesassettype;
 		private String mode;
 		private AssetMasterService assetmasterservice;
 		private AssetMaster assetmaster;
@@ -43,12 +46,12 @@ public class AssetMasterAction extends BaseAction implements Preparable
 		
 		private AssetType assettype;
 		private Long assettypeid;
-		
 		private String assettypecode;
 		private String assettypedescription;
 		
-		private String assetbrand;
-		private String assetmodel;
+		private String brand;
+		private String model;
+		private String type;
 		private String assetcode;
 		private Integer assetlevel;
 		
@@ -165,6 +168,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				else
 					{
 						this.pagenumber = 1;
+						
 						try
 							{
 								if (this.assettypeid != null)
@@ -177,10 +181,35 @@ public class AssetMasterAction extends BaseAction implements Preparable
 										this.assettypecode = this.assettype.getAssetTypeCode();
 										this.assettypedescription = this.assettype.getDescription();
 										this.mode = INPUT;
+										
+										if (this.sesassettype.containsKey("AssetMasterSetting"))
+											{
+												this.sesassettype.remove("AssetMasterSetting");
+											}
+										this.sesassettype.put("AssetMasterSetting", this.assettype);
 									}
 								else
 									{
-										strMode = "end";
+										if (this.sesassettype.containsKey("AssetMasterSetting"))
+											{
+												this.assettype = (AssetType) this.sesassettype.get("AssetMasterSetting");
+												this.assettypeid = this.assettype.getId();
+												this.assettype = new AssetType();
+												this.assettype.setId(this.assettypeid);
+												AssetTypeService assetservice;
+												assetservice = new AssetTypeMasterDao();
+												this.assettype = assetservice.View(this.assettypeid);
+												this.assettypecode = this.assettype.getAssetTypeCode();
+												this.assettypedescription = this.assettype.getDescription();
+												this.mode = INPUT;
+												
+												if (this.sesassettype.containsKey("AssetMasterSetting"))
+													{
+														this.sesassettype.remove("AssetMasterSetting");
+													}
+												this.sesassettype.put("AssetMasterSetting", this.assettype);
+												this.mode = INPUT;
+											}
 									}
 							}
 						catch (final Exception e)
@@ -188,11 +217,19 @@ public class AssetMasterAction extends BaseAction implements Preparable
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-
+							
 					}
 				return strMode;
 			}
 			
+		@Override
+		public void setSession(final Map<String, Object> session)
+			{
+				// TODO Auto-generated method stub
+				this.sesassettype = session;
+
+			}
+
 		public String save()
 			{
 				String strMode;
@@ -312,9 +349,9 @@ public class AssetMasterAction extends BaseAction implements Preparable
 								this.assetmasterservice = new AssetMasterDao();
 								this.assetmaster = this.assetmasterservice.View(this.getId());
 								this.partner = this.assetmaster.getPartner();
-								this.assetbrand = this.assetmaster.getAssetBrand();
-
-								this.assetmodel = this.assetmaster.getAssetModel();
+								this.brand = this.assetmaster.getAssetBrand();
+								this.type = this.assetmaster.getAssetType();
+								this.model = this.assetmaster.getAssetModel();
 								this.isactive = this.assetmaster.getIsActive() > 0 ? true : false;
 							}
 						else
@@ -341,9 +378,9 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					{
 						this.assetmaster = new AssetMaster();
 						this.assetmaster.setPartner(this.getPartner());
-						this.assetmaster.setAssetBrand(this.getAssetbrand());
-						// this.assetmaster.setAssetType(this.getAssettype());
-						this.assetmaster.setAssetModel(this.getAssetmodel());
+						this.assetmaster.setAssetBrand(this.getBrand());
+						this.assetmaster.setAssetType(this.getType());
+						this.assetmaster.setAssetModel(this.getModel());
 						this.assetmaster.setPartner(this.getPartner());
 						this.assetmaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
 						this.assetmaster.setUsrCrt(BaseAction.sesLoginName());
@@ -371,10 +408,13 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					{
 						this.assetmaster = new AssetMaster();
 						this.assetmaster.setPartner(this.getPartner());
+						this.assettype = new AssetType();
+						this.assettype.setId(this.assettypeid);
 						this.assetmaster.setId(this.getId());
-						this.assetmaster.setAssetBrand(this.getAssetbrand());
-						// this.assetmaster.setAssetType(this.getAssettype());
-						this.assetmaster.setAssetModel(this.getAssetmodel());
+						this.assetmaster.setAssetTypeId(this.assettype);
+						this.assetmaster.setAssetBrand(this.getBrand());
+						this.assetmaster.setAssetType(this.getType());
+						this.assetmaster.setAssetModel(this.getMode());
 						this.assetmaster.setIsActive((short) (this.isIsactive() ? 1 : 0));
 						
 						this.assetmaster.setUsrUpd(BaseAction.sesLoginName());
@@ -425,7 +465,24 @@ public class AssetMasterAction extends BaseAction implements Preparable
 					}
 				return this.mode;
 			}
-
+			
+		/**
+		 * @return the sesassettype
+		 */
+		public Map<String, Object> getSesassettype()
+			{
+				return this.sesassettype;
+			}
+			
+		/**
+		 * @param sesassettype
+		 *            the sesassettype to set
+		 */
+		public void setSesassettype(final Map<String, Object> sesassettype)
+			{
+				this.sesassettype = sesassettype;
+			}
+			
 		/**
 		 * @return the mode
 		 */
@@ -433,7 +490,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -442,7 +499,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the assetmasterservice
 		 */
@@ -450,7 +507,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetmasterservice;
 			}
-
+			
 		/**
 		 * @param assetmasterservice
 		 *            the assetmasterservice to set
@@ -459,7 +516,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetmasterservice = assetmasterservice;
 			}
-
+			
 		/**
 		 * @return the assetmaster
 		 */
@@ -467,7 +524,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetmaster;
 			}
-
+			
 		/**
 		 * @param assetmaster
 		 *            the assetmaster to set
@@ -476,7 +533,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetmaster = assetmaster;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -484,7 +541,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -493,7 +550,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -501,7 +558,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -510,7 +567,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the lstassetmaster
 		 */
@@ -518,7 +575,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.lstassetmaster;
 			}
-
+			
 		/**
 		 * @param lstassetmaster
 		 *            the lstassetmaster to set
@@ -527,7 +584,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.lstassetmaster = lstassetmaster;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -535,7 +592,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -544,7 +601,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -552,7 +609,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -561,7 +618,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the pagenumber
 		 */
@@ -569,7 +626,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.pagenumber;
 			}
-
+			
 		/**
 		 * @param pagenumber
 		 *            the pagenumber to set
@@ -578,7 +635,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.pagenumber = pagenumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -586,7 +643,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -595,7 +652,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the status
 		 */
@@ -603,7 +660,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.status;
 			}
-
+			
 		/**
 		 * @param status
 		 *            the status to set
@@ -612,7 +669,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.status = status;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -620,7 +677,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -629,7 +686,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the isactive
 		 */
@@ -637,7 +694,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.isactive;
 			}
-
+			
 		/**
 		 * @param isactive
 		 *            the isactive to set
@@ -646,7 +703,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.isactive = isactive;
 			}
-
+			
 		/**
 		 * @return the assettype
 		 */
@@ -654,7 +711,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assettype;
 			}
-
+			
 		/**
 		 * @param assettype
 		 *            the assettype to set
@@ -663,7 +720,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assettype = assettype;
 			}
-
+			
 		/**
 		 * @return the assettypeid
 		 */
@@ -671,7 +728,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assettypeid;
 			}
-
+			
 		/**
 		 * @param assettypeid
 		 *            the assettypeid to set
@@ -680,7 +737,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assettypeid = assettypeid;
 			}
-
+			
 		/**
 		 * @return the assettypecode
 		 */
@@ -688,7 +745,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assettypecode;
 			}
-
+			
 		/**
 		 * @param assettypecode
 		 *            the assettypecode to set
@@ -697,7 +754,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assettypecode = assettypecode;
 			}
-
+			
 		/**
 		 * @return the assettypedescription
 		 */
@@ -705,7 +762,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assettypedescription;
 			}
-
+			
 		/**
 		 * @param assettypedescription
 		 *            the assettypedescription to set
@@ -714,41 +771,58 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assettypedescription = assettypedescription;
 			}
-
+			
 		/**
-		 * @return the assetbrand
+		 * @return the brand
 		 */
-		public String getAssetbrand()
+		public String getBrand()
 			{
-				return this.assetbrand;
+				return this.brand;
 			}
-
+			
 		/**
-		 * @param assetbrand
-		 *            the assetbrand to set
+		 * @param brand
+		 *            the brand to set
 		 */
-		public void setAssetbrand(final String assetbrand)
+		public void setBrand(final String brand)
 			{
-				this.assetbrand = assetbrand;
+				this.brand = brand;
 			}
-
+			
 		/**
-		 * @return the assetmodel
+		 * @return the model
 		 */
-		public String getAssetmodel()
+		public String getModel()
 			{
-				return this.assetmodel;
+				return this.model;
 			}
-
+			
 		/**
-		 * @param assetmodel
-		 *            the assetmodel to set
+		 * @param model
+		 *            the model to set
 		 */
-		public void setAssetmodel(final String assetmodel)
+		public void setModel(final String model)
 			{
-				this.assetmodel = assetmodel;
+				this.model = model;
 			}
-
+			
+		/**
+		 * @return the type
+		 */
+		public String getType()
+			{
+				return this.type;
+			}
+			
+		/**
+		 * @param type
+		 *            the type to set
+		 */
+		public void setType(final String type)
+			{
+				this.type = type;
+			}
+			
 		/**
 		 * @return the assetcode
 		 */
@@ -756,7 +830,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetcode;
 			}
-
+			
 		/**
 		 * @param assetcode
 		 *            the assetcode to set
@@ -765,7 +839,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetcode = assetcode;
 			}
-
+			
 		/**
 		 * @return the assetlevel
 		 */
@@ -773,7 +847,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				return this.assetlevel;
 			}
-
+			
 		/**
 		 * @param assetlevel
 		 *            the assetlevel to set
@@ -782,7 +856,7 @@ public class AssetMasterAction extends BaseAction implements Preparable
 			{
 				this.assetlevel = assetlevel;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -791,11 +865,4 @@ public class AssetMasterAction extends BaseAction implements Preparable
 				return serialVersionUID;
 			}
 			
-		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-
-			}
-
 	}

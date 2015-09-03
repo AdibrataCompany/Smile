@@ -193,7 +193,13 @@
 	<table-filter match-name="InsRateFromInsco"
 		match-catalog="SmartDealer">
 	</table-filter>
+	<table-filter match-name="InsRateFromInscoDtl"
+		match-catalog="SmartDealer">
+	</table-filter>
 	<table-filter match-name="InsRateToCust"
+		match-catalog="SmartDealer">
+	</table-filter>
+	<table-filter match-name="InsRateToCustDtl"
 		match-catalog="SmartDealer">
 	</table-filter>
 	<table-filter match-name="InstSchedule"
