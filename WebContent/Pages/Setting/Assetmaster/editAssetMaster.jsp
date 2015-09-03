@@ -29,26 +29,27 @@
 					<s:hidden name="assettypeid" id="assettypeid" />
 					<s:hidden name="assettypedescription" id="assettypedescription" />
 					<s:hidden name="assettypecode" id="assettypecode" />
+					<s:hidden name="id" id="id" />
 					<s:label name="message" />
 					<div align="left" class="form-group">
 						<label>Brand</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="brand" style="width:95%"
-								placeholder="Brand" class="form-control" />
+							<s:textfield name="brand" style="width:95%" placeholder="Brand"
+								class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Type</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="type" style="width:95%"
-								placeholder="Type" class="form-control" />
+							<s:textfield name="type" style="width:95%" placeholder="Type"
+								class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">
 						<label>Model</label>
 						<div align="left" class="form-inline">
-							<s:textfield name="model" style="width:95%"
-								placeholder="Model" class="form-control" />
+							<s:textfield name="model" style="width:95%" placeholder="Model"
+								class="form-control" />
 						</div>
 					</div>
 					<div align="left" class="form-group">

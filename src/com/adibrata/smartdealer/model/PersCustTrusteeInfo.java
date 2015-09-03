@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:54:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;

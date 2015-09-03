@@ -149,11 +149,11 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 				final StringBuilder assetcode = new StringBuilder();
 				try
 					{
-						assetcode.append(assetMaster.getAssetBrand());
+						assetcode.append(assetMaster.getBrand());
 						assetcode.append(".");
-						assetcode.append(assetMaster.getAssetType());
+						assetcode.append(assetMaster.getType());
 						assetcode.append(".");
-						assetcode.append(assetMaster.getAssetModel());
+						assetcode.append(assetMaster.getModel());
 
 						assetMaster.setDtmCrt(this.dtmupd);
 						assetMaster.setDtmUpd(this.dtmupd);
@@ -191,11 +191,11 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 				final StringBuilder assetcode = new StringBuilder();
 				try
 					{
-						assetcode.append(assetMaster.getAssetBrand());
+						assetcode.append(assetMaster.getBrand());
 						assetcode.append(".");
-						assetcode.append(assetMaster.getAssetType());
+						assetcode.append(assetMaster.getType());
 						assetcode.append(".");
-						assetcode.append(assetMaster.getAssetModel());
+						assetcode.append(assetMaster.getModel());
 						
 						assetMaster.setDtmCrt(this.dtmupd);
 						assetMaster.setDtmUpd(this.dtmupd);

@@ -22,12 +22,12 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AssetDocAction extends BaseAction implements Preparable, SessionAware
 	{
-
+		
 		/**
 		 *
 		 */
 		private static final long serialVersionUID = 1L;
-
+		
 		private String mode;
 		
 		private AssetDocMasterService assetdocmasterservice;
@@ -67,7 +67,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					{
 						this.pageNumber = 1;
 					}
-
+					
 			}
 			
 		@Override
@@ -180,10 +180,10 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
-
+									
 							}
 					}
 				else
@@ -209,30 +209,30 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 											}
 										this.sesassettype.put("AssetDocSetting", this.assettype);
 									}
-								else
-									{
-										if (this.sesassettype.containsKey("AssetDocSetting"))
-											{
-												this.assettype = (AssetType) this.sesassettype.get("AssetDocSetting");
-												this.assettypeid = this.assettype.getId();
-												this.assettype = new AssetType();
-												this.assettype.setId(this.assettypeid);
-												AssetTypeService assetservice;
-												assetservice = new AssetTypeMasterDao();
-												this.assettype = assetservice.View(this.assettypeid);
-												this.assettypecode = this.assettype.getAssetTypeCode();
-												this.assettypedescription = this.assettype.getDescription();
-												this.mode = INPUT;
-												
-												if (this.sesassettype.containsKey("AssetDocSetting"))
-													{
-														this.sesassettype.remove("AssetDocSetting");
-													}
-												this.sesassettype.put("AssetDocSetting", this.assettype);
-												this.mode = INPUT;
-											}
-											
-									}
+								// else
+								// {
+								// if (this.sesassettype.containsKey("AssetDocSetting"))
+								// {
+								// this.assettype = (AssetType) this.sesassettype.get("AssetDocSetting");
+								// this.assettypeid = this.assettype.getId();
+								// this.assettype = new AssetType();
+								// this.assettype.setId(this.assettypeid);
+								// AssetTypeService assetservice;
+								// assetservice = new AssetTypeMasterDao();
+								// this.assettype = assetservice.View(this.assettypeid);
+								// this.assettypecode = this.assettype.getAssetTypeCode();
+								// this.assettypedescription = this.assettype.getDescription();
+								// this.mode = INPUT;
+								//
+								// if (this.sesassettype.containsKey("AssetDocSetting"))
+								// {
+								// this.sesassettype.remove("AssetDocSetting");
+								// }
+								// this.sesassettype.put("AssetDocSetting", this.assettype);
+								// this.mode = INPUT;
+								// }
+								//
+								// }
 							}
 						catch (final Exception e)
 							{
@@ -243,11 +243,11 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return this.mode;
 			}
-
+			
 		/**
 		 *
 		 */
-
+		
 		private String WhereCond()
 			{
 				final StringBuilder wherecond = new StringBuilder();
@@ -261,10 +261,10 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						wherecond.append(" and ");
-
+						
 						if (this.getSearchvalue().contains("%"))
 							{
-
+								
 								wherecond.append(this.getSearchcriteria() + " like '" + this.getSearchvalue() + "' ");
 							}
 						else
@@ -274,46 +274,46 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return wherecond.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
 						this.assetdocmasterservice = new AssetDocMasterDao();
-
+						
 						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		private void Paging(final int islast) throws Exception
 			{
 				try
 					{
 						this.assetdocmasterservice = new AssetDocMasterDao();
-
+						
 						this.lstassetdocmasters = this.assetdocmasterservice.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = this.assetdocmasterservice.getCurrentpage();
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 			}
-
+			
 		public String ViewData() throws Exception
 			{
 				this.assetdocmaster = new AssetDocMaster();
@@ -322,7 +322,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 						if (this.getId() != null)
 							{
 								this.assetdocmasterservice = new AssetDocMasterDao();
-
+								this.assetdocmaster = new AssetDocMaster();
 								this.assetdocmaster = this.assetdocmasterservice.View(this.id);
 								this.partner = this.assetdocmaster.getPartner();
 								this.documentcode = this.assetdocmaster.getDocumentCode();
@@ -361,20 +361,20 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveDelete() throws Exception
 			{
 				try
 					{
-
+						
 						if (this.getId() != null)
 							{
-								final AssetDocMaster assetDocMaster = new AssetDocMaster();
-
-								assetDocMaster.setId(this.getId());
+								this.assetdocmaster = new AssetDocMaster();
+								
+								this.assetdocmaster.setId(this.getId());
 								this.assetdocmasterservice = new AssetDocMasterDao();
-
-								this.assetdocmasterservice.SaveDel(assetDocMaster);
+								
+								this.assetdocmasterservice.SaveDel(this.assetdocmaster);
 								this.setMessage(BaseAction.SuccessMessage());
 							}
 						else
@@ -385,7 +385,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				catch (final Exception exp)
 					{
-
+						
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -394,36 +394,35 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return this.mode;
 			}
-
+			
 		public String save()
 			{
-				String strMode;
-				strMode = this.mode;
+				
 				if (this.mode != null)
 					{
-						switch (strMode)
+						switch (this.mode)
 							{
 								case "saveadd" :
 									try
 										{
-											strMode = this.SaveAdd();
+											this.mode = this.SaveAdd();
 										}
 									catch (final Exception e)
 										{
 											// TODO Auto-generated catch block
-											strMode = ERROR;
+											this.mode = ERROR;
 											e.printStackTrace();
 										}
 									break;
 								case "saveedit" :
 									try
 										{
-											strMode = this.SaveEdit();
+											this.mode = this.SaveEdit();
 										}
 									catch (final Exception e1)
 										{
 											// TODO Auto-generated catch block
-											strMode = ERROR;
+											this.mode = ERROR;
 											e1.printStackTrace();
 										}
 									break;
@@ -435,18 +434,18 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					{
 						try
 							{
-								strMode = INPUT;
+								this.mode = INPUT;
 							}
 						catch (final Exception e)
 							{
 								// TODO Auto-generated catch block
-								strMode = ERROR;
+								this.mode = ERROR;
 								e.printStackTrace();
 							}
 					}
-				return strMode;
+				return this.mode;
 			}
-
+			
 		private String SaveAdd() throws Exception
 			{
 				try
@@ -454,13 +453,13 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 						this.assetdocmaster = new AssetDocMaster();
 						this.assettype = new AssetType();
 						this.assettype.setId(this.assettypeid);
-
+						
 						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
 						this.assetdocmaster.setDocumentName(this.getDocumentname());
-
+						
 						this.assetdocmaster.setAssetType(this.getAssettype());
 						this.assetdocmaster.setIsActive((short) 1);
-
+						
 						this.assetdocmaster.setPartner(this.getPartner());
 						this.assetdocmaster.setUsrUpd(BaseAction.sesLoginName());
 						if (this.isactive)
@@ -472,7 +471,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 								this.assetdocmaster.setIsActive((short) 0);
 							}
 						this.assetdocmasterservice = new AssetDocMasterDao();
-
+						
 						this.assetdocmasterservice.SaveAdd(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -489,14 +488,17 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return this.mode;
 			}
-
+			
 		private String SaveEdit() throws Exception
 			{
 				try
 					{
-						this.assetdocmaster = new AssetDocMaster();
 						this.assettype = new AssetType();
 						this.assettype.setId(this.assettypeid);
+						
+						this.assetdocmasterservice = new AssetDocMasterDao();
+						this.assetdocmaster = new AssetDocMaster();
+						this.assetdocmaster = this.assetdocmasterservice.View(this.id);
 						
 						this.assetdocmaster.setId(this.getId());
 						this.assetdocmaster.setDocumentCode(this.getDocumentcode());
@@ -512,8 +514,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 							{
 								this.assetdocmaster.setIsActive((short) 0);
 							}
-						this.assetdocmasterservice = new AssetDocMasterDao();
-
+							
 						this.assetdocmasterservice.SaveEdit(this.assetdocmaster);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -530,7 +531,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 					}
 				return this.mode;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -538,7 +539,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -547,7 +548,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the assetdocmasterservice
 		 */
@@ -555,7 +556,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.assetdocmasterservice;
 			}
-
+			
 		/**
 		 * @param assetdocmasterservice
 		 *            the assetdocmasterservice to set
@@ -564,7 +565,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.assetdocmasterservice = assetdocmasterservice;
 			}
-
+			
 		/**
 		 * @return the assetdocmaster
 		 */
@@ -572,7 +573,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.assetdocmaster;
 			}
-
+			
 		/**
 		 * @param assetdocmaster
 		 *            the assetdocmaster to set
@@ -581,7 +582,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.assetdocmaster = assetdocmaster;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -589,7 +590,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -598,7 +599,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -606,7 +607,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -615,7 +616,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the lstassetdocmasters
 		 */
@@ -623,7 +624,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.lstassetdocmasters;
 			}
-
+			
 		/**
 		 * @param lstassetdocmasters
 		 *            the lstassetdocmasters to set
@@ -632,7 +633,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.lstassetdocmasters = lstassetdocmasters;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -640,7 +641,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -649,7 +650,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -657,7 +658,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -666,7 +667,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -674,7 +675,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -683,7 +684,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the assettype
 		 */
@@ -691,7 +692,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.assettype;
 			}
-
+			
 		/**
 		 * @param assettype
 		 *            the assettype to set
@@ -700,7 +701,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.assettype = assettype;
 			}
-
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -708,7 +709,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.pageNumber;
 			}
-
+			
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -717,7 +718,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.pageNumber = pageNumber;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -725,7 +726,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -734,7 +735,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the documentcode
 		 */
@@ -742,7 +743,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.documentcode;
 			}
-
+			
 		/**
 		 * @param documentcode
 		 *            the documentcode to set
@@ -751,7 +752,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.documentcode = documentcode;
 			}
-
+			
 		/**
 		 * @return the documentname
 		 */
@@ -759,7 +760,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.documentname;
 			}
-
+			
 		/**
 		 * @param documentname
 		 *            the documentname to set
@@ -768,7 +769,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.documentname = documentname;
 			}
-
+			
 		/**
 		 * @return the assettypeid
 		 */
@@ -776,7 +777,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.assettypeid;
 			}
-
+			
 		/**
 		 * @param assettypeid
 		 *            the assettypeid to set
@@ -785,7 +786,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.assettypeid = assettypeid;
 			}
-
+			
 		/**
 		 * @return the assettypecode
 		 */
@@ -793,7 +794,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.assettypecode;
 			}
-
+			
 		/**
 		 * @param assettypecode
 		 *            the assettypecode to set
@@ -810,7 +811,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.status;
 			}
-
+			
 		/**
 		 * @param status
 		 *            the status to set
@@ -819,7 +820,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.status = status;
 			}
-
+			
 		/**
 		 * @return the lbltest
 		 */
@@ -827,7 +828,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.lbltest;
 			}
-
+			
 		/**
 		 * @param lbltest
 		 *            the lbltest to set
@@ -836,7 +837,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.lbltest = lbltest;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -849,7 +850,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-
+				
 			}
 			
 		/**
@@ -885,7 +886,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.isactive = isactive;
 			}
-
+			
 		/**
 		 * @return the sesassettype
 		 */
@@ -893,7 +894,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				return this.sesassettype;
 			}
-
+			
 		/**
 		 * @param sesassettype
 		 *            the sesassettype to set
@@ -902,7 +903,7 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 			{
 				this.sesassettype = sesassettype;
 			}
-
+			
 		// @Override
 		// public void validate()
 		// {
@@ -919,5 +920,5 @@ public class AssetDocAction extends BaseAction implements Preparable, SessionAwa
 		// this.addFieldError("this.assetType", "Asset Type is required");
 		// }
 		// }
-
+		
 	}

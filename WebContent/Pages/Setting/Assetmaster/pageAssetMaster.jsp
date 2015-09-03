@@ -27,7 +27,7 @@
 				<s:hidden name="assettypedescription" id="assettypedescription" />
 				<s:hidden name="assettypecode" id="assettypecode" />
 				<s:label name="message" />
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+
 				<table width="100%">
 					<tr>
 						<td width="20%">Asset Type Code</td>
@@ -38,23 +38,28 @@
 						<td width="20%">Asset Type Description</td>
 						<td colspan="3"><s:label name="assettypedescription"></s:label></td>
 					</tr>
-					<tr>
-						<td width="10%">Searching</td>
-						<td><s:select name="searchcriteria" class="btn btn-xs"
-								headerKey="" headerValue="Search Criteria"
-								list="#{'assetbrand':'Brand','assettype':'Type','assetmodel':'Model','assetcode':'Code'}" />
-							<input type="text" name="searchvalue" placeholder="Search value" />
-							<div class="input-group">
-								<s:textfield name="searchvalue" placeholder="Search value"
-									class="form-control" />
-								<span class="input-group-btn">
-									<button class="btn btn-xs btn-primary" type="submit"
-										onclick="search()">Search</button>
-								</span>
-							</div></td>
-						<td align="right"><%@include file="/Pages/EntryMaster.jsp"%></td>
-					</tr>
 				</table>
+				<div class="col-lg-6">
+					<div class="input-group">
+						<span class="input-group-addon"> <s:select
+								name="searchcriteria" class="btn btn-xs" headerKey=""
+								headerValue="Search Criteria"
+								list="#{'brand':'Brand','type':'Type','mode':'Model','assetcode':'Code'}" />
+
+
+						</span> <input type="text" class="form-control" placeholder="Pencarian"
+							name="searchvalue"> <span
+							class="input-group-btn">
+							<button class="btn btn-default" type="submit" onclick="search()">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+					<!-- /input-group -->
+				</div>
+				<div class="col-lg-6" align="right">
+					<%@include file="/Pages/EntryMaster.jsp"%>
+				</div>
 
 				<br>
 				<s:label name="message"></s:label>
@@ -67,12 +72,12 @@
 						<th style="text-align: center;">Model</th>
 						<th style="text-align: center;" width="5%">Pilih</th>
 					</tr>
-					<s:iterator value="lstAssetMaster">
+					<s:iterator value="lstassetmaster">
 						<tr id="row_${id}">
-							<td>${assetcode}</td>
-							<td>${assetbrand}</td>
-							<td>${assettype}</td>
-							<td>${assetmodel}</td>
+							<td>${assetCode}</td>
+							<td>${brand}</td>
+							<td>${type}</td>
+							<td>${model}</td>
 							<td><input type="radio" name="id" value="${id}" checked /></td>
 						</tr>
 					</s:iterator>

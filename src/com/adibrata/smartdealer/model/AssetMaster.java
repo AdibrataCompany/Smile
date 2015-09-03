@@ -1,6 +1,6 @@
 
 package com.adibrata.smartdealer.model;
-// Generated Sep 3, 2015 3:22:49 PM by Hibernate Tools 4.3.1
+// Generated Sep 3, 2015 3:54:52 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -27,9 +27,9 @@ public class AssetMaster implements java.io.Serializable
 		private long id;
 		private AssetType assetType;
 		private Partner partner;
-		private String assetBrand;
-		private String assetType_1;
-		private String assetModel;
+		private String brand;
+		private String type;
+		private String model;
 		private String assetCode;
 		private Integer assetLevel;
 		private Double resaleValue;
@@ -53,15 +53,15 @@ public class AssetMaster implements java.io.Serializable
 				this.id = id;
 			}
 			
-		public AssetMaster(long id, AssetType assetType, Partner partner, String assetBrand, String assetType_1, String assetModel, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt,
-		        String usrCrt, Set<AgrmntAsset> agrmntAssets, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
+		public AssetMaster(long id, AssetType assetType, Partner partner, String brand, String type, String model, String assetCode, Integer assetLevel, Double resaleValue, Short isActive, Date dtmUpd, String usrUpd, Date dtmCrt, String usrCrt,
+		        Set<AgrmntAsset> agrmntAssets, Set<AgrmntAssetLevelInfo> agrmntAssetLevelInfos, Set<ServiceHdr> serviceHdrs, Set<PurchaseOrderDtl> purchaseOrderDtls, Set<Stock> stocks)
 			{
 				this.id = id;
 				this.assetType = assetType;
 				this.partner = partner;
-				this.assetBrand = assetBrand;
-				this.assetType_1 = assetType_1;
-				this.assetModel = assetModel;
+				this.brand = brand;
+				this.type = type;
+				this.model = model;
 				this.assetCode = assetCode;
 				this.assetLevel = assetLevel;
 				this.resaleValue = resaleValue;
@@ -114,37 +114,37 @@ public class AssetMaster implements java.io.Serializable
 				this.partner = partner;
 			}
 			
-		@Column(name = "AssetBrand", length = 20)
-		public String getAssetBrand()
+		@Column(name = "Brand", length = 20)
+		public String getBrand()
 			{
-				return this.assetBrand;
+				return this.brand;
 			}
 			
-		public void setAssetBrand(String assetBrand)
+		public void setBrand(String brand)
 			{
-				this.assetBrand = assetBrand;
+				this.brand = brand;
 			}
 			
-		@Column(name = "AssetType", length = 50)
-		public String getAssetType_1()
+		@Column(name = "Type", length = 50)
+		public String getType()
 			{
-				return this.assetType_1;
+				return this.type;
 			}
 			
-		public void setAssetType_1(String assetType_1)
+		public void setType(String type)
 			{
-				this.assetType_1 = assetType_1;
+				this.type = type;
 			}
 			
-		@Column(name = "AssetModel", length = 20)
-		public String getAssetModel()
+		@Column(name = "Model", length = 20)
+		public String getModel()
 			{
-				return this.assetModel;
+				return this.model;
 			}
 			
-		public void setAssetModel(String assetModel)
+		public void setModel(String model)
 			{
-				this.assetModel = assetModel;
+				this.model = model;
 			}
 			
 		@Column(name = "AssetCode", length = 200)

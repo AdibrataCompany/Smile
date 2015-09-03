@@ -31,6 +31,7 @@
 			<result name="error">/Pages/Setting/Assetdoc/editAssetDoc.jsp</result>
 			<result name="success" type="redirectAction">
 				<param name="actionName">assetdoc</param>
+				<param name="assettypeid">${assettypeid}</param>
 				<param name="message">${message}</param>
 			</result>
 			<result name="end" type="redirectAction">
@@ -142,11 +143,14 @@
 			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp
 			</result>
 			<result name="success" type="redirectAction">
-				<param name="actionName">assettype</param>
+				<param name="actionName">assetattribute</param>
+				<param name="assettypeid">${assettypeid}</param>
 				<param name="message">${message}</param>
 			</result>
 			<result name="end" type="redirectAction">
-				<param name="actionName">assettype</param>
+				<param name="actionName">assetattribute</param>
+				<param name="assettypeid">${assettypeid}</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 
@@ -197,11 +201,14 @@
 			<result name="error">/Pages/Setting/AssetType/editAssetType.jsp
 			</result>
 			<result name="success" type="redirectAction">
-				<param name="actionName">assettype</param>
+				<param name="actionName">assetcategory</param>
+				<param name="assettypeid">${assettypeid}</param>
 				<param name="message">${message}</param>
 			</result>
 			<result name="end" type="redirectAction">
-				<param name="actionName">assettype</param>
+				<param name="actionName">assetcategory</param>
+				<param name="assettypeid">${assettypeid}</param>
+				<param name="message">${message}</param>
 			</result>
 		</action>
 		<action name="assetmaster"
@@ -234,12 +241,14 @@
 			</result>
 			<result name="error">/Pages/Setting/Assetmaster/editAssetMaster.jsp
 			</result>
-			<result name="saveadd" type="redirectAction">
+			<result name="success" type="redirectAction">
 				<param name="actionName">assetmaster</param>
+				<param name="assettypeid">${assettypeid}</param>
 				<param name="message">${message}</param>
 			</result>
-			<result name="saveedit" type="redirectAction">
+			<result name="end" type="redirectAction">
 				<param name="actionName">assetmaster</param>
+				<param name="assettypeid">${assettypeid}</param>
 				<param name="message">${message}</param>
 			</result>
 		</action>
