@@ -35,7 +35,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		int pagesize;
-
+		
 		public PurchaseEntryDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -44,7 +44,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 						this.session = HibernateHelper.getSessionFactory().openSession();
 						this.pagesize = HibernateHelper.getPagesize();
 						this.strStatement = " from Supplier ";
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -55,7 +55,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.purchase.PurchaseOrder#Save()
@@ -73,7 +73,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 						purchaseOrderHdr.setDtmCrt(this.dtmupd.getTime());
 						purchaseOrderHdr.setDtmUpd(this.dtmupd.getTime());
 						this.session.save(purchaseOrderHdr);
-
+						
 						for (final PurchaseOrderDtl arow : lstpurchaseOrderDtl)
 							{
 								// 1. Save Asset Master
@@ -81,9 +81,9 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 								// 3. Save purchase order detail
 								final AssetMaster assetmaster = new AssetMaster();
 								assetmaster.setPartner(purchaseOrderHdr.getPartner());
-								assetmaster.setAssetBrand(arow.getAssetBrand());
-								assetmaster.setAssetType(arow.getAssetType());
-								assetmaster.setAssetModel(arow.getAssetModel());
+								assetmaster.setBrand(arow.getAssetBrand());
+								assetmaster.setType(arow.getAssetType());
+								assetmaster.setModel(arow.getAssetModel());
 								assetmaster.setAssetLevel(3);
 								assetcode.append(arow.getAssetBrand());
 								assetcode.append(",");
@@ -94,10 +94,10 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 								assetmaster.setDtmUpd(this.dtmupd.getTime());
 								assetmaster.setUsrCrt(purchaseOrderHdr.getUsrCrt());
 								assetmaster.setUsrUpd(purchaseOrderHdr.getUsrUpd());
-
+								
 								assetmaster.setAssetCode(assetcode.toString());
 								this.session.save(assetmaster);
-
+								
 								final Stock stock = new Stock();
 								stock.setPartner(purchaseOrderHdr.getPartner());
 								stock.setOffice(purchaseOrderHdr.getOffice());
@@ -125,7 +125,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 								stock.setUsrCrt(purchaseOrderHdr.getUsrCrt());
 								stock.setUsrUpd(purchaseOrderHdr.getUsrUpd());
 								this.session.save(stock);
-
+								
 								PurchaseOrderDtl purchsaeorderdtl = new PurchaseOrderDtl();
 								purchsaeorderdtl = arow;
 								purchsaeorderdtl.setPurchaseOrderHdr(purchaseOrderHdr);
@@ -133,9 +133,9 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 								purchsaeorderdtl.setDtmUpd(this.dtmupd.getTime());
 								this.session.save(purchsaeorderdtl);
 							}
-
+							
 						this.session.getTransaction().commit();
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -146,11 +146,11 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@Override
 		public List<PurchaseOrderHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
-
+				
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PurchaseOrderHdr> list = null;
@@ -161,16 +161,16 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 							{
 								hql.append(WhereCond);
 							}
-
+							
 						final Query selectQuery = this.session.createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.pagesize);
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -178,14 +178,14 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public List<PurchaseOrderHdr> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PurchaseOrderHdr> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -199,11 +199,11 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 						selectQuery.setFirstResult((int) ((totalrecord - 1) * this.pagesize));
 						selectQuery.setMaxResults(this.pagesize);
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -211,26 +211,26 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public List<PurchaseOrderDtl> viewPurchaseOrderDtls(final PurchaseOrderHdr purchaseOrderHdr) throws Exception
 			{
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<PurchaseOrderDtl> list = null;
-
+				
 				try
 					{
 						hql.append("from PurchaseOrderDtl ");
-
+						
 						final Query selectQuery = this.session.createQuery(hql.toString());
-
+						
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -238,7 +238,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public PurchaseOrderHdr viewPurchaseOrderHdr(final Long id) throws Exception
 			{
@@ -247,11 +247,11 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 				try
 					{
 						purchaseOrderHdr = (PurchaseOrderHdr) this.session.get(PurchaseOrderHdr.class, id);
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -259,5 +259,5 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 					}
 				return purchaseOrderHdr;
 			}
-
+			
 	}

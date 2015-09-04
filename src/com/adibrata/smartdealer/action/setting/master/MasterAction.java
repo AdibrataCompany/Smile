@@ -27,7 +27,7 @@ public class MasterAction extends BaseAction implements Preparable
 
 		private String mode;
 		private MsTable mstable;
-		private final MasterService masterservice;
+		private MasterService masterservice;
 
 		private Partner partner;
 		private Office office;
@@ -55,9 +55,6 @@ public class MasterAction extends BaseAction implements Preparable
 
 				this.office = new Office();
 				this.setOffice(this.office);
-
-				this.masterservice = new MasterDao();
-				this.mstable = new MsTable();
 
 				if (this.pagenumber == 0)
 					{
@@ -172,24 +169,23 @@ public class MasterAction extends BaseAction implements Preparable
 				else
 					{
 						this.pagenumber = 1;
-						
-						strMode = "input";
+
+						strMode = INPUT;
 					}
 				return strMode;
 			}
 
 		public String save()
 			{
-				String strMode;
-				strMode = this.mode;
+				
 				if (this.mode != null)
 					{
-						switch (strMode)
+						switch (this.mode)
 							{
 								case "saveadd" :
 									try
 										{
-											strMode = this.SaveAdd();
+											this.mode = this.SaveAdd();
 										}
 									catch (final Exception e)
 										{
@@ -200,7 +196,7 @@ public class MasterAction extends BaseAction implements Preparable
 								case "saveedit" :
 									try
 										{
-											strMode = this.SaveEdit();
+											this.mode = this.SaveEdit();
 										}
 									catch (final Exception e1)
 										{
@@ -216,7 +212,7 @@ public class MasterAction extends BaseAction implements Preparable
 					{
 						try
 							{
-								strMode = "input";
+								this.mode = INPUT;
 							}
 						catch (final Exception e)
 							{
@@ -224,14 +220,14 @@ public class MasterAction extends BaseAction implements Preparable
 								e.printStackTrace();
 							}
 					}
-				return strMode;
+				return this.mode;
 			}
 
 		private String WhereCond()
 			{
 
 				final StringBuilder wherecond = new StringBuilder();
-				
+
 				wherecond.append(" partnercode = '" + BaseAction.sesPartnerCode() + "'");
 				if ((this.getMastercode() != null) && !this.getMastercode().equals(""))
 					{
@@ -259,17 +255,17 @@ public class MasterAction extends BaseAction implements Preparable
 				try
 					{
 						this.ListMasterType();
+
+						this.masterservice = new MasterDao();
 						this.lstmstable = this.masterservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
 					{
-
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
 			}
 
 		private void Paging(final int islast) throws Exception
@@ -277,6 +273,7 @@ public class MasterAction extends BaseAction implements Preparable
 				try
 					{
 						this.ListMasterType();
+						this.masterservice = new MasterDao();
 						this.lstmstable = this.masterservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 					}
 				catch (final Exception exp)
@@ -292,11 +289,12 @@ public class MasterAction extends BaseAction implements Preparable
 
 		public String ViewData() throws Exception
 			{
-				this.mstable = new MsTable();
 				try
 					{
 						if (this.getId() != null)
 							{
+								this.mstable = new MsTable();
+								this.masterservice = new MasterDao();
 								this.mstable = this.masterservice.View(this.getId());
 								this.partner = this.mstable.getPartner();
 								this.mastercode = this.mstable.getMasterCode();
@@ -306,7 +304,7 @@ public class MasterAction extends BaseAction implements Preparable
 						else
 							{
 								this.Paging();
-								this.mode = "input";
+								this.mode = INPUT;
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -333,7 +331,7 @@ public class MasterAction extends BaseAction implements Preparable
 						this.mstable.setUsrUpd(this.getUsrupd());
 						this.mstable.setMasterTypeCode(this.getMastertypecode());
 						this.mstable.setPartner(this.getPartner());
-
+						this.masterservice = new MasterDao();
 						this.masterservice.SaveAdd(this.mstable);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -354,15 +352,19 @@ public class MasterAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						
 						this.mstable = new MsTable();
-						this.mstable.setId(this.getId());
+						this.masterservice = new MasterDao();
+						this.mstable = this.masterservice.View(this.getId());
+
 						this.mstable.setMasterCode(this.getMastercode());
 						this.mstable.setMasterValue(this.getMastervalue());
 
 						this.mstable.setUsrUpd(BaseAction.sesLoginName());
 						this.mstable.setMasterTypeCode(this.getMastertypecode());
 						this.mstable.setPartner(this.getPartner());
-
+						
+						this.masterservice = new MasterDao();
 						this.masterservice.SaveAdd(this.mstable);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -381,13 +383,12 @@ public class MasterAction extends BaseAction implements Preparable
 
 		private String SaveDelete() throws Exception
 			{
-
-				this.mstable = new MsTable();
 				try
 					{
 						if (this.getId() != null)
 							{
-
+								this.mstable = new MsTable();
+								this.masterservice = new MasterDao();
 								this.mstable.setId(this.getId());
 								this.masterservice.SaveDel(this.mstable);
 								this.setMessage(BaseAction.SuccessMessage());
@@ -395,7 +396,7 @@ public class MasterAction extends BaseAction implements Preparable
 							}
 						else
 							{
-								this.mode = "input";
+								this.mode = INPUT;
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}

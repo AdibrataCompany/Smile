@@ -62,10 +62,7 @@ public class OfficeAction extends BaseAction implements Preparable
 				
 				this.office = new Office();
 				this.setOffice(this.office);
-				
-				this.officeservice = new OfficeDao();
-				this.office = new Office();
-				
+
 				if (this.pagenumber == 0)
 					{
 						this.pagenumber = 1;
@@ -260,6 +257,8 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.officeservice = new OfficeDao();
+						
 						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
@@ -277,6 +276,8 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.officeservice = new OfficeDao();
+						
 						this.lstoffice = this.officeservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 						this.pagenumber = this.officeservice.getCurrentpage();
 					}
@@ -293,11 +294,13 @@ public class OfficeAction extends BaseAction implements Preparable
 			
 		public String ViewData() throws Exception
 			{
-				this.office = new Office();
+				
 				try
 					{
 						if (this.getId() != null)
 							{
+								this.officeservice = new OfficeDao();
+								this.office = new Office();
 								this.office = this.officeservice.View(this.id);
 								this.partner = this.office.getPartner();
 								this.officecode = this.office.getOfficeCode();
@@ -339,8 +342,8 @@ public class OfficeAction extends BaseAction implements Preparable
 			{
 				try
 					{
+
 						this.office = new Office();
-						
 						this.office.setPartner(this.partner);
 
 						this.office.setOfficeCode(this.getOfficecode());
@@ -362,6 +365,7 @@ public class OfficeAction extends BaseAction implements Preparable
 						this.office.setHandphone(this.handphone);
 						this.office.setUsrCrt(BaseAction.sesLoginName());
 						this.office.setUsrUpd(BaseAction.sesLoginName());
+						this.officeservice = new OfficeDao();
 						this.officeservice.SaveAdd(this.office);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -383,7 +387,8 @@ public class OfficeAction extends BaseAction implements Preparable
 				try
 					{
 						this.office = new Office();
-						this.office.setId(this.getId());
+						this.office = this.officeservice.View(this.id);
+
 						this.office.setPartner(this.partner);
 						this.office.setOfficeCode(this.getOfficecode());
 						this.office.setName(this.getName());
@@ -400,9 +405,10 @@ public class OfficeAction extends BaseAction implements Preparable
 						this.office.setPhoneNo2(this.getPhoneno2());
 						this.office.setAreaFax(this.getAreafax());
 						this.office.setFaxNo(this.getFaxno());
-						
 						this.office.setUsrUpd(BaseAction.sesLoginName());
 						this.office.setUsrCrt(BaseAction.sesLoginName());
+
+						this.officeservice = new OfficeDao();
 						this.officeservice.SaveEdit(this.office);
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
@@ -428,6 +434,7 @@ public class OfficeAction extends BaseAction implements Preparable
 							{
 								this.office = new Office();
 								this.office.setId(this.getId());
+								this.officeservice = new OfficeDao();
 								this.officeservice.SaveDel(this.office);
 								this.setMessage(BaseAction.SuccessMessage());
 								this.mode = SUCCESS;

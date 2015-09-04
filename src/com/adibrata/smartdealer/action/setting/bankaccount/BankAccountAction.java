@@ -67,8 +67,6 @@ public class BankAccountAction extends BaseAction implements Preparable
 		public BankAccountAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
-				this.bankaccountservice = new BankAccountDao();
-				this.bankaccount = new BankAccount();
 
 				this.partner = new Partner();
 				this.office = new Office();
@@ -260,6 +258,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.bankaccountservice = new BankAccountDao();
+						
 						this.lstbankaccount = this.bankaccountservice.Paging(this.getPagenumber(), this.WhereCond(), "");
 					}
 				catch (final Exception exp)
@@ -277,6 +277,8 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.bankaccountservice = new BankAccountDao();
+						
 						this.lstbankaccount = this.bankaccountservice.Paging(this.getPagenumber(), this.WhereCond(), "", true);
 						this.pagenumber = this.bankaccountservice.getCurrentpage();
 					}
@@ -293,12 +295,13 @@ public class BankAccountAction extends BaseAction implements Preparable
 
 		public String ViewData() throws Exception
 			{
-				this.bankaccount = new BankAccount();
-				String status = "";
+
 				try
 					{
 						if (this.getId() != null)
 							{
+								this.bankaccountservice = new BankAccountDao();
+								this.bankaccount = new BankAccount();
 								this.bankaccount = this.bankaccountservice.View(this.getId());
 
 								this.bankname = this.bankaccount.getBankName();
@@ -324,7 +327,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 						else
 							{
 								this.Paging();
-								status = "start";
+								this.mode = INPUT;
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
@@ -336,7 +339,7 @@ public class BankAccountAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-				return status;
+				return this.mode;
 			}
 
 		private String SaveAdd() throws Exception
@@ -388,8 +391,9 @@ public class BankAccountAction extends BaseAction implements Preparable
 			{
 				try
 					{
+						this.bankaccountservice = new BankAccountDao();
 						this.bankaccount = new BankAccount();
-						this.bankaccount.setId(this.getId());
+						this.bankaccount = this.bankaccountservice.View(this.getId());
 						this.bankaccount.setBankName(this.getBankname());
 						this.bankaccount.setBankAccountCode(this.getBankaccountcode());
 						this.bankaccount.setBankAccountName(this.getBankaccountname());
@@ -434,18 +438,20 @@ public class BankAccountAction extends BaseAction implements Preparable
 				String status = "";
 				try
 					{
-						final BankAccount bankAccount = new BankAccount();
+						
 						if (this.getId() != null)
 							{
-								bankAccount.setId(this.getId());
-
-								this.bankaccountservice.SaveDel(bankAccount);
+								this.bankaccountservice = new BankAccountDao();
+								this.bankaccount = new BankAccount();
+								this.bankaccount.setId(this.getId());
+								
+								this.bankaccountservice.SaveDel(this.bankaccount);
 								status = SUCCESS;
 								this.setMessage(BaseAction.SuccessMessage());
 							}
 						else
 							{
-								status = "start";
+								status = INPUT;
 								this.setMessage(BaseAction.SelectFirst());
 							}
 					}
