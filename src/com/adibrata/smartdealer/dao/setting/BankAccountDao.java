@@ -6,8 +6,13 @@ package com.adibrata.smartdealer.dao.setting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.type.LongType;
+import org.hibernate.type.StringType;
 
 import com.adibrata.smartdealer.dao.DaoBase;
 import com.adibrata.smartdealer.model.BankAccount;
@@ -28,13 +33,14 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 		StringBuilder hql = new StringBuilder();
 		private int currentpage;
 		private Long totalrecord;
-		
+
 		public BankAccountDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
-						this.strStatement = " from BankAccount ";
+						// this.strStatement = " from BankAccount ";
+						this.strStatement = "Select a.id, a.BankAccountName, a.BankName, a.BankAccountCode, b.Code as CurrencyId from bankaccount a inner join currency b on a.currencyid = b.Id ";
 					}
 				catch (final Exception exp)
 					{
@@ -45,7 +51,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.setting.BankAccount#Paging(int,
@@ -65,16 +71,35 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-							
-						final Query selectQuery = this.getSession().createQuery(hql.toString());
+
+						final SQLQuery selectQuery = this.getSession().createSQLQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
-						list = selectQuery.list();
-						
+						selectQuery.setResultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP);
+
+						selectQuery.addScalar("id", new LongType()).addScalar("BankAccountName", new StringType()).addScalar("BankName", new StringType()).addScalar("BankAccountCode", new StringType());
+
+						final List lst = selectQuery.list();
+						list = new ArrayList<BankAccount>();
+						BankAccount ba;
+						if (lst.size() != 0)
+							{
+								for (final Object object : lst)
+									{
+										final Map row = (Map) object;
+										ba = new BankAccount();
+										ba.setId((long) row.get("id"));
+										ba.setBankAccountName((String) row.get("BankAccountName"));
+										ba.setBankName((String) row.get("BankName"));
+										ba.setBankAccountCode((String) row.get("BankAccountCode"));
+										list.add(ba);
+									}
+							}
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -82,14 +107,14 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return list;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<BankAccount> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
 				List<BankAccount> list = null;
-				
+
 				try
 					{
 						hql.append(this.strStatement);
@@ -101,15 +126,15 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						this.totalrecord = this.TotalRecord(hql.toString(), WhereCond);
 						this.currentpage = (int) ((this.totalrecord / this.getPagesize()) + 1);
-						
+
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -117,7 +142,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return list;
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -134,9 +159,9 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						bankAccount.setDtmCrt(this.dtmupd);
 						bankAccount.setDtmUpd(this.dtmupd);
 						this.getSession().save(bankAccount);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -147,7 +172,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -161,12 +186,12 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						bankAccount.setDtmUpd(this.dtmupd);
 						this.getSession().update(bankAccount);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -177,7 +202,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -191,11 +216,11 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						this.getSession().delete(bankAccount);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -206,7 +231,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public BankAccount View(final Long id) throws Exception
 			{
@@ -215,11 +240,11 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				try
 					{
 						bankaccount = (BankAccount) this.getSession().get(BankAccount.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -227,14 +252,14 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return bankaccount;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<BankMaster> ListBankMaster(final String partnercode) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
 				List<BankMaster> list = null;
-
+				
 				try
 					{
 						hql.append("from MsTable where partnercode = :partnercode and mastertypecode = 'BANK'");
@@ -242,13 +267,13 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 						selectQuery.setParameter("partnercode", partnercode);
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("BankMaster" + partnercode);
-
+						
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -256,18 +281,18 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public int getCurrentpage()
 			{
 				return this.currentpage;
 			}
-			
+
 		public void setCurrentpage(final int currentpage)
 			{
 				this.currentpage = currentpage;
 			}
-			
+
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<BankAccount> listBankAccount(final Partner partner, final Office office, final String type, final String purpose) throws Exception
@@ -277,24 +302,24 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				Query selectQuery = null;
 				try
 					{
-
+						
 						this.hql.append(this.strStatement);
 						this.hql.append(" Where partnercode = :partnercode and officeid = :officeid");
 						if (!type.equals(""))
 							{
 								this.hql.append(" and type = '" + type + "' ");
-
+								
 							}
 						else if (!purpose.equals(""))
 							{
 								this.hql.append(" and purpose = '" + purpose + "' ");
 							}
-
+							
 						selectQuery = this.getSession().createQuery(this.hql.toString());
-
+						
 						selectQuery.setParameter("partnercode", partner.getPartnerCode());
 						selectQuery.setParameter("officeid", office.getId());
-
+						
 						list = selectQuery.list();
 					}
 				catch (final Exception exp)
@@ -307,7 +332,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return list;
 			}
-			
+
 		@Override
 		public BankAccountInfo BankAccountView(final Long id) throws Exception
 			{
@@ -321,7 +346,7 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 				final BankAccountInfo info = new BankAccountInfo();
 				BankAccount account = new BankAccount();
 				Currency currency = new Currency();
-				
+
 				lst = selectQuery.list();
 				for (final Object[] row : lst)
 					{
@@ -336,5 +361,5 @@ public class BankAccountDao extends DaoBase implements BankAccountService
 					}
 				return info;
 			}
-
+			
 	}

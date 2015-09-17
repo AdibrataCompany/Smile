@@ -139,6 +139,7 @@
         <mapping class="com.adibrata.smartdealer.model.ZipCode" />
         <mapping class="com.adibrata.smartdealer.model.ReturPurchaseHdr" />
         <mapping class="com.adibrata.smartdealer.model.CoyCustFinancialInfo" />
+        <mapping class="com.adibrata.smartdealer.model.CurrHistory" />
         <mapping class="com.adibrata.smartdealer.model.InsCoBranchFee" />
         <mapping class="com.adibrata.smartdealer.model.AssetAttribute" />
         <mapping class="com.adibrata.smartdealer.model.AssetType" />

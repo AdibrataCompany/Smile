@@ -155,6 +155,9 @@
 	<table-filter match-name="CoyCustWhInfo"
 		match-catalog="SmartDealer">
 	</table-filter>
+	<table-filter match-name="CurrHistory"
+		match-catalog="SmartDealer">
+	</table-filter>
 	<table-filter match-name="Currency" match-catalog="SmartDealer"></table-filter>
 	<table-filter match-name="Customer" match-catalog="SmartDealer"></table-filter>
 	<table-filter match-name="CustomerBankInfo"
