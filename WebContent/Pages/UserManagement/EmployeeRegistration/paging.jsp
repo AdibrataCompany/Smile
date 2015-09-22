@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Leasing And Consumer Finance System</title>
 
 
 </head>
@@ -23,7 +23,10 @@
 		<s:form action="employee.action" theme="simple">
 			<center>
 				<h2>Employee Master</h2>
-				<input type="text" name="mode" id="mode" style="visibility: hidden;"></input>
+			<s:hidden name="mode" id="mode" />
+				
+				<s:label name="message" id="message" />
+		
 				<table width="100%">
 					<tr>
 						<td width="10%">Pencarian</td>

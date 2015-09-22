@@ -9,19 +9,20 @@ package com.adibrata.smartdealer.model;
  */
 public class UserList
 	{
-
+		
 		/**
 		 *
 		 */
 		Long Id;
 		String UserName;
 		String EmployeeName;
-
+		String Position;
+		
 		public UserList()
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		/**
 		 * @return the userName
 		 */
@@ -29,7 +30,7 @@ public class UserList
 			{
 				return this.UserName;
 			}
-			
+
 		/**
 		 * @param userName
 		 *            the userName to set
@@ -38,7 +39,7 @@ public class UserList
 			{
 				this.UserName = userName;
 			}
-			
+
 		/**
 		 * @return the employeeName
 		 */
@@ -46,7 +47,7 @@ public class UserList
 			{
 				return this.EmployeeName;
 			}
-			
+
 		/**
 		 * @param employeeName
 		 *            the employeeName to set
@@ -55,7 +56,7 @@ public class UserList
 			{
 				this.EmployeeName = employeeName;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -63,7 +64,7 @@ public class UserList
 			{
 				return this.Id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -72,5 +73,22 @@ public class UserList
 			{
 				this.Id = id;
 			}
-
+			
+		/**
+		 * @return the position
+		 */
+		public String getPosition()
+			{
+				return this.Position;
+			}
+			
+		/**
+		 * @param position
+		 *            the position to set
+		 */
+		public void setPosition(final String position)
+			{
+				this.Position = position;
+			}
+			
 	}

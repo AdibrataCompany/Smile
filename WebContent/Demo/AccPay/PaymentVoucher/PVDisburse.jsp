@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Leasing And Consumer Finance System</title>
 </head>
 <body>
 <s:form>

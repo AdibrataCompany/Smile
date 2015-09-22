@@ -104,7 +104,7 @@
 			</result>
 		</action>
 
-		<action name="userregister"
+		<action name="userreg"
 			class="com.adibrata.smartdealer.action.usermanagement.userregistration.UserRegistrationAction"
 			method="execute">
 			<result name="input">/Pages/UserManagement/UserRegistration/paging.jsp
@@ -130,7 +130,7 @@
 			<result name="last">/Pages/UserManagement/UserRegistration/paging.jsp
 			</result>
 		</action>
-		<action name="userregister_save"
+		<action name="userreg_save"
 			class="com.adibrata.smartdealer.action.usermanagement.userregistration.UserRegistrationAction"
 			method="save">
 			<result name="input">/Pages/UserManagement/UserRegistration/edituser.jsp

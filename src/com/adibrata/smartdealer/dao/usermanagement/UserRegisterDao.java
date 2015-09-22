@@ -23,19 +23,19 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class UserRegisterDao extends DaoBase implements UserService
 	{
 		String userupd;
-		
+
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
 		private Long totalrecord;
 		private int currentpage;
-		
+
 		public UserRegisterDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
 						this.strStatement = "from MsUser A, Employee B, Partner C where A.employeeId = B.id and A.partner = C.partnerCode ";
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -46,7 +46,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -66,7 +66,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
 						this.getSession().save(msUser);
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -77,7 +77,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -91,13 +91,13 @@ public class UserRegisterDao extends DaoBase implements UserService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						msUser.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA(msUser.getPassword()));
 						this.getSession().update(msUser);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -108,7 +108,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.usermanagement.UserRegisterService#
@@ -121,11 +121,11 @@ public class UserRegisterDao extends DaoBase implements UserService
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						this.getSession().delete(msUser);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -136,7 +136,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.usermanagement.UserService#ResetPassword(com.adibrata.smartdealer.model.MsUser)
@@ -146,28 +146,28 @@ public class UserRegisterDao extends DaoBase implements UserService
 			{
 				// TODO Auto-generated method stub
 				final ResetPasswordLog resetpasswordlog = new ResetPasswordLog();
-				
+
 				this.getSession().getTransaction().begin();
 				try
 					{
-						
+
 						msUser.setDtmUpd(this.dtmupd);
 						resetpasswordlog.setDtmCrt(this.dtmupd);
 						resetpasswordlog.setDtmUpd(this.dtmupd);
 						msUser.setPassword(EncryptionHelper.EncryptSHA("Password"));
 						this.getSession().update(msUser);
-						
+
 						resetpasswordlog.setPartner(msUser.getPartner());
 						resetpasswordlog.setUserName(msUser.getUserName());
 						resetpasswordlog.setResetPasswordTime(this.dtmupd);
 						resetpasswordlog.setResetBy("Admin");
 						resetpasswordlog.setUsrUpd(msUser.getUsrUpd());
 						resetpasswordlog.setUsrCrt(msUser.getUsrCrt());
-						
+
 						this.getSession().save(resetpasswordlog);
-						
+
 						this.getSession().getTransaction().commit();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -178,7 +178,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		@Override
 		public MsUser View(final Long id) throws Exception
 			{
@@ -187,11 +187,11 @@ public class UserRegisterDao extends DaoBase implements UserService
 				try
 					{
 						msUser = (MsUser) this.getSession().get(MsUser.class, id);
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -199,12 +199,12 @@ public class UserRegisterDao extends DaoBase implements UserService
 					}
 				return msUser;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<UserList> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
-
+				
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<UserList> list = null;
@@ -216,15 +216,16 @@ public class UserRegisterDao extends DaoBase implements UserService
 						if (WhereCond != "")
 							{
 								hql.append(" and ");
+
 								hql.append(WhereCond);
 							}
-
+							
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("UserList" + WhereCond);
 						selectQuery.setMaxResults(this.getPagesize());
-
+						
 						final List<Object[]> lst = selectQuery.list();
 						list = new ArrayList<UserList>();
 						if (lst.size() != 0)
@@ -233,7 +234,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 									{
 										msuser = (MsUser) aRow[0];
 										employee = (Employee) aRow[1];
-										
+
 										final UserList userlist = new UserList();
 										userlist.setId(msuser.getId());
 										userlist.setEmployeeName(employee.getName());
@@ -241,11 +242,11 @@ public class UserRegisterDao extends DaoBase implements UserService
 										list.add(userlist);
 									}
 							}
-
+							
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -257,14 +258,14 @@ public class UserRegisterDao extends DaoBase implements UserService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<UserList> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
 				List<UserList> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
@@ -281,11 +282,11 @@ public class UserRegisterDao extends DaoBase implements UserService
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -297,13 +298,13 @@ public class UserRegisterDao extends DaoBase implements UserService
 					}
 				return list;
 			}
-
+			
 		@Override
 		public int getCurrentpage()
 			{
 				return this.currentpage;
 			}
-
+			
 		public void setCurrentpage(final int currentpage)
 			{
 				this.currentpage = currentpage;

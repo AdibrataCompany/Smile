@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Leasing And Consumer Finance System</title>
 
 <link href="../../style/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="../../style/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css" />

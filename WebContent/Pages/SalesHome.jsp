@@ -15,7 +15,7 @@
 <meta name="author" content="">
 <link rel="icon" href="">
 
-<title>SMIILE - Smart Lesing And Consumer Finance Leasing</title>
+<title>SMILE - Smart Leasing And Consumer Finance System</title>
 </head>
 
 <body>
