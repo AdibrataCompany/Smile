@@ -1,24 +1,18 @@
 
-package com.adibrata.smartdealer.action.accmnt.payment;
+package com.adibrata.smartdealer.action.amendment.partialasset.execute;
 
 import com.adibrata.smartdealer.action.BaseAction;
 import com.adibrata.smartdealer.model.Office;
 import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
-public class PaymentAction extends BaseAction implements Preparable
-	
+public class PartialAssetExecuteAction extends BaseAction implements Preparable
 	{
-
-		/**
-		*
-		*/
 		private Partner partner;
 		private Office office;
-		
 		private static final long serialVersionUID = 1L;
 		
-		public PaymentAction() throws Exception
+		public PartialAssetExecuteAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
@@ -34,7 +28,7 @@ public class PaymentAction extends BaseAction implements Preparable
 				// TODO Auto-generated method stub
 				
 			}
-			
+
 		/**
 		 * @return the partner
 		 */
@@ -42,7 +36,7 @@ public class PaymentAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -51,7 +45,7 @@ public class PaymentAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -59,7 +53,7 @@ public class PaymentAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -69,12 +63,4 @@ public class PaymentAction extends BaseAction implements Preparable
 				this.office = office;
 			}
 			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
-			{
-				return serialVersionUID;
-			}
-
 	}

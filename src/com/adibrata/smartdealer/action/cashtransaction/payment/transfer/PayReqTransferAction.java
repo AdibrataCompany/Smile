@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class PayReqTransferAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
@@ -17,7 +17,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 		Office office;
 		Long id;
 		String message;
-
+		
 		public PayReqTransferAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -25,9 +25,16 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
 
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -35,7 +42,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -44,7 +51,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -52,7 +59,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -61,7 +68,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -69,7 +76,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -78,7 +85,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-
+			
 		/**
 		 * @return the message
 		 */
@@ -86,7 +93,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-
+			
 		/**
 		 * @param message
 		 *            the message to set
@@ -95,7 +102,7 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the serialversionuid
 		 */
@@ -103,5 +110,5 @@ public class PayReqTransferAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 	}

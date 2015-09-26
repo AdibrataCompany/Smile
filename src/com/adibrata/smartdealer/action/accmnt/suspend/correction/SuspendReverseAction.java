@@ -16,12 +16,12 @@ import com.adibrata.smartdealer.model.SuspendReverse;
 import com.adibrata.smartdealer.service.accmaint.SuspendEntryService;
 import com.adibrata.smartdealer.service.accmaint.SuspendReversalService;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
-import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class SuspendReverseAction extends BaseAction implements Action
+public class SuspendReverseAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -459,14 +459,6 @@ public class SuspendReverseAction extends BaseAction implements Action
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-
-		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
 			}
 
 		/**

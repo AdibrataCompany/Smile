@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.Preparable;
  */
 public class AccPayAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		 *
 		 */
@@ -31,23 +31,30 @@ public class AccPayAction extends BaseAction implements Preparable
 		private Office office;
 		private Partner partner;
 		private APSelectionService selectionService;
-		
+
 		public AccPayAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
 			
 		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
 						switch (strMode)
@@ -63,7 +70,7 @@ public class AccPayAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-			
+
 		/**
 		 * @return the lstAccountPayable
 		 */
@@ -71,46 +78,7 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				return this.lstAccountPayable;
 			}
-			
-		/**
-		 * @return the mode
-		 */
-		public String getMode()
-			{
-				return this.mode;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @return the partner
-		 */
-		public Partner getPartner()
-			{
-				return this.partner;
-			}
-			
-		/**
-		 * @return the selectionService
-		 */
-		public APSelectionService getSelectionService()
-			{
-				return this.selectionService;
-			}
-			
-		@Override
-		public void prepare() throws Exception
-			{
-				// TODO Auto-generated method stub
-				
-			}
-			
+
 		/**
 		 * @param lstAccountPayable
 		 *            the lstAccountPayable to set
@@ -119,7 +87,15 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				this.lstAccountPayable = lstAccountPayable;
 			}
-			
+
+		/**
+		 * @return the mode
+		 */
+		public String getMode()
+			{
+				return this.mode;
+			}
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -128,7 +104,15 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -137,7 +121,15 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-			
+
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -146,7 +138,15 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
+		/**
+		 * @return the selectionService
+		 */
+		public APSelectionService getSelectionService()
+			{
+				return this.selectionService;
+			}
+
 		/**
 		 * @param selectionService
 		 *            the selectionService to set
@@ -155,11 +155,11 @@ public class AccPayAction extends BaseAction implements Preparable
 			{
 				this.selectionService = selectionService;
 			}
-			
+
 		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}

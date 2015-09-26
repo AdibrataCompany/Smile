@@ -44,55 +44,10 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 		@Override
 		public String execute() throws Exception
 			{
-				String strMode;
-				strMode = this.mode;
-
-				if (this.mode != null)
-					{
-
-						switch (strMode)
-							{
-								case "search" :
-									this.Paging();
-								case "edit" :
-
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									strMode = this.SaveAdd();
-								case "saveadd" :
-									strMode = this.SaveAdd();
-								case "saveedit" :
-									strMode = this.SaveEdit();
-								case "back" :
-									;
-
-								case "first" :
-									this.pageNumber -= 1;
-									this.Paging();
-								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
-										{
-											this.pageNumber = 1;
-										}
-									this.Paging();
-								case "next" :
-									this.pageNumber += 1;
-									this.Paging();
-								case "last" :
-									this.LastPage();
-								default :
-									return ERROR;
-							}
-					}
-				else
-					{
-						strMode = INPUT;
-					}
-				return strMode;
+				
+				return this.mode;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -100,7 +55,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				return this.mode;
 			}
-
+			
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -109,7 +64,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				this.mode = mode;
 			}
-
+			
 		/**
 		 * @return the searchcriteria
 		 */
@@ -117,7 +72,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				return this.searchcriteria;
 			}
-
+			
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -126,7 +81,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				this.searchcriteria = searchcriteria;
 			}
-
+			
 		/**
 		 * @return the searchvalue
 		 */
@@ -134,7 +89,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				return this.searchvalue;
 			}
-
+			
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -143,7 +98,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				this.searchvalue = searchvalue;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -151,7 +106,7 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -159,48 +114,6 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 		public void setId(final Long id)
 			{
 				this.id = id;
-			}
-
-		/**
-		 * @return the pageNumber
-		 */
-		public int getPageNumber()
-			{
-				return this.pageNumber;
-			}
-
-		/**
-		 * @param pageNumber
-		 *            the pageNumber to set
-		 */
-		public void setPageNumber(final int pageNumber)
-			{
-				this.pageNumber = pageNumber;
-			}
-
-		/**
-		 * @return the message
-		 */
-		public String getMessage()
-			{
-				return this.message;
-			}
-
-		/**
-		 * @param message
-		 *            the message to set
-		 */
-		public void setMessage(final String message)
-			{
-				this.message = message;
-			}
-
-		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
 			}
 			
 		/**
@@ -236,4 +149,47 @@ public class AssetReplacementRequestAction extends BaseAction implements Prepara
 			{
 				this.office = office;
 			}
+			
+		/**
+		 * @return the pageNumber
+		 */
+		public int getPageNumber()
+			{
+				return this.pageNumber;
+			}
+			
+		/**
+		 * @param pageNumber
+		 *            the pageNumber to set
+		 */
+		public void setPageNumber(final int pageNumber)
+			{
+				this.pageNumber = pageNumber;
+			}
+			
+		/**
+		 * @return the message
+		 */
+		public String getMessage()
+			{
+				return this.message;
+			}
+			
+		/**
+		 * @param message
+		 *            the message to set
+		 */
+		public void setMessage(final String message)
+			{
+				this.message = message;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
 	}

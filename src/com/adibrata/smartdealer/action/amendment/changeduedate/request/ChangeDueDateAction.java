@@ -7,10 +7,10 @@ import com.adibrata.smartdealer.model.Partner;
 import com.opensymphony.xwork2.Preparable;
 
 public class ChangeDueDateAction extends BaseAction implements Preparable
-	
+
 	{
 		/**
-		* 
+		*
 		*/
 		private static final long serialVersionUID = 1L;
 		Partner partner;
@@ -18,16 +18,23 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 		Long id;
 		String mode;
 		String message;
-		
+
 		public ChangeDueDateAction() throws Exception
-			
+
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-
+				
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
 			}
 
 		/**
@@ -37,7 +44,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-
+			
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -46,7 +53,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -54,7 +61,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -63,7 +70,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -71,7 +78,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -80,7 +87,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -88,7 +95,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -97,7 +104,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -105,7 +112,7 @@ public class ChangeDueDateAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set

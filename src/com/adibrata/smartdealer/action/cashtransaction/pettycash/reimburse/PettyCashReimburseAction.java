@@ -8,24 +8,31 @@ import com.opensymphony.xwork2.Preparable;
 
 public class PettyCashReimburseAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
-		* 
+		*
 		*/
 		private static final long serialVersionUID = 1L;
 		Partner partner;
 		Office office;
 		Long id;
 		String message;
-		
+
 		public PettyCashReimburseAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-
+				
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
 			}
 			
 		/**
@@ -103,5 +110,5 @@ public class PettyCashReimburseAction extends BaseAction implements Preparable
 			{
 				return serialVersionUID;
 			}
-			
+
 	}

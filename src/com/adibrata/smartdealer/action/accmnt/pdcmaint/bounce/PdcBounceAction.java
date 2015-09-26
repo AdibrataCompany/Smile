@@ -8,20 +8,24 @@ import com.opensymphony.xwork2.Preparable;
 
 public class PdcBounceAction extends BaseAction implements Preparable
 	{
+		/**
+		* 
+		*/
+		private static final long serialVersionUID = 1L;
 		Partner partner;
 		Office office;
 		Long id;
-
+		
 		public PdcBounceAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
-
+			
 		/**
 		 * @return the office
 		 */
@@ -29,7 +33,7 @@ public class PdcBounceAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-
+			
 		/**
 		 * @param office
 		 *            the office to set
@@ -38,7 +42,7 @@ public class PdcBounceAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 		/**
 		 * @return the id
 		 */
@@ -46,7 +50,7 @@ public class PdcBounceAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-
+			
 		/**
 		 * @param id
 		 *            the id to set
@@ -56,4 +60,11 @@ public class PdcBounceAction extends BaseAction implements Preparable
 				this.id = id;
 			}
 			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
+			}
+
 	}

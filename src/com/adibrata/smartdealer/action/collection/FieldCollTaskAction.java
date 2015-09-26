@@ -10,32 +10,32 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
-
-		public FieldCollTaskAction()
+		
+		public FieldCollTaskAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
 									this.Paging();
 								case "edit" :
-								
+
 								case "del" :
 									return this.SaveDelete();
 								case "add" :
@@ -46,7 +46,7 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 									strMode = this.SaveEdit();
 								case "back" :
 									;
-									
+
 								case "first" :
 									this.pageNumber -= 1;
 									this.Paging();
@@ -71,6 +71,21 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 						strMode = "start";
 					}
 				return strMode;
+			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
 			}
 			
 		/**
@@ -207,13 +222,5 @@ public class FieldCollTaskAction extends BaseAction implements Preparable
 		public void setMessage(final String message)
 			{
 				this.message = message;
-			}
-			
-		/**
-		 * @return the serialversionuid
-		 */
-		public static long getSerialversionuid()
-			{
-				return serialVersionUID;
 			}
 	}

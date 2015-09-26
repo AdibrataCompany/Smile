@@ -6,15 +6,22 @@ import com.opensymphony.xwork2.Preparable;
 
 public class OtherReceiveReportAction extends BaseAction implements Preparable
 	{
-		
+
 		public OtherReceiveReportAction() throws Exception
 			{
 				super();
 				// TODO Auto-generated constructor stub
 			}
-			
+
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
+		
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
+
+			}
 	}

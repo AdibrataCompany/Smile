@@ -16,12 +16,12 @@ import com.adibrata.smartdealer.model.SuspendReverse;
 import com.adibrata.smartdealer.service.accmaint.SuspendEntryService;
 import com.adibrata.smartdealer.service.accmaint.SuspendReversalService;
 import com.adibrata.smartdealer.service.setting.BankAccountService;
-import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.Preparable;
 
 import util.adibrata.framework.exceptionhelper.ExceptionEntities;
 import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
-public class SuspendCorrectionAction extends BaseAction implements Action
+public class SuspendCorrectionAction extends BaseAction implements Preparable
 	{
 		private static final long serialVersionUID = 1L;
 		private String mode;
@@ -31,17 +31,17 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 		private Partner partner;
 		private Office office;
 		private Map<Long, String> lstBankAccount;
-
+		
 		private int pageNumber;
 		private String message;
 		private SuspendReceive receive;
 		private SuspendReverse reverse;
 		private SuspendReversalService service;
 		private List<SuspendList> lstSuspendReceive;
-
+		
 		private String amountstart;
 		private String amountend;
-		
+
 		private Double amount;
 		private Long currencyid;
 		private Double currencyrate;
@@ -69,22 +69,22 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 				this.reverse = new SuspendReverse();
 				this.lstBankAccount = this.ListBankAccount(this.getPartner(), this.getOffice(), "BA", "");
 			}
-			
+
 		@Override
-		public void prepare() throws Exception
+		public void prepare()
 			{
 				// TODO Auto-generated method stub
 			}
-			
+
 		@Override
 		public String execute()
 			{
 				String strMode;
 				strMode = this.mode;
-				
+
 				if (this.mode != null)
 					{
-						
+
 						switch (strMode)
 							{
 								case "search" :
@@ -172,10 +172,10 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 											e.printStackTrace();
 										}
 									break;
-									
+
 								default :
 									return ERROR;
-
+									
 							}
 					}
 				else
@@ -184,7 +184,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				return strMode;
 			}
-			
+
 		private String SaveSuspendReverse() throws Exception
 			{
 				String status = "";
@@ -207,7 +207,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 				catch (final Exception exp)
 					{
 						status = ERROR;
-						
+
 						this.setMessage(BaseAction.ErrorMessage());
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
@@ -216,32 +216,32 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				finally
 					{
-					
+
 					}
 				return status;
 			}
-			
+
 		private String WhereCond()
 			{
 				final StringBuilder sql = new StringBuilder();
-				
+
 				sql.append(" P.partnerCode = '" + BaseAction.sesPartnerCode() + "' and O.id = " + BaseAction.sesOfficeId() + " and A.status = 'NE' ");
-
-				if (this.getBankaccountId() != null)
+				
+				if (this.getBankaccountid() != null)
 					{
-						sql.append(" and  B.id = " + this.getBankaccountId());
-
+						sql.append(" and  B.id = " + this.getBankaccountid());
+						
 					}
-
+					
 				if (!this.valuedate.equals(""))
 					{
 						sql.append(" and  A.valueDate  <= " + this.valuedate);
 					}
-
+					
 				if (!this.postingdate.equals(""))
 					{
 						sql.append(" and  A.postingDate  <= " + this.postingdate);
-
+						
 					}
 				if (!this.amountstart.equals(""))
 					{
@@ -251,7 +251,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					{
 						sql.append(" and A.amount <= " + this.amountend);
 					}
-
+					
 				if ((this.getSearchvalue() != null) && !this.getSearchcriteria().equals("") && !this.getSearchcriteria().equals("0"))
 					{
 						if (this.getSearchcriteria().contains("%"))
@@ -265,26 +265,26 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				return sql.toString();
 			}
-
+			
 		private void Paging() throws Exception
 			{
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "");
-						
+
 					}
 				catch (final Exception exp)
 					{
-						
+
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-					
+
 			}
-			
+
 		private void Paging(final int islast) throws Exception
 			{
 				try
@@ -292,7 +292,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 						final SuspendEntryService entryService = new SuspendEntryDao();
 						this.lstSuspendReceive = entryService.Paging(this.getPageNumber(), this.WhereCond(), "", true);
 						this.pageNumber = entryService.getCurrentpage();
-						
+
 					}
 				catch (final Exception exp)
 					{
@@ -302,11 +302,11 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-			
+
 		private String ViewData() throws Exception
 			{
 				String status = "";
-				
+
 				try
 					{
 						final SuspendEntryService entryService = new SuspendEntryDao();
@@ -321,17 +321,17 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 								this.setCurrencyid(this.receive.getCurrencyId());
 								this.setCurrencyrate(this.receive.getCurrencyRate());
 								status = "entry";
-
+								
 							}
 						else
 							{
 								status = "search";
 							}
-
+							
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -339,7 +339,7 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 					}
 				return status;
 			}
-
+			
 		/**
 		 * @return the mode
 		 */
@@ -392,13 +392,73 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
-		 * @return the usrUpd
+		 * @return the id
 		 */
-		public String getUsrUpd()
+		public Long getId()
 			{
-				return this.usrUpd;
+				return this.id;
 			}
-
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
+			}
+			
+		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+			
+		/**
+		 * @return the lstBankAccount
+		 */
+		public Map<Long, String> getLstBankAccount()
+			{
+				return this.lstBankAccount;
+			}
+			
+		/**
+		 * @param lstBankAccount
+		 *            the lstBankAccount to set
+		 */
+		public void setLstBankAccount(final Map<Long, String> lstBankAccount)
+			{
+				this.lstBankAccount = lstBankAccount;
+			}
+			
 		/**
 		 * @return the pageNumber
 		 */
@@ -434,45 +494,20 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
-		 * @return the serialversionuid
+		 * @return the receive
 		 */
-		public static Long getSerialversionuid()
+		public SuspendReceive getReceive()
 			{
-				return serialVersionUID;
+				return this.receive;
 			}
 			
 		/**
-		 * @return the partner
+		 * @param receive
+		 *            the receive to set
 		 */
-		public Partner getPartner()
+		public void setReceive(final SuspendReceive receive)
 			{
-				return this.partner;
-			}
-			
-		/**
-		 * @param partner
-		 *            the partner to set
-		 */
-		public void setPartner(final Partner partner)
-			{
-				this.partner = partner;
-			}
-			
-		/**
-		 * @return the office
-		 */
-		public Office getOffice()
-			{
-				return this.office;
-			}
-			
-		/**
-		 * @param office
-		 *            the office to set
-		 */
-		public void setOffice(final Office office)
-			{
-				this.office = office;
+				this.receive = receive;
 			}
 			
 		/**
@@ -527,6 +562,176 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
+		 * @return the amountstart
+		 */
+		public String getAmountstart()
+			{
+				return this.amountstart;
+			}
+			
+		/**
+		 * @param amountstart
+		 *            the amountstart to set
+		 */
+		public void setAmountstart(final String amountstart)
+			{
+				this.amountstart = amountstart;
+			}
+			
+		/**
+		 * @return the amountend
+		 */
+		public String getAmountend()
+			{
+				return this.amountend;
+			}
+			
+		/**
+		 * @param amountend
+		 *            the amountend to set
+		 */
+		public void setAmountend(final String amountend)
+			{
+				this.amountend = amountend;
+			}
+			
+		/**
+		 * @return the amount
+		 */
+		public Double getAmount()
+			{
+				return this.amount;
+			}
+			
+		/**
+		 * @param amount
+		 *            the amount to set
+		 */
+		public void setAmount(final Double amount)
+			{
+				this.amount = amount;
+			}
+			
+		/**
+		 * @return the currencyid
+		 */
+		public Long getCurrencyid()
+			{
+				return this.currencyid;
+			}
+			
+		/**
+		 * @param currencyid
+		 *            the currencyid to set
+		 */
+		public void setCurrencyid(final Long currencyid)
+			{
+				this.currencyid = currencyid;
+			}
+			
+		/**
+		 * @return the currencyrate
+		 */
+		public Double getCurrencyrate()
+			{
+				return this.currencyrate;
+			}
+			
+		/**
+		 * @param currencyrate
+		 *            the currencyrate to set
+		 */
+		public void setCurrencyrate(final Double currencyrate)
+			{
+				this.currencyrate = currencyrate;
+			}
+			
+		/**
+		 * @return the bankaccountid
+		 */
+		public Long getBankaccountid()
+			{
+				return this.bankaccountid;
+			}
+			
+		/**
+		 * @param bankaccountid
+		 *            the bankaccountid to set
+		 */
+		public void setBankaccountid(final Long bankaccountid)
+			{
+				this.bankaccountid = bankaccountid;
+			}
+			
+		/**
+		 * @return the bankaccountname
+		 */
+		public String getBankaccountname()
+			{
+				return this.bankaccountname;
+			}
+			
+		/**
+		 * @param bankaccountname
+		 *            the bankaccountname to set
+		 */
+		public void setBankaccountname(final String bankaccountname)
+			{
+				this.bankaccountname = bankaccountname;
+			}
+			
+		/**
+		 * @return the status
+		 */
+		public String getStatus()
+			{
+				return this.status;
+			}
+			
+		/**
+		 * @param status
+		 *            the status to set
+		 */
+		public void setStatus(final String status)
+			{
+				this.status = status;
+			}
+			
+		/**
+		 * @return the valuedate
+		 */
+		public String getValuedate()
+			{
+				return this.valuedate;
+			}
+			
+		/**
+		 * @param valuedate
+		 *            the valuedate to set
+		 */
+		public void setValuedate(final String valuedate)
+			{
+				this.valuedate = valuedate;
+			}
+			
+		/**
+		 * @return the postingdate
+		 */
+		public String getPostingdate()
+			{
+				return this.postingdate;
+			}
+			
+		/**
+		 * @param postingdate
+		 *            the postingdate to set
+		 */
+		public void setPostingdate(final String postingdate)
+			{
+				this.postingdate = postingdate;
+			}
+			
+		/**
 		 * @return the strStatement
 		 */
 		public String getStrStatement()
@@ -558,6 +763,23 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 		public void setHql(final StringBuilder hql)
 			{
 				this.hql = hql;
+			}
+			
+		/**
+		 * @return the searchcode
+		 */
+		public String getSearchcode()
+			{
+				return this.searchcode;
+			}
+			
+		/**
+		 * @param searchcode
+		 *            the searchcode to set
+		 */
+		public void setSearchcode(final String searchcode)
+			{
+				this.searchcode = searchcode;
 			}
 			
 		/**
@@ -612,176 +834,6 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
-		 * @return the id
-		 */
-		public Long getId()
-			{
-				return this.id;
-			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final Long id)
-			{
-				this.id = id;
-			}
-
-		/**
-		 * @return the amount
-		 */
-		public Double getAmount()
-			{
-				return this.amount;
-			}
-			
-		/**
-		 * @param amount
-		 *            the amount to set
-		 */
-		public void setAmount(final Double amount)
-			{
-				this.amount = amount;
-			}
-
-		/**
-		 * @return the status
-		 */
-		public String getStatus()
-			{
-				return this.status;
-			}
-			
-		/**
-		 * @param status
-		 *            the status to set
-		 */
-		public void setStatus(final String status)
-			{
-				this.status = status;
-			}
-			
-		/**
-		 * @return the valuedate
-		 */
-		public String getValuedate()
-			{
-				return this.valuedate;
-			}
-			
-		/**
-		 * @param valuedate
-		 *            the valuedate to set
-		 */
-		public void setValuedate(final String valuedate)
-			{
-				this.valuedate = valuedate;
-			}
-			
-		/**
-		 * @return the receive
-		 */
-		public SuspendReceive getReceive()
-			{
-				return this.receive;
-			}
-			
-		/**
-		 * @param receive
-		 *            the receive to set
-		 */
-		public void setReceive(final SuspendReceive receive)
-			{
-				this.receive = receive;
-			}
-			
-		/**
-		 * @return the lstBankAccount
-		 */
-		public Map<Long, String> getLstBankAccount()
-			{
-				return this.lstBankAccount;
-			}
-			
-		/**
-		 * @param lstBankAccount
-		 *            the lstBankAccount to set
-		 */
-		public void setLstBankAccount(final Map<Long, String> lstBankAccount)
-			{
-				this.lstBankAccount = lstBankAccount;
-			}
-			
-		/**
-		 * @return the bankaccountId
-		 */
-		public Long getBankaccountId()
-			{
-				return this.bankaccountid;
-			}
-			
-		/**
-		 * @param bankaccountId
-		 *            the bankaccountId to set
-		 */
-		public void setBankaccountId(final Long bankaccountId)
-			{
-				this.bankaccountid = bankaccountId;
-			}
-
-		/**
-		 * @return the amountstart
-		 */
-		public String getAmountstart()
-			{
-				return this.amountstart;
-			}
-			
-		/**
-		 * @param amountstart
-		 *            the amountstart to set
-		 */
-		public void setAmountstart(final String amountstart)
-			{
-				this.amountstart = amountstart;
-			}
-
-		/**
-		 * @param amountend
-		 *            the amountend to set
-		 */
-		public void setAmountend(final String amountend)
-			{
-				this.amountend = amountend;
-			}
-			
-		/**
-		 * @return the amountend
-		 */
-		public String getAmountend()
-			{
-				return this.amountend;
-			}
-			
-		/**
-		 * @return the bankaccountname
-		 */
-		public String getBankaccountname()
-			{
-				return this.bankaccountname;
-			}
-			
-		/**
-		 * @param bankaccountname
-		 *            the bankaccountname to set
-		 */
-		public void setBankaccountname(final String bankaccountname)
-			{
-				this.bankaccountname = bankaccountname;
-			}
-			
-		/**
 		 * @return the notes
 		 */
 		public String getNotes()
@@ -799,87 +851,16 @@ public class SuspendCorrectionAction extends BaseAction implements Action
 			}
 			
 		/**
-		 * @return the currencyid
+		 * @return the serialversionuid
 		 */
-		public Long getCurrencyid()
+		public static long getSerialversionuid()
 			{
-				return this.currencyid;
-			}
-
-		/**
-		 * @param currencyid
-		 *            the currencyid to set
-		 */
-		public void setCurrencyid(final Long currencyid)
-			{
-				this.currencyid = currencyid;
-			}
-
-		/**
-		 * @return the currencyrate
-		 */
-		public Double getCurrencyrate()
-			{
-				return this.currencyrate;
-			}
-
-		/**
-		 * @param currencyrate
-		 *            the currencyrate to set
-		 */
-		public void setCurrencyrate(final Double currencyrate)
-			{
-				this.currencyrate = currencyrate;
-			}
-
-		/**
-		 * @return the bankaccountid
-		 */
-		public Long getBankaccountid()
-			{
-				return this.bankaccountid;
+				return serialVersionUID;
 			}
 
 		/**
 		 * @param bankaccountid
 		 *            the bankaccountid to set
 		 */
-		public void setBankaccountid(final Long bankaccountid)
-			{
-				this.bankaccountid = bankaccountid;
-			}
-			
-		/**
-		 * @return the postingdate
-		 */
-		public String getPostingdate()
-			{
-				return this.postingdate;
-			}
-			
-		/**
-		 * @param postingdate
-		 *            the postingdate to set
-		 */
-		public void setPostingdate(final String postingdate)
-			{
-				this.postingdate = postingdate;
-			}
-
-		/**
-		 * @return the searchcode
-		 */
-		public String getSearchcode()
-			{
-				return this.searchcode;
-			}
-
-		/**
-		 * @param searchcode
-		 *            the searchcode to set
-		 */
-		public void setSearchcode(final String searchcode)
-			{
-				this.searchcode = searchcode;
-			}
+		
 	}

@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class CorrectionAction extends BaseAction implements Preparable
 	{
-
+		
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
@@ -20,133 +20,31 @@ public class CorrectionAction extends BaseAction implements Preparable
 		private String message;
 		Partner partner;
 		Office office;
-
+		
 		public CorrectionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
-
+			
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
-			}
 
+			}
+			
 		@Override
 		public String execute()
 			{
-				String strMode;
-				strMode = this.mode;
-				if (this.mode != null)
-					{
-						switch (strMode)
-							{
-								case "search" :
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "edit" :
-									try
-										{
-											strMode = this.ViewData();
-										}
-									catch (final Exception e1)
-										{
-											// TODO Auto-generated catch block
-											e1.printStackTrace();
-										}
-									break;
-								case "savedel" :
-									try
-										{
-											strMode = this.SaveDelete();
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "first" :
-									this.pageNumber = 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
-										{
-											this.pageNumber = 1;
-										}
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "next" :
-									this.pageNumber += 1;
-									try
-										{
-											this.Paging();
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-								case "last" :
-									try
-										{
-											this.Paging(1);
-										}
-									catch (final Exception e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									break;
-									
-								default :
-									break;
-									
-							}
-					}
-				else
-					{
-						this.pageNumber = 1;
-						
-						strMode = INPUT;
-					}
-				return strMode;
+
+				return this.mode;
 			}
-			
+
 		/**
 		 * @return the mode
 		 */
@@ -154,7 +52,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.mode;
 			}
-			
+
 		/**
 		 * @param mode
 		 *            the mode to set
@@ -163,7 +61,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.mode = mode;
 			}
-			
+
 		/**
 		 * @return the searchcriteria
 		 */
@@ -171,7 +69,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.searchcriteria;
 			}
-			
+
 		/**
 		 * @param searchcriteria
 		 *            the searchcriteria to set
@@ -180,7 +78,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.searchcriteria = searchcriteria;
 			}
-			
+
 		/**
 		 * @return the searchvalue
 		 */
@@ -188,7 +86,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.searchvalue;
 			}
-			
+
 		/**
 		 * @param searchvalue
 		 *            the searchvalue to set
@@ -197,7 +95,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.searchvalue = searchvalue;
 			}
-			
+
 		/**
 		 * @return the id
 		 */
@@ -205,7 +103,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.id;
 			}
-			
+
 		/**
 		 * @param id
 		 *            the id to set
@@ -214,7 +112,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.id = id;
 			}
-			
+
 		/**
 		 * @return the usrUpd
 		 */
@@ -222,7 +120,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.usrUpd;
 			}
-			
+
 		/**
 		 * @param usrUpd
 		 *            the usrUpd to set
@@ -231,7 +129,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.usrUpd = usrUpd;
 			}
-			
+
 		/**
 		 * @return the usrCrt
 		 */
@@ -239,7 +137,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.usrCrt;
 			}
-			
+
 		/**
 		 * @param usrCrt
 		 *            the usrCrt to set
@@ -248,7 +146,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.usrCrt = usrCrt;
 			}
-			
+
 		/**
 		 * @return the pageNumber
 		 */
@@ -256,7 +154,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.pageNumber;
 			}
-			
+
 		/**
 		 * @param pageNumber
 		 *            the pageNumber to set
@@ -265,7 +163,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.pageNumber = pageNumber;
 			}
-			
+
 		/**
 		 * @return the message
 		 */
@@ -273,7 +171,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.message;
 			}
-			
+
 		/**
 		 * @param message
 		 *            the message to set
@@ -282,7 +180,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.message = message;
 			}
-
+			
 		/**
 		 * @return the partner
 		 */
@@ -290,7 +188,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.partner;
 			}
-			
+
 		/**
 		 * @param partner
 		 *            the partner to set
@@ -299,7 +197,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.partner = partner;
 			}
-			
+
 		/**
 		 * @return the office
 		 */
@@ -307,7 +205,7 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				return this.office;
 			}
-			
+
 		/**
 		 * @param office
 		 *            the office to set
@@ -316,5 +214,5 @@ public class CorrectionAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
-
+			
 	}

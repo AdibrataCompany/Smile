@@ -9,14 +9,14 @@ import com.opensymphony.xwork2.Preparable;
 public class PayReqReconcileAction extends BaseAction implements Preparable
 	{
 		/**
-		* 
+		*
 		*/
 		private static final long serialVersionUID = 1L;
 		Long id;
 		Partner partner;
 		Office office;
 		String message;
-		
+
 		public PayReqReconcileAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
@@ -24,6 +24,13 @@ public class PayReqReconcileAction extends BaseAction implements Preparable
 				this.office.setId(BaseAction.sesOfficeId());
 				this.partner = new Partner();
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
+				
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
 
 			}
 			
@@ -95,4 +102,12 @@ public class PayReqReconcileAction extends BaseAction implements Preparable
 				this.message = message;
 			}
 			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+
 	}

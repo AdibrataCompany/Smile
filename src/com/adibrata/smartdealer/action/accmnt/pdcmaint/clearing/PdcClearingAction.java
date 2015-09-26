@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.Preparable;
 
 public class PdcClearingAction extends BaseAction implements Preparable
 	{
-		
+
 		/**
 		*
 		*/
@@ -16,6 +16,7 @@ public class PdcClearingAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
+
 		private Long id;
 		private String usrUpd;
 		private String usrCrt;
@@ -23,66 +24,28 @@ public class PdcClearingAction extends BaseAction implements Preparable
 		private String message;
 		Partner partner;
 		Office office;
-		
+
 		public PdcClearingAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.partner = new Partner();
 				this.office = new Office();
-				
+
 				this.partner.setPartnerCode(BaseAction.sesPartnerCode());
 				this.office.setId(BaseAction.sesOfficeId());
 			}
-			
+
 		@Override
 		public void prepare() throws Exception
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		@Override
 		public String execute() throws Exception
 			{
-				String strMode;
-				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						
-						switch (strMode)
-							{
-								case "search" :
-									this.Paging();
-								case "edit" :
-								
-								case "back" :
-									;
-									
-								case "first" :
-									this.pageNumber -= 1;
-									this.Paging();
-								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
-										{
-											this.pageNumber = 1;
-										}
-									this.Paging();
-								case "next" :
-									this.pageNumber += 1;
-									this.Paging();
-								case "last" :
-									this.LastPage();
-								default :
-									return ERROR;
-							}
-					}
-				else
-					{
-						strMode = "start";
-					}
-				return strMode;
+				return this.mode;
 			}
 			
 		/**
@@ -134,6 +97,23 @@ public class PdcClearingAction extends BaseAction implements Preparable
 		public void setSearchvalue(final String searchvalue)
 			{
 				this.searchvalue = searchvalue;
+			}
+			
+		/**
+		 * @return the id
+		 */
+		public Long getId()
+			{
+				return this.id;
+			}
+			
+		/**
+		 * @param id
+		 *            the id to set
+		 */
+		public void setId(final Long id)
+			{
+				this.id = id;
 			}
 			
 		/**
@@ -205,31 +185,6 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			}
 			
 		/**
-		 * @return the serialversionuid
-		 */
-		public static Long getSerialversionuid()
-			{
-				return serialVersionUID;
-			}
-			
-		/**
-		 * @return the id
-		 */
-		public Long getId()
-			{
-				return this.id;
-			}
-			
-		/**
-		 * @param id
-		 *            the id to set
-		 */
-		public void setId(final Long id)
-			{
-				this.id = id;
-			}
-			
-		/**
 		 * @return the partner
 		 */
 		public Partner getPartner()
@@ -262,4 +217,13 @@ public class PdcClearingAction extends BaseAction implements Preparable
 			{
 				this.office = office;
 			}
+			
+		/**
+		 * @return the serialversionuid
+		 */
+		public static long getSerialversionuid()
+			{
+				return serialVersionUID;
+			}
+			
 	}

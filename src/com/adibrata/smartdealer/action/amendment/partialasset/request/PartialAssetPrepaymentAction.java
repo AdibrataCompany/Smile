@@ -39,27 +39,7 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 		@Override
 		public String execute() throws Exception
 			{
-				String strMode;
-				strMode = this.mode;
-				
-				if (this.mode != null)
-					{
-						
-						switch (strMode)
-							{
-								case "search" :
-
-								default :
-									break;
-									;
-									
-							}
-					}
-				else
-					{
-						strMode = INPUT;
-					}
-				return strMode;
+				return this.mode;
 			}
 			
 		/**
@@ -105,15 +85,6 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 			}
 			
 		/**
-		 * @param searchvalue
-		 *            the searchvalue to set
-		 */
-		public void setSearchvalue(final String searchvalue)
-			{
-				this.searchvalue = searchvalue;
-			}
-			
-		/**
 		 * @return the id
 		 */
 		public Long getId()
@@ -128,40 +99,6 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 		public void setId(final Long id)
 			{
 				this.id = id;
-			}
-			
-		/**
-		 * @return the usrUpd
-		 */
-		public String getUsrUpd()
-			{
-				return this.usrUpd;
-			}
-			
-		/**
-		 * @param usrUpd
-		 *            the usrUpd to set
-		 */
-		public void setUsrUpd(final String usrUpd)
-			{
-				this.usrUpd = usrUpd;
-			}
-			
-		/**
-		 * @return the usrCrt
-		 */
-		public String getUsrCrt()
-			{
-				return this.usrCrt;
-			}
-			
-		/**
-		 * @param usrCrt
-		 *            the usrCrt to set
-		 */
-		public void setUsrCrt(final String usrCrt)
-			{
-				this.usrCrt = usrCrt;
 			}
 			
 		/**
@@ -199,10 +136,54 @@ public class PartialAssetPrepaymentAction extends BaseAction implements Preparab
 			}
 			
 		/**
+		 * @return the partner
+		 */
+		public Partner getPartner()
+			{
+				return this.partner;
+			}
+			
+		/**
+		 * @param partner
+		 *            the partner to set
+		 */
+		public void setPartner(final Partner partner)
+			{
+				this.partner = partner;
+			}
+			
+		/**
+		 * @return the office
+		 */
+		public Office getOffice()
+			{
+				return this.office;
+			}
+			
+		/**
+		 * @param office
+		 *            the office to set
+		 */
+		public void setOffice(final Office office)
+			{
+				this.office = office;
+			}
+			
+		/**
 		 * @return the serialversionuid
 		 */
-		public static Long getSerialversionuid()
+		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
+			
+		/**
+		 * @param searchvalue
+		 *            the searchvalue to set
+		 */
+		public void setSearchvalue(final String searchvalue)
+			{
+				this.searchvalue = searchvalue;
+			}
+			
 	}
