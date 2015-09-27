@@ -213,7 +213,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 
@@ -269,7 +269,7 @@ public class UserRegisterDao extends DaoBase implements UserService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 								hql.append(WhereCond);

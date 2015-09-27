@@ -63,7 +63,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(WhereCond);
 							}
@@ -142,7 +142,7 @@ public class SelesInvoiceDao extends DaoBase implements SalesInvoiceService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

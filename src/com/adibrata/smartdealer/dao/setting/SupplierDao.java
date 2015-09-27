@@ -189,7 +189,7 @@ public class SupplierDao extends DaoBase implements SupplierService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -241,7 +241,7 @@ public class SupplierDao extends DaoBase implements SupplierService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

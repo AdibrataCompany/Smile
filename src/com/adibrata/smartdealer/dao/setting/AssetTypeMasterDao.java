@@ -107,7 +107,7 @@ public class AssetTypeMasterDao extends DaoBase implements AssetTypeService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -142,7 +142,7 @@ public class AssetTypeMasterDao extends DaoBase implements AssetTypeService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

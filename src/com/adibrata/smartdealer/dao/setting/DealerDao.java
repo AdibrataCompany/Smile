@@ -188,7 +188,7 @@ public class DealerDao extends DaoBase implements DealerService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -240,7 +240,7 @@ public class DealerDao extends DaoBase implements DealerService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

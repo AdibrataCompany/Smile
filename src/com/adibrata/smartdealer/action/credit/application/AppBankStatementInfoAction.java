@@ -19,27 +19,27 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 
 public class AppBankStatementInfoAction extends BaseAction implements Preparable
 	{
-
+		
 		/**
 		*
 		*/
 		private static final long serialVersionUID = 1L;
-
+		
 		private String message;
 		private String mode;
 		private String usrUpd;
 		private String usrCrt;
-
+		
 		private Agrmnt agrmnt;
 		private AgrmntBankStatementInfo bankinfo;
 		private List<AgrmntBankStatInfoDtl> lstbankdetail;
-
+		
 		private ApplicationDataService service;
 		private Map<String, Object> dtl;
-
-		private static final long serialVersionUID = 1L; private long id;
+		
+		private long id;
 		private Long agrmntid;
-
+		
 		private String bankcode;
 		private String bankbranch;
 		private String accountno;
@@ -50,7 +50,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 		private String security;
 		private Double startingbalance;
 		private Double deposito;
-
+		
 		private Short seqno;
 		private Byte bankmonth;
 		private Short bankyear;
@@ -61,19 +61,19 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 		private Short mutasidebit;
 		private Short mutasicredit;
 		private Short avgbalance;
-
+		
 		public AppBankStatementInfoAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				this.service = new ApplicationDataDao();
-
+				
 				this.agrmnt = new Agrmnt();
 				this.agrmnt.setId(this.getAgrmntid());
-
+				
 				this.lstbankdetail = new ArrayList<AgrmntBankStatInfoDtl>();
 				this.seqno = 1;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public void prepare() throws Exception
@@ -85,7 +85,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 						this.lstbankdetail = (List<AgrmntBankStatInfoDtl>) this.dtl.get("dtl");
 					}
 			}
-
+			
 		@Override
 		public String execute()
 			{
@@ -95,7 +95,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 					{
 						switch (strMode)
 							{
-
+								
 								case "adddetail" :
 									try
 										{
@@ -111,7 +111,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 									try
 										{
 											this.DelDetail();
-
+											
 										}
 									catch (final Exception e)
 										{
@@ -129,7 +129,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 											e.printStackTrace();
 										}
 									break;
-
+									
 								default :
 									break;
 							}
@@ -148,7 +148,7 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 					}
 				return strMode;
 			}
-
+			
 		private void AddDetail() throws Exception
 			{
 				try
@@ -168,14 +168,14 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		private void DelDetail() throws Exception
 			{
@@ -184,20 +184,20 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 						this.lstbankdetail = (List<AgrmntBankStatInfoDtl>) this.dtl.get("dtl");
 						this.seqno = (short) (this.seqno - 1);
 						this.lstbankdetail.remove(this.seqno);
-
+						
 						this.dtl.put("dtl", this.lstbankdetail);
 						this.lstbankdetail = (List<AgrmntBankStatInfoDtl>) this.dtl.get("dtl");
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		public String Save() throws Exception
 			{
 				try
@@ -215,12 +215,12 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 						this.bankinfo.setStartingBalance(this.getStartingbalance());
 						this.bankinfo.setDeposito(this.getDeposito());
 						this.bankinfo.setUsrUpd(BaseAction.sesLoginName());
-
+						
 						this.setMessage(BaseAction.SuccessMessage());
 						this.mode = SUCCESS;
 					}
 				catch (final Exception exp)
-
+					
 					{
 						this.mode = ERROR;
 						this.setMessage(BaseAction.ErrorMessage());
@@ -229,323 +229,323 @@ public class AppBankStatementInfoAction extends BaseAction implements Preparable
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
-
+					
 				return this.mode;
 			}
-
+			
 		public String getMessage()
 			{
 				return this.message;
 			}
-
+			
 		public void setMessage(final String message)
 			{
 				this.message = message;
 			}
-
+			
 		public String getMode()
 			{
 				return this.mode;
 			}
-
+			
 		public void setMode(final String mode)
 			{
 				this.mode = mode;
 			}
-
+			
 		public String getUsrUpd()
 			{
 				return this.usrUpd;
 			}
-
+			
 		public void setUsrUpd(final String usrUpd)
 			{
 				this.usrUpd = usrUpd;
 			}
-
+			
 		public String getUsrCrt()
 			{
 				return this.usrCrt;
 			}
-
+			
 		public void setUsrCrt(final String usrCrt)
 			{
 				this.usrCrt = usrCrt;
 			}
-
+			
 		public Agrmnt getAgrmnt()
 			{
 				return this.agrmnt;
 			}
-
+			
 		public void setAgrmnt(final Agrmnt agrmnt)
 			{
 				this.agrmnt = agrmnt;
 			}
-
+			
 		public AgrmntBankStatementInfo getBankinfo()
 			{
 				return this.bankinfo;
 			}
-
+			
 		public void setBankinfo(final AgrmntBankStatementInfo bankinfo)
 			{
 				this.bankinfo = bankinfo;
 			}
-
+			
 		public List<AgrmntBankStatInfoDtl> getLstbankdetail()
 			{
 				return this.lstbankdetail;
 			}
-
+			
 		public void setLstbankdetail(final List<AgrmntBankStatInfoDtl> lstbankdetail)
 			{
 				this.lstbankdetail = lstbankdetail;
 			}
-
+			
 		public ApplicationDataService getService()
 			{
 				return this.service;
 			}
-
+			
 		public void setService(final ApplicationDataService service)
 			{
 				this.service = service;
 			}
-
+			
 		public long getId()
 			{
 				return this.id;
 			}
-
+			
 		public void setId(final long id)
 			{
 				this.id = id;
 			}
-
+			
 		public Long getAgrmntid()
 			{
 				return this.agrmntid;
 			}
-
+			
 		public void setAgrmntid(final Long agrmntid)
 			{
 				this.agrmntid = agrmntid;
 			}
-
+			
 		public String getBankcode()
 			{
 				return this.bankcode;
 			}
-
+			
 		public void setBankcode(final String bankcode)
 			{
 				this.bankcode = bankcode;
 			}
-
+			
 		public String getBankbranch()
 			{
 				return this.bankbranch;
 			}
-
+			
 		public void setBankbranch(final String bankbranch)
 			{
 				this.bankbranch = bankbranch;
 			}
-
+			
 		public String getAccountno()
 			{
 				return this.accountno;
 			}
-
+			
 		public void setAccountno(final String accountno)
 			{
 				this.accountno = accountno;
 			}
-
+			
 		public String getAccountname()
 			{
 				return this.accountname;
 			}
-
+			
 		public void setAccountname(final String accountname)
 			{
 				this.accountname = accountname;
 			}
-
+			
 		public Double getCreditceiling()
 			{
 				return this.creditceiling;
 			}
-
+			
 		public void setCreditceiling(final Double creditceiling)
 			{
 				this.creditceiling = creditceiling;
 			}
-
+			
 		public String getTypeofcredit()
 			{
 				return this.typeofcredit;
 			}
-
+			
 		public void setTypeofcredit(final String typeofcredit)
 			{
 				this.typeofcredit = typeofcredit;
 			}
-
+			
 		public Double getInterest()
 			{
 				return this.interest;
 			}
-
+			
 		public void setInterest(final Double interest)
 			{
 				this.interest = interest;
 			}
-
+			
 		public String getSecurity()
 			{
 				return this.security;
 			}
-
+			
 		public void setSecurity(final String security)
 			{
 				this.security = security;
 			}
-
+			
 		public Double getStartingbalance()
 			{
 				return this.startingbalance;
 			}
-
+			
 		public void setStartingbalance(final Double startingbalance)
 			{
 				this.startingbalance = startingbalance;
 			}
-
+			
 		public Double getDeposito()
 			{
 				return this.deposito;
 			}
-
+			
 		public void setDeposito(final Double deposito)
 			{
 				this.deposito = deposito;
 			}
-
+			
 		public Byte getBankmonth()
 			{
 				return this.bankmonth;
 			}
-
+			
 		public void setBankmonth(final Byte bankmonth)
 			{
 				this.bankmonth = bankmonth;
 			}
-
+			
 		public Short getBankyear()
 			{
 				return this.bankyear;
 			}
-
+			
 		public void setBankyear(final Short bankyear)
 			{
 				this.bankyear = bankyear;
 			}
-
+			
 		public Double getBankdebit()
 			{
 				return this.bankdebit;
 			}
-
+			
 		public void setBankdebit(final Double bankdebit)
 			{
 				this.bankdebit = bankdebit;
 			}
-
+			
 		public Double getBankbalance()
 			{
 				return this.bankbalance;
 			}
-
+			
 		public void setBankbalance(final Double bankbalance)
 			{
 				this.bankbalance = bankbalance;
 			}
-
+			
 		public Double getHidebitcredit()
 			{
 				return this.hidebitcredit;
 			}
-
+			
 		public void setHidebitcredit(final Double hidebitcredit)
 			{
 				this.hidebitcredit = hidebitcredit;
 			}
-
+			
 		public Double getLodebitcredit()
 			{
 				return this.lodebitcredit;
 			}
-
+			
 		public void setLodebitcredit(final Double lodebitcredit)
 			{
 				this.lodebitcredit = lodebitcredit;
 			}
-
+			
 		public Short getMutasidebit()
 			{
 				return this.mutasidebit;
 			}
-
+			
 		public void setMutasidebit(final Short mutasidebit)
 			{
 				this.mutasidebit = mutasidebit;
 			}
-
+			
 		public Short getMutasicredit()
 			{
 				return this.mutasicredit;
 			}
-
+			
 		public void setMutasicredit(final Short mutasicredit)
 			{
 				this.mutasicredit = mutasicredit;
 			}
-
+			
 		public Short getAvgbalance()
 			{
 				return this.avgbalance;
 			}
-
+			
 		public void setAvgbalance(final Short avgbalance)
 			{
 				this.avgbalance = avgbalance;
 			}
-
+			
 		public static long getSerialversionuid()
 			{
 				return serialVersionUID;
 			}
-
+			
 		public Map<String, Object> getDtl()
 			{
 				return this.dtl;
 			}
-
+			
 		public void setDtl(final Map<String, Object> dtl)
 			{
 				this.dtl = dtl;
 			}
-
+			
 		public Short getSeqno()
 			{
 				return this.seqno;
 			}
-
+			
 		public void setSeqno(final Short seqno)
 			{
 				this.seqno = seqno;
 			}
-
+			
 	}

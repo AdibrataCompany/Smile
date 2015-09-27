@@ -153,7 +153,7 @@ public class RoleDao extends DaoBase implements RoleService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -212,7 +212,7 @@ public class RoleDao extends DaoBase implements RoleService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 								hql.append(WhereCond);

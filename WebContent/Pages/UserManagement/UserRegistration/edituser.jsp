@@ -19,7 +19,7 @@
 		<!-- 	<div class="jumbotron"> -->
 		<br> <br>
 		<%@include file="/Pages/Header.jsp"%>
-		<s:form action="userregister.action" theme="simple" validate="true">
+		<s:form action="userreg.action" theme="simple" validate="true">
 			<center>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">

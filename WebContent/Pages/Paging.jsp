@@ -18,7 +18,7 @@
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="prev()">
 					<span class="glyphicon glyphicon-backward"></span>
-				</button> <s:textfield style="text-align: center;" name="pagenumber" size="4" />
+				</button> <s:textfield style="text-align: center;" name="pagenumber" size="4" value="1"/>
 				<button class="btn btn-sm btn-primary" type="submit"
 					onclick="next()">
 					<span class="glyphicon glyphicon-forward"></span>

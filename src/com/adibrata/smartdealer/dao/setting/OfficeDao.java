@@ -58,7 +58,7 @@ public class OfficeDao extends DaoBase implements OfficeService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -256,7 +256,7 @@ public class OfficeDao extends DaoBase implements OfficeService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

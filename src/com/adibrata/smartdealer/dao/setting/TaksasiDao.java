@@ -55,7 +55,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -198,7 +198,7 @@ public class TaksasiDao extends DaoBase implements TaksasiService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

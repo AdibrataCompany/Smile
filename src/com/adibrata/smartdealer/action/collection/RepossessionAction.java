@@ -10,13 +10,13 @@ public class RepossessionAction extends BaseAction implements Preparable
 		private String mode;
 		private String searchcriteria;
 		private String searchvalue;
-		private static final long serialVersionUID = 1L; private long id;
+		private long id;
 		private String usrUpd;
 		private String usrCrt;
 		private int pageNumber;
 		private String message;
 
-		public RepossessionAction()
+		public RepossessionAction() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 			}
@@ -24,53 +24,14 @@ public class RepossessionAction extends BaseAction implements Preparable
 		@Override
 		public String execute() throws Exception
 			{
-				String strMode;
-				strMode = this.mode;
+				return this.mode;
+			}
+			
+		@Override
+		public void prepare() throws Exception
+			{
+				// TODO Auto-generated method stub
 				
-				if (this.mode != null)
-					{
-						
-						switch (strMode)
-							{
-								case "search" :
-									this.Paging();
-								case "edit" :
-								
-								case "del" :
-									return this.SaveDelete();
-								case "add" :
-									strMode = this.SaveAdd();
-								case "saveadd" :
-									strMode = this.SaveAdd();
-								case "saveedit" :
-									strMode = this.SaveEdit();
-								case "back" :
-									;
-									
-								case "first" :
-									this.pageNumber -= 1;
-									this.Paging();
-								case "prev" :
-									this.pageNumber -= 1;
-									if (this.pageNumber <= 1)
-										{
-											this.pageNumber = 1;
-										}
-									this.Paging();
-								case "next" :
-									this.pageNumber += 1;
-									this.Paging();
-								case "last" :
-									this.LastPage();
-								default :
-									return ERROR;
-							}
-					}
-				else
-					{
-						strMode = "start";
-					}
-				return strMode;
 			}
 			
 		/**

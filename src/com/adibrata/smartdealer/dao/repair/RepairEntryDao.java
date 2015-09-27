@@ -80,7 +80,7 @@ public class RepairEntryDao extends DaoBase implements RepairService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

@@ -181,7 +181,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -235,7 +235,7 @@ public class WorkshopDao extends DaoBase implements WorkshopService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

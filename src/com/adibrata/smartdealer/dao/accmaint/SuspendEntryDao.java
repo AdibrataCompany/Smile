@@ -96,7 +96,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 								hql.append(WhereCond);
@@ -173,7 +173,7 @@ public class SuspendEntryDao extends DaoBase implements SuspendEntryService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

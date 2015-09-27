@@ -118,7 +118,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(WhereCond);
 							}
@@ -150,7 +150,7 @@ public class SalesReturDao extends DaoBase implements SalesReturnService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

@@ -38,7 +38,7 @@ public class AgreementDao extends DaoBase implements AgreementService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 								hql.append(WhereCond);
@@ -93,7 +93,7 @@ public class AgreementDao extends DaoBase implements AgreementService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" and ");
 								hql.append(WhereCond);

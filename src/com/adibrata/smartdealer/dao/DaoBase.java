@@ -66,7 +66,7 @@ public class DaoBase implements SeviceBase
 				try
 					{
 						String countQ = "Select count (id) " + strStatement;
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								countQ = " where " + WhereCond;
 								
@@ -141,7 +141,7 @@ public class DaoBase implements SeviceBase
 				try
 					{
 						this.hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								this.hql.append(" where ");
 								this.hql.append(WhereCond);
@@ -179,7 +179,7 @@ public class DaoBase implements SeviceBase
 						this.hql.append("Select A.Id, A.AgrmntCode, C.Id as CustomerId, C.Name, C.FullAddress From agrmnt A inner join customer C on A.CustomerID = C.id ");
 						hqlcount.append("Select Count(1) From agrmnt A inner join customer C on A.CustomerID = C.id ");
 						this.hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								this.hql.append(" where ");
 								this.hql.append(WhereCond);

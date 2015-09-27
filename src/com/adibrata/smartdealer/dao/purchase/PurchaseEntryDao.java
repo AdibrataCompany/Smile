@@ -157,7 +157,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(WhereCond);
 							}
@@ -189,7 +189,7 @@ public class PurchaseEntryDao extends DaoBase implements PurchaseOrderService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

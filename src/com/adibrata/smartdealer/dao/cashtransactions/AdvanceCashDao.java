@@ -119,7 +119,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -181,7 +181,7 @@ public class AdvanceCashDao extends DaoBase implements AdvanceCashService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

@@ -129,7 +129,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -162,7 +162,7 @@ public class DanaTunaiTransDao extends DaoBase implements DanaTunaiService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

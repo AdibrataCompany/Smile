@@ -120,7 +120,7 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 				try
 					{
 						this.hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								this.hql.append(" where ");
 								this.hql.append(WhereCond);
@@ -171,14 +171,14 @@ public class PaymentReceiveDao extends DaoBase implements PaymentReceiveService
 				try
 					{
 						sql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								sql.append(" where ");
 								sql.append(WhereCond);
 							}
 
 						sqlcount.append(this.strCountStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								sqlcount.append(" where ");
 								sqlcount.append(WhereCond);

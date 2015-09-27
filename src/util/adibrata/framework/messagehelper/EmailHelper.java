@@ -62,18 +62,17 @@ public class EmailHelper implements Runnable
 						// lprop.put("mail.smtp.host", lEnt.getMailServer());
 						lprop.put("mail.smtp.host", lEmailConfig.Properties("SmtpServer"));
 						
-						if (this.lEnt.getUserName() != null)
+						if (lEmailConfig.Properties("UserName") != null)
 							{
 								lprop.put("mail.smtp.auth", "true");
 								lprop.put("mail.user", lEmailConfig.Properties("UserName"));
 							}
 							
-						if (this.lEnt.getPassword() != null)
+						if (EncryptionHelper.Decrypt3Des(lEmailConfig.Properties("Password")) != null)
 							{
 								lprop.put("mail.smtp.auth", "true");
 								// lprop.put("mail.password", lEnt.getPassword());
 								lprop.put("mail.password", EncryptionHelper.Decrypt3Des(lEmailConfig.Properties("Password")));
-								
 							}
 						final Session session = Session.getDefaultInstance(lprop, new javax.mail.Authenticator()
 							{
@@ -168,7 +167,7 @@ public class EmailHelper implements Runnable
 			
 		public void ReadingEmail()
 			{
-
+				
 				final Properties props = new Properties();
 				props.setProperty("mail.store.protocol", "imaps");
 				try
@@ -194,6 +193,6 @@ public class EmailHelper implements Runnable
 					{
 						mex.printStackTrace();
 					}
-
+					
 			}
 	}

@@ -74,7 +74,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -109,7 +109,7 @@ public class CustomerDao extends DaoBase implements CustomerMaintService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

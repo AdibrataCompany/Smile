@@ -63,7 +63,7 @@ public class AccountPayableDao extends DaoBase implements APSelectionService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(WhereCond);
 							}

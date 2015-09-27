@@ -108,7 +108,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -143,7 +143,7 @@ public class OtherReceiveDao extends DaoBase implements OtherReceiveService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);

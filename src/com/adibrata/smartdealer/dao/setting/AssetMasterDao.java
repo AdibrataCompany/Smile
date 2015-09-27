@@ -18,21 +18,21 @@ import util.adibrata.framework.exceptionhelper.ExceptionHelper;
 public class AssetMasterDao extends DaoBase implements AssetMasterService
 	{
 		String userupd;
-
+		
 		String strStatement;
 		StringBuilder hql = new StringBuilder();
-		
+
 		private int currentpage;
 		private Long totalrecord;
-
+		
 		public AssetMasterDao() throws Exception
 			{
 				// TODO Auto-generated constructor stub
 				try
 					{
-
+						
 						this.strStatement = " from AssetMaster ";
-
+						
 					}
 				catch (final Exception exp)
 					{
@@ -43,14 +43,14 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
 		 * com.adibrata.smartdealer.service.setting.AssetMaster#Save(com.adibrata
 		 * .smartdealer.service.setting.AssetMaster)
 		 */
-
+		
 		/*
 		 * (non-Javadoc)
 		 * @see com.adibrata.smartdealer.service.setting.AssetMaster#Paging(int,
@@ -59,30 +59,30 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 		@Override
 		public List<AssetMaster> Paging(final int CurrentPage, final String WhereCond, final String SortBy) throws Exception
 			{
-
+				
 				// TODO Auto-generated method stub
 				final StringBuilder hql = new StringBuilder();
 				List<AssetMaster> list = null;
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
 							}
-
+							
 						final Query selectQuery = this.getSession().createQuery(hql.toString());
 						selectQuery.setFirstResult((CurrentPage - 1) * this.getPagesize());
 						selectQuery.setCacheable(true);
 						selectQuery.setCacheRegion("AssetMaster" + WhereCond);
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -94,18 +94,18 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 					}
 				return list;
 			}
-
+			
 		@SuppressWarnings("unchecked")
 		@Override
 		public List<AssetMaster> Paging(final int CurrentPage, final String WhereCond, final String SortBy, final boolean islast) throws Exception
 			{
 				final StringBuilder hql = new StringBuilder();
 				List<AssetMaster> list = null;
-
+				
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -118,11 +118,11 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 						selectQuery.setFirstResult((this.currentpage - 1) * this.getPagesize());
 						selectQuery.setMaxResults(this.getPagesize());
 						list = selectQuery.list();
-
+						
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -134,7 +134,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 					}
 				return list;
 			}
-
+			
 		/*
 		 * (non-Javadoc)
 		 * @see
@@ -154,56 +154,12 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 						assetcode.append(assetMaster.getType());
 						assetcode.append(".");
 						assetcode.append(assetMaster.getModel());
-
+						
 						assetMaster.setDtmCrt(this.dtmupd);
 						assetMaster.setDtmUpd(this.dtmupd);
 						assetMaster.setAssetCode(assetcode.toString());
 						this.getSession().save(assetMaster);
-						
-						this.getSession().getTransaction().commit();
 
-					}
-				catch (final Exception exp)
-					{
-						this.getSession().getTransaction().rollback();
-						final ExceptionEntities lEntExp = new ExceptionEntities();
-						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
-						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-						ExceptionHelper.WriteException(lEntExp, exp);
-					}
-				finally
-					{
-						assetcode.setLength(0);
-					}
-			}
-
-		/*
-		 * (non-Javadoc)
-		 * @see
-		 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveEdit(com.adibrata
-		 * .smartdealer.service.setting.AssetMaster)
-		 */
-		@Override
-		public void SaveEdit(final AssetMaster assetMaster) throws Exception
-			{
-				// TODO Auto-generated method stub
-				this.getSession().getTransaction().begin();
-				final StringBuilder assetcode = new StringBuilder();
-				try
-					{
-						assetcode.append(assetMaster.getBrand());
-						assetcode.append(".");
-						assetcode.append(assetMaster.getType());
-						assetcode.append(".");
-						assetcode.append(assetMaster.getModel());
-						
-						assetMaster.setDtmCrt(this.dtmupd);
-						assetMaster.setDtmUpd(this.dtmupd);
-						assetMaster.setAssetCode(assetcode.toString());
-						
-						assetMaster.setDtmUpd(this.dtmupd);
-						this.getSession().update(assetMaster);
-						
 						this.getSession().getTransaction().commit();
 						
 					}
@@ -224,18 +180,29 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 		/*
 		 * (non-Javadoc)
 		 * @see
-		 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata
+		 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveEdit(com.adibrata
 		 * .smartdealer.service.setting.AssetMaster)
 		 */
 		@Override
-		public void SaveDel(final AssetMaster assetMaster) throws Exception
+		public void SaveEdit(final AssetMaster assetMaster) throws Exception
 			{
 				// TODO Auto-generated method stub
 				this.getSession().getTransaction().begin();
+				final StringBuilder assetcode = new StringBuilder();
 				try
 					{
+						assetcode.append(assetMaster.getBrand());
+						assetcode.append(".");
+						assetcode.append(assetMaster.getType());
+						assetcode.append(".");
+						assetcode.append(assetMaster.getModel());
 
-						this.getSession().delete(assetMaster);
+						assetMaster.setDtmCrt(this.dtmupd);
+						assetMaster.setDtmUpd(this.dtmupd);
+						assetMaster.setAssetCode(assetcode.toString());
+
+						assetMaster.setDtmUpd(this.dtmupd);
+						this.getSession().update(assetMaster);
 
 						this.getSession().getTransaction().commit();
 
@@ -248,8 +215,41 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
 						ExceptionHelper.WriteException(lEntExp, exp);
 					}
+				finally
+					{
+						assetcode.setLength(0);
+					}
 			}
 
+		/*
+		 * (non-Javadoc)
+		 * @see
+		 * com.adibrata.smartdealer.service.setting.AssetMaster#SaveDel(com.adibrata
+		 * .smartdealer.service.setting.AssetMaster)
+		 */
+		@Override
+		public void SaveDel(final AssetMaster assetMaster) throws Exception
+			{
+				// TODO Auto-generated method stub
+				this.getSession().getTransaction().begin();
+				try
+					{
+						
+						this.getSession().delete(assetMaster);
+						
+						this.getSession().getTransaction().commit();
+						
+					}
+				catch (final Exception exp)
+					{
+						this.getSession().getTransaction().rollback();
+						final ExceptionEntities lEntExp = new ExceptionEntities();
+						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
+						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
+						ExceptionHelper.WriteException(lEntExp, exp);
+					}
+			}
+			
 		@Override
 		public AssetMaster View(final Long id) throws Exception
 			{
@@ -261,7 +261,7 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 					}
 				catch (final Exception exp)
 					{
-
+						
 						final ExceptionEntities lEntExp = new ExceptionEntities();
 						lEntExp.setJavaClass(Thread.currentThread().getStackTrace()[1].getClassName());
 						lEntExp.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
@@ -269,16 +269,16 @@ public class AssetMasterDao extends DaoBase implements AssetMasterService
 					}
 				return assetmaster;
 			}
-
+			
 		@Override
 		public int getCurrentpage()
 			{
 				return this.currentpage;
 			}
-
+			
 		public void setCurrentpage(final int currentpage)
 			{
 				this.currentpage = currentpage;
 			}
-
+			
 	}

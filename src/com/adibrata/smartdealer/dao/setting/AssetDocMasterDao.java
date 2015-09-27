@@ -61,7 +61,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -95,7 +95,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 				try
 					{
 						hql.append(this.strStatement);
-						if (WhereCond != "")
+						if (!WhereCond.equals(""))
 							{
 								hql.append(" where ");
 								hql.append(WhereCond);
@@ -139,9 +139,7 @@ public class AssetDocMasterDao extends DaoBase implements AssetDocMasterService
 						assetDocMaster.setDtmCrt(this.dtmupd);
 						assetDocMaster.setDtmUpd(this.dtmupd);
 						this.getSession().save(assetDocMaster);
-
 						this.getSession().getTransaction().commit();
-
 					}
 				catch (final Exception exp)
 					{
